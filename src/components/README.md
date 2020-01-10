@@ -1,0 +1,1 @@
+Editor and Live components adapted from (react-live)[https://github.com/FormidableLabs/react-live].
