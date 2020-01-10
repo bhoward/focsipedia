@@ -5,6 +5,16 @@ export default (code, language) => {
     return {jscode: code, errors: ''};
   }
 
+  // first transpile from reason to ocaml if needed, using refmt
+  if (language === 'reason') {
+    try {
+      code = printML(parseRE(code));
+    } catch(error) {
+      return {jscode: '', errors: error.message};
+    }
+  }
+
+  // now compile ocaml to javascript, using bucklescript
   const _consoleError = console.error;
   let errs = '';
   console.error = (...args) => {
@@ -12,10 +22,7 @@ export default (code, language) => {
       errs += argument + '\n'
     });
   }
-  if (language === 'reason') {
-    code = printML(parseRE(code));
-  }
-  let res = ocaml.compile_super_errors_ppx_v2(code);
+  let res = ocaml.compile_super_errors_ppx_v2(code); // TODO maybe just ocaml.compile?
   console.error = _consoleError;
   let startPadding = /^  /gm;
   let noFileName = /\(No file name\)/gm;
