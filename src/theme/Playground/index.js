@@ -6,7 +6,11 @@
  */
 
 import * as React from 'react';
-import {MyLiveProvider, MyLiveEditor, MyLiveError, MyLivePreview} from 'my-react-live';
+import MyLiveProvider from '../../components/Live/MyLiveProvider'
+import MyLiveEditor from '../../components/Live/MyLiveEditor'
+import MyLivePreview from '../../components/Live/MyLivePreview'
+import MyLiveError from '../../components/Live/MyLiveError'
+
 import classnames from 'classnames';
 
 import styles from './styles.module.css';
