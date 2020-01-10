@@ -88,4 +88,9 @@ module.exports = {
       },
     ],
   ],
+  scripts: [
+    '/bs.js',
+    '/refmt.js',
+    '/stdlib.js',
+  ],
 };

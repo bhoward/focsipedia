@@ -15,6 +15,7 @@ function Playground({children, theme, transformCode, language, ...props}) {
   return (
   <MyLiveProvider
     code={children}
+    language={language}
     transformCode={transformCode || (code => `${code};`)}
     theme={theme}
     {...props}>
