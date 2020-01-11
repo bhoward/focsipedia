@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import PropTypes from 'prop-types';
 import Editor from 'react-simple-code-editor';
 import Highlight, { Prism } from 'prism-react-renderer';
 import { theme as liveTheme } from '../../constants/theme';
@@ -75,15 +74,6 @@ class CodeEditor extends Component {
     );
   }
 }
-
-// CodeEditor.propTypes = {
-//   code: PropTypes.string,
-//   disabled: PropTypes.boolean,
-//   language: PropTypes.string,
-//   onChange: PropTypes.func,
-//   style: PropTypes.object,
-//   theme: PropTypes.object
-// };
 
 CodeEditor.getDerivedStateFromProps = function(props, state) {
   if (props.code !== state.prevCodeProp) {
