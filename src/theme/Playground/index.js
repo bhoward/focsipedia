@@ -15,12 +15,11 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 
-function Playground({children, theme, transformCode, language, ...props}) {
+function Playground({children, theme, language, ...props}) {
   return (
   <MyLiveProvider
     code={children}
     language={language}
-    transformCode={transformCode || (code => `${code};`)}
     theme={theme}
     {...props}>
     <div
@@ -28,7 +27,7 @@ function Playground({children, theme, transformCode, language, ...props}) {
         styles.playgroundHeader,
         styles.playgroundEditorHeader,
       )}>
-      MyLive Editor
+      Live Editor
     </div>
     <MyLiveEditor />
     <div

@@ -16,7 +16,6 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "prism-react-renderer": "^1.0.1",
-    "prop-types": "^15.5.8",
     "react-simple-code-editor": "^0.10.0"
   },
   "browserslist": {

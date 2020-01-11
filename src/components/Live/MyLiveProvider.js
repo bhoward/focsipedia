@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 import MyLiveContext from './MyLiveContext';
 import { generateElement, renderElementAsync } from '../../utils/transpile';
@@ -7,43 +6,41 @@ import { generateElement, renderElementAsync } from '../../utils/transpile';
 export default class MyLiveProvider extends Component {
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillMount() {
-    const { code, language, scope, transformCode, noInline } = this.props;
+    const { code, language, scope, noInline } = this.props;
 
-    this.transpile({ code, language, scope, transformCode, noInline });
+    this.transpile({ code, language, scope, noInline });
   }
 
   componentDidUpdate({
     code: prevCode,
     language: prevLanguage,
     scope: prevScope,
-    noInline: prevNoInline,
-    transformCode: prevTransformCode
+    noInline: prevNoInline
   }) {
-    const { code, language, scope, noInline, transformCode } = this.props;
+    const { code, language, scope, noInline } = this.props;
     if (
       code !== prevCode ||
       language !== prevLanguage ||
       scope !== prevScope ||
-      noInline !== prevNoInline ||
-      transformCode !== prevTransformCode
+      noInline !== prevNoInline
     ) {
-      this.transpile({ code, language, scope, transformCode, noInline });
+      this.transpile({ code, language, scope, noInline });
     }
   }
 
   onChange(code) {
-    const { language, scope, transformCode, noInline } = this.props;
-    this.transpile({ code, language, scope, transformCode, noInline });
+    const { language, scope, noInline } = this.props;
+    this.transpile({ code, language, scope, noInline });
   }
 
   onError(error) {
     this.setState({ error: error.toString() });
   }
 
-  transpile({ code, language, scope, transformCode, noInline = false }) {
+  transpile({ code, language, scope, noInline = false }) {
     // Transpilation arguments
     const input = {
-      code: transformCode ? transformCode(code) : code,
+      code,
       language,
       scope
     };
@@ -95,15 +92,4 @@ MyLiveProvider.defaultProps = {
   language: 'js',
   disabled: false
 };
-
-// MyLiveProvider.propTypes = {
-//   children: PropTypes.children,
-//   code: PropTypes.string,
-//   disabled: PropTypes.bool,
-//   language: PropTypes.string,
-//   noInline: PropTypes.bool,
-//   scope: PropTypes.object,
-//   theme: PropTypes.object,
-//   transformCode: PropTypes.node
-// };
 
