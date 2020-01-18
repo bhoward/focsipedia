@@ -21,6 +21,8 @@ export default ({
   children,
   className: languageClassName,
   live,
+  canvas,
+  hidden,
   metastring,
   ...props
 }) => {
@@ -69,6 +71,8 @@ export default ({
         code={children.trim()}
         theme={prism.theme || defaultTheme}
         language={language}
+        canvas={canvas}
+        hidden={hidden}
         {...props}
       />
     );

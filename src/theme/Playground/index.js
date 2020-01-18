@@ -15,34 +15,50 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 
-function Playground({children, theme, language, ...props}) {
-  return (
-  <MyLiveProvider
-    code={children}
-    language={language}
-    theme={theme}
-    {...props}>
-    <div
-      className={classnames(
-        styles.playgroundHeader,
-        styles.playgroundEditorHeader,
-      )}>
-      Live Editor
-    </div>
-    <MyLiveEditor />
-    <div
-      className={classnames(
-        styles.playgroundHeader,
-        styles.playgroundPreviewHeader,
-      )}>
-      {language} Output
-    </div>
-    <div className={styles.playgroundPreview}>
-      <MyLivePreview />
-      <MyLiveError />
-    </div>
-  </MyLiveProvider>
-);
+function Playground({children, theme, language, canvas, hidden, ...props}) {
+  let graphicsRef = React.createRef(); // TODO pass along to ocaml
+  let graphics = (canvas)
+    ? <canvas ref={graphicsRef} width="600" height="400" className={styles.playgroundCanvas}/>
+    : <></>;
+
+  if (hidden) {
+    return (<MyLiveProvider
+      code={children}
+      language={language}
+      theme={theme}
+      {...props}>
+      {graphics}
+    </MyLiveProvider>);
+  } else {
+      return (
+      <MyLiveProvider
+        code={children}
+        language={language}
+        theme={theme}
+        {...props}>
+        <div
+          className={classnames(
+            styles.playgroundHeader,
+            styles.playgroundEditorHeader,
+          )}>
+          Live Editor
+        </div>
+        <MyLiveEditor />
+        <div
+          className={classnames(
+            styles.playgroundHeader,
+            styles.playgroundPreviewHeader,
+          )}>
+          {language} Output
+        </div>
+        <div className={styles.playgroundPreview}>
+          <MyLivePreview />
+          <MyLiveError />
+        </div>
+        {graphics}
+      </MyLiveProvider>
+    );
+  }
 }
 
 export default Playground;
