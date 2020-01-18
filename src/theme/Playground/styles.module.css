@@ -29,3 +29,7 @@
   position: relative;
   padding: 1rem;
 }
+
+.playgroundCanvas {
+  border: 1px solid #f0f0f0;
+}
