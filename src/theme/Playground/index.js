@@ -6,6 +6,7 @@
  */
 
 import * as React from 'react';
+import _uniqueId from 'lodash/uniqueId';
 import MyLiveProvider from '../../components/Live/MyLiveProvider'
 import MyLiveEditor from '../../components/Live/MyLiveEditor'
 import MyLivePreview from '../../components/Live/MyLivePreview'
@@ -16,9 +17,9 @@ import classnames from 'classnames';
 import styles from './styles.module.css';
 
 function Playground({children, theme, language, canvas, hidden, ...props}) {
-  let graphicsRef = React.createRef(); // TODO pass along to ocaml
+  const [canvasId] = React.useState(_uniqueId('canvas-'));
   let graphics = (canvas)
-    ? <canvas ref={graphicsRef} width="600" height="400" className={styles.playgroundCanvas}/>
+    ? <canvas id={canvasId} width="600" height="400" className={styles.playgroundCanvas}/>
     : <></>;
 
   if (hidden) {
@@ -26,6 +27,7 @@ function Playground({children, theme, language, canvas, hidden, ...props}) {
       code={children}
       language={language}
       theme={theme}
+      canvas={(canvas) ? canvasId : ''}
       {...props}>
       {graphics}
     </MyLiveProvider>);
@@ -35,6 +37,7 @@ function Playground({children, theme, language, canvas, hidden, ...props}) {
         code={children}
         language={language}
         theme={theme}
+        canvas={(canvas) ? canvasId : ''}
         {...props}>
         <div
           className={classnames(

@@ -1,5 +1,8 @@
-const evalCode = (code, scope) => {
-  // ignores scope...
+const evalCode = (code, canvas) => {
+  if (canvas !== '') {
+    console.log(canvas);
+    evaluator.execute('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById(("' + canvas + '")[@reason.raw_literal "' + canvas + '"])))(fun ()  -> raise Not_found));;');
+  }
   const _consoleLog = console.log;
   const _consoleError = console.error;
   let output = '';
