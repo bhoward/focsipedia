@@ -6,41 +6,41 @@ import { generateElement } from '../../utils/transpile';
 export default class MyLiveProvider extends Component {
   // eslint-disable-next-line camelcase
   UNSAFE_componentWillMount() {
-    const { code, language, scope } = this.props;
+    const { code, language, canvas } = this.props;
 
-    this.transpile({ code, language, scope });
+    this.transpile({ code, language, canvas });
   }
 
   componentDidUpdate({
     code: prevCode,
     language: prevLanguage,
-    scope: prevScope
+    canvas: prevCanvas
   }) {
-    const { code, language, scope } = this.props;
+    const { code, language, canvas } = this.props;
     if (
       code !== prevCode ||
       language !== prevLanguage ||
-      scope !== prevScope
+      canvas !== prevCanvas
     ) {
-      this.transpile({ code, language, scope });
+      this.transpile({ code, language, canvas });
     }
   }
 
   onChange(code) {
-    const { language, scope } = this.props;
-    this.transpile({ code, language, scope });
+    const { language, canvas } = this.props;
+    this.transpile({ code, language, canvas });
   }
 
   onError(error) {
     this.setState({ error: error.toString() });
   }
 
-  transpile({ code, language, scope }) {
+  transpile({ code, language, canvas }) {
     // Transpilation arguments
     const input = {
       code,
       language,
-      scope
+      canvas
     };
 
     const errorCallback = err =>
@@ -58,7 +58,7 @@ export default class MyLiveProvider extends Component {
   }
 
   render() {
-    const { children, code, language, theme, disabled } = this.props;
+    const { children, code, language, theme, canvas, disabled } = this.props;
 
     return (
       <MyLiveContext.Provider
@@ -67,6 +67,7 @@ export default class MyLiveProvider extends Component {
           code,
           language,
           theme,
+          canvas,
           disabled,
           onError: this.onError.bind(this),
           onChange: this.onChange.bind(this)
