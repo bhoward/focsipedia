@@ -1,7 +1,9 @@
 const evalCode = (code, canvas) => {
   if (canvas !== '') {
-    console.log(canvas);
-    evaluator.execute('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById(("' + canvas + '")[@reason.raw_literal "' + canvas + '"])))(fun ()  -> raise Not_found));;');
+    console.log('Opening ' + canvas);
+    console.log('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById("' + canvas + '")))(fun ()  -> raise Not_found));;');
+    let result = evaluator.execute('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById("' + canvas + '")))(fun ()  -> raise Not_found));;');
+    console.log(result);
   }
   const _consoleLog = console.log;
   const _consoleError = console.error;

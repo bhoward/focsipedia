@@ -44,7 +44,7 @@ function Playground({children, theme, language, canvas, hidden, ...props}) {
             styles.playgroundHeader,
             styles.playgroundEditorHeader,
           )}>
-          Live Editor
+          {language} Editor
         </div>
         <MyLiveEditor />
         <div
@@ -52,7 +52,7 @@ function Playground({children, theme, language, canvas, hidden, ...props}) {
             styles.playgroundHeader,
             styles.playgroundPreviewHeader,
           )}>
-          {language} Output
+          Output
         </div>
         <div className={styles.playgroundPreview}>
           <MyLivePreview />

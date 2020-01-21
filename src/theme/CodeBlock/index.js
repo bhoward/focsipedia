@@ -15,6 +15,11 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Playground from '@theme/Playground';
 import styles from './styles.module.css';
 
+import Prism from 'prism-react-renderer/prism';
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+require('prismjs/components/prism-ocaml');
+require('prismjs/components/prism-reason');
+
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
 export default ({

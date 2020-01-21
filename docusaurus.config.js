@@ -1,3 +1,6 @@
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
 module.exports = {
   title: 'FoCSipedia',
   tagline: 'Foundations of Computation',
@@ -81,6 +84,8 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/bhoward/focsipedia/edit/master/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -91,5 +96,8 @@ module.exports = {
   scripts: [
     '/eval.js',
     '/refmt.js',
+  ],
+  stylesheets: [
+    'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',
   ],
 };
