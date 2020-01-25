@@ -25,8 +25,7 @@ const highlightLinesRangeRegex = /{([\d,-]+)}/;
 export default ({
   children,
   className: languageClassName,
-  edit,
-  eval,
+  live,
   canvas,
   hidden,
   metastring,
@@ -39,8 +38,7 @@ export default ({
   } = useDocusaurusContext();
   const [showCopied, setShowCopied] = useState(false);
   const target = useRef(null);
-  const copyButton = useRef(null);
-  const evalButton = useRef(null);
+  const button = useRef(null);
   let highlightLines = [];
 
   if (metastring && highlightLinesRangeRegex.test(metastring)) {
@@ -51,8 +49,8 @@ export default ({
   useEffect(() => {
     let clipboard;
 
-    if (copyButton.current) {
-      clipboard = new Clipboard(copyButton.current, {
+    if (button.current) {
+      clipboard = new Clipboard(button.current, {
         target: () => target.current,
       });
     }
@@ -62,14 +60,7 @@ export default ({
         clipboard.destroy();
       }
     };
-  }, [copyButton.current, target.current]);
-
-  const handleCopyCode = () => {
-    window.getSelection().empty();
-    setShowCopied(true);
-
-    setTimeout(() => setShowCopied(false), 2000);
-  };
+  }, [button.current, target.current]);
 
   let language =
     languageClassName && languageClassName.replace(/language-/, '');
@@ -78,21 +69,26 @@ export default ({
     language = prism.defaultLanguage;
   }
 
-  if (eval) {
-    // evaluate initial code on page load
+  if (live) {
+    return (
+      <Playground
+        scope={{...React}}
+        code={children.trim()}
+        theme={prism.theme || defaultTheme}
+        language={language}
+        canvas={canvas}
+        hidden={hidden}
+        {...props}
+      />
+    );
   }
 
-  if (edit) {
-    // create an editor around the highlighted code
-  }
+  const handleCopyCode = () => {
+    window.getSelection().empty();
+    setShowCopied(true);
 
-  if (canvas) {
-    // create a canvas for output
-  }
-
-  if (hidden) {
-    // only show output (if any)
-  }
+    setTimeout(() => setShowCopied(false), 2000);
+  };
 
   return (
     <Highlight
@@ -123,7 +119,7 @@ export default ({
             })}
           </pre>
           <button
-            ref={copyButton}
+            ref={button}
             type="button"
             aria-label="Copy code to clipboard"
             className={styles.copyButton}
