@@ -33,17 +33,23 @@ I can write **Markdown** alongside my _JSX_! Also math: $\frac{355}{113}\approx\
 
 Here is some code:
 
-```ocaml live hidden
+```reason {2}
+let y = 42 /* this is not evaluated */
+let z = "hello" /* highlight this line */
+let w = [1, 2, 3]
+```
+
+```ocaml hidden
 let x = 6;;
 ```
 
-```reason live
+```reason edit
 let y = x * 7
 ```
 
-The next one should be "reason live hidden canvas" when it is debugged.
+The next one should be "reason hidden canvas" when it is debugged.
 
-```reason live canvas
+```reason canvas
 Graphics_js.fill_circle(40, 40, 10)
 ```
 

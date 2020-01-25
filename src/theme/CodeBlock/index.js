@@ -12,7 +12,7 @@ import defaultTheme from 'prism-react-renderer/themes/palenight';
 import Clipboard from 'clipboard';
 import rangeParser from 'parse-numeric-range';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Playground from '@theme/Playground';
+import LiveCodeBlock from '../LiveCodeBlock';
 import styles from './styles.module.css';
 
 import Prism from 'prism-react-renderer/prism';
@@ -25,10 +25,11 @@ const highlightLinesRangeRegex = /{([\d,-]+)}/;
 export default ({
   children,
   className: languageClassName,
+  demo,
   edit,
-  eval,
-  canvas,
+  fix,
   hidden,
+  canvas,
   metastring,
   ...props
 }) => {
@@ -40,7 +41,7 @@ export default ({
   const [showCopied, setShowCopied] = useState(false);
   const target = useRef(null);
   const copyButton = useRef(null);
-  const evalButton = useRef(null);
+  const execButton = useRef(null);
   let highlightLines = [];
 
   if (metastring && highlightLinesRangeRegex.test(metastring)) {
@@ -78,20 +79,20 @@ export default ({
     language = prism.defaultLanguage;
   }
 
-  if (eval) {
-    // evaluate initial code on page load
-  }
-
-  if (edit) {
-    // create an editor around the highlighted code
-  }
-
-  if (canvas) {
-    // create a canvas for output
-  }
-
-  if (hidden) {
-    // only show output (if any)
+  if (canvas || demo || edit || fix || hidden) {
+    // note that "canvas" by itself implies "demo canvas": code is displayed and executed once
+    return (
+      <LiveCodeBlock
+        code={children.trim()}
+        theme={prism.theme || defaultTheme}
+        language={language}
+        edit={edit || fix}
+        canvas={canvas}
+        noexec={fix}
+        hidden={hidden}
+        {...props}
+        />
+    );
   }
 
   return (
