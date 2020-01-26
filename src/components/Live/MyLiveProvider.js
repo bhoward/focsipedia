@@ -5,10 +5,12 @@ import { generateElement } from '../../utils/transpile';
 
 export default class MyLiveProvider extends Component {
   // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
-    const { code, language, canvas } = this.props;
+  componentDidMount() {
+    const { code, language, noexec, canvas } = this.props;
 
-    this.transpile({ code, language, canvas });
+    if (!noexec) {
+      this.transpile({ code, language, canvas });
+    }
   }
 
   componentDidUpdate({
@@ -16,17 +18,23 @@ export default class MyLiveProvider extends Component {
     language: prevLanguage,
     canvas: prevCanvas
   }) {
+    // console.log("did update");
     const { code, language, canvas } = this.props;
     if (
       code !== prevCode ||
       language !== prevLanguage ||
       canvas !== prevCanvas
     ) {
-      this.transpile({ code, language, canvas });
+      // this.transpile({ code, language, canvas });
     }
   }
 
   onChange(code) {
+    const { language, canvas } = this.props;
+    this.transpile({ code, language, canvas });
+  }
+
+  executeCode(code) {
     const { language, canvas } = this.props;
     this.transpile({ code, language, canvas });
   }
@@ -45,13 +53,14 @@ export default class MyLiveProvider extends Component {
 
     const errorCallback = err =>
       this.setState({ element: undefined, error: err.toString() });
-    const renderElement = element => this.setState({ ...state, element });
+    const renderElement = element =>
+      this.setState({ ...state, element });
 
     // State reset object
     const state = { unsafeWrapperError: undefined, error: undefined };
 
     try {
-      renderElement(generateElement(input, errorCallback));
+      generateElement(input, renderElement, errorCallback);
     } catch (error) {
       this.setState({ ...state, error: error.toString() });
     }
@@ -70,7 +79,8 @@ export default class MyLiveProvider extends Component {
           canvas,
           disabled,
           onError: this.onError.bind(this),
-          onChange: this.onChange.bind(this)
+          onChange: this.onChange.bind(this),
+          executeCode: this.executeCode.bind(this)
         }}
       >
         {children}
@@ -81,7 +91,7 @@ export default class MyLiveProvider extends Component {
 
 MyLiveProvider.defaultProps = {
   code: '',
-  language: 'js',
+  language: 'reason',
   disabled: false
 };
 

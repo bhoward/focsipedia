@@ -52,30 +52,11 @@ function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden,
         theme={theme}
         noexec={noexec}
         canvas={(canvas) ? canvasId : ''}
+        disabled={!edit}
         {...props}>
-        {(true)
-        ? <>
-            <div
-              className={classnames(
-                styles.playgroundHeader,
-                styles.playgroundEditorHeader,
-              )}>
-              {language} Editor
-            </div>
-            <MyLiveEditor />
-          </> // TODO add an exec button
-        : <>
-          </> // TODO if not edit, just display highlighted code here
-        }
-        <div
-          className={classnames(
-            styles.playgroundHeader,
-            styles.playgroundPreviewHeader,
-          )}>
-          Output
-        </div>
+        <MyLiveEditor />
         <div className={styles.playgroundPreview}>
-          <MyLivePreview />
+          <MyLivePreview Component="pre"/>
           <MyLiveError />
         </div>
         {graphics}

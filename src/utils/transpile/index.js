@@ -2,8 +2,13 @@ import transform from './transform';
 import errorBoundary from './errorBoundary';
 import evalCode from './evalCode';
 
-export const generateElement = ({ code = '', language = 'ocaml', canvas = '' }, errorCallback) => {
-  const transformed = transform(code, language).mlcode;
-  return errorBoundary(evalCode(transformed, canvas), errorCallback);
+export const generateElement =
+  ({ code = '', language = 'ocaml', canvas = '' }, successCallback, errorCallback) => {
+  const {mlcode, errors} = transform(code, language);
+  if (mlcode !== '') {
+    successCallback(errorBoundary(evalCode(mlcode, canvas), errorCallback));
+  } else {
+    errorCallback(errors)
+  }
 };
 
