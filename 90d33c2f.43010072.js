@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{106:function(o){o.exports=JSON.parse('{"allTagsPath":"/focsipedia/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/focsipedia/blog/tags/hello"}')}}]);
