@@ -18,7 +18,11 @@ class MyLiveEditor extends Component {
     return (
       <MyLiveContext.Consumer>
         {({ code, language, theme, disabled, executeCode }) => (
-          <div>
+          <div
+            onKeyDown={(e) => {
+              if (e.ctrlKey && e.key === 'Enter') executeCode(this.state.code)
+            }}
+          >
           <Editor
             theme={theme}
             code={code}
