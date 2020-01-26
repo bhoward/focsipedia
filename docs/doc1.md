@@ -116,6 +116,18 @@ function highlightMe() {
 }
 ```
 
+```reason demo
+/* This is a demo of ReasonML running in your browser */
+let a = 6
+let b = a * 7
+```
+
+```reason edit
+/* This block is editable, and can be run by pressing the button
+ * or hitting Ctrl-Enter! */
+let c = b == 42
+```
+
 ---
 
 ## Tables

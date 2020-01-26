@@ -4,8 +4,8 @@ const katex = require('rehype-katex');
 module.exports = {
   title: 'FoCSipedia',
   tagline: 'Foundations of Computation',
-  url: 'https://purl.org/focsipedia',
-  baseUrl: '/',
+  url: 'https://bhoward.github.io/',
+  baseUrl: '/focsipedia/',
   favicon: 'img/favicon.ico',
   organizationName: 'bhoward', // Usually your GitHub org/user name.
   projectName: 'focsipedia', // Usually your repo name.
@@ -98,8 +98,8 @@ module.exports = {
     ],
   ],
   scripts: [
-    '/eval.js',
-    '/refmt.js',
+    '/focsipedia/eval.js',
+    '/focsipedia/refmt.js',
   ],
   stylesheets: [
     'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',

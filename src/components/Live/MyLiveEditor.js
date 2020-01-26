@@ -31,10 +31,12 @@ class MyLiveEditor extends Component {
             onChange={this.updateContent.bind(this)}
             {...this.props}
           />
+          { disabled ? null :
           <button
             type="button"
             aria-label="Execute code"
             onClick={() => executeCode(this.state.code)}>Execute</button>
+          }
           </div>
         )}
       </MyLiveContext.Consumer>
