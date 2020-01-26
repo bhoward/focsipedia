@@ -23,7 +23,7 @@ const evalCode = (code, canvas) => {
   console.log = _consoleLog;
   console.error = _consoleError;
 
-  return res + '\n' + output + '\n' + errs; // TODO fix this
+  return (res + '\n' + output + '\n' + errs).trim(); // TODO fix this
 };
 
 export default evalCode;
