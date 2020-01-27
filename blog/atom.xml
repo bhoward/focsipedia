@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://bhoward.github.io/blog</id>
+    <title>FoCSipedia Blog</title>
+    <updated>2020-01-29T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://bhoward.github.io/blog"/>
+    <subtitle>FoCSipedia Blog</subtitle>
+    <icon>https://bhoward.github.io/img/favicon.ico</icon>
+    <rights>Copyright © 2020 Brian T. Howard</rights>
+    <entry>
+        <title type="html"><![CDATA[Logic Operators]]></title>
+        <id>logic-operators</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/logic-operators"/>
+        <updated>2020-01-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Read about [propositional logic](../docs/logic/intro): the [operators](../docs/logic/props) and [Boolean algebra](../docs/logic/boolean). Do some of the exercises (TBD).]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[First Day]]></title>
+        <id>first-day</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/first-day"/>
+        <updated>2020-01-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ... <!--truncate--> [FoCSipedia](https://bhoward.github.io/focsipedia/)!]]></summary>
+    </entry>
+</feed>
