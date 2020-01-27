@@ -40,8 +40,8 @@ title: Course Information and Policies
 The grade for this course will be based on the following:
 
 * 20%: Quizzes -- most classes will start with a short quiz, often taken from the exercises for the day; to avoid penalizing those who might miss a day or two, the bottom three quiz grades will be dropped.
-* 25%: Graded Homework -- there will be some kind of assignment given almost every day: readings, exercises, small programming projects; most of these will not be collected, and will mostly serve to prepare you for the quiz and the class discussion. However, every week or two there will be a larger assignment that will be collected and graded -- these will be clearly marked in the [schedule](blog).
-* 30%: In-term exams -- TBA and TBA; each will cover the preceding five weeks, and will be open-book/note.
+* 25%: Graded Homework -- there will be some kind of assignment given almost every day: readings, exercises, small programming projects; most of these will not be collected, and will mostly serve to prepare you for the quiz and the class discussion. However, every week or two there will be a larger assignment that will be collected and graded -- these will be clearly marked in the [schedule](../blog).
+* 30%: In-term exams -- Wednesday, March 4 and Wednesday, April 15; each will cover the preceding five weeks, and will be open-book/note.
 * 25%: Final exam -- (Section A) Saturday, May 9, 8:30-11:30 am, (Section B) Monday, May 11, 8:30-11:30 am; this will be comprehensive and open-book/note.
 
 The grading scale used for this class will be the following: A (95-100), A- (90-94), B+ (88-89), B (84-87), B- (80-83), C+ (78-79), C (74-77), C- (70-73), D+ (68-69), D (64-67), D- (60-63), F (0-59). I reserve the right to alter this grading scale at any time. The last day to withdraw from class with a W is Friday, March 20.
