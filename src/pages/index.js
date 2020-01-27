@@ -8,47 +8,50 @@ import styles from './styles.module.css';
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    title: <>Weekly Topics</>,
+    linkUrl: 'docs/topics',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        A chronological path through the topics covered in the course.
       </>
     ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    title: <>Course Info and Policies</>,
+    linkUrl: 'docs/policies',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Standard course-syllabus information.
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    title: <>Blog</>,
+    linkUrl: 'blog',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Daily readings and assignments.
       </>
     ),
   },
 ];
 
-function Feature({imageUrl, title, description}) {
-  const imgUrl = useBaseUrl(imageUrl);
+function Feature({linkUrl, title, description}) {
+  const toUrl = useBaseUrl(linkUrl);
   return (
     <div className={classnames('col col--4', styles.feature)}>
-      {imgUrl && (
-        <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+      <div className="text--center">
+        <div className={styles.buttons}>
+          <Link
+            className={classnames(
+              'button button--outline button--secondary button--lg',
+              styles.getStarted,
+            )}
+            to={useBaseUrl(linkUrl)}>
+            <h3>{title}</h3>
+          </Link>
         </div>
-      )}
-      <h3>{title}</h3>
+      </div>
       <p>{description}</p>
     </div>
   );
@@ -71,7 +74,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/doc1')}>
+              to={useBaseUrl('docs/topics')}>
               Get Started
             </Link>
           </div>
