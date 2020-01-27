@@ -75,6 +75,10 @@ module.exports = {
           rehypePlugins: [katex],
         },
         blog: {
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard`,
+          },
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
