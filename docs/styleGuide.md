@@ -178,3 +178,12 @@ Here's a line for us to start with.
 This line is separated from the one above by two newlines, so it will be a _separate paragraph_.
 
 This line is also a separate paragraph, but... This line is only separated by a single newline, so it's a separate line in the _same paragraph_.
+
+---
+
+## Footnotes
+
+Use brackets and a caret around the footnote marker.[^1] The footnote marker should be a number in the proper sequence.[^2] You can also have an inline footnote.[^Like this.]
+
+[^1]: Define the footnote separately, just like reference links.
+[^2]: This may be a bug/misfeature in the markdown processor.
