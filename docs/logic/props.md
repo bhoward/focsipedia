@@ -415,22 +415,43 @@ the following English sentences:
    * If the package weighs more than one ounce, then you need extra postage.
    * If I have a choice, I don't eat eggplant.
 
-10. In an ordinary deck of fifty-two playing cards, for how many cards is it true 
+1. In an ordinary deck of fifty-two playing cards, for how many cards is it true 
    * that "This card is a ten and this card is a heart"?
    * that "This card is a ten or this card is a heart"?
    * that "If this card is a ten, then this card is a heart"?
    * that "This card is a ten if and only if this card is a heart"?
 
-11. Define a logical operator $\downarrow$ so that
-$p\downarrow q$ is logically equivalent to $\lnot(p\lor q)$.
-(This operator, known as the **Peirce Arrow**,[^Wikipedia helpfully points out that this is not to be confused with the Pierce-Arrow automobile; Google, as I was writing this, repeatedly insisted on correcting Peirce to Pierce.... Charles Sanders Peirce, pronounced "Purse" (1839&ndash;1914), was an American scientist and philosopher who wrote many influential papers, and many more that would have been influential if they had been published during his lifetime. In addition to the functional completeness result mentioned here, he helped develop and promote modern logical notation and the use of truth tables, and he worked out the foundations of what became relational database theory a century later. Arthur Burks, a 1936 DePauw graduate who went on to help build ENIAC, credited Peirce with having the idea of building an electrical computing machine, based on wiring up switches to perform logical operations, fifty years before such a machine was built!] is usually referred to as "NOR," short 
-for "not or").  Show that each of the propositions
-$\lnot p$, $p\land q$, $p\lor q$, $p\rightarrow q$, $p\leftrightarrow q$, and
-$p\oplus q$ can be rewritten as a logically equivalent proposition
-that uses $\downarrow$ as its only operator; we say that $\downarrow$ is a **functionally complete** operator, since it may be used to express all of the other operations.
+1. Define a logical operator $\downarrow$ so that $p\downarrow q$ is logically
+   equivalent to $\lnot(p\lor q)$. (This operator, known as the **Peirce
+   Arrow**,[^Wikipedia helpfully points out that this is not to be confused with
+   the Pierce-Arrow automobile; Google, as I was writing this, repeatedly
+   insisted on correcting Peirce to Pierce&hellip;. Charles Sanders Peirce, pronounced
+   "Purse" (1839&ndash;1914), was an American scientist and philosopher who wrote
+   many influential papers, and many more that would have been influential if they
+   had been published during his lifetime. In addition to the functional completeness
+   result mentioned here, he helped develop and promote modern logical notation and
+   the use of truth tables, and he worked out the foundations of what became
+   relational database theory a century later. Arthur Burks, a 1936 DePauw graduate
+   who went on to help build ENIAC, credited Peirce with having the idea of building
+   an electrical computing machine, based on wiring up switches to perform logical
+   operations, fifty years before such a machine was built!]
+   is usually referred to as "NOR," short for "not or"). Show that each of the
+   propositions $\lnot p$, $p\land q$, $p\lor q$, $p\rightarrow q$,
+   $p\leftrightarrow q$, and $p\oplus q$ can be rewritten as a logically
+   equivalent proposition that uses $\downarrow$ as its only operator; we say
+   that $\downarrow$ is a **functionally complete** operator, since it may be
+   used to express all of the other operations.
 
-12. Show that the **Sheffer Stroke** operator $\uparrow$, defined so that $p\uparrow q$ is
-logically equivalent to $\lnot(p\land q)$, is also functionally complete.[^Functional completeness is not merely an academic curiosity. The NAND and NOR gates are particularly simple to implement in silicon (each needs essentially one transistor per input), and building an entire circuit out of identical building blocks makes both design and fabrication easier. Indeed, the very first computer built from integrated circuits was the Apollo Guidance Computer, which used about 5600 three-input NOR gates to help Apollo 11 land on the moon.] This operator is also known as "NAND," short for "not and."
+1. Show that the **Sheffer Stroke** operator $\uparrow$, defined so that
+   $p\uparrow q$ is logically equivalent to $\lnot(p\land q)$, is also
+   functionally complete.[^Functional completeness is not merely an academic
+   curiosity. The NAND and NOR gates are particularly simple to implement in
+   silicon (each needs essentially one transistor per input), and building an
+   entire circuit out of identical building blocks makes both design and
+   fabrication easier. Indeed, the very first computer built from integrated
+   circuits was the Apollo Guidance Computer, which used about 5600 three-input
+   NOR gates to help Apollo 11 land on the moon.] This operator is also known as
+   "NAND," short for "not and."
 
 [[spoiler | Answer]]
 | Since $\lnot p\equiv(p\uparrow p)$ and $(p\land q)\equiv(p\uparrow q)\uparrow(p\uparrow q)$,
