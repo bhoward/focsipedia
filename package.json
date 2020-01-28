@@ -20,6 +20,7 @@
     "react-simple-code-editor": "^0.10.0",
     "rehype-katex": "^2.0.0",
     "remark-custom-blocks": "^2.4.5",
+    "remark-grid-tables": "^2.0.2",
     "remark-math": "^2.0.0"
   },
   "browserslist": {
