@@ -1,6 +1,18 @@
 const math = require('remark-math');
-const katex = require('rehype-katex');
-const customBlocks = require('remark-custom-blocks');
+const katex = [require('rehype-katex'), {
+  macros: {
+    "\\T": "\\mathbb{T}",
+    "\\F": "\\mathbb{F}",
+  },
+}];
+const customBlocks = [require('remark-custom-blocks'), {
+  spoiler: {
+    classes: 'spoiler-block',
+    title: 'optional',
+    details: true,
+  },
+}];
+const gridTables = require('remark-grid-tables');
 
 module.exports = {
   title: 'FoCSipedia',
@@ -85,25 +97,15 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/bhoward/focsipedia/edit/master/',
-          remarkPlugins: [math,
-            [customBlocks, {
-              spoiler: {
-                classes: 'spoiler-block',
-                title: 'optional',
-                details: true
-              },
-            }]
-          ],
-          rehypePlugins: [[katex, {macros: {
-            "\\RR": "\\mathbb{R}"
-          }}]],
+          remarkPlugins: [math, customBlocks, gridTables],
+          rehypePlugins: [katex],
         },
         blog: {
           feedOptions: {
             type: 'all',
             copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard`,
           },
-          remarkPlugins: [math],
+          remarkPlugins: [math, customBlocks, gridTables],
           rehypePlugins: [katex],
         },
         theme: {

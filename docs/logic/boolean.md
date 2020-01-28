@@ -2,3 +2,479 @@
 id: boolean
 title: Boolean Algebra
 ---
+# Boolean Algebra
+
+(Content adapted from Critchlow & Eck)
+
+So far we have discussed how to write and interpret propositions.
+This section deals with _manipulating_ them.  For this,
+we need algebra.  Ordinary algebra, of the sort taught in high
+school, is about manipulating numbers, variables that represent numbers,
+and operators such as $+$ and $\times$ that apply to numbers.
+Now, we need an algebra that applies to logical values, propositional
+variables, and logical operators.  The first person to think of
+logic in terms of algebra was the mathematician, George Boole,
+who introduced the idea in a book that he
+published in 1854.  The algebra of logic is now called 
+**Boolean algebra** in his honor.
+
+The algebra of numbers includes a large number of rules for
+manipulating expressions.  The distributive law, for example,
+says that $x(y+z)=xy+xz$, where $x$, $y$, and $z$ are variables
+that stand for any numbers or numerical expressions.  This law
+means that whenever you see something of the form $xy+xz$
+in a numerical expression, you can substitute $x(y+z)$ without
+changing the value of the expression, and _vice versa_.  Note that
+the equals sign in $x(y+z)=xy+xz$ means "has the same value as,
+no matter what numerical values $x$, $y$, and $z$ have."
+
+## Laws
+
+In Boolean algebra, we work with logical values instead of
+numerical values.  There are only two logical values, true
+and false.  We will write these values as $\T$ and $\F$.
+The symbols $\T$ and $\F$ play a similar role in Boolean algebra
+to the role that constant numbers such as 1 and 3.14159 play 
+in ordinary algebra.  Instead of the equals sign, Boolean algebra
+uses logical equivalence, $\equiv$, which has essentially the
+same meaning.[^In ordinary algebra, it's easy to be confused
+by the equals sign, because it has two very different roles.
+In an identity such as the distributive law, it means
+"is always equal to."  On the other hand, an equation such as $x^2+3x=4$ is
+a statement that might or might not be true, depending on the value of $x$.
+Boolean algebra has two operators, $\equiv$ and $\leftrightarrow$, that play
+roles similar to the two roles of the equals sign.]
+For example, for propositions $p$, $q$, and $r$, the $\equiv$ operator
+in $p\land(q\land r)\equiv(p\land q)\land r$ means "has the same value as,
+no matter what logical values $p$, $q$, and $r$ have."
+
+Many of the rules of Boolean algebra are fairly obvious, if you think
+a bit about what they mean.  Even those that are not obvious can
+be verified easily by using a truth table.  Below we
+list the most important of these laws.   You will
+notice that all these laws, except the first, come in pairs:  Each 
+law in the pair can be obtained from the other
+by interchanging $\land$ with $\lor$ and $\T$ with $\F$.  This cuts down
+on the number of facts you have to remember.[^It is also an
+example of a more general fact known as **duality**, which asserts
+that given any tautology that uses only
+the operators $\land$, $\lor$, and $\lnot$, another tautology can be
+obtained from it by interchanging $\land$ with $\lor$ and $\T$ with $\F$.
+We won't attempt to prove this here.]
+
+
++-------------------+---------------------------------------------------+
+| Name              | Law                                               |
++===================+===================================================+
+| Double negation   | $\lnot(\lnot p)\equiv p$                          |
++-------------------+---------------------------------------------------+
+| Excluded middle   | $p\lor\lnot p\equiv\T$                            |
++-------------------+---------------------------------------------------+
+| Contradiction     | $p\land\lnot p\equiv\F$                           |
++-------------------+---------------------------------------------------+
+| Identity laws     | $\T\land p\equiv p$                               |
+|                   +---------------------------------------------------+
+|                   | $\F\lor p \equiv p$                               |
++-------------------+---------------------------------------------------+
+| Idempotent laws   | $p\land p\equiv p$                                |
+|                   +---------------------------------------------------+
+|                   | $p\lor p\equiv p$                                 |
++-------------------+---------------------------------------------------+
+| Commutative laws  | $p\land q\equiv q\land p$                         |
+|                   +---------------------------------------------------+
+|                   | $p\lor q\equiv q\lor p$                           |
++-------------------+---------------------------------------------------+
+| Associative laws  | $(p\land q)\land r\equiv p\land(q\land r)$        |
+|                   +---------------------------------------------------+
+|                   | $(p\lor q)\lor r\equiv p\lor(q\lor r)$            |
++-------------------+---------------------------------------------------+
+| Distributive laws | $p\land(q\lor r)\equiv (p\land q)\lor (p\land r)$ |
+|                   +---------------------------------------------------+
+|                   | $p\lor(q\land r)\equiv (p\lor q)\land (p\lor r)$  |
++-------------------+---------------------------------------------------+
+| De Morgan's laws  | $\lnot(p\land q)\equiv (\lnot p)\lor(\lnot q)$    |
+|                   +---------------------------------------------------+
+|                   | $\lnot(p\lor q)\equiv (\lnot p)\land(\lnot q)$    |
++-------------------+---------------------------------------------------+
+
+
+Just as an example, let's verify the first rule in the table,
+the Law of Double Negation. 
+This law is just the old, basic grammar rule
+that two negatives make a positive.  Although this rule is questionable
+as it applies to English as it is actually used&mdash;no matter what the
+grammarian says, "I can't get no satisfaction" doesn't really
+mean "I can get satisfaction"&mdash;the validity of the rule in logic
+can be verified just by computing the two possible cases: when $p$
+is true and when $p$ is false.  When $p$ is true, then by the definition
+of the $\lnot$ operator, $\lnot p$ is false.  But then, again by the
+definition of $\lnot$, the value of $\lnot(\lnot p)$ is true, which is
+the same as the value of $p$.  Similarly, in the case where 
+$p$ is false, $\lnot(\lnot p)$ is also false.  Organized into a truth
+table, this argument takes the rather simple form
+
+| $p$   | $\lnot p$ | $\lnot(\lnot p)$ |
+| :-:   | :-------: | :--------------: |
+| true  | false     | true             |
+| false | true      | false            |
+
+The fact that the first and last columns are identical shows the
+logical equivalence of $p$ and $\lnot(\lnot p)$.  The point here is not
+just that $\lnot(\lnot p)\equiv p$, but also that this logical
+equivalence is valid because it can be verified computationally
+based just on the relevant definitions.  Its validity does _not_
+follow from the fact that "it's obvious" or "it's a well-known
+rule of grammar."  Students often ask "Why do I have to prove
+something when it's obvious."  The point is that logic&mdash;and mathematics
+more generally&mdash;is its own little world with its own set of rules.
+Although this world is related somehow to the real world, when you
+say that something is obvious (in the real world), you aren't playing
+by the rules of the world of logic.  The real _magic_ of mathematics
+is that by playing by its rules, you can come up with things that are
+decidedly not obvious, but that still say something about the real
+world&mdash;often, something interesting and important.
+
+Each of the rules in the figure above can be verified in the same
+way, by making a truth table to check all the possible cases.
+
+## Substitution
+
+It's important to understand that the propositional variables in
+the laws of Boolean algebra can stand for any propositions, including
+compound propositions.  
+It is not just true, as the Double Negation Law states,
+that $\lnot(\lnot p)\equiv p$.  It is also
+true that $\lnot(\lnot q)\equiv q$, that $\lnot(\lnot(p\land q))\equiv (p\land q)$,
+that $\lnot(\lnot(p\rightarrow(q\land \lnot p)))\equiv(p\rightarrow (q\land\lnot p))$,
+and an infinite number of other statements of the same form.  Here,
+a "statement of the same form" is one that can be obtained by
+substituting something for $p$ in both places where it occurs in $\lnot(\lnot p)\equiv p$.
+How can I be sure that all these infinitely many statements are valid when
+all that I've checked is one little two-line truth table?  The
+answer is that any given proposition, $Q$, no matter how complicated,
+has a particular truth
+value, either true or false.  So, the question of the validity
+of $\lnot(\lnot Q)\equiv Q$ always reduces to one of the two cases
+I already checked in the truth table.  (Note that for this argument
+to be valid, the same $Q$ must be substituted for $p$ in every 
+position where it occurs.)  While this argument may be
+"obvious," it is not exactly a proof, but for now we will just
+accept the validity of the following theorem:
+
+\begin{theorem}[First Substitution Law]\label{T-sub1}
+Suppose that $Q$ is any proposition, and that $p$ is a propositional
+variable.  Consider any tautology.  If $(Q)$ is substituted
+for $p$ in all places where $p$ occurs in the tautology,
+then the result is also a tautology.\index{substitution law}\index{tautology}\index{logical equivalence}
+\end{theorem}
+
+Since logical equivalence is defined in terms of tautology,
+it is also true that when $(Q)$ is substituted for $p$ in a logical equivalence,
+the result is again a logical equivalence.\footnote{I've added parentheses around 
+$Q$ here for technical reasons. Sometimes, the parentheses are necessary
+to make sure that $Q$ is evaluated as a whole, so that its final value is used in place
+of $p$.  As an example of what can go wrong, consider $q\land r$.  If this is
+substituted literally for $p$ in $\lnot(\lnot p)$, without
+parentheses, the result is $\lnot(\lnot q \land r)$.  But this expression
+means $\lnot((\lnot q)\land r)$, which is \emph{not} equivalent to
+$q\land r$.}
+
+The First Substitution Law lets you do algebra!  For example, you
+can substitute $p\rightarrow q$ for $p$ in the law of double negation, $\lnot(\lnot p)\equiv p$.
+This allows you
+to "simplify" the expression $\lnot(\lnot(p\rightarrow q))$ to $p\rightarrow q$
+with confidence that the resulting expression has the same logical
+value as the expression you started with.  (That's what it means for
+$\lnot(\lnot(p\rightarrow q))$ and $p\rightarrow q$ to be logically equivalent.)
+You can play similar tricks with all the laws in Figure~\ref{F-boole1}.
+Even more important is the Second Substitution Law, which says
+that you can substitute an expression for a logically equivalent
+expression, wherever it occurs.  Once again, we will accept this
+as a theorem without trying to prove it here.  It is surprisingly
+hard to put this law into words:
+
+\begin{theorem}[Second Substitution Law]\label{T-sub2}
+Suppose that $P$ and $Q$ are any propositions such that $P\equiv Q$.
+Suppose that $R$ is any compound proposition in which $(P)$
+occurs as a subproposition.  Let $R'$ be the proposition that is
+obtained by substituting $(Q)$ for that occurrence of $(P)$ in $R$.
+Then $R\equiv R'$.\index{substitution law}
+\end{theorem}
+
+Note that in this case, the theorem does not require $(Q)$ to be
+substituted for \emph{every} occurrence of $(P)$ in $R$.  You are free
+to substitute for one, two, or as many occurrences of $(P)$ as you like,
+and the result is still logically equivalent to $R$.
+
+The Second Substitution Law allows us to use the 
+logical equivalence $\lnot(\lnot p)\equiv p$ to
+"simplify" the expression $q\rightarrow (\lnot(\lnot p))$ by substituting
+$(p)$ for $(\lnot(\lnot p))$.  The resulting expression, $q\rightarrow(p)$,
+or just $q \rightarrow p$ without the parentheses,
+is logically equivalent to the original $q\rightarrow (\lnot(\lnot p))$.
+Once again, we have to be careful about parentheses:  The fact that
+$p\lor p\equiv p$ does \emph{not} allow us to rewrite $q\land p\lor p\land r$
+as $q\land p\land r$.  The problem is that $q\land p\lor p\land r$
+means $(q\land p)\lor (p\land r)$, so that $(p\lor p)$ is not a subexpression.
+So even though in practice we won't always write all the parentheses,
+you always have to be aware of where the parentheses belong.
+
+
+The final piece of algebra in Boolean algebra\index{Boolean algebra} is the observation
+that we can chain logical equivalences together.  That is,
+from $P\equiv Q$ and $Q\equiv R$, it follows that $P\equiv R$.
+This is really just a consequence of the Second Substitution
+Law: The equivalence $Q\equiv R$ allows us to substitute $R$ for $Q$ in
+the statement $P\equiv Q$, giving $P\equiv R$.
+(Remember that, by Definition~\ref{D-logeq}, logical equivalence is defined in 
+terms of a proposition.)
+This means that we can show that two compound propositions are
+logically equivalent\index{logical equivalence} by finding a chain of logical equivalences that
+lead from one to the other.  For example:
+\begin{align*}
+ p\land(p\rightarrow q) &\equiv p\land(\lnot p\lor q)          &&\text{definition of $p\rightarrow q$, Theorem \ref{T-sub2}}\\
+                &\equiv (p\land \lnot p)\lor (p\land q) &&\text{Distributive Law}\\ 
+                &\equiv \F\lor(p\land q)              &&\text{Law of Contradiction, Theorem \ref{T-sub2}}\\
+                &\equiv (p\land q)                   &&\text{Identity Law}\\
+\end{align*}
+Each step in the chain has its own justification.  In several cases,
+a substitution law is used without stating as much.  In the first line,
+for example, the definition of $p\rightarrow q$ is that $p\rightarrow q\equiv \lnot p\lor q$.
+The Second Substitution Law allows us to substitute $(\lnot p\lor q)$ for
+$(p\rightarrow q)$.  In the last line, we implicitly applied the First
+Substitution Law to the Identity Law, $\F\lor p\equiv p$, to obtain
+$\F\lor(p\land q)\equiv (p\land q)$.  
+
+The chain of equivalences in the above example allows us to conclude
+that $p\land(p\rightarrow q)$ is logically equivalent to $p\land q$.
+This means that if you were to make a truth table\index{truth table} for these two
+expressions, the truth values in the column for $p\land(p\rightarrow q)$
+would be identical to those in the column for $p\land q$.  We know
+this without actually making the table.  In this case, the table
+would only be four lines long and easy enough to make.  But Boolean
+algebra can be applied in cases where the number of propositional
+variables is too large for a truth table to be practical. 
+
+Let's do another example.  Recall that a compound proposition is a
+tautology if it is true for all possible combinations of truth values
+of the propositional variables that it contains.  But another way
+of saying the same thing is that $P$ is a tautology if $P\equiv\T$.
+So, we can prove that a compound proposition, $P$, is a tautology\index{tautology} by
+finding a chain of logical equivalences leading from $P$ to $\T$.
+For example:
+\begin{align*}
+   ((p\lor q) &\land \lnot p)\rightarrow q &&\\
+      &\equiv (\lnot((p\lor q)\land\lnot p))\lor q &&\text{definition of $\rightarrow$}\\
+      &\equiv (\lnot(p\lor q) \lor \lnot (\lnot p))\lor q                     &&\text{DeMorgan's Law, Theorem \ref{T-sub2}}\\
+      &\equiv (\lnot(p\lor q) \lor p)\lor q                                 &&\text{Double Negation, Theorem \ref{T-sub2}}\\
+      &\equiv (\lnot (p\lor q)) \lor (p\lor q)                              &&\text{Associative Law for $\lor$}\\
+      &\equiv \T                                                        &&\text{Law of Excluded Middle}\\
+\end{align*}
+From this chain of equivalences, we can conclude that $((p\lor q) \land \lnot p)\rightarrow q$
+is a tautology.
+
+Now, it takes some practice to look at an expression and see which
+rules can be applied to it; to see $(\lnot (p\lor q)) \lor (p\lor q)$
+as an application of the law of the excluded middle for example,
+you need to mentally substitute $(p\lor q)$ for $p$ in the law as it is stated
+in Figure~\ref{F-boole1}.  Often, there are several rules that
+apply, and there are no definite guidelines about which one you
+should try.  This is what makes algebra something of an art.
+
+
+\medbreak
+
+It is certainly not true that all possible rules of Boolean algebra are given
+in Figure~\ref{F-boole1}.  For one thing, there are many rules that are easy
+consequences of the rules that are listed there.  For example, although the
+table asserts only that $\F\lor p\equiv p$, it is also true that
+$p\lor\F\equiv p$.  This can be checked directly or by a simple calculation:
+\begin{align*}
+p\lor\F &\equiv \F\lor p &&\text{Commutative Law}\\
+        &\equiv p        &&\text{Identity Law as given in the table}\\
+\end{align*}
+Additional rules can be obtained by applying the Commutative Law to other
+rules in the table, and we will use such rules freely in the future.
+
+Another sort of easy extension can be applied to the Associative Law,
+$(p\lor q)\lor r\equiv p\lor(q\lor r)$. The law is stated for the $\lor$ operator
+applied to three terms, but it generalizes to four or more terms. For example
+\begin{align*}
+((p\lor q)&\lor r)\lor s\\
+     &\equiv (p\lor q)\lor (r\lor s) &&\text{by the Associative Law for three terms}\\
+     &\equiv p\lor(q\lor (r\lor s))  &&\text{by the Associative Law for three terms}\\
+\end{align*}
+We will, of course, often write this expression as $p\lor q\lor r\lor s$, with no
+parentheses at all, knowing that wherever we put the parentheses the value is the
+same.
+
+One other thing that you should keep in mind is that rules can be applied in
+either direction.  The Distributive Law, for example, allows you to
+distribute the $p$ in $p\lor(q\land\lnot p)$ to get $(p\lor q)\land(p\lor\lnot p)$.
+But it can also be used in reverse to "factor out" a term, as when you
+start with $(q\lor(p\rightarrow q))\land(q\lor(q\rightarrow p))$ and factor out the $q$
+to get $q\lor((p\rightarrow q)\land(q\rightarrow p))$.
+
+
+\medbreak
+
+So far in this section, I have been working with the laws of Boolean
+algebra without saying much about what they mean or why they are
+reasonable.  Of course, you can apply the laws in calculations without
+understanding them.  But if you want to figure out \emph{which}
+calculations to do, you need some understanding.  Most of the laws
+are clear enough with a little thought.  For example, if we already
+know that $q$ is false, then $p\lor q$ will be true when $p$ is true
+and false when $p$ is false.  That is, $p\lor\F$ has the same logical
+value as $p$.  But that's just what the Identity Law\index{identity law} for $\lor$ says.
+A few of the laws need more discussion.
+
+The Law of the Excluded Middle,\index{excluded middle, law of} $p\lor\lnot p\equiv \T$,
+says that given any proposition $p$, at
+least one of $p$ or $\lnot p$ must be true.  Since $\lnot p$ is true 
+exactly when $p$ is false, this is the same as saying that
+$p$ must be either true or false.   There is no middle
+ground.\footnote{In propositional logic, this is easily verified with
+a small truth table.  But there is a surprising amount of argument about
+whether this law is valid in all situations.  In the real world, there often
+seems to be a gray area between truth and falsity.  Even in mathematics,
+there are some people who think there should be a third truth value,
+one that means something like "unknown" or "not proven."  But the
+mathematicians who think this way tend to be considered a bit odd
+by most other mathematicians.}  The Law of Contradiction,
+$p\land\lnot p\equiv\F$, says that it is not possible for 
+\emph{both} $p$ and $\lnot p$ to be true.  Both of these rules are obvious.
+
+The Distributive Laws\index{distributive law} cannot be called obvious, but a few
+examples can show that they are reasonable.  Consider the statement, "This 
+card is the ace of spades or clubs."  Clearly, this is equivalent to "This
+card is the ace of spaces or this card is the ace of clubs."  But this is
+just an example of the first distributive law!  For, let $a$ represent the
+proposition "This card is an ace," let $s$ represent "This card is a spade,"
+and let $c$ represent "This card is a club."  Then "This card is the ace of
+spades or clubs" can be translated into logic as $a\land(s\lor c)$, while
+"This card is the ace of spades or this card is the ace of clubs" becomes
+$(a\land s)\lor (a\land c)$.  And the distributive law assures us that
+$a\land(s\lor c)\equiv(a\land s)\lor (a\land c)$.  The second distributive
+law tells us, for example, that "This card is either a joker or is the ten of diamonds"
+is logically equivalent to "This card is either a joker or a ten, and it is either
+a joker or a diamond."  That is, $j\lor(t\land d)\equiv(j\lor t)\land(j\lor d)$.
+The distributive laws are powerful
+tools and you should keep them in mind whenever you are faced with a
+mixture of $\land$ and $\lor$ operators.
+
+DeMorgan's Laws\index{DeMorgan's Laws} must also be less than obvious, since people often get
+them wrong.  But they do make sense.  When considering $\lnot(p\land q)$,
+you should ask yourself, how can "$p$ and $q$" \emph{fail} to be true.
+It will fail to be true if either $p$ is false \emph{or} if $q$ is false (or both).
+That is, $\lnot(p \land q)$ is equivalent to $(\lnot p)\lor(\lnot q)$.  Consider
+the sentence "A raven is large and black."  If a bird is \emph{not} large and black,
+then it is not a raven.  But what exactly does it mean to be
+"\emph{not (large and black)}"?  How can you tell whether the assertion "not (large
+and black)" is true of something?  This will be true if it is either
+not large \emph{or} not black.  (It doesn't have to be both&mdash;it could be
+large and white, it could be small and black.)  Similarly, for "$p$ or $q$"
+to fail to be true, \emph{both} $p$ and $q$ must be false.  That
+is, $\lnot(p\lor q)$ is equivalent to $(\lnot p)\land (\lnot q)$.  This is DeMorgan's
+second law.
+
+Recalling that $p\rightarrow q$ is equivalent to $(\lnot p)\lor q$, we can apply DeMorgan's
+law to obtain a formula for the negation an implication:
+\begin{align*}
+     \lnot(p\rightarrow q)&\equiv \lnot((\lnot p)\lor q)\\
+                   &\equiv (\lnot(\lnot p))\land(\lnot q)\\
+                   &\equiv p\land\lnot q\\
+\end{align*}
+That is, $p\rightarrow q$ is false exactly when both $p$ is true and $q$ is false.
+For example, the negation of "If you have an ace, you win" is
+"You have an ace, and you don't win."  Think of it this way:  if you had an
+ace and you didn't win, then the statement "If you have an ace, you win"
+was not true.
+
+
+\begin{exercises}
+
+\problem Construct truth tables to demonstrate the validity of
+each of the distributive laws.
+
+\problem Construct the following truth tables:
+\ppart Construct truth tables to demonstrate that $\lnot (p \land q)$ is {\bf not}
+logically equivalent to $(\lnot p) \land (\lnot q)$.
+\ppart Construct truth tables to demonstrate that $\lnot (p \lor q)$ is {\bf not}
+logically equivalent to $(\lnot p) \lor (\lnot q)$. 
+\ppart Construct truth tables to demonstrate the validity of both
+DeMorgan's Laws.
+
+\problem Construct truth tables to demonstrate that $\lnot(p\rightarrow q)$ is {\bf not}
+logically equivalent to any of the following.
+\ppart $(\lnot p) \rightarrow (\lnot q)$
+\ppart $(\lnot p) \rightarrow q$
+\ppart $p \rightarrow (\lnot q)$
+
+Refer back to this section for a formula that {\bf is} logically equivalent to
+$\lnot(p\rightarrow q)$.
+
+\problem Is $\lnot(p\leftrightarrow q)$ 
+logically equivalent to $(\lnot p) \leftrightarrow (\lnot q)$?
+
+\problem In the algebra of numbers, there is a distributive
+law of multiplication over addition:  $x(y+z)=xy+xz$.
+What would a distributive law of addition over multiplication
+look like?  Is it a valid law in the algebra of numbers?
+
+\problem The distributive laws given in Figure \ref{F-boole1} are sometimes
+called the \emph{left} distributive laws.  The \nw[distributive law]{right distributive
+laws} say that $(p\lor q)\land r\equiv (p\land r)\lor (q\land r)$ and
+that $(p\land q)\lor r\equiv (p\lor r)\land (q \lor r)$.  Show that
+the right distributive laws are also valid laws of Boolean algebra.
+(Note: In practice, both the left and the right distributive laws
+are referred to simply as the distributive laws, and both can be used
+freely in proofs.)
+
+\problem Show that $p\land(q\lor r\lor s)\equiv (p\land q)\lor(p\land r)\lor
+(p\land s)$ for any propositions $p$, $q$, $r$, and $s$.  In words, 
+we can say that conjunction distributes over a disjunction of
+three terms.  (Recall that the $\land$ operator is called conjunction and $\lor$
+is called disjunction.)
+Translate into logic and verify the fact that
+conjunction distributes over a disjunction of four terms.  Argue that,
+in fact, conjunction distributes over a disjunction of any number
+of terms.
+
+\problem There are two additional basic laws of logic, involving the
+two expression $p\land\F$ and $p\lor\T$.  What are the missing laws?
+Show that your answers are, in fact, laws.
+
+\problem For each of the following pairs of propositions, show that
+the two propositions are logically equivalent by finding a chain of
+equivalences from one to the other.
+State which definition or law of logic justifies each equivalence in the chain.
+\tparts{$p\land (q\land p)$,\quad $p\land q$       &$(\lnot p)\rightarrow q$,\quad $p\lor q$\cr
+$(p\lor q)\land\lnot q$,\quad $p\land \lnot q$                  &$p\rightarrow(q\rightarrow r)$,\quad $(p\land q)\rightarrow r$\cr
+$(p\rightarrow r)\land(q\rightarrow r)$,\quad $(p\lor q)\rightarrow r$ &$p\rightarrow(p\land q)$,\quad $p\rightarrow q$\cr
+}
+
+\problem For each of the following compound propositions, find a 
+simpler proposition that is logically equivalent.  Try to find a proposition
+that is as simple as possible.
+\pparts{(p\land q)\lor\lnot q      &\lnot(p\lor q)\land p       &p\rightarrow\lnot p\cr
+        \lnot p\land(p\lor q)      &(q\land p)\rightarrow q          &(p\rightarrow q)\land(\lnot p\rightarrow q)\cr
+  }
+
+\problem Express the negation of each of the following sentences in
+natural English:
+\ppart It is sunny and cold.
+\ppart I will have cake or I will have pie.
+\ppart If today is Tuesday, this is Belgium.
+\ppart If you pass the final exam, you pass the course.
+
+\problem Apply one of the laws of logic to each of the
+following sentences, and rewrite it as an equivalent sentence.
+State which law you are applying.
+\ppart I will have coffee and cake or pie.
+\ppart He has neither talent nor ambition.
+\ppart You can have spam, or you can have spam.
+
+\problem Use Boolean algebra to show that the implication operator ($\rightarrow$) is functionally complete, provided the constant $\F$ is also available (this is not unreasonable in an electronic circuit, where $\F$ is represented by the ground voltage). That is, show how to define $p\land q$, $p\lor q$, and $\lnot p$ by giving equivalent expressions using only $\rightarrow$ and $\F$ in addition to the input variables $p$ and $q$.
+
+\end{exercises}
