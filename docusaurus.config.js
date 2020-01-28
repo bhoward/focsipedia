@@ -95,7 +95,7 @@ module.exports = {
             }]
           ],
           rehypePlugins: [[katex, {macros: {
-            "\\RR": "\\mathbb{C}"
+            "\\RR": "\\mathbb{R}"
           }}]],
         },
         blog: {
