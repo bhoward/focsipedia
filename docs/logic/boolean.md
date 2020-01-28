@@ -139,70 +139,64 @@ way, by making a truth table to check all the possible cases.
 
 ## Substitution
 
-It's important to understand that the propositional variables in
-the laws of Boolean algebra can stand for any propositions, including
-compound propositions.  
-It is not just true, as the Double Negation Law states,
-that $\lnot(\lnot p)\equiv p$.  It is also
-true that $\lnot(\lnot q)\equiv q$, that $\lnot(\lnot(p\land q))\equiv (p\land q)$,
-that $\lnot(\lnot(p\rightarrow(q\land \lnot p)))\equiv(p\rightarrow (q\land\lnot p))$,
-and an infinite number of other statements of the same form.  Here,
-a "statement of the same form" is one that can be obtained by
-substituting something for $p$ in both places where it occurs in $\lnot(\lnot p)\equiv p$.
-How can I be sure that all these infinitely many statements are valid when
-all that I've checked is one little two-line truth table?  The
-answer is that any given proposition, $Q$, no matter how complicated,
-has a particular truth
-value, either true or false.  So, the question of the validity
-of $\lnot(\lnot Q)\equiv Q$ always reduces to one of the two cases
-I already checked in the truth table.  (Note that for this argument
-to be valid, the same $Q$ must be substituted for $p$ in every 
-position where it occurs.)  While this argument may be
-"obvious," it is not exactly a proof, but for now we will just
-accept the validity of the following theorem:
+It's important to understand that the propositional variables in the laws of
+Boolean algebra can stand for any propositions, including compound propositions.
+It is not just true, as the Double Negation Law states, that
+$\lnot(\lnot p)\equiv p$. It is also true that $\lnot(\lnot q)\equiv q$, that
+$\lnot(\lnot(p\land q))\equiv (p\land q)$, that
+$\lnot(\lnot(p\rightarrow(q\land\lnot p)))\equiv(p\rightarrow (q\land\lnot p))$,
+and an infinite number of other statements of the same form. Here, a "statement
+of the same form" is one that can be obtained by substituting something for $p$
+in both places where it occurs in $\lnot(\lnot p)\equiv p$. How can I be sure
+that all these infinitely many statements are valid when all that I've checked
+is one little two-line truth table? The answer is that any given proposition,
+$Q$, no matter how complicated, has a particular truth value, either true or
+false. So, the question of the validity of $\lnot(\lnot Q)\equiv Q$ always
+reduces to one of the two cases I already checked in the truth table. (Note that
+for this argument to be valid, the same $Q$ must be substituted for $p$ in every
+position where it occurs.) While this argument may be "obvious," it is not
+exactly a proof, but for now we will just accept the validity of the following
+theorem:
 
-\begin{theorem}[First Substitution Law]\label{T-sub1}
+> **Theorem: First Substitution Law**  
 Suppose that $Q$ is any proposition, and that $p$ is a propositional
 variable.  Consider any tautology.  If $(Q)$ is substituted
 for $p$ in all places where $p$ occurs in the tautology,
-then the result is also a tautology.\index{substitution law}\index{tautology}\index{logical equivalence}
-\end{theorem}
+then the result is also a tautology.
+
 
 Since logical equivalence is defined in terms of tautology,
 it is also true that when $(Q)$ is substituted for $p$ in a logical equivalence,
-the result is again a logical equivalence.\footnote{I've added parentheses around 
+the result is again a logical equivalence.[^I've added parentheses around 
 $Q$ here for technical reasons. Sometimes, the parentheses are necessary
 to make sure that $Q$ is evaluated as a whole, so that its final value is used in place
 of $p$.  As an example of what can go wrong, consider $q\land r$.  If this is
 substituted literally for $p$ in $\lnot(\lnot p)$, without
 parentheses, the result is $\lnot(\lnot q \land r)$.  But this expression
-means $\lnot((\lnot q)\land r)$, which is \emph{not} equivalent to
-$q\land r$.}
+means $\lnot((\lnot q)\land r)$, which is _not_ equivalent to
+$q\land r$.]
 
-The First Substitution Law lets you do algebra!  For example, you
-can substitute $p\rightarrow q$ for $p$ in the law of double negation, $\lnot(\lnot p)\equiv p$.
-This allows you
-to "simplify" the expression $\lnot(\lnot(p\rightarrow q))$ to $p\rightarrow q$
-with confidence that the resulting expression has the same logical
-value as the expression you started with.  (That's what it means for
+The First Substitution Law lets you do algebra! For example, you can substitute
+$p\rightarrow q$ for $p$ in the law of double negation, $\lnot(\lnot p)\equiv p$.
+This allows you to "simplify" the expression $\lnot(\lnot(p\rightarrow q))$
+to $p\rightarrow q$ with confidence that the resulting expression has the same
+logical value as the expression you started with. (That's what it means for
 $\lnot(\lnot(p\rightarrow q))$ and $p\rightarrow q$ to be logically equivalent.)
-You can play similar tricks with all the laws in Figure~\ref{F-boole1}.
-Even more important is the Second Substitution Law, which says
-that you can substitute an expression for a logically equivalent
-expression, wherever it occurs.  Once again, we will accept this
-as a theorem without trying to prove it here.  It is surprisingly
-hard to put this law into words:
+You can play similar tricks with all the laws in the table above. Even
+more important is the Second Substitution Law, which says that you can
+substitute an expression for a logically equivalent expression, wherever it
+occurs. Once again, we will accept this as a theorem without trying to prove it
+here. It is surprisingly hard to put this law into words:
 
-\begin{theorem}[Second Substitution Law]\label{T-sub2}
+> **Theorem: Second Substitution Law**  
 Suppose that $P$ and $Q$ are any propositions such that $P\equiv Q$.
 Suppose that $R$ is any compound proposition in which $(P)$
 occurs as a subproposition.  Let $R'$ be the proposition that is
 obtained by substituting $(Q)$ for that occurrence of $(P)$ in $R$.
-Then $R\equiv R'$.\index{substitution law}
-\end{theorem}
+Then $R\equiv R'$.
 
 Note that in this case, the theorem does not require $(Q)$ to be
-substituted for \emph{every} occurrence of $(P)$ in $R$.  You are free
+substituted for _every_ occurrence of $(P)$ in $R$.  You are free
 to substitute for one, two, or as many occurrences of $(P)$ as you like,
 and the result is still logically equivalent to $R$.
 
@@ -213,30 +207,32 @@ $(p)$ for $(\lnot(\lnot p))$.  The resulting expression, $q\rightarrow(p)$,
 or just $q \rightarrow p$ without the parentheses,
 is logically equivalent to the original $q\rightarrow (\lnot(\lnot p))$.
 Once again, we have to be careful about parentheses:  The fact that
-$p\lor p\equiv p$ does \emph{not} allow us to rewrite $q\land p\lor p\land r$
+$p\lor p\equiv p$ does _not_ allow us to rewrite $q\land p\lor p\land r$
 as $q\land p\land r$.  The problem is that $q\land p\lor p\land r$
 means $(q\land p)\lor (p\land r)$, so that $(p\lor p)$ is not a subexpression.
 So even though in practice we won't always write all the parentheses,
 you always have to be aware of where the parentheses belong.
 
-
-The final piece of algebra in Boolean algebra\index{Boolean algebra} is the observation
+The final piece of algebra in Boolean algebra is the observation
 that we can chain logical equivalences together.  That is,
 from $P\equiv Q$ and $Q\equiv R$, it follows that $P\equiv R$.
 This is really just a consequence of the Second Substitution
 Law: The equivalence $Q\equiv R$ allows us to substitute $R$ for $Q$ in
 the statement $P\equiv Q$, giving $P\equiv R$.
-(Remember that, by Definition~\ref{D-logeq}, logical equivalence is defined in 
+(Remember that logical equivalence is defined in 
 terms of a proposition.)
 This means that we can show that two compound propositions are
-logically equivalent\index{logical equivalence} by finding a chain of logical equivalences that
+logically equivalent by finding a chain of logical equivalences that
 lead from one to the other.  For example:
+
+TODO decide how to format this  
 \begin{align*}
  p\land(p\rightarrow q) &\equiv p\land(\lnot p\lor q)          &&\text{definition of $p\rightarrow q$, Theorem \ref{T-sub2}}\\
                 &\equiv (p\land \lnot p)\lor (p\land q) &&\text{Distributive Law}\\ 
                 &\equiv \F\lor(p\land q)              &&\text{Law of Contradiction, Theorem \ref{T-sub2}}\\
                 &\equiv (p\land q)                   &&\text{Identity Law}\\
 \end{align*}
+
 Each step in the chain has its own justification.  In several cases,
 a substitution law is used without stating as much.  In the first line,
 for example, the definition of $p\rightarrow q$ is that $p\rightarrow q\equiv \lnot p\lor q$.
