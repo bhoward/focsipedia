@@ -6,10 +6,10 @@ title: Topics
 ## Week 1: [Logic](logic/intro.md)
 ### [Propositional Logic](logic/props.md) and [Boolean Algebra](logic/boolean.md)
 
-### [Logic Circuits](logic/circuits.md) and Circuit Simplification
+### [Logic Circuits](logic/circuits.md) and [Circuit Simplification](logic/simplify.md)
 
 ## Week 2:
-### Common Circuit Components and Design
+### [Common Circuit Components](logic/components.md) and Design
 
 ### Sets: Concepts, Boolean Algebra, and Programming
 
