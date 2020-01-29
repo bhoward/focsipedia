@@ -9,10 +9,11 @@
     <icon>https://bhoward.github.io/img/favicon.ico</icon>
     <rights>Copyright © 2020 Brian T. Howard</rights>
     <entry>
-        <title type="html"><![CDATA[logic-circuits]]></title>
+        <title type="html"><![CDATA[Logic Circuits]]></title>
         <id>logic-circuits</id>
-        <link href="https://bhoward.github.io/focsipedia/blog/2020/01/31/logic-circuits"/>
+        <link href="https://bhoward.github.io/focsipedia/blog/logic-circuits"/>
         <updated>2020-01-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Logic Operators]]></title>
