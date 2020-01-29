@@ -13,7 +13,7 @@
             <link>https://bhoward.github.io/focsipedia/blog/logic-operators</link>
             <guid>https://bhoward.github.io/focsipedia/blog/logic-operators</guid>
             <pubDate>Wed, 29 Jan 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Read about <!--truncate-->[propositional logic](../docs/logic/intro): the [operators](../docs/logic/props) and [Boolean algebra](../docs/logic/boolean).]]></description>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[First Day]]></title>
