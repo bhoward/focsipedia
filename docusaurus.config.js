@@ -86,6 +86,14 @@ module.exports = {
           ],
         },
       ],
+      algolia: {
+        apiKey: '76b101bb2eea87aa1453c1db685f519c',
+        indexName: 'focsipedia',
+        algoliaOptions: {
+          queryLanguages: ['en'],
+          ignorePlurals: true,
+        }, // Optional, if provided by Algolia
+      },
       copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
     },
   },
