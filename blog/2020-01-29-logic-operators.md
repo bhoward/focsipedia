@@ -3,7 +3,10 @@ id: logic-operators
 title: Logic Operators
 author: Brian Howard
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Read about <!--truncate-->[propositional logic](../docs/logic/intro): the [operators](../docs/logic/props) and [Boolean algebra](../docs/logic/boolean).
-Do exercises 2, 3, 5, 7, 10, and 11 in [Propositional Logic](../docs/logic/props#exercises), and exercises 4, 6, 8, 10, and 13 in [Boolean Algebra](../docs/logic/boolean#exercises) (to discuss in class).
+Read about <a href={useBaseUrl('docs/logic/intro')}>propositional logic</a>: the
+<a href={useBaseUrl('docs/logic/props')}>operators</a> and
+<a href={useBaseUrl('docs/logic/boolean')}>Boolean algebra</a>.
+Do exercises 2, 3, 5, 7, 10, and 11 in <a href={useBaseUrl('docs/logic/props#exercises')}>Propositional Logic</a>, and exercises 4, 6, 8, 10, and 13 in <a href={useBaseUrl('docs/logic/boolean#exercises')}>Boolean Algebra</a> (to discuss in class).
 
