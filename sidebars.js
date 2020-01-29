@@ -8,7 +8,15 @@
 module.exports = {
   someSidebar: {
     'Course Info': ['policies', 'topics'],
-    Logic: ['logic/intro', 'logic/props', 'logic/boolean', 'logic/circuits'],
-    Features: ['reason', 'styleGuide'],
+    Logic: ['logic/intro',
+      'logic/props',
+      'logic/boolean',
+      'logic/circuits',
+      'logic/simplify',
+      'logic/components',
+    ],
+    Features: ['reason',
+      'styleGuide',
+    ],
   },
 };
