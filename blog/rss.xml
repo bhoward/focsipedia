@@ -4,10 +4,16 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 29 Jan 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 31 Jan 2020 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[logic-circuits]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/2020/01/31/logic-circuits</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/2020/01/31/logic-circuits</guid>
+            <pubDate>Fri, 31 Jan 2020 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Logic Operators]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/logic-operators</link>
