@@ -26,8 +26,8 @@ module.exports = {
     navbar: {
       title: 'FoCSipedia',
       logo: {
-        alt: 'My Site Logo', // TODO
-        src: 'img/logo.svg',
+        alt: 'Smart Fox Logo',
+        src: 'img/SmartFoxIcon.jpeg',
       },
       links: [
         {to: 'docs/topics', label: 'Topics', position: 'left'},
@@ -52,6 +52,10 @@ module.exports = {
             {
               label: 'Style Guide',
               to: 'docs/styleGuide',
+            },
+            {
+              label: 'Attribution',
+              to: 'docs/attribution',
             },
           ],
         },
