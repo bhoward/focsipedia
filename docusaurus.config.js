@@ -26,8 +26,8 @@ module.exports = {
     navbar: {
       title: 'FoCSipedia',
       logo: {
-        alt: 'My Site Logo', // TODO
-        src: 'img/logo.svg',
+        alt: 'Smart Fox Logo',
+        src: 'img/SmartFoxIcon.jpeg',
       },
       links: [
         {to: 'docs/topics', label: 'Topics', position: 'left'},
@@ -52,6 +52,10 @@ module.exports = {
             {
               label: 'Style Guide',
               to: 'docs/styleGuide',
+            },
+            {
+              label: 'Attribution',
+              to: 'docs/attribution',
             },
           ],
         },
@@ -86,15 +90,15 @@ module.exports = {
           ],
         },
       ],
-      algolia: {
-        apiKey: '76b101bb2eea87aa1453c1db685f519c',
-        indexName: 'focsipedia',
-        algoliaOptions: {
-          queryLanguages: ['en'],
-          ignorePlurals: true,
-        }, // Optional, if provided by Algolia
-      },
       copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
+    },
+    algolia: {
+      apiKey: '76b101bb2eea87aa1453c1db685f519c',
+      indexName: 'focsipedia',
+      algoliaOptions: {
+        queryLanguages: ['en'],
+        ignorePlurals: true,
+      }, // Optional, if provided by Algolia
     },
   },
   presets: [
