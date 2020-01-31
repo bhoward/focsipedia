@@ -9,9 +9,9 @@
     <icon>https://bhoward.github.io/img/favicon.ico</icon>
     <rights>Copyright © 2020 Brian T. Howard</rights>
     <entry>
-        <title type="html"><![CDATA[Logic Circuits]]></title>
-        <id>logic-circuits</id>
-        <link href="https://bhoward.github.io/focsipedia/blog/logic-circuits"/>
+        <title type="html"><![CDATA[Circuit Simplification]]></title>
+        <id>circuit-simplification</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/circuit-simplification"/>
         <updated>2020-02-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
     </entry>

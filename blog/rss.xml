@@ -9,9 +9,9 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
         <item>
-            <title><![CDATA[Logic Circuits]]></title>
-            <link>https://bhoward.github.io/focsipedia/blog/logic-circuits</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/logic-circuits</guid>
+            <title><![CDATA[Circuit Simplification]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/circuit-simplification</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/circuit-simplification</guid>
             <pubDate>Mon, 03 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
