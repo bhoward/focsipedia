@@ -38,7 +38,7 @@ alt="Finding the proposition whose value is computed by a
      combinational logic circuit." className="centered-figure" />
 
 One approach to reducing the delay of a circuit is to use the [disjunctive normal
-form](circuits#disjunctive-normal-form), also known as the **sum-of-products**. Since
+form](./circuits#disjunctive-normal-form), also known as the **sum-of-products**. Since
 an expression in DNF is the OR of a collection of terms which are the AND of
 some number of simple terms, and a simple term is either an input or a negated
 input, the corresponding circuit can be constructed in three layers:
@@ -145,7 +145,10 @@ $$ \begin{array}{r|cc}
 p & 0 & 1
 \end{array} $$
 
-The best way to cover this map with implicants is to take the first row and the second column. That gives the simplified terms $\lnot{p}$ and $q$, so the final simplified expression is $\lnot{p}\lor q$. Here is the map with the implicants outlined:
+The best way to cover this map with implicants is to take the first row and the
+second column. That gives the simplified terms $\lnot{p}$ and $q$, so the final
+simplified expression is $\lnot{p}\lor q$. Here is the map with the implicants
+outlined:
 
 <img src={useBaseUrl('img/KarnaughImp.png')}
 alt="Karnaugh map for implication" className="centered-figure" />
@@ -297,7 +300,7 @@ alt="Digits 0 through 9 as shown in a seven-segment display" className="centered
    Karnaugh maps to design a relatively simple circuit that implements a
    seven-segment decoder.
 
-5. An exercise in the [Circuits](circuits#exercises) section examines
+5. An exercise in the [Circuits](./circuits#exercises) section examines
    conjunctive normal form (CNF), the dual of DNF. Explore what kind of circuits
    result from CNF, and how to extract a simplified CNF expression from a
    Karnaugh map _(Hint: look at blocks of 0's.)_.
