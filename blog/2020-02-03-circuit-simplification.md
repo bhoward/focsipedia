@@ -1,6 +1,6 @@
 ---
-id: logic-circuits
-title: Logic Circuits
+id: circuit-simplification
+title: Circuit Simplification
 author: Brian Howard
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
