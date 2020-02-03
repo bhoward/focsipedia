@@ -188,7 +188,7 @@ following:
 <img src={useBaseUrl('img/exprtree.png')}
 alt="Expression tree for s=(a OR b) AND NOT (a AND b)" className="centered-figure" />
 
-Of course, we are usually interested in circuits that may have multiple outputs, so we may use a forest of expression trees. The next figure shows a forest for the same expression as above, along with the additional output $c$ given by $a\AND b$:
+Of course, we are usually interested in circuits that may have multiple outputs, so we may use a forest of expression trees. The next figure shows a forest for the same expression as above, along with the additional output $c$ given by $a\land b$:
 
 <img src={useBaseUrl('img/exprforest.png')}
 alt="Expression forest for s=(a OR b) AND NOT (a AND b) and c=a AND b" className="centered-figure" />
