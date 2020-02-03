@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Mon, 03 Feb 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 05 Feb 2020 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Circuit Components]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/circuit-components</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/circuit-components</guid>
+            <pubDate>Wed, 05 Feb 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Circuit Simplification]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/circuit-simplification</link>
