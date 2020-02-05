@@ -4,8 +4,6 @@ title: Common Circuit Components
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Circuit Components
-
 Just as a complicated piece of software is never written from scratch entirely
 from the most basic program statements, a complicated hardware design is not
 approached purely at the gate level. Where a programmer will break the task into

@@ -6,8 +6,6 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 
-## Circuit Simplification
-
 As noted above, a physical circuit does have some dependence on time, since each
 device in the circuit requires a non-zero time to respond to a change in its
 inputs. A more precise model needs to take these delays into account&mdash;a circuit
@@ -64,7 +62,7 @@ input lines. We will see in the next section how to build gates with a larger
 number of inputs out of gates with just two inputs, at the cost of an increased
 gate delay.
 
-### Karnaugh Map
+## Karnaugh Map
 
 Another problem with DNF comes if we use the full DNF expression extracted from
 a truth table. If we use the DNF Theorem to produce an expression from the truth
@@ -172,7 +170,7 @@ example is the last two elements of the third row:
 <img src={useBaseUrl('img/KarnaughImplicants.png')}
 alt="Examples of Karnaugh Map implicants" className="centered-figure" />
 
-### Don't Care Values
+## Don't Care Values
 
 A Karnaugh map also allows us to find simple circuits in the case that some
 combinations of inputs will never occur, so that we do not care what the output
@@ -237,7 +235,7 @@ alt="Resulting circuit for a Karnaugh Map example" className="centered-figure" /
 
 In the next section, we will see how to implement this with a total delay of 5, using only two-input AND and OR gates.
 
-### Exponential Blowup
+## Exponential Blowup
 
 The final difficulty with building low-delay circuits from DNF expressions is
 that, even with the simplification provided by something like a Karnaugh map,

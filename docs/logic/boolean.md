@@ -2,7 +2,6 @@
 id: boolean
 title: Boolean Algebra
 ---
-# Boolean Algebra
 
 (Content adapted from Critchlow & Eck)
 
