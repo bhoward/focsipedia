@@ -9,9 +9,9 @@ title: Topics
 ### [Logic Circuits](logic/circuits.md) and [Circuit Simplification](logic/simplify.md)
 
 ## Week 2:
-### [Common Circuit Components](logic/components.md) and Design
+### [Common Circuit Components and Design](logic/components.md)
 
-### Sets: Concepts, Boolean Algebra, and Programming
+### Sets: [Concepts](logic/set-concepts.md), [Boolean Algebra](logic/set-algebra.md), and [Programming](logic/set-programming.md)
 
 ## Week 3:
 ### Predicates and Quantifiers, Deduction
