@@ -4,8 +4,6 @@ title: Logic Circuits
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Logic Circuits
-
 (Content adapted from Critchlow & Eck)
 
 ## Gates
