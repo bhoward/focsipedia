@@ -21,7 +21,6 @@ mathematics, just as categories are part of the foundation of
 day-to-day thought.  In this chapter, we study sets and relationships
 among sets.
 
-
 ## Basic Concepts
 
 A **set** is a collection of **elements**.
