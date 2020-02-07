@@ -345,6 +345,31 @@ x\,^\wedge\,m:              & 00111011_2\\
 \sim x:        & 10010100_2
 \end{array} $$
 
+## Binary numbers in ReasonML
+
+You can try out various operations on binary numbers in the ReasonML code block below.
+Here is a table of the corresponding number syntax and operations:
+
+| C++ and Java | ReasonML |
+| :- | :- |
+| 0x2A | 0x2A |
+| 0b101010 | 0b101010 |
+| x & y | x land y |
+| x $\mid$ y | x lor y |
+| x ^ y | x lxor y |
+| ~ x | lnot x |
+| x << n | x lsl n |
+| x >> n | x lsr n |
+
+There is no simple way to print out a number in binary in ReasonML, but you can use
+`Printf.sprintf("0x%x", n)` to convert `n` to a hexadecimal string.
+
+```reason edit
+0x2A
+```
+
+Evaluate the code by pressing the button or hitting Ctrl-Enter.
+
 ## Exercises
 
 1. Suppose that the numbers $x$ and $y$ represent the
