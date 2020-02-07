@@ -17,6 +17,7 @@ module.exports = {
       'logic/set-concepts',
       'logic/set-algebra',
       'logic/set-programming',
+      'logic/preds',
     ],
     Features: ['reason',
       'styleGuide',
