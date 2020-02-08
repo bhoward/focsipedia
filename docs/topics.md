@@ -14,7 +14,7 @@ title: Topics
 ### Sets: [Concepts](logic/set-concepts.md), [Boolean Algebra](logic/set-algebra.md), and [Programming](logic/set-programming.md)
 
 ## Week 3:
-### [Predicates and Quantifiers](logic/preds.md), Deduction
+### [Predicates and Quantifiers](logic/preds.md), [Deduction](logic/deduction)
 
 ### Proofs, Theorem Provers
 
