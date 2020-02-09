@@ -242,7 +242,7 @@ The propositions in the proof are labeled, and each proposition
 has a justification.
 
 $$
-\begin{array}{ll}
+\begin{array}{l|l}
 \ell_1: q\rightarrow p & \text{premise}\\
 \ell_2: q & \text{premise}\\
 \ell_3: p & \rightarrow E\ \ell_1, \ell_2\\
@@ -291,7 +291,7 @@ for "AND introduction from premises labeled $x$ and $y$." Here is an example of
 how this rule might be used in the proof of
 $\lnot p, p\lor q\vdash\lnot p\land(p\lor q)$:
 
-$$ \begin{array}{ll}
+$$ \begin{array}{l|l}
 \ell_1: \lnot p & \text{premise}\\
 \ell_2: p\lor q & \text{premise}\\
 \ell_3: \lnot p\land(p\lor q) & \land I\ \ell_1, \ell_2
@@ -313,7 +313,7 @@ q, \quad\land E_2\ x
 Here is a proof that combines the introduction and elimination rules for conjunction
 to prove $p\land q\vdash q\land p$, _i.e._, that AND is commutative:
 
-$$ \begin{array}{ll}
+$$ \begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: q & \land E_2\ \ell_1\\
 \ell_3: p & \land E_1\ \ell_1\\
@@ -324,7 +324,7 @@ Note that we used the second elimination rule in step $\ell_2$ and the first in 
 to extract respectively the second and the first terms of the conjunction. Here is an
 equivalent proof using the rules in the other order:
 
-$$ \begin{array}{ll}
+$$ \begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: p & \land E_1\ \ell_1\\
 \ell_3: q & \land E_2\ \ell_1\\
@@ -366,7 +366,7 @@ _then_ $q$ is also true.
 Here is an example of a proof of the tautology (since a tautology may be viewed as an argument
 with no premises) $p\land q\rightarrow q\land p$:
 
-$$ \begin{array}{ll}
+$$ \begin{array}{l|l}
 \ell_1: p\land q\Rightarrow\{ & \\
 \quad\ell_2: q & \land E_2\ \ell_1\\
 \quad\ell_3: p & \land E_1\ \ell_1\\
@@ -397,7 +397,7 @@ q, \quad\rightarrow E\ x,y
 
 Here is a proof of the argument $p\rightarrow q\vdash p\rightarrow p\land q$:
 
-$$ \begin{array}{ll}
+$$ \begin{array}{l|l}
 \ell_1: p\rightarrow q & \text{premise}\\
 \ell_2: p\Rightarrow\{ & \\
 \quad\ell_3: q & \rightarrow E\ \ell_1, \ell_2\\
@@ -408,9 +408,367 @@ $$ \begin{array}{ll}
 
 ### Disjunction
 
+To prove the disjunction $p\lor q$, it is enough to prove either $p$ or $q$
+alone. This leads to two obvious introduction rules:
+
+$$ \begin{array}{l}
+x: p\\ \hline\therefore
+p\lor q, \quad\lor I_1\ x
+\end{array} $$
+
+$$ \begin{array}{l}
+x: q\\ \hline\therefore
+p\lor q, \quad\lor I_2\ x
+\end{array} $$
+
+Here are two distinct proofs of the argument $p\land q\vdash p\lor q$:
+
+Proof 1:
+$$ \begin{array}{l|l}
+\ell_1: p\land q & \text{premise}\\
+\ell_2: p & \land E_1\ \ell_1\\
+\ell_3: p\lor q & \lor I_1\ \ell_2
+\end{array} $$
+
+Proof 2:
+$$ \begin{array}{l|l}
+\ell_1: p\land q & \text{premise}\\
+\ell_2: q & \land E_2\ \ell_1\\
+\ell_3: p\lor q & \lor I_2\ \ell_2
+\end{array} $$
+
+Although they have the same premises and conclusions, these two proofs are
+giving fundamentally different reasons why the conclusion follows from the
+premise. Note that in the introduction rules for disjunction, one of the terms
+in the disjunction appears "from nowhere". The argument in proof 1 could
+equally well conclude $p\lor r$ from the premise $p\land q$, where $r$ could
+be anything; however, the argument in proof 2 would allow us to conclude
+instead $r\lor q$ for any proposition $r$.
+
+This peculiar behavior of disjunction extends to the elimination rule. Whereas
+the introduction rules appear to be duals of the elimination rules for conjunction,
+the elimination rule for disjunction is significantly more complicated that just
+a dual of the introduction for conjunction.[^Part of this complication is an
+inherent asymmetry in deduction: while our arguments may have multiple premises,
+they may only have one conclusion. A rule that was somehow "dual" to $\land I$
+would need to have two conclusions. There is another formulation of logic, known
+as the "sequent calculus" (see https://en.wikipedia.org/wiki/Sequent_calculus), where
+arguments may have multiple conclusions, and this asymmetry disappears. However,
+natural deduction has a cleaner connection to functional programming, as we will
+see later on.] What we have is essentially a **case analysis**&mdash;to eliminate
+an OR, we need to conduct two subproofs (just as in the $\rightarrow I$ rule), one
+for each possible case. Here is the rule:
+
+$$ \begin{array}{l}
+x: p\lor q\\
+y: p\Rightarrow\{\\
+\quad\ldots\\
+\quad r\\
+\}\\
+z: q\Rightarrow\{\\
+\quad\ldots\\
+\quad r\\
+\}\\ \hline\therefore
+r, \quad\lor E\ x, y, z
+\end{array} $$
+
+In words, this says that we have our disjunction, $p\lor q$, labeled $x$, plus two
+nested subproofs, labeled $y$ and $z$ (as always, in an actual proof, these parts
+may be laid out in any order, with other parts of the proof in between; however,
+for readability it is suggested that the proof be structured just as shown). The
+subproof $y$ concludes some proposition $r$ from the additional premise $p$, while
+the subproof $z$ concludes the same $r$ from the alternate premise $q$. Since we
+know that either $p$ or $q$ is true at this point in the proof, we are able to
+conclude $r$ regardless of which it is.
+
+Here is a proof that OR is commutative ($p\lor q\vdash q\lor p$):
+
+$$ \begin{array}{l|l}
+\ell_1: p\lor q & \text{premise}\\
+\ell_2: p\Rightarrow\{\\
+\quad\ell_3: q\lor p & \lor I_2\ \ell_2\\
+\}\\
+\ell_4: q\Rightarrow\{\\
+\quad\ell_5: q\lor p & \lor I_1\ \ell_2\\
+\}\\
+\ell_6: q\lor p & \lor E\ \ell_1, \ell_2, \ell_4
+\end{array} $$
+
+### True and False
+
+We may think of $\T$ as a conjunction of zero things: it is true whenever all of
+those (zero) things are true, _i.e._, it is always true. Compare this with taking
+the sum of an empty set of numbers: the result is 0, which is the identity for $+$,
+just as $\T$ is the identity for $\land$. Using this analogy, we get one introduction
+rule for $\T$ (with zero premises) and zero elimination rules:
+
+$$ \begin{array}{l} \hline\therefore
+\T, \quad\T I
+\end{array} $$
+
+In words, we may conclude $\T$ at any time with no premises. This is not generally
+useful, but we include it for completeness.
+
+Similarly, we may think of $\F$ as a disjunction of zero things, noting as above that
+$\F$ is the identity for $\lor$. It is false unless at least one of those zero things
+is true&hellip;. This suggests that we get zero introduction rules and
+one elimination rule, which just has the premise $\F$ and zero nested subproofs:
+
+$$ \begin{array}{l}
+x: \F\\ \hline\therefore
+r, \quad\F E\ x
+\end{array} $$
+
+That is, if we have a proof of $\F$, labeled $x$, then we can produce a proof of
+any arbitrary proposition $r$! Logicians like to refer to this as _ex falso quodlibet_,
+"from falsehood, anything." If your premises are consistent, you should never be able
+to prove $\F$ at the top level of a proof; if you could do that, then you could use
+this rule to prove anything whatsoever. This rule is useful in nested proofs (for
+example in disjunction elimination, doing a case analysis), where if temporary
+assumption leads to a contradiction then we can conclude anything in that subproof,
+secure in the belief that that assumption will never actually be true.
+
+Here is an example, where we validate the common argument that if we know that either
+$p$ or $q$ is true, and we know that $p$ implies false, then $q$ must actually be true:
+
+$$ \begin{array}{l|l}
+\ell_1: p\lor q & \text{premise}\\
+\ell_2: p\rightarrow\F & \text{premise}\\
+\ell_3: p\Rightarrow\{\\
+\quad\ell_4: \F & \rightarrow E\ \ell_2, \ell_3\\
+\quad\ell_5: q & \F E\ \ell_4\\
+\}\\
+\ell_6: q\Rightarrow\{\\
+\quad\ell_7: q & \ell_6\text{ (see below)}\\
+\}\\
+\ell_8: q & \lor E\ \ell_1, \ell_3, \ell_6
+\end{array} $$
+
+Note that step $\ell_7$ is justified by simply copying the proposition from $\ell_6$;
+this will be discussed further in the [Miscellaneous](#miscellaneous) section below.
+
 ### Negation
 
+Since $\lnot p\equiv p\rightarrow\F$, we could simply derive the rules for negation
+from those for implication, specialized to the conclusion $\F$. However, it is
+convenient to have rules explicitly to deal with negation, and there is an
+additional rule for negation that does not fit the pattern of the rest of the rules
+(see below).
+
+Accordingly, here is the introduction rule for negation:
+
+$$ \begin{array}{l}
+x: p \Rightarrow\{\\
+\quad\ldots\\
+\quad \F\\
+\}\\ \hline\therefore
+\lnot p, \quad\lnot I\ x
+\end{array} $$
+
+In words, if we give a nested subproof that arrives at a contradiction (_i.e._,
+a proof of $\F$) from the assumption that $p$ is true, then $p$ must actually
+be false.
+
+Similarly, here is the elimination rule for negation:
+
+$$ \begin{array}{l}
+x: \lnot p\\
+y: p\\ \hline\therefore
+\F, \quad\lnot E\ x,y
+\end{array} $$
+
+That is, one way to demonstrate a contradiction is to have proofs ($x$ and $y$)
+of both $\lnot p$ and $p$. Compare these rules to $\rightarrow I$ and $\rightarrow E$,
+and confirm that they are just the special case of rules for $p\rightarrow q$ where
+$q$ is $\F$.
+
+Using these, here is a proof of one direction of the equivalence between
+$p\rightarrow q$ and its contrapositive $\lnot q\rightarrow\lnot p$:
+
+$$ \begin{array}{l|l}
+\ell_1: p\rightarrow q & \text{premise}\\
+\ell_2: \lnot q\Rightarrow\{\\
+\quad\ell_3: p\Rightarrow\{\\
+\quad\quad\ell_4: q & \rightarrow E\ \ell_1, \ell_3\\
+\quad\quad\ell_5: \F & \lnot E\ \ell_2, \ell_4\\
+\quad\}\\
+\quad\ell_6: \lnot p & \lnot I\ \ell_3\\
+\}\\
+\ell_7: \lnot q\rightarrow\lnot p & \rightarrow I\ \ell_2
+\end{array} $$
+
+If you try to prove the other direction of this equivalence, you will
+have a surprisingly difficult time. In fact, it is possible to show that
+there is _no_ proof of the argument $\lnot q\rightarrow\lnot p\vdash p\rightarrow q$
+using the rules seen so far.[^Logicians have taken this observation and built an
+entire system of logic known as **intuitionistic logic**, on the grounds that there
+is something unusual with the rule of double negation elimination. As computer
+scientists, this should actually make sense: if we think of a proof as showing how
+to compute something, then all of the rest of the deduction rules are reasonable.
+However, the double negation rule says that if we don't have a way of showing that
+something is false, then somehow we get a proof that it is true&mdash;just because
+we run a program and it doesn't print out the wrong answer doesn't mean that it
+will print out the correct answer, because maybe the program will never print out
+an answer at all!] The closest you will be able to get starting from
+the premise $\lnot q\rightarrow\lnot p$ is to conclude $p\rightarrow\lnot\lnot q$:
+
+$$ \begin{array}{l|l}
+\ell_1: \lnot q\rightarrow\lnot p & \text{premise}\\
+\ell_2: p\Rightarrow\{\\
+\quad\ell_3: \lnot q\Rightarrow\{\\
+\quad\quad\ell_4: \lnot p & \rightarrow E\ \ell_1, \ell_3\\
+\quad\quad\ell_5: \F & \lnot E\ \ell_4, \ell_2\\
+\quad\}\\
+\quad\ell_6: \lnot\lnot q & \lnot I\ \ell_3\\
+\}\\
+\ell_7: p\rightarrow\lnot\lnot q & \rightarrow I\ \ell_2
+\end{array} $$
+
+Although you may be tempted to just erase the double negation, in a formal proof you
+need to justify every step, and it turns out that we do not have any way yet to
+prove $\lnot\lnot q\vdash q$! Therefore, the very last rule we will add (apart from
+wrapping up some loose ends in the next section) is the rule of double negation
+elimination:
+
+$$ \begin{array}{l}
+x: \lnot\lnot p\\ \hline\therefore
+p, \quad\lnot\lnot E\ x
+\end{array} $$
+
+With this additional rule, we may finish the proof of the equivalence of the
+contrapositive:
+
+$$ \begin{array}{l|l}
+\ell_1: \lnot q\rightarrow\lnot p & \text{premise}\\
+\ell_2: p\Rightarrow\{\\
+\quad\ell_3: \lnot q\Rightarrow\{\\
+\quad\quad\ell_4: \lnot p & \rightarrow E\ \ell_1, \ell_3\\
+\quad\quad\ell_5: \F & \lnot E\ \ell_4, \ell_2\\
+\quad\}\\
+\quad\ell_6: \lnot\lnot q & \lnot I\ \ell_3\\
+\quad\ell_7: q & \lnot\lnot E\ \ell_6\\
+\}\\
+\ell_8: p\rightarrow q & \rightarrow I\ \ell_2
+\end{array} $$
+
 ### Miscellaneous
+
+As mentioned above, it is sometimes useful in a proof to repeat
+a proposition from earlier (always remembering that we do not
+have access to propositions from nested proofs from the outside).
+This leads to the trivial rule
+
+$$ \begin{array}{l}
+x: p\\ \hline\therefore
+p, \quad x
+\end{array} $$
+
+The justification for $p$ is simply the label of the previous line
+where $p$ was established.
+
+Here is an example of using this to prove the tautology $p\rightarrow p$:
+
+$$ \begin{array}{l|l}
+\ell_1: p\Rightarrow\{\\
+\quad\ell_2: p & \ell_1\\
+\}\\
+\ell_3: p\rightarrow p & \rightarrow I\ \ell_1
+\end{array} $$
+
+As another convenience, once we have proven the validity of some
+argument $p_1,\ldots,p_n\vdash q$, we may reuse that proof in
+future proofs as if it were another deduction rule:
+
+$$ \begin{array}{l}
+x_1: p_1\\
+\ldots\\
+x_n: p_n\\ \hline\therefore
+q, \quad (p_1,\ldots,p_n\vdash q)\ x_1,\ldots,x_n
+\end{array} $$
+
+Instead of citing the argument like that in the justification, it
+is common to give names to useful results (such as the modus tollens
+and syllogism arguments discussed earlier). Also note that we may
+perform any consistent substitution for the propositional variables
+in the argument.
+
+As an example, here is a use of the modus tollens law,
+$p\rightarrow q, \lnot q\vdash\lnot p$, to prove an extended version:
+
+$$ \begin{array}{l|l}
+\ell_1: p\rightarrow q & \text{premise}\\
+\ell_2: q\rightarrow r & \text{premise}\\
+\ell_3: \lnot r & \text{premise}\\
+\ell_4: \lnot q & \text{modus tollens}\ \ell_2, \ell_3\\
+\ell_5: \lnot p & \text{modus tollens}\ \ell_1, \ell_4
+\end{array} $$
+
+Given a proof of the law of syllogism,
+$p\rightarrow q, q\rightarrow r\vdash p\rightarrow r$, we could also
+prove the above as follows:
+
+$$ \begin{array}{l|l}
+\ell_1: p\rightarrow q & \text{premise}\\
+\ell_2: q\rightarrow r & \text{premise}\\
+\ell_3: p\rightarrow r & \text{syllogism}\ \ell_1, \ell_2\\
+\ell_4: \lnot r & \text{premise}\\
+\ell_5: \lnot p & \text{modus tollens}\ \ell_3, \ell_4
+\end{array} $$
+
+In programming terms, using an already proven theorem like this is
+analogous to calling an already written function out of a library.
+
+### Summary of Natural Deduction Rules
+
+$$ \begin{array}{ll|ll|l}
+x: p & \qquad & & \qquad & \\
+y: q & & x: p\land q & & x: p\land q\\ \hline
+\therefore p\land q, \quad\land I\ x, y & & \therefore p, \quad\land E_1\ x & & \therefore q, \quad\land E_2\ x
+\end{array} $$
+
+---
+
+$$ \begin{array}{ll|ll|l}
+x: p \Rightarrow\{ & \qquad & & \qquad & \\
+\quad\ldots\\
+\quad q & & x: p\rightarrow q\\
+\} & & y: p & & x: p\\ \hline
+\therefore p\rightarrow q, \quad\rightarrow I\ x & & \therefore q, \quad\rightarrow E\ x,y & & \therefore p, \quad x
+\end{array} $$
+
+---
+
+$$ \begin{array}{ll|ll|l}
+& \qquad & & \qquad & x: p\lor q\\
+& & & & y: p\Rightarrow\{\\
+& & & & \quad\ldots\\
+& & & & \quad r\\
+& & & & \}\\
+& & & & z: q\Rightarrow\{\\
+& & & & \quad\ldots\\
+& & & & \quad r\\
+x: p & & x: q & & \}\\ \hline
+\therefore p\lor q, \quad\lor I_1\ x & & \therefore p\lor q, \quad\lor I_2\ x & & \therefore r, \quad\lor E\ x, y, z
+\end{array} $$
+
+---
+
+$$ \begin{array}{ll|ll|l}
+& \qquad & & \qquad & x_1: p_1\\
+& & & & \ldots\\
+& & x: \F & & x_n: p_n\\ \hline
+\therefore\T, \quad\T I & & \therefore r, \quad\F E\ x & & \therefore q, \quad (p_1,\ldots,p_n\vdash q)\ x_1,\ldots,x_n
+\end{array} $$
+
+---
+
+$$ \begin{array}{ll|ll|l}
+x: p \Rightarrow\{ & \qquad & & \qquad & \\
+\quad\ldots\\
+\quad \F & & x: \lnot p\\
+\} & & y: p & & x: \lnot\lnot p\\ \hline
+\therefore\lnot p, \quad\lnot I\ x & & \therefore\F, \quad\lnot E\ x,y & & \therefore p, \quad\lnot\lnot E\ x
+\end{array} $$
 
 ## Invalid Arguments
 
@@ -439,6 +797,8 @@ In the case where $p$ is false, $q$ is false, and $r$ is true,
 the three premises of this argument are all true, but the conclusion
 is false.  This shows that the argument is invalid.
 
+## Example
+
 To apply all this to arguments stated in English, we have to
 introduce propositional variables to represent all the propositions
 in the argument.  For example, consider:
@@ -466,26 +826,24 @@ j
 \end{array}
 $$
 
-EDITING IN PROGRESS
-
 This is a valid argument, as the following proof shows:
-\begin{center}
-  \begin{tabular}{r@{\ \ }l@{\qquad}l}
-     1.&$f\rightarrow\lnot t$&premise\\
-     2.&$f$&premise\\
-     3.&$\lnot t$&from 1 and 2 (\textit{modus ponens})\\
-     4.&$b\rightarrow t$&premise\\
-     5.&$\lnot b$&from 4 and 3 (\textit{modus tollens})\\
-     6.&$f\lor s$&from 2\\
-     7.&$(f\lor s)\rightarrow m$&premise\\
-     8.&$m$&from 6 and 7 (\textit{modus ponens})\\
-     9.&$m\land\lnot b$&from 8 and 5\\
-     10.&$(m\land\lnot b)\rightarrow j$&premise\\
-     11.&$j$&from 10 and 9 (\textit{modus ponens})\\
-  \end{tabular}
-\end{center}
+$$ \begin{array}{l|l}
+\ell_1: f\rightarrow\lnot t & \text{premise}\\
+\ell_2: f & \text{premise}\\
+\ell_3: \lnot t & \rightarrow E\ \ell_1, \ell_2\\
+\ell_4: b\rightarrow t & \text{premise}\\
+\ell_5: \lnot b & \text{modus tollens}\ \ell_4, \ell_3\\
+\ell_6: f\lor s & \lor I_1\ \ell_2\\
+\ell_7: (f\lor s)\rightarrow m & \text{premise}\\
+\ell_8: m & \rightarrow E\ \ell_7, \ell_6\\
+\ell_9: m\land\lnot b & \land I\ \ell_8, \ell_5\\
+\ell_{10}: (m\land\lnot b)\rightarrow j & \text{premise}\\
+\ell_{11}: j & \rightarrow E\ \ell_{10}, \ell_9
+\end{array} $$
 
-\medskip
+## Predicate Logic
+
+TODO
 
 So far in this section, we have been working mostly with propositional
 logic.  But the definitions of valid argument and logical deduction
@@ -523,9 +881,9 @@ There is a lot more to say about logical deduction and
 proof in predicate logic, and we'll spend the rest of this chapter
 on the subject.
 
-\begin{exercises}
+## Exercises
 
-\problem Verify the validity of \textit{modus tollens} and the Law of
+1. Verify the validity of \textit{modus tollens} and the Law of
 Syllogism.
 
 \problem Each of the following is a valid rule of deduction.
