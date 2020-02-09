@@ -224,7 +224,8 @@ sequence is the conclusion of the argument, and every proposition
 in the sequence is either a premise of the argument or follows
 by logical deduction from propositions that precede it in the list.
 
-The deduction rules that we will use are described in more detail below.
+The deduction rules, the primitive argument forms that we will chain
+together into complete proofs, are described in more detail below.
 One of the characteristics of natural deduction is that there are
 rules associated with each logical operator that determine how to
 either _introduce_ or _eliminate_ the operator. This can provide
@@ -244,13 +245,13 @@ $$
 \begin{array}{ll}
 \ell_1: q\rightarrow p & \text{premise}\\
 \ell_2: q & \text{premise}\\
-\ell_3: p & \rightarrow E, \ell_1, \ell_2\\
+\ell_3: p & \rightarrow E\ \ell_1, \ell_2\\
 \ell_4: t\rightarrow r & \text{premise}\\
 \ell_5: t & \text{premise}\\
-\ell_6: r & \rightarrow E, \ell_4, \ell_5\\
-\ell_7: p\land r & \land I, \ell_3, \ell_6\\
+\ell_6: r & \rightarrow E\ \ell_4, \ell_5\\
+\ell_7: p\land r & \land I\ \ell_3, \ell_6\\
 \ell_8: p\land r\rightarrow s & \text{premise}\\
-\ell_9: s & \rightarrow E, \ell_8, \ell_7
+\ell_9: s & \rightarrow E\ \ell_8, \ell_7
 \end{array}
 $$
 
@@ -266,7 +267,150 @@ separately&hellip;.
 
 ## Natural Deduction Rules
 
-TODO
+As mentioned above, the particular set of primitive argument forms that
+we will use are grouped into **introduction** and **elimination** rules
+for each of the logical operators. Here we will explain each deduction
+rule, justify it, and show examples of how they may be used in proofs.
+At the end of this section is a table summarizing all of the rules.
+
+### Conjunction
+
+The conjunction $p\land q$ is true when both $p$ and $q$ are true. Therefore,
+to introduce the conjunction $p\land q$ in a proof we need to first establish
+the premises $p$ and $q$ individually:
+
+$$ \begin{array}{l}
+x: p\\
+y: q\\ \hline\therefore
+p\land q, \quad\land I\ x,y
+\end{array} $$
+
+The $x$ and $y$ labels on the premises are shown here to allow us to refer to
+them in the "justification" attached to the conclusion: $\land I\ x, y$ stands
+for "AND introduction from premises labeled $x$ and $y$." Here is an example of
+how this rule might be used in the proof of
+$\lnot p, p\lor q\vdash\lnot p\land(p\lor q)$:
+
+$$ \begin{array}{ll}
+\ell_1: \lnot p & \text{premise}\\
+\ell_2: p\lor q & \text{premise}\\
+\ell_3: \lnot p\land(p\lor q) & \land I\ \ell_1, \ell_2
+\end{array} $$
+
+The elimination rules for conjunction allow us to move from the premise $p\land q$
+to either the conclusion $p$ or the conclusion $q$:
+
+$$ \begin{array}{l}
+x: p\land q\\ \hline\therefore
+p, \quad\land E_1\ x
+\end{array} $$
+
+$$ \begin{array}{l}
+x: p\land q\\ \hline\therefore
+q, \quad\land E_2\ x
+\end{array} $$
+
+Here is a proof that combines the introduction and elimination rules for conjunction
+to prove $p\land q\vdash q\land p$, _i.e._, that AND is commutative:
+
+$$ \begin{array}{ll}
+\ell_1: p\land q & \text{premise}\\
+\ell_2: q & \land E_2\ \ell_1\\
+\ell_3: p & \land E_1\ \ell_1\\
+\ell_4: q\land p & \land I\ \ell_2, \ell_3
+\end{array} $$
+
+Note that we used the second elimination rule in step $\ell_2$ and the first in $\ell_3$,
+to extract respectively the second and the first terms of the conjunction. Here is an
+equivalent proof using the rules in the other order:
+
+$$ \begin{array}{ll}
+\ell_1: p\land q & \text{premise}\\
+\ell_2: p & \land E_1\ \ell_1\\
+\ell_3: q & \land E_2\ \ell_1\\
+\ell_4: q\land p & \land I\ \ell_3, \ell_2
+\end{array} $$
+
+In the justification for step $\ell_4$, we specify that the term from $\ell_3$ 
+($q$) is used first in the conclusion. Although we have just proved that conjunction
+is commutative, it is important for a careful proof to keep track of this sort of
+distinction.
+
+### Implication
+
+The implication $p\rightarrow q$ says that whenever $p$ is true, $q$ must also be true.
+To introduce an implication in a proof, we will temporarily assume $p$ and show that,
+based on that assumption, we are then able to conclude $q$.
+As a deduction rule, this argument will take the form of a _nested_ proof, analogous to
+a nested block of code that may introduce temporary local variables, or a function
+definition that may use parameters. The notation we will use for this is inspired by the
+notation for an anonymous function block in languages such as JavaScript, Scala, and
+ReasonML:
+
+$$ \begin{array}{l}
+x: p \Rightarrow\{\\
+\quad\ldots\\
+\quad q\\
+\}\\ \hline\therefore
+p\rightarrow q, \quad\rightarrow I\ x
+\end{array} $$
+
+The curly braces around the nested proof (which is also indented for clarity) emphasize
+that the temporary assumption that $p$ is true, labeled $x$, is only available within
+that section of the proof. No conclusion within the braces should be referred to from
+outside that section (just as you cannot access local variables from a block or function
+definition when programming); at the end of the subproof, we extract the last conclusion
+($q$) but only in the form of the implication $p\rightarrow q$&mdash;_if_ $p$ is true,
+_then_ $q$ is also true.
+
+Here is an example of a proof of the tautology (since a tautology may be viewed as an argument
+with no premises) $p\land q\rightarrow q\land p$:
+
+$$ \begin{array}{ll}
+\ell_1: p\land q\Rightarrow\{ & \\
+\quad\ell_2: q & \land E_2\ \ell_1\\
+\quad\ell_3: p & \land E_1\ \ell_1\\
+\quad\ell_4: q\land p & \land I\ \ell_2, \ell_3\\
+\}\\
+\ell_5: p\land q\rightarrow q\land p & \rightarrow I\ \ell_1
+\end{array} $$
+
+Note that when the justification in step $\ell_5$ refers to $\ell_1$, it means the
+entire subproof. However, the reference to $\ell_1$ in the justifications for $\ell_2$
+and $\ell_3$ is to the premise $p$. The premise $p$ is only available within the braces,
+as are each of the conclusions $\ell_2$ through $\ell_4$ which rely on that temporary
+assumption. 
+
+The analogy with defining a function taking the hypothesis $p$ as a parameter and returning
+the conclusion $q$ is not accidental. The elimination rule, which you may recognize as our
+old friend modus ponens, is very much like function application: if we have a proof of
+$p\rightarrow q$, and we can also supply an argument that $p$ is true, then we may conclude
+that $q$ is true. Just as a function body describes how to takes an argument passed in through
+its parameter and compute a result, the subproof that establishes $p\rightarrow q$ tells us
+how to take an argument (!) for $p$ and produce the extra steps needed to conclude $q$.
+
+$$ \begin{array}{l}
+x: p\rightarrow q\\
+y: p\\ \hline\therefore
+q, \quad\rightarrow E\ x,y
+\end{array} $$
+
+Here is a proof of the argument $p\rightarrow q\vdash p\rightarrow p\land q$:
+
+$$ \begin{array}{ll}
+\ell_1: p\rightarrow q & \text{premise}\\
+\ell_2: p\Rightarrow\{ & \\
+\quad\ell_3: q & \rightarrow E\ \ell_1, \ell_2\\
+\quad\ell_4: p\land q & \land I\ \ell_2, \ell_3\\
+\}\\
+\ell_5: p\rightarrow p\land q & \rightarrow I\ \ell_2
+\end{array} $$
+
+### Disjunction
+
+### Negation
+
+### Miscellaneous
 
 ## Invalid Arguments
 
