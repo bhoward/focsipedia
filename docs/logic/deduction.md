@@ -720,6 +720,9 @@ analogous to calling an already written function out of a library.
 
 ### Summary of Natural Deduction Rules
 
+---
+**Conjunction:**
+
 $$ \begin{array}{ll|ll|l}
 x: p & \qquad & & \qquad & \\
 y: q & & x: p\land q & & x: p\land q\\ \hline
@@ -727,6 +730,7 @@ y: q & & x: p\land q & & x: p\land q\\ \hline
 \end{array} $$
 
 ---
+**Implication, Reference:**
 
 $$ \begin{array}{ll|ll|l}
 x: p \Rightarrow\{ & \qquad & & \qquad & \\
@@ -737,6 +741,7 @@ x: p \Rightarrow\{ & \qquad & & \qquad & \\
 \end{array} $$
 
 ---
+**Disjunction:**
 
 $$ \begin{array}{ll|ll|l}
 & \qquad & & \qquad & x: p\lor q\\
@@ -752,6 +757,7 @@ x: p & & x: q & & \}\\ \hline
 \end{array} $$
 
 ---
+**True, False, Theorem:**
 
 $$ \begin{array}{ll|ll|l}
 & \qquad & & \qquad & x_1: p_1\\
@@ -761,6 +767,7 @@ $$ \begin{array}{ll|ll|l}
 \end{array} $$
 
 ---
+**Negation:**
 
 $$ \begin{array}{ll|ll|l}
 x: p \Rightarrow\{ & \qquad & & \qquad & \\
@@ -843,8 +850,6 @@ $$ \begin{array}{l|l}
 
 ## Predicate Logic
 
-TODO
-
 So far in this section, we have been working mostly with propositional
 logic.  But the definitions of valid argument and logical deduction
 apply to predicate logic as well.  One of the most basic rules of
@@ -854,26 +859,37 @@ That is, if a predicate is true of all entities, then it is true of
 any given particular entity.  This rule can be combined with 
 rules of deduction for propositional logic to give the following
 valid arguments
-\begin{center}
-\mbox{
-\argument{$\forall x(P(x)\rightarrow Q(x))$\\$P(a)$}{$Q(a)$}\qquad\qquad
-\argument{$\forall x(P(x)\rightarrow Q(x))$\\$\lnot Q(a)$}{$\lnot P(a)$}
-}
-\end{center}
-These valid arguments go by the names of \textit{modus ponens}\index{modus ponens} and
-\textit{modus tollens}\index{modus tollens} for predicate logic.
+
+$$ \begin{array}{l}
+\forall x(P(x)\rightarrow Q(x))\\
+P(a)\\ \hline\therefore
+Q(a)
+\end{array} $$
+
+$$ \begin{array}{l}
+\forall x(P(x)\rightarrow Q(x))\\
+\lnot Q(a)\\ \hline\therefore
+\lnot P(a)
+\end{array} $$
+
+These valid arguments go by the names of _modus ponens_ and
+_modus tollens_ for predicate logic.
 Note that from the premise $\forall x(P(x)\rightarrow Q(x))$ we can deduce
 $P(a)\rightarrow Q(a)$.  From this and from the premise that $P(a)$, we
-can deduce $Q(a)$ by \textit{modus ponens}.  So the first argument
+can deduce $Q(a)$ by _modus ponens_.  So the first argument
 above is valid.  The second argument is similar, using 
-\textit{modus tollens}.
+_modus tollens_.
 
 The most famous logical deduction of them all is an application
-of \textit{modus ponens} for predicate logic:
-\begin{center}
-\argument{All humans are mortal\\Socrates is human}{Socrates is mortal}
-\end{center}
-This has the form of \textit{modus ponens} with $P(x)$ standing
+of _modus ponens_ for predicate logic:
+
+$$ \begin{array}{l}
+\text{All humans are mortal}\\
+\text{Socrates is human}\\ \hline\therefore
+\text{Socrates is mortal}
+\end{array} $$
+
+This has the form of _modus ponens_ with $P(x)$ standing
 for "$x$ is human," $Q(x)$ standing for "$x$ is mortal," and
 $a$ standing for the noted entity, Socrates.
 
@@ -883,59 +899,112 @@ on the subject.
 
 ## Exercises
 
-1. Verify the validity of \textit{modus tollens} and the Law of
+1. Verify the validity of _modus tollens_ and the Law of
 Syllogism.
 
-\problem Each of the following is a valid rule of deduction.
+2. Each of the following is a valid rule of deduction.
 For each one, give an example of a valid argument in English that
 uses that rule.
-\begin{center}
-\mbox{\qquad
-\argument{$p\lor q$\\$\lnot p$}{$q$}\qquad
-\argument{$p$\\$q$}{$p\land q$}\qquad
-\argument{$p\land q$}{$p$}\qquad
-\argument{$p$}{$p\lor q$}
-}
-\end{center}
 
-\problem There are two notorious invalid arguments that look
-deceptively like \textit{modus ponens} and \textit{modus tollens}:
-\begin{center}
-\mbox{\qquad
-\argument{$p\rightarrow q$\\$q$}{$p$}\qquad
-\argument{$p\rightarrow q$\\$\lnot p$}{$\lnot q$}\qquad
-}
-\end{center}
+$$ \begin{array}{l}
+p\lor q\\
+\lnot p\\ \hline\therefore
+q
+\end{array} $$
+
+$$ \begin{array}{l}
+p\\
+q\\ \hline\therefore
+p\land q
+\end{array} $$
+
+$$ \begin{array}{l}
+p\land q\\ \hline\therefore
+p
+\end{array} $$
+
+$$ \begin{array}{l}
+p\\ \hline\therefore
+p\lor q
+\end{array} $$
+
+3. There are two notorious invalid arguments that look
+deceptively like _modus ponens_ and _modus tollens_:
+
+$$ \begin{array}{l}
+p\rightarrow q\\
+q\\ \hline\therefore
+p
+\end{array} $$
+
+$$ \begin{array}{l}
+p\rightarrow q\\
+\lnot p\\ \hline\therefore
+\lnot q
+\end{array} $$
+
 Show that each of these arguments is invalid.  Give an English
 example that uses each of these arguments.
 
-\problem Decide whether each of the following arguments is valid.
+4. Decide whether each of the following arguments is valid.
 If it is valid, give a formal proof.  If it is invalid, show that
 it is invalid by finding an appropriate assignment of truth values
 to propositional variables.
-\smallskip
-\tparts{
-   \argument{$p\rightarrow q$\\$q\rightarrow s$\\$s$}{$p$}&
-   \argument{$p\land q$\\$q\rightarrow (r\lor s)$\\$\lnot r$}{$s$}&
-   \argument{$p\lor q$\\$q\rightarrow (r\land s)$\\$\lnot p$}{$s$}\cr\noalign{\smallskip}
-   \argument{$(\lnot p)\rightarrow t$\\$q\rightarrow s$\\$r\rightarrow q$\\$\lnot(q\lor t)$}{$p$}&
-   \argument{$p$\\$s\rightarrow r$\\$q\lor r$\\$q\rightarrow\lnot p$}{$\lnot s$}&
-   \argument{$q\rightarrow t$\\$p\rightarrow(t\rightarrow s)$\\$p$}{$q\rightarrow s$}
-}
 
+   1. $$ \begin{array}{l}
+   p\rightarrow q\\
+   q\rightarrow s\\ \hline\therefore
+   p
+   \end{array} $$
 
-\problem For each of the following English arguments, express the
+   2. $$ \begin{array}{l}
+   p\land q\\
+   q\rightarrow (r\lor s)\\
+   \lnot r\\ \hline\therefore
+   s
+   \end{array} $$
+   
+   3. $$ \begin{array}{l}
+   p\lor q\\
+   q\rightarrow (r\land s)\\
+   \lnot p\\ \hline\therefore
+   s
+   \end{array} $$
+   
+   4. $$ \begin{array}{l}
+   (\lnot p)\rightarrow t\\
+   q\rightarrow s\\
+   r\rightarrow q\\
+   \lnot(q\lor t)\\ \hline\therefore
+   p
+   \end{array} $$
+   
+   5. $$ \begin{array}{l}
+   p\\
+   s\rightarrow r\\
+   q\lor r\\
+   q\rightarrow\lnot p\\ \hline\therefore
+   \lnot s
+   \end{array} $$
+   
+   6. $$ \begin{array}{l}
+   q\rightarrow t\\
+   p\rightarrow(t\rightarrow s)\\
+   p\\ \hline\therefore
+   q\rightarrow s
+   \end{array} $$
+
+5. For each of the following English arguments, express the
 argument in terms of propositional logic and determine whether the
 argument is valid or invalid.
-\ppart If it is Sunday, it rains or snows.  Today, it is Sunday
+
+   * If it is Sunday, it rains or snows.  Today, it is Sunday
 and it's not raining.  Therefore, it must be snowing.
-\ppart If there are anchovies on the pizza, Jack won't eat it.
+
+   * If there are anchovies on the pizza, Jack won't eat it.
 If Jack doesn't eat pizza, he gets angry.  Jack is angry.
 Therefore, there were anchovies on the pizza.
-\ppart At 8:00, Jane studies in the library or works at home.
+
+   * At 8:00, Jane studies in the library or works at home.
 It's 8:00 and Jane is not studying in the library.  So she must
 be working at home.
-
-
-
-\end{exercises}
