@@ -18,6 +18,7 @@ module.exports = {
       'logic/set-algebra',
       'logic/set-programming',
       'logic/preds',
+      'logic/deduction',
     ],
     Features: ['reason',
       'styleGuide',
