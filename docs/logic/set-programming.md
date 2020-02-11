@@ -357,7 +357,7 @@ Here is a table of the corresponding number syntax and operations:
 | x & y | x land y |
 | x $\mid$ y | x lor y |
 | x ^ y | x lxor y |
-| ~ x | lnot x |
+| ~ x | lnot(x) |
 | x << n | x lsl n |
 | x >> n | x lsr n |
 
