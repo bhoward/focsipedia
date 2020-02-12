@@ -35,7 +35,12 @@ particular values, such as the number 42 or the student Joe, that might be used 
 $Q(a)$ could represent the statement "42 is an even number." When the variable is bound by a
 quantifier, I generally use $x$ or $y$ instead, to emphasize that the formula is saying something
 about the full range of values from the domain of discourse, and we are not free to interpret it as
-any particular entity.
+any particular entity. The actual name of a bound variable does not matter, only the association between
+its uses and the quantifier that is binding it. That is, we will consider $\exists xP(x)$ and
+$\exists yP(y)$ to be the same (and we may choose the name of the variable to avoid confusion with
+other variables as needed).[^The analogy in programming is to note that the index variable for a loop
+can be anything; although we might usually use _i_, we may consistently switch to using _j_ for a given
+loop if there is already a variable named _i_ in that part of the program.]
 
 Just as we can introduce temporary assumptions into subproofs, that are only available within that
 nested block of the proof, we will also introduce temporary entity variables in proofs by writing 
@@ -43,5 +48,24 @@ an assumption such as "fresh $x_0$". This means that, within that subproof, the 
 refer to some entity from the domain of discourse. Unlike the variables ($x$, $y$, &hellip;) bound by
 quantifiers, such a fresh variable should be understood as representing a single entity; it can stand
 alone in a statement such as $Q(x_0)$. However, unlike the top-level free variables ($a$, $b$, &hellip;),
-we do not get to choose a values for a fresh variable, nor is it allowed to escape from its
+we do not get to choose a value for a fresh variable, nor is it allowed to escape from its
 subproof. That is, no formula outside of the braces is allowed to refer to $x_0$.
+
+## Universal Quantification
+
+To prove a proposition $\forall xP(x)$, we need to show that $P(x)$ is true regardless of which entity
+is substituted for $x$. This is what a subproof with a fresh variable gives us:
+
+$$ \begin{array}{l}
+i: \text{fresh}\ x_0\Rightarrow\{\\
+\quad\ldots\\
+\quad P(x_0)\\
+\}\\ \hline\therefore
+\forall xP(x), \quad\forall I\ i
+\end{array} $$
+
+The nested proof is a demonstration that $P(x_0)$ is true with no external assumptions on which entity
+$x_0$ refers to. The only way we can do this is if $P(x)$ is actually true for all entities $x$ in the domain
+of discourse, that is, $\forall xP(x)$.
+
+Here is an example from a proof about arithmetic

@@ -280,14 +280,14 @@ to introduce the conjunction $p\land q$ in a proof we need to first establish
 the premises $p$ and $q$ individually:
 
 $$ \begin{array}{l}
-x: p\\
-y: q\\ \hline\therefore
-p\land q, \quad\land I\ x,y
+i: p\\
+j: q\\ \hline\therefore
+p\land q, \quad\land I\ i,j
 \end{array} $$
 
-The $x$ and $y$ labels on the premises are shown here to allow us to refer to
-them in the "justification" attached to the conclusion: $\land I\ x, y$ stands
-for "AND introduction from premises labeled $x$ and $y$." Here is an example of
+The $i$ and $j$ labels on the premises are shown here to allow us to refer to
+them in the "justification" attached to the conclusion: $\land I\ i, j$ stands
+for "AND introduction from premises labeled $i$ and $j$." Here is an example of
 how this rule might be used in the proof of
 $\lnot p, p\lor q\vdash\lnot p\land(p\lor q)$:
 
@@ -301,13 +301,13 @@ The elimination rules for conjunction allow us to move from the premise $p\land 
 to either the conclusion $p$ or the conclusion $q$:
 
 $$ \begin{array}{l}
-x: p\land q\\ \hline\therefore
-p, \quad\land E_1\ x
+i: p\land q\\ \hline\therefore
+p, \quad\land E_1\ i
 \end{array} $$
 
 $$ \begin{array}{l}
-x: p\land q\\ \hline\therefore
-q, \quad\land E_2\ x
+i: p\land q\\ \hline\therefore
+q, \quad\land E_2\ i
 \end{array} $$
 
 Here is a proof that combines the introduction and elimination rules for conjunction
@@ -348,15 +348,15 @@ notation for an anonymous function block in languages such as JavaScript, Scala,
 ReasonML:
 
 $$ \begin{array}{l}
-x: p \Rightarrow\{\\
+i: p \Rightarrow\{\\
 \quad\ldots\\
 \quad q\\
 \}\\ \hline\therefore
-p\rightarrow q, \quad\rightarrow I\ x
+p\rightarrow q, \quad\rightarrow I\ i
 \end{array} $$
 
 The curly braces around the nested proof (which is also indented for clarity) emphasize
-that the temporary assumption that $p$ is true, labeled $x$, is only available within
+that the temporary assumption that $p$ is true, labeled $i$, is only available within
 that section of the proof. No conclusion within the braces should be referred to from
 outside that section (just as you cannot access local variables from a block or function
 definition when programming); at the end of the subproof, we extract the last conclusion
@@ -390,9 +390,9 @@ its parameter and compute a result, the subproof that establishes $p\rightarrow 
 how to take an argument (!) for $p$ and produce the extra steps needed to conclude $q$.
 
 $$ \begin{array}{l}
-x: p\rightarrow q\\
-y: p\\ \hline\therefore
-q, \quad\rightarrow E\ x,y
+i: p\rightarrow q\\
+j: p\\ \hline\therefore
+q, \quad\rightarrow E\ i,j
 \end{array} $$
 
 Here is a proof of the argument $p\rightarrow q\vdash p\rightarrow p\land q$:
@@ -412,13 +412,13 @@ To prove the disjunction $p\lor q$, it is enough to prove either $p$ or $q$
 alone. This leads to two obvious introduction rules:
 
 $$ \begin{array}{l}
-x: p\\ \hline\therefore
-p\lor q, \quad\lor I_1\ x
+i: p\\ \hline\therefore
+p\lor q, \quad\lor I_1\ i
 \end{array} $$
 
 $$ \begin{array}{l}
-x: q\\ \hline\therefore
-p\lor q, \quad\lor I_2\ x
+i: q\\ \hline\therefore
+p\lor q, \quad\lor I_2\ i
 \end{array} $$
 
 Here are two distinct proofs of the argument $p\land q\vdash p\lor q$:
@@ -460,24 +460,24 @@ an OR, we need to conduct two subproofs (just as in the $\rightarrow I$ rule), o
 for each possible case. Here is the rule:
 
 $$ \begin{array}{l}
-x: p\lor q\\
-y: p\Rightarrow\{\\
+i: p\lor q\\
+j: p\Rightarrow\{\\
 \quad\ldots\\
 \quad r\\
 \}\\
-z: q\Rightarrow\{\\
+k: q\Rightarrow\{\\
 \quad\ldots\\
 \quad r\\
 \}\\ \hline\therefore
-r, \quad\lor E\ x, y, z
+r, \quad\lor E\ i, j, k
 \end{array} $$
 
-In words, this says that we have our disjunction, $p\lor q$, labeled $x$, plus two
-nested subproofs, labeled $y$ and $z$ (as always, in an actual proof, these parts
+In words, this says that we have our disjunction, $p\lor q$, labeled $i$, plus two
+nested subproofs, labeled $j$ and $k$ (as always, in an actual proof, these parts
 may be laid out in any order, with other parts of the proof in between; however,
 for readability it is suggested that the proof be structured just as shown). The
-subproof $y$ concludes some proposition $r$ from the additional premise $p$, while
-the subproof $z$ concludes the same $r$ from the alternate premise $q$. Since we
+subproof $j$ concludes some proposition $r$ from the additional premise $p$, while
+the subproof $k$ concludes the same $r$ from the alternate premise $q$. Since we
 know that either $p$ or $q$ is true at this point in the proof, we are able to
 conclude $r$ regardless of which it is.
 
@@ -515,11 +515,11 @@ is true&hellip;. This suggests that we get zero introduction rules and
 one elimination rule, which just has the premise $\F$ and zero nested subproofs:
 
 $$ \begin{array}{l}
-x: \F\\ \hline\therefore
-r, \quad\F E\ x
+i: \F\\ \hline\therefore
+r, \quad\F E\ i
 \end{array} $$
 
-That is, if we have a proof of $\F$, labeled $x$, then we can produce a proof of
+That is, if we have a proof of $\F$, labeled $i$, then we can produce a proof of
 any arbitrary proposition $r$! Logicians like to refer to this as _ex falso quodlibet_,
 "from falsehood, anything." If your premises are consistent, you should never be able
 to prove $\F$ at the top level of a proof; if you could do that, then you could use
@@ -549,20 +549,21 @@ this will be discussed further in the [Miscellaneous](#miscellaneous) section be
 
 ### Negation
 
-Since $\lnot p\equiv p\rightarrow\F$, we could simply derive the rules for negation
+Since the laws of Boolean algebra tell us that $\lnot p\equiv p\rightarrow\F$,
+we could simply derive the rules for negation
 from those for implication, specialized to the conclusion $\F$. However, it is
-convenient to have rules explicitly to deal with negation, and there is an
+convenient to have rules explicitly to deal with negation. There is also one
 additional rule for negation that does not fit the pattern of the rest of the rules
 (see below).
 
 Accordingly, here is the introduction rule for negation:
 
 $$ \begin{array}{l}
-x: p \Rightarrow\{\\
+i: p \Rightarrow\{\\
 \quad\ldots\\
 \quad \F\\
 \}\\ \hline\therefore
-\lnot p, \quad\lnot I\ x
+\lnot p, \quad\lnot I\ i
 \end{array} $$
 
 In words, if we give a nested subproof that arrives at a contradiction (_i.e._,
@@ -572,12 +573,12 @@ be false.
 Similarly, here is the elimination rule for negation:
 
 $$ \begin{array}{l}
-x: \lnot p\\
-y: p\\ \hline\therefore
-\F, \quad\lnot E\ x,y
+i: \lnot p\\
+j: p\\ \hline\therefore
+\F, \quad\lnot E\ i,j
 \end{array} $$
 
-That is, one way to demonstrate a contradiction is to have proofs ($x$ and $y$)
+That is, one way to demonstrate a contradiction is to have proofs ($i$ and $j$)
 of both $\lnot p$ and $p$. Compare these rules to $\rightarrow I$ and $\rightarrow E$,
 and confirm that they are just the special case of rules for $p\rightarrow q$ where
 $q$ is $\F$.
@@ -631,8 +632,8 @@ wrapping up some loose ends in the next section) is the rule of double negation
 elimination:
 
 $$ \begin{array}{l}
-x: \lnot\lnot p\\ \hline\therefore
-p, \quad\lnot\lnot E\ x
+i: \lnot\lnot p\\ \hline\therefore
+p, \quad\lnot\lnot E\ i
 \end{array} $$
 
 With this additional rule, we may finish the proof of the equivalence of the
@@ -659,8 +660,8 @@ have access to propositions from nested proofs from the outside).
 This leads to the trivial rule
 
 $$ \begin{array}{l}
-x: p\\ \hline\therefore
-p, \quad x
+i: p\\ \hline\therefore
+p, \quad i
 \end{array} $$
 
 The justification for $p$ is simply the label of the previous line
@@ -680,10 +681,10 @@ argument $p_1,\ldots,p_n\vdash q$, we may reuse that proof in
 future proofs as if it were another deduction rule:
 
 $$ \begin{array}{l}
-x_1: p_1\\
+i_1: p_1\\
 \ldots\\
-x_n: p_n\\ \hline\therefore
-q, \quad (p_1,\ldots,p_n\vdash q)\ x_1,\ldots,x_n
+i_n: p_n\\ \hline\therefore
+q, \quad (p_1,\ldots,p_n\vdash q)\ i_1,\ldots,i_n
 \end{array} $$
 
 Instead of citing the argument like that in the justification, it
@@ -724,57 +725,57 @@ analogous to calling an already written function out of a library.
 **Conjunction:**
 
 $$ \begin{array}{ll|ll|l}
-x: p & \qquad & & \qquad & \\
-y: q & & x: p\land q & & x: p\land q\\ \hline
-\therefore p\land q, \quad\land I\ x, y & & \therefore p, \quad\land E_1\ x & & \therefore q, \quad\land E_2\ x
+i: p & \qquad & & \qquad & \\
+j: q & & i: p\land q & & i: p\land q\\ \hline
+\therefore p\land q, \quad\land I\ i, j & & \therefore p, \quad\land E_1\ i & & \therefore q, \quad\land E_2\ i
 \end{array} $$
 
 ---
 **Implication, Reference:**
 
 $$ \begin{array}{ll|ll|l}
-x: p \Rightarrow\{ & \qquad & & \qquad & \\
+i: p \Rightarrow\{ & \qquad & & \qquad & \\
 \quad\ldots\\
-\quad q & & x: p\rightarrow q\\
-\} & & y: p & & x: p\\ \hline
-\therefore p\rightarrow q, \quad\rightarrow I\ x & & \therefore q, \quad\rightarrow E\ x,y & & \therefore p, \quad x
+\quad q & & i: p\rightarrow q\\
+\} & & j: p & & i: p\\ \hline
+\therefore p\rightarrow q, \quad\rightarrow I\ i & & \therefore q, \quad\rightarrow E\ i,j & & \therefore p, \quad i
 \end{array} $$
 
 ---
 **Disjunction:**
 
 $$ \begin{array}{ll|ll|l}
-& \qquad & & \qquad & x: p\lor q\\
-& & & & y: p\Rightarrow\{\\
+& \qquad & & \qquad & i: p\lor q\\
+& & & & j: p\Rightarrow\{\\
 & & & & \quad\ldots\\
 & & & & \quad r\\
 & & & & \}\\
-& & & & z: q\Rightarrow\{\\
+& & & & k: q\Rightarrow\{\\
 & & & & \quad\ldots\\
 & & & & \quad r\\
-x: p & & x: q & & \}\\ \hline
-\therefore p\lor q, \quad\lor I_1\ x & & \therefore p\lor q, \quad\lor I_2\ x & & \therefore r, \quad\lor E\ x, y, z
+i: p & & i: q & & \}\\ \hline
+\therefore p\lor q, \quad\lor I_1\ i & & \therefore p\lor q, \quad\lor I_2\ i & & \therefore r, \quad\lor E\ i, j, k
 \end{array} $$
 
 ---
 **True, False, Theorem:**
 
 $$ \begin{array}{ll|ll|l}
-& \qquad & & \qquad & x_1: p_1\\
+& \qquad & & \qquad & i_1: p_1\\
 & & & & \ldots\\
-& & x: \F & & x_n: p_n\\ \hline
-\therefore\T, \quad\T I & & \therefore r, \quad\F E\ x & & \therefore q, \quad (p_1,\ldots,p_n\vdash q)\ x_1,\ldots,x_n
+& & i: \F & & i_n: p_n\\ \hline
+\therefore\T, \quad\T I & & \therefore r, \quad\F E\ i & & \therefore q, \quad (p_1,\ldots,p_n\vdash q)\ i_1,\ldots,i_n
 \end{array} $$
 
 ---
 **Negation:**
 
 $$ \begin{array}{ll|ll|l}
-x: p \Rightarrow\{ & \qquad & & \qquad & \\
+i: p \Rightarrow\{ & \qquad & & \qquad & \\
 \quad\ldots\\
-\quad \F & & x: \lnot p\\
-\} & & y: p & & x: \lnot\lnot p\\ \hline
-\therefore\lnot p, \quad\lnot I\ x & & \therefore\F, \quad\lnot E\ x,y & & \therefore p, \quad\lnot\lnot E\ x
+\quad \F & & i: \lnot p\\
+\} & & j: p & & i: \lnot\lnot p\\ \hline
+\therefore\lnot p, \quad\lnot I\ i & & \therefore\F, \quad\lnot E\ i,j & & \therefore p, \quad\lnot\lnot E\ i
 \end{array} $$
 
 ## Invalid Arguments
