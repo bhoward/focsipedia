@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 12 Feb 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 14 Feb 2020 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Natural Deduction Continued]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/deduction2</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/deduction2</guid>
+            <pubDate>Fri, 14 Feb 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Natural Deduction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/deduction</link>
