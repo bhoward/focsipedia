@@ -54,14 +54,14 @@ able to refer to by name:
 Just as we can introduce temporary assumptions into subproofs, that are only
 available within that nested block of the proof, we will also introduce
 temporary entity variables in proofs by writing an assumption such as "fresh
-$x_0$". This means that, within that subproof, the variable $x_0$ will refer to
-some entity from the domain of discourse. Unlike the variables ($x$, $y$,
-&hellip;) bound by quantifiers, such a fresh variable should be understood as
-representing a single entity; it can stand alone in a statement such as
-$Q(x_0)$. However, unlike the top-level free variables ($a$, $b$, &hellip;), we
-do not get to choose a value for a fresh variable, nor is it allowed to escape
-from its subproof. That is, no formula outside of the braces is allowed to refer
-to $x_0$.
+$x_0$" (or $x_1$, &hellip;, as needed). This means that, within that subproof,
+the variable $x_0$ will refer to some entity from the domain of discourse.
+Unlike the variables ($x$, $y$, &hellip;) bound by quantifiers, such a fresh
+variable should be understood as representing a single entity; it can stand
+alone in a statement such as $Q(x_0)$. However, unlike the top-level free
+variables ($a$, $b$, &hellip;), we do not get to choose a value for a fresh
+variable, nor is it allowed to escape from its subproof. That is, no formula
+outside of the braces is allowed to refer to $x_0$.
 
 ## Universal Quantification
 
@@ -126,7 +126,8 @@ $$ \begin{array}{l|l}
 \end{array} $$
 
 Here is a longer example showing a quantified version of the law of syllogism,
-$\forall x(P(x)\rightarrow Q(x)), \forall x(Q(x)\rightarrow R(x))\vdash\forall x(P(x)\rightarrow R(x))$:
+$\forall x(P(x)\rightarrow Q(x)), \forall x(Q(x)\rightarrow R(x))\vdash\forall
+x(P(x)\rightarrow R(x))$:
 
 $$ \begin{array}{l|l}
 \ell_1: \text{fresh}\ x_0\Rightarrow\{\\
@@ -157,9 +158,9 @@ i: P(a)\\ \hline\therefore
 That is, to show that there exists some $x$ making $P(x)$ true it is enough
 to show a specific $a$ in the domain of discourse such that $P(a)$ holds.
 
-For example, we may prove the validity of the argument
-$\forall xP(x)\vdash\exists xP(x)$, as long as we are able to name some element
-$a$ of the domain of discourse:
+For example, we may prove the validity of the argument $\forall
+xP(x)\vdash\exists xP(x)$, as long as we are able to name some element $a$ of
+the domain of discourse:
 
 $$ \begin{array}{l|l}
 \ell_1: \forall xP(x) & \text{premise}\\
@@ -167,23 +168,23 @@ $$ \begin{array}{l|l}
 \ell_3: \exists xP(x) & \exists I\ \ell_2, a
 \end{array} $$
 
-For a different sort of example, suppose we are proving statements of arithmetic,
-and we have some means of deriving various equations and inequations about integers.
-Then we might see the following in a proof:
+For a different sort of example, suppose we are proving statements of
+arithmetic, and we have some means of deriving various equations and inequations
+about integers. Then we might see the following in a proof:
 
 $$ \begin{array}{l|l}
 \ell_1: 6\cdot 7=42 & \text{arithmetic}\\
-\ell_2: 6>1 & \text{arithmetic}\\
-\ell_3: 7>1 & \text{arithmetic}\\
-\ell_4: 6\cdot 7=42 \land 6>1 & \land I\ \ell_1, \ell_2\\
-\ell_5: 6\cdot 7=42 \land 6>1 \land 7>1 & \land I\ \ell_4, \ell_3\\
-\ell_6: \exists n(6\cdot n=42 \land 6>1 \land n>1) & \exists I\ \ell_5, 7\\
-\ell_7: \exists m\exists n(m\cdot n=42 \land m>1 \land n>1) & \exists I\ \ell_6, 6
+\ell_2: 7>1 & \text{arithmetic}\\
+\ell_3: 7>1 \land 6\cdot 7=42 & \land I\ \ell_2, \ell_1\\
+\ell_4: \exists n(n>1 \land 6\cdot n=42) & \exists I\ \ell_3, 7\\
+\ell_5: 6>1 & \text{arithmetic}\\
+\ell_6: 6>1 \land \exists n(n>1 \land 6\cdot n=42) & \land I\ \ell_5, \ell_4\\
+\ell_7: \exists m(m>1 \land \exists n(n>1 \land m\cdot n=42)) & \exists I\ \ell_6, 6
 \end{array} $$
 
-The conclusion on the last line shows that the number 42 is prime. There are other
+The conclusion on the last line shows that the number 42 is composite. There are other
 proofs of this fact (for example, starting from $3\cdot 14=42$); to show that 42 is
-prime, we only have to come up with one way of factoring it into numbers greater than 1.
+composite, we only have to come up with one way of factoring it into numbers greater than 1.
 
 Finally, just as with the elimination rule for disjunction, the elimination rule for
 the existential is somewhat more complicated. However, instead of doing a case
