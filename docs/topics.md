@@ -19,7 +19,7 @@ title: Topics
 ### Natural Deduction for [Propositions](logic/deduction.md), and [Predicates](logic/pred-deduction.md)
 
 ## Week 4: Functional Programming
-### Recursion and Induction
+### [Induction](logic/induction.md) and Recursion
 
 ### Functions and Functional Programming
 
