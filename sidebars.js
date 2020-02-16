@@ -21,6 +21,7 @@ module.exports = {
       'logic/deduction',
       'logic/pred-deduction',
       'logic/induction',
+      'logic/recursion',
     ],
     Features: ['reason',
       'styleGuide',
