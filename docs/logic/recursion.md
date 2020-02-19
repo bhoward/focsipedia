@@ -90,7 +90,6 @@ let rec factorial = n => {
 print_int(factorial(5));
 ```
 
-
 In order to compute _factorial_($n$) for $n>0$, this function
 first computes _factorial_($n-1$) by calling itself recursively.
 The answer from that computation is then multiplied by $n$ to give the
@@ -645,4 +644,3 @@ satisfies $f_n<2^n$ for all natural numbers $n$.
 numbers which is defined recursively by $a_1=1$ and
 $a_n=2a_{n-1}+2^{n-1}$ for $n>1$.  Prove that
 $a_n=n2^{n-1}$ for every positive integer $n$.
-
