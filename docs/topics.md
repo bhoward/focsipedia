@@ -21,7 +21,7 @@ title: Topics
 ## Week 4: Functional Programming
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
-### Functions and Functional Programming
+### [Functions](logic/functions.md) and Functional Programming
 
 ## Week 5:
 ### Algebraic Data Types and Pattern Matching
