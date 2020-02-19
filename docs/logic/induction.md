@@ -97,7 +97,7 @@ Here, $P(n)$ is the statement that $2^{2n}-1$ is divisible by 3.
 **Inductive case:** We want to show that if the statement is true for $n=k$ 
 (where $k$ is an arbitrary natural number),
 then it is true for $n=k+1$ also.  That is, we must prove the implication
-$P(k) \rightarrow P(k+1)$.  So we assume $P(k)$, that is, we assume that $2^{2k}$ is
+$P(k) \rightarrow P(k+1)$.  So we assume $P(k)$, that is, we assume that $2^{2k}-1$ is
 divisible by 3.  This means that $2^{2k} -1 = 3m$ for some integer $m$.
 We want to prove $P(k+1)$, that is, that $2^{2(k+1)}-1$ is also divisible by 3:
 >
