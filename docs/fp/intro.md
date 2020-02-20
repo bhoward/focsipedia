@@ -37,7 +37,8 @@ where ${\textit{int}}^{\textit{\small{int}}}$ is the set of all
 functions that map the set _int_ to the set _int_.
 
 The first line of the function, `int square(int n)`, is called
-the **prototype** of the function.  The prototype specifies the
+the **signature** of the function (in some languages, such as C++, it
+is called the **prototype**).  The signature specifies the
 name, the domain, and the range of the function and so carries
 exactly the same information as the notation "$f\colon A\to B$".
 The "$n$" in "`int square(int n)`" is a name for
@@ -73,7 +74,7 @@ boolean even(int k) {
 }
 ```
 You don't need to worry about all the details here, but you should
-understand that the prototype, `boolean even(int k)`,
+understand that the signature, `boolean even(int k)`,
 says that _even_ is a function from the set _int_
 to the set _boolean_.  That is,
 $\textit{even}\colon\textit{int}\to\textit{boolean}$.  Given
@@ -82,7 +83,7 @@ if $N$ is an even integer, and it has the value _false_
 if $N$ is an odd integer.
 
 A function can have more than one parameter.  For example, we might
-define a function with prototype `int index(String str, String sub)`.
+define a function with signature `int index(String str, String sub)`.
 If $s$ and $t$ are strings, then $\textit{index}(s,t)$ would be the
 _int_ that is the value of the function at the ordered pair
 $(s,t)$.  We see that the domain of _index_ is the cross product
@@ -123,7 +124,7 @@ has been changed as a side-effect of some other part of the program.
 Another way to say that a function is impure is that it depends on a
 **hidden state**&mdash;some extra information affecting the result that
 is not provided by the function's direct inputs.
-A common example is the method in the _java.util.Random_ class with prototype
+A common example is the method in the _java.util.Random_ class with signature
 `int nextInt(int N)`, which returns a random integer between
 0 and $N-1$.  The value of _nextInt_(5) could be 0, 1, 2, 3, or 4.
 This is not the behavior of a mathematical function! Behind the scenes,
@@ -173,7 +174,7 @@ ability to update the value assigned to a variable. In ReasonML, there
 is no assignment statement. When a value is bound to a variable with a
 `let` statement, that variable will then remain bound to that value for
 as long as the variable exists. A variable will cease to exist when the
-block (such as a function body) containing it is exited:
+block (such as a function body) containing it is finished:
 ```reason demo
 {
   let x = 42;
@@ -228,40 +229,42 @@ be treated as a data value in the same way as a _String_
 or an _int_.  However, recent versions of Java have taken a step in this
 direction.  It is possible for a function to be a parameter
 to another function, as long as it is wrapped in a "function object".
-For example, consider the function prototype
+For example, consider the function signature
 ```java
-double sumten( Function<Integer, Double> f )
+int sumten( Function<Integer, Integer> f )
 ```
-This is a prototype for a function named _sumten_ whose
+This is a signature for a function named _sumten_ whose
 parameter is a function object.  The parameter is specified by the
-type "`Function<Integer, Double>`".  This means that the parameter
-is essentially a function from _int_ to _double_.  The parameter
-name, $f$, stands for an arbitrary such function.  Mathematically,
-$f\in \textit{double}^{\textit{int}}$, and so
-$\textit{sumten}\colon \textit{double}^{\textit{int}}\to\textit{double}$.
+type "`Function<Integer, Integer>`".  If _S_ and _T_ are types, then
+the type `Function<S, T>` represents functions from _S_ to _T_. Therefore,
+the parameter of _sumten_ is essentially a function from _int_ to _int_.[^For
+our purposes we may ignore the distinction between _int_ and _Integer_ in Java.]
+The parameter name, $f$, stands for an arbitrary such function.  Mathematically,
+$f\in \textit{int}^{\textit{int}}$, and so
+$\textit{sumten}\colon \textit{int}^{\textit{int}}\to\textit{int}$.
 
 My idea is that $\textit{sumten}(f)$ would compute
 $f(1)+f(2)+\cdots+f(10)$.  A more useful function would
 be able to compute $f(a)+f(a+1)+\cdots+f(b)$ for any integers
 $a$ and $b$.  This just means that $a$ and $b$ should be
-parameters to the function.  The prototype for the improved
+parameters to the function.  The signature for the improved
 function would look like
 ```java
-double sum( Function<Integer, Double> f, int a, int b )
+int sum( Function<Integer, Integer> f, int a, int b )
 ```
 The parameters to _sum_ form an ordered triple in which
 the first coordinate is a function and the second and third
 coordinates are integers.  So, we could write
 $$
-\textit{sum}\colon \textit{double}^{\textit{int}}
-       \times\textit{int}\times\textit{int}\to\textit{double}
+\textit{sum}\colon \textit{int}^{\textit{int}}
+       \times\textit{int}\times\textit{int}\to\textit{int}
 $$
 It's interesting that computer programmers deal routinely
 with such complex objects.
 
 There are several ways of providing a function object as an
 argument in Java. If we want to pass the method _m_ of an object
-_x_, where the prototype of _m_ is `double m( int i )`, then
+_x_, where the signature of _m_ is `int m( int i )`, then
 we can call our function as `sum(x::m, a, b)`. However, a more
 general technique is to use an **anonymous function**, also known
 as a **lambda**.[^The mathematician Alonzo Church introduced in
@@ -275,26 +278,21 @@ use of lambda, and the name has stuck.]
 
 ## Anonymous functions
 
-In Java, an expression such as `i -> { return i / 2.0; }`
+In Java, an expression such as `i -> { return i * i; }`
 creates a function object that takes an _int_ (this will be
-determined from the context) and returns a _double_. This
-particular function divides its input by 2, preserving any
-fractional result. Thus, if we call our _sum_ function as
+determined from the context) and returns another _int_. This
+particular function squares its input. Thus, if we call our _sum_ function as
 follows:
 ```java
-sum(i -> { return i / 2.0; }, 1, 10)
+sum(i -> { return i * i; }, 1, 10)
 ```
-the result will be $\frac{1}{2}+\frac{2}{2}+\cdots+\frac{10}{2}$,
-which is 27.5.
+the result will be $1^2 + 2^2 + \cdots + 10^2$,
+which is 385.
 
 Many languages now support a similar syntax for creating anonymous
 function values, and offer some facility for working with functions
 as (mostly) first-class objects. For example, the same function
-is expressed in ReasonML as `i => { float_of_int(i) /. 2.0 }` (the
-explicit conversion from _int_ to _float_, and the special floating-point
-division operator `/.`, are related to the facts that ReasonML is very
-particular about the types of values, and yet it rarely requires the
-programmer to declare any types). Since one of the hallmarks of
+is expressed in ReasonML as `i => { i * i }`. Since one of the hallmarks of
 the functional languages is their ability to work with function
 values, you can imagine that they tend to provide the most
 thorough integration of functions with other kinds of values.
@@ -306,8 +304,8 @@ then in ReasonML:
 import java.util.function.Function;
 
 public class SumDemo {
-  private static double sum(Function<Integer, Double> f, int a, int b) {
-    double total = 0;
+  private static int sum(Function<Integer, Integer> f, int a, int b) {
+    int total = 0;
     for (int i = a; i <= b; i++) {
       total += f.apply(i);
     }
@@ -315,7 +313,7 @@ public class SumDemo {
   }
 
   public static void main(String[] args) {
-    System.out.println(sum(i -> { return i / 2.0; }, 1, 10));
+    System.out.println(sum(i -> { return i * i; }, 1, 10));
   }
 }
 ```
@@ -323,13 +321,13 @@ public class SumDemo {
 ```reason edit
 let rec sum = (f, a, b) => {
   if (a > b) {
-    0.0
+    0
   } else {
-    f(a) +. sum(f, a+1, b)
+    f(a) + sum(f, a+1, b)
   }
 };
 
-print_float(sum(i => { float_of_int(i) /. 2.0 }, 1, 10));
+print_int(sum(i => { i * i }, 1, 10));
 print_newline();
 ```
 
@@ -344,31 +342,52 @@ that name.
 
 As a simpler function definition in ReasonML, not needing the "rec"
 keyword, here is our _square_ function again:
-```reason edit
+```reason demo
 let square = n => { n * n };
+```
+This is just binding the anonymous function we have been using above
+to the name _square_. Note that the function `n => { n * n }` is
+exactly the same as the function `i => { i * i }`, because the name
+of the parameter does not matter outside the function.
+
+An interesting fact about ReasonML is that the operators are also functions,
+bound to names made out of operator symbols instead of letters and digits. To
+refer to an operator as a function value, just put the operator in parentheses:
+`(+)`, `(*)`, `(==)`, &hellip;. Therefore, an expression such as `a + b * c`
+can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
+the usual higher precedence of multiplication over addition).
+For example, if we wanted to define an exponentiation operator on _int_, and
+call it `***`, we could define it as follows:[^The code here is based on the
+solution to an exercise in the [Recursion](logic/recursion) section.]
+```reason demo
+let rec (***) = (n, p) => {
+  if (p == 0) {
+    1
+  } else if (p mod 2 == 0) {
+    (n * n) *** (p / 2)
+  } else {
+    n * (n *** (p - 1))
+  }
+};
 ```
 
 It is even possible in functional languages for a function to return
 another function as its value.  For example,
-```reason edit
+```reason demo
 let monomial = (a, n) => {
-  x => { a *. x ** n }
+  x => { a * x *** n }
 };
 ```
-Here, `x ** n` computes $x^n$, so for any
-numbers $a$ and $n$, the value of $\textit{monomial}(a,n)$ is 
+Here, `x *** n` is our exponentiation operator from above, which computes $x^n$, so for any
+integers $a$ and $n$, the value of $\textit{monomial}(a,n)$ is 
 a function that computes $ax^n$.  Thus,
 ```reason edit
-let f = monomial(2.0, 3.0);
+let f = monomial(2, 3);
 ```
-would define $f$ to be the function that satisfies $f(x)=2x^3$.
-
-By composing $f$ with the _float_of_int_ conversion function, we can
-get a function $g\colon\textit{int}\to\textit{float}$, ready to be handed
-to our _sum_ function:
+would define $f$ to be the function that satisfies $f(x)=2x^3$. This is
+now ready to be handed to our _sum_ function:
 ```reason edit
-let g = n => { f(float_of_int(n)) };
-print_float( sum( g, 3, 6 ) );
+print_int( sum( f, 3, 6 ) );
 ```
 would compute $2*3^3+2*4^3+2*5^3+2*6^3$.  In fact, _monomial_
 can be used to create an unlimited number of new functions
@@ -380,8 +399,8 @@ might give you some idea of its power.
 
 ## Exercises
 
-1. For each of the following Java function prototypes, translate the
-prototype into a standard mathematical function specification, such
+1. For each of the following Java function signatures, translate the
+signature into a standard mathematical function specification, such
 as $\textit{func}\colon\textit{double}\to\textit{int}$.
    * `int strlen(String s)`
    * `double pythag(double x, double y)`
@@ -390,7 +409,7 @@ as $\textit{func}\colon\textit{double}\to\textit{int}$.
    * `String unlikely(Function<String, Integer> f)`
    * `int h(Function<Integer, Integer> f, Function<Integer, Integer> g)`
 
-2. Write a Java function prototype for a function that
+2. Write a Java function signature for a function that
 belongs to each of the following sets.
 
    * $\textit{String}^{\textit{String}}$
@@ -411,13 +430,12 @@ corresponds to the construction of this data type?  Why?
 
 4. Let _square_, _sum_ and _monomial_
 be the ReasonML functions described in this section.  What is the
-value of each of the following? (TODO: these need various conversions
-between _int_ and _float_&hellip;)
+value of each of the following?
    * _sum_(_square_, 2, 4)
-   * _sum_(_monomial_(5,2), 1, 3)
+   * _sum_(_monomial_(5, 2), 1, 3)
    * _monomial_(_square_(2), 7)
    * _sum_($n\Rightarrow\{ 2*n \}$, 1, 5)
-   * _square_(_sum_(_monomial_(2,3), 1, 2))
+   * _square_(_sum_(_monomial_(2, 3), 1, 2))
 }
 
 5. Write a ReasonML function named _compose_
