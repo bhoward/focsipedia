@@ -11,7 +11,7 @@ title: Topics
 ## Week 2:
 ### [Common Circuit Components and Design](logic/components.md)
 
-### Sets: [Concepts](logic/set-concepts.md), [Boolean Algebra](logic/set-algebra.md), and [Programming](logic/set-programming.md)
+### Sets: [Concepts](sets/concepts.md), [Boolean Algebra](sets/algebra.md), and [Programming](sets/programming.md)
 
 ## Week 3:
 ### [Predicates and Quantifiers](logic/preds.md), Proofs and Theorem Provers
@@ -21,7 +21,7 @@ title: Topics
 ## Week 4: Functional Programming
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
-### [Functions](logic/functions.md) and Functional Programming
+### [Functions](sets/functions.md) and [Functional Programming](fp/intro.md)
 
 ## Week 5:
 ### Algebraic Data Types and Pattern Matching

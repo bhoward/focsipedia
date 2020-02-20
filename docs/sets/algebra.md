@@ -1,5 +1,5 @@
 ---
-id: set-algebra
+id: algebra
 title: Boolean Algebra of Sets
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';

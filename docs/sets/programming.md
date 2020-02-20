@@ -1,5 +1,5 @@
 ---
-id: set-programming
+id: programming
 title: Programming with Sets
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
