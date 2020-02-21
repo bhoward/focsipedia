@@ -358,7 +358,7 @@ can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
 the usual higher precedence of multiplication over addition).
 For example, if we wanted to define an exponentiation operator on _int_, and
 call it `***`, we could define it as follows:[^The code here is based on the
-solution to an exercise in the [Recursion](logic/recursion) section.]
+solution to an exercise in the Recursion section.]
 ```reason demo
 let rec (***) = (n, p) => {
   if (p == 0) {
