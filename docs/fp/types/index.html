@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="generator" content="Docusaurus">
+<link rel="alternate" type="application/rss+xml" href="/focsipedia/blog/rss.xml" title="FoCSipedia Blog RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/focsipedia/blog/atom.xml" title="FoCSipedia Blog Atom Feed">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css">
+<script src="/focsipedia/eval.js"></script>
+<script src="/focsipedia/refmt.js"></script>
+
+<title data-react-helmet="true">Types in Functional Programming | FoCSipedia</title>
+
+<meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"><meta data-react-helmet="true" property="og:title" content="FoCSipedia"><meta data-react-helmet="true" name="twitter:card" content="summary"><meta data-react-helmet="true" name="description" content="import useBaseUrl from &#x27;@docusaurus/useBaseUrl&#x27;;"><meta data-react-helmet="true" property="og:description" content="import useBaseUrl from &#x27;@docusaurus/useBaseUrl&#x27;;"><meta data-react-helmet="true" property="og:url" content="https://bhoward.github.io//focsipedia/docs/fp/types">
+
+<link data-react-helmet="true" rel="shortcut icon" href="/focsipedia/img/favicon.ico">
+
+
+<link rel="stylesheet" href="/focsipedia/styles.3194413c.css">
+
+
+<link rel="preload" href="/focsipedia/styles.01c9a410.js" as="script">
+
+<link rel="preload" href="/focsipedia/runtime~main.00e69989.js" as="script">
+
+<link rel="preload" href="/focsipedia/main.97a886d8.js" as="script">
+
+<link rel="preload" href="/focsipedia/1.ec0bb3cd.js" as="script">
+
+<link rel="preload" href="/focsipedia/2.1397a978.js" as="script">
+
+<link rel="preload" href="/focsipedia/1be78505.6bc01bdf.js" as="script">
+
+<link rel="preload" href="/focsipedia/90510764.de533be9.js" as="script">
+
+<link rel="preload" href="/focsipedia/17896441.1117f0f7.js" as="script">
+
+<link rel="preload" href="/focsipedia/94ead6cb.02db901a.js" as="script">
+
+</head>
+<body>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}function e(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}var n=window.matchMedia("(prefers-color-scheme: dark)");n.addListener((function(n){null===e()&&t(n.matches?"dark":"")}));var a=e();null!==a?t(a):n.matches&&t("dark")}()</script>
+<div id="__docusaurus">
+<nav class="navbar navbar--light navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a aria-current="page" class="navbar__brand active" href="/focsipedia/"><img class="navbar__logo" src="/focsipedia/img/SmartFoxIcon.jpeg" alt="Smart Fox Logo"><strong>FoCSipedia</strong></a><a class="navbar__item navbar__link" href="/focsipedia/docs/topics">Topics</a><a class="navbar__item navbar__link" href="/focsipedia/blog">Blog</a></div><div class="navbar__items navbar__items--right"><a class="navbar__item navbar__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bhoward/focsipedia">GitHub</a><div class="react-toggle react-toggle--disabled displayOnlyInLargeViewport_1gtM"><div class="react-toggle-track"><div class="react-toggle-track-check"><span class="toggle_keGJ moon_1gwN"></span></div><div class="react-toggle-track-x"><span class="toggle_keGJ sun_3CPA"></span></div></div><div class="react-toggle-thumb"></div><input type="checkbox" disabled="" aria-label="Dark mode toggle" class="react-toggle-screenreader-only"></div><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input type="search" id="search_input_react" placeholder="Search" aria-label="Search" class="navbar__search-input search-bar"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a aria-current="page" class="navbar__brand active" href="/focsipedia/"><img class="navbar__logo" src="/focsipedia/img/SmartFoxIcon.jpeg" alt="Smart Fox Logo"><strong>FoCSipedia</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/topics">Topics</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/blog">Blog</a></li><li class="menu__list-item"><a class="menu__link" target="_blank" rel="noopener noreferrer" href="https://github.com/bhoward/focsipedia">GitHub</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_1kjD"><div class="docSidebarContainer_1cYp"><div class="sidebar_1kLs"><div class="sidebarLogo_3ono"><img src="/focsipedia/img/SmartFoxIcon.jpeg" alt="Smart Fox Logo"><strong>FoCSipedia</strong></div><div class="menu menu--responsive menu_w2sC"><button aria-label="Open Menu" class="button button--secondary button--sm menu__button" type="button"><svg class="sidebarMenuIcon_2vk4" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 32 32" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><ul class="menu__list"><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Course Info</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/policies">Course Information and Policies</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/topics">Topics</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Logic</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/intro">Logic</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/props">Propositional Logic</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/boolean">Boolean Algebra</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/circuits">Logic Circuits</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/simplify">Circuit Simplification</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/components">Common Circuit Components</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/preds">Predicates and Quantifiers</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/deduction">Deduction</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/pred-deduction">Natural Deduction for Predicate Logic</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/induction">Mathematical Induction</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/logic/recursion">Recursion and Induction</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Sets</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/sets/concepts">Set Concepts</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/sets/algebra">Boolean Algebra of Sets</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/sets/programming">Programming with Sets</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/sets/functions">Functions</a></li></ul></li><li class="menu__list-item"><a class="menu__link menu__link--sublist menu__link--active" href="#!">FP</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/fp/intro">Introduction to Functional Programming</a></li><li class="menu__list-item"><a aria-current="page" class="menu__link menu__link--active" href="/focsipedia/docs/fp/types">Types in Functional Programming</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Features</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/reason">ReasonML</a></li><li class="menu__list-item"><a class="menu__link" href="/focsipedia/docs/styleGuide">Style Guide</a></li></ul></li></ul></div></div></div><main class="docMainContainer_FFX1"><div class="padding-vert--lg"><div class="container"><div class="row"><div class="col docItemCol_2GOA"><div class="docItemContainer_2cwg"><article><header><h1 class="docTitle_1vWb">Types in Functional Programming</h1></header><div class="markdown"><p>One of the hallmarks of modern functional programming is a strong and rich
+systems of types. The type of an expression can be thought of as the set of all
+values that the expression might have; by specifying the type of a parameter to
+a function, it constrains the values that may be provided as input. In this
+sense, the type of a function is then a form of contract: if the input satisfies
+some condition (is a value in the parameter type), then the output is also
+guaranteed to satisfy a condition (be a value of the result type).</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="functions"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#functions" title="Direct link to heading">#</a>Functions</h2><p>In ReasonML we write the type of functions from <code>A</code> to <code>B</code> as <code>A =&gt; B</code>. Given a
+function <code>f</code> of that type, if <code>x</code> is a value (or more generally any expression)
+of type <code>A</code>, then the <strong>application</strong> <code>f(x)</code> will give us a result of type <code>B</code>.
+The value <code>x</code> to which we apply the function is known as the <strong>argument</strong>.
+For example, <code>string_of_int</code> is a function of type <code>int =&gt; string</code>; when we
+apply it to an integer, it returns the string of digits representing the argument:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let result = string_of_int(42);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> string_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">42</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>Since functions are first-class values, we may bind a function to another name:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let f = string_of_int;
+let result = f(42);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> f </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> string_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> f</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">42</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><div class="admonition admonition-warning"><div class="admonition-heading"><h5><div class="admonition-icon"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M5.05.31c.81 2.17.41 3.38-.52 4.31C3.55 5.67 1.98 6.45.9 7.98c-1.45 2.05-1.7 6.53 3.53 7.7-2.2-1.16-2.67-4.52-.3-6.61-.61 2.03.53 3.33 1.94 2.86 1.39-.47 2.3.53 2.27 1.67-.02.78-.31 1.44-1.13 1.81 3.42-.59 4.78-3.42 4.78-5.56 0-2.84-2.53-3.22-1.25-5.61-1.52.13-2.03 1.13-1.89 2.75.09 1.08-1.02 1.8-1.86 1.33-.67-.41-.66-1.19-.06-1.78C8.18 5.31 8.68 2.45 5.05.32L5.03.3l.02.01z"></path></svg></div>warning</h5></div><div class="admonition-content"><p>Because the embedded ReasonML compiler here is first converting the code to
+OCaml, and then executing the OCaml code, it actually reports types using the
+OCaml syntax, which is slightly different! For example, OCaml uses a single
+arrow <code>-&gt;</code> for function types instead of the double arrow <code>=&gt;</code>. This is
+unfortunate, but as we will see below we rarely even need to write types.</p></div></div><p>To create a function value, we use the double arrow to show that we are taking
+a parameter, for example <code>p</code>, and using it to compute a result:
+<code>p =&gt; { ...result expression... }</code>. The parameter may be any variable name—it
+will represent the value of the argument just within the block containing the
+result expressions. That is, if the variable name had been used outside the function,
+it will be temporarily &quot;shadowed&quot; by the new binding; when the function has returned
+its result, the local binding to the argument goes away.</p><p>Consider the following example:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let x = 5;
+let f = x =&gt; { x + 12 };
+let y = f(x * x) + x;</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> x </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">5</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> f </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> x </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> x </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">12</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> y </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> f</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">x </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain"> x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>The first binding to <code>x</code> is the integer 5. When <code>f</code> is applied to its argument,
+which is <code>x * x</code>, or 25, we will temporarily bind 25 to a new, local variable
+named <code>x</code> and evaluate the body of the function: <code>x + 12</code>, which gives 37.
+Continuing to evaluate the expression <code>f(x * x) + x</code>, we now have <code>37 + x</code>; since
+<code>x</code> here refers to the original binding, this is <code>37 + 5</code>, so it binds 42 to <code>y</code>.</p><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="type-inference"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#type-inference" title="Direct link to heading">#</a>Type Inference</h2><p>ReasonML does not require that we specify the types of variables most of the
+time, because it can usually infer what types they should have from the context
+and how they are used. Looking at the example above, since 5 is an int, we know
+that <code>x</code> must have type <code>int</code>. In the second line, the local <code>x</code> must also be an
+<code>int</code>, since we can add 12 to it.<sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup> The result of the function body will be an <code>int</code>, so
+the type of <code>f</code> is <code>int =&gt; int</code>. Finally, the application of <code>f</code> in the third line
+checks out, because it is applied to an integer argument (<code>x * x</code>), and its result
+is used in a further integer addition. We could be explicit about the types and
+add a <strong>type annotation</strong> to each of the bindings:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let x: int = 5;
+let f: int =&gt; int = (x: int) =&gt; { x + 12 };
+let y: int = f(x * x) + x;
+let z: string = string_of_int(y);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">5</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> f</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> x </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">12</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> y</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> f</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">x </span><span class="token operator" style="color:rgb(137, 221, 255)">*</span><span class="token plain"> x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> x</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> z</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> string </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> string_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">y</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>However, the convention in ReasonML is that type annotations are not generally
+used except as documentation and as a check that the compiler is doing what we
+think it is.</p><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="currying"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#currying" title="Direct link to heading">#</a>Currying</h3><p>When we write a function that takes multiple arguments, we may list the parameters
+in parentheses, separated by commas:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let average = (a, b) =&gt; { float_of_int(a + b) /. 2.0 };
+let result = average(7, 10);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> average </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">a</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> float_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">a </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">/.</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">2.0</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> average</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">7</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">10</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>This is actually a lie! In ReasonML, functions can only have a single argument.
+Behind the scenes, the code above is translated to the following:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let average = a =&gt; { b =&gt; { float_of_int(a + b) /. 2.0 } };
+let result = average(7)(10);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> average </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> a </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> b </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"> float_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">a </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">/.</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">2.0</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> average</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">7</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">10</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>That is, <code>average</code> is a function that takes an integer parameter <code>a</code> and returns
+another function. This second function expects to be given another integer
+parameter, named <code>b</code>, and then it will compute the result (which is a <code>float</code>
+for variety). The computation on the second line corresponds to this: first
+<code>average</code> is applied to the argument 7. The resulting function is then further
+applied to the argument 10, producing the desired floating-point result.</p><p>Here is the same code, written out more explicitly:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let average: int =&gt; (int =&gt; float) = (a: int) =&gt; {
+  (b: int) =&gt; {
+    float_of_int(a + b) /. 2.0
+  }
+};
+let result1: int =&gt; float = average(7);
+let result: float = result1(10);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> average</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">int </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> float</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">a</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">b</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">    float_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">a </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> b</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">/.</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">2.0</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> int </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> float </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> average</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">7</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> result</span><span class="token punctuation" style="color:rgb(199, 146, 234)">:</span><span class="token plain"> float </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> result1</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token number" style="color:rgb(247, 140, 108)">10</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>This replacement of multiple-parameter functions with a sequence of single-parameter
+functions is called <strong>currying</strong>, named after the logician Haskell B. Curry.<sup id="fnref-2"><a href="#fn-2" class="footnote-ref">2</a></sup> One advantage of this,
+other than the simplicity of only needing one kind of function, is that it is often
+useful to create a <strong>partially applied</strong> function, where some of its arguments have
+been supplied to create a new function ready to be given the rest. For example, suppose
+we have a function for formatting exam grades:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let format_grade = (exam, total, name, points) =&gt; {
+  name ++ &quot;, &quot; ++ exam ++ &quot;: &quot; ++ string_of_int(points) ++ &quot;/&quot; ++ string_of_int(total) 
+};
+let demo = format_grade(&quot;Midterm&quot;, 100, &quot;Brian&quot;, 93);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> format_grade </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">exam</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> name</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> points</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">=&gt;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(199, 146, 234)">{</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain">  name </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;, &quot;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> exam </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;: &quot;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> string_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">points</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;/&quot;</span><span class="token plain"> </span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token operator" style="color:rgb(137, 221, 255)">+</span><span class="token plain"> string_of_int</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token plain">total</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token plain"> </span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token punctuation" style="color:rgb(199, 146, 234)">}</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> demo </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> format_grade</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Midterm&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">100</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Brian&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">93</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>We could take advantage of currying to create a specialized function for formatting the
+midterm grades:</p><div class="mdxCodeBlock_iHAB"><div><div style="position:relative;text-align:left;box-sizing:border-box;padding:0;overflow:hidden;white-space:pre;font-family:monospace;color:#bfc7d5;background-color:#292d3e"><textarea style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:absolute;top:0;left:0;height:100%;width:100%;resize:none;color:inherit;overflow:hidden;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;-webkit-text-fill-color:transparent;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px" class="npm__react-simple-code-editor__textarea" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" data-gramm="false">let format_midterm = format_grade(&quot;Midterm&quot;, 100);
+let demo1 = format_midterm(&quot;Brian&quot;, 93);
+let demo2 = format_midterm(&quot;Alice&quot;, 97);</textarea><pre aria-hidden="true" style="margin:0;border:0;background:none;box-sizing:inherit;display:inherit;font-family:inherit;font-size:inherit;font-style:inherit;font-variant-ligatures:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;tab-size:inherit;text-indent:inherit;text-rendering:inherit;text-transform:inherit;white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;position:relative;pointer-events:none;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><div class="token-line" style="color:#bfc7d5"><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> format_midterm </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> format_grade</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Midterm&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">100</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> demo1 </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> format_midterm</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Brian&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">93</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span><span class="token plain"></span></div><div class="token-line" style="color:#bfc7d5"><span class="token plain"></span><span class="token keyword" style="font-style:italic">let</span><span class="token plain"> demo2 </span><span class="token operator" style="color:rgb(137, 221, 255)">=</span><span class="token plain"> format_midterm</span><span class="token punctuation" style="color:rgb(199, 146, 234)">(</span><span class="token string" style="color:rgb(195, 232, 141)">&quot;Alice&quot;</span><span class="token punctuation" style="color:rgb(199, 146, 234)">,</span><span class="token plain"> </span><span class="token number" style="color:rgb(247, 140, 108)">97</span><span class="token punctuation" style="color:rgb(199, 146, 234)">)</span><span class="token punctuation" style="color:rgb(199, 146, 234)">;</span></div></pre><style>
+/**
+ * Reset the text fill color so that placeholder is visible
+ */
+.npm__react-simple-code-editor__textarea:empty {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/**
+ * Hack to apply on some CSS on IE10 and IE11
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+    * IE doesn't support '-webkit-text-fill-color'
+    * So we use 'color: transparent' to make the text transparent on IE
+    * Unlike other browsers, it doesn't affect caret color in IE
+    */
+  .npm__react-simple-code-editor__textarea {
+    color: transparent !important;
+  }
+
+  .npm__react-simple-code-editor__textarea::selection {
+    background-color: #accef7 !important;
+    color: transparent !important;
+  }
+}
+</style></div><button type="button" aria-label="Execute code">Execute</button></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="tuples"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#tuples" title="Direct link to heading">#</a>Tuples</h2><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="records-and-variants"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#records-and-variants" title="Direct link to heading">#</a>Records and Variants</h2><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="pattern-matching"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#pattern-matching" title="Direct link to heading">#</a>Pattern Matching</h3><h3><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="recursive-types"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#recursive-types" title="Direct link to heading">#</a>Recursive Types</h3><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_ZqCz" id="connection-to-natural-deduction"></a><a aria-hidden="true" tabindex="-1" class="hash-link" href="#connection-to-natural-deduction" title="Direct link to heading">#</a>Connection to Natural Deduction</h2><p>TODO: another page on common patterns of recursion: map, reduce, fold, accumulator,
+auxilliary function, tail-recursion. A page on functional graphics. A summary page
+on ReasonML.</p><div class="footnotes"><hr><ol><li id="fn-1">ReasonML, unlike many common languages,
+distinguishes between the integer addition operator, written <code>+</code>, and the
+floating-point addition operator, which is written <code>+.</code>. In part this is done to
+make type inference easier.<a href="#fnref-1" class="footnote-backref">↩</a></li><li id="fn-2">As
+is often the case when things are named, Curry did not originate this idea. He got it
+from Moses Schönfinkel, who may have picked it up from Gottlob Frege, but &quot;currying&quot;
+is easier to say than &quot;schönfinkeling&quot; or &quot;fregeing&quot;….<a href="#fnref-2" class="footnote-backref">↩</a></li></ol></div></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/bhoward/focsipedia/edit/master/docs/fp/types.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/focsipedia/docs/fp/intro"><h5 class="pagination-nav__link--sublabel">Previous</h5><h4 class="pagination-nav__link--label">« Introduction to Functional Programming</h4></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/focsipedia/docs/reason"><h5 class="pagination-nav__link--sublabel">Next</h5><h4 class="pagination-nav__link--label">ReasonML »</h4></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_TbNY"><ul class="contents contents__left-border"><li><a href="#functions" class="contents__link">Functions</a></li><li><a href="#type-inference" class="contents__link">Type Inference</a><ul><li><a href="#currying" class="contents__link">Currying</a></li></ul></li><li><a href="#tuples" class="contents__link">Tuples</a></li><li><a href="#records-and-variants" class="contents__link">Records and Variants</a><ul><li><a href="#pattern-matching" class="contents__link">Pattern Matching</a></li><li><a href="#recursive-types" class="contents__link">Recursive Types</a></li></ul></li><li><a href="#connection-to-natural-deduction" class="contents__link">Connection to Natural Deduction</a></li></ul></div></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">Docs</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/focsipedia/docs/policies">Policies</a></li><li class="footer__item"><a class="footer__link-item" href="/focsipedia/docs/styleGuide">Style Guide</a></li><li class="footer__item"><a class="footer__link-item" href="/focsipedia/docs/attribution">Attribution</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Social</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/focsipedia/blog">Blog</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://github.com/bhoward/focsipedia">GitHub</a></li><li class="footer__item"><a class="footer__link-item" target="_blank" rel="noopener noreferrer" href="https://twitter.com/BrnHwrd">Twitter</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Blog Feed</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/focsipedia/blog/rss.xml">RSS</a></li><li class="footer__item"><a class="footer__link-item" href="/focsipedia/blog/atom.xml">Atom</a></li></ul></div></div><div class="text--center">Copyright © 2020 Brian T. Howard. Built with Docusaurus.</div></div></footer>
+</div>
+
+<script src="/focsipedia/styles.01c9a410.js"></script>
+
+<script src="/focsipedia/runtime~main.00e69989.js"></script>
+
+<script src="/focsipedia/main.97a886d8.js"></script>
+
+<script src="/focsipedia/1.ec0bb3cd.js"></script>
+
+<script src="/focsipedia/2.1397a978.js"></script>
+
+<script src="/focsipedia/1be78505.6bc01bdf.js"></script>
+
+<script src="/focsipedia/90510764.de533be9.js"></script>
+
+<script src="/focsipedia/17896441.1117f0f7.js"></script>
+
+<script src="/focsipedia/94ead6cb.02db901a.js"></script>
+
+
+</body>
+</html>
