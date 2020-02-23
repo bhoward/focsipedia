@@ -26,6 +26,7 @@ module.exports = {
       'sets/functions',
     ],
     FP: ['fp/intro',
+      'fp/types',
     ],
     Features: ['reason',
       'styleGuide',

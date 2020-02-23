@@ -271,7 +271,7 @@ as a **lambda**.[^The mathematician Alonzo Church introduced in
 the 1930's the use of the Greek letter lambda ($\lambda$) to indicate an
 otherwise unnamed function defined by a formula. That is, instead
 of writing "the function $f$ where $f(x) = \textit{some formula}$",
-he wrote "$\lambda x(\textit{some formula})". When the first
+he wrote "$\lambda x(\textit{some formula})$". When the first
 functional programming language, LISP (invented in the late 1950's),
 needed a way to create function values, John McCarthy adopted Church's
 use of lambda, and the name has stuck.]
@@ -357,8 +357,10 @@ refer to an operator as a function value, just put the operator in parentheses:
 can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
 the usual higher precedence of multiplication over addition).
 For example, if we wanted to define an exponentiation operator on _int_, and
-call it `***`, we could define it as follows:[^The code here is based on the
-solution to an exercise in the Recursion section.]
+call it `***`, we could define it as follows:[^4]
+
+[^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
+
 ```reason demo
 let rec (***) = (n, p) => {
   if (p == 0) {

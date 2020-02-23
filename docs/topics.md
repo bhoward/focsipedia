@@ -24,7 +24,7 @@ title: Topics
 ### [Functions](sets/functions.md) and [Functional Programming](fp/intro.md)
 
 ## Week 5:
-### Algebraic Data Types and Pattern Matching
+### [Algebraic Data Types](fp/types.md) and Pattern Matching
 
 ### Running Time and Recurrences
 
