@@ -27,28 +27,36 @@ generate JavaScript output for running programs in a web browser. In fact, since
 compiler itself is written in OCaml, it is possible to compile the entire system to
 JavaScript and run it in the browser.
 
-Here is an editor where you can type in OCaml code and execute it (click the button
-or type Ctrl-Enter):
-
-```ocaml edit
-let x = 6
-let y = x * 7
-let rec fact x =
-  if x <= 1 then 1 else x * fact (x - 1)
-let z = fact 5;;
-```
-
-And here is an editor where you can type in ReasonML code and execute it (click the button
+Here is an editor where you can type in ReasonML code and execute it (click the button
 or type Ctrl-Enter):
 
 ```reason edit
-let x = 6
-let y = x * 7
+let x = 6;
+let y = x * 7;
 let rec fact = (x) =>
   if (x <= 1) {
     1
   } else {
     x * fact(x - 1)
-  }
-let z = fact(5)
+  };
+let z = fact(5);
 ```
+
+If for some reason you want to reset the interpreter before executing the code (so that
+it will forget previous bindings), press the Shift key plus Ctrl-Enter.
+
+There are several other places online where you can run ReasonML code, although they
+will not always match the setup here (particularly the available libraries):
+
+* The main Reason site, https://reasonml.github.io/en/, has an online environment where
+you can [Try](https://reasonml.github.io/en/try) it and see the corresponding OCaml and
+JavaScript code.
+
+* There is a notebook-like REPL at https://sketch.sh/.
+
+* [repl.it](https://repl.it/) now supports ReasonML as one of its languages.
+
+You can also [install Reason](https://reasonml.github.io/docs/en/installation) on your
+own computer and run it locally (or develop your own web site with React!). If you do this,
+I recommend using the free [Visual Studio Code](https://code.visualstudio.com/) editor
+along with a plugin for Reason; this will give the complete IDE experience.
