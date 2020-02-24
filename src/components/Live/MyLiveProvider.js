@@ -39,6 +39,10 @@ export default class MyLiveProvider extends Component {
     this.transpile({ code, language, canvas });
   }
 
+  resetInterpreter() {
+    evaluator.reset();
+  }
+
   onError(error) {
     this.setState({ error: error.toString() });
   }
@@ -80,7 +84,8 @@ export default class MyLiveProvider extends Component {
           disabled,
           onError: this.onError.bind(this),
           onChange: this.onChange.bind(this),
-          executeCode: this.executeCode.bind(this)
+          executeCode: this.executeCode.bind(this),
+          resetInterpreter: this.resetInterpreter.bind(this)
         }}
       >
         {children}
