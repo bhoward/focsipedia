@@ -294,22 +294,22 @@ arbitrary type, then we can introduce a **parameterized type alias** by adding
 type parameters. As we saw above, type variables start with an apostrophe:
 ```reason edit
 type point('a) = ('a, 'a);
-type binary_op('a) = 'a => 'a => 'a;
-type printer('a) = 'a => unit;
+type binary_op('operand, 'result) = 'operand => 'operand => 'result;
+type printer('t) = 't => unit;
 let p1: point(int) = (5, 10);
 let p2: point(float) = (5.0, 10.0);
-let int_plus: binary_op(int) = (+);
-let print_point: printer(point(int)) = p => {
-  print_string("(");
-  print_int(fst(p));
-  print_string(",");
-  print_int(snd(p));
-  print_string(")");
-}
+let int_plus: binary_op(int, int) = (+);
+let string_eq: binary_op(string, bool) = (==);
+let print_point: printer(point(int)) = ((x, y)) => {
+  Printf.printf("(%d, %d)", x, y)
+};
+print_point(p1);
 ```
 
 :::warning
-Once again, OCaml displays parameterized types slightly differently. TODO
+Once again, OCaml displays parameterized types slightly differently. Instead of
+`point('a)` and `binary_op('a, 'b)`, the name of the type comes after: `'a point`
+and `('a, 'b) binary_op`.
 :::
 
 ## Constructors and Variants

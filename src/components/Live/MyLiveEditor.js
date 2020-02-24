@@ -17,9 +17,10 @@ class MyLiveEditor extends Component {
   render() {
     return (
       <MyLiveContext.Consumer>
-        {({ code, language, theme, disabled, executeCode }) => (
+        {({ code, language, theme, disabled, executeCode, resetInterpreter }) => (
           <div
             onKeyDown={(e) => {
+              if (e.shiftKey && e.ctrlKey && e.key === 'Enter') resetInterpreter()
               if (e.ctrlKey && e.key === 'Enter') executeCode(this.state.code)
             }}
           >
@@ -32,10 +33,16 @@ class MyLiveEditor extends Component {
             {...this.props}
           />
           { disabled ? null :
-          <button
-            type="button"
-            aria-label="Execute code"
-            onClick={() => executeCode(this.state.code)}>Execute</button>
+          <div>
+            <button
+              type="button"
+              aria-label="Execute code"
+              onClick={() => executeCode(this.state.code)}>Execute</button>
+            {/* <button
+              type="button"
+              aria-label="Reset interpreter"
+              onClick={() => {resetInterpreter(); executeCode(this.state.code)}}>Reset</button> */}
+          </div>
           }
           </div>
         )}
