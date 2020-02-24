@@ -137,8 +137,140 @@ let format_midterm = format_grade("Midterm", 100);
 let demo1 = format_midterm("Brian", 93);
 let demo2 = format_midterm("Alice", 97);
 ```
+The first two arguments of `format_grade` have been provided with the exam name
+("Midterm") and the total number of points (100). Now we have a new function,
+bound to `format_midterm`, that just needs to be applied to a student name and
+grade, and then it can produce a string with all four components.
 
 ## Tuples
+
+Perhaps the most basic form of data structure is the **tuple**. We have already
+seen this in the context of
+[sets and cartesian products](../sets/functions#pairs): an $n$-tuple is simply
+an ordered listing of $n$ values, traditionally shown in parentheses separated
+by commas. The ReasonML syntax for a tuple type is likewise an ordered listing
+of each value's type, in parentheses and separated by commas. For example, the
+tuple `(42, "hello", 3.1416)` has type `(int, string, float)`:
+```reason edit
+let demo: (int, string, float) = (42, "hello", 3.1416);
+```
+
+:::warning
+Again the OCaml syntax differs from the ReasonML syntax, so you will see tuple
+types printed out with the types separated by asterisks: `int * string * float`
+instead of `(int, string, float)`. In OCaml they chose to make it look more like
+a cartesian product, while ReasonML is trying to make the type look like the
+values it describes.
+:::
+
+In the case $n=2$, a tuple is just the familiar **pair**. For example, the type
+of two-dimensional points with integer coordinates is `(int, int)`. Pairs come
+with accessor functions named `fst` and `snd` to access the first and second
+coordinates, respectively:
+```reason edit
+let p = (5, 10);
+let x = fst(p);
+let y = snd(p);
+```
+The standard library does not provide accessor functions for arbitrary
+$n$-tuples.[^Part of the reason for this is simply tradition, but another
+important factor is that ReasonML does not have an easy way to give a type for a
+function that would take an $n$-tuple plus an integer, say from 1 to $n$, and
+return that component of the tuple; since each component may have a different
+type, what would the return type of that accessor be?] Instead, we may retrieve
+the components of a tuple through an extension of the binding operation, `let`:
+```reason edit
+let demo = (42, "hello", 3.1416); /* construct a tuple */
+let (a, b, c) = demo;             /* "destruct" a tuple */
+```
+If we only want to extract some of the components, the other positions may be
+filled with a place-holder, the so-called **wildcard** identifier, `_`
+(underscore):
+```reason edit
+let demo = (42, "hello", 3.1416);
+let (_, greeting, _) = demo;
+```
+
+An $n$-tuple when $n=1$ is just an ordinary value (which may be enclosed in
+parentheses as usual just for grouping purposes). However, the case when
+$n=0$ is more interesting: the only value is the empty tuple, `()`, and its type
+is named `unit`:
+```reason edit
+let a: unit = ();
+```
+Since there is only one value of type `unit`, it carries no information. We
+will use it when we need to specify a type but its value does not matter. For
+example, look at the types of the print functions in ReasonML:
+```reason edit
+let a = print_int;
+let b = print_string;
+let c = print_float;
+let d = print_newline;
+```
+All of them return a value of type `unit` because there is nothing to be
+returned. In fact, this is a strong hint that these functions do their work via
+side-effects (albeit the relatively benign side-effect of sending some
+characters to the console). The `print_newline` function also takes `unit` as
+its argument type&mdash;it needs no input, but there still needs to be some
+argument passed in so that it knows to do its job (emitting an end-of-line
+character). Note the difference between the function value expression
+`print_newline`, as seen above in the binding to `d`, and the function _call_
+expression `print_newline()`, which actually produces output:
+```reason edit
+print_string("line 1, ");
+print_newline;
+print_string("still line 1");
+print_newline();
+print_string("line 2");
+```
+
+### Tuples and Parameters
+
+It might seem that tuples should be used to pass multiple parameters to
+functions, but as we have seen, ReasonML handles this by currying the function
+into a series of functions each taking a single parameter. We can force it
+to pass tuples of arguments, and bind them to tuples of parameters, by
+including an extra pair of parentheses:
+```reason edit
+let f: ((string, int)) => string = ((name, points)) => {
+  name ++ ": " ++ string_of_int(points) ++ "/100"
+};
+print_string( f(("Brian", 93)) );
+```
+Now, that's ugly, and unless you really need to do that, don't do it. However,
+this brings up an interesting equivalence of types. Note that the type for `f`
+here is `((string, int)) => string`; in terms of sets, this is the set of
+functions $\text{string}^{\text{string}\times\text{int}}$. Compare this with the
+equivalent but curried function `g`:
+```reason edit
+let g: string => int => string = (name, points) => {
+  name ++ ": " ++ string_of_int(points) ++ "/100"
+};
+print_string( g("Brian", 93) );
+```
+The type of `g` here is `string => int => string`; in terms of sets, this is the
+set $(\text{string}^{\text{int}})^{\text{string}}$. If these types are truly equivalent,
+in the sense that every function in one corresponds to a unique function in the other,
+then that suggests that there might be a general equivalence of the form
+$$
+A^{B\times C}\equiv(A^C)^B
+$$
+This is indeed true (and it should remind you of a corresponding fact about exponents from
+ordinary algebra), and we can write the functions in ReasonML that mediate this
+equivalence:
+```reason edit
+let curry = (f: (('b, 'c)) => 'a) => {
+  (b: 'b) => (c: 'c) => f((b, c))
+};
+let uncurry = (g: 'b => 'c => 'a) => {
+  ((b, c): ('b, 'c)) => g(b)(c)
+};
+```
+That is, given any function from the pair type `('b, 'c)` to `'a` (type variables in
+ReasonML always start with an apostrophe (`'`)), we can apply the `curry` function to
+it to get the corresponding curried function of type `'b => 'c => 'a`. The `uncurry`
+function is the inverse of this. Since we have functions going each direction that
+are inverses to each other, this shows that the two types (or sets) are equivalent.
 
 ## Records and Variants
 
@@ -147,6 +279,8 @@ let demo2 = format_midterm("Alice", 97);
 ### Recursive Types
 
 ## Connection to Natural Deduction
+
+## Exercises
 
 TODO: another page on common patterns of recursion: map, reduce, fold, accumulator,
 auxilliary function, tail-recursion. A page on functional graphics. A summary page
