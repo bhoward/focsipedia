@@ -314,6 +314,43 @@ and `('a, 'b) binary_op`.
 
 ## Constructors and Variants
 
+A tuple is a rather generic way of packaging up data. When you are building a larger
+program, it would not be very meaningful to see a value like `("Brian", 93)` out of
+context. Just as programmers are encouraged to use symbolic names for constants (for
+example, `LINE_WIDTH` instead of 80), we can attach names to particular uses of tuples
+to make them more readable and maintainable. If we create a type alias where the
+right-hand-side prefixes the tuple with a **constructor** name (which needs to start
+with a capital letter in ReasonML), then it will introduce a new type of tuples that
+need to be labeled with that constructor:
+```reason edit
+type grade_entry = Entry(string, int);
+let entry = Entry("Brian", 93);
+```
+If we want to extract the components of this new type, we use a corresponding
+named pattern in the `let` binding:
+```reason edit
+let Entry(name, grade) = entry;
+```
+Here is another version of the `format_grade` example, using the above `grade_entry`
+type plus another that describes a particular grading item (with a title and maximum
+number of points). Even though both are essentially a pair of a string and an integer,
+we can now tell them apart:
+```reason edit
+type grade_entry = Entry(string, int);
+type grading_item = Item(string, int);
+let format_grade = (item, entry) => {
+  let Item(title, max) = item;
+  let Entry(name, grade) = entry;
+  name ++ ", " ++ title ++ ": " ++ string_of_int(grade) ++ "/" ++ string_of_int(max)
+};
+let demo = format_grade(Item("Midterm", 100), Entry("Brian", 93));
+```
+
+So far we have seen types where all of the data have the same form: the same number
+of components, each with the same set of types, across all values of the type. However,
+most interesting data will come in several forms, and our programs will need to make
+appropriate decisions based on the form of each piece of data.
+
 ### Pattern Matching
 
 ### Recursive Types
