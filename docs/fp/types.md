@@ -272,7 +272,47 @@ it to get the corresponding curried function of type `'b => 'c => 'a`. The `uncu
 function is the inverse of this. Since we have functions going each direction that
 are inverses to each other, this shows that the two types (or sets) are equivalent.
 
-## Records and Variants
+## Type Aliases and Parameterized Types
+
+Given the importance of types, and potentially complicated type expressions, in
+ReasonML, it should not be a surprise that they can be named and manipulated
+much like ordinary values with variables and functions.[^ReasonML does not go
+quite all the way with making types be first-class values. There is currently
+active work on creating industrial-strength languages with so-called **dependent
+types**, where types are values and values can be used in types. Good examples are
+Agda (https://github.com/agda/agda), Idris (https://www.idris-lang.org/), and Lean
+(https://leanprover.github.io/).] We give a name to a type with the `type` statement:
+```reason edit
+type int_point = (int, int);
+type math_op = float => float => float;
+let p: int_point = (5, 10);
+let plus: math_op = (+.);
+```
+
+If we have a family of types where one or more parts can be substituted with an
+arbitrary type, then we can introduce a **parameterized type alias** by adding
+type parameters. As we saw above, type variables start with an apostrophe:
+```reason edit
+type point('a) = ('a, 'a);
+type binary_op('a) = 'a => 'a => 'a;
+type printer('a) = 'a => unit;
+let p1: point(int) = (5, 10);
+let p2: point(float) = (5.0, 10.0);
+let int_plus: binary_op(int) = (+);
+let print_point: printer(point(int)) = p => {
+  print_string("(");
+  print_int(fst(p));
+  print_string(",");
+  print_int(snd(p));
+  print_string(")");
+}
+```
+
+:::warning
+Once again, OCaml displays parameterized types slightly differently. TODO
+:::
+
+## Constructors and Variants
 
 ### Pattern Matching
 
@@ -283,5 +323,5 @@ are inverses to each other, this shows that the two types (or sets) are equivale
 ## Exercises
 
 TODO: another page on common patterns of recursion: map, reduce, fold, accumulator,
-auxilliary function, tail-recursion. A page on functional graphics. A summary page
-on ReasonML.
+auxilliary function, tail-recursion, mutual recursion. A page on functional graphics.
+A summary page on ReasonML.
