@@ -726,9 +726,9 @@ its factors&mdash;much of modern cryptography relies on this distance!]
    handle triangles, and then define a `perimeter` function for shapes.
 
 3. Define a function that takes a `myTree('a, 'b)` value and counts the number
-   of leaves. That is, the function call `numLeaves(TreeNode(Leaf(27), "+",
-   TreeNode(Leaf(3), "*", Leaf(5))))' should return 3. _Hint:_ Define it using a
-   pattern match.
+   of leaves. That is, the function call
+   `numLeaves(TreeNode(Leaf(27), "+", TreeNode(Leaf(3), "*", Leaf(5))))`
+   should return 3. _Hint:_ Define it using a pattern match.
 
 4. Based on the `curry` and `uncurry` functions, give a natural deduction proof
    of the arguments $(p\land q)\rightarrow r\vdash p\rightarrow(q\rightarrow r)$
