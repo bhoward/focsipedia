@@ -351,11 +351,355 @@ of components, each with the same set of types, across all values of the type. H
 most interesting data will come in several forms, and our programs will need to make
 appropriate decisions based on the form of each piece of data.
 
+### Enumerations
+
+The simplest case of having several **variants** of a data type is an **enumeration**.
+An enumerated type is specified as a list of constant constructors, separated by vertical
+bars:
+```reason edit
+type suit = Club | Diamond | Heart | Spade;
+type rank = Ace | Two | Three | Four | Five | Six | Seven
+          | Eight | Nine | Ten | Jack | Queen | King;
+```
+Unlike the case with tuples or simple tuple-like constructors, we can not just
+expect to match an enumerated value with a `let` binding. Instead, we need a construct
+that gives us a selection among _several_ bindings, one for each variant. In ReasonML,
+as in many programming languages, this construct is the `switch` expression (sometimes
+called a match or case statement):
+```reason edit
+let suit1 = Club;
+switch (suit1) {
+| Club => print_string("It's a club")
+| Diamond => print_string("It's a diamond")
+| Heart => print_string("It's a heart")
+| Spade => print_string("It's a spade")
+};
+```
+Try changing the value bound to `suit1` and check the output. Each of the lines starting
+with a vertical bar is one **case**, and the expression to the right of the double arrow
+is the code to evaluate when that case matches the value in the switch.
+
+ReasonML will guarantee that the only possible values of an expression of an enumerated
+type are those in the list, and it will also check whether all of the cases are covered
+in a switch. Try removing one of the cases above and see what happens.
+
+### Algebraic Data Types
+
+By combining variants with tuple-like constructors, we get what are known as **algebraic
+data types**. The idea is that the values of a type are formed by one of several
+constructors, each of which takes some number of component values. If we think of a
+tuple as the "product" of its component types, and a variant as a "sum" of several
+choices, then an algebraic type is just our old familiar sum-of-products construction
+from propositional logic!
+
+For example, suppose we want a type that describes some shapes. A shape will be either
+a rectangle, with a given width and height, or a circle, with a given radius. The
+variant type may be defined as
+```reason edit
+type shape = Rectangle(float, float) | Circle(float);
+```
+Algebraically, this is the set $\text{float}\times\text{float} + \text{float}$, where
+the $+$ operation is forming a **disjoint sum** of two sets&mdash;similar to a union, but
+attaching some sort of tag to the element of each set so that there are no duplicates.[^For
+example, we could define $A+B=(\{0\}\times A)\cup(\{1\}\times B)$. Then each element
+in the disjoint sum would be a pair whose first component is a tag of 0 if the element
+came from $A$ and 1 if it came from $B$. Any element in common between $A$ and $B$ will
+still be distinguishable by its tag.]
+
+We may define a function to compute the area of a shape by doing a case analysis:
+```reason edit
+let area = sh => {
+  switch (sh) {
+  | Rectangle(width, height) => width *. height
+  | Circle(radius) => 3.141592653589 *. radius *. radius
+  }
+};
+print_float(area(Rectangle(5.0, 10.0))); print_newline();
+print_float(area(Circle(10.0))); print_newline();
+```
+
+If you are familiar with interfaces and subclasses in an object-oriented language such
+as Java, it is instructive to compare this with a typical object-oriented approach:
+```java
+interface Shape {
+  double area();
+}
+
+class Rectangle implements Shape {
+  private double width, height;
+
+  public Rectangle(double width, double height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public double area() {
+    return width * height;
+  }
+}
+
+class Circle implements Shape {
+  private double radius;
+
+  public Circle(double radius) {
+    this.radius = radius;
+  }
+
+  public double area() {
+    return 3.141592653589 * radius * radius;
+  }
+}
+```
+In Java, each class implementing `Shape` is one variant, and the interface
+requires it to provide an `area` method with the correct signature. When we
+execute code such as `sh.area()`, where `sh` is a variable of type `Shape`,
+the underlying Java virtual machine code essentially does a case analysis
+of the object currently in `sh` to determine which `area` method to run.
+
+One difference between the functional and object-oriented approaches is that
+the functional version makes it easy to add new operations (such as a
+`perimeter` function), but to change the list of variants (for example, to
+add triangular shapes) is hard because we have to add a case to all of the
+existing operations. Conversely, the object-oriented version makes it easy to
+add new variants (just define another class implementing `Shape`), but if we
+want to add a new operation to the interface (such as `perimeter`) we need
+to implement that method in all of the existing subclasses. This tradeoff
+has led to considerable work on hybrid object-functional languages, such as
+Scala.
+
 ### Pattern Matching
+
+The pattern matching case analysis in a switch statement can be very powerful,
+since patterns may contain other patterns. We may match on not only variants,
+constructors, and tuples, but also on individual primitive values (such as
+integers or strings). As long as the patterns cover all of the cases, they
+are allowed to overlap (that is, more than one pattern might match a given
+value); if so, then the first matching case is selected. At any point in a
+pattern we may use the special **wildcard** pattern, underscore (`_`), which
+will match any value (but not bind it to anything). Switch statements will
+often have a final case matching the wildcard pattern as a "default" case.
+
+For example, here are some functions using the playing card enumerations
+from above. First we will define a variant for a playing card, which is either
+an ordinary card with a rank and a suit, or a joker:
+```reason edit
+type card = Card(rank, suit) | Joker;
+let card1 = Card(Two, Club);
+let card2 = Card(Jack, Spade);
+let card3 = Card(Ace, Heart);
+let card4 = Joker;
+```
+Here is a function that determines whether a card is a face card:
+```reason edit
+let isFace = c => {
+  switch (c) {
+  | Card(Jack, _) => true
+  | Card(Queen, _) => true
+  | Card(King, _) => true
+  | _ => false
+  }
+};
+if (isFace(card2) && !isFace(card3)) {
+  print_string("Correct!")
+} else {
+  print_string("Error!")
+};
+```
+Here is a function that tells us if a card is "wild", if we are playing a friendly
+game where jokers and black twos are wild:
+```reason edit
+let isWild = c => {
+  switch (c) {
+  | Card(Two, Club) => true
+  | Card(Two, Spade) => true
+  | Joker => true
+  | _ => false
+  }
+};
+if (isWild(card1) && !isWild(card2) && !isWild(card3) && isWild(card4)) {
+  print_string("Correct!")
+} else {
+  print_string("Error!")
+};
+```
+Finally, here is a function that will take two cards plus a string, either
+"high" or "low". It will return the card with the higher rank; if they have the
+same rank, it will just return the first card. If the string argument is "high",
+then aces will rank higher than kings, otherwise they will rank lower than twos
+(this is somewhat artificial, but I want to show an example with a string
+pattern). Jokers are always the highest. The code takes advantage of the
+ordering automatically defined on an enumeration, where earlier variants are
+less than (`<`) later ones:
+```reason edit
+let higher = (c1, c2, rule) => {
+  switch ((c1, c2, rule)) {
+  /* First handle the Jokers */
+  | (Joker, _, _) => c1
+  | (_, Joker, _) => c2
+  /* Handle all of the Ace cases now */
+  | (Card(Ace, _), _, "high") => c1
+  | (_, Card(Ace, _), "high") => c2 
+  | (_, Card(Ace, _), "low") => c1
+  | (Card(Ace, _), _, "low") => c2
+  /* Handle the remaining cases by comparison */
+  | (Card(rank1, _), Card(rank2, _), _) =>
+      if (rank1 >= rank2) {
+        c1
+      } else {
+        c2
+      }
+  }
+}
+let result1 = higher(card1, card2, "high"); /* should be the Jack */
+let result2 = higher(card1, card3, "high"); /* should be the Ace */
+let result3 = higher(card1, card3, "low"); /* should be the Two */
+let result4 = higher(card3, card4, "high"); /* should be the Joker */
+```
 
 ### Recursive Types
 
+When we define a type with the `type` statement, the right-hand-side is allowed to
+refer to the new type when assigning the types of components. When specifying such
+a **recursive type** there generally needs to be a variant that does not refer to
+the new type, to serve as a base case (otherwise it is difficult to get off the
+ground when building values of the type). Here are two characteristic examples
+that we will be exploring more later:
+```reason edit
+type myList = Empty | ListNode(int, myList);
+type myTree('a, 'b) = Leaf('a) | TreeNode(myTree('a, 'b), 'b, myTree('a, 'b));
+```
+
+The type `myList` represents linked lists of integers. Each value is either
+an empty list or a list node containing an integer and a value for the rest of
+the list. For example, the list `[1, 2, 3]` would be represented by the following
+value:
+```reason edit
+let list123 = ListNode(1, ListNode(2, ListNode(3, Empty)));
+```
+The natural way to write a function over such a list is by pattern matching, with
+the additional wrinkle that we may recursively use the function to process the
+rest of the list (since it is a smaller list, we can use structural induction to
+prove properties of such a function). Here is a function to add up the numbers
+in a list:
+```reason edit
+let rec sumList = nums => {
+  switch (nums) {
+  | Empty => 0
+  | ListNode(n, rest) => n + sumList(rest)
+  }
+};
+print_int(sumList(list123));
+```
+
+The type `myTree('a, 'b)` is a parameterized type. It represents binary trees that
+are either leaves containing a value of type `'a`, or tree nodes that contain two
+subtrees and a value of type `'b`. For example, here is a tree with integers in the
+leaves and string labels on the interior nodes; it is meant to represent the
+arithmetic expression `1 + 2 * 3`:
+```reason edit
+let tree123 = TreeNode(Leaf(1), "+", TreeNode(Leaf(2), "*", Leaf(3)));
+```
+Here is a function defined by pattern matching over trees that evaluates such an
+expression:
+```reason edit
+let rec eval = t => {
+  switch (t) {
+  | Leaf(n) => n
+  | TreeNode(left, "+", right) => eval(left) + eval(right)
+  | TreeNode(left, "*", right) => eval(left) * eval(right)
+  }
+};
+print_int(eval(tree123));
+```
+Note that we get a warning that the pattern match is not exhaustive, because we
+don't provide cases for all of the possible operator strings. We will look at
+better solutions for this eventually.
+
 ## Connection to Natural Deduction
+
+Finally, here is the "big reveal" about natural deduction. The proofs that we
+constructed were really just programs in a close relative of ReasonML! Here is
+a table explaining the analogy:
+
+| Functional Programming | Natural Deduction |
+| :- | :- |
+| function type `A => B` | implication $A\rightarrow B$ |
+| function value `(x: A) => { ... body of type B ... }` | $\rightarrow$ Introduction |
+| application `f(a)` | $\rightarrow$ Elimination, from $f: A\rightarrow B$ and $a: A$ |
+| tuple type `(A, B)` | conjunction $A\land B$ |
+| tuple value `(a, b)` | $\land$ Introduction from $a: A$ and $b: B$ |
+| projections `fst`, `snd` | $\land$ Elimination 1 and 2 |
+| variant type `Left(A)` &#124; `Right(B)` | disjunction $A\lor B$ |
+| constructors `Left`, `Right` | $\lor$ Introduction 1 and 2 |
+| switch statement | $\lor$ Elimination |
+| `unit` type | $\T$ |
+
+The most complicated comparison here is viewing the switch statement as doing $\lor$
+elimination. Consider a proof such as
+$$ \begin{array}{l|l}
+\ell_1: p\lor q & \text{premise}\\
+\ell_2: p\Rightarrow\{\\
+\quad\ell_3: q\lor p & \lor I_2\ \ell_2\\
+\}\\
+\ell_4: q\Rightarrow\{\\
+\quad\ell_5: q\lor p & \lor I_1\ \ell_2\\
+\}\\
+\ell_6: q\lor p & \lor E\ \ell_1, \ell_2, \ell_4
+\end{array} $$
+Here is an analogous ReasonML function:
+```reason edit
+type disj('a, 'b) = Left('a) | Right('b);
+let orCommutative: disj('a, 'b) => disj('b, 'a) = (l1: disj('a, 'b)) => {
+  let l6: disj('b, 'a) = switch (l1) {
+  | Left(l2: 'a) => {
+      let l3: disj('b, 'a) = Right(l2);
+      l3
+    }
+  | Right(l4: 'b) => {
+      let l5: disj('b, 'a) = Left(l4);
+      l5
+    }
+  };
+  l6
+};
+let demo1 = orCommutative(Left(42));
+let demo2 = orCommutative(Right("hello"));
+```
+More idiomatically, taking advantage of type inference and not using so many
+`let` statements to label each "line" of the proof, we can write this as:
+```reason edit
+let orCommutative = a_or_b => {
+  switch (a_or_b) {
+  | Left(a) => Right(a)
+  | Right(b) => Left(b)
+  }
+};
+let demo1 = orCommutative(Left(42));
+let demo2 = orCommutative(Right("hello"));
+```
+
+Missing from this analogy is how to treat negation and contradiction ($\F$).
+The simplest approach in ReasonML is probably to treat negation $\lnot A$ as
+equivalent to the implication $A\rightarrow\F$. We do not have a type that
+corresponds to $\F$, because there are not supposed to be any values of that
+type (since they would correspond to proofs of a contradiction!). However,
+we can extend our analogy so that reaching a contradiction is like throwing
+an exception to abort the program. In ReasonML, the expression `raise Exit`
+may be used where _any_ type of value is expected, and if it is evaluated then
+the program will abort (unless we have an exception handler in place&hellip;).
+This corresponds to _ex falso quodlibet_, the $\F$ elimination rule: if we
+reach a contradiction, we can get a proof of any proposition, _i.e._, a result
+of any type. If negation is an implication of $\F$, then the analogue to
+$\lnot A$ in ReasonML would be a function that takes a parameter of type `A`
+and throws an exception&mdash;if it is truly the case that there is no value
+of type `A` (that is, no proof of $A$, which is what we would hope if $\lnot A$
+is true), then this function can never be called.[^This now accounts for all
+of natural deduction except for the double-negation elimination rule, which
+we already observed is difficult to justify from a computational viewpoint.
+It would allow us to go from knowing that $\lnot A$ is not true to somehow
+having a proof that $A$ is true, but there is a long distance from knowing that
+a number is not prime, for example, to showing that it is composite by giving
+its factors&mdash;much of modern cryptography relies on this distance!]
 
 ## Exercises
 
