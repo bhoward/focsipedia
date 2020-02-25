@@ -445,3 +445,19 @@ that computes the composition of two functions.  That
 is, $\textit{compose}(f, g)$ is $f\circ g$, where
 $f$ and $g$ are functions of one parameter.  Recall that
 $f\circ g$ is the function defined by $(f\circ g)(x)=f(g(x))$.
+
+6. Consider the following ReasonML function:
+```reason edit
+let exercise = (a, b) => {
+  let m = (x, y) => { x - y };
+  let s = n => { n * n };
+  let c = m(a, b);
+  let d = m(a, c);
+  let e = c + d;
+  s(d) - s(e)
+};
+```
+   * What is the value of `exercise(4, 5)`?
+   * What is the value of `exercise(12, 13)`?
+   * Use algebraic substitution to evaluate `exercise(a, b)` in terms of the
+     variables `a` and `b`.

@@ -708,11 +708,44 @@ of natural deduction except for the double-negation elimination rule, which
 we already observed is difficult to justify from a computational viewpoint.
 It would allow us to go from knowing that $\lnot A$ is not true to somehow
 having a proof that $A$ is true, but there is a long distance from knowing that
-a number is not prime, for example, to showing that it is composite by giving
+a number is not prime, for example, to being able to show that it is composite by giving
 its factors&mdash;much of modern cryptography relies on this distance!]
 
 ## Exercises
 
-TODO: another page on common patterns of recursion: map, reduce, fold, accumulator,
+1. Write ReasonML functions that compute the inclusive and exclusive OR
+   operations. That is, write Boolean functions `or(x, y)` and `xor(x, y)` that
+   will return `true` if one of `x` or `y` is `true`; in the inclusive case,
+   `or(true, true)` is also `true`, while for the exclusive case,
+   `xor(true, true)` is `false`. Use pattern matching for one, and `if`
+   expressions for the other (but do not use the built-in logical operators such
+   as `||`).
+
+2. Add a `Triangle` variant to the `shape` type above. The constructor should
+   take two floats: the base and the height. Extend the `area` function to
+   handle triangles, and then define a `perimeter` function for shapes.
+
+3. Define a function that takes a `myTree('a, 'b)` value and counts the number
+   of leaves. That is, the function call `numLeaves(TreeNode(Leaf(27), "+",
+   TreeNode(Leaf(3), "*", Leaf(5))))' should return 3. _Hint:_ Define it using a
+   pattern match.
+
+4. Based on the `curry` and `uncurry` functions, give a natural deduction proof
+   of the arguments $(p\land q)\rightarrow r\vdash p\rightarrow(q\rightarrow r)$
+   and its converse $p\rightarrow(q\rightarrow r)\vdash(p\land q)\rightarrow r$.
+
+5. We have observed that modus ponens, the $\rightarrow$ elimination rule,
+   corresponds to function application. What operation on functions corresponds
+   to the Law of Syllogism ($p\rightarrow q,q\rightarrow r\vdash p\rightarrow
+   r$)?
+
+6. Prove the logical equivalence $(p\lor q)\rightarrow r\equiv(p\rightarrow
+   r)\land(q\rightarrow r)$. Give the analogous ReasonML functions that show the
+   1-1 correspondence between the types `disj('a, 'b) => 'c` and
+   `('a => 'c, 'b => 'c)`.
+
+
+## TODO
+another page on common patterns of recursion: map, reduce, fold, accumulator,
 auxilliary function, tail-recursion, mutual recursion. A page on functional graphics.
 A summary page on ReasonML.
