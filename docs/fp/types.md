@@ -678,6 +678,16 @@ let demo1 = orCommutative(Left(42));
 let demo2 = orCommutative(Right("hello"));
 ```
 
+One of the very powerful aspects of this analogy between typed functional
+programming and logical proofs is that, for those parts of a program that
+are just doing the "administrative" work of shuffling around pieces of
+data structures in a generic way, there is just one straightforward way to
+put the pieces together that will satisfy the type-checker. Writing this
+kind of program is akin to proving an equivalence in logic, and there is
+a strong hope that this sort of code could be generated automatically, or
+at least with significant machine assistance, leaving programmers to work
+on the more interesting parts of the problem.
+
 Missing from this analogy is how to treat negation and contradiction ($\F$).
 The simplest approach in ReasonML is probably to treat negation $\lnot A$ as
 equivalent to the implication $A\rightarrow\F$. We do not have a type that
