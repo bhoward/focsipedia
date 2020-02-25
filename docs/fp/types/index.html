@@ -22,21 +22,21 @@
 
 <link rel="preload" href="/focsipedia/styles.ba01596f.js" as="script">
 
-<link rel="preload" href="/focsipedia/runtime~main.5aca20e7.js" as="script">
+<link rel="preload" href="/focsipedia/runtime~main.fb057f48.js" as="script">
 
-<link rel="preload" href="/focsipedia/main.288dec02.js" as="script">
+<link rel="preload" href="/focsipedia/main.7dd72ae5.js" as="script">
 
-<link rel="preload" href="/focsipedia/1.ce1a6736.js" as="script">
+<link rel="preload" href="/focsipedia/1.8c0c47b2.js" as="script">
 
-<link rel="preload" href="/focsipedia/2.98e66982.js" as="script">
+<link rel="preload" href="/focsipedia/2.7734fceb.js" as="script">
 
-<link rel="preload" href="/focsipedia/1be78505.5dc15f25.js" as="script">
+<link rel="preload" href="/focsipedia/1be78505.07150784.js" as="script">
 
 <link rel="preload" href="/focsipedia/90510764.de533be9.js" as="script">
 
-<link rel="preload" href="/focsipedia/17896441.b89029ac.js" as="script">
+<link rel="preload" href="/focsipedia/17896441.4a8acf65.js" as="script">
 
-<link rel="preload" href="/focsipedia/94ead6cb.37493a08.js" as="script">
+<link rel="preload" href="/focsipedia/94ead6cb.ca286783.js" as="script">
 
 </head>
 <body>
@@ -1411,7 +1411,15 @@ let demo2 = orCommutative(Right(&quot;hello&quot;));</textarea><pre aria-hidden=
     color: transparent !important;
   }
 }
-</style></div><div><button type="button" aria-label="Execute code">Execute</button></div></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>Missing from this analogy is how to treat negation and contradiction (<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">F</mi></mrow><annotation encoding="application/x-tex">\F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em"></span><span class="mord"><span class="mord mathbb">F</span></span></span></span></span></span>).
+</style></div><div><button type="button" aria-label="Execute code">Execute</button></div></div><div class="playgroundPreview_3GNE"><pre></pre></div></div><p>One of the very powerful aspects of this analogy between typed functional
+programming and logical proofs is that, for those parts of a program that
+are just doing the &quot;administrative&quot; work of shuffling around pieces of
+data structures in a generic way, there is just one straightforward way to
+put the pieces together that will satisfy the type-checker. Writing this
+kind of program is akin to proving an equivalence in logic, and there is
+a strong hope that this sort of code could be generated automatically, or
+at least with significant machine assistance, leaving programmers to work
+on the more interesting parts of the problem.</p><p>Missing from this analogy is how to treat negation and contradiction (<span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">F</mi></mrow><annotation encoding="application/x-tex">\F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em"></span><span class="mord"><span class="mord mathbb">F</span></span></span></span></span></span>).
 The simplest approach in ReasonML is probably to treat negation <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">¬</mi><mi>A</mi></mrow><annotation encoding="application/x-tex">\lnot A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em"></span><span class="mord">¬</span><span class="mord mathdefault">A</span></span></span></span></span> as
 equivalent to the implication <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi mathvariant="double-struck">F</mi></mrow><annotation encoding="application/x-tex">A\rightarrow\F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em"></span><span class="mord"><span class="mord mathbb">F</span></span></span></span></span></span>. We do not have a type that
 corresponds to <span class="math math-inline"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">F</mi></mrow><annotation encoding="application/x-tex">\F</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em"></span><span class="mord"><span class="mord mathbb">F</span></span></span></span></span></span>, because there are not supposed to be any values of that
@@ -1458,21 +1466,21 @@ its factors—much of modern cryptography relies on this distance!<a href="#fnre
 
 <script src="/focsipedia/styles.ba01596f.js"></script>
 
-<script src="/focsipedia/runtime~main.5aca20e7.js"></script>
+<script src="/focsipedia/runtime~main.fb057f48.js"></script>
 
-<script src="/focsipedia/main.288dec02.js"></script>
+<script src="/focsipedia/main.7dd72ae5.js"></script>
 
-<script src="/focsipedia/1.ce1a6736.js"></script>
+<script src="/focsipedia/1.8c0c47b2.js"></script>
 
-<script src="/focsipedia/2.98e66982.js"></script>
+<script src="/focsipedia/2.7734fceb.js"></script>
 
-<script src="/focsipedia/1be78505.5dc15f25.js"></script>
+<script src="/focsipedia/1be78505.07150784.js"></script>
 
 <script src="/focsipedia/90510764.de533be9.js"></script>
 
-<script src="/focsipedia/17896441.b89029ac.js"></script>
+<script src="/focsipedia/17896441.4a8acf65.js"></script>
 
-<script src="/focsipedia/94ead6cb.37493a08.js"></script>
+<script src="/focsipedia/94ead6cb.ca286783.js"></script>
 
 
 </body>
