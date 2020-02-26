@@ -1,10 +1,6 @@
+import React from 'react';
+
 const evalCode = (code, canvas) => {
-  // if (canvas !== '') {
-  //   console.log('Opening ' + canvas);
-  //   console.log('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById("' + canvas + '")))(fun ()  -> raise Not_found));;');
-  //   let result = evaluator.execute('let _ = Graphics_js.open_canvas(Js_of_ocaml.Js.Opt.get(Js_of_ocaml.Dom_html.CoerceTo.canvas(Js_of_ocaml.Dom_html.getElementById("' + canvas + '")))(fun ()  -> raise Not_found));;');
-  //   console.log(result);
-  // }
   const _consoleLog = console.log;
   const _consoleError = console.error;
   let output = '';
@@ -23,7 +19,40 @@ const evalCode = (code, canvas) => {
   console.log = _consoleLog;
   console.error = _consoleError;
 
-  return (res + '\n' + output + '\n' + errs).trim(); // TODO fix this
+  let sampleSVG = `<svg viewBox="0 0 300 100" stroke="red" fill="grey">
+    <circle cx="50" cy="50" r="40" />
+    <circle cx="150" cy="50" r="8" />
+
+    <svg viewBox="0 0 10 10" x="200" width="100">
+      <circle cx="5" cy="5" r="4" />
+    </svg>
+  </svg>`;
+
+  let resElt = null;
+  if (res.trim() !== '') {
+    resElt = <pre>{res}</pre>;
+  }
+
+  let outElt = null;
+  if (output !== '') {
+    outElt = (canvas)
+      ? <div dangerouslySetInnerHTML={{ __html: output }} />
+      : <pre style={{color: "blue"}}>{output}</pre>;
+  }
+
+  let errElt = null;
+  if (errs !== '') {
+    errElt = <pre style={{color: "red"}}>{errs}</pre>;
+  }
+
+  // return (res + '\n' + output + '\n' + errs).trim(); // TODO fix this
+  return <div>
+    {resElt}
+    <hr/>
+    {outElt}
+    <hr/>
+    {errElt}
+    </div>;
 };
 
 export default evalCode;
