@@ -17,32 +17,26 @@ import classnames from 'classnames';
 import styles from './styles.module.css';
 
 function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden, ...props}) {
-  const [canvasId] = React.useState(_uniqueId('canvas-'));
-  let graphics = (canvas)
-    ? <canvas id={canvasId} width="600" height="400" className={styles.playgroundCanvas}/>
-    : <></>;
+  if (edit) {
+    // create an editor around the highlighted code, and an execute button
+  }
 
-    if (edit) {
-      // create an editor around the highlighted code, and an execute button
-    }
-  
-    if (noexec) {
-      // don't evaluate initial code on page load
-    }
-  
-    if (hidden) {
-      // only show output (if any)
-    }
-  
-    if (hidden) {
+  if (noexec) {
+    // don't evaluate initial code on page load
+  }
+
+  if (hidden) {
+    // only show output (if any)
+  }
+
+  if (hidden) {
     return (<MyLiveProvider
       code={children}
       language={language}
       theme={theme}
       noexec={false}
-      canvas={(canvas) ? canvasId : ''}
+      canvas={canvas}
       {...props}>
-      {graphics}
     </MyLiveProvider>);
   } else {
       return (
@@ -51,7 +45,7 @@ function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden,
         language={language}
         theme={theme}
         noexec={noexec}
-        canvas={(canvas) ? canvasId : ''}
+        canvas={canvas}
         disabled={!edit}
         {...props}>
         <MyLiveEditor />
@@ -59,7 +53,6 @@ function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden,
           <MyLivePreview Component="pre"/>
           <MyLiveError />
         </div>
-        {graphics}
       </MyLiveProvider>
     );
   }
