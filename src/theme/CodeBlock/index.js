@@ -29,7 +29,6 @@ export default ({
   edit,
   fix,
   hidden,
-  canvas,
   metastring,
   ...props
 }) => {
@@ -79,15 +78,13 @@ export default ({
     language = prism.defaultLanguage;
   }
 
-  if (canvas || demo || edit || fix || hidden) {
-    // note that "canvas" by itself implies "demo canvas": code is displayed and executed once
+  if (demo || edit || fix || hidden) {
     return (
       <LiveCodeBlock
         code={children.trim()}
         theme={prism.theme || defaultTheme}
         language={language}
         edit={edit || fix}
-        canvas={canvas}
         noexec={fix}
         hidden={hidden}
         {...props}

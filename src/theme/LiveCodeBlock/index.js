@@ -16,7 +16,7 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 
-function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden, ...props}) {
+function LiveCodeBlock({children, theme, language, edit, noexec, hidden, ...props}) {
   if (edit) {
     // create an editor around the highlighted code, and an execute button
   }
@@ -35,7 +35,6 @@ function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden,
       language={language}
       theme={theme}
       noexec={false}
-      canvas={canvas}
       {...props}>
     </MyLiveProvider>);
   } else {
@@ -45,7 +44,6 @@ function LiveCodeBlock({children, theme, language, edit, canvas, noexec, hidden,
         language={language}
         theme={theme}
         noexec={noexec}
-        canvas={canvas}
         disabled={!edit}
         {...props}>
         <MyLiveEditor />
