@@ -6,37 +6,35 @@ import { generateElement } from '../../utils/transpile';
 export default class MyLiveProvider extends Component {
   // eslint-disable-next-line camelcase
   componentDidMount() {
-    const { code, language, noexec, canvas } = this.props;
+    const { code, language, noexec } = this.props;
 
     if (!noexec) {
-      this.transpile({ code, language, canvas });
+      this.transpile({ code, language });
     }
   }
 
   componentDidUpdate({
     code: prevCode,
-    language: prevLanguage,
-    canvas: prevCanvas
+    language: prevLanguage
   }) {
     // console.log("did update");
-    const { code, language, canvas } = this.props;
+    const { code, language } = this.props;
     if (
       code !== prevCode ||
-      language !== prevLanguage ||
-      canvas !== prevCanvas
+      language !== prevLanguage
     ) {
-      // this.transpile({ code, language, canvas });
+      // this.transpile({ code, language });
     }
   }
 
   onChange(code) {
-    const { language, canvas } = this.props;
-    this.transpile({ code, language, canvas });
+    const { language } = this.props;
+    this.transpile({ code, language });
   }
 
   executeCode(code) {
-    const { language, canvas } = this.props;
-    this.transpile({ code, language, canvas });
+    const { language } = this.props;
+    this.transpile({ code, language });
   }
 
   resetInterpreter() {
@@ -47,12 +45,11 @@ export default class MyLiveProvider extends Component {
     this.setState({ error: error.toString() });
   }
 
-  transpile({ code, language, canvas }) {
+  transpile({ code, language }) {
     // Transpilation arguments
     const input = {
       code,
-      language,
-      canvas
+      language
     };
 
     const errorCallback = err =>
@@ -71,7 +68,7 @@ export default class MyLiveProvider extends Component {
   }
 
   render() {
-    const { children, code, language, theme, canvas, disabled } = this.props;
+    const { children, code, language, theme, disabled } = this.props;
 
     return (
       <MyLiveContext.Provider
@@ -80,7 +77,6 @@ export default class MyLiveProvider extends Component {
           code,
           language,
           theme,
-          canvas,
           disabled,
           onError: this.onError.bind(this),
           onChange: this.onChange.bind(this),
