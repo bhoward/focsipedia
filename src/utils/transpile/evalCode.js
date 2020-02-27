@@ -1,6 +1,6 @@
 import React from 'react';
 
-const evalCode = (code, prevErrors) => {
+const evalCode = (code, prevErrors, hidden) => {
   const _consoleLog = console.log;
   const _consoleError = console.error;
   let output = '';
@@ -22,7 +22,7 @@ const evalCode = (code, prevErrors) => {
   console.error = _consoleError;
 
   let resElt = null;
-  if (res.trim() !== '') {
+  if ((res.trim() !== '') && !hidden) {
     resElt = <pre style={{color: "green"}}>{res}</pre>;
   }
 
