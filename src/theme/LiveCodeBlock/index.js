@@ -17,43 +17,31 @@ import classnames from 'classnames';
 import styles from './styles.module.css';
 
 function LiveCodeBlock({children, theme, language, edit, noexec, hidden, ...props}) {
-  if (edit) {
-    // create an editor around the highlighted code, and an execute button
-  }
+  // if (edit) {
+  //   // create an editor around the highlighted code, and an execute button
+  // }
 
-  if (noexec) {
-    // don't evaluate initial code on page load
-  }
+  // if (noexec) {
+  //   // don't evaluate initial code on page load
+  // }
 
-  if (hidden) {
-    // only show output (if any)
-  }
+  // if (hidden) {
+  //   // only show output (if any)
+  // }
 
-  if (hidden) {
-    return (<MyLiveProvider
-      code={children}
-      language={language}
-      theme={theme}
-      noexec={false}
-      {...props}>
-    </MyLiveProvider>);
-  } else {
-      return (
-      <MyLiveProvider
-        code={children}
-        language={language}
-        theme={theme}
-        noexec={noexec}
-        disabled={!edit}
-        {...props}>
-        <MyLiveEditor />
-        <div className={styles.playgroundPreview}>
-          <MyLivePreview Component="pre"/>
-          <MyLiveError />
-        </div>
-      </MyLiveProvider>
-    );
-  }
+  return (<MyLiveProvider
+    code={children}
+    language={language}
+    theme={theme}
+    hidden={hidden}
+    noexec={noexec}
+    disabled={!edit}
+    {...props}>
+    {(hidden) ? null : <MyLiveEditor />}
+    <div className={styles.playgroundPreview}>
+      <MyLivePreview Component="div"/>
+    </div>
+  </MyLiveProvider>);
 }
 
 export default LiveCodeBlock;
