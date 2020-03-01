@@ -4,10 +4,31 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 26 Feb 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 04 Mar 2020 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Exam 1]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam1</guid>
+            <pubDate>Wed, 04 Mar 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Exam 1 Review]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/exam1-review</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam1-review</guid>
+            <pubDate>Mon, 02 Mar 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MapReduce]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/mapreduce</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/mapreduce</guid>
+            <pubDate>Fri, 28 Feb 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Types and Functional Programming, Continued]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/types2</link>

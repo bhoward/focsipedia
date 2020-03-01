@@ -13,3 +13,5 @@ Reason/OCaml playground code (still under development):
 * `refmt.js` is the Reason-OCaml transpiler, as installed by `npm install reason`.
 
 * `eval.js` is the Js_of_OCaml toplevel, exporting functions `execute` and `reset`. See [this issue](https://github.com/ocsigen/js_of_ocaml/issues/629) and [this example](https://github.com/ocsigen/js_of_ocaml/tree/master/toplevel/examples/eval).
+
+* `toplevel.js` is the Js_of_OCaml toplevel used by https://sketch.sh/ (see https://github.com/Sketch-sh/sketch-sh and https://github.com/Sketch-sh/engine).
