@@ -15,7 +15,9 @@ const evalCode = (code, language, hidden) => {
 
   results.forEach(r => {
     let {value, stdout, stderr} = r.value;
-    res += value;
+    if (value.trim() !== '- : unit = ()') {
+      res += value;
+    }
     output += stdout;
     errs += stderr;
   });
