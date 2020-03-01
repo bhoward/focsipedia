@@ -181,6 +181,16 @@ This line is also a separate paragraph, but... This line is only separated by a 
 
 ---
 
+## Warnings, etc.
+
+:::warning
+This is a warning message. Other options include caution, note, important, and tip.
+:::
+
+:::tip Custom Title
+You can include a custom title on your callout messages.
+:::
+
 ## Footnotes
 
 Use brackets and a caret around the footnote marker.[^1] The footnote marker should be a number in the proper sequence.[^2] You can also have an inline footnote.[^Like this.]

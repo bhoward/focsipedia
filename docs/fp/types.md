@@ -21,22 +21,14 @@ The value `x` to which we apply the function is known as the **argument**.
 For example, `string_of_int` is a function of type `int => string`; when we
 apply it to an integer, it returns the string of digits representing the argument:
 ```reason edit
-let result = string_of_int(42);
+string_of_int(42);
 ```
 
 Since functions are first-class values, we may bind a function to another name:
 ```reason edit
 let f = string_of_int;
-let result = f(42);
+f(42);
 ```
-
-:::warning
-Because the embedded ReasonML compiler here is first converting the code to
-OCaml, and then executing the OCaml code, it actually reports types using the
-OCaml syntax, which is slightly different! For example, OCaml uses a single
-arrow `->` for function types instead of the double arrow `=>`. This is
-unfortunate, but as we will see below we rarely even need to write types.
-:::
 
 To create a function value, we use the double arrow to show that we are taking
 a parameter, for example `p`, and using it to compute a result:
@@ -50,14 +42,15 @@ Consider the following example:
 ```reason edit
 let x = 5;
 let f = x => { x + 12 };
-let y = f(x * x) + x;
+f(x * x) + x;
 ```
 
 The first binding to `x` is the integer 5. When `f` is applied to its argument,
 which is `x * x`, or 25, we will temporarily bind 25 to a new, local variable
 named `x` and evaluate the body of the function: `x + 12`, which gives 37.
-Continuing to evaluate the expression `f(x * x) + x`, we now have `37 + x`; since
-`x` here refers to the original binding, this is `37 + 5`, so it binds 42 to `y`.
+Continuing to evaluate the expression `f(x * x) + x`, we now have `37 + x`;
+since `x` here refers to the original binding, this is `37 + 5`, so it produces
+the final answer 42.
 
 ## Type Inference
 
@@ -89,13 +82,13 @@ When we write a function that takes multiple arguments, we may list the paramete
 in parentheses, separated by commas:
 ```reason edit
 let average = (a, b) => { float_of_int(a + b) /. 2.0 };
-let result = average(7, 10);
+average(7, 10);
 ```
 This is actually a lie! In ReasonML, functions can only have a single argument.
 Behind the scenes, the code above is translated to the following:
 ```reason edit
 let average = a => { b => { float_of_int(a + b) /. 2.0 } };
-let result = average(7)(10);
+average(7)(10);
 ```
 That is, `average` is a function that takes an integer parameter `a` and returns
 another function. This second function expects to be given another integer
@@ -128,14 +121,14 @@ we have a function for formatting exam grades:
 let format_grade = (exam, total, name, points) => {
   name ++ ", " ++ exam ++ ": " ++ string_of_int(points) ++ "/" ++ string_of_int(total) 
 };
-let demo = format_grade("Midterm", 100, "Brian", 93);
+format_grade("Midterm", 100, "Brian", 93);
 ```
 We could take advantage of currying to create a specialized function for formatting the
 midterm grades:
 ```reason edit
 let format_midterm = format_grade("Midterm", 100);
-let demo1 = format_midterm("Brian", 93);
-let demo2 = format_midterm("Alice", 97);
+format_midterm("Brian", 93);
+format_midterm("Alice", 97);
 ```
 The first two arguments of `format_grade` have been provided with the exam name
 ("Midterm") and the total number of points (100). Now we have a new function,
@@ -154,14 +147,6 @@ tuple `(42, "hello", 3.1416)` has type `(int, string, float)`:
 ```reason edit
 let demo: (int, string, float) = (42, "hello", 3.1416);
 ```
-
-:::warning
-Again the OCaml syntax differs from the ReasonML syntax, so you will see tuple
-types printed out with the types separated by asterisks: `int * string * float`
-instead of `(int, string, float)`. In OCaml they chose to make it look more like
-a cartesian product, while ReasonML is trying to make the type look like the
-values it describes.
-:::
 
 In the case $n=2$, a tuple is just the familiar **pair**. For example, the type
 of two-dimensional points with integer coordinates is `(int, int)`. Pairs come
@@ -306,12 +291,6 @@ let print_point: printer(point(int)) = ((x, y)) => {
 print_point(p1);
 ```
 
-:::warning
-Once again, OCaml displays parameterized types slightly differently. Instead of
-`point('a)` and `binary_op('a, 'b)`, the name of the type comes after: `'a point`
-and `('a, 'b) binary_op`.
-:::
-
 ## Constructors and Variants
 
 A tuple is a rather generic way of packaging up data. When you are building a larger
@@ -343,7 +322,7 @@ let format_grade = (item, entry) => {
   let Entry(name, grade) = entry;
   name ++ ", " ++ title ++ ": " ++ string_of_int(grade) ++ "/" ++ string_of_int(max)
 };
-let demo = format_grade(Item("Midterm", 100), Entry("Brian", 93));
+format_grade(Item("Midterm", 100), Entry("Brian", 93));
 ```
 
 So far we have seen types where all of the data have the same form: the same number
@@ -369,10 +348,10 @@ called a match or case statement):
 ```reason edit
 let suit1 = Club;
 switch (suit1) {
-| Club => print_string("It's a club")
-| Diamond => print_string("It's a diamond")
-| Heart => print_string("It's a heart")
-| Spade => print_string("It's a spade")
+| Club => "It's a club"
+| Diamond => "It's a diamond"
+| Heart => "It's a heart"
+| Spade => "It's a spade"
 };
 ```
 Try changing the value bound to `suit1` and check the output. Each of the lines starting
@@ -414,8 +393,8 @@ let area = sh => {
   | Circle(radius) => 3.141592653589 *. radius *. radius
   }
 };
-print_float(area(Rectangle(5.0, 10.0))); print_newline();
-print_float(area(Circle(10.0))); print_newline();
+area(Rectangle(5.0, 10.0));
+area(Circle(10.0));
 ```
 
 If you are familiar with interfaces and subclasses in an object-oriented language such
@@ -499,11 +478,8 @@ let isFace = c => {
   | _ => false
   }
 };
-if (isFace(card2) && !isFace(card3)) {
-  print_string("Correct!")
-} else {
-  print_string("Error!")
-};
+isFace(card2);
+isFace(card3);
 ```
 Here is a function that tells us if a card is "wild", if we are playing a friendly
 game where jokers and black twos are wild:
@@ -516,11 +492,10 @@ let isWild = c => {
   | _ => false
   }
 };
-if (isWild(card1) && !isWild(card2) && !isWild(card3) && isWild(card4)) {
-  print_string("Correct!")
-} else {
-  print_string("Error!")
-};
+isWild(card1);
+isWild(card2);
+isWild(card3);
+isWild(card4);
 ```
 Finally, here is a function that will take two cards plus a string, either
 "high" or "low". It will return the card with the higher rank; if they have the
@@ -550,10 +525,10 @@ let higher = (c1, c2, rule) => {
       }
   }
 }
-let result1 = higher(card1, card2, "high"); /* should be the Jack */
-let result2 = higher(card1, card3, "high"); /* should be the Ace */
-let result3 = higher(card1, card3, "low"); /* should be the Two */
-let result4 = higher(card3, card4, "high"); /* should be the Joker */
+higher(card1, card2, "high"); /* should be the Jack */
+higher(card1, card3, "high"); /* should be the Ace */
+higher(card1, card3, "low"); /* should be the Two */
+higher(card3, card4, "high"); /* should be the Joker */
 ```
 
 ### Recursive Types
@@ -588,7 +563,7 @@ let rec sumList = nums => {
   | ListNode(n, rest) => n + sumList(rest)
   }
 };
-print_int(sumList(list123));
+sumList(list123);
 ```
 
 The type `myTree('a, 'b)` is a parameterized type. It represents binary trees that
@@ -609,7 +584,7 @@ let rec eval = t => {
   | TreeNode(left, "*", right) => eval(left) * eval(right)
   }
 };
-print_int(eval(tree123));
+eval(tree123);
 ```
 Note that we get a warning that the pattern match is not exhaustive, because we
 don't provide cases for all of the possible operator strings. We will look at
@@ -662,8 +637,8 @@ let orCommutative: disj('a, 'b) => disj('b, 'a) = (l1: disj('a, 'b)) => {
   };
   l6
 };
-let demo1 = orCommutative(Left(42));
-let demo2 = orCommutative(Right("hello"));
+orCommutative(Left(42));
+orCommutative(Right("hello"));
 ```
 More idiomatically, taking advantage of type inference and not using so many
 `let` statements to label each "line" of the proof, we can write this as:
@@ -674,8 +649,8 @@ let orCommutative = a_or_b => {
   | Right(b) => Left(b)
   }
 };
-let demo1 = orCommutative(Left(42));
-let demo2 = orCommutative(Right("hello"));
+orCommutative(Left(42));
+orCommutative(Right("hello"));
 ```
 
 One of the very powerful aspects of this analogy between typed functional
