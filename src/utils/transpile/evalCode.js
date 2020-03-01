@@ -1,25 +1,24 @@
 import React from 'react';
 
-const evalCode = (code, prevErrors, hidden) => {
-  const _consoleLog = console.log;
-  const _consoleError = console.error;
-  let output = '';
-  let errs = prevErrors;
-  let res = '';
+const evalCode = (code, language, hidden) => {
+  if (language === 'reason') {
+    evaluator.reasonSyntax();
+  } else {
+    evaluator.mlSyntax();
+  }
 
-  console.log = (...args) => {
-    return args.forEach(argument => {
-      output += argument + '\n'
-    });
-  };
-  console.error = (...args) => {
-    return args.forEach(argument => {
-      errs += argument + '\n'
-    });
-  };
-  res = evaluator.execute(code);
-  console.log = _consoleLog;
-  console.error = _consoleError;
+  let res = '';
+  let output = '';
+  let errs = '';
+
+  let results = evaluator.execute(code);
+
+  results.forEach(r => {
+    let {value, stdout, stderr} = r.value;
+    res += value;
+    output += stdout;
+    errs += stderr;
+  });
 
   let resElt = null;
   if ((res.trim() !== '') && !hidden) {

@@ -127,8 +127,7 @@ module.exports = {
     ],
   ],
   scripts: [
-    '/focsipedia/eval.js',
-    '/focsipedia/refmt.js',
+    '/focsipedia/toplevel.js',
   ],
   stylesheets: [
     'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',
