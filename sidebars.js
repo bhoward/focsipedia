@@ -27,6 +27,7 @@ module.exports = {
     ],
     FP: ['fp/intro',
       'fp/types',
+      'fp/doodle',
     ],
     Features: ['reason',
       'styleGuide',

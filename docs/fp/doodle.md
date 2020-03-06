@@ -1,3 +1,9 @@
+---
+id: doodle
+title: Doodle Graphics
+---
+
+```reason hidden
 let (+) = (+.);
 let (-) = (-.);
 let (*) = (*.);
@@ -117,8 +123,12 @@ let rectangle = (w, h) => { Rectangle(w, h) };
 let (---) = (t, b) => { Above(t, b) };
 let (///) = (l, r) => { Beside(l, r) };
 let (***) = (a, b) => { On(a, b) };
+```
 
+Here is an example:
+```reason edit
 let a = Ellipse(60.0, 60.0);
 let b = Rectangle(50.0, 50.0);
 let c = Text("Hello");
 draw(On(a *** b /// a, Rotate(Scale(c, 5., 5.), 45.)));
+```
