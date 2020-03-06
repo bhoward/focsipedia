@@ -30,6 +30,8 @@ title: Topics
 
 ## Week 6: Exam 1
 
+### [Functional Graphics](fp/doodle.md)
+
 ## Week 7: Lists
 ### Functional Sorting
 
