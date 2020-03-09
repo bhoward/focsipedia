@@ -29,7 +29,7 @@ type image =
 | Beside(image, image)
 | Above(image, image)
 | On(image, image)
-| Styled(image, style)
+| Styled(image, list(style))
 | Translate(image, float, float)
 | Rotate(image, angle)
 | Scale(image, float, float)
@@ -45,6 +45,18 @@ let string_of_color = c => {
       h, int_of_float(s *. 100.), int_of_float(l *. 100.), a)
   }
 };
+let string_of_style = s => {
+  switch (s) {
+  | LineWidth(w) =>
+    Printf.sprintf("stroke-width='%f'", w)
+  | LineColor(c) =>
+    Printf.sprintf("stroke='%s'", string_of_color(c))
+  | FillColor(c) => 
+    Printf.sprintf("fill='%s'", string_of_color(c))
+  | Dashed =>
+    "stroke-dasharray='4'"
+  }
+}
 let getPoint = elt => {
   switch (elt) {
   | MoveTo(p) => p
@@ -144,17 +156,9 @@ let rec render = img => {
     Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
       height(t) /. 2., render(b))
   | On(a, b) => render(b) ++ render(a)
-  | Styled(img, sty) => {
-      switch (sty) {
-      | LineWidth(w) =>
-        Printf.sprintf("<g stroke-width='%f'>%s</g>", w, render(img))
-      | LineColor(c) =>
-        Printf.sprintf("<g stroke='%s'>%s</g>", string_of_color(c), render(img))
-      | FillColor(c) => 
-        Printf.sprintf("<g fill='%s'>%s</g>", string_of_color(c), render(img))
-      | Dashed =>
-        Printf.sprintf("<g stroke-dasharray='4'>%s</g>", render(img))
-      }
+  | Styled(img, stys) => {
+      let ss = List.map(s => { " " ++ string_of_style(s) }, stys);
+      Printf.sprintf("<g %s>%s</g>", List.fold_left((++), "", ss), render(img))
     }
   | Translate(img, x, y) =>
     Printf.sprintf("<g transform='translate(%f,%f)'>%s</g>",
@@ -184,16 +188,10 @@ let showBounds = img => {
   let h = b -. t;
   On(
     Styled(
-      Styled(
-        Styled(
-          Styled(
-            On(
-              circle(10.), /* TODO add the crosshairs */
-              Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.)),
-            Dashed),
-          FillColor(Color("none"))),
-        LineColor(Color("black"))),
-      LineWidth(1.0)),
+      On(
+        circle(10.), /* TODO add the crosshairs */
+        Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.)),
+      [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]),
     img
   )
 }
@@ -203,17 +201,17 @@ let rec foo = n => {
     Empty
   } else {
     On(foo(n - 1), Styled(circle(float_of_int(10 * n)),
-      FillColor(HSLA(float_of_int(24 * n), 1.0, 0.5, 1.0))))
+      [FillColor(HSLA(float_of_int(24 * n), 1.0, 0.5, 1.0))]))
   }
 };
-draw(On(Scale(Styled(Text("DPoodle"), FillColor(Color("black"))), 2.1, 2.1), foo(10)))
+draw(On(Scale(Styled(Text("DPoodle"), [FillColor(Color("black"))]), 2.1, 2.1), foo(10)))
 ```
 
 Here is an ugly example:
 ```reason edit
-let blueFill = img => { Styled(img, FillColor(Color("blue"))) };
-let wideLines = img => { Styled(img, LineWidth(3.0)) };
-let redOutline = img => { Styled(img, LineColor(Color("red"))) };
+let blueFill = img => { Styled(img, [FillColor(Color("blue"))]) };
+let wideLines = img => { Styled(img, [LineWidth(3.0)]) };
+let redOutline = img => { Styled(img, [LineColor(Color("red"))]) };
 let a = blueFill(ellipse(60.0, 80.0));
 let b = wideLines(rectangle(50.0, 50.0));
 let c = circle(30.0);
