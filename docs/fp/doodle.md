@@ -209,12 +209,15 @@ let rec foo = n => {
 draw(On(Scale(Styled(Text("DPoodle"), FillColor(Color("black"))), 2.1, 2.1), foo(10)))
 ```
 
-Here is an example:
+Here is an ugly example:
 ```reason edit
-let a = ellipse(60.0, 80.0);
-let b = rectangle(50.0, 50.0);
+let blueFill = img => { Styled(img, FillColor(Color("blue"))) };
+let wideLines = img => { Styled(img, LineWidth(3.0)) };
+let redOutline = img => { Styled(img, LineColor(Color("red"))) };
+let a = blueFill(ellipse(60.0, 80.0));
+let b = wideLines(rectangle(50.0, 50.0));
 let c = circle(30.0);
 let d = Text("Hello");
 draw(On(Rotate(Scale(d, 5., 5.), 45.),
-        Above(Beside(a, b), c)));
+        redOutline(Above(Beside(a, b), c))));
 ```
