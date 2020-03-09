@@ -9,7 +9,15 @@ type pathElement =
 | MoveTo(point)
 | LineTo(point)
 | CurveTo(point, point, point);
-type style = (); /* TODO */
+type color =
+| Color(string)
+| RGBA(float, float, float, float)
+| HSLA(float, float, float, float);
+type style =
+| LineWidth(float)
+| LineColor(color) /* TODO patterns? */
+| FillColor(color)
+| Dashed; /* TODO: Font(family, size, style, ...) */
 type angle = float;
 type image =
 | Empty
@@ -26,11 +34,46 @@ type image =
 | Rotate(image, angle)
 | Scale(image, float, float)
 | Bounds(image, float, float, float, float);
+let string_of_color = c => {
+  switch (c) {
+  | Color(s) => s
+  | RGBA(r, g, b, a) =>
+    Printf.sprintf("rgba(%d,%d,%d,%f)",
+      int_of_float(r), int_of_float(g), int_of_float(b), a)
+  | HSLA(h, s, l, a) =>
+    Printf.sprintf("hsla(%f,%d%%,%d%%,%f)",
+      h, int_of_float(s *. 100.), int_of_float(l *. 100.), a)
+  }
+};
+let getPoint = elt => {
+  switch (elt) {
+  | MoveTo(p) => p
+  | LineTo(p) => p
+  | CurveTo(_, _, p) => p
+  }
+};
+let rec bbox_of_points = ps => {
+  switch (ps) {
+  | [] => (0., 0., 0., 0.)
+  | [(x, y)] => (x, x, y, y)
+  | [(x, y), ...rest] => {
+      let (l, r, t, b) = bbox_of_points(rest);
+      (min(x, l), max(x, r), min(y, t), max(y, b))
+    }
+  }
+};
 let rec bbox = img => {
   switch (img) {
   | Empty => (0., 0., 0., 0.)
   | Ellipse(w, h) => (-.w /. 2., w /. 2., -.h /. 2., h /. 2.)
   | Rectangle(w, h) => (-.w /. 2., w /. 2., -.h /. 2., h /. 2.)
+  | Text(_) => (0., 0., 0., 0.)
+  | OpenPath(elts) => {
+    bbox_of_points(List.map(getPoint, elts))
+  }
+  | ClosedPath(elts) => {
+    bbox_of_points(List.map(getPoint, elts))
+  }
   | Beside(l, r) => {
     let (ll, lr, lt, lb) = bbox(l);
     let (rl, rr, rt, rb) = bbox(r);
@@ -51,12 +94,20 @@ let rec bbox = img => {
     let (l, r, t, b) = bbox(img);
     (l +. x, r +. x, t +. y, b +. y)
   }
+  | Rotate(img, a) => {
+    let (l, r, t, b) = bbox(img);
+    let ps = [(l, t), (l, b), (r, t), (r, b)];
+    let arad = a *. 3.14159265358979 /. 180.0;
+    let cosa = cos(arad);
+    let sina = sin(arad);
+    let rot = ((x, y)) => { (x *. cosa -. y *. sina, x *. sina +. y *. cosa) }
+    bbox_of_points(List.map(rot, ps))
+  }
   | Scale(img, sx, sy) => {
     let (l, r, t, b) = bbox(img);
     (l *. sx, r *. sx, t *. sy, b *. sy)
   }
   | Bounds(_, l, r, t, b) => (l, r, t, b)
-  | _ => (0., 0., 0., 0.) /* TODO */
   }
 };
 let rec width = img => {
@@ -93,7 +144,18 @@ let rec render = img => {
     Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
       height(t) /. 2., render(b))
   | On(a, b) => render(b) ++ render(a)
-  | Styled(img, sty) => ""
+  | Styled(img, sty) => {
+      switch (sty) {
+      | LineWidth(w) =>
+        Printf.sprintf("<g stroke-width='%f'>%s</g>", w, render(img))
+      | LineColor(c) =>
+        Printf.sprintf("<g stroke='%s'>%s</g>", string_of_color(c), render(img))
+      | FillColor(c) => 
+        Printf.sprintf("<g fill='%s'>%s</g>", string_of_color(c), render(img))
+      | Dashed =>
+        Printf.sprintf("<g stroke-dasharray='4'>%s</g>", render(img))
+      }
+    }
   | Translate(img, x, y) =>
     Printf.sprintf("<g transform='translate(%f,%f)'>%s</g>",
       x, y, render(img))
@@ -108,7 +170,7 @@ let rec render = img => {
 };
 let draw = image => {
   print_string("<svg viewBox='-100 -100 200 200' width='100%' preserveAspectRatio>");
-  print_string("<g fill='grey' stroke='black'>");
+  print_string("<g fill='grey' stroke='black' font-size='14'>");
   print_string(render(image));
   print_string("</g></svg>");
 };
@@ -116,15 +178,35 @@ let circle = r => { Ellipse(2. *. r, 2. *. r) };
 let ellipse = (w, h) => { Ellipse(w, h) };
 let rectangle = (w, h) => { Rectangle(w, h) };
 let text = s => { Text(s) };
+let showBounds = img => {
+  let (l, r, t, b) = bbox(img);
+  let w = r -. l;
+  let h = b -. t;
+  On(
+    Styled(
+      Styled(
+        Styled(
+          Styled(
+            On(
+              circle(10.), /* TODO add the crosshairs */
+              Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.)),
+            Dashed),
+          FillColor(Color("none"))),
+        LineColor(Color("black"))),
+      LineWidth(1.0)),
+    img
+  )
+}
 
 let rec foo = n => {
   if (n == 0) {
     Empty
   } else {
-    On(foo(n - 1), circle(float_of_int(10 * n)))
+    On(foo(n - 1), Styled(circle(float_of_int(10 * n)),
+      FillColor(HSLA(float_of_int(24 * n), 1.0, 0.5, 1.0))))
   }
 };
-draw(On(Scale(Text("Doodle"), 2., 2.), foo(10)))
+draw(On(Scale(Styled(Text("DPoodle"), FillColor(Color("black"))), 2.1, 2.1), foo(10)))
 ```
 
 Here is an example:
