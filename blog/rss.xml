@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 04 Mar 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 Mar 2020 00:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[No Class]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/no-class</link>
+            <guid>https://bhoward.github.io/focsipedia/blog/no-class</guid>
+            <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Exam 1]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
