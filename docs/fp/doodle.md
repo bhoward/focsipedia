@@ -130,6 +130,17 @@ let rec height = img => {
   let (_, _, t, b) = bbox(img);
   b -. t
 };
+let rec string_of_path = path => {
+  switch (path) {
+  | [] => ""
+  | [MoveTo((x, y)), ...rest] =>
+      Printf.sprintf("M %f %f ", x, y) ++ string_of_path(rest)
+  | [LineTo((x, y)), ...rest] =>
+      Printf.sprintf("L %f %f ", x, y) ++ string_of_path(rest)
+  | [CurveTo((x1, y1), (x2, y2), (x3, y3)), ...rest] =>
+      Printf.sprintf("C %f %f, %f %f, %f %f ", x1, y1, x2, y2, x3, y3) ++ string_of_path(rest)
+  }
+};
 let rec render = img => {
   switch (img) {
   | Empty => ""
@@ -141,8 +152,10 @@ let rec render = img => {
       w, h, -.w /. 2., -.h /. 2.)
   | Text(s) =>
     Printf.sprintf("<text x='0' y='0' text-anchor='middle' dominant-baseline='middle'>%s</text>", s)
-  | OpenPath(path) => "" /* TODO */
-  | ClosedPath(path) => "" /* TODO */
+  | OpenPath(path) =>
+    Printf.sprintf("<path d='%s' />", string_of_path(path))
+  | ClosedPath(path) => 
+    Printf.sprintf("<path d='%sZ' />", string_of_path(path))
   | Beside(l, r) =>
     Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
       -.width(r) /. 2., render(l))
@@ -176,21 +189,27 @@ let draw = image => {
   print_string("<svg viewBox='-100 -100 200 200' width='100%' preserveAspectRatio>");
   print_string("<g fill='grey' stroke='black' font-size='14'>");
   print_string(render(image));
-  print_string("</g></svg>");
+  print_string("</g></svg>\n");
 };
 let circle = r => { Ellipse(2. *. r, 2. *. r) };
 let ellipse = (w, h) => { Ellipse(w, h) };
 let rectangle = (w, h) => { Rectangle(w, h) };
+let square = w => { Rectangle(w, w) };
+let (---) = (a, b) => { Above(a, b) };
+let (|||) = (a, b) => { Beside(a, b) };
+let (***) = (a, b) => { On(a, b) };
 let text = s => { Text(s) };
+
 let showBounds = img => {
   let (l, r, t, b) = bbox(img);
   let w = r -. l;
   let h = b -. t;
   On(
     Styled(
-      On(
-        circle(10.), /* TODO add the crosshairs */
-        Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.)),
+      circle(10.) ***
+        OpenPath([MoveTo((-20., 0.)), LineTo((20., 0.))]) ***
+        OpenPath([MoveTo((0., -20.)), LineTo((0., 20.))]) ***
+        Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.),
       [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]),
     img
   )
@@ -218,4 +237,12 @@ let c = circle(30.0);
 let d = Text("Hello");
 draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
+```
+
+Here is the same with operators:
+* `a ||| b` is `Beside(a, b)`
+* `a --- b` is `Above(a, b)`
+* `a *** b` is `On(a, b)`
+```reason edit
+draw(Rotate(Scale(d, 5., 5.), 45.) *** redOutline((a ||| b) --- c));
 ```
