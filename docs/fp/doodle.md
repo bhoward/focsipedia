@@ -5,20 +5,20 @@ title: Doodle Graphics
 
 ```reason hidden
 type point = (float, float);
+type angle = float;
 type pathElement =
 | MoveTo(point)
 | LineTo(point)
 | CurveTo(point, point, point);
 type color =
 | Color(string)
-| RGBA(float, float, float, float)
-| HSLA(float, float, float, float);
+| RGBA(int, int, int, float)
+| HSLA(angle, float, float, float);
 type style =
 | LineWidth(float)
 | LineColor(color) /* TODO patterns? */
 | FillColor(color)
 | Dashed; /* TODO: Font(family, size, style, ...) */
-type angle = float;
 type image =
 | Empty
 | Ellipse(float, float)
@@ -34,12 +34,13 @@ type image =
 | Rotate(image, angle)
 | Scale(image, float, float)
 | Bounds(image, float, float, float, float);
+type position = TL | TC | TR | ML | MC | MR | BL | BC | BR;
 let string_of_color = c => {
   switch (c) {
   | Color(s) => s
   | RGBA(r, g, b, a) =>
     Printf.sprintf("rgba(%d,%d,%d,%f)",
-      int_of_float(r), int_of_float(g), int_of_float(b), a)
+      r, g, b, a)
   | HSLA(h, s, l, a) =>
     Printf.sprintf("hsla(%f,%d%%,%d%%,%f)",
       h, int_of_float(s *. 100.), int_of_float(l *. 100.), a)
@@ -57,6 +58,9 @@ let string_of_style = s => {
     "stroke-dasharray='4'"
   }
 }
+let radians = a => {
+  a *. 3.14159265358979 /. 180.0
+};
 let getPoint = elt => {
   switch (elt) {
   | MoveTo(p) => p
@@ -109,7 +113,7 @@ let rec bbox = img => {
   | Rotate(img, a) => {
     let (l, r, t, b) = bbox(img);
     let ps = [(l, t), (l, b), (r, t), (r, b)];
-    let arad = a *. 3.14159265358979 /. 180.0;
+    let arad = radians(a);
     let cosa = cos(arad);
     let sina = sin(arad);
     let rot = ((x, y)) => { (x *. cosa -. y *. sina, x *. sina +. y *. cosa) }
@@ -191,15 +195,37 @@ let draw = image => {
   print_string(render(image));
   print_string("</g></svg>\n");
 };
+let empty = Empty;
 let circle = r => { Ellipse(2. *. r, 2. *. r) };
 let ellipse = (w, h) => { Ellipse(w, h) };
 let rectangle = (w, h) => { Rectangle(w, h) };
 let square = w => { Rectangle(w, w) };
+let text = s => { Text(s) };
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
 let (***) = (a, b) => { On(a, b) };
-let text = s => { Text(s) };
-
+let fill = (c, img) => { Styled(img, [FillColor(c)]) };
+let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
+let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
+let strokeWidth = (w, img) => { Styled(img, [LineWidth(w)]) };
+let focus = (pos, img) => {
+  let (l, r, t, b) = bbox(img);
+  switch (pos) {
+  | TL => Translate(img, -.l, -.t)
+  | TC => Translate(img, -.(l +. r) /. 2., -.t)
+  | TR => Translate(img, -.r, -.t)
+  | ML => Translate(img, -.l, -.(t +. b) /. 2.)
+  | MC => Translate(img, -.(l +. r) /. 2., -.(t +. b) /. 2.)
+  | MR => Translate(img, -.r, -.(t +. b) /. 2.)
+  | BL => Translate(img, -.l, -.b)
+  | BC => Translate(img, -.(l +. r) /. 2., -.b)
+  | BR => Translate(img, -.r, -.b)
+  }
+};
+let rotate = (a, img) => { Rotate(img, a) };
+let translate = (dx, dy, img) => { Translate(img, dx, dy) };
+let scalexy = (sx, sy, img) => { Scale(img, sx, sy) };
+let scale = (s, img) => { Scale(img, s, s) };
 let showBounds = img => {
   let (l, r, t, b) = bbox(img);
   let w = r -. l;
@@ -214,16 +240,23 @@ let showBounds = img => {
     img
   )
 }
-
+let polar = (r, theta) => {
+  let a = radians(theta);
+  (r *. cos(a), r *. sin(a))
+};
+let rgb = (r, g, b) => { RGBA(r, g, b, 1.0) };
+let rgba = (r, b, g, a) => { RGBA(r, g, b, a) };
+let hsl = (h, s, l) => { HSLA(h, s, l, 1.0) };
+let hsla = (h, s, l, a) => {HSLA(h, s, l, a) };
 let rec foo = n => {
   if (n == 0) {
     Empty
   } else {
-    On(foo(n - 1), Styled(circle(float_of_int(10 * n)),
-      [FillColor(HSLA(float_of_int(24 * n), 1.0, 0.5, 1.0))]))
+    foo(n - 1) ***
+      fill(hsl(float_of_int(24 * n), 1.0, 0.5), circle(float_of_int(10 * n)))
   }
 };
-draw(On(Scale(Styled(Text("DPoodle"), [FillColor(Color("black"))]), 2.1, 2.1), foo(10)))
+draw(scale(2.1, fill(Color("black"), text("DPoodle"))) *** foo(10))
 ```
 
 Here is an ugly example:
@@ -239,10 +272,35 @@ draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
 ```
 
-Here is the same with operators:
+Here is the same with operators and other shortcuts:
 * `a ||| b` is `Beside(a, b)`
 * `a --- b` is `Above(a, b)`
 * `a *** b` is `On(a, b)`
 ```reason edit
-draw(Rotate(Scale(d, 5., 5.), 45.) *** redOutline((a ||| b) --- c));
+let blueFill = fill(Color("blue"));
+let wideLines = strokeWidth(3.0);
+let redOutline = stroke(Color("red"));
+let a = blueFill(ellipse(60.0, 80.0));
+let b = wideLines(square(50.0));
+let c = circle(30.0);
+let d = text("Hello");
+draw(rotate(45., scale(5., d)) *** redOutline((a ||| b) --- c));
+```
+
+Here is an example of drawing a polygon using a closed path and polar coordinates:
+```reason edit
+let polygon = (sides, size, initialAngle) => {
+  let rotation = 360. /. float_of_int(sides);
+  let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
+  let rec path = n => {
+    if (n == 0) {
+      []
+    } else {
+      [LineTo(getPoint(n)), ...path(n - 1)]
+    }
+  };
+  ClosedPath([MoveTo(getPoint(sides)), ...path(sides - 1)])
+};
+
+draw(solid(Color("green"), polygon(6, 30., 90.)));
 ```
