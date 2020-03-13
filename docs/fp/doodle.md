@@ -93,12 +93,14 @@ let rec bbox = img => {
   | Beside(l, r) => {
     let (ll, lr, lt, lb) = bbox(l);
     let (rl, rr, rt, rb) = bbox(r);
-    (ll -. (rr -. rl) /. 2., rr +. (lr -. ll) /. 2., min(lt, rt), max(lb, rb))
+    let w = (lr -. ll) +. (rr -. rl);
+    (-.w /. 2., w /. 2., min(lt, rt), max(lb, rb))
   }
   | Above(t, b) => {
     let (tl, tr, tt, tb) = bbox(t);
     let (bl, br, bt, bb) = bbox(b);
-    (min(tl, bl), max(tr, br), tt -. (bb -. bt) /. 2., bb +. (tb -. tt) /. 2.)
+    let h = (tb -. tt) +. (bb -. bt);
+    (min(tl, bl), max(tr, br), -.h /. 2., h /. 2.)
   }
   | On(a, b) => {
     let (al, ar, at, ab) = bbox(a);
@@ -157,21 +159,29 @@ let rec render = img => {
   | Text(s) =>
     Printf.sprintf("<text x='0' y='0' text-anchor='middle' dominant-baseline='middle'>%s</text>", s)
   | OpenPath(path) =>
-    Printf.sprintf("<path d='%s' />", string_of_path(path))
+    Printf.sprintf("<path d='%s' fill='none' stroke-linejoin='round' />", string_of_path(path))
   | ClosedPath(path) => 
-    Printf.sprintf("<path d='%sZ' />", string_of_path(path))
-  | Beside(l, r) =>
-    Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
-      -.width(r) /. 2., render(l))
-    ++
-    Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
-      width(l) /. 2., render(r))
-  | Above(t, b) =>
-    Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
-      -.height(b) /. 2., render(t))
-    ++
-    Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
-      height(t) /. 2., render(b))
+    Printf.sprintf("<path d='%sZ' stroke-linejoin='round' />", string_of_path(path))
+  | Beside(l, r) => {
+      let (ll, lr, _, _) = bbox(l);
+      let (rl, rr, _, _) = bbox(r);
+      let w = (lr -. ll) +. (rr -. rl);
+      Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
+        -.w /. 2. -. ll, render(l))
+      ++
+      Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
+        w /. 2. -. rr, render(r))
+    } 
+  | Above(t, b) => {
+      let (_, _, tt, tb) = bbox(t);
+      let (_, _, bt, bb) = bbox(b);
+      let h = (tb -. tt) +. (bb -. bt);
+      Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
+        -.h /. 2. -. tt, render(t))
+      ++
+      Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
+        h /. 2. -. bb, render(b))
+    }
   | On(a, b) => render(b) ++ render(a)
   | Styled(img, stys) => {
       let ss = List.map(s => { " " ++ string_of_style(s) }, stys);
@@ -231,12 +241,12 @@ let showBounds = img => {
   let w = r -. l;
   let h = b -. t;
   On(
-    Styled(
+    Bounds(Styled(
       circle(10.) ***
         OpenPath([MoveTo((-20., 0.)), LineTo((20., 0.))]) ***
         OpenPath([MoveTo((0., -20.)), LineTo((0., 20.))]) ***
         Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.),
-      [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]),
+      [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]), 0., 0., 0., 0.),
     img
   )
 }
@@ -303,4 +313,42 @@ let polygon = (sides, size, initialAngle) => {
 };
 
 draw(solid(Color("green"), polygon(6, 30., 90.)));
+```
+
+Here is an arrow. The `focus` function moves the _focus_ point of the image (the point used
+to line up images with `On`, `Beside`, and `Above`).
+The first argument of focus is a two-letter value; the first letter is (T)op, (M)iddle, or (B)ottom, and the second is (L)eft, (C)enter, or (R)ight.
+The value `ML` says to move the focus to the middle of the left edge of the bounding box, which in this
+case is the tail end of the arrow.
+```reason edit
+let arrow = len => {
+  strokeWidth(2., focus(ML, OpenPath([
+    MoveTo((0., 0.)),
+    LineTo((len, 0.)),
+    LineTo((len -. 5., 5.)),
+    MoveTo((len, 0.)),
+    LineTo((len -. 5., -5.))])))
+};
+
+draw(arrow(50.))
+
+draw(arrow(50.) *** rotate(-90., arrow(30.)) *** fill(Color("white"), circle(60.)))
+```
+
+Using the arrow, here is a function to visualize a linked list:
+```reason edit
+let listNode = n => {
+  let valueField = solid(Color("black"), text(string_of_int(n))) *** square(20.);
+  let nextField = arrow(20.) *** square(20.);
+  fill(Color("white"), valueField ||| nextField)
+};
+
+let rec showList = nums => {
+  switch (nums) {
+  | [] => solid(Color("black"), circle(5.))
+  | [head, ...tail] => listNode(head) ||| showList(tail)
+  }
+};
+
+draw(showList([1, 2, 3]));
 ```
