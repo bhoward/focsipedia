@@ -159,9 +159,9 @@ let rec render = img => {
   | Text(s) =>
     Printf.sprintf("<text x='0' y='0' text-anchor='middle' dominant-baseline='middle'>%s</text>", s)
   | OpenPath(path) =>
-    Printf.sprintf("<path d='%s' fill='none' stroke-linejoin='round' />", string_of_path(path))
+    Printf.sprintf("<path d='%s' fill='none' stroke-linejoin='round' stroke-linecap='round' />", string_of_path(path))
   | ClosedPath(path) => 
-    Printf.sprintf("<path d='%sZ' stroke-linejoin='round' />", string_of_path(path))
+    Printf.sprintf("<path d='%sZ' stroke-linejoin='round' stroke-linecap='round' />", string_of_path(path))
   | Beside(l, r) => {
       let (ll, lr, _, _) = bbox(l);
       let (rl, rr, _, _) = bbox(r);
