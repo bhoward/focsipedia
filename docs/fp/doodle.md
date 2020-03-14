@@ -205,8 +205,12 @@ let draw = image => {
   let h = b -. t;
   let padw = w *. 0.05;
   let padh = h *. 0.05;
+  let newl = min(l -. padw, -100.);
+  let newr = max(r +. padw, 100.);
+  let newt = t -. padh;
+  let newb = b +. padh;
   Printf.printf("<svg viewBox='%f %f %f %f' width='100%%' preserveAspectRatio>",
-    l -. padw, t -. padh, w *. 1.1, h *. 1.1);
+    newl, newt, newr -. newl, newb -. newt);
   print_string("<g fill='grey' stroke='black' font-size='14'>");
   print_string(render(image));
   print_string("</g></svg>\n");
@@ -325,9 +329,7 @@ let polygon = (sides, size, initialAngle) => {
   ClosedPath([moveP(getPoint(sides)), ...path(sides - 1)])
 };
 
-/* Set the bounds to go from -100 to 100 in each direction -- former default */
-let stdBounds = setBounds(-100., 100., -100., 100.);
-draw(stdBounds(solid(Color("green"), polygon(6, 30., 90.))));
+draw(solid(Color("green"), polygon(6, 30., 90.)));
 ```
 
 Here is an arrow. The `focus` function moves the _focus_ point of the image (the point used
@@ -346,9 +348,9 @@ let arrow = len => {
     lineXY(len -. 5., -5.)])))
 };
 
-draw(setBounds(-60., 60., -15., 15., arrow(50.)))
+draw(arrow(50.))
 
-draw(setBounds(-60., 60., -15., 15., showBounds(arrow(50.))))
+draw(showBounds(arrow(50.)))
 
 draw(arrow(50.) *** rotate(-90., arrow(30.)) *** fill(Color("white"), circle(60.)))
 ```
@@ -369,4 +371,5 @@ let rec showList = nums => {
 };
 
 draw(showList([1, 2, 3]));
+draw(showList([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 ```
