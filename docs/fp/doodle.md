@@ -200,7 +200,13 @@ let rec render = img => {
   }
 };
 let draw = image => {
-  print_string("<svg viewBox='-100 -100 200 200' width='100%' preserveAspectRatio>");
+  let (l, r, t, b) = bbox(image);
+  let w = r -. l;
+  let h = b -. t;
+  let padw = w *. 0.05;
+  let padh = h *. 0.05;
+  Printf.printf("<svg viewBox='%f %f %f %f' width='100%%' preserveAspectRatio>",
+    l -. padw, t -. padh, w *. 1.1, h *. 1.1);
   print_string("<g fill='grey' stroke='black' font-size='14'>");
   print_string(render(image));
   print_string("</g></svg>\n");
@@ -236,15 +242,16 @@ let rotate = (a, img) => { Rotate(img, a) };
 let translate = (dx, dy, img) => { Translate(img, dx, dy) };
 let scalexy = (sx, sy, img) => { Scale(img, sx, sy) };
 let scale = (s, img) => { Scale(img, s, s) };
+let setBounds = (l, r, t, b, img) => { Bounds(img, l, r, t, b) };
 let showBounds = img => {
   let (l, r, t, b) = bbox(img);
   let w = r -. l;
   let h = b -. t;
   On(
     Bounds(Styled(
-      circle(10.) ***
-        OpenPath([MoveTo((-20., 0.)), LineTo((20., 0.))]) ***
-        OpenPath([MoveTo((0., -20.)), LineTo((0., 20.))]) ***
+      circle(max(w, h) /. 20.) ***
+        OpenPath([MoveTo((-.w /. 10., 0.)), LineTo((w /. 10., 0.))]) ***
+        OpenPath([MoveTo((0., -.h /. 10.)), LineTo((0., h /. 10.))]) ***
         Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.),
       [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]), 0., 0., 0., 0.),
     img
@@ -258,6 +265,12 @@ let rgb = (r, g, b) => { RGBA(r, g, b, 1.0) };
 let rgba = (r, b, g, a) => { RGBA(r, g, b, a) };
 let hsl = (h, s, l) => { HSLA(h, s, l, 1.0) };
 let hsla = (h, s, l, a) => {HSLA(h, s, l, a) };
+let moveXY = (x, y) => { MoveTo((x, y)) };
+let lineXY = (x, y) => { LineTo((x, y)) };
+let curveXY = (c1x, c1y, c2x, c2y, px, py) => { CurveTo((c1x, c1y), (c2x, c2y), (px, py)) };
+let curveP = (c1, c2, p) => { CurveTo(c1, c2, p) };
+let moveP = p => { MoveTo(p) };
+let lineP = p => { LineTo(p) };
 let rec foo = n => {
   if (n == 0) {
     Empty
@@ -274,10 +287,10 @@ Here is an ugly example:
 let blueFill = img => { Styled(img, [FillColor(Color("blue"))]) };
 let wideLines = img => { Styled(img, [LineWidth(3.0)]) };
 let redOutline = img => { Styled(img, [LineColor(Color("red"))]) };
-let a = blueFill(ellipse(60.0, 80.0));
-let b = wideLines(rectangle(50.0, 50.0));
-let c = circle(30.0);
-let d = Text("Hello");
+let a = blueFill(Ellipse(60.0, 80.0));
+let b = wideLines(Rectangle(50.0, 50.0));
+let c = Ellipse(30.0, 30.0);
+let d = Bounds(Text("Hello"), -20., 20., -7., 7.);
 draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
 ```
@@ -293,7 +306,7 @@ let redOutline = stroke(Color("red"));
 let a = blueFill(ellipse(60.0, 80.0));
 let b = wideLines(square(50.0));
 let c = circle(30.0);
-let d = text("Hello");
+let d = setBounds(-20., 20., -7., 7., text("Hello"));
 draw(rotate(45., scale(5., d)) *** redOutline((a ||| b) --- c));
 ```
 
@@ -306,13 +319,15 @@ let polygon = (sides, size, initialAngle) => {
     if (n == 0) {
       []
     } else {
-      [LineTo(getPoint(n)), ...path(n - 1)]
+      [lineP(getPoint(n)), ...path(n - 1)]
     }
   };
-  ClosedPath([MoveTo(getPoint(sides)), ...path(sides - 1)])
+  ClosedPath([moveP(getPoint(sides)), ...path(sides - 1)])
 };
 
-draw(solid(Color("green"), polygon(6, 30., 90.)));
+/* Set the bounds to go from -100 to 100 in each direction -- former default */
+let stdBounds = setBounds(-100., 100., -100., 100.);
+draw(stdBounds(solid(Color("green"), polygon(6, 30., 90.))));
 ```
 
 Here is an arrow. The `focus` function moves the _focus_ point of the image (the point used
@@ -320,17 +335,20 @@ to line up images with `On`, `Beside`, and `Above`).
 The first argument of focus is a two-letter value; the first letter is (T)op, (M)iddle, or (B)ottom, and the second is (L)eft, (C)enter, or (R)ight.
 The value `ML` says to move the focus to the middle of the left edge of the bounding box, which in this
 case is the tail end of the arrow.
+We can use the `showBounds` function to visualize the bounding box and focus point.
 ```reason edit
 let arrow = len => {
   strokeWidth(2., focus(ML, OpenPath([
-    MoveTo((0., 0.)),
-    LineTo((len, 0.)),
-    LineTo((len -. 5., 5.)),
-    MoveTo((len, 0.)),
-    LineTo((len -. 5., -5.))])))
+    moveXY(0., 0.),
+    lineXY(len, 0.),
+    lineXY(len -. 5., 5.),
+    moveXY(len, 0.),
+    lineXY(len -. 5., -5.)])))
 };
 
-draw(arrow(50.))
+draw(setBounds(-60., 60., -15., 15., arrow(50.)))
+
+draw(setBounds(-60., 60., -15., 15., showBounds(arrow(50.))))
 
 draw(arrow(50.) *** rotate(-90., arrow(30.)) *** fill(Color("white"), circle(60.)))
 ```
