@@ -275,15 +275,16 @@ let curveXY = (c1x, c1y, c2x, c2y, px, py) => { CurveTo((c1x, c1y), (c2x, c2y), 
 let curveP = (c1, c2, p) => { CurveTo(c1, c2, p) };
 let moveP = p => { MoveTo(p) };
 let lineP = p => { LineTo(p) };
-let rec foo = n => {
+let rec circles = n => {
   if (n == 0) {
     Empty
   } else {
-    foo(n - 1) ***
+    circles(n - 1) ***
       fill(hsl(float_of_int(24 * n), 1.0, 0.5), circle(float_of_int(10 * n)))
   }
 };
-draw(scale(2.1, fill(Color("black"), text("DPoodle"))) *** foo(10))
+let logo = scale(2.1, fill(Color("black"), text("DPoodle"))) *** circles(10);
+draw(logo)
 ```
 
 Here is an ugly example:

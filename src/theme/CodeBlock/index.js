@@ -40,7 +40,6 @@ export default ({
   const [showCopied, setShowCopied] = useState(false);
   const target = useRef(null);
   const copyButton = useRef(null);
-  const execButton = useRef(null);
   let highlightLines = [];
 
   if (metastring && highlightLinesRangeRegex.test(metastring)) {

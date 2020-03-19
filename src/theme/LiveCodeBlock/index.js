@@ -10,9 +10,6 @@ import _uniqueId from 'lodash/uniqueId';
 import MyLiveProvider from '../../components/Live/MyLiveProvider'
 import MyLiveEditor from '../../components/Live/MyLiveEditor'
 import MyLivePreview from '../../components/Live/MyLivePreview'
-import MyLiveError from '../../components/Live/MyLiveError'
-
-import classnames from 'classnames';
 
 import styles from './styles.module.css';
 
