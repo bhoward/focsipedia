@@ -12,7 +12,7 @@ import MyLivePreview from '../../components/Live/MyLivePreview'
 
 import styles from './styles.module.css';
 
-function LiveCodeBlock({code, theme, language, edit, noexec, hidden, ...props}) {
+function LiveCodeBlock({code, language, edit, noexec, hidden, ...props}) {
   // if (edit) {
   //   // create an editor around the highlighted code, and an execute button
   // }
@@ -28,7 +28,6 @@ function LiveCodeBlock({code, theme, language, edit, noexec, hidden, ...props}) 
   return (<MyLiveProvider
     code={code}
     language={language}
-    theme={theme}
     hidden={hidden}
     noexec={noexec}
     disabled={!edit}

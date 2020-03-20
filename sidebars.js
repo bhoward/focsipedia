@@ -30,6 +30,7 @@ module.exports = {
       'fp/doodle',
     ],
     Features: ['reason',
+      'ocaml',
       'styleGuide',
     ],
   },

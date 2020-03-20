@@ -55,7 +55,7 @@ export default class MyLiveProvider extends Component {
   }
 
   render() {
-    const { children, code, language, theme, hidden, disabled } = this.props;
+    const { children, code, language, hidden, disabled } = this.props;
 
     return (
       <MyLiveContext.Provider
@@ -63,7 +63,6 @@ export default class MyLiveProvider extends Component {
           ...this.state,
           code,
           language,
-          theme,
           hidden,
           disabled,
           onError: this.onError.bind(this),
