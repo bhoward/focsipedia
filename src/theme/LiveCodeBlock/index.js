@@ -6,14 +6,13 @@
  */
 
 import * as React from 'react';
-import _uniqueId from 'lodash/uniqueId';
 import MyLiveProvider from '../../components/Live/MyLiveProvider'
 import MyLiveEditor from '../../components/Live/MyLiveEditor'
 import MyLivePreview from '../../components/Live/MyLivePreview'
 
 import styles from './styles.module.css';
 
-function LiveCodeBlock({children, theme, language, edit, noexec, hidden, ...props}) {
+function LiveCodeBlock({code, theme, language, edit, noexec, hidden, ...props}) {
   // if (edit) {
   //   // create an editor around the highlighted code, and an execute button
   // }
@@ -27,14 +26,14 @@ function LiveCodeBlock({children, theme, language, edit, noexec, hidden, ...prop
   // }
 
   return (<MyLiveProvider
-    code={children}
+    code={code}
     language={language}
     theme={theme}
     hidden={hidden}
     noexec={noexec}
     disabled={!edit}
     {...props}>
-    {(hidden) ? null : <MyLiveEditor />}
+    {(hidden) ? null : <MyLiveEditor code={code} />}
     <div className={styles.playgroundPreview}>
       <MyLivePreview Component="div"/>
     </div>

@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import MyLiveContext from './MyLiveContext';
-import Editor from '../Editor';
+// import Editor from '../Editor2';
+import {Controlled as Editor} from 'react-codemirror2';
+
+require('codemirror/lib/codemirror.css');
+require('codemirror/theme/material.css');
+require('codemirror/addon/edit/matchbrackets');
+require('codemirror/addon/edit/closebrackets');
+require('codemirror/addon/comment/comment');
+require('codemirror/keymap/sublime');
+require('./reason-mode.js');
 
 class MyLiveEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { // Yes this is terrible...
-      code: ''
+    const {code} = props;
+    this.state = {
+      code
     };
-  }
-
-  updateContent(code) {
-    this.setState({ code }); // ignores outer onChange...
   }
 
   render() {
@@ -25,12 +31,26 @@ class MyLiveEditor extends Component {
             }}
           >
           <Editor
-            theme={theme}
-            code={code}
-            language={language}
-            disabled={disabled}
-            onChange={this.updateContent.bind(this)}
-            {...this.props}
+            value={this.state.code}
+            options={{
+              mode: 'reason',
+              theme: 'material',
+              keyMap: 'sublime',
+              lineNumbers: true,
+              tabSize: 2,
+              matchBrackets: true,
+              autoCloseBrackets: true,
+              readOnly: disabled,
+              viewportMargin: Infinity
+            }}
+            editorDidMount={editor => {
+              // editor.something
+            }}
+            onBeforeChange={(editor, data, code) => {
+              this.setState({code});
+            }}
+            onChange={(editor, data, code) => {
+            }}
           />
           { disabled ? null :
           <div>
