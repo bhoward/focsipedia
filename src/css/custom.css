@@ -30,3 +30,8 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.CodeMirror {
+  border: 1px solid #eee;
+  height: auto !important;
+}

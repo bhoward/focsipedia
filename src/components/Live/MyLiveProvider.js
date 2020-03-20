@@ -13,22 +13,6 @@ export default class MyLiveProvider extends Component {
     }
   }
 
-  componentDidUpdate({
-    code: prevCode,
-    language: prevLanguage,
-    hidden: prevHidden
-  }) {
-    // console.log("did update");
-    const { code, language, hidden } = this.props;
-    if (
-      code !== prevCode ||
-      language !== prevLanguage ||
-      hidden !== prevHidden
-    ) {
-      // this.transpile({ code, language, hidden });
-    }
-  }
-
   onChange(code) {
     const { language, hidden } = this.props;
     this.transpile({ code, language, hidden });
