@@ -1,0 +1,37 @@
+---
+id: ocaml
+title: OCaml
+---
+
+# OCaml
+
+[OCaml](https://ocaml.org/) is a functional programming language developed at [Inria](https://www.inria.fr/en) over the past thirty years.
+It belongs to the [ML](https://en.wikipedia.org/wiki/ML_(programming_language)) family of statically-typed
+functional languages, which includes [Standard ML](http://sml-family.org/),
+[ReasonML](https://reasonml.github.io/), and Microsoft's [F#](https://fsharp.org/). ML was originally
+developed as the **M**eta **L**anguage for the LCF theorem prover at the University of
+Edinburgh, and has long been a valuable tool for programmers working with formal logic or
+developing other programming languages. It was a major influence in the design of the
+functional languages [Haskell](https://www.haskell.org/) and
+[Scala](https://www.scala-lang.org/), and more recently it has seen adoption in financial
+services (for example, [Bloomberg](https://bloomberg.com/) and
+[Jane Street](https://janestreet.com)) and web development (particularly at
+[Facebook](https://facebook.com)).
+
+One advantage of OCaml is that its compiler is remarkably fast and sophisticated, and it can
+generate JavaScript output for running programs in a web browser. In fact, since the
+compiler itself is written in OCaml, it is possible to compile the entire system to
+JavaScript and run it in the browser.
+
+Here is an editor where you can type in OCaml code and execute it (click the button
+or type Ctrl-Enter):
+
+```ocaml edit
+let x = 6
+let y = x * 7
+let rec fact x = if x <= 1 then 1 else x * (fact (x - 1))
+let _ = fact 5
+```
+
+If for some reason you want to reset the interpreter before executing the code (so that
+it will forget previous bindings), press the Shift key plus Ctrl-Enter.

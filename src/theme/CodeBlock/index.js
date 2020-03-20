@@ -81,7 +81,6 @@ export default ({
     return (
       <LiveCodeBlock
         code={children.trim()}
-        theme={prism.theme || defaultTheme}
         language={language}
         edit={edit || fix}
         noexec={fix}

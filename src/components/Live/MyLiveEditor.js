@@ -3,13 +3,16 @@ import MyLiveContext from './MyLiveContext';
 // import Editor from '../Editor2';
 import {Controlled as Editor} from 'react-codemirror2';
 
-require('codemirror/lib/codemirror.css');
-require('codemirror/theme/material.css');
-require('codemirror/addon/edit/matchbrackets');
-require('codemirror/addon/edit/closebrackets');
-require('codemirror/addon/comment/comment');
-require('codemirror/keymap/sublime');
-require('./reason-mode.js');
+if (typeof navigator !== 'undefined') {
+  require('codemirror/lib/codemirror.css');
+  require('codemirror/theme/material.css');
+  require('codemirror/addon/edit/matchbrackets');
+  require('codemirror/addon/edit/closebrackets');
+  require('codemirror/addon/comment/comment');
+  require('codemirror/keymap/sublime');
+  require('codemirror/mode/mllike/mllike');
+  require('./reason-mode.js');
+}
 
 class MyLiveEditor extends Component {
   constructor(props) {
@@ -23,7 +26,7 @@ class MyLiveEditor extends Component {
   render() {
     return (
       <MyLiveContext.Consumer>
-        {({ code, language, theme, disabled, executeCode, resetInterpreter }) => (
+        {({ language, disabled, executeCode, resetInterpreter }) => (
           <div
             onKeyDown={(e) => {
               if (e.shiftKey && e.ctrlKey && e.key === 'Enter') resetInterpreter()
@@ -33,8 +36,8 @@ class MyLiveEditor extends Component {
           <Editor
             value={this.state.code}
             options={{
-              mode: 'reason',
-              theme: 'material',
+              mode: (language === 'reason') ? 'reason' : 'text/x-ocaml',
+              theme: 'material', // TODO switch based on the Docusaurus night/day setting?
               keyMap: 'sublime',
               lineNumbers: true,
               tabSize: 2,
