@@ -161,13 +161,45 @@ let rec bbox = img => {
   | Bounds(_, l, r, t, b) => (l, r, t, b)
   }
 };
+let left = img => {
+	let(l, _, _, _) = bbox(img);
+	l
+}
+let right = img => {
+	let(_, r, _, _) = bbox(img);
+	r
+}
+let top = img => {
+	let(_, _, t, _) = bbox(img);
+	t
+}
+let bottom = img => {
+	let(_, _, _, b) = bbox(img);
+	b
+}
 let width = img => {
-  let (l, r, _, _) = bbox(img);
-  r -. l
+	let (l, r, _, _) = bbox(img);
+	r -. l
 };
 let height = img => {
-  let (_, _, t, b) = bbox(img);
-  b -. t
+	let (_, _, t, b) = bbox(img);
+	b -. t
+};
+let topLeft = img => {
+	let (l, _, t, _) = bbox(img);
+	(l, t)
+};
+let topRight = img => {
+	let (_, r, t, _) = bbox(img);
+	(r, t)
+};
+let bottomLeft = img => {
+	let (l, _, _, b) = bbox(img);
+	(l, b)
+};
+let bottomRight = img => {
+	let (_, r, _, b) = bbox(img);
+	(r, b)
 };
 let rec string_of_path = path => {
   switch (path) {
