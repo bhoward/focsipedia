@@ -14,11 +14,22 @@ type color =
 | Color(string)
 | RGBA(int, int, int, float)
 | HSLA(angle, float, float, float);
+type fontFamily =
+| Mono
+| Sans
+| Serif;
+type fontWeight =
+| Bold
+| Regular;
+type fontStyle =
+| Italic
+| Normal;
 type style =
 | LineWidth(float)
 | LineColor(color) /* TODO patterns? */
 | FillColor(color)
-| Dashed; /* TODO: Font(family, size, style, ...) */
+| Dashed
+| Font(float, fontFamily, fontWeight, fontStyle);
 type image =
 | Empty
 | Ellipse(float, float)
@@ -46,6 +57,25 @@ let string_of_color = c => {
       h, int_of_float(s *. 100.), int_of_float(l *. 100.), a)
   }
 };
+let string_of_fontFamily = f => {
+  switch (f) {
+  | Mono => "Roboto Mono, monospace"
+  | Sans => "Roboto, sans-serif"
+  | Serif => "Lora, serif"
+  }
+}
+let string_of_fontWeight = w => {
+  switch (w) {
+  | Bold => "bold"
+  | Regular => "normal"
+  }
+}
+let string_of_fontStyle = s => {
+  switch (s) {
+  | Italic => "italic"
+  | Normal => "normal"
+  }
+}
 let string_of_style = s => {
   switch (s) {
   | LineWidth(w) =>
@@ -56,6 +86,9 @@ let string_of_style = s => {
     Printf.sprintf("fill='%s'", string_of_color(c))
   | Dashed =>
     "stroke-dasharray='4'"
+  | Font(size, family, weight, style) =>
+    Printf.sprintf("font-size='%frem' font-family='%s' font-weight='%s' font-style='%s'",
+      size, string_of_fontFamily(family), string_of_fontWeight(weight), string_of_fontStyle(style))
   }
 }
 let radians = a => {
@@ -128,11 +161,11 @@ let rec bbox = img => {
   | Bounds(_, l, r, t, b) => (l, r, t, b)
   }
 };
-let rec width = img => {
+let width = img => {
   let (l, r, _, _) = bbox(img);
   r -. l
 };
-let rec height = img => {
+let height = img => {
   let (_, _, t, b) = bbox(img);
   b -. t
 };
@@ -211,7 +244,7 @@ let draw = image => {
   let newb = b +. padh;
   Printf.printf("<svg viewBox='%f %f %f %f' width='100%%' preserveAspectRatio>",
     newl, newt, newr -. newl, newb -. newt);
-  print_string("<g fill='grey' stroke='black' font-size='14'>");
+  print_string("<g fill='grey' stroke='black' font-family='Roboto Mono, monospace' font-size='1rem'>");
   print_string(render(image));
   print_string("</g></svg>\n");
 };
@@ -233,6 +266,7 @@ let fill = (c, img) => { Styled(img, [FillColor(c)]) };
 let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
 let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
 let strokeWidth = (w, img) => { Styled(img, [LineWidth(w)]) };
+let withFont = (size, family, weight, style, img) => { Styled(img, [Font(size, family, weight, style)]) };
 let focus = (pos, img) => {
   let (l, r, t, b) = bbox(img);
   switch (pos) {
@@ -289,7 +323,7 @@ let rec circles = n => {
       solid(hsl(float_of_int(12 * n), 1.0, 0.5), ellipse(2. *. r, r))
   }
 };
-let logo = scale(2.1, fill(Color("black"), text("DPoodle"))) *** circles(50);
+let logo = withFont(2., Mono, Bold, Normal, stroke(Color("none"), fill(Color("black"), text("DPoodle")))) *** circles(50);
 draw(logo)
 ```
 
@@ -303,7 +337,7 @@ let redOutline = img => { Styled(img, [LineColor(Color("red"))]) };
 let a = blueFill(Ellipse(60.0, 80.0));
 let b = wideLines(Rectangle(50.0, 50.0));
 let c = Ellipse(30.0, 30.0);
-let d = Bounds(Text("Hello"), -20., 20., -7., 7.);
+let d = Bounds(Text("Hello"), -24., 24., -7., 7.);
 draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
 ```
@@ -319,7 +353,7 @@ let redOutline = stroke(Color("red"));
 let a = blueFill(ellipse(60.0, 80.0));
 let b = wideLines(square(50.0));
 let c = circle(30.0);
-let d = setBounds(-20., 20., -7., 7., text("Hello"));
+let d = setBounds(-24., 24., -7., 7., text("Hello"));
 draw(rotate(45., scale(5., d)) *** redOutline((a ||| b) --- c));
 ```
 
