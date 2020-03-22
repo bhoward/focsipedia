@@ -1,6 +1,6 @@
 ---
 id: doodle
-title: Doodle Graphics
+title: DPoodle Graphics
 ---
 
 ```reason hidden
@@ -279,13 +279,16 @@ let rec circles = n => {
   if (n == 0) {
     Empty
   } else {
+    let r = 10.0 *. sqrt(float_of_int(4 * n));
     circles(n - 1) ***
-      fill(hsl(float_of_int(24 * n), 1.0, 0.5), circle(float_of_int(10 * n)))
+      solid(hsl(float_of_int(12 * n), 1.0, 0.5), ellipse(2. *. r, r))
   }
 };
-let logo = scale(2.1, fill(Color("black"), text("DPoodle"))) *** circles(10);
+let logo = scale(2.1, fill(Color("black"), text("DPoodle"))) *** circles(50);
 draw(logo)
 ```
+
+Based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
 Here is an ugly example:
 ```reason edit
