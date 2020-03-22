@@ -162,21 +162,21 @@ let rec bbox = img => {
   }
 };
 let left = img => {
-	let(l, _, _, _) = bbox(img);
+	let (l, _, _, _) = bbox(img);
 	l
-}
+};
 let right = img => {
-	let(_, r, _, _) = bbox(img);
+	let (_, r, _, _) = bbox(img);
 	r
-}
+};
 let top = img => {
-	let(_, _, t, _) = bbox(img);
+	let (_, _, t, _) = bbox(img);
 	t
-}
+};
 let bottom = img => {
-	let(_, _, _, b) = bbox(img);
+	let (_, _, _, b) = bbox(img);
 	b
-}
+};
 let width = img => {
 	let (l, r, _, _) = bbox(img);
 	r -. l
