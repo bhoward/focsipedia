@@ -220,6 +220,11 @@ let circle = r => { Ellipse(2. *. r, 2. *. r) };
 let ellipse = (w, h) => { Ellipse(w, h) };
 let rectangle = (w, h) => { Rectangle(w, h) };
 let square = w => { Rectangle(w, w) };
+let triangle = (w, h) => { ClosedPath([
+    MoveTo((-. w /. 2., h /. 2.)),
+    LineTo((0., -. h /. 2.)),
+    LineTo((w /. 2., h /. 2.))
+  ]) };
 let text = s => { Text(s) };
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
