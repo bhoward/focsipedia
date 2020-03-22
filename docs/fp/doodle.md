@@ -28,7 +28,9 @@ type image =
 | ClosedPath(list(pathElement))
 | Beside(image, image)
 | Above(image, image)
+| Below(image, image)
 | On(image, image)
+| Under(image, image)
 | Styled(image, list(style))
 | Translate(image, float, float)
 | Rotate(image, angle)
@@ -96,13 +98,13 @@ let rec bbox = img => {
     let w = (lr -. ll) +. (rr -. rl);
     (-.w /. 2., w /. 2., min(lt, rt), max(lb, rb))
   }
-  | Above(t, b) => {
+  | Above(t, b) |Below(b, t) => {
     let (tl, tr, tt, tb) = bbox(t);
     let (bl, br, bt, bb) = bbox(b);
     let h = (tb -. tt) +. (bb -. bt);
     (min(tl, bl), max(tr, br), -.h /. 2., h /. 2.)
   }
-  | On(a, b) => {
+  | On(a, b) | Under(b, a) => {
     let (al, ar, at, ab) = bbox(a);
     let (bl, br, bt, bb) = bbox(b);
     (min(al, bl), max(ar, br), min(at, bt), max(ab, bb))
@@ -128,14 +130,75 @@ let rec bbox = img => {
   | Bounds(_, l, r, t, b) => (l, r, t, b)
   }
 };
-let rec width = img => {
-  let (l, r, _, _) = bbox(img);
-  r -. l
+
+let left = img => {
+	let(l, _, _, _) = bbox(img);
+	l
+}
+
+/*======================================================================================*/
+
+let right = img => {
+	let(_, r, _, _) = bbox(img);
+	r
+}
+
+/*======================================================================================*/
+
+let top = img => {
+	let(_, _, t, _) = bbox(img);
+	t
+}
+
+/*======================================================================================*/
+
+let bottom = img => {
+	let(_, _, _, b) = bbox(img);
+	b
+}
+
+/*======================================================================================*/
+
+let width = img => {
+	let (l, r, _, _) = bbox(img);
+	r -. l
 };
-let rec height = img => {
-  let (_, _, t, b) = bbox(img);
-  b -. t
+
+/*======================================================================================*/
+
+let height = img => {
+	let (_, _, t, b) = bbox(img);
+	b -. t
 };
+
+/*======================================================================================*/
+
+let topLeft: image => point = img => {
+	let (l, _, t, _) = bbox(img);
+	(l,t)
+};
+
+/*======================================================================================*/
+
+let topRight: image => point = img => {
+	let (_, r, t, _) = bbox(img);
+	(r,t)
+};
+
+/*======================================================================================*/
+
+let bottomLeft: image => point = img => {
+	let (l, _, _, b) = bbox(img);
+	(l,b)
+};
+
+/*======================================================================================*/
+
+let bottomRight: image => point = img => {
+	let (_, r, _, b) = bbox(img);
+	(r,b)
+};
+
 let rec string_of_path = path => {
   switch (path) {
   | [] => ""
@@ -172,7 +235,7 @@ let rec render = img => {
       Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
         w /. 2. -. rr, render(r))
     } 
-  | Above(t, b) => {
+  | Above(t, b) | Below(b, t) => {
       let (_, _, tt, tb) = bbox(t);
       let (_, _, bt, bb) = bbox(b);
       let h = (tb -. tt) +. (bb -. bt);
@@ -182,7 +245,7 @@ let rec render = img => {
       Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
         h /. 2. -. bb, render(b))
     }
-  | On(a, b) => render(b) ++ render(a)
+  | On(a, b) | Under(b, a) => render(b) ++ render(a)
   | Styled(img, stys) => {
       let ss = List.map(s => { " " ++ string_of_style(s) }, stys);
       Printf.sprintf("<g %s>%s</g>", List.fold_left((++), "", ss), render(img))
