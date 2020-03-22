@@ -98,13 +98,13 @@ let rec bbox = img => {
     let w = (lr -. ll) +. (rr -. rl);
     (-.w /. 2., w /. 2., min(lt, rt), max(lb, rb))
   }
-  | Above(t, b) |Below(b, t) => {
+  | Above(t, b) => {
     let (tl, tr, tt, tb) = bbox(t);
     let (bl, br, bt, bb) = bbox(b);
     let h = (tb -. tt) +. (bb -. bt);
     (min(tl, bl), max(tr, br), -.h /. 2., h /. 2.)
   }
-  | On(a, b) | Under(b, a) => {
+  | On(a, b) => {
     let (al, ar, at, ab) = bbox(a);
     let (bl, br, bt, bb) = bbox(b);
     (min(al, bl), max(ar, br), min(at, bt), max(ab, bb))
@@ -235,7 +235,7 @@ let rec render = img => {
       Printf.sprintf("<g transform='translate(%f,0)'>%s</g>",
         w /. 2. -. rr, render(r))
     } 
-  | Above(t, b) | Below(b, t) => {
+  | Above(t, b) => {
       let (_, _, tt, tb) = bbox(t);
       let (_, _, bt, bb) = bbox(b);
       let h = (tb -. tt) +. (bb -. bt);
@@ -245,7 +245,7 @@ let rec render = img => {
       Printf.sprintf("<g transform='translate(0,%f)'>%s</g>",
         h /. 2. -. bb, render(b))
     }
-  | On(a, b) | Under(b, a) => render(b) ++ render(a)
+  | On(a, b) => render(b) ++ render(a)
   | Styled(img, stys) => {
       let ss = List.map(s => { " " ++ string_of_style(s) }, stys);
       Printf.sprintf("<g %s>%s</g>", List.fold_left((++), "", ss), render(img))
