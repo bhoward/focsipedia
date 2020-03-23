@@ -361,14 +361,18 @@ draw(logo)
 
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
-The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. We can also construct a shape by specify a colection of points and how to connect these points (using straight line or curve). Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. 
+The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0).
+
 
 5 following functions are used to construct different type of image in DPoodle:  
 
-* `ellipse(w, h)`: ellipse function takes major and minor axis that define an ellipise and create an ellipse. The size of a bounding box of an ellipse is w \times h.
-* `circle(r)`: circle function takes radius and create a circle.  
+* `ellipse(w, h)`: ellipse function takes major and minor axes that define an ellipise and create an ellipse. The size of a bounding box of an ellipse is w x h.
+* `circle(r)`: circle function takes radius and create a circle. The size of its bounding box is 2r x 2r. Circle is a special ellipse whose major and minor axes have the same length of 2r. 
+* `rectangle(w, h)`: rectangle function takes a width and a height and create a rectangle. The size of a bounding box of a recntangle is w x h. 
 
 
+
+We can also construct a shape by specify a colection of points and how to connect these points (using straight line or curve).
 
 let empty = Empty;
 let circle = r => { Ellipse(2. *. r, 2. *. r) };
