@@ -361,15 +361,32 @@ draw(logo)
 
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
-The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0).
+The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. The input-type of these function are `float`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
 
+| Function | Arguments | Bounding box size |
+| :-: | :-: | :-: |
+| `ellipse(w, h)` | Horizontal axis (w) and Vertical axis (h) | w x h |
+| `circle(r)` | Radius (r)  | 2r x 2r |
+| `rectangle(w, h)`  | Width (w) and Height (h) | w x h |
+| `square (w)`  | Size length (w)  | w x w |
+|`triangle(w, h)`| Base (w) and Height (h)| w x h|
 
-5 following functions are used to construct different type of image in DPoodle:  
-
-* `ellipse(w, h)`: ellipse function takes major and minor axes that define an ellipise and create an ellipse. The size of a bounding box of an ellipse is w x h.
-* `circle(r)`: circle function takes radius and create a circle. The size of its bounding box is 2r x 2r. Circle is a special ellipse whose major and minor axes have the same length of 2r. 
-* `rectangle(w, h)`: rectangle function takes a width and a height and create a rectangle. The size of a bounding box of a recntangle is w x h. 
-
+Function `draw(image)` is used to visualize the `image`:
+```reason edit
+draw(ellipse(20.0, 15.0))
+draw(square(15.0))
+```
+Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.  
+| Function | Return |
+| :-: | :-: |
+|`left(image)`| Minimum x-coordinate of corresponding `bbox`|
+|`right(image)`| Maximum x-coordinate of corresponding `bbox`|
+|`top(image)`|Minium y-coordinate of corresponding `bbox`|
+|`bottom(image)`|Maximum y-coordinate of corresponding `bbox`|
+|`topLeft(image)`|Top left coordinate of corresponding `bbox`|
+|`topRight(image)`|Top right coordinate of corresponding `bbox`|
+|`bottomLeft(image)`|Bottom left coordinate of corresponding `bbox`|
+|`bottomRight(image)`|Bottom right coordinate of corresponding `bbox`|
 
 
 We can also construct a shape by specify a colection of points and how to connect these points (using straight line or curve).
@@ -385,9 +402,6 @@ let triangle = (w, h) => { ClosedPath([
     LineTo((w /. 2., h /. 2.))
   ]) };
 
-
-
-An `image` has an associated bounding box, used when laying out adjacent images. 
 
 Here is an ugly example:
 ```reason edit
