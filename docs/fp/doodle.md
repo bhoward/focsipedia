@@ -291,35 +291,53 @@ let triangle = (w, h) => { ClosedPath([
     LineTo((w /. 2., h /. 2.))
   ]) };
 let text = s => { Text(s) };
-let openPath = pathElement => {OpenPath(pathElement)};
-let closedPath = pathElement => {ClosedPath(pathElement)};
-let polygon = (sides, size, initialAngle) => {
+let openPath = elements => { OpenPath(elements) };
+let closedPath = elements => { ClosedPath(elements) };
+let polar = (r, theta) => {
+  let a = radians(theta);
+  (r *. cos(a), r *. sin(a))
+};
+let regularPolygon = (sides, size, initialAngle) => {
   let rotation = 360. /. float_of_int(sides);
   let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
   let rec path = n => {
-    if (n == 0) { [] }
-    else { [lineP(getPoint(n)), ...path(n - 1)] }
+    if (n == 0) []
+    else [LineTo(getPoint(n)), ...path(n - 1)]
   };
-  ClosedPath([moveP(getPoint(sides)), ...path(sides - 1)])
+  ClosedPath([MoveTo(getPoint(sides)), ...path(sides - 1)])
 };
-
-let polyline = (sides, size, initialAngle) => {
-  let rotation = 360. /. float_of_int(sides);
-  let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
-  let rec path = n => {
-    if (n == 0) { [] }
-    else { [lineP(getPoint(n)), ...path(n - 1)] }
+let polygon = points => {
+  let rec path = points => {
+    switch (points) {
+    | [] => []
+    | [p, ...rest] => [LineTo(p), ...path(rest)]
+    }
   };
-  OpenPath([moveP(getPoint(sides)), ...path(sides - 1)])
+  switch (points) {
+  | [] => Empty
+  | [p, ...rest] => ClosedPath([MoveTo(p), ...path(rest)])
+  }
 };
-
+let polyline = points => {
+  let rec path = points => {
+    switch (points) {
+    | [] => []
+    | [p, ...rest] => [LineTo(p), ...path(rest)]
+    }
+  };
+  switch (points) {
+  | [] => Empty
+  | [p, ...rest] => OpenPath([MoveTo(p), ...path(rest)])
+  }
+};
 let above = (a, b) => { Above(a, b) };
+let below = (a, b) => { Above(b, a) };
 let beside = (a, b) => { Beside(a, b) };
 let on = (a, b) => { On(a, b) };
+let under = (a, b) => { On(b, a) };
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
 let (+++) = (a, b) => { On(a, b) };
-
 let fill = (c, img) => { Styled(img, [FillColor(c)]) };
 let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
 let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
@@ -350,18 +368,14 @@ let showBounds = img => {
   let h = b -. t;
   On(
     Bounds(Styled(
-      circle(max(w, h) /. 20.) ***
-        OpenPath([MoveTo((-.w /. 10., 0.)), LineTo((w /. 10., 0.))]) ***
-        OpenPath([MoveTo((0., -.h /. 10.)), LineTo((0., h /. 10.))]) ***
+      circle(max(w, h) /. 20.) +++
+        OpenPath([MoveTo((-.w /. 10., 0.)), LineTo((w /. 10., 0.))]) +++
+        OpenPath([MoveTo((0., -.h /. 10.)), LineTo((0., h /. 10.))]) +++
         Translate(rectangle(w, h), l +. w /. 2., t +. h /. 2.),
       [Dashed, FillColor(Color("none")), LineColor(Color("black")), LineWidth(1.0)]), 0., 0., 0., 0.),
     img
   )
 }
-let polar = (r, theta) => {
-  let a = radians(theta);
-  (r *. cos(a), r *. sin(a))
-};
 let rgb = (r, g, b) => { RGBA(r, g, b, 1.0) };
 let rgba = (r, b, g, a) => { RGBA(r, g, b, a) };
 let hsl = (h, s, l) => { HSLA(h, s, l, 1.0) };
@@ -372,47 +386,57 @@ let curveXY = (c1x, c1y, c2x, c2y, px, py) => { CurveTo((c1x, c1y), (c2x, c2y), 
 let curveP = (c1, c2, p) => { CurveTo(c1, c2, p) };
 let moveP = p => { MoveTo(p) };
 let lineP = p => { LineTo(p) };
-let rec circles = n => {
+let rec logoBackground = n => {
   if (n == 0) {
     Empty
   } else {
     let r = 10.0 *. sqrt(float_of_int(4 * n));
-    circles(n - 1) ***
+    logoBackground(n - 1) +++
       solid(hsl(float_of_int(12 * n), 1.0, 0.5), ellipse(2. *. r, r))
   }
 };
-let logo = withFont(2., Mono, Bold, Normal, stroke(Color("none"), fill(Color("black"), text("DPoodle")))) *** circles(50);
+let logo = withFont(2., Mono, Bold, Normal, stroke(Color("none"), fill(Color("black"), text("DPoodle")))) +++ logoBackground(50);
 draw(logo)
 ```
 
 ## Section 1. Introduction
-DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
+DPoodle is a graphics library written in ReasonML at DePauw University during Spring 2020.
+DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
 ## Section 2. `image` type
-The basic type of a drawing in DPoodle is `image`. 6 built-in functions used to construct geometric shape are ellipse, circle, rectangle, square, triangle, and polygon. The input-type of these function are `float`, except `polygon` function also takes the number of size as an `integer`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
+The basic type of a drawing in DPoodle is `image`.
+Seven built-in functions used to construct geometric shapes are ellipse, circle, rectangle, square, triangle, polygon, and regularPolygon.
+The size arguments for all of these functions are of type `float`, plus the `regularPolygon` function also takes the number of sides as an `int`.
+Every image in DPoodle has a *bounding box*, which is a minimal rectangle that can cover the image.
+The center of the bounding box by default is at (0, 0).
+The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about the built-in functions to create geometric shape images in DPoodle are in the following table:
 
-| Function | Arguments | Bounding box size |
+| Function | Argument(s) | Bounding box size |
 | :-: | :-: | :-: |
-| `ellipse(w, h)` | Horizontal axis (w) and Vertical axis (h) | w x h |
-| `circle(r)` | Radius (r)  | 2r x 2r |
-| `rectangle(w, h)`  | Width (w) and Height (h) | w x h |
-| `square (w)`  | Size length (w)  | w x w |
-| `triangle(w, h)`| Base (w) and Height (h)| w x h|
-| `polygon(d, s, a)`| Number of size (d), Length of each size (s), and Initial angle (a)| $(2s x sin(a)) x (2s x cos(a) + d)$|
+| `ellipse(w, h)` | Horizontal axis (w) and Vertical axis (h) | $w\times h$ |
+| `circle(r)` | Radius (r)  | $2r\times 2r$ |
+| `rectangle(w, h)`  | Width (w) and Height (h) | $w\times h$ |
+| `square(w)`  | Side length (w)  | $w\times w$ |
+| `triangle(w, h)`| Base (w) and Height (h)| $w\times h$ |
+| `polygon(points)` | List of vertex points | Smallest rectangle containing all points |
+| `regularPolygon(n, s, a)`| Number of sides (n), Distance from center to vertex (s), and Initial angle (a)| $2s\times 2s$ (roughly) |
 
 Function `draw(image)` is used to visualize the `image`:
 ```reason edit
 draw(ellipse(20.0, 15.0))
 draw(square(15.0))
-draw(polygon(6, 15., 90.))
+draw(triangle(15.0, 20.0))
+draw(polygon([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
+draw(regularPolygon(6, 15., 90.))
 ```
 
-In the library there is a function call `polyline` which is closely related to to `polygon`. A polyline is a non-closed polygon: 
+In the library there is also a function call `polyline` which is closely related to to `polygon`. A polyline is a non-closed polygon: 
 ```reason edit
-draw(polyline(6, 15., 90.))
+draw(polyline([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
 ```
 
-Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.  
+Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.
+
 | Function | Return |
 | :-: | :-: |
 |`left(image)`| Minimum x-coordinate of corresponding `bbox`|
@@ -440,23 +464,23 @@ bottomRight(a)
 We can also visuallize the bouding box and its center using `showBounds` function, which takes image as input: 
 
 ```reason edit
-let a = circle(50., )
+let a = circle(30.)
 draw(showBounds(a))
 ```
 
-We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve). These shape can be:
+We can also construct a shape by specifying a colection of points and the connection between these points (using straight line or curve).
+These shapes can be:
 
-* Open-path: using `openPath(pathElement)` function.
-* Close-path: using `closedPath(pathElement)` function. 
+* Open-path: using `openPath(pathElements)` function.
+* Close-path: using `closedPath(pathElements)` function. 
 
-These 2 functions take `pathElement` type as input. `pathElement` type can be
+These two functions take a list of `pathElement` values as input. The `pathElement` type can be
 * `MoveTo(point)`
 * `LineTo(point)`
 * `CurveTo(point, point, point)` 
 where point is a pair of floats.
 
-In the following example, we draw an AND gate using `closedPath` function: 
-
+In the following example, we draw an AND gate using `closedPath` function, on top of input and output wires drawn with `openPath`: 
 ```reason edit
 let andGate = ClosedPath([
   MoveTo((-5., -10.)),
@@ -464,14 +488,15 @@ let andGate = ClosedPath([
   CurveTo((5., -10.), (10., -5.), (10., 0.)),
   CurveTo((10., 5.), (5., 10.), (0., 10.)),
   LineTo((-5., 10.))
-]) *** OpenPath([
+]) +++ OpenPath([
   MoveTo((-5., -5.)), LineTo((-15., -5.)),
   MoveTo((-5., 5.)), LineTo((-15., 5.)),
   MoveTo((10., 0.)), LineTo((20., 0.))
 ]);
 draw(andGate);
 ```
-Here, we draw an OR gate using `closedPath` function: 
+
+Here are corresponding definitions of OR and NOT gates. Note how the NOT gate is built from other primitive geometric shapes:
 ```reason edit
 let orGate = ClosedPath([
   MoveTo((-5., -10.)),
@@ -480,32 +505,31 @@ let orGate = ClosedPath([
   CurveTo((8., 5.), (5., 10.), (0., 10.)),
   LineTo((-5., 10.)),
   CurveTo((0., 5.), (0., -5.), (-5., -10.))
-]) *** OpenPath([
+]) +++ OpenPath([
   MoveTo((0., -5.)), LineTo((-15., -5.)),
   MoveTo((0., 5.)), LineTo((-15., 5.)),
   MoveTo((10., 0.)), LineTo((20., 0.))
 ]);
 draw(orGate);
-```
 
-Finally, we draw NOT gate using `closePath` function: 
-``` reason edit
-let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.))) *** OpenPath([
-  MoveTo((-5., 0.)), LineTo((-20., 0.)),
+let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.)))
+  +++ OpenPath([
+  MoveTo((-5., 0.)), LineTo((-15., 0.)),
   MoveTo((13., 0.)), LineTo((20., 0.))
 ]);
 draw(notGate);
 ```
+
 ## Section 3. Position and Manipulation
 We can control the relative position of 2 images using the following functions: 
 
 | Function | Return | Alternative operation |
-| :-: | :-: |
-| beside(a, b) | Image b is on the right of image a. The center of a and b are aligned horizontally. | `|||` |
-| above (a, b) | Image a is above image b. The center of a and b are aligned vertically. | `---`
-| on(a, b) | Image a on top of image b. The center of a and b are superimposed. | `+++` |
+| :-: | :-: | :-: |
+| beside(a, b) | Image a is on the left of image b. The centers of a and b are aligned | <code>a &#124;&#124;&#124; b</code> |
+| above (a, b) | Image a is vertically above image b. The centers of a and b are aligned | `a --- b` |
+| on(a, b) | Image a on top of image b. The centers of a and b are superimposed | `a +++ b` |
 
-To justify our choice of operation symbol, think in 3 dimentional space: if object a is aboth beside and above object b, a is on b.
+The operator symbols should remind you of how a and b are arranged; imagine either drawing a line between them (`|` or `-`) or centering one on the other (`+`).
 
 We can also scale, rotate, and translate the image: 
 
@@ -540,7 +564,7 @@ let a = blueFill(ellipse(60.0, 80.0));
 let b = wideLines(square(50.0));
 let c = circle(30.0);
 let d = setBounds(-24., 24., -7., 7., text("Hello"));
-draw(rotate(45., scale(5., d)) *** redOutline((a ||| b) --- c));
+draw(rotate(45., scale(5., d)) +++ redOutline((a ||| b) --- c));
 ```
 
 
@@ -564,14 +588,14 @@ draw(arrow(50.))
 
 draw(showBounds(arrow(50.)))
 
-draw(arrow(50.) *** rotate(-90., arrow(30.)) *** fill(Color("white"), circle(60.)))
+draw(arrow(50.) +++ rotate(-90., arrow(30.)) +++ fill(Color("white"), circle(60.)))
 ```
 
 Using the arrow, here is a function to visualize a linked list:
 ```reason edit
 let listNode = n => {
-  let valueField = solid(Color("black"), text(string_of_int(n))) *** square(20.);
-  let nextField = arrow(20.) *** square(20.);
+  let valueField = solid(Color("black"), text(string_of_int(n))) +++ square(20.);
+  let nextField = arrow(20.) +++ square(20.);
   fill(Color("white"), valueField ||| nextField)
 };
 
@@ -584,38 +608,4 @@ let rec showList = nums => {
 
 draw(showList([1, 2, 3]));
 draw(showList([1, 2, 3, 4, 5, 6, 7, 8, 9]));
-```
-
-Here are some logic gates, using closed and open paths including curves:
-```reason edit
-let andGate = ClosedPath([
-  MoveTo((-5., -10.)),
-  LineTo((0., -10.)),
-  CurveTo((5., -10.), (10., -5.), (10., 0.)),
-  CurveTo((10., 5.), (5., 10.), (0., 10.)),
-  LineTo((-5., 10.))
-]) *** OpenPath([
-  MoveTo((-5., -5.)), LineTo((-15., -5.)),
-  MoveTo((-5., 5.)), LineTo((-15., 5.)),
-  MoveTo((10., 0.)), LineTo((20., 0.))
-]);
-draw(andGate);
-let orGate = ClosedPath([
-  MoveTo((-5., -10.)),
-  LineTo((0., -10.)),
-  CurveTo((5., -10.), (8., -5.), (10., 0.)),
-  CurveTo((8., 5.), (5., 10.), (0., 10.)),
-  LineTo((-5., 10.)),
-  CurveTo((0., 5.), (0., -5.), (-5., -10.))
-]) *** OpenPath([
-  MoveTo((0., -5.)), LineTo((-15., -5.)),
-  MoveTo((0., 5.)), LineTo((-15., 5.)),
-  MoveTo((10., 0.)), LineTo((20., 0.))
-]);
-draw(orGate);
-let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.))) ***OpenPath([
-  MoveTo((-5., 0.)), LineTo((-15., 0.)),
-  MoveTo((13., 0.)), LineTo((20., 0.))
-]);
-draw(notGate);
 ```
