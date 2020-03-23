@@ -448,3 +448,37 @@ let rec showList = nums => {
 draw(showList([1, 2, 3]));
 draw(showList([1, 2, 3, 4, 5, 6, 7, 8, 9]));
 ```
+
+Here are some logic gates, using closed and open paths including curves:
+```reason edit
+let andGate = ClosedPath([
+  MoveTo((-5., -10.)),
+  LineTo((0., -10.)),
+  CurveTo((5., -10.), (10., -5.), (10., 0.)),
+  CurveTo((10., 5.), (5., 10.), (0., 10.)),
+  LineTo((-5., 10.))
+]) *** OpenPath([
+  MoveTo((-5., -5.)), LineTo((-15., -5.)),
+  MoveTo((-5., 5.)), LineTo((-15., 5.)),
+  MoveTo((10., 0.)), LineTo((20., 0.))
+]);
+draw(andGate);
+let orGate = ClosedPath([
+  MoveTo((-5., -10.)),
+  LineTo((0., -10.)),
+  CurveTo((5., -10.), (8., -5.), (10., 0.)),
+  CurveTo((8., 5.), (5., 10.), (0., 10.)),
+  LineTo((-5., 10.)),
+  CurveTo((0., 5.), (0., -5.), (-5., -10.))
+]) *** OpenPath([
+  MoveTo((0., -5.)), LineTo((-15., -5.)),
+  MoveTo((0., 5.)), LineTo((-15., 5.)),
+  MoveTo((10., 0.)), LineTo((20., 0.))
+]);
+draw(orGate);
+let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.))) ***OpenPath([
+  MoveTo((-5., 0.)), LineTo((-15., 0.)),
+  MoveTo((13., 0.)), LineTo((20., 0.))
+]);
+draw(notGate);
+```
