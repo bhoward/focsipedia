@@ -361,7 +361,29 @@ draw(logo)
 
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
-The basic type of a drawing in DPoodle is `image`. 
+The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. We can also construct a shape by specify a colection of points and how to connect these points (using straight line or curve). Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. 
+
+5 following functions are used to construct different type of image in DPoodle:  
+
+* `ellipse(w, h)`: ellipse function takes major and minor axis that define an ellipise and create an ellipse. The size of a bounding box of an ellipse is w \times h.
+* `circle(r)`: circle function takes radius and create a circle.  
+
+
+
+let empty = Empty;
+let circle = r => { Ellipse(2. *. r, 2. *. r) };
+let ellipse = (w, h) => { Ellipse(w, h) };
+let rectangle = (w, h) => { Rectangle(w, h) };
+let square = w => { Rectangle(w, w) };
+let triangle = (w, h) => { ClosedPath([
+    MoveTo((-. w /. 2., h /. 2.)),
+    LineTo((0., -. h /. 2.)),
+    LineTo((w /. 2., h /. 2.))
+  ]) };
+
+
+
+An `image` has an associated bounding box, used when laying out adjacent images. 
 
 Here is an ugly example:
 ```reason edit
