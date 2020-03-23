@@ -4,6 +4,7 @@ import MyLiveContext from './MyLiveContext';
 import {Controlled as Editor} from 'react-codemirror2';
 
 if (typeof navigator !== 'undefined') {
+  require('codemirror/lib/codemirror');
   require('codemirror/lib/codemirror.css');
   require('codemirror/theme/material.css');
   require('codemirror/addon/edit/matchbrackets');
