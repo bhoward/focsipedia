@@ -397,7 +397,14 @@ Function `draw(image)` is used to visualize the `image`:
 ```reason edit
 draw(ellipse(20.0, 15.0))
 draw(square(15.0))
+draw(polygon(6, 15., 90.))
 ```
+
+In the library there is a function call `polyline` which is closely related to to `polygon`. A polyline is a non-closed polygon: 
+```reason edit
+draw(polyline(6, 15., 90.))
+```
+
 Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.  
 | Function | Return |
 | :-: | :-: |
@@ -422,28 +429,41 @@ topRight(a)
 bottomLeft(a)
 bottomRight(a)
 ```
-
 We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve). These shape can be:
 
-* Open-path: using `OpenPath(pathElement)` function.
-* Close-path: using `ClosedPath(pathElement)` function. 
+* Open-path: using `openPath(pathElement)` function.
+* Close-path: using `closedPath(pathElement)` function. 
 
-These 2 functions take `pathElement` type as input. `pathElement` can be
+These 2 functions take `pathElement` type as input. `pathElement` type can be
 * `MoveTo(point)`
 * `LineTo(point)`
 * `CurveTo(point, point, point)` 
 where point is a pair of floats.
 
-In the following example, we draw an AND gate using `ClosePath` function: 
+In the following example, we draw an AND gate using `closedPath` function: 
 
 ```reason edit
-
+let andGate = ClosedPath([
+MoveTo((-10., -20.)),
+ LineTo((0., -20.)),
+CurveTo((10., -20.), (20., -10.), (20., 0.)),
+ CurveTo((20., 10.), (10., 20.), (0., 20.)),
+ LineTo((-10., 20.))
+]);
+draw(andGate);
 ```
-
-
-
-
-
+Here, we draw an OR gate using `closedPath` function: 
+```reason edit
+let orGate = ClosedPath([
+MoveTo((-10., -20.)),
+ LineTo((0., -20.)),
+ CurveTo((10., -20.), (15., -10.), (20., 0.)),
+ CurveTo((15., 10.), (10., 20.), (0., 20.)),
+ LineTo((-10., 20.)),
+ CurveTo((0., 10.), (0., -10.), (-10., -20.))
+]);
+draw((orGate));
+```
 
 Here is an ugly example:
 ```reason edit
