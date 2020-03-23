@@ -361,7 +361,7 @@ draw(logo)
 
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
-The basic type of a drawing in DPoodle is `image`. There are 5 built-in functions to construct an ellipse, circle, rectangle, square, or triangle. The input-type of these function are `float`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
+The basic type of a drawing in DPoodle is `image`. 5 built-in functions used to construct geometric shape are ellipse, circle, rectangle, square, or triangle. The input-type of these function are `float`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
 
 | Function | Arguments | Bounding box size |
 | :-: | :-: | :-: |
@@ -388,19 +388,25 @@ Information about bounding box `bbox` of an `image` can be retrieved by followin
 |`bottomLeft(image)`|Bottom left coordinate of corresponding `bbox`|
 |`bottomRight(image)`|Bottom right coordinate of corresponding `bbox`|
 
+Here are some examples: 
+```reason edit
+let a = rectangle(15., 20.)
+left(a)
+right(a)
+top(a)
+bottom(a)
+topLeft(a)
+topRight(a)
+bottomLeft(a)
+bottomRight(a)
+```
 
-We can also construct a shape by specify a colection of points and how to connect these points (using straight line or curve).
+We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve):
 
-let empty = Empty;
-let circle = r => { Ellipse(2. *. r, 2. *. r) };
-let ellipse = (w, h) => { Ellipse(w, h) };
-let rectangle = (w, h) => { Rectangle(w, h) };
-let square = w => { Rectangle(w, w) };
-let triangle = (w, h) => { ClosedPath([
-    MoveTo((-. w /. 2., h /. 2.)),
-    LineTo((0., -. h /. 2.)),
-    LineTo((w /. 2., h /. 2.))
-  ]) };
+
+
+
+
 
 
 Here is an ugly example:
