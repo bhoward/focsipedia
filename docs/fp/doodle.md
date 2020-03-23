@@ -312,9 +312,14 @@ let polyline = (sides, size, initialAngle) => {
   };
   OpenPath([moveP(getPoint(sides)), ...path(sides - 1)])
 };
+
+let above = (a, b) => { Above(a, b) };
+let beside = (a, b) => { Beside(a, b) };
+let on = (a, b) => { On(a, b) };
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
 let (+++) = (a, b) => { On(a, b) };
+
 let fill = (c, img) => { Styled(img, [FillColor(c)]) };
 let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
 let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
@@ -380,8 +385,10 @@ let logo = withFont(2., Mono, Bold, Normal, stroke(Color("none"), fill(Color("bl
 draw(logo)
 ```
 
+## Section 1. Introduction
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
+## Section 2. `image` type
 The basic type of a drawing in DPoodle is `image`. 6 built-in functions used to construct geometric shape are ellipse, circle, rectangle, square, triangle, and polygon. The input-type of these function are `float`, except `polygon` function also takes the number of size as an `integer`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
 
 | Function | Arguments | Bounding box size |
@@ -429,6 +436,14 @@ topRight(a)
 bottomLeft(a)
 bottomRight(a)
 ```
+
+We can also visuallize the bouding box and its center using `showBounds` function, which takes image as input: 
+
+```reason edit
+let a = circle(50., )
+draw(showBounds(a))
+```
+
 We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve). These shape can be:
 
 * Open-path: using `openPath(pathElement)` function.
@@ -444,26 +459,65 @@ In the following example, we draw an AND gate using `closedPath` function:
 
 ```reason edit
 let andGate = ClosedPath([
-MoveTo((-10., -20.)),
- LineTo((0., -20.)),
-CurveTo((10., -20.), (20., -10.), (20., 0.)),
- CurveTo((20., 10.), (10., 20.), (0., 20.)),
- LineTo((-10., 20.))
+  MoveTo((-5., -10.)),
+  LineTo((0., -10.)),
+  CurveTo((5., -10.), (10., -5.), (10., 0.)),
+  CurveTo((10., 5.), (5., 10.), (0., 10.)),
+  LineTo((-5., 10.))
+]) *** OpenPath([
+  MoveTo((-5., -5.)), LineTo((-15., -5.)),
+  MoveTo((-5., 5.)), LineTo((-15., 5.)),
+  MoveTo((10., 0.)), LineTo((20., 0.))
 ]);
 draw(andGate);
 ```
 Here, we draw an OR gate using `closedPath` function: 
 ```reason edit
 let orGate = ClosedPath([
-MoveTo((-10., -20.)),
- LineTo((0., -20.)),
- CurveTo((10., -20.), (15., -10.), (20., 0.)),
- CurveTo((15., 10.), (10., 20.), (0., 20.)),
- LineTo((-10., 20.)),
- CurveTo((0., 10.), (0., -10.), (-10., -20.))
+  MoveTo((-5., -10.)),
+  LineTo((0., -10.)),
+  CurveTo((5., -10.), (8., -5.), (10., 0.)),
+  CurveTo((8., 5.), (5., 10.), (0., 10.)),
+  LineTo((-5., 10.)),
+  CurveTo((0., 5.), (0., -5.), (-5., -10.))
+]) *** OpenPath([
+  MoveTo((0., -5.)), LineTo((-15., -5.)),
+  MoveTo((0., 5.)), LineTo((-15., 5.)),
+  MoveTo((10., 0.)), LineTo((20., 0.))
 ]);
-draw((orGate));
+draw(orGate);
 ```
+
+Finally, we draw NOT gate using `closePath` function: 
+``` reason edit
+let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.))) *** OpenPath([
+  MoveTo((-5., 0.)), LineTo((-20., 0.)),
+  MoveTo((13., 0.)), LineTo((20., 0.))
+]);
+draw(notGate);
+```
+## Section 3. Position and Manipulation
+We can control the relative position of 2 images using the following functions: 
+
+| Function | Return | Alternative operation |
+| :-: | :-: |
+| beside(a, b) | Image b is on the right of image a. The center of a and b are aligned horizontally. | `|||` |
+| above (a, b) | Image a is above image b. The center of a and b are aligned vertically. | `---`
+| on(a, b) | Image a on top of image b. The center of a and b are superimposed. | `+++` |
+
+To justify our choice of operation symbol, think in 3 dimentional space: if object a is aboth beside and above object b, a is on b.
+
+We can also scale, rotate, and translate the image: 
+
+
+## Section 4. Format
+`image` type is formatted using the `Styled` function. 
+
+
+``` reason edit
+
+```
+
 
 Here is an ugly example:
 ```reason edit
@@ -478,10 +532,6 @@ draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
 ```
 
-Here is the same with operators and other shortcuts:
-* `a ||| b` is `Beside(a, b)`
-* `a --- b` is `Above(a, b)`
-* `a +++ b` is `On(a, b)`
 ```reason edit
 let blueFill = fill(Color("blue"));
 let wideLines = strokeWidth(3.0);
@@ -493,23 +543,6 @@ let d = setBounds(-24., 24., -7., 7., text("Hello"));
 draw(rotate(45., scale(5., d)) *** redOutline((a ||| b) --- c));
 ```
 
-Here is an example of drawing a polygon using a closed path and polar coordinates:
-```reason edit
-let polygon = (sides, size, initialAngle) => {
-  let rotation = 360. /. float_of_int(sides);
-  let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
-  let rec path = n => {
-    if (n == 0) {
-      []
-    } else {
-      [lineP(getPoint(n)), ...path(n - 1)]
-    }
-  };
-  ClosedPath([moveP(getPoint(sides)), ...path(sides - 1)])
-};
-
-draw(solid(Color("green"), polygon(6, 30., 90.)));
-```
 
 Here is an arrow. The `focus` function moves the _focus_ point of the image (the point used
 to line up images with `On`, `Beside`, and `Above`).
