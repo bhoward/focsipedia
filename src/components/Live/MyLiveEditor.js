@@ -10,6 +10,9 @@ if (typeof navigator !== 'undefined') {
   require('codemirror/addon/edit/closebrackets');
   require('codemirror/addon/comment/comment');
   require('codemirror/keymap/sublime');
+  require('codemirror/addon/hint/show-hint');
+  require('codemirror/addon/hint/show-hint.css');
+  require('codemirror/addon/hint/anyword-hint');
   require('codemirror/mode/mllike/mllike');
   require('./reason-mode.js');
 }
@@ -39,6 +42,7 @@ class MyLiveEditor extends Component {
               mode: (language === 'reason') ? 'reason' : 'text/x-ocaml',
               theme: 'material', // TODO switch based on the Docusaurus night/day setting?
               keyMap: 'sublime',
+              extraKeys: {"Ctrl-Space": "autocomplete"}, // TODO also fold in hintWords from reason-mode
               lineNumbers: true,
               tabSize: 2,
               matchBrackets: true,
