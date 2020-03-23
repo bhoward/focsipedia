@@ -5,132 +5,132 @@
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
         <lastBuildDate>Fri, 13 Mar 2020 00:00:00 GMT</lastBuildDate>
-        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
         <item>
             <title><![CDATA[No Class]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/no-class</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/no-class</guid>
+            <guid>no-class</guid>
             <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Exam 1]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/exam1</guid>
+            <guid>exam1</guid>
             <pubDate>Wed, 04 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Exam 1 Review]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1-review</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/exam1-review</guid>
+            <guid>exam1-review</guid>
             <pubDate>Mon, 02 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[MapReduce]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/mapreduce</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/mapreduce</guid>
+            <guid>mapreduce</guid>
             <pubDate>Fri, 28 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Types and Functional Programming, Continued]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/types2</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/types2</guid>
+            <guid>types2</guid>
             <pubDate>Wed, 26 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Types and Functional Programming]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/types</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/types</guid>
+            <guid>types</guid>
             <pubDate>Mon, 24 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Functions and Functional Programming]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/functions</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/functions</guid>
+            <guid>functions</guid>
             <pubDate>Fri, 21 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Recursion and Induction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/recursion</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/recursion</guid>
+            <guid>recursion</guid>
             <pubDate>Wed, 19 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Mathematical Induction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/induction</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/induction</guid>
+            <guid>induction</guid>
             <pubDate>Mon, 17 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Natural Deduction Continued]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/deduction2</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/deduction2</guid>
+            <guid>deduction2</guid>
             <pubDate>Fri, 14 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Natural Deduction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/deduction</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/deduction</guid>
+            <guid>deduction</guid>
             <pubDate>Wed, 12 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Predicate Logic and Deduction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/predicates</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/predicates</guid>
+            <guid>predicates</guid>
             <pubDate>Mon, 10 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Sets]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/sets</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/sets</guid>
+            <guid>sets</guid>
             <pubDate>Fri, 07 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Circuit Components]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/circuit-components</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/circuit-components</guid>
+            <guid>circuit-components</guid>
             <pubDate>Wed, 05 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Circuit Simplification]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/circuit-simplification</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/circuit-simplification</guid>
+            <guid>circuit-simplification</guid>
             <pubDate>Mon, 03 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Logic Circuits]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/logic-circuits</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/logic-circuits</guid>
+            <guid>logic-circuits</guid>
             <pubDate>Fri, 31 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[Logic Operators]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/logic-operators</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/logic-operators</guid>
+            <guid>logic-operators</guid>
             <pubDate>Wed, 29 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
             <title><![CDATA[First Day]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/first-day</link>
-            <guid>https://bhoward.github.io/focsipedia/blog/first-day</guid>
+            <guid>first-day</guid>
             <pubDate>Mon, 27 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ... <!--truncate--> [FoCSipedia](https://bhoward.github.io/focsipedia/)!]]></description>
         </item>
