@@ -291,9 +291,30 @@ let triangle = (w, h) => { ClosedPath([
     LineTo((w /. 2., h /. 2.))
   ]) };
 let text = s => { Text(s) };
+let openPath = pathElement => {OpenPath(pathElement)};
+let closedPath = pathElement => {ClosedPath(pathElement)};
+let polygon = (sides, size, initialAngle) => {
+  let rotation = 360. /. float_of_int(sides);
+  let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
+  let rec path = n => {
+    if (n == 0) { [] }
+    else { [lineP(getPoint(n)), ...path(n - 1)] }
+  };
+  ClosedPath([moveP(getPoint(sides)), ...path(sides - 1)])
+};
+
+let polyline = (sides, size, initialAngle) => {
+  let rotation = 360. /. float_of_int(sides);
+  let getPoint = n => polar(size, rotation *. float_of_int(n) +. initialAngle);
+  let rec path = n => {
+    if (n == 0) { [] }
+    else { [lineP(getPoint(n)), ...path(n - 1)] }
+  };
+  OpenPath([moveP(getPoint(sides)), ...path(sides - 1)])
+};
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
-let (***) = (a, b) => { On(a, b) };
+let (+++) = (a, b) => { On(a, b) };
 let fill = (c, img) => { Styled(img, [FillColor(c)]) };
 let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
 let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
@@ -401,8 +422,22 @@ bottomLeft(a)
 bottomRight(a)
 ```
 
-We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve):
+We can also construct a shape by specify a colection of points and the connection between these points (using straight line or curve). These shape can be:
 
+* Open-path: using `OpenPath(pathElement)` function.
+* Close-path: using `ClosedPath(pathElement)` function. 
+
+These 2 functions take `pathElement` type as input. `pathElement` can be
+* `MoveTo(point)`
+* `LineTo(point)`
+* `CurveTo(point, point, point)` 
+where point is a pair of floats.
+
+In the following example, we draw an AND gate using `ClosePath` function: 
+
+```reason edit
+
+```
 
 
 
@@ -425,7 +460,7 @@ draw(On(Rotate(Scale(d, 5., 5.), 45.),
 Here is the same with operators and other shortcuts:
 * `a ||| b` is `Beside(a, b)`
 * `a --- b` is `Above(a, b)`
-* `a *** b` is `On(a, b)`
+* `a +++ b` is `On(a, b)`
 ```reason edit
 let blueFill = fill(Color("blue"));
 let wideLines = strokeWidth(3.0);
