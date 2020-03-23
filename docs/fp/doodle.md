@@ -382,7 +382,7 @@ draw(logo)
 
 DPoodle is a graphic library written in ReasonML at DePauw University during Spring 2020. DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
-The basic type of a drawing in DPoodle is `image`. 5 built-in functions used to construct geometric shape are ellipse, circle, rectangle, square, or triangle. The input-type of these function are `float`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
+The basic type of a drawing in DPoodle is `image`. 6 built-in functions used to construct geometric shape are ellipse, circle, rectangle, square, triangle, and polygon. The input-type of these function are `float`, except `polygon` function also takes the number of size as an `integer`. Every image in DPoodle has a bounding box with type `bbox`, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoleces triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about 5 built-in functions to create different types of image in DPoodle are in the following table:
 
 | Function | Arguments | Bounding box size |
 | :-: | :-: | :-: |
@@ -390,7 +390,8 @@ The basic type of a drawing in DPoodle is `image`. 5 built-in functions used to 
 | `circle(r)` | Radius (r)  | 2r x 2r |
 | `rectangle(w, h)`  | Width (w) and Height (h) | w x h |
 | `square (w)`  | Size length (w)  | w x w |
-|`triangle(w, h)`| Base (w) and Height (h)| w x h|
+| `triangle(w, h)`| Base (w) and Height (h)| w x h|
+| `polygon(d, s, a)`| Number of size (d), Length of each size (s), and Initial angle (a)| $(2s x sin(a)) x (2s x cos(a) + d)$|
 
 Function `draw(image)` is used to visualize the `image`:
 ```reason edit
