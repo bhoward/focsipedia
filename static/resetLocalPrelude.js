@@ -272,7 +272,7 @@ let draw = image => {
     newl, newt, newr -. newl, newb -. newt);
   print_string("<g fill='grey' stroke='black' font-family='Roboto Mono, monospace' font-size='1rem'>");
   print_string(render(image));
-  print_string("</g></svg>\n");
+  print_string("</g></svg>\\n");
 };
 let empty = Empty;
 let circle = r => { Ellipse(2. *. r, 2. *. r) };
@@ -384,6 +384,12 @@ let lineP = p => { LineTo(p) };
 evaluator.resetLocal = function() {
   evaluator.reset();
   evaluator.reasonSyntax();
-  evaluator.execute(prelude);
+  let results = evaluator.execute(prelude);
+  results.forEach(r => {
+    let {stderr} = r.value;
+    if (stderr.trim() !== '') {
+      console.log(stderr);
+    }
+  });
 };
 evaluator.resetLocal();
