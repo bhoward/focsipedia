@@ -24,7 +24,7 @@ export default class MyLiveProvider extends Component {
   }
 
   resetInterpreter() {
-    evaluator.reset();
+    evaluator.resetLocal();
   }
 
   onError(error) {

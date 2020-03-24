@@ -128,6 +128,7 @@ module.exports = {
   ],
   scripts: [
     '/focsipedia/toplevel.js',
+    '/focsipedia/resetLocalPrelude.js',
   ],
   stylesheets: [
     'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',
