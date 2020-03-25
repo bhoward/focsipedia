@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Fri, 13 Mar 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 30 Mar 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Class Resumes]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/class-resumes</link>
+            <guid>class-resumes</guid>
+            <pubDate>Mon, 30 Mar 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[No Class]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/no-class</link>
