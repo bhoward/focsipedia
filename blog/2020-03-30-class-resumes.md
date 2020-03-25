@@ -15,6 +15,8 @@ recorded and a link will be posted here when the recording is available.
 * Exams will still be held more-or-less as scheduled, although I am still working out the details.
 * Instead of office hours, I will be happy to answer questions at any time by email or to set up an appointment for a phone call or video chat (Google Meet, Hangout, Skype, or something else that works for you).
 
+[Test video](https://drive.google.com/file/d/1aHHNtoY_B1v0JsADDju_Y-bUrNHRmzcC/view) recorded with Google Meet.
+
 Here are the topics planned for the rest of the semester:
 * 3/30-4/3 Trees, Traversals, Graphs, Graph Traversals
 * 4/6-4/10 Languages, Regular Expressions, Finite-State Automata
