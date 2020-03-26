@@ -500,9 +500,9 @@ draw(notGate);
 We can control the relative position of 2 images using the following functions: 
 
 | Function | Return | Alternative operation |
-| :-: | :-: |
+| :-: | :-: | :-: |
 | beside(a, b) | Image b is on the right of image a. The center of a and b are aligned horizontally. | `|||` |
-| above (a, b) | Image a is above image b. The center of a and b are aligned vertically. | `---`
+| above (a, b) | Image a is above image b. The center of a and b are aligned vertically. | `---` |
 | on(a, b) | Image a on top of image b. The center of a and b are superimposed. | `+++` |
 
 To justify our choice of operation symbol, think in 3 dimentional space: if object a is aboth beside and above object b, a is on b.
