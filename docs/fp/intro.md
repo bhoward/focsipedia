@@ -13,11 +13,11 @@ is a function according to the mathematical definition.
 In computer programming, a function is a routine that is given 
 some data as input and that will calculate and return an
 answer based on that data.  For example, in the Java programming
-language, a function that calculates the square of an integer
+language, a function that calculates the cube of an integer
 could be written
 ```java
-int square(int n) {
-    return n*n;
+int cube(int n) {
+    return n * n * n;
 }
 ```
 In Java, _int_ is a data type.  From the mathematical
@@ -28,26 +28,26 @@ binary numbers.  Mathematically, then, $\textit{int}\subseteq\Z$.
 have names that consist of more than one character, since
 it's done all the time in computer programming.)
 The first line of the above function definition,
-"`int square(int n)`", says that we are defining
-a function named square whose range is _int_
+"`int cube(int n)`", says that we are defining
+a function named _cube_ whose range is _int_
 and whose domain is _int_.  In the usual notation for
-functions, we would express this as $\textit{square}\colon \textit{int}\to\textit{int}$,
-or possibly as $\textit{square}\in{\textit{int}}^{\textit{\small{int}}}$,
+functions, we would express this as $\textit{cube}\colon \textit{int}\to\textit{int}$,
+or possibly as $\textit{cube}\in{\textit{int}}^{\textit{\small{int}}}$,
 where ${\textit{int}}^{\textit{\small{int}}}$ is the set of all
 functions that map the set _int_ to the set _int_.
 
-The first line of the function, `int square(int n)`, is called
+The first line of the function, `int cube(int n)`, is called
 the **signature** of the function (in some languages, such as C++, it
 is called the **prototype**).  The signature specifies the
 name, the domain, and the range of the function and so carries
 exactly the same information as the notation "$f\colon A\to B$".
-The "$n$" in "`int square(int n)`" is a name for
+The "$n$" in "`int cube(int n)`" is a name for
 an arbitrary element of the data type _int_.  In computer
 jargon, $n$ is called a **parameter** of the function.
-The rest of the definition of _square_ tells the computer
-to calculate the value of $\textit{square}(n)$ for any $n\in\textit{int}$
-by multiplying $n$ times $n$.  The statement "`return n*n`"
-says that $n*n$ is the value that is computed, or "returned,"
+The rest of the definition of _cube_ tells the computer
+to calculate the value of $\textit{cube}(n)$ for any $n\in\textit{int}$
+by multiplying $n\times n\times n$.  The statement "`return n * n * n`"
+says that $n\times n\times n$ is the value that is computed, or "returned,"
 by the function.  (The $*$ stands for multiplication.)
 
 Java has many data types in addition to _int_.  There is
@@ -278,21 +278,21 @@ use of lambda, and the name has stuck.]
 
 ## Anonymous functions
 
-In Java, an expression such as `i -> { return i * i; }`
+In Java, an expression such as `i -> { return i * i * i; }`
 creates a function object that takes an _int_ (this will be
 determined from the context) and returns another _int_. This
-particular function squares its input. Thus, if we call our _sum_ function as
+particular function cubes its input. Thus, if we call our _sum_ function as
 follows:
 ```java
-sum(i -> { return i * i; }, 1, 10)
+sum(i -> { return i * i * i; }, 3, 5)
 ```
-the result will be $1^2 + 2^2 + \cdots + 10^2$,
-which is 385.
+the result will be $3^3 + 4^3 + 5^3$,
+which is 216.
 
 Many languages now support a similar syntax for creating anonymous
 function values, and offer some facility for working with functions
 as (mostly) first-class objects. For example, the same function
-is expressed in ReasonML as `i => { i * i }`. Since one of the hallmarks of
+is expressed in ReasonML as `i => { i * i * i }`. Since one of the hallmarks of
 the functional languages is their ability to work with function
 values, you can imagine that they tend to provide the most
 thorough integration of functions with other kinds of values.
@@ -313,7 +313,7 @@ public class SumDemo {
   }
 
   public static void main(String[] args) {
-    System.out.println(sum(i -> { return i * i; }, 1, 10));
+    System.out.println(sum(i -> { return i * i * i; }, 3, 5));
   }
 }
 ```
@@ -327,7 +327,7 @@ let rec sum = (f, a, b) => {
   }
 };
 
-print_int(sum(i => { i * i }, 1, 10));
+print_int(sum(i => { i * i * i }, 3, 5));
 print_newline();
 ```
 
@@ -341,13 +341,13 @@ in the right-hand expression would refer to an older binding to
 that name.
 
 As a simpler function definition in ReasonML, not needing the "rec"
-keyword, here is our _square_ function again:
+keyword, here is our _cube_ function again:
 ```reason demo
-let square = n => { n * n };
+let cube = n => { n * n * n };
 ```
 This is just binding the anonymous function we have been using above
-to the name _square_. Note that the function `n => { n * n }` is
-exactly the same as the function `i => { i * i }`, because the name
+to the name _cube_. Note that the function `n => { n * n * n }` is
+exactly the same as the function `i => { i * i * i }`, because the name
 of the parameter does not matter outside the function.
 
 An interesting fact about ReasonML is that the operators are also functions,
@@ -430,14 +430,14 @@ defines a new type named _Point_.  A value of type _Point_
 contains two values of type _double_.  What mathematical operation
 corresponds to the construction of this data type?  Why?
 
-4. Let _square_, _sum_ and _monomial_
+4. Let _cube_, _sum_ and _monomial_
 be the ReasonML functions described in this section.  What is the
 value of each of the following?
-   * _sum_(_square_, 2, 4)
+   * _sum_(_cube_, 2, 4)
    * _sum_(_monomial_(5, 2), 1, 3)
-   * _monomial_(_square_(2), 7)
+   * _monomial_(_cube_(2), 7)
    * _sum_($n\Rightarrow\{ 2*n \}$, 1, 5)
-   * _square_(_sum_(_monomial_(2, 3), 1, 2))
+   * _cube_(_sum_(_monomial_(2, 3), 1, 2))
 }
 
 5. Write a ReasonML function named _compose_
