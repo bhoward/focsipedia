@@ -353,6 +353,10 @@ let focus = (pos, img) => {
 };
 let rotate = (a, img) => { Rotate(img, a) };
 let translate = (dx, dy, img) => { Translate(img, dx, dy) };
+let translateP = (p, img) => {
+  let (dx, dy) = p;
+  translate(dx, dy, img)
+};
 let scalexy = (sx, sy, img) => { Scale(img, sx, sy) };
 let scale = (s, img) => { Scale(img, s, s) };
 let setBounds = (l, r, t, b, img) => { Bounds(img, l, r, t, b) };
@@ -380,6 +384,42 @@ let curveXY = (c1x, c1y, c2x, c2y, px, py) => { CurveTo((c1x, c1y), (c2x, c2y), 
 let curveP = (c1, c2, p) => { CurveTo(c1, c2, p) };
 let moveP = p => { MoveTo(p) };
 let lineP = p => { LineTo(p) };
+module Turtle {
+  type state = (point, angle);
+  type instruction = Forward(float) | Turn(float) | Branch(list(instruction)) | NoOp;
+  let run = instructions => {
+    let rec process = (st, i) => {
+      switch (i) {
+      | Forward(d) => {
+          let ((x, y), heading) = st;
+          let (dx, dy) = polar(d, heading);
+          let p = (x +. dx, y +. dy);
+          ((p, heading), [lineP(p)])
+        }
+      | Turn(a) => {
+          let (p, heading) = st;
+          ((p, heading +. a), [])
+        }
+      | Branch(instrs) => {
+          let (p, _) = st;
+          let branchElts = iterate(st, instrs);
+          (st, branchElts @ [moveP(p)])
+        }
+      | NoOp => (st, [])
+      }
+    }
+    and iterate = (st, instrs) => {
+      switch (instrs) {
+      | [] => []
+      | [i, ...rest] => {
+          let (st', elts) = process(st, i);
+          elts @ iterate(st', rest) /* TODO use correct tail recursion */
+        }
+      }
+    };
+    openPath([moveXY(0., 0.), ...iterate(((0., 0.), 0.), instructions)])
+  };
+};
 `
 evaluator.resetLocal = function() {
   evaluator.reset();
