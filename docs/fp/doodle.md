@@ -143,14 +143,28 @@ We can control the relative position of 2 images using the following functions:
 
 | Function | Return | Alternative operation |
 | :-: | :-: | :-: |
-| beside(a, b) | Image a is on the left of image b. The centers of a and b are aligned | <code>a &#124;&#124;&#124; b</code> |
-| above (a, b) | Image a is vertically above image b. The centers of a and b are aligned | `a --- b` |
-| on(a, b) | Image a on top of image b. The centers of a and b are superimposed | `a +++ b` |
+| `beside(a, b)` | Image a is on the left of image b. The centers of a and b are aligned | <code>a &#124;&#124;&#124; b</code> |
+| `above (a, b)` | Image a is vertically above image b. The centers of a and b are aligned | `a --- b` |
+| `on(a, b)` | Image a on top of image b. The centers of a and b are superimposed | `a +++ b` |
 
 The operator symbols should remind you of how a and b are arranged; imagine either drawing a line between them (`|` or `-`) or centering one on the other (`+`).
 
 We can also scale, rotate, and translate the image: 
 
+| Function | Arguments | Effect |
+| :-: | :-: | :-: |
+| `rotate (a, img)` | Angle a (degree) and Image img| Rotate image a by an angle a clockwise.|
+| `translate (dx, dy, img)`| Difference in x-coordinate dx, Difference in y-coordinate dy, and Image imge | Translate the origin of image img from (x, y) to (x + dx, y + dy).|
+| `translateP (p, img)`| Point p and Image img| Translate the origine of image img to point p. |
+| `scalexy (sx, sy, img)`| Horizontal scale sx, Vertical scale sy, and Image img| Scale image horizontally by sx unit time and vertically by sy unit.|
+| `scale(s, img)`| Scale factor s and Image img | Scale image img both size by a factor s| 
+
+For example: 
+``` reason edit
+let a = circle(10.)
+draw(translate(0., 10., a) ||| a)
+draw(scale(5, a))
+```
 
 ## Section 4. Format
 `image` type is formatted using the `Styled` function. 
