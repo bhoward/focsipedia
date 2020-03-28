@@ -188,8 +188,7 @@ draw(showBounds(a) +++ showBounds(c))
 Every image has a bounding box and a reference point. At the begining when the image is created, the referecen point of the image is at the center of image. Translating an image (via `translate`, `translateP`, or `focus` functions translates the whole image but leaving the reference point behind. Think of the reference point as a spot on the table, and the image starts off as a piece of paper centered over that spot. Translating amounts to shifting the paper so that a different point is over the spot. Putting two images together with ||| or --- is like pushing two tables next to each other, lining up their spots horizontally or vertically. The papers come along for the ride and overlap as the tables are shifted. When you're done, you imagine a new combined table with a new spot underneath the overlapped (and now merged) papers.
 
 ## Section 4. Format
-The `image` type can be formatted using the `Styled` constructor.
-In addition to an image `img`, the `Styled` function take a list of `style` as its argument. `style` is returned from the following functions:
+The `image` type can be formatted using the following functions: 
 
 | Functions | Arguments | Effect |
 | :-: | :-: | :-: |
@@ -248,7 +247,7 @@ Here are the known named colors:
 | tomato | turquoise | violet | wheat |
 | white | whiteSmoke | yellow | yellowGreen |
 
-The `Font(fontSize, fontFamily, fontWeight, fontStyle)` constructor: 
+Arguments of the `font(fontSize, fontFamily, fontWeight, fontStyle)` functions have the following properties: 
 * `fontFamily` is a type that has 3 cases: Mono, Sans, and Sarif.
 * `fontWeight` is a type that has 2 cases: Bold and Regular.
 * `fontStyle` is a type that has 2 cases: Italic and Normal.
