@@ -374,6 +374,8 @@ let showBounds = img => {
     img
   )
 }
+
+let color = (c) => {Color(c)}
 let rgb = (r, g, b) => { RGBA(r, g, b, 1.0) };
 let rgba = (r, b, g, a) => { RGBA(r, g, b, a) };
 let hsl = (h, s, l) => { HSLA(h, s, l, 1.0) };
