@@ -242,6 +242,13 @@ draw(On(Rotate(Scale(d, 5., 5.), 45.),
         redOutline(Above(Beside(a, b), c))));
 ```
 
+Here is an example of text formatting: 
+```reason edit
+let formatText = img => {Styled(img, [Font(2., Serif, Bold, Italic)])}
+let d = formatText(setBounds(-30., 30., -20., 20., Text("Hello")))
+draw(d)
+```
+
 ## Section 5. Some applications
 Here is an arrow. The `focus` function moves the _focus_ point of the image (the point used
 to line up images with `On`, `Beside`, and `Above`).
