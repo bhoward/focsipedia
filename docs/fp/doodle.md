@@ -169,6 +169,15 @@ draw(translate(0., 10., a) ||| a);
 draw(scale(5., a));
 ```
 
+`Focus(position, img)` is a special case of `translate(dx, dy, img)` function. It produce a new image based on image img with the origin at the specified point on its bounding box. `position` is a type that has 9 following cases: TL (top left), TC (top center), TR (top right), ML (middle left), MC (middle center), MR (middle right), BL (bottom left), BC (bottom center), BR (bottom right).
+
+``` reason edit
+let a = circle(10.)
+let b = focus(TL, a)
+let c = fill(Color("aliceBlue"), b)
+draw(showBounds(a) ||| showBounds(c))
+```
+
 ## Section 4. Format
 The `image` type can be formatted using the `Styled` constructor.
 In addition to an image `img`, the `Styled` function take a list of `style` as its argument. `style` is a type that has the following constructors:
@@ -256,9 +265,9 @@ Alternatively, formatting can be done via the following built-in functions:
 
 | Functions | Arguments | Effect |
 | :-: | :-: | :-: |
-| `fill(c, img)` | Color name (string) and image img | Fill image img with color c|
-| `stroke(c, img)`| Color name (string) and image img | Change the border of image img to color c|
-| `solid(c, img)`| Color name (string) and image img| Change the border of image img and fill it with color c|
+| `fill(c, img)` | Color c and image img | Fill image img with color c|
+| `stroke(c, img)`| Color c and image img | Change the border of image img to color c|
+| `solid(c, img)`| Color c and image img| Change the border of image img and fill it with color c|
 | `strokeWidth(w, img)`| Thickness w (a float) and image img| Change the thickness of image img's border to w|
 | `withFont (fontSize, fontFamily, fontWeight, fontStyle, img) `|  Font size (a float), font family (fontFamily type), font weight (fontWeight type), font style (fontStyle type), and image img | Format the text image img as specified | 
 
