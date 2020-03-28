@@ -22,12 +22,7 @@ DPoodle is a graphics library written in ReasonML at DePauw University during Sp
 DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
 
 ## Section 2. `image` type
-The basic type of a drawing in DPoodle is `image`.
-Seven built-in functions used to construct geometric shapes are ellipse, circle, rectangle, square, triangle, polygon, and regularPolygon.
-The size arguments for all of these functions are of type `float`, plus the `regularPolygon` function also takes the number of sides as an `int`.
-Every image in DPoodle has a *bounding box*, which is a minimal rectangle that can cover the image.
-The center of the bounding box by default is at (0, 0).
-The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about the built-in functions to create geometric shape images in DPoodle are in the following table:
+The basic type of a drawing in DPoodle is `image`. Seven built-in functions used to construct geometric shapes are ellipse, circle, rectangle, square, triangle, polygon, and regularPolygon. The size arguments for all of these functions are of type `float`, plus the `regularPolygon` function also takes the number of sides as an `int`. Every image in DPoodle has a *bounding box*, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about the built-in functions to create geometric shape images in DPoodle are in the following table:
 
 | Function | Argument(s) | Bounding box size |
 | :-: | :-: | :-: |
@@ -48,42 +43,9 @@ draw(polygon([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
 draw(regularPolygon(6, 15., 90.))
 ```
 
-In the library there is also a function call `polyline` which is closely related to to `polygon`. A polyline is a non-closed polygon: 
+An `empty` value is use to create an empty image whose bounding box is (0., 0., 0., 0.). `empty` is very similar to `null` value in other language. `polyline` functions is closely related to to `polygon`. A polyline is a non-closed polygon:
 ```reason edit
 draw(polyline([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
-```
-
-Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.
-
-| Function | Return |
-| :-: | :-: |
-|`left(image)`| Minimum x-coordinate of corresponding `bbox`|
-|`right(image)`| Maximum x-coordinate of corresponding `bbox`|
-|`top(image)`|Minium y-coordinate of corresponding `bbox`|
-|`bottom(image)`|Maximum y-coordinate of corresponding `bbox`|
-|`topLeft(image)`|Top left coordinate of corresponding `bbox`|
-|`topRight(image)`|Top right coordinate of corresponding `bbox`|
-|`bottomLeft(image)`|Bottom left coordinate of corresponding `bbox`|
-|`bottomRight(image)`|Bottom right coordinate of corresponding `bbox`|
-
-Here are some examples: 
-```reason edit
-let a = rectangle(15., 20.)
-left(a)
-right(a)
-top(a)
-bottom(a)
-topLeft(a)
-topRight(a)
-bottomLeft(a)
-bottomRight(a)
-```
-
-We can also visuallize the bouding box and its center using `showBounds` function, which takes image as input: 
-
-```reason edit
-let a = circle(30.)
-draw(showBounds(a))
 ```
 
 We can also construct a shape by specifying a colection of points and the connection between these points (using straight line or curve).
@@ -138,6 +100,46 @@ let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.))
 draw(notGate);
 ```
 
+Information about bounding box `bbox` of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.
+
+| Function | Return |
+| :-: | :-: |
+|`left(image)`| Minimum x-coordinate of corresponding `bbox`|
+|`right(image)`| Maximum x-coordinate of corresponding `bbox`|
+|`top(image)`|Minium y-coordinate of corresponding `bbox`|
+|`bottom(image)`|Maximum y-coordinate of corresponding `bbox`|
+|`topLeft(image)`|Top left coordinate of corresponding `bbox`|
+|`topRight(image)`|Top right coordinate of corresponding `bbox`|
+|`bottomLeft(image)`|Bottom left coordinate of corresponding `bbox`|
+|`bottomRight(image)`|Bottom right coordinate of corresponding `bbox`|
+
+Here are some examples: 
+```reason edit
+let a = rectangle(15., 20.)
+left(a)
+right(a)
+top(a)
+bottom(a)
+topLeft(a)
+topRight(a)
+bottomLeft(a)
+bottomRight(a)
+```
+
+We can also visuallize the bouding box and its center using `showBounds` function, which takes image as input: 
+```reason edit
+let a = circle(30.)
+draw(showBounds(a))
+```
+
+Elements in an image can also be a text. `text(string)` functions is used to create a text image. This function return a image with 0 by 0 bounding box. Since the `draw(image)` function only renders the area inside of the bounding box, we need to reset the size of the bounding box. Since there is no easy way to get the correct size of the bounding box, `showBounds(img)` is often used with `setBounds(l,r,t,b, img)` to set the relatively correct size of the text image. 
+
+Thus, we need to scale the  : 
+```reason edit
+let d = setBounds(-24., 24., -9., 6., Text("Hello"));
+draw(showBounds(d));
+```
+
 ## Section 3. Position and Manipulation
 We can control the relative position of 2 images using the following functions: 
 
@@ -158,6 +160,7 @@ We can also scale, rotate, and translate the image:
 | `translateP(p, img)` | Point p and image img | Translate the origin of img to point p. |
 | `scalexy(sx, sy, img)` | Horizontal and vertical scale factors sx and sy, image img | Scale image horizontally by sx and vertically by sy.|
 | `scale(s, img)` | Scale factor s and image img | Scale img in both directions by factor s.| 
+| `setBounds(l, r, t, b, img)`| Min x, max x , min y, max y of the new bounding box respectively, and the image imh| Create a new image that looks just like img, except its bounding box has a specified coordiate. The origin is unchanged.|
 
 For example: 
 ```reason edit
@@ -177,6 +180,8 @@ Elements of this list can be these following values:
 | `LineColor(color)` | A `color` type | Use the specified border color. |
 | `FillColor(color)` | A `color` type | Use the specified fill color. |
 | `Dashed` | None | Draw the border with dashed lines. |
+| `Font(fontSize, fontFamily, fontWeight, fontStyle)` | Font Size (which is a float), font family, font weight, font style | Format the text as specified|
+
 
 The type `color` can be generated by one of the following constructors: 
 * `Color(string)`: Takes a named CSS Level 4 color (see list below) as its argument. 
@@ -185,7 +190,6 @@ The type `color` can be generated by one of the following constructors:
 
 Here are the known named colors:
 
-| | | | |
 | :- | :- | :- | :- |
 | transparent | aliceBlue | antiqueWhite | aqua |
 | aquamarine | azure | beige | bisque |
