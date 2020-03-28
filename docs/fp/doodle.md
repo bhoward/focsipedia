@@ -62,6 +62,11 @@ These two functions take a list of `pathElement` values as input. The `pathEleme
 * `curveXY(c1x, c1y, c2x, c2y, px, py)`: Draw a curve from current point, going through point (c1x, c1y) and (c2x, c2y), to point (px, py).
 * `curveP(c1, c2, p)`: draw a curve from from current point, going though point c1 and c2, to point p. 
 
+Function `getPoint` takes `pathElement` as input, and return the end of corresponding path. For example: 
+```reason edit
+getPoint(lineXY(1., 2.))
+```
+
 In the following example, we draw an AND gate using `closedPath` function, on top of input and output wires drawn with `openPath`: 
 ```reason edit
 let andGate = ClosedPath([
