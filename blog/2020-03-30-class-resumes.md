@@ -7,6 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Classes will resume in an online format on Monday, March 30. Work on your <a href={useBaseUrl('docs/fp/doodle-project')}>DPoodle</a> drawings.
 
+**Update** Also read about <a href={useBaseUrl('docs/ds/trees')}>trees</a> and watch the [corresponding video](https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view).
+
 My plan for now is ... <!--truncate--> 
 
 * Lecture videos will be posted on this blog along with each day's reading. I hope to be able to do this a day or two in advance.
