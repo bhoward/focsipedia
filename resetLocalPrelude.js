@@ -332,6 +332,8 @@ let under = (a, b) => { On(b, a) };
 let (---) = (a, b) => { Above(a, b) };
 let (|||) = (a, b) => { Beside(a, b) };
 let (+++) = (a, b) => { On(a, b) };
+
+let dashed = img => { Styled(img, [Dashed]) };
 let fill = (c, img) => { Styled(img, [FillColor(c)]) };
 let stroke = (c, img) => { Styled(img, [LineColor(c)]) };
 let solid = (c, img) => { Styled(img, [FillColor(c), LineColor(c)]) };
@@ -374,10 +376,12 @@ let showBounds = img => {
     img
   )
 }
+
+let color = (c) => { Color(c) };
 let rgb = (r, g, b) => { RGBA(r, g, b, 1.0) };
 let rgba = (r, b, g, a) => { RGBA(r, g, b, a) };
 let hsl = (h, s, l) => { HSLA(h, s, l, 1.0) };
-let hsla = (h, s, l, a) => {HSLA(h, s, l, a) };
+let hsla = (h, s, l, a) => { HSLA(h, s, l, a) };
 let moveXY = (x, y) => { MoveTo((x, y)) };
 let lineXY = (x, y) => { LineTo((x, y)) };
 let curveXY = (c1x, c1y, c2x, c2y, px, py) => { CurveTo((c1x, c1y), (c2x, c2y), (px, py)) };
