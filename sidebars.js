@@ -30,6 +30,10 @@ module.exports = {
       'fp/map-reduce',
       'fp/doodle',
     ],
+    'Lists, Trees, and Graphs': [
+      'ds/lists',
+      'ds/trees',
+    ],
     Features: ['reason',
       'ocaml',
       'styleGuide',

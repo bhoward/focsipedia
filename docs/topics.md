@@ -33,12 +33,12 @@ title: Topics
 ### [Functional Graphics](fp/doodle.md)
 
 ## Week 7: Lists
-### Functional Sorting
+### [Functional Sorting](ds/lists.md)
 
 ### Program Verification
 
 ## Week 8: Trees
-### Tree Traversals
+### [Tree Traversals](ds/trees.md)
 
 ### Relations and Relational Databases
 
