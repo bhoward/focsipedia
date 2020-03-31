@@ -9,6 +9,10 @@ Classes will resume in an online format on Monday, March 30. Work on your <a hre
 
 **Update** Also read about <a href={useBaseUrl('docs/ds/trees')}>trees</a> and watch the [corresponding video](https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view).
 
+Here are the videos from the in-class sessions:
+[Section A](https://drive.google.com/file/d/1fZmQwPUAvxw4woQoaCSR08lGR2yrEHIm/view)
+[Section B](https://drive.google.com/file/d/1oBKn6LdDb1cDz2QqVz0MbR6QiXk8alED/view)
+
 My plan for now is ... <!--truncate--> 
 
 * Lecture videos will be posted on this blog along with each day's reading. I hope to be able to do this a day or two in advance.

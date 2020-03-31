@@ -38,7 +38,7 @@ title: Topics
 ### Program Verification
 
 ## Week 8: Trees
-### [Tree Traversals](ds/trees.md)
+### [Tree Traversals](ds/trees.md); [Binary Search Trees and Heaps](ds/bst.md)
 
 ### Relations and Relational Databases
 

@@ -158,7 +158,3 @@ When you see an operator, since it must be following its two operands, _pop_ two
 For the sample above, `1 2 + 3 *`, you can check that the resulting value on the stack at the end of the expression is the expected `9`.
 
 More recent uses of postfix expressions and stack-based evaluation are the PostScript page description language used by many printers (which also forms the basis of the PDF document format), and the Java Virtual Machine code produced by the Java compiler.
-
-## Binary Search Trees
-
-TODO
