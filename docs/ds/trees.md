@@ -52,13 +52,13 @@ Here is a simple rendering of a tree with DPoodle (the second argument, `show`, 
 let rec showTree = (t, show) => {
   switch (t) {
   | EmptyTree => solid(Color("black"), circle(2.))
-  | TreeNode(left, value, right) => {
-      let showLeft = showTree(left, show);
-      let showRight = showTree(right, show);
-      let leftShift = width(showLeft) /. 2. +. 10.;
-      let rightShift = width(showRight) /. 2. +. 10.;
+  | TreeNode(lt, value, rt) => {
+      let showLeft = showTree(lt, show);
+      let showRight = showTree(rt, show);
+      let leftShift = right(showLeft) +. 10.;
+      let rightShift = left(showRight) -. 10.;
       let leftLine = openPath([moveXY(0., 0.), lineXY(leftShift, -30.)]);
-      let rightLine = openPath([moveXY(0., 0.), lineXY(-.rightShift, -30.)]);
+      let rightLine = openPath([moveXY(0., 0.), lineXY(rightShift, -30.)]);
       let leftImage = focus(TR, showLeft +++ focus(BL, leftLine));
       let rightImage = focus(TL, showRight +++ focus(BR, rightLine));
       let valueImage = stroke(Color("none"), fill(Color("black"), text(show(value))))

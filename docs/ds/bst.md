@@ -42,13 +42,13 @@ Here is the `demo` tree rendered with the `showTree` function:
 let rec showTree = (t, show) => {
   switch (t) {
   | EmptyTree => solid(Color("black"), circle(2.))
-  | TreeNode(left, value, right) => {
-      let showLeft = showTree(left, show);
-      let showRight = showTree(right, show);
-      let leftShift = width(showLeft) /. 2. +. 10.;
-      let rightShift = width(showRight) /. 2. +. 10.;
+  | TreeNode(lt, value, rt) => {
+      let showLeft = showTree(lt, show);
+      let showRight = showTree(rt, show);
+      let leftShift = right(showLeft) +. 10.;
+      let rightShift = left(showRight) -. 10.;
       let leftLine = openPath([moveXY(0., 0.), lineXY(leftShift, -30.)]);
-      let rightLine = openPath([moveXY(0., 0.), lineXY(-.rightShift, -30.)]);
+      let rightLine = openPath([moveXY(0., 0.), lineXY(rightShift, -30.)]);
       let leftImage = focus(TR, showLeft +++ focus(BL, leftLine));
       let rightImage = focus(TL, showRight +++ focus(BR, rightLine));
       let valueImage = stroke(Color("none"), fill(Color("black"), text(show(value))))
@@ -241,3 +241,48 @@ let heapSort = nums => removeAll(buildHeap(nums));
 
 heapSort([3, 1, 4, 1, 5, 9, 2, 6, 5]);
 ```
+
+## Exercises
+
+1. Consider the following tree:
+```reason hidden
+let t = TreeNode(TreeNode(TreeNode(leaf(5), 3, leaf(7)), 2, leaf(4)), 1, TreeNode(leaf(9), 6, leaf(8)));
+draw(showTree(t, string_of_int));
+```
+List the values according to the preorder, inorder, postorder, and level order traversals.
+
+[[spoiler | Answer]]
+| Preorder: 1, 2, 3, 5, 7, 4, 6, 9, 8
+|
+| Inorder: 5, 3, 7, 2, 4, 1, 9, 6, 8
+|
+| Postorder: 5, 7, 3, 4, 2, 9, 8, 6, 1
+|
+| Level order: 1, 2, 6, 3, 4, 9, 8, 5, 7
+
+2. Show the result of removing the minimum item from the tree in Exercise 1, treating it as a binary heap (you may use either the skew merge function described above or the complete binary tree implementation described in class).
+
+[[spoiler | Answer]]
+| Using the skew merge:
+| ```reason hidden
+| switch (removeMin(t)) {
+| | None => ()
+| | Some((min, rest)) => {
+|     Printf.printf("Minimum value is %d\n", min);
+|     draw(showTree(rest, string_of_int));
+|   }
+| }
+| ```
+|
+| Using the complete tree implementation:
+| ```reason hidden
+| print_string("Minimum value is 1\n");
+| let t2 = TreeNode(TreeNode(TreeNode(leaf(7), 5, EmptyTree), 3, leaf(4)), 2, TreeNode(leaf(9), 6, leaf(8)));
+| draw(showTree(t2, string_of_int));
+| ```
+
+3. Suppose you tried to use the tree from Exercise 1 as a binary search tree. For which values would the `search` function return `true`?
+
+[[spoiler | Answer]]
+| Searching for 1, 6, and 8 would be successful.
+| Searching for any of the other numbers would result in the search looking at the wrong subtree at some point.
