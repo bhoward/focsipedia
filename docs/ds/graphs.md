@@ -75,16 +75,16 @@ let rec print_list = (nums, showNode) => {
 };
 
 let showAdjList = (alist, nodes, showNode) => {
-  iter(node => {
+  List.iter(node => {
       print_string(showNode(node) ++ ": ");
       print_list(alist(node), showNode)
     }, nodes)
 };
 
 let showAdjMatrix = (amat, nodes, showNode) => {
-  iter(i => {
+  List.iter(i => {
       print_string(showNode(i) ++ ":");
-      iter(j => {
+      List.iter(j => {
           if (amat((i, j))) {
             print_string(" 1")
           } else {
