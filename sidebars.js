@@ -33,6 +33,7 @@ module.exports = {
     'Lists, Trees, and Graphs': [
       'ds/lists',
       'ds/trees',
+      'ds/bst',
     ],
     Features: ['reason',
       'ocaml',
