@@ -34,6 +34,7 @@ module.exports = {
       'ds/lists',
       'ds/trees',
       'ds/bst',
+      'ds/graphs',
     ],
     Features: ['reason',
       'ocaml',
