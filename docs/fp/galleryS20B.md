@@ -334,16 +334,18 @@ draw(showList([1, 2, 3]));
 ## Amy Chen
 ```reason demo
 {
-let rec list = nums =>{
-	Styled(eclipse(5,float_of_int(n*5))),
-	[FillColor(rgb(100,50,100))]
-}
-switch(nums){
-|[]=>empty
-|[head, ...tail]=>Beside(showBox(head),showLise(tail))
-}
+let rec list = nums => {
+  let showBox = n => {
+	  Styled(ellipse(5., float_of_int(n*5)),
+	    [FillColor(rgb(100,50,100))])
+  };
+  switch (nums) {
+  | [] => empty
+  | [head, ...tail] => Beside(showBox(head), list(tail))
+  }
+};
 
-Draw(list([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]))	
+draw(list([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]));
 }
 ```
 
