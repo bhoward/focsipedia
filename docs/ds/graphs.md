@@ -316,7 +316,7 @@ The perhaps surprising fact about the finishing list is that, if there were no c
 The reason is that we can finish a node only after all of the nodes that can be reached from it are finished, so when we put it at the front of the finishing list it will be followed by all of the nodes that depend on it.
 
 As an example of depth-first traversal, consider the following graph:
-```reason hidden
+```reason demo
 let demo = (["A", "B", "C", "D", "E", "F"],
   [("A", "B"), ("A", "C"), ("B", "C"), ("B", "D"), ("D", "A"), ("E", "C"), ("E", "F"), ("F", "D"), ("F", "F")]);
 draw(renderLayout(layoutCircle(demo, 40.), s => s, defaultStyleNode, defaultStyleEdge));
@@ -488,7 +488,7 @@ draw(renderLayout(layoutCircle(demo, 40.), s => s, ns, es));
 Since there were back edges, the graph has at least one cycle. In fact, there are two: $A\rightarrow B\rightarrow D\rightarrow A$, and $F\rightarrow F$. In general, there may not be an exact match between the number of back edges and the number of cycles, because several cycles may share a single back edge.
 
 For another example, here is the same graph with the edges $D\rightarrow A$ and $F\rightarrow F$ removed:
-```reason hidden
+```reason demo
 let demo2 = (["A", "B", "C", "D", "E", "F"],
   [("A", "B"), ("A", "C"), ("B", "C"), ("B", "D"), ("E", "C"), ("E", "F"), ("F", "D")]);
 draw(renderLayout(layoutCircle(demo2, 40.), s => s, defaultStyleNode, defaultStyleEdge));
@@ -521,6 +521,164 @@ Observe that all of the arrows go from left to right. (**TODO** This diagram wil
 
 Note that other markings are possible, depending on the choices made (which nodes to start at, and the order in which to visit the edges out of each node). As another exercise, perform another traversal of this graph that produces a different marked-up result. Can you find a different topological ordering?
 
+### ReasonML Implementation of Depth-First Traversal
+
+To write the depth-first traversal as a pure functional program, we do not want to store the extra information (visited and finished lists, and the categorization of the edges) in mutable data structures.
+Instead, we will pass around a ReasonML **record** containing the state.
+The syntax for records is very much like that in JavaScript: it consists of a comma-separated set of fields of the form `label: value` inside a pair of curly brackets.
+To access the field `x` of record `r` we use `r.x`.
+To create a new record as a copy of `r`, with field `x` updated to `v`, we write `{...r, x: v}`.
+
+```reason edit
+type state('n) = {
+  visited: list('n),
+  finished: list('n),
+  tree: list(('n, 'n)),
+  forward: list(('n, 'n)),
+  back: list(('n, 'n))
+};
+
+type dfsResult('n) = Cycle(('n, 'n)) | TopoOrder(list('n));
+
+let depthFirst = ((nodes, adjList)) => {
+  let chooseUnvisited = visited => {
+    let unvisited = List.filter(node => !(List.mem(node, visited)), nodes);
+    switch (unvisited) {
+    | [] => None
+    | [head, ..._] => Some(head)
+    }
+  };
+
+  let rec dfs = (node, state) => {
+    let neighbors = adjList(node);
+    let state' = List.fold_left((s, n) => {
+        if (List.mem(n, s.finished)) {
+          {...s, forward: [(node, n), ...s.forward]}
+        } else if (List.mem(n, s.visited)) {
+          {...s, back: [(node, n), ...s.back]}
+        } else {
+          let s' = dfs(n, s);
+          {...s', tree: [(node, n), ...s'.tree]}
+        }
+      }, {...state, visited: [node, ...state.visited]}, neighbors);
+    {...state', finished: [node, ...state'.finished]}
+  };
+  
+  let rec run = state => {
+    switch (chooseUnvisited(state.visited)) {
+    | None => {
+        let t = (nodes, state.tree);
+        switch (state.back) {
+        | [] => (TopoOrder(state.finished), t)
+        | [e, ..._] => (Cycle(e), t)
+        }
+      }
+    | Some(node) => run(dfs(node, state))
+    }
+  };
+
+  let initialState = {
+    visited: [],
+    finished: [],
+    tree: [],
+    forward: [],
+    back: []
+  };
+
+  run(initialState)
+};
+
+depthFirst(adjlist_of_pairs(demo));
+depthFirst(adjlist_of_pairs(demo2));
+```
+
+The returned value from `depthFirst` is a pair of a `dfsResult` and a `graphPairs`.
+The `dfsResult` is either `Cycle(e)`, where `e` is a back edge (pair of nodes) causing a cycle, or `TopoOrder(nodes)`, where `nodes` is a list of the graph nodes in topological order.
+The `graphPairs` value is the subgraph consisting of just the tree nodes.
+
+Instead of using the recursive helper function `dfs`, which performs a single depth-first exploration starting from a given node, we may perform all of the exploration in the (tail-recursive) helper function `run` by using an explicit stack to keep track of the current path from the starting node. Each entry in the stack can be one of three values: `Visit(n)` says that the current task is to visit node `n`; `Finish(n)` says that the current task is to finish node `n` (note that this is pushed on the stack underneath all of the edges out of `n`, so it will only be done after all of the neighbors are processed); and `Edge(n1, n2)` says that the current task is to consider the edge from `n1` to `n2`. The `run` helper function can now be seen as a loop that continually removes a task from the stack and then updates the stack and the state to perform that task:
+```reason edit
+type dfsStackItem('n) = Visit('n) | Finish('n) | Edge('n, 'n);
+
+let depthFirst2 = ((nodes, adjList)) => {
+  let chooseUnvisited = visited => {
+    let unvisited = List.filter(node => !(List.mem(node, visited)), nodes);
+    switch (unvisited) {
+    | [] => None
+    | [head, ..._] => Some(head)
+    }
+  };
+  
+  let rec run = (stack, state) => {
+    if (Stack.is_empty(stack)) {
+      switch (chooseUnvisited(state.visited)) {
+      | None => {
+          let t = (nodes, state.tree);
+          switch (state.back) {
+          | [] => (TopoOrder(state.finished), t)
+          | [e, ..._] => (Cycle(e), t)
+          }
+        }
+      | Some(node) => {
+          Stack.push(Visit(node), stack);
+          run(stack, state)
+        }
+      }
+    } else {
+      switch (Stack.pop(stack)) {
+      | Visit(n) => {
+          Stack.push(Finish(n), stack);
+          let neighbors = adjList(n);
+          List.iter(n2 => Stack.push(Edge(n, n2), stack), neighbors);
+          run(stack, {...state, visited: [n, ...state.visited]})
+        }
+      | Finish(n) => {
+          run(stack, {...state, finished: [n, ...state.finished]})
+        }
+      | Edge(n1, n2) => {
+          if (List.mem(n2, state.finished)) {
+            run(stack, {...state, forward: [(n1, n2), ...state.forward]})
+          } else if (List.mem(n2, state.visited)) {
+            run(stack, {...state, back: [(n1, n2), ...state.back]})
+          } else {
+            Stack.push(Visit(n2), stack);
+            run(stack, {...state, tree: [(n1, n2), ...state.tree]})
+          }
+        }
+      }
+    }
+  };
+
+  let initialState = {
+    visited: [],
+    finished: [],
+    tree: [],
+    forward: [],
+    back: []
+  };
+
+  run(Stack.create(), initialState)
+};
+
+depthFirst2(adjlist_of_pairs(demo));
+depthFirst2(adjlist_of_pairs(demo2));
+```
+
 ### Breath-First Traversal
 
-TODO
+The big payoff of rewriting the depth-first traversal to use an explicit stack is that we can now explain breadth-first traversal (and level order traversal of a tree) quite simply: instead of a stack, use a queue!
+The idea is that the queue is maintaining a list of edges yet to be processed. When the algorithm starts, we push all of the edges of the initial node onto the queue and process them in order.
+As we handle each edge, if its target node has not yet been visited, then we push all of its outgoing edges onto the queue, _but they will have to wait until all of the current edges are processed_.
+In this way, we visit all of the immediate neighbors first, and then we continue with their neighbors, followed by their neighbors' neighbors, _etc_., until the entire graph is traversed.
+
+Breadth-first traversal is desirable when the graph might be large and we want to stop searching when we find the closest match, or if we only want to process items within a given distance (for example, it is used in game-playing strategies to look ahead up to a certain number of moves). Several famous algorithms can also be viewed as variants of breadth-first traversal.
+
+#### Dijkstra's Algorithm
+
+Consider a labeled graph where each edge has an associated distance or cost.
+Instead of using a queue to store the edges under consideration, we will use a **priority queue** (perhaps implemented as a binary heap). By assigning a priority based on the total length of the path from the starting node (including the edge under consideration), Dijkstra's algorithm will greedily build a **shortest-path tree** with the starting node as the root. This is an effective way to answer questions like "what is the shortest travel time from $A$ to $B$?" or "what is the closest node to $A$ with a given property?"
+
+#### Prim's Algorithm
+
+If we perform Dijkstra's algorithm with the priority of an edge being just the cost of that edge alone, then instead of a shortest-path tree we get a **minimum spanning tree**.
+This is the smallest subset of edges that connects all of the nodes, with the least possible total cost of the edges.

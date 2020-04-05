@@ -43,9 +43,7 @@ title: Topics
 ### Relations and Relational Databases
 
 ## Week 9: Graphs
-### Graphs, Representations
-
-### Graph Traversals
+### [Graphs, Representations, Traversals](ds/graphs.md)
 
 ## Week 10: Machine Models
 ### Languages and Regular Expressions, Finite-State Automata
