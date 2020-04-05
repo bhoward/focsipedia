@@ -216,7 +216,7 @@ let rec render = img => {
     Printf.sprintf("<rect width='%f' height='%f' x='%f' y='%f' />",
       w, h, -.w /. 2., -.h /. 2.)
   | Text(s) =>
-    Printf.sprintf("<text x='0' y='0' text-anchor='middle' dominant-baseline='middle'>%s</text>", s)
+    Printf.sprintf("<text x='0' y='0' text-anchor='middle' dominant-baseline='middle' vector-effect='non-scaling-stroke'>%s</text>", s)
   | OpenPath(path) =>
     Printf.sprintf("<path d='%s' fill='none' stroke-linejoin='round' stroke-linecap='round' />", string_of_path(path))
   | ClosedPath(path) => 
