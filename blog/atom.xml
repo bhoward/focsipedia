@@ -44,6 +44,27 @@
         <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Exam 1 Return]]></title>
+        <id>exam1-return</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/exam1-return"/>
+        <updated>2020-03-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Accumulators]]></title>
+        <id>accumulators</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/accumulators"/>
+        <updated>2020-03-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Helper Functions]]></title>
+        <id>helpers</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/helpers"/>
+        <updated>2020-03-06T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Exam 1]]></title>
         <id>exam1</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam1"/>
