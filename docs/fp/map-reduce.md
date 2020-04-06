@@ -73,6 +73,10 @@ string_of_list(["hello", "world"]);
 ```
 Note that the `aux` function here could have just been an application of `reduce` as initially tried above (because we actually _do_ want a comma in front of each word at this point), but we are writing it as its own function to show the pattern.
 
+## Accumulators
+
+TODO
+
 ## Tail Recursion
 
 TODO

@@ -682,3 +682,5 @@ Instead of using a queue to store the edges under consideration, we will use a *
 
 If we perform Dijkstra's algorithm with the priority of an edge being just the cost of that edge alone, then instead of a shortest-path tree we get a **minimum spanning tree**.
 This is the smallest subset of edges that connects all of the nodes, with the least possible total cost of the edges.
+
+(TODO examples will have to wait until the tree rendering can do labels&hellip;)
