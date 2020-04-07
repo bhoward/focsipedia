@@ -36,6 +36,9 @@ module.exports = {
       'ds/bst',
       'ds/graphs',
     ],
+    'Formal Languages': [
+      'lang/languages',
+    ],
     Features: ['reason',
       'ocaml',
       'styleGuide',
