@@ -38,6 +38,8 @@ module.exports = {
     ],
     'Formal Languages': [
       'lang/languages',
+      'lang/regexp',
+      'lang/regexpapp',
     ],
     Features: ['reason',
       'ocaml',
