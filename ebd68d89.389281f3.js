@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[99],{202:function(e){e.exports=JSON.parse('{"permalink":"/focsipedia/blog/page/2","page":2,"postsPerPage":10,"totalPages":3,"totalCount":26,"previousPage":"/focsipedia/blog","nextPage":"/focsipedia/blog/page/3"}')}}]);
