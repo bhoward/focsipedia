@@ -40,6 +40,7 @@ module.exports = {
       'lang/languages',
       'lang/regexp',
       'lang/regexpapp',
+      'lang/fsa',
     ],
     Features: ['reason',
       'ocaml',

@@ -46,7 +46,7 @@ title: Topics
 ### [Graphs, Representations, Traversals](ds/graphs.md)
 
 ## Week 10: Machine Models
-### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); Finite-State Automata
+### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
 ### Non-deterministic Automata, Equivalence with Regular Expressions
 
