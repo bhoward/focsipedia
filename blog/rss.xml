@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 08 Apr 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Apr 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Finite-State Automata]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/fsa</link>
+            <guid>fsa</guid>
+            <pubDate>Fri, 10 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Languages]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/languages</link>
