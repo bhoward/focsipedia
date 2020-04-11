@@ -15,7 +15,7 @@ is a proposition that can be deduced logically from the premises.
 The idea is that if you believe that the premises are true,
 then logic forces you to accept that the conclusion is true.
 An "argument" is a claim that a certain conclusion follows from
-a given set of premises.  Here is an argument laid out in
+a given set of premises. Here is an argument laid out in
 a traditional format:
 
 $$
@@ -27,14 +27,14 @@ $$
 $$
 
 The premises of the argument are shown above the line, and the conclusion
-below.  The symbol $\therefore$ is read "therefore."  The claim is that
+below. The symbol $\therefore$ is read "therefore." The claim is that
 the conclusion, "This is Belgium," can be deduced logically from the two
 premises, "If today is Tuesday, then this is Belgium" and "Today is Tuesday."
-In fact, this claim is true.  Logic forces you to accept this argument.
+In fact, this claim is true. Logic forces you to accept this argument.
 Why is that?
 
 Let $p$ stand for the proposition "Today is Tuesday," and let $q$ stand for the
-proposition "This is Belgium."  Then the above argument has the form
+proposition "This is Belgium." Then the above argument has the form
 
 $$
 \begin{array}{l}
@@ -59,10 +59,10 @@ The only case where both $p\rightarrow q$ and $p$ are true is on
 the last line of the table, and in this case, $q$ is also true.
 If you believe that
 $p\rightarrow q$ and $p$ are true, you have no logical choice but to believe $q$.
-This applies no matter what $p$ and $q$ represent.  For example,
+This applies no matter what $p$ and $q$ represent. For example,
 if you believe "If Jill is breathing, then Jill pays taxes," 
 and you believe that "Jill is breathing," logic forces you to believe that
-"Jill pays taxes."  Note that we can't say for sure that the
+"Jill pays taxes." Note that we can't say for sure that the
 conclusion is true, only that _if_ the premises are true,
 _then_ the conclusion must be true.
 
@@ -86,11 +86,11 @@ $\rightarrow$ is the same as the relation of $\equiv$ to $\leftrightarrow$.)
 
 
 > Let $\mathscr{P}$ and $\mathscr{Q}$ be any formulas in either
-propositional logic or predicate logic.  The notation
+propositional logic or predicate logic. The notation
 $\mathscr{P}\vdash\mathscr{Q}$ is used to mean that
-$\mathscr{P}\rightarrow\mathscr{Q}$ is a tautology.  That is,
+$\mathscr{P}\rightarrow\mathscr{Q}$ is a tautology. That is,
 in all cases where $\mathscr{P}$ is true, $\mathscr{Q}$ is
-also true.  We then say that $\mathscr{Q}$ can be
+also true. We then say that $\mathscr{Q}$ can be
 **logically deduced** from $\mathscr{P}$ or that
 $\mathscr{P}$ **logically implies** $\mathscr{Q}$.
 
@@ -103,11 +103,11 @@ $\mathscr{P}_1\land\ldots\land\mathscr{P}_n\rightarrow\mathscr{Q}$ is
 a tautology.
 
 An argument in which the conclusion follows logically from the
-premises is said to be a **valid argument**.  To test whether
+premises is said to be a **valid argument**. To test whether
 an argument is valid, you have to replace the particular propositions
 or predicates that it contains with variables, and then test
 whether the conjunction of the premises logically implies the
-conclusion.  We have seen that any argument of the form
+conclusion. We have seen that any argument of the form
 
 $$
 \begin{array}{l}
@@ -118,8 +118,8 @@ q
 $$
 
 is valid, since $\big((p\rightarrow q)\land p\big)\rightarrow q$ is a tautology.
-This rule of deduction is called **modus ponens**.  It plays a central
-role in logic.  Another, closely related rule is **modus tollens**,
+This rule of deduction is called **modus ponens**. It plays a central
+role in logic. Another, closely related rule is **modus tollens**,
 which applies to arguments of the form
 
 $$
@@ -145,7 +145,7 @@ $$
 $$
 
 You should note carefully that the validity of this argument has nothing
-to do with whether or not Keanu Reeves can act well.  The argument forces
+to do with whether or not Keanu Reeves can act well. The argument forces
 you to accept the conclusion _only if_ you accept the premises.
 You can logically believe that the conclusion is false, as long as
 you believe that at least one of the premises is false.
@@ -178,9 +178,9 @@ derive all of the others in a fairly systematic way.
 Logical deduction is related to logical equivalence.
 We defined $\mathscr{P}$ and $\mathscr{Q}$ to be
 logically equivalent if $\mathscr{P}\leftrightarrow\mathscr{Q}$ is
-a tautology.  Since $\mathscr{P}\leftrightarrow\mathscr{Q}$ is equivalent
+a tautology. Since $\mathscr{P}\leftrightarrow\mathscr{Q}$ is equivalent
 to $(\mathscr{P}\rightarrow\mathscr{Q})\land(\mathscr{Q}\rightarrow\mathscr{P})$,
-we see that  $\mathscr{P}\equiv \mathscr{Q}$ if and only if both
+we see that $\mathscr{P}\equiv \mathscr{Q}$ if and only if both
 $\mathscr{Q}\vdash\mathscr{P}$ and $\mathscr{P}\vdash\mathscr{Q}$.
 Thus, we can show that two statements are logically equivalent if
 we can show that each of them can be logically deduced from the
@@ -189,7 +189,7 @@ other.
 ## Natural Deduction
 
 In general, arguments are more complicated that those we've considered
-so far.  Here, for example, is an argument that has five premises:
+so far. Here, for example, is an argument that has five premises:
 
 $$
 \begin{array}{l}
@@ -202,20 +202,20 @@ s
 \end{array}
 $$
 
-Is this argument valid?  Of course, you could use a truth table
+Is this argument valid? Of course, you could use a truth table
 to check whether the conjunction of the premises logically implies
-the conclusion.  But with five propositional variables, the table
+the conclusion. But with five propositional variables, the table
 would have 32 lines, and the size of the table grows quickly when
-more propositional variables are used.  So, in general, truth
-tables are not practical.  
+more propositional variables are used. So, in general, truth
+tables are not practical. 
 
 Fortunately, there is another way to proceed, based on the fact that
 it is possible to chain several logical deductions together.
 That is, if $\mathscr{P}\vdash\mathscr{Q}$ and
 $\mathscr{Q}\vdash\mathscr{R}$, it follows that
-$\mathscr{P}\vdash\mathscr{R}$.  This means we can demonstrate the
+$\mathscr{P}\vdash\mathscr{R}$. This means we can demonstrate the
 validity of an argument by deducing the conclusion from the
-premises in a sequence of steps.  These steps can be presented
+premises in a sequence of steps. These steps can be presented
 in the form of a proof:
 
 > A **formal proof** that an argument is valid consists of a
@@ -237,7 +237,7 @@ forwards from a premise by use of an elimination rule.
 
 The existence of such a proof shows that the conclusion follows
 logically from the premises, and therefore that the argument is 
-valid.  Here is a formal proof that the argument given above is valid.
+valid. Here is a formal proof that the argument given above is valid.
 The propositions in the proof are labeled, and each proposition
 has a justification.
 
@@ -255,12 +255,12 @@ $$
 \end{array}
 $$
 
-Once a formal proof has been constructed, it is convincing.  Unfortunately,
-it's not necessarily easy to come up with the proof.  Usually, the best
+Once a formal proof has been constructed, it is convincing. Unfortunately,
+it's not necessarily easy to come up with the proof. Usually, the best
 method is a combination of working forward ("Here's what I know, what
 can I deduce from that?") and working backwards ("Here's what I
-need to prove, what other things would imply that?").  For this proof,
-I might have thought:  I want to prove $s$.  I know that
+need to prove, what other things would imply that?"). For this proof,
+I might have thought: I want to prove $s$. I know that
 $p\land r$ implies $s$, so if I can prove $p\land r$, I'm OK.
 But to prove $p\land r$, it'll be enough to prove $p$ and $r$ 
 separately&hellip;.
@@ -781,13 +781,13 @@ i: p \Rightarrow\{ & \qquad & & \qquad & \\
 ## Invalid Arguments
 
 Of course, not every argument is valid, so the question also
-arises, how can we show that an argument is invalid?  Let's
+arises, how can we show that an argument is invalid? Let's
 assume that the argument has been put into general form, with
 all the specific propositions replaced by propositional variables.
 The argument is valid if in all cases where all the premises are
-true, the conclusion is also true.  The argument is invalid if
+true, the conclusion is also true. The argument is invalid if
 there is even one case where all the premises are true and the
-conclusion is false.  We can prove that an argument is invalid
+conclusion is false. We can prove that an argument is invalid
 by finding an assignment of truth values to the propositional variables
 which makes all the premises true but makes the conclusion false.
 For example, consider an argument of the form:
@@ -803,24 +803,24 @@ $$
 
 In the case where $p$ is false, $q$ is false, and $r$ is true,
 the three premises of this argument are all true, but the conclusion
-is false.  This shows that the argument is invalid.
+is false. This shows that the argument is invalid.
 
 ## Example
 
 To apply all this to arguments stated in English, we have to
 introduce propositional variables to represent all the propositions
-in the argument.  For example, consider:
+in the argument. For example, consider:
 
 > John will be at the party if Mary is there and Bill is not there.
 Mary will be at the party if it's on Friday or Saturday.
-If Bill is at the party, Tom will be there.  Tom won't be at
-the party if it's on Friday.  The party is on Friday.
+If Bill is at the party, Tom will be there. Tom won't be at
+the party if it's on Friday. The party is on Friday.
 Therefore, John will be at the party.
 
 Let $j$ stand for "John will be at the party," $m$ for
 "Mary will be there," $b$ for "Bill will be there,"
 $t$ for "Tom will be there," $f$ for "The party is on Friday,"
-and $s$ for "The party is on Saturday."  Then this argument has
+and $s$ for "The party is on Saturday." Then this argument has
 the form
 
 $$
@@ -852,12 +852,12 @@ $$ \begin{array}{l|l}
 ## Predicate Logic
 
 So far in this section, we have been working mostly with propositional
-logic.  But the definitions of valid argument and logical deduction
-apply to predicate logic as well.  One of the most basic rules of
+logic. But the definitions of valid argument and logical deduction
+apply to predicate logic as well. One of the most basic rules of
 deduction in predicate logic says that $(\forall xP(x))\vdash P(a)$
 for any entity $a$ in the domain of discourse of the predicate $P$.
 That is, if a predicate is true of all entities, then it is true of
-any given particular entity.  This rule can be combined with 
+any given particular entity. This rule can be combined with 
 rules of deduction for propositional logic to give the following
 valid arguments
 
@@ -876,9 +876,9 @@ $$ \begin{array}{l}
 These valid arguments go by the names of _modus ponens_ and
 _modus tollens_ for predicate logic.
 Note that from the premise $\forall x(P(x)\rightarrow Q(x))$ we can deduce
-$P(a)\rightarrow Q(a)$.  From this and from the premise that $P(a)$, we
-can deduce $Q(a)$ by _modus ponens_.  So the first argument
-above is valid.  The second argument is similar, using 
+$P(a)\rightarrow Q(a)$. From this and from the premise that $P(a)$, we
+can deduce $Q(a)$ by _modus ponens_. So the first argument
+above is valid. The second argument is similar, using 
 _modus tollens_.
 
 The most famous logical deduction of them all is an application
@@ -944,11 +944,11 @@ p\rightarrow q\\
 \lnot q
 \end{array} $$
 
-Show that each of these arguments is invalid.  Give an English
+Show that each of these arguments is invalid. Give an English
 example that uses each of these arguments.
 
 4. Decide whether each of the following arguments is valid.
-If it is valid, give a formal proof.  If it is invalid, show that
+If it is valid, give a formal proof. If it is invalid, show that
 it is invalid by finding an appropriate assignment of truth values
 to propositional variables.
 
@@ -999,13 +999,13 @@ to propositional variables.
 argument in terms of propositional logic and determine whether the
 argument is valid or invalid.
 
-   * If it is Sunday, it rains or snows.  Today, it is Sunday
-and it's not raining.  Therefore, it must be snowing.
+   * If it is Sunday, it rains or snows. Today, it is Sunday
+and it's not raining. Therefore, it must be snowing.
 
    * If there are anchovies on the pizza, Jack won't eat it.
-If Jack doesn't eat pizza, he gets angry.  Jack is angry.
+If Jack doesn't eat pizza, he gets angry. Jack is angry.
 Therefore, there were anchovies on the pizza.
 
    * At 8:00, Jane studies in the library or works at home.
-It's 8:00 and Jane is not studying in the library.  So she must
+It's 8:00 and Jane is not studying in the library. So she must
 be working at home.

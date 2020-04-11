@@ -33,7 +33,7 @@ output.
 
 <img src={useBaseUrl('img/fig1-6.png')}
 alt="Finding the proposition whose value is computed by a
-     combinational logic circuit." className="centered-figure" />
+combinational logic circuit." className="centered-figure" />
 
 One approach to reducing the delay of a circuit is to use the [disjunctive normal
 form](./circuits#disjunctive-normal-form), also known as the **sum-of-products**. Since

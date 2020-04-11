@@ -264,7 +264,7 @@ In addition to visiting all of the nodes in the graph, each approach will allow 
 The **depth-first traversal** is analogous to the pre-, in-, and postorder traversals of a tree, in the sense that we will (recursively) visit all of the nodes reachable from one neighbor before backing up and trying another neighbor.
 The **breadth-first traversal** by contrast is analogous to the level order traversal of a tree, where we will visit all of the immediate neighbors before continuing on to visit _their_ neighbors, and so on.
 Just as with level order traversal, the breadth-first traversal does not have as natural a recursive implementation as depth-first, although we will see that both can be expressed with very similar code by making use of an explicit data structure to control the traversal.
-Graph traversals in general are more complicated than tree traversals, because we have to worry about **sharing** of descendants of a node (there may be multiple paths to reach the same node) as well as **cycles** in the graph (there may be paths that loop back on themselves). 
+Graph traversals in general are more complicated than tree traversals, because we have to worry about **sharing** of descendants of a node (there may be multiple paths to reach the same node) as well as **cycles** in the graph (there may be paths that loop back on themselves).
 Indeed, one definition of a tree is that it is a graph with a distinguished node, called the root, such that there is a unique path from the root to any other node.
 
 ### Depth-First Traversal
@@ -563,7 +563,7 @@ let depthFirst = ((nodes, adjList)) => {
       }, {...state, visited: [node, ...state.visited]}, neighbors);
     {...state', finished: [node, ...state'.finished]}
   };
-  
+
   let rec run = state => {
     switch (chooseUnvisited(state.visited)) {
     | None => {
@@ -608,7 +608,7 @@ let depthFirst2 = ((nodes, adjList)) => {
     | [head, ..._] => Some(head)
     }
   };
-  
+
   let rec run = (stack, state) => {
     if (Stack.is_empty(stack)) {
       switch (chooseUnvisited(state.visited)) {

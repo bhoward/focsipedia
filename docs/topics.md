@@ -48,7 +48,7 @@ title: Topics
 ## Week 10: Machine Models
 ### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
-### Non-deterministic Automata, Equivalence with Regular Expressions
+### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](fsareg.md)
 
 ## Week 11: Exam 2
 

@@ -41,6 +41,8 @@ module.exports = {
       'lang/regexp',
       'lang/regexpapp',
       'lang/fsa',
+      'lang/nfa',
+      'lang/fsareg',
     ],
     Features: ['reason',
       'ocaml',
