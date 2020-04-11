@@ -2,8 +2,11 @@
 id: fsareg
 title: Finite-State Automata and Regular Languages
 ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
+
+**TODO still being converted from $\LaTeX$**
 
 We know now that our two models for mechanical language recognition actually
 recognize the same class of languages. The question still remains: do they

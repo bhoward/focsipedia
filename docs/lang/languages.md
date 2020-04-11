@@ -16,8 +16,11 @@ set. The elements of the set are called **symbols**. A finite
 sequence of symbols $a_1a_2\ldots a_n$
 from an alphabet is called a **string** over that alphabet. 
 
-For example, $\Sigma = \{0,1\}$ is an alphabet, and `011`, 
+---
+**Example:** $\Sigma = \{0,1\}$ is an alphabet, and `011`, 
 `1010`, and `1` are all strings over $\Sigma$.
+
+---
 
 Note that strings really are _sequences_ of symbols, which 
 implies that 
@@ -59,10 +62,13 @@ discussed above, these strings are not equal).
    * _reversal_: the **reverse** of a string $x=a_1a_2\ldots a_n$ is
 the string $x^R = a_na_{n-1}\ldots a_2a_1$.
 
-For example, let $\Sigma = \{a,b\}$, $x=a$, $y=abaa$, and $z=bab$.
+---
+**Example:** Let $\Sigma = \{a,b\}$, $x=a$, $y=abaa$, and $z=bab$.
 Then $|x| = 1$, $|y| = 4$, and $|z|=3$. Also, $xx = aa$, $xy =
 aabaa$, $xz = abab$, and $zx = baba$. Finally, $x^R = a$,
 $y^R = aaba$, and $z^R=bab$.
+
+---
 
 By the way, the previous example illustrates a naming convention standard
 throughout language theory texts: if a letter is
@@ -99,9 +105,12 @@ $n$ strings with 1 symbol, $n^2$ strings with 2 symbols (since there
 are $n$ choices for the first symbol and $n$ choices for the second),
 $n^3$ strings with 3 symbols, _etc_.
 
-For example, if $\Sigma = \{1\}$, then $\Sigma^* = \{\varepsilon,
+---
+**Example:** If $\Sigma = \{1\}$, then $\Sigma^* = \{\varepsilon,
 1, 11, 111, \ldots\}$. If $\Sigma = \{a,b\}$, then $\Sigma^* = \{
 \varepsilon, a, b, aa, ab, ba, bb, aaa, aab, \ldots\}$.
+
+---
 
 We now come to the definition of a **language** in the formal language
 theoretical sense.
@@ -113,7 +122,8 @@ ${\mathscr P}(\Sigma^*)$, the power set of $\Sigma^*$.
 In other words, any set of strings (over alphabet $\Sigma$) constitutes a
 language (over alphabet $\Sigma$).
 
-For example, let $\Sigma = \{0,1\}$. Then the following are all
+---
+**Example:** Let $\Sigma = \{0,1\}$. Then the following are all
 languages over $\Sigma$:
 
    * $L_1 = \{011, 1010, 111\}$
@@ -124,6 +134,8 @@ languages over $\Sigma$:
 $n_0(x)$ stands for the number of 0's in the string $x$, and similarly for $n_1(x)$.
 
    * $L_4 = \{x \ | x\textrm{ represents a multiple of 5 in binary}\}$
+
+---
 
 Note that languages can be either finite or infinite.
 Because $\Sigma^*$ is infinite, it clearly has an
@@ -179,7 +191,8 @@ all strings formed by concatenating zero or more strings from $S$, and is
 denoted $S^*$. The set $S^*$ is called the **Kleene closure**[^Kleene is pronounced KLAY-nee; the operation is named after the mathematician Stephen Kleene.] of $S$, and
 the $^*$ operator is called the **Kleene star** operator.
 
-For example, let $S = \{01, ba\}$. Then
+---
+**Example:** Let $S = \{01, ba\}$. Then
 
    * $S^0 = \{\varepsilon\}$
 
@@ -191,6 +204,8 @@ For example, let $S = \{01, ba\}$. Then
 
 _etc_., so $S^* =\{\varepsilon,01,ba,0101,01ba,ba01,baba,010101,0101ba,\ldots\}.$
 
+---
+
 Note that this is the second time we have seen the notation $\textit{something}^*$. We
 have previously seen that for an alphabet $\Sigma$, $\Sigma^*$ is defined to be 
 the set of all
@@ -198,7 +213,8 @@ strings over $\Sigma$. If you think of $\Sigma$ as being a set of length-1
 strings, and take its Kleene closure, the result is once again the set of all
 strings over $\Sigma$, and so the two notions of $^*$ coincide.
 
-For example, let $\Sigma = \{a,b\}$. Then
+---
+**Example:** Let $\Sigma = \{a,b\}$. Then
 
    * $\Sigma^0 = \{\varepsilon\}$
 
@@ -209,6 +225,8 @@ For example, let $\Sigma = \{a,b\}$. Then
    * $\Sigma^3 = \{aaa, aab, aba, abb, baa, bab, bba, bbb\}$
 
 _etc_., so $\Sigma^* =\{\varepsilon,a,b,aa,ab,ba,bb,aaa,aab,aba,abb,baa,bab,\ldots\}.$
+
+---
 
 ## Exercises
 

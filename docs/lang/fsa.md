@@ -50,7 +50,8 @@ what happens if the machine is in a particular state and looking at a
 particular input symbol. ("What happens" means "in which state does the
 machine end up".)
 
-For example, below is a table that describes the transition function of a 
+---
+**Example:** Below is a table that describes the transition function of a 
 finite-state automaton with states $p$, $q$, and $r$, on inputs $0$ and $1$:
 
 |     |  p  |  q  |  r  |
@@ -61,6 +62,8 @@ finite-state automaton with states $p$, $q$, and $r$, on inputs $0$ and $1$:
 The table indicates, for example, 
 that if the FSA were in state $p$ and consumed a $1$, it would
 move to state $q$.
+
+---
 
 FSAs actually come in two flavors depending on what
 properties you require of the transition function. We will look first at a class
@@ -92,7 +95,8 @@ that for any given $q$ and $a$, $\delta(q,a)$ can have only one value. This is
 what makes the finite-state automaton deterministic: given the current state and
 input symbol, there is only one possible move the machine can make.)
 
-For example, the transition function described by the table in the preceding example is that of
+---
+**Example:** The transition function described by the table in the preceding example is that of
 a DFA.
 If we take $p$ to be the start state and $r$ to be a final state, then the
 formal description of the resulting machine is  
@@ -104,6 +108,8 @@ $\hspace{0.5in}\delta(p,0)=p \hspace{1.5in} \delta(p,1)=q$
 $\hspace{0.5in}\delta(q,0)=q \hspace{1.5in} \delta(q,1)=r$
 
 $\hspace{0.5in}\delta(r,0)=r \hspace{1.5in} \delta(r,1)=r$
+
+---
 
 The transition function $\delta$ describes only individual steps of the machine
 as individual input symbols are consumed. However, we will often want to refer
@@ -123,7 +129,9 @@ formally by saying that $\delta^*(q,\varepsilon)=q$ for every state $q$,
 and $\delta^*(q,ax)=\delta^*(\delta(q,a),x)$ for any state $q$, $a\in\Sigma$
 and $x\in\Sigma^*$. Note that this is a recursive definition.]
 
-Let $M$ be the automaton in the preceding example. Then, for example:
+---
+**Example:**
+Let $M$ be the automaton in the preceding example. Then:
 
 $\delta^*(p, 001)=q$, since $\delta(p,0)=p$, $\delta(p,0)=p$, and $\delta(p,1)=q$; 
 
@@ -132,6 +140,8 @@ $\delta^*(p, 01000)= q$;
 $\delta^*(p, 1111) = r$;
 
 $\delta^*(q, 0010) = r$.
+
+---
 
 We have divided the states of a DFA into accepting and non-accepting states, with
 the idea that some strings will be recognized as "legal" by the automaton, and
@@ -284,7 +294,8 @@ circles indicate that a state is accepting. Looking at this picture, it should
 be fairly easy to see that the language accepted by the DFA $M$ is 
 $L(M) = \{ x \in \{0,1\}^* \ | \ n_1(x) \geq 2\}$.
 
-As an example, find the language accepted by the DFA shown below (and describe it using a
+---
+**Example:** Find the language accepted by the DFA shown below (and describe it using a
 regular expression!):
 
 <img src={useBaseUrl('img/fsa2.png')}
@@ -294,6 +305,8 @@ The start state of $M$ is accepting, which means $\varepsilon \in L(M)$. If $M$ 
 in state $q_0$, a
 sequence of two $a$'s or three $b$'s will move $M$ back to $q_0$ and hence
 be accepted. So $L(M) = L((aa | bbb)^*)$.
+
+---
 
 The state $q_4$ in the preceding example is often called a _garbage_, _error_, or
 _trap_ state: it is a non-accepting state which, once reached by the machine,
@@ -330,7 +343,7 @@ consumption of inputs affects those values. I'll illustrate what I mean with a
 couple of examples.
 
 ---
-First, find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
+**Example:** Find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
 $L= \{w \in\Sigma^* \ | \ n_a(w) \textrm{ and } n_b(w) \textrm{ are both even } \}$.
 
 The characteristics that determine whether or not a string $w$ is in $L$ are the
@@ -370,7 +383,9 @@ state. The complete machine is shown below.
 alt="Example DFA" className="centered-figure" />
 
 ---
-For another example, find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
+
+---
+**Example:** Find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
 $L$ = $\{w\in\Sigma^* \ | \ n_a(w) \textrm{ is divisible by 3 } \}$.
 
 The relevant characteristic here is of course whether or not the number of $a$'s
@@ -381,7 +396,7 @@ corresponds to the number in fact being divisible by 3). So we build a machine
 with three states $q_0$, $q_1$, $q_2$, and add transitions so that the machine
 will be in state $q_0$ exactly when the number of $a$'s it has consumed is evenly
 divisible by 3, in state $q_1$ exactly when the number of $a$'s it has consumed
-is equivalent to $ 1 \bmod{3}$, and similarly for $q_2$. State $q_0$ will be the
+is equivalent to $1 \bmod{3}$, and similarly for $q_2$. State $q_0$ will be the
 start state, as $\varepsilon$ has 0 $a$'s and 0 is divisible by 3. The completed
 machine is shown below. Notice that because the consumption of a $b$ does not
 affect the only relevant characteristic, $b$'s do not cause changes of 
@@ -391,7 +406,9 @@ state.
 alt="Example DFA" className="centered-figure" />
 
 ---
-Finally, find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
+
+---
+**Example:** Find a DFA with input alphabet $\Sigma = \{a,b\}$ that accepts the language
 $L$ = $\{w\in\Sigma^* \ | w \textrm{ contains three consecutive a's } \}$.
 
 Again, it is not quite so simple as making a two-state machine where the states
@@ -407,6 +424,8 @@ state. The complete automaton is shown below.
 
 <img src={useBaseUrl('img/fsa7.png')}
 alt="Example DFA" className="centered-figure" />
+
+---
 
 ## Exercises
 
