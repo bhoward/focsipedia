@@ -4,10 +4,24 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Mon, 13 Apr 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Apr 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Exam 1]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
+            <guid>exam1</guid>
+            <pubDate>Fri, 17 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Exam 2 Review]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/exam2-review</link>
+            <guid>exam2-review</guid>
+            <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Nondeterministic Finite-State Automata]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/nfa</link>
