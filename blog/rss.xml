@@ -9,9 +9,9 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
         <item>
-            <title><![CDATA[Exam 1]]></title>
-            <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
-            <guid>exam1</guid>
+            <title><![CDATA[Exam 2]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/exam2</link>
+            <guid>exam2</guid>
             <pubDate>Fri, 17 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>

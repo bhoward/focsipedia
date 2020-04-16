@@ -9,9 +9,9 @@
     <icon>https://bhoward.github.io/img/favicon.ico</icon>
     <rights>Copyright © 2020 Brian T. Howard</rights>
     <entry>
-        <title type="html"><![CDATA[Exam 1]]></title>
-        <id>exam1</id>
-        <link href="https://bhoward.github.io/focsipedia/blog/exam1"/>
+        <title type="html"><![CDATA[Exam 2]]></title>
+        <id>exam2</id>
+        <link href="https://bhoward.github.io/focsipedia/blog/exam2"/>
         <updated>2020-04-17T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
     </entry>
