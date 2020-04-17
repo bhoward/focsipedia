@@ -20,6 +20,7 @@ module.exports = {
       'logic/induction',
       'logic/recursion',
       'logic/sequential',
+      'logic/state',
     ],
     Sets: ['sets/concepts',
       'sets/algebra',

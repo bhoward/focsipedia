@@ -55,7 +55,7 @@ title: Topics
 ## Week 12:
 ### [Sequential Circuits](logic/sequential.md)
 
-### State Machines
+### [State Machines](logic/state.md)
 
 ## Week 13:
 ### Grammars
