@@ -53,7 +53,7 @@ title: Topics
 ## Week 11: Exam 2
 
 ## Week 12:
-### Sequential Circuits
+### [Sequential Circuits](logic/sequential.md)
 
 ### State Machines
 

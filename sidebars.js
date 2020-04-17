@@ -19,6 +19,7 @@ module.exports = {
       'logic/pred-deduction',
       'logic/induction',
       'logic/recursion',
+      'logic/sequential',
     ],
     Sets: ['sets/concepts',
       'sets/algebra',
