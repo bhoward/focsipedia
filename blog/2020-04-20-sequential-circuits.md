@@ -7,8 +7,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Read about <a href={useBaseUrl('docs/logic/sequential')}>sequential circuits</a>, and try the exercises in that section.
 
-Here is a [video with solutions to Exam 2](https://drive.google.com/file/d/16NVENpw5XvzxtHki0m77WqdI5H5hkFA5/view).
- (I just skimmed the video, and see that it stopped recording the screen around the 24 minute mark. I'll try again later.)
+Here is a [video with solutions to Exam 2](https://drive.google.com/file/d/18VMshqhb5ss3FF6q3B3o9_4FRrYvVf-_/view).
+ (This is the fixed version)
  
 <!--
 Watch this accompanying [video](https://drive.google.com/file/d/1QfJfvfFxYEDZMT0C7xifwmewZLPPO5Pd/view) (and [DyKnow](https://drive.google.com/open?id=1-uyCi9ebCgwKVSm4fz8e70AoRq3Wikqj)).
