@@ -13,6 +13,4 @@ Here is a [video with solutions to Exam 2](https://drive.google.com/file/d/18VMs
 I recorded a [video](https://drive.google.com/file/d/1E5uDztarzOBF0jLTrhv6IN6YsXud-Zad/view) with some demonstrations of
 sequential circuits using the [Digital](https://github.com/hneemann/Digital) circuit simulator.
 
-<!--
-Here is the [video](https://drive.google.com/file/d/1YDZjFcJuUmb37mmzqyvuDamNloRCYB7-/view) and [DyKnow](https://drive.google.com/open?id=1-vEzByG3HL9bZ9IXeqBro5eOPbN_EI6C) from the section A class session.
--->
+Here is the [video](https://drive.google.com/file/d/1OEhiUbJQ948QBe-upTLPSkc0n2HlcaCW/view) and [DyKnow](https://drive.google.com/open?id=1-zi54il1UKLtClpTImQ6s4yoyZkt52-h) from the section A class session.
