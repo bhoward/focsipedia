@@ -341,6 +341,8 @@ the transition. Finally, there is no accepting state, since the machine will kee
 running as long as there is input; in the example below, we will print "Candy!"
 whenever it produces a piece of candy.
 
+TODO mention Mealy and Moore machines.
+
 ```reason edit
 let vtrans = (amount, input) => {
   switch (amount, input) {
