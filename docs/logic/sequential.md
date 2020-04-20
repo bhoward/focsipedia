@@ -130,6 +130,19 @@ The excitation table presents the same information, but from the viewpoint of "g
 | 1   | 0    | 0   |
 | 1   | 1    | 1   |
 
+Here is another implementation of the D flip-flop with a somewhat easier-to-understand circuit (although it uses more gates):
+
+<img src={useBaseUrl('img/D-MS.png')}
+alt="D Master-Slave Flip-Flop" className="centered-figure" />
+
+This is known as a **master-slave** design, because it consists of two latches (in this case, they are $SR$ latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^A nice variation of the master-slave design uses an $\overline{SR}$ for one layer and an $SR$ latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.]), each of which is enabled for half of the clock cycle.
+When the clock is high, the first ("master") latch stores the incoming data signal.
+It is transparent during this time, so if the data is changing then so will its state.
+When the clock goes low (so this is a **trailing-edge triggered** flip-flop), the slave latch is enabled and it copies whatever was
+stored in the master latch at that instant. Although the slave is transparent during its half of the clock cycle, its input will not be changing because the master cannot change while it is disabled.
+Therefore, the flip-flop only changes its state at the instant the clock goes from high to low.
+There is still a race condition possible (it can be shown that there is no flip-flop design without a race condition), if the $D$ input changes just as the clock goes low.
+
 > The first electronic latch was the Eccles-Jordan trigger circuit.
 Patented in 1918, it was built out of two vacuum tubes connected in a feedback loop.
 In the early 1940's, Thomas Flowers (1905&ndash;1998) used his experience with telephone switching circuits to build Colossus, one of the code-breaking machines at Bletchley Park.
@@ -143,7 +156,7 @@ Use this new latch to build a gated D latch.
 2. There are several other types of flip-flops besides the D.
 Perhaps the most general is the JK flip-flop, which has two inputs, traditionally named $J$ and $K$, along with a clock input and the complementary $Q$ and $\overline{Q}$ outputs.
 When $J$ and $K$ are both 0 and a clock pulse arrives, the state does not change.
-When only $J$ is 1, the new state will be 1; when only $K$ is 1, the new state will be 0 (so $J$ \emph{sets} and $K$ \emph{resets} the flip-flop).
+When only $J$ is 1, the new state will be 1; when only $K$ is 1, the new state will be 0 (so $J$ _sets_ and $K$ _resets_ the flip-flop).
 Finally, when both $J$ and $K$ are 1, the clock pulse will cause the state to **toggle**&mdash;that is, it will switch to the negation of its previous state.
 Here is the characteristic table of the JK flip-flop, using $X$ to indicate "don't care" inputs:
 
