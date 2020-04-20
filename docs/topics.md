@@ -55,7 +55,7 @@ title: Topics
 ## Week 12:
 ### [Sequential Circuits](logic/sequential.md)
 
-### [State Machines](logic/state.md)
+### [State Machines](logic/state.md), and their implementations in [Java and ReasonML](fp/state.md)
 
 ## Week 13:
 ### Grammars
