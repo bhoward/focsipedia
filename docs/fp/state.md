@@ -327,6 +327,30 @@ and dispenses a piece of candy when 25 cents has been deposited. If more than 25
 is put in (for example, three dimes), then after dispensing the candy the remaining
 amount is applied toward the next transaction (that is, it doesn't give any change).
 
+This use of a finite state machine is a bit different from what we have seen before, since
+there is no notion of an "accepting" state. Instead, we imagine that the machine is
+performing a long-running computation (in this case, it runs as long as the vending
+machine is in service, potentially for years).
+It is customary for this kind of machine to add a notion of "output," so that the
+machine can give feedback after each transition instead of just at the end (which may
+never come). There are two standard models for doing this:
+
+   * A **Mealy Machine** is a finite state machine where each transition has an associated
+   output. We annotate each transition with a label such as $a/x$, meaning that it takes the
+   transition if the input is $a$, and as it does so it produces output $x$.
+
+   * A **Moore Machine** is a finite state machine where the output after each transition is
+   determined by the new state. Each state has a label such as $A/x$, meaning that when the
+   machine transitions to state $A$ it will also produce output $x$.
+
+For both kinds of machines, the output may be $\varepsilon$ if no output is desired at that time.
+It is not very difficult to see that Mealy and Moore machines have equivalent power, by showing
+how to construct each from the other; the choice is often a matter of convenience. For example,
+in constructing a sequential circuit implementation, the Moore machine has the advantage that
+the output part of the circuit only needs lines connecting to the current state (the outputs
+of the flip-flops), while the Mealy machine may require fewer states (and hence fewer flip-flops)
+in some cases.
+
 ### Integer state with transitions in a graph
 
 We will adopt a similar solution as for the second version of the vowel problem. This
@@ -337,11 +361,9 @@ array of functions. Also, there will be no need for default transitions, since e
 three possible inputs ('N', 'D', or 'Q', for nickel, dime, and quarter) will cause a
 different change of state. One further difference is that each edge in the graph will
 give not only a new state but also an indication of whether candy was given out on
-the transition. Finally, there is no accepting state, since the machine will keep
+the transition (this means that it is a Mealy machine). Finally, there is no accepting state, since the machine will keep
 running as long as there is input; in the example below, we will print "Candy!"
 whenever it produces a piece of candy.
-
-TODO mention Mealy and Moore machines.
 
 ```reason edit
 let vtrans = (amount, input) => {
@@ -420,6 +442,7 @@ public class VendingMachine {
         case 'N': candy = machine.deposit(5); break;
         case 'D': candy = machine.deposit(10); break;
         case 'Q': candy = machine.deposit(25); break;
+        default: throw new RuntimeException("Invalid input");
       }
       if (candy) System.out.println("Candy!");
     }
@@ -429,4 +452,13 @@ public class VendingMachine {
 
 ## Exercises
 
-TODO
+1. Sketch the process of constructing a Mealy machine from a Moore machine, and _vice versa_.
+
+2. Give at least two implementations of a state machine that recognizes valid floating-point literals in Java.
+You will first need to research the Java language definition to learn what constitutes a valid literal.
+
+3. Give at least two implementations of a state machine (expressed as either a Mealy or Moore machine) that
+simulates the operation of a keypad-based lock. There should be ten input buttons, one for each decimal digit,
+and two output signals, "lock" and "unlock." If the code 1234 in sequence is ever entered on the keypad, then the unlock
+signal should be produced. After any other key press (that is, if the last four digits entered at any point were
+not 1234), the output should be "lock".
