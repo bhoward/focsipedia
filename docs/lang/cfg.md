@@ -691,12 +691,12 @@ Let $L=\{w\in\{a,b,c\}^*\;|\; w\textrm{ is a palindrome}\}$.
 Show that $L$ is a context-free language by finding a context-free
 grammar that generates $L$.
 
-8. Let $\Sigma=\{\,`(`,\,`)`,\,`[`,\,`]`\,\}$. That is, $\Sigma$
-is the alphabet consisting of the four symbols `(`, `)`, `[`, and `]`.
+8. Let $\Sigma=\{\,\texttt{(},\,\texttt{)},\,\texttt{[},\,\texttt{]}\,\}$. That is, $\Sigma$
+is the alphabet consisting of the four symbols $\texttt{(}$, $\texttt{)}$, $\texttt{[}$, and $\texttt{]}$.
 Let $L$ be the language over $\Sigma$ consisting of strings
 in which both parentheses and brackets are balanced.
-For example, the string `([][()()])([])` is in $L$
-but `[(])` is not. Find a context-free grammar that generates the
+For example, the string $\texttt{([][()()])([])}$ is in $L$
+but $\texttt{[(])}$ is not. Find a context-free grammar that generates the
 language $L$.
 
 9. Suppose that $G$ and $H$ are context-free grammars.
