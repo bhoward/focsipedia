@@ -46,6 +46,7 @@ module.exports = {
       'lang/fsa',
       'lang/nfa',
       'lang/fsareg',
+      'lang/cfg',
     ],
     Features: ['reason',
       'ocaml',
