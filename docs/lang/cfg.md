@@ -64,12 +64,13 @@ include non-terminal symbols as well as other symbols, which are
 called **terminal symbols**. By convention, the
 terminal symbols are usually lowercase letters. Here are some
 typical production rules that might occur in context-free grammars:
-$$
-   A\longrightarrow aAbB\\
-   S\longrightarrow SS\\
-   C\longrightarrow Acc\\
-   B\longrightarrow b\\
-   A\longrightarrow\varepsilon
+$$ \begin{aligned}
+   &A\longrightarrow aAbB\\
+   &S\longrightarrow SS\\
+   &C\longrightarrow Acc\\
+   &B\longrightarrow b\\
+   &A\longrightarrow\varepsilon
+   \end{aligned}
 $$
 In the last rule in this list, $\varepsilon$ represents the empty string,
 as usual. For example, this rule could be applied to the string
@@ -136,13 +137,14 @@ The terminal symbols are all the other symbols that occur on
 the right-hand sides of production rules. The start symbol is the
 symbol that occurs on the left-hand side of the first production
 rule in the list. Thus, the list of production rules
-$$
-   T\longrightarrow TT\\
-   T\longrightarrow A\\
-   A\longrightarrow aAa\\
-   A\longrightarrow bB\\
-   B\longrightarrow bB\\
-   B\longrightarrow \varepsilon 
+$$ \begin{aligned}
+   &T\longrightarrow TT\\
+   &T\longrightarrow A\\
+   &A\longrightarrow aAa\\
+   &A\longrightarrow bB\\
+   &B\longrightarrow bB\\
+   &B\longrightarrow \varepsilon 
+  \end{aligned}
 $$
 specifies a grammar $G=(V,\Sigma,P,T)$ where $V$ is $\{T,A,B\}$,
 $\Sigma$ is $\{a,b\}$, and $T$ is the start symbol. $P$, of course, is a
@@ -174,12 +176,13 @@ In this case, $\Longrightarrow^*$ is reflexive as well as transitive since
 $x\;\Longrightarrow^* x$ is true for any string $x$.)
 For example, using the grammar that is defined by the above
 list of production rules, we have
-$$
- aTB\Longrightarrow aTTB\\
-    \Longrightarrow aTAB\\
-    \Longrightarrow aTAbB\\
-    \Longrightarrow aTbBbB\\
-    \Longrightarrow aTbbB
+$$ \begin{aligned}
+ aTB&\Longrightarrow aTTB\\
+    &\Longrightarrow aTAB\\
+    &\Longrightarrow aTAbB\\
+    &\Longrightarrow aTbBbB\\
+    &\Longrightarrow aTbbB
+  \end{aligned}
 $$
 From this, it follows that $aTB\;\Longrightarrow^* aTbbB$. The relation $\Longrightarrow$
 is read "yields" or "produces" while $\Longrightarrow^*$ can be
@@ -248,9 +251,10 @@ theorem about grammars:
 > **Theorem:** Let $L$ be the language $L=\{a^nb^n\;|\; n\in\N\}$. Let $G$ be
 the context-free grammar $(V,\Sigma,P,S)$ where $V=\{S\}$,
 $\Sigma=\{a,b\}$ and $P$ consists of the productions
-> $$
->     S\longrightarrow aSb\\
->     S\longrightarrow \varepsilon 
+> $$ \begin{aligned}
+>     &S\longrightarrow aSb\\
+>     &S\longrightarrow \varepsilon
+>   \end{aligned}
 > $$
 > Then $L=L(G)$, so that $L$ is a context-free language. In particular,
 there exist context-free languages which are not regular.
@@ -328,11 +332,12 @@ that changes the $S$ into an $A$. We still need a way to
 finish the process, which means getting rid of all non-terminal
 symbols in the string. For this, we can use the rule $A\longrightarrow\varepsilon$.
 Putting these rules together, we get the grammar
-$$
-      S\longrightarrow aSb\\
-      S\longrightarrow A\\
-      A\longrightarrow aA\\
-      A\longrightarrow \varepsilon
+$$ \begin{aligned}
+      &S\longrightarrow aSb\\
+      &S\longrightarrow A\\
+      &A\longrightarrow aA\\
+      &A\longrightarrow \varepsilon
+    \end{aligned}
 $$
 This grammar does indeed generate the language $\{a^nb^m\;|\; n\ge m\ge 0\}$.
 With slight variations on this grammar, we can produce other related
@@ -343,29 +348,32 @@ There are other ways to generate the language $\{a^nb^m\;|\; n\ge m\ge 0\}$.
 For example, the extra non-terminal symbol, $A$, is not really necessary,
 if we allow $S$ to sometimes produce a single $a$ without a $b$. This
 leads to the grammar
-$$
-      S\longrightarrow aSb\\
-      S\longrightarrow aS\\
-      S\longrightarrow \varepsilon
+$$ \begin{aligned}
+      &S\longrightarrow aSb\\
+      &S\longrightarrow aS\\
+      &S\longrightarrow \varepsilon
+    \end{aligned}
 $$
 (But note that the rule $S\longrightarrow Sa$ would not work in place
 of $S\longrightarrow aS$, since it would allow the production of
 strings in which an $a$ can follow a $b$, and there are no
 such strings in the language $\{a^nb^m\;|\; n\ge m\ge 0\}$.)
 And here are two more grammars that generate this language:
-$$
-      S\longrightarrow AB\\
-      A\longrightarrow aA\\
-      B\longrightarrow aBb\\
-      A\longrightarrow \varepsilon\\
-      B\longrightarrow \varepsilon
+$$ \begin{aligned}
+      &S\longrightarrow AB\\
+      &A\longrightarrow aA\\
+      &B\longrightarrow aBb\\
+      &A\longrightarrow \varepsilon\\
+      &B\longrightarrow \varepsilon
+    \end{aligned}
 $$
 and
-$$
-      S\longrightarrow ASb\\
-      A\longrightarrow aA\\
-      S\longrightarrow\varepsilon\\
-      A\longrightarrow a
+$$ \begin{aligned}
+      &S\longrightarrow ASb\\
+      &A\longrightarrow aA\\
+      &S\longrightarrow\varepsilon\\
+      &A\longrightarrow a
+    \end{aligned}
 $$
 
 ---
@@ -391,11 +399,12 @@ ends with the same letter can be written in the form $xy$ where
 $x$ and $y$ are shorter strings in $L$. To produce strings of
 this form, we need one more rule, $S\longrightarrow SS$. The complete set of
 production rules for the language $L$ is
-$$
-    S\longrightarrow aSb\\
-    S\longrightarrow bSa\\
-    S\longrightarrow SS\\
-    S\longrightarrow \varepsilon
+$$ \begin{aligned}
+    &S\longrightarrow aSb\\
+    &S\longrightarrow bSa\\
+    &S\longrightarrow SS\\
+    &S\longrightarrow \varepsilon
+  \end{aligned}
 $$
 It's easy to see that every string that can be generated using these
 rules is in $L$, since each rule introduces the same number of
@@ -488,10 +497,11 @@ You can't have a right parenthesis unless it is balanced by a left
 parenthesis in the preceding part of the string. The language
 that consists of all balanced strings of parentheses is context-free. 
 It is generated by the grammar
-$$
-   S\longrightarrow (\,S\,)\\
-   S\longrightarrow SS\\
-   S\longrightarrow \varepsilon
+$$ \begin{aligned}
+   &S\longrightarrow (\,S\,)\\
+   &S\longrightarrow SS\\
+   &S\longrightarrow \varepsilon
+  \end{aligned}
 $$
 The proof is similar to the preceding proof about strings of
 $a$'s and $b$'s. (It might seem that I've made an awfully big
@@ -535,9 +545,10 @@ Let $R$ be a symbol that is not in any of the alphabets $V$, $W$, $\Sigma$,
 or $\Gamma$. $R$ will be the start symbol of $K$. The production rules
 for $K$ consist of all the production rules from $G$ and $H$ together
 with two new rules:
-> $$
->   R\longrightarrow S\\
->   R\longrightarrow T
+> $$ \begin{aligned}
+>   &R\longrightarrow S\\
+>   &R\longrightarrow T
+>   \end{aligned}
 > $$
 > Formally, $K$ is defined to be the grammar
 > $$
@@ -616,39 +627,44 @@ language is context-free.
 
 2. Give a careful proof that the language $\{a^nb^m\;|\; n\ge m\ge 0\}$
 is generated by the context-free grammar
-$$
-      S\longrightarrow aSb\\
-      S\longrightarrow A\\
-      A\longrightarrow aA\\
-      A\longrightarrow \varepsilon
+$$ \begin{aligned}
+      &S\longrightarrow aSb\\
+      &S\longrightarrow A\\
+      &A\longrightarrow aA\\
+      &A\longrightarrow \varepsilon
+    \end{aligned}
 $$
 
 3. Identify the language generated by each of the following
 context-free grammars.
-   * $$
-      S\longrightarrow aaSb\\
-      S\longrightarrow \varepsilon
+   * $$ \begin{aligned}
+      &S\longrightarrow aaSb\\
+      &S\longrightarrow \varepsilon
+      \end{aligned}
      $$
-   * $$
-      S\longrightarrow aSb\\
-      S\longrightarrow aaSb\\
-      S\longrightarrow \varepsilon
-     $$
-
-   * $$
-      S\longrightarrow TS\\
-      S\longrightarrow \varepsilon\\
-      T\longrightarrow aTb\\
-      T\longrightarrow \varepsilon
+   * $$ \begin{aligned}
+      &S\longrightarrow aSb\\
+      &S\longrightarrow aaSb\\
+      &S\longrightarrow \varepsilon
+      \end{aligned}
      $$
 
-   * $$
-      S\longrightarrow ABA\\
-      A\longrightarrow aA\\
-      A\longrightarrow a\\
-      B\longrightarrow bB\\
-      B\longrightarrow cB\\
-      B\longrightarrow\varepsilon
+   * $$ \begin{aligned}
+      &S\longrightarrow TS\\
+      &S\longrightarrow \varepsilon\\
+      &T\longrightarrow aTb\\
+      &T\longrightarrow \varepsilon
+      \end{aligned}
+     $$
+
+   * $$ \begin{aligned}
+      &S\longrightarrow ABA\\
+      &A\longrightarrow aA\\
+      &A\longrightarrow a\\
+      &B\longrightarrow bB\\
+      &B\longrightarrow cB\\
+      &B\longrightarrow\varepsilon
+      \end{aligned}
      $$
 
 4. For each of the following languages
