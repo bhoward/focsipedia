@@ -4,15 +4,22 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 22 Apr 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Apr 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
         <item>
+            <title><![CDATA[Context-Free Grammars]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/grammars</link>
+            <guid>grammars</guid>
+            <pubDate>Mon, 27 Apr 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
+        <item>
             <title><![CDATA[State Machines]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/state-machines</link>
             <guid>state-machines</guid>
-            <pubDate>Wed, 22 Apr 2020 00:00:00 GMT</pubDate>
+            <pubDate>Fri, 24 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
         </item>
         <item>
