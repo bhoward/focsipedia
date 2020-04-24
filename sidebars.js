@@ -47,6 +47,7 @@ module.exports = {
       'lang/nfa',
       'lang/fsareg',
       'lang/cfg',
+      'lang/bnf',
     ],
     Features: ['reason',
       'ocaml',

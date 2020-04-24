@@ -58,7 +58,7 @@ title: Topics
 ### [State Machines](logic/state.md), and their implementations in [Java and ReasonML](fp/state.md)
 
 ## Week 13:
-### [Grammars](lang/cfg.md)
+### [Grammars](lang/cfg.md) and [Backus-Naur Form](lang/bnf.md)
 
 ### Parsing, Pushdown Automata
 

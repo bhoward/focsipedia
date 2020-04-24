@@ -5,6 +5,8 @@ author: Brian Howard
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+(Rescheduled from Wednesday, April 22)
+
 Read about <a href={useBaseUrl('docs/logic/state')}>state machines</a>, and look at the exercises in that section.
 Also read about implementing <a href={useBaseUrl('docs/fp/state')}>state machines in Java and ReasonML</a>, and try those exercises.
 
