@@ -48,6 +48,7 @@ module.exports = {
       'lang/fsareg',
       'lang/cfg',
       'lang/bnf',
+      'lang/parsing',
     ],
     Features: ['reason',
       'ocaml',
