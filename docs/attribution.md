@@ -3,6 +3,9 @@ id: attribution
 title: Attribution
 ---
 
+This work is dedicated to my wife, Eleanor, who hopes that one day it will grow up and
+become a real book.
+
 Portions of this work are adapted from "[Foundations of Computation](http://math.hws.edu/FoundationsOfComputation/)" by Carol Critchlow (critchlo@hws.edu) and David Eck (eck@hws.edu),
 Department of Mathematics and Computer Science, Hobart and William Smith Colleges. This free
 textbook is licensed under a Creative Commons [Attribution-Noncommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) License.
