@@ -215,3 +215,4 @@ Result.get(parseAll(Input.fromString("x + y * z"), expr));
 test(expr, "x + y * z");
 ```
 
+TODO add a lazy sequencing operator, for recursion? add letter, digit recognizers (or a char predicate)? maybe a dfa predicate??
