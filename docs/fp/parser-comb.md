@@ -154,7 +154,7 @@ module Parser = {
 
   let chr = (c, rawInput: Input.t) => {
     let input = Input.skipWhitespace(rawInput);
-    if (String.length(input.text) <= input.index) {
+    if (Input.atEnd(input)) {
       failure("not enough input", input)
     } else {
       let firstChar = input.text.[input.index];
@@ -178,6 +178,26 @@ module Parser = {
       } else {
         failure(Printf.sprintf("mismatch: %S found, expected %S", substr, s), input)
       }
+    }
+  };
+
+  let dfa = (init, step, finish, rawInput: Input.t) => {
+    let input = Input.skipWhitespace(rawInput);
+    let rec aux = (state, i) => {
+      if (Input.atEnd(i)) {
+        (state, i)
+      } else {
+        let nextChar = i.text.[i.index];
+        switch (step(state, nextChar)) {
+        | Some(nextState) => aux(nextState, {...i, index: i.index+1})
+        | None => (state, i)
+        }
+      }
+    };
+    let (finalState, input2) = aux(init, input);
+    switch (finish(finalState)) {
+    | Ok(result) => success(result, input2)
+    | Error(message) => failure(message, input2)
     }
   };
 
@@ -206,13 +226,67 @@ module Parser = {
     }
   }
 };
-
-open Parser;
-let ident = chr('x') <|> chr('y') <|> chr('z');
-let op = chr('+') <|> chr('-') <|> chr('*') <|> chr('/');
-let expr = ident <*> rep(op <*> ident);
-Result.get(parseAll(Input.fromString("x + y * z"), expr));
-test(expr, "x + y * z");
 ```
 
-TODO add a lazy sequencing operator, for recursion? add letter, digit recognizers (or a char predicate)? maybe a dfa predicate??
+Here is an example of a parser for arithmetic expressions:
+```reason edit
+open Parser;
+
+type exp =
+  | Ident(string)
+  | Num(int)
+  | BinOp(exp, char, exp);
+
+let isLetter = c => ('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z');
+let isDigit = c => ('0' <= c && c <= '9');
+let isLetterOrDigit = c => isLetter(c) || isDigit(c);
+
+let ident = dfa(
+  "",
+  (s, c) => if ((s == "" && isLetter(c)) || (s != "" && isLetterOrDigit(c))) {
+      Some(s ++ String.make(1, c))
+    } else {
+      None
+    },
+  s => if (s == "") {
+      Error("expected identifier")
+    } else {
+      Ok(Ident(s))
+    }
+);
+
+let number = dfa(
+  "",
+  (s, c) => if (isDigit(c)) {
+    Some(s ++ String.make(1, c))
+  } else {
+    None
+  },
+  s => if (s == "") {
+    Error("expected number")
+  } else {
+    Ok(Num(int_of_string(s)))
+  }
+);
+
+let addop = chr('+') <|> chr('-');
+let mulop = chr('*') <|> chr('/');
+
+let rec expr = input => (
+  (term <*> rep(addop <*> term))
+  ^^ ((t, ts)) => List.fold_left((l, (op, r)) => BinOp(l, op, r), t, ts)
+)(input)
+and term = input => (
+  (factor <*> rep(mulop <*> factor))
+  ^^ ((f, fs)) => List.fold_left((l, (op, r)) => BinOp(l, op, r), f, fs)
+)(input)
+and factor = input => (
+  ident
+  <|> number
+  <|> (chr('(') *> expr <* chr(')'))
+)(input);
+
+let sample = "3*abc + (x1 - x0) * r2d2 / 42";
+Result.get(parseAll(Input.fromString(sample), expr));
+test(expr, sample);
+```
