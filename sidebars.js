@@ -32,6 +32,7 @@ module.exports = {
       'fp/map-reduce',
       'fp/doodle',
       'fp/state',
+      'fp/parser-comb',
     ],
     'Lists, Trees, and Graphs': [
       'ds/lists',

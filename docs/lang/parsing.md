@@ -203,9 +203,9 @@ to write a computer program that can parse strings in that language.
 If the language is a programming language, then parsing is one of the
 essential steps in translating a computer program into machine language.
 LL(1) grammars and parsing programs that use them are often studied
-in courses in programming languages and the theory of compilers.
-
-TODO add content on Recursive Descent?
+in courses in programming languages and the theory of compilers. For more
+details on how to turn an LL(1) grammar into code, see the section on
+[recursive descent and parser combinators](../fp/parser-comb).
 
 Not every unambiguous context-free grammar is an LL(1) grammar. Consider, for
 example, the following grammar, which I will call $G_3$:

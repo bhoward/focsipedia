@@ -60,7 +60,7 @@ title: Topics
 ## Week 13:
 ### [Grammars](lang/cfg.md) and [Backus-Naur Form](lang/bnf.md)
 
-### [Parsing](lang/parsing.md), [Pushdown Automata](lang/pda.md)
+### [Parsing](lang/parsing.md), [Pushdown Automata](lang/pda.md), [Recursive Descent](fp/parser-comb.md)
 
 ## Week 14:
 ### Turing Machines, Computability
