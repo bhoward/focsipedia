@@ -4,18 +4,18 @@ title: Recursive Descent and Parser Combinators
 ---
 
 It is particularly easy to turn an LL(1) grammar into an efficient parser
-using the technique of **recursive descent parsing**. For each nonterminal in
+using the technique of **recursive descent parsing**. For each non-terminal in
 the grammar, we write a function that recognizes strings produced from that
-nonterminal. If there are multiple productions for the nonterminal, we use
+non-terminal. If there are multiple productions for the non-terminal, we use
 the next available character to decide which one to use. To parse the right-hand
 side of the chosen production rule, we have to recognize a sequence of terminals
-and nonterminals in order. To recognize a terminal, we just check that the current
-character from the input matches the expected symbol. To recognize a nonterminal,
-we call the associated function for that nonterminal.
+and non-terminals in order. To recognize a terminal, we just check that the current
+character from the input matches the expected symbol. To recognize a non-terminal,
+we call the associated function for that non-terminal.
 
 Therefore, our parser will be a set of mutually recursive functions, one for each
-nonterminal. To parse a word in the language, we call the function corresponding
-to the starting nonterminal; if that function returns without error, then we have
+non-terminal. To parse a word in the language, we call the function corresponding
+to the starting non-terminal; if that function returns without error, then we have
 successfully matched a word. In addition to recognizing a string of characters, it
 is common for each recursive descent parsing function to return a data structure
 (the parse tree, or a close relative known as an **abstract syntax tree**) representing
