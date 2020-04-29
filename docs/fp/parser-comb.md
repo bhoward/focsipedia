@@ -49,7 +49,7 @@ public interface Expr {
 		Expr e = parseTerm(input);
 		while (input.peek() == '+' || input.peek() == '-') {
 			BinOp op = BinOp.parse(input);
-			Expr e2 = Expr.parse(input);
+			Expr e2 = Expr.parseTerm(input);
 			e = new BinOpExpr(e, op, e2);
 		}
 		return e;
