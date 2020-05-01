@@ -51,6 +51,7 @@ module.exports = {
       'lang/bnf',
       'lang/parsing',
       'lang/pda',
+      'lang/tm',
     ],
     Features: ['reason',
       'ocaml',
