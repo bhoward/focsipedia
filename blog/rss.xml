@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Wed, 29 Apr 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 May 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Turing Machines]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/turing-machines</link>
+            <guid>turing-machines</guid>
+            <pubDate>Fri, 01 May 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></description>
+        </item>
         <item>
             <title><![CDATA[Parsing and Pushdown Automata]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/parsing</link>
