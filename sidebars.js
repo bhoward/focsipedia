@@ -52,6 +52,8 @@ module.exports = {
       'lang/parsing',
       'lang/pda',
       'lang/tm',
+      'lang/computability',
+      'lang/halting',
     ],
     Features: ['reason',
       'ocaml',
