@@ -33,6 +33,7 @@ module.exports = {
       'fp/doodle',
       'fp/state',
       'fp/parser-comb',
+      'fp/lambda',
     ],
     'Lists, Trees, and Graphs': [
       'ds/lists',

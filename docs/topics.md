@@ -64,3 +64,5 @@ title: Topics
 
 ## Week 14:
 ### [General Grammars, Turing Machines](lang/tm.md), [Computability](lang/computability.md), [Halting Problem](lang/halting.md)
+
+### [Lambda Calculus](fp/lambda.md)
