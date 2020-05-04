@@ -4,10 +4,17 @@
         <title>FoCSipedia Blog</title>
         <link>https://bhoward.github.io/blog</link>
         <description>FoCSipedia Blog</description>
-        <lastBuildDate>Mon, 04 May 2020 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 06 May 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2020 Brian T. Howard</copyright>
+        <item>
+            <title><![CDATA[Final Exam Review]]></title>
+            <link>https://bhoward.github.io/focsipedia/blog/final-review</link>
+            <guid>final-review</guid>
+            <pubDate>Wed, 06 May 2020 00:00:00 GMT</pubDate>
+            <description><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions). The Wednesday class session will be a time to go over any questions you have.]]></description>
+        </item>
         <item>
             <title><![CDATA[Computability]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/computability</link>
