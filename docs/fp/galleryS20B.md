@@ -2,6 +2,22 @@
 id: galleryS20B
 title: Spring 2020 DPoodle Gallery, Section B
 ---
+## Alecia Hawkins
+```reason demo
+{
+let cherry = solid(Color("red"), circle(5.));
+let flavor = cherry --- solid(Color("pink"), circle(20.));
+let cone = solid(Color("black"), rotate(180., triangle(35.,55.)));
+let icecream = flavor --- cone;
+let rec order = count => {
+  switch (count) {
+  | 0 => empty
+  | n => icecream ||| order(n-1)
+  }
+};
+draw(order(7));
+}
+```
 
 ## Brayton Strohmeyer
 ```reason demo
@@ -262,6 +278,35 @@ let pyramid = count => {
   }
 };
 draw(pyramid(100));
+}
+```
+
+## Robin Bista
+```reason demo
+{
+let line = length => {
+  strokeWidth(2., focus(ML, openPath([
+    moveXY(0., 0.),
+    lineXY(length, 0.),
+    moveXY(length, 0.)])))
+};
+
+let leftEye = solid(color("blue"), circle(30.));
+let p1 = (-50., 0.);
+let p2 = (50., 0.);
+let c1 = (-10., 30.);
+let c2 = (10., 30.);
+
+let curve = openPath([moveP(p1), curveP(c1, c2, p2)]);
+
+let rec sunGlasses = nums => {
+  switch (nums) {
+  | [] => solid(color("green"), circle(30.))
+  | [head, ...tail] => line(head) ||| sunGlasses(tail)
+  }
+};
+
+draw(rotate(-90., translate(0., 0., leftEye) --- rotate(90., sunGlasses([30., 1.]))) --- rotate(-90., line(35.)) --- curve +++ fill(color("navyblue"), circle(30.)))
 }
 ```
 
