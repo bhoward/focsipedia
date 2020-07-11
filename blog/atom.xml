@@ -20,251 +20,251 @@
         <id>computability</id>
         <link href="https://bhoward.github.io/focsipedia/blog/computability"/>
         <updated>2020-05-04T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Computability and the Halting Problem. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Turing Machines]]></title>
         <id>turing-machines</id>
         <link href="https://bhoward.github.io/focsipedia/blog/turing-machines"/>
         <updated>2020-05-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about General Grammars and Turing Machines. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Parsing and Pushdown Automata]]></title>
         <id>parsing</id>
         <link href="https://bhoward.github.io/focsipedia/blog/parsing"/>
         <updated>2020-04-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about parsing and pushdown automata, and look at the exercises in those sections.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Context-Free Grammars]]></title>
         <id>grammars</id>
         <link href="https://bhoward.github.io/focsipedia/blog/grammars"/>
         <updated>2020-04-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about context-free grammars and BNF rules, and look at the exercises in those sections.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[State Machines]]></title>
         <id>state-machines</id>
         <link href="https://bhoward.github.io/focsipedia/blog/state-machines"/>
         <updated>2020-04-24T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[(Rescheduled from Wednesday, April 22)]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Sequential Circuits]]></title>
         <id>sequential</id>
         <link href="https://bhoward.github.io/focsipedia/blog/sequential"/>
         <updated>2020-04-20T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about sequential circuits, and try the exercises in that section.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Exam 2]]></title>
         <id>exam2</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam2"/>
         <updated>2020-04-17T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[The second exam, over the second five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia). You should receive an email with a link to the exam and further instructions.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Exam 2 Review]]></title>
         <id>exam2-review</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam2-review"/>
         <updated>2020-04-15T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions, and a topic list). The Wednesday class session will be a time to go over any questions you have.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Nondeterministic Finite-State Automata]]></title>
         <id>nfa</id>
         <link href="https://bhoward.github.io/focsipedia/blog/nfa"/>
         <updated>2020-04-13T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about nondeterministic finite-state automata and their connection to regular expressions, and try the exercises in those sections.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Finite-State Automata]]></title>
         <id>fsa</id>
         <link href="https://bhoward.github.io/focsipedia/blog/fsa"/>
         <updated>2020-04-10T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about finite-state automata, and try the exercises in that section.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Languages]]></title>
         <id>languages</id>
         <link href="https://bhoward.github.io/focsipedia/blog/languages"/>
         <updated>2020-04-08T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about languages and regular expressions (and their applications), and try the exercises in each section.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Graph Traversals]]></title>
         <id>graph-traversals</id>
         <link href="https://bhoward.github.io/focsipedia/blog/graph-traversals"/>
         <updated>2020-04-06T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read more about graphs. Watch the accompanying video plus DyKnow. Try the exercises.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Graphs]]></title>
         <id>graphs</id>
         <link href="https://bhoward.github.io/focsipedia/blog/graphs"/>
         <updated>2020-04-03T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about graphs (not yet finished; sorry).]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Ordered Trees]]></title>
         <id>ordered-trees</id>
         <link href="https://bhoward.github.io/focsipedia/blog/ordered-trees"/>
         <updated>2020-04-01T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about binary search trees and heaps, and watch the corresponding video (and DyKnow).]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Class Resumes]]></title>
         <id>class-resumes</id>
         <link href="https://bhoward.github.io/focsipedia/blog/class-resumes"/>
         <updated>2020-03-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Classes will resume in an online format on Monday, March 30. Work on your DPoodle drawings.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[No Class]]></title>
         <id>no-class</id>
         <link href="https://bhoward.github.io/focsipedia/blog/no-class"/>
         <updated>2020-03-13T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[There will be no class today: Friday, March 13, 2020.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Exam 1 Return]]></title>
         <id>exam1-return</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam1-return"/>
         <updated>2020-03-11T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Today we will be going over the first exam.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Accumulators]]></title>
         <id>accumulators</id>
         <link href="https://bhoward.github.io/focsipedia/blog/accumulators"/>
         <updated>2020-03-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Continue reading about common patterns of writing functional programs: see the Accumulators section.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Helper Functions]]></title>
         <id>helpers</id>
         <link href="https://bhoward.github.io/focsipedia/blog/helpers"/>
         <updated>2020-03-06T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Continue reading about common patterns of writing functional programs: see the Helper Functions section.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Exam 1]]></title>
         <id>exam1</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam1"/>
         <updated>2020-03-04T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[The first exam, over the first five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia).]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Exam 1 Review]]></title>
         <id>exam1-review</id>
         <link href="https://bhoward.github.io/focsipedia/blog/exam1-review"/>
         <updated>2020-03-02T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[There is a practice exam on Moodle. More details to come.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[MapReduce]]></title>
         <id>mapreduce</id>
         <link href="https://bhoward.github.io/focsipedia/blog/mapreduce"/>
         <updated>2020-02-28T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[No reading for today. We will talk about the map and reduce functions on lists, and how they made Google what it is today.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Types and Functional Programming, Continued]]></title>
         <id>types2</id>
         <link href="https://bhoward.github.io/focsipedia/blog/types2"/>
         <updated>2020-02-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Finish reading Types in Functional]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Types and Functional Programming]]></title>
         <id>types</id>
         <link href="https://bhoward.github.io/focsipedia/blog/types"/>
         <updated>2020-02-24T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Types in Functional Programming. I am still]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Functions and Functional Programming]]></title>
         <id>functions</id>
         <link href="https://bhoward.github.io/focsipedia/blog/functions"/>
         <updated>2020-02-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Functions and]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Recursion and Induction]]></title>
         <id>recursion</id>
         <link href="https://bhoward.github.io/focsipedia/blog/recursion"/>
         <updated>2020-02-19T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Recursion,]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Mathematical Induction]]></title>
         <id>induction</id>
         <link href="https://bhoward.github.io/focsipedia/blog/induction"/>
         <updated>2020-02-17T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Mathematical Induction,]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Natural Deduction Continued]]></title>
         <id>deduction2</id>
         <link href="https://bhoward.github.io/focsipedia/blog/deduction2"/>
         <updated>2020-02-14T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about Natural Deduction for Predicate Logic.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Natural Deduction]]></title>
         <id>deduction</id>
         <link href="https://bhoward.github.io/focsipedia/blog/deduction"/>
         <updated>2020-02-12T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read the section on deduction.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Predicate Logic and Deduction]]></title>
         <id>predicates</id>
         <link href="https://bhoward.github.io/focsipedia/blog/predicates"/>
         <updated>2020-02-10T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read the section on predicate logic.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Sets]]></title>
         <id>sets</id>
         <link href="https://bhoward.github.io/focsipedia/blog/sets"/>
         <updated>2020-02-07T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Skim the sections on set concepts and algebra (these two sections]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Circuit Components]]></title>
         <id>circuit-components</id>
         <link href="https://bhoward.github.io/focsipedia/blog/circuit-components"/>
         <updated>2020-02-05T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about circuit components.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Circuit Simplification]]></title>
         <id>circuit-simplification</id>
         <link href="https://bhoward.github.io/focsipedia/blog/circuit-simplification"/>
         <updated>2020-02-03T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about circuit simplification.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Logic Circuits]]></title>
         <id>logic-circuits</id>
         <link href="https://bhoward.github.io/focsipedia/blog/logic-circuits"/>
         <updated>2020-01-31T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about logic circuits.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[Logic Operators]]></title>
         <id>logic-operators</id>
         <link href="https://bhoward.github.io/focsipedia/blog/logic-operators"/>
         <updated>2020-01-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[import useBaseUrl from '@docusaurus/useBaseUrl';]]></summary>
+        <summary type="html"><![CDATA[Read about propositional logic: the operators and Boolean algebra.]]></summary>
     </entry>
     <entry>
         <title type="html"><![CDATA[First Day]]></title>
         <id>first-day</id>
         <link href="https://bhoward.github.io/focsipedia/blog/first-day"/>
         <updated>2020-01-27T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ... <!--truncate--> [FoCSipedia](https://bhoward.github.io/focsipedia/)!]]></summary>
+        <summary type="html"><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ...  FoCSipedia!]]></summary>
     </entry>
 </feed>
