@@ -1,0 +1,969 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Recursion and Induction &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sequential Circuits" href="sequential.html" />
+    <link rel="prev" title="Mathematical Induction" href="induction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/recursion.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#factorial">
+   Factorial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#towers-of-hanoi">
+   Towers of Hanoi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-trees">
+   Binary Trees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#structural-induction">
+   Structural Induction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursive-definitions">
+   Recursive Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="recursion-and-induction">
+<h1>Recursion and Induction<a class="headerlink" href="#recursion-and-induction" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>In computer programming, there is a technique called <a class="reference internal" href="#"><span class="doc std std-doc"><strong>recursion</strong></span></a>
+that is closely related to induction. In a computer program, a
+<strong>subroutine</strong> is a named sequence of instructions for performing
+a certain task. When that task needs to be performed in a program,
+the subroutine can be <strong>called</strong> by name.
+A typical way to organize a program is to break down a large task
+into smaller, simpler subtasks by calling subroutines to perform
+each of the subtasks. A subroutine can perform its task by
+calling other subroutines to perform subtasks of the overall task.
+A subroutine can also call itself. That is, in the process of
+performing some large task, a subroutine can call itself to perform
+a subtask. This is known as recursion, and a subroutine that does
+this is said to be a <strong>recursive subroutine</strong>. Recursion is
+appropriate when a large task can be broken into subtasks where
+some or all of the subtasks are smaller, simpler versions of the
+main task.</p>
+<p>Like induction, recursion is often considered to be a “hard”
+topic by students, and some professors perpetuate this by
+referring to it as a “trick,” and implying that some sort of
+magic is needed for it to work. However, if you are comfortable
+with solving problems by breaking them into smaller pieces, then
+recursion (and induction) can be viewed as an obvious extension
+of this approach where some of the pieces break into smaller but
+similar pieces. As long as you understand how to break up that
+kind of piece further, the only task left is to show that you can
+handle the smallest possible pieces.</p>
+<div class="section" id="factorial">
+<h2>Factorial<a class="headerlink" href="#factorial" title="Permalink to this headline">¶</a></h2>
+<p>A simple example of a recursive subroutine is a function that
+computes <span class="math notranslate nohighlight">\(n!\)</span> for a non-negative integer <span class="math notranslate nohighlight">\(n\)</span>. <span class="math notranslate nohighlight">\(n!\)</span>, which is read “<span class="math notranslate nohighlight">\(n\)</span> factorial,”
+is defined as follows:</p>
+<p>$$ \begin{array}{l}
+0! = 1\
+n! = \prod_{i=1}^n,i\text{\qquad for <span class="math notranslate nohighlight">\(n&gt;0\)</span>}
+\end{array} $$</p>
+<p>For example, <span class="math notranslate nohighlight">\(5!=1\cdot2\cdot3\cdot4\cdot5=120\)</span>. Note that for <span class="math notranslate nohighlight">\(n&gt;1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ \begin{array}{l}
+n! = \prod_{i=1}^n\,i = \left(\prod_{i=1}^{n-1}\,i\right)\cdot n = \big((n-1)!\big)\cdot n
+\end{array} \]</div>
+<p>It is also true that <span class="math notranslate nohighlight">\(n!=\big((n-1)!\big)\cdot n\)</span> when <span class="math notranslate nohighlight">\(n=1\)</span>. This observation
+makes it possible to write a recursive function to compute <span class="math notranslate nohighlight">\(n!\)</span>.</p>
+<p>Here is how we might write it in Java:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Compute n!.</span>
+<span class="cm"> * Precondition: n &gt;= 0</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">answer</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span>
+   <span class="p">}</span> 
+   <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is an equivalent program in ReasonML:[^We will learn more about ReasonML
+later, but here are two quick observations. A function value is created with
+the syntax <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">{...}</span></code>, where <code class="docutils literal notranslate"><span class="pre">x</span></code> is the parameter name that allows us to
+access the function argument in the body <code class="docutils literal notranslate"><span class="pre">{...}</span></code>. We assign this function value
+to the name <code class="docutils literal notranslate"><span class="pre">factorial</span></code> with the <code class="docutils literal notranslate"><span class="pre">let</span></code> statement; by saying <code class="docutils literal notranslate"><span class="pre">let</span> <span class="pre">rec</span></code>, we allow
+the right-hand side of the statement to refer to <code class="docutils literal notranslate"><span class="pre">factorial</span></code> even though we are
+just in the process of defining it.]</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">factorial</span> <span class="ow">=</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="mi">1</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">factorial</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span> <span class="ow">*</span> <span class="n">n</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">print_int</span><span class="ow">(</span><span class="n">factorial</span><span class="ow">(</span><span class="mi">5</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>In order to compute <em>factorial</em>(<span class="math notranslate nohighlight">\(n\)</span>) for <span class="math notranslate nohighlight">\(n&gt;0\)</span>, this function
+first computes <em>factorial</em>(<span class="math notranslate nohighlight">\(n-1\)</span>) by calling itself recursively.
+The answer from that computation is then multiplied by <span class="math notranslate nohighlight">\(n\)</span> to give the
+value of <span class="math notranslate nohighlight">\(n!\)</span>. The recursion has a base case, namely the case when
+<span class="math notranslate nohighlight">\(n=0\)</span>. For the base case, the answer is computed directly rather
+than by using recursion. The base case prevents the recursion from
+continuing forever, in an infinite chain of recursive calls.</p>
+<p>Now, as it happens, recursion is not the best way to compute <span class="math notranslate nohighlight">\(n!\)</span>.
+It can be computed more efficiently using a loop. Furthermore,
+except for small values of <span class="math notranslate nohighlight">\(n\)</span>, the value of <span class="math notranslate nohighlight">\(n!\)</span> is outside the
+range of numbers that can be represented as 32-bit <em>ints</em>.
+However, ignoring these problems, the <em>factorial</em> function
+provides a nice first example of the interplay between recursion and
+induction. We can use induction to prove that <em>factorial</em>(<span class="math notranslate nohighlight">\(n\)</span>)
+does indeed compute <span class="math notranslate nohighlight">\(n!\)</span> for <span class="math notranslate nohighlight">\(n\ge 0\)</span>. (In the proof, we pretend that
+the data type <em>int</em> is not limited to 32 bits. In reality,
+the function only gives the correct answer when the answer can be
+represented as a 32-bit binary number.)</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+Assume that the data type <em>int</em> can represent arbitrarily large
+integers. Under this assumption, the <em>factorial</em> function
+defined above correctly computes <span class="math notranslate nohighlight">\(n!\)</span> for any natural number <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement “<em>factorial</em>(<span class="math notranslate nohighlight">\(n\)</span>) correctly computes <span class="math notranslate nohighlight">\(n!\)</span>.”
+We use induction to prove that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> In the case <span class="math notranslate nohighlight">\(n=0\)</span>, the <em>if</em> statement in the function
+assigns the value 1 to the answer. Since 1 is the correct value of
+<span class="math notranslate nohighlight">\(0!\)</span>, <em>factorial</em>(0) correctly computes <span class="math notranslate nohighlight">\(0!\)</span>.</p>
+<p><strong>Inductive case:</strong> Let <span class="math notranslate nohighlight">\(k\)</span> be an arbitrary natural number, and assume that
+<span class="math notranslate nohighlight">\(P(k)\)</span> is true. From this assumption, we must show that <span class="math notranslate nohighlight">\(P(k+1)\)</span> is true.
+The assumption is that <em>factorial</em>(<span class="math notranslate nohighlight">\(k\)</span>) correctly computes <span class="math notranslate nohighlight">\(k!\)</span>,
+and we want to show that <em>factorial</em>(<span class="math notranslate nohighlight">\(k+1\)</span>) correctly computes
+<span class="math notranslate nohighlight">\((k+1)!\)</span>.</p>
+<p>When the function computes <em>factorial</em>(<span class="math notranslate nohighlight">\(k+1\)</span>), the value of
+the parameter <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(k+1\)</span>.
+Since <span class="math notranslate nohighlight">\(k+1&gt;0\)</span>, the <em>if</em> statement in the function computes the
+value of <em>factorial</em>(<span class="math notranslate nohighlight">\(k+1\)</span>) by applying the computation
+<em>factorial</em><span class="math notranslate nohighlight">\((k)*(k+1)\)</span>. We know, by the induction hypothesis,
+that the value computed by <em>factorial</em>(<span class="math notranslate nohighlight">\(k\)</span>) is <span class="math notranslate nohighlight">\(k!\)</span>.
+It follows that the value computed by <em>factorial</em>(<span class="math notranslate nohighlight">\(k+1\)</span>)
+is <span class="math notranslate nohighlight">\((k!)\cdot(k+1)\)</span>. As we observed above, for any <span class="math notranslate nohighlight">\(k+1&gt;0\)</span>,
+<span class="math notranslate nohighlight">\((k!)\cdot(k+1)=(k+1)!\)</span>. We see that <em>factorial</em>(<span class="math notranslate nohighlight">\(k+1\)</span>)
+correctly computes <span class="math notranslate nohighlight">\((k+1)!\)</span>. This completes the induction.</p>
+<p>In this proof, we see that the base case of the induction corresponds
+to the base case of the recursion, while the inductive case corresponds
+to a recursive subroutine call. A recursive subroutine call,
+like the inductive case of an induction, reduces a problem to
+a “simpler” or “smaller” problem, which is closer to the base
+case.</p>
+</div>
+<div class="section" id="towers-of-hanoi">
+<h2>Towers of Hanoi<a class="headerlink" href="#towers-of-hanoi" title="Permalink to this headline">¶</a></h2>
+<p>Another standard example of recursion is the Towers of Hanoi problem.
+Let <span class="math notranslate nohighlight">\(n\)</span> be a positive integer. Imagine a set of <span class="math notranslate nohighlight">\(n\)</span> disks of decreasing
+size, piled up in order of size, with the largest disk on the bottom
+and the smallest disk on top. The problem is to move this tower of
+disks to a second pile, following certain rules: Only one disk
+can be moved at a time, and a disk can only be placed on top of
+another disk if the disk on top is smaller. While the disks are
+being moved from the first pile to the second pile, disks can be
+kept in a third, spare pile.  All the disks must at all times be
+in one of the three piles, except for a disk being moved. For example,
+if there are two disks,
+the problem can be solved by the following sequence of moves:</p>
+<ol class="simple">
+<li><p>Move disk 1 from pile 1 to pile 3</p></li>
+<li><p>Move disk 2 from pile 1 to pile 2</p></li>
+<li><p>Move disk 1 from pile 3 to pile 2</p></li>
+</ol>
+<p>A simple recursive subroutine can be used to write out the list
+of moves to solve the problem for any value of <span class="math notranslate nohighlight">\(n\)</span>. The recursion is
+based on the observation that for <span class="math notranslate nohighlight">\(n&gt;1\)</span>, the problem can be
+solved as follows: Move <span class="math notranslate nohighlight">\(n-1\)</span> disks from pile number 1 to pile number 3
+(using pile number 2 as a spare). Then move the largest disk, disk number <span class="math notranslate nohighlight">\(n\)</span>,
+from pile number 1 to pile number 2. Finally, move the <span class="math notranslate nohighlight">\(n-1\)</span> disks from
+pile number 3 to pile number 2, putting them on top of the <span class="math notranslate nohighlight">\(n^{th}\)</span> disk
+(using pile number 1 as a spare). In both cases, the problem of
+moving <span class="math notranslate nohighlight">\(n-1\)</span> disks is a smaller version of the original problem and
+so can be done by recursion. Here is the subroutine, written in Java:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * List the moves for moving n disks from pile number A</span>
+<span class="cm"> * to pile number B, using pile number C as a spare.</span>
+<span class="cm"> * Precondition: n &gt; 0</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">Hanoi</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">A</span><span class="p">,</span> <span class="kt">int</span> <span class="n">B</span><span class="p">,</span> <span class="kt">int</span> <span class="n">C</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Move disk 1 from pile &quot;</span> <span class="o">+</span> <span class="n">A</span> <span class="o">+</span> <span class="s">&quot; to pile &quot;</span> <span class="o">+</span> <span class="n">B</span><span class="p">);</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">Hanoi</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Move disk &quot;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s">&quot; from pile &quot;</span> <span class="o">+</span> <span class="n">A</span> <span class="o">+</span> <span class="s">&quot; to pile &quot;</span> <span class="o">+</span> <span class="n">B</span><span class="p">);</span>
+      <span class="n">Hanoi</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Again, here is equivalent code in ReasonML:[^Just about the only difference here
+from the Java, apart from the syntax for defining a function and the use of the
+<code class="docutils literal notranslate"><span class="pre">printf</span></code> function for output, is that ReasonML requires variables to start with
+lower-case letters. Since functions are also stored in variables, this also applies
+to function names.]</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">hanoi</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">n</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">,</span> <span class="n">c</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">==</span> <span class="mi">1</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="nn">Printf</span><span class="p">.</span><span class="n">printf</span><span class="ow">(</span><span class="s2">&quot;Move disk %d from pile %d to pile %d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">);</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">hanoi</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="n">c</span><span class="ow">,</span> <span class="n">b</span><span class="ow">);</span>
+    <span class="nn">Printf</span><span class="p">.</span><span class="n">printf</span><span class="ow">(</span><span class="s2">&quot;Move disk %d from pile %d to pile %d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">);</span>
+    <span class="n">hanoi</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">,</span> <span class="n">c</span><span class="ow">,</span> <span class="n">b</span><span class="ow">,</span> <span class="n">a</span><span class="ow">);</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">hanoi</span><span class="ow">(</span><span class="mi">2</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>We can use induction to prove that this subroutine does in
+fact solve the Towers of Hanoi problem.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+The sequence of moves printed by the <em>Hanoi</em> subroutine as given above
+correctly solves the Towers of Hanoi problem for any integer <span class="math notranslate nohighlight">\(n\ge1\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+We prove by induction that whenever <span class="math notranslate nohighlight">\(n\)</span> is a positive integer and
+<span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> are the numbers 1, 2, and 3 in some order,
+the subroutine call <em>Hanoi</em>(<span class="math notranslate nohighlight">\(n,A,B,C\)</span>)
+prints a sequence of moves that will move <span class="math notranslate nohighlight">\(n\)</span> disks from pile <span class="math notranslate nohighlight">\(A\)</span> to
+pile <span class="math notranslate nohighlight">\(B\)</span>, following all the rules of the Towers of Hanoi problem.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> In the base case, <span class="math notranslate nohighlight">\(n=1\)</span>,
+the subroutine call <em>Hanoi</em>(<span class="math notranslate nohighlight">\(1,A,B,C\)</span>) prints out the single
+step “Move disk 1 from pile A to pile B,” and this move does solve
+the problem for 1 disk.</p>
+<p><strong>Inductive case:</strong> Let <span class="math notranslate nohighlight">\(k\)</span> be an arbitrary positive integer, and suppose that
+<em>Hanoi</em>(<span class="math notranslate nohighlight">\(k,A,B,C\)</span>) correctly solves the problem
+of moving the <span class="math notranslate nohighlight">\(k\)</span> disks from pile <span class="math notranslate nohighlight">\(A\)</span> to pile <span class="math notranslate nohighlight">\(B\)</span> using pile <span class="math notranslate nohighlight">\(C\)</span> as the spare,
+whenever <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> are the numbers 1,
+2, and 3 in some order. We need to show that
+<em>Hanoi</em>(<span class="math notranslate nohighlight">\(k+1,A,B,C\)</span>) correctly solves the problem for
+<span class="math notranslate nohighlight">\(k+1\)</span> disks. Since <span class="math notranslate nohighlight">\(k+1&gt;1\)</span>, <em>Hanoi</em>(<span class="math notranslate nohighlight">\(k+1,A,B,C\)</span>) begins by
+calling <em>Hanoi</em>(<span class="math notranslate nohighlight">\(k,A,C,B\)</span>). By the induction hypothesis,
+this correctly moves <span class="math notranslate nohighlight">\(k\)</span> disks from pile <span class="math notranslate nohighlight">\(A\)</span> to pile <span class="math notranslate nohighlight">\(C\)</span>. Disk number
+<span class="math notranslate nohighlight">\(k+1\)</span> is not moved during this process.
+At that point, pile <span class="math notranslate nohighlight">\(C\)</span> contains the <span class="math notranslate nohighlight">\(k\)</span> smallest disks and
+pile <span class="math notranslate nohighlight">\(A\)</span> still contains the <span class="math notranslate nohighlight">\((k+1)^{st}\)</span> disk, which has not
+yet been moved. So the next move printed by the subroutine,
+“Move disk <span class="math notranslate nohighlight">\((k+1)\)</span> from pile A to pile B,” is legal because pile <span class="math notranslate nohighlight">\(B\)</span> is empty.
+Finally, the subroutine calls <em>Hanoi</em>(<span class="math notranslate nohighlight">\(k,C,B,A\)</span>),
+which, by the induction hypothesis, correctly moves the <span class="math notranslate nohighlight">\(k\)</span> smallest disks from
+pile <span class="math notranslate nohighlight">\(C\)</span> to pile <span class="math notranslate nohighlight">\(B\)</span>, putting
+them on top of the <span class="math notranslate nohighlight">\((k+1)^{\text{st}}\)</span> disk, which does not move during this process.
+At that point, all <span class="math notranslate nohighlight">\((k+1)\)</span>
+disks are on pile <span class="math notranslate nohighlight">\(B\)</span>, so the problem for
+<span class="math notranslate nohighlight">\(k+1\)</span> disks has been correctly solved.</p>
+</div>
+<div class="section" id="binary-trees">
+<h2>Binary Trees<a class="headerlink" href="#binary-trees" title="Permalink to this headline">¶</a></h2>
+<p>Recursion is often used with linked data structures, which are
+data structures that are constructed by linking several objects
+of the same type together with pointers. (If you don’t already
+know about objects and pointers, you will not be able to follow
+the rest of this section.) For an example, we’ll look at
+the data structure known as a <strong>binary tree</strong>.
+A binary tree consists of nodes linked together in a tree-like
+structure. The nodes can contain any type of data, but we will
+consider binary trees in which each node contains an integer.
+A binary tree can be empty, or it can consist of a node (called
+the <strong>root</strong> of the tree) and two smaller binary trees (called the
+<strong>left subtree</strong> and the <strong>right subtree</strong> of the tree).
+You can already see the recursive structure: A tree can contain
+smaller trees. In Java, the nodes of a tree can be represented
+by objects belonging to the class</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">BinaryTreeNode</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">item</span><span class="p">;</span>   <span class="c1">// An integer value stored in the node.</span>
+   <span class="n">BinaryTreeNode</span> <span class="n">left</span><span class="p">;</span>   <span class="c1">// Pointer to left subtree.</span>
+   <span class="n">BinaryTreeNode</span> <span class="n">right</span><span class="p">;</span>  <span class="c1">// Pointer to right subtree.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An empty tree is represented by a pointer that has the special
+value <strong>null</strong>. If <em>root</em> is
+a pointer to the root node of a tree, then <em>root.left</em>
+is a pointer to the left subtree and <em>root.right</em> is a
+pointer to the right subtree. Of course, both <em>root.left</em>
+and <em>root.right</em> can be <em>null</em> if the corresponding
+subtree is empty. Similarly, <em>root.item</em> is a name
+for the integer in the root node.</p>
+<p>Here is the corresponding definition of a binary tree in ReasonML:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span>
+  <span class="ow">|</span> <span class="nc">Empty</span>
+  <span class="ow">|</span> <span class="nc">Node</span><span class="ow">(</span><span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="kt">int</span><span class="ow">,</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">))</span>
+</pre></div>
+</div>
+<p>Instead of <em>null</em>, we use an explicit constructor value for empty
+trees, <code class="docutils literal notranslate"><span class="pre">Empty</span></code>. To construct a tree node from subtrees <code class="docutils literal notranslate"><span class="pre">left</span></code> and
+<code class="docutils literal notranslate"><span class="pre">right</span></code>, with integer value <code class="docutils literal notranslate"><span class="pre">item</span></code>, we use the constructor
+<code class="docutils literal notranslate"><span class="pre">Node(left,</span> <span class="pre">item,</span> <span class="pre">right)</span></code>. We will see below how to extract these
+fields from the node.</p>
+<p>Let’s say that we want a function that will find the
+sum of all the integers in all the nodes of a binary tree.
+We can do this with a simple recursive function. The base
+case of the recursion is an empty tree. Since there are no
+integers in an empty tree, the sum of the integers in an
+empty tree is zero. For a non-empty tree, we can use recursion
+to find the sums of the integers in the left and right subtrees,
+and then add those sums to the integer in the root node of the
+tree. In Java, this can be expressed as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Find the sum of all the integers in the tree that has</span>
+<span class="cm"> * the given root.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">TreeSum</span><span class="p">(</span><span class="n">BinaryTreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">answer</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// The tree is empty.</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">TreeSum</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">left</span><span class="p">);</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">TreeSum</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">right</span><span class="p">);</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">answer</span> <span class="o">+</span> <span class="n">root</span><span class="p">.</span><span class="na">item</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is the corresponding function in ReasonML. We are using the
+<strong>pattern matching</strong> switch statement to decide whether we have an
+empty tree or not, and to extract the <em>left</em>, <em>item</em>, and <em>right</em>
+fields if the tree is not empty:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">treeSum</span> <span class="ow">=</span> <span class="n">root</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">root</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Empty</span> <span class="ow">=&gt;</span> <span class="mi">0</span>
+  <span class="ow">|</span> <span class="nc">Node</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">item</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+      <span class="n">treeSum</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">item</span> <span class="ow">+</span> <span class="n">treeSum</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">example</span> <span class="ow">=</span> <span class="nc">Node</span><span class="ow">(</span><span class="nc">Node</span><span class="ow">(</span><span class="nc">Empty</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="nc">Empty</span><span class="ow">),</span> <span class="mi">2</span><span class="ow">,</span> <span class="nc">Node</span><span class="ow">(</span><span class="nc">Empty</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">,</span> <span class="nc">Empty</span><span class="ow">));</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">treeSum</span><span class="ow">(</span><span class="n">example</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>We can use the second (“strong”) form of the principle of mathematical induction
+to prove that this function is correct.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+The function <em>TreeSum</em>, defined above, correctly
+computes the sum of all the integers in a binary tree.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+We use induction on the number of nodes in the tree.
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement “<em>TreeSum</em>
+correctly computes the sum of the nodes in any binary tree
+that contains exactly <span class="math notranslate nohighlight">\(n\)</span> nodes.” We show that <span class="math notranslate nohighlight">\(P(n)\)</span> is true
+for every natural number <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> Consider the case <span class="math notranslate nohighlight">\(n=0\)</span>. A tree with zero nodes is empty,
+and an empty tree is represented by a <em>null</em> pointer.
+In this case, the <em>if</em> statement in the definition of
+<em>TreeSum</em> assigns the value 0 to the answer, and this is
+the correct sum for an empty tree. So, <span class="math notranslate nohighlight">\(P(0)\)</span> is true.</p>
+<p><strong>Induction case:</strong> Let <span class="math notranslate nohighlight">\(k\)</span> be an arbitrary natural number, with <span class="math notranslate nohighlight">\(k&gt;0\)</span>.
+Suppose we already
+know <span class="math notranslate nohighlight">\(P(x)\)</span> for each natural number <span class="math notranslate nohighlight">\(x\)</span> with <span class="math notranslate nohighlight">\(0\le x &lt; k\)</span>. That is,
+<em>TreeSum</em> correctly computes the sum of all the integers in
+any tree that has fewer than <span class="math notranslate nohighlight">\(k\)</span> nodes. We must show that it follows
+that <span class="math notranslate nohighlight">\(P(k)\)</span> is true, that is, that <em>TreeSum</em> works for
+a tree with <span class="math notranslate nohighlight">\(k\)</span> nodes. Suppose that <em>root</em> is a pointer
+to the root node of a tree that has a total of <span class="math notranslate nohighlight">\(k\)</span> nodes.
+Since the root node counts as a node, that leaves a total of
+<span class="math notranslate nohighlight">\(k-1\)</span> nodes for the left and right subtrees, so each subtree
+must contain fewer than <span class="math notranslate nohighlight">\(k\)</span> nodes. By the induction hypothesis,
+we know that <em>TreeSum</em>(<em>root.left</em>) correctly
+computes the sum of all the integers in the left subtree, and
+<em>TreeSum</em>(<em>root.right</em>) correctly computes the
+sum of all the integers in the right subtree. The sum of all
+the integers in the tree is <em>root.item</em> plus the
+sums of the integers in the subtrees, and this is the value
+computed by <em>TreeSum</em>. So, <em>TreeSum</em> does
+work for a tree with <span class="math notranslate nohighlight">\(k\)</span> nodes. This completes the induction.</p>
+<p>Note how closely the structure of the inductive proof follows the
+structure of the recursive function. In particular, the
+second principle of mathematical induction is very natural here, since
+the size of subtree could be anything up to one less than
+the size of the complete tree. It would be very difficult
+to use the first principle of induction in a proof about
+binary trees.</p>
+</div>
+<div class="section" id="structural-induction">
+<h2>Structural Induction<a class="headerlink" href="#structural-induction" title="Permalink to this headline">¶</a></h2>
+<p>Instead of using strong mathematical induction, it is often more
+straightforward to use a principle known as <strong>structural induction</strong>.
+Suppose that our domain of discourse consists of some entities that
+are considered “primitive”, and others that are constructed from
+smaller entities (the binary trees described above are a classic
+example: a tree is either an empty tree or a node containing an
+integer and two subtrees). Then we may prove statements of the form
+<span class="math notranslate nohighlight">\(\forall xP(x)\)</span> over this domain by showing two cases:</p>
+<ul class="simple">
+<li><p><strong>Base case</strong>: <span class="math notranslate nohighlight">\(P(x)\)</span> holds whenever <span class="math notranslate nohighlight">\(x\)</span> is a primitive entity.</p></li>
+<li><p><strong>Induction case:</strong> Whenever <span class="math notranslate nohighlight">\(P(x_1)\)</span>, …, <span class="math notranslate nohighlight">\(P(x_k)\)</span> holds for
+some smaller entities <span class="math notranslate nohighlight">\(x_1\)</span>, …, <span class="math notranslate nohighlight">\(x_k\)</span>, then it also holds for
+an entity <span class="math notranslate nohighlight">\(x\)</span> constructed from them.</p></li>
+</ul>
+<p>Here is the proof about the <em>TreeSum</em> function again, expressed as a
+structural induction over trees:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+The function <em>TreeSum</em>, defined above, correctly
+computes the sum of all the integers in a binary tree.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+We use structural induction on the construction of a tree.
+Let <span class="math notranslate nohighlight">\(P(t)\)</span> be the statement “<em>TreeSum</em>
+correctly computes the sum of the nodes in the binary tree
+<span class="math notranslate nohighlight">\(t\)</span>.” We show that <span class="math notranslate nohighlight">\(P(t)\)</span> is true
+for every binary tree <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> If <span class="math notranslate nohighlight">\(t\)</span> is an empty tree, then the definition of
+<em>TreeSum</em> returns the value 0, which is the correct sum for an
+empty tree. So, <span class="math notranslate nohighlight">\(P(t)\)</span> is true.</p>
+<p><strong>Induction case:</strong> Suppose we already know that <span class="math notranslate nohighlight">\(P(u)\)</span> and <span class="math notranslate nohighlight">\(P(v)\)</span> hold for some
+trees <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. That is, <em>TreeSum</em> correctly computes the sum of all the
+integers in <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. We must show that it follows that <span class="math notranslate nohighlight">\(P(t)\)</span> is true, where
+<span class="math notranslate nohighlight">\(t\)</span> is the tree constructed from subtrees <span class="math notranslate nohighlight">\(u\)</span> (left) and <span class="math notranslate nohighlight">\(v\)</span> (right), plus an
+integer <em>item</em>. The value computed by <em>TreeSum</em>(<span class="math notranslate nohighlight">\(t\)</span>) will be <em>TreeSum</em>(<span class="math notranslate nohighlight">\(u\)</span>) +
+<em>item</em> + <em>TreeSum</em>(<span class="math notranslate nohighlight">\(v\)</span>). By the induction hypothesis, we know that
+<em>TreeSum</em>(<span class="math notranslate nohighlight">\(u\)</span>) correctly computes the sum of all the integers in the left
+subtree, and <em>TreeSum</em>(<span class="math notranslate nohighlight">\(v\)</span>) correctly computes the sum of all the integers in
+the right subtree. The sum of all the integers in the tree is <em>item</em> plus the
+sums of the integers in the subtrees, so, <em>TreeSum</em> also works for the tree <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</div>
+<div class="section" id="recursive-definitions">
+<h2>Recursive Definitions<a class="headerlink" href="#recursive-definitions" title="Permalink to this headline">¶</a></h2>
+<p>Recursion occurs in programming when a subroutine is defined—partially,
+at least—in terms of itself. But recursion also occurs outside of
+programming. A <strong>recursive definition</strong> is a definition that includes
+a reference to the term that is being defined. A recursive definition
+defines something at least partially in terms of itself. As in the
+case of recursive subroutines, mathematical induction can often be used
+to prove facts about things that are defined recursively.</p>
+<p>As already noted, there is a recursive definition for <span class="math notranslate nohighlight">\(n!\)</span>, for <span class="math notranslate nohighlight">\(n\)</span> in <span class="math notranslate nohighlight">\(\N\)</span>. We
+can define <span class="math notranslate nohighlight">\(0!=1\)</span> and <span class="math notranslate nohighlight">\(n!=n\cdot(n-1)!\)</span> for <span class="math notranslate nohighlight">\(n&gt;0\)</span>. Other sequences of
+numbers can also be defined recursively. For example, the famous
+<strong>Fibonacci sequence</strong> is the sequence of numbers <span class="math notranslate nohighlight">\(f_0\)</span>, <span class="math notranslate nohighlight">\(f_1\)</span>, <span class="math notranslate nohighlight">\(f_2\)</span>, …,
+defined recursively by
+$$ \begin{array}{l}
+f_0 = 0\
+f_1 = 1\
+f_n = f_{n-1}+f_{n-2} \qquad \text{for <span class="math notranslate nohighlight">\(n&gt;1\)</span>}
+\end{array} $$</p>
+<p>Using this definition, we compute that
+<span class="math notranslate nohighlight">\($ \begin{array}{l}
+    f_2 = f_1 + f_0 = 0 + 1 = 1\\
+    f_3 = f_2 + f_1 = 1 + 1 = 2\\
+    f_4 = f_3 + f_2 = 2 + 1 = 3\\
+    f_5 = f_4 + f_3 = 3 + 2 = 5\\
+    f_6 = f_5 + f_4 = 5 + 3 = 8\\
+    f_7 = f_6 + f_5 = 8 + 5 = 13
+\end{array} $\)</span></p>
+<p>and so on. Based on this definition, we can use induction to
+prove facts about the Fibonacci sequence. We can prove,
+for example, that <span class="math notranslate nohighlight">\(f_n\)</span> grows exponentially with <span class="math notranslate nohighlight">\(n\)</span>, even without
+finding an exact formula for <span class="math notranslate nohighlight">\(f_n\)</span>:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+The Fibonacci sequence, <span class="math notranslate nohighlight">\(f_0\)</span>, <span class="math notranslate nohighlight">\(f_1\)</span>, <span class="math notranslate nohighlight">\(f_2\)</span>, …,
+satisfies <span class="math notranslate nohighlight">\(f_n &gt; \big(\frac{3}{2}\big)^{n-1}\)</span>, for <span class="math notranslate nohighlight">\(n\ge6\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+We prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>. For <span class="math notranslate nohighlight">\(n=6\)</span>, we have that
+<span class="math notranslate nohighlight">\(f_n=8\)</span> while <span class="math notranslate nohighlight">\(1.5^{n-1}=1.5^5\)</span>, which is about <span class="math notranslate nohighlight">\(7.6\)</span>.
+So <span class="math notranslate nohighlight">\(f_n &gt; 1.5^{n-1}\)</span> for <span class="math notranslate nohighlight">\(n=6\)</span>.
+Similarly, for <span class="math notranslate nohighlight">\(n=7\)</span>, we have <span class="math notranslate nohighlight">\(f_n=13\)</span> and
+<span class="math notranslate nohighlight">\(1.5^{n-1}=1.5^6\)</span>, which is about 11.4.
+So <span class="math notranslate nohighlight">\(f_n &gt; 1.5^{n-1}\)</span> for <span class="math notranslate nohighlight">\(n=7\)</span>.</p>
+</div></blockquote>
+<p>Now suppose that <span class="math notranslate nohighlight">\(k\)</span> is an arbitrary integer with <span class="math notranslate nohighlight">\(k&gt;7\)</span>.
+Suppose that we already know that <span class="math notranslate nohighlight">\(f_n&gt;1.5^{n-1}\)</span> for
+<span class="math notranslate nohighlight">\(n=k-1\)</span> and for <span class="math notranslate nohighlight">\(n=k-2\)</span>. We want to show that the inequality
+then holds for <span class="math notranslate nohighlight">\(n=k\)</span> as well. But
+$$ \begin{array}{rll}
+f_k &amp;= f_{k-1}+f_{k-2}\
+&amp;&gt; 1.5^{(k-1)-1}+1.5^{(k-2)-1} &amp; \text{(by the induction hypothesis)}\
+&amp;= 1.5^{k-2}+1.5^{k-3}\
+&amp;= (1.5)\cdot(1.5^{k-3}) + (1.5^{k-3})\
+&amp;= (2.5)\cdot(1.5^{k-3})\
+&amp;&gt; (1.5^2)\cdot(1.5^{k-3}) &amp; \text{(since <span class="math notranslate nohighlight">\(1.5^2=2.25\)</span>)}\
+&amp;= 1.5^{k-1}
+\end{array} $$</p>
+<blockquote>
+<div><p>This string of equalities and inequalities shows that <span class="math notranslate nohighlight">\(f_k&gt;1.5^{k-1}\)</span>.
+This completes the induction and proves the theorem.</p>
+</div></blockquote>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The <em>Hanoi</em> subroutine given in this section does
+not just solve the Towers of Hanoi problem. It solves the
+problem using the minimum possible number of moves. Use induction
+to prove this fact.</p></li>
+<li><p>Use induction to prove that the <em>Hanoi</em> subroutine
+uses <span class="math notranslate nohighlight">\(2^n-1\)</span> moves to solve the Towers of Hanoi problem for <span class="math notranslate nohighlight">\(n\)</span> disks.
+(There is a story that goes along with the Towers of Hanoi problem.
+It is said that on the day the world was created, a group of monks in Hanoi
+were set the task of solving the problem for 64 disks. They can
+move just one disk each day. On the day the problem is solved,
+the world will end. However, we shouldn’t worry too much,
+since <span class="math notranslate nohighlight">\(2^{64}-1\)</span> days is a very long time—about 50 million billion years.)</p></li>
+<li><p>Consider the following recursive function:</p></li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/** Compute x raised to the power n.</span>
+<span class="cm"> * Precondition: n &gt;= 0.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">power</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">answer</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">power</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">answer</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">power</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Show that for any integer <span class="math notranslate nohighlight">\(x\)</span> and any non-negative integer <span class="math notranslate nohighlight">\(n\)</span>,
+the function <em>power</em>(<span class="math notranslate nohighlight">\(x\)</span>,<span class="math notranslate nohighlight">\(n\)</span>) correctly computes the value
+of <span class="math notranslate nohighlight">\(x^n\)</span>. (Assume that the <em>int</em> data type can represent
+arbitrarily large integers.) Note that the test
+“<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(n</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0)</span></code>” tests whether <span class="math notranslate nohighlight">\(n\)</span> is evenly divisible by 2.
+That is, the test is true if <span class="math notranslate nohighlight">\(n\)</span> is an even number. (This function is
+actually a very efficient way to compute <span class="math notranslate nohighlight">\(x^n\)</span>.)</p>
+<ol class="simple">
+<li><p>Write the <em>power</em> function from the previous problem in ReasonML, and
+check that it works on several examples. <em>Hint:</em> The code will be almost
+the same as the Java, except for the different function syntax and not
+using the temporary variable <em>answer</em> (see examples above). The remainder
+operator is named <em>mod</em> instead of %, so the test for <span class="math notranslate nohighlight">\(n\)</span> being even will
+be <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(n</span> <span class="pre">mod</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0)</span></code>.</p></li>
+</ol>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">power</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">x</span><span class="ow">,</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="cm">/* TODO */</span>
+<span class="ow">};</span>
+
+<span class="n">print_int</span><span class="ow">(</span><span class="n">power</span><span class="ow">(</span><span class="mi">2</span><span class="ow">,</span> <span class="mi">6</span><span class="ow">));</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">power</span><span class="ow">(</span><span class="mi">3</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">));</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">power</span><span class="ow">(</span><span class="mi">10</span><span class="ow">,</span> <span class="mi">4</span><span class="ow">));</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="cm">/* try other examples here */</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>A <strong>leaf node</strong> in a binary tree is a node in which
+both the left and the right subtrees are empty. Prove that
+the following recursive function correctly counts the number
+of leaves in a binary tree:</p></li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Counts the number of leaf nodes in the tree with the</span>
+<span class="cm"> * specified root.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span> <span class="nf">LeafCount</span><span class="p">(</span> <span class="n">BinaryTreeNode</span> <span class="n">root</span> <span class="p">)</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">left</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">root</span><span class="p">.</span><span class="na">right</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">count</span> <span class="o">=</span> <span class="n">LeafCount</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">left</span><span class="p">);</span>
+      <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">LeafCount</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">right</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Complete this ReasonML version of the <em>LeafCount</em> function
+from the previous problem. Note that we may use patterns such
+as <code class="docutils literal notranslate"><span class="pre">Node(Empty,</span> <span class="pre">_,</span> <span class="pre">Empty)</span></code> in the switch statement to match
+nodes where the subtrees are both <code class="docutils literal notranslate"><span class="pre">Empty</span></code> (and the <code class="docutils literal notranslate"><span class="pre">_</span></code> indicates
+that we don’t care what the value of the <em>item</em> field is).</p></li>
+</ol>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">leafCount</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Empty</span> <span class="ow">=&gt;</span> <span class="cm">/* TODO */</span>
+  <span class="ow">|</span> <span class="nc">Node</span><span class="ow">(</span><span class="nc">Empty</span><span class="ow">,</span> <span class="ow">_,</span> <span class="nc">Empty</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="cm">/* TODO */</span>
+  <span class="ow">|</span> <span class="nc">Node</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="ow">_,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="cm">/* TODO */</span>
+  <span class="ow">}</span>
+<span class="ow">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>A <strong>binary search tree</strong> satisfies the
+following property: If <em>node</em> is a pointer to any
+node in the tree, then all the integers in the left subtree
+of <em>node</em> are less than <em>node.item</em> and
+all the integers in the right subtree of <em>node</em> are
+greater than or equal to <em>node.item</em>. Prove that the
+following recursive subroutine prints all the integers in
+a binary sort tree in non-decreasing order:</p></li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Prints the integers in the tree with the given root node</span>
+<span class="cm"> * in non-decreasing order.</span>
+<span class="cm"> * Precondition: root is a pointer to the root node of a</span>
+<span class="cm"> * binary search tree.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span> <span class="nf">SortPrint</span><span class="p">(</span><span class="n">BinaryTreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// There is nothing to print.</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">SortPrint</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">left</span><span class="p">);</span>
+      <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">item</span><span class="p">);</span>
+      <span class="n">SortPrint</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="na">right</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Complete this ReasonML version of the <em>SortPrint</em> function from
+the previous problem.</p></li>
+</ol>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">sortPrint</span> <span class="ow">=</span> <span class="n">root</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">root</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Empty</span> <span class="ow">=&gt;</span> <span class="cm">/* There is nothing to print */</span>
+  <span class="ow">|</span> <span class="nc">Node</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">item</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+      <span class="cm">/* TODO */</span>
+  <span class="ow">}</span>
+<span class="ow">}</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Prove that the Fibonacci sequence, <span class="math notranslate nohighlight">\(f_0\)</span>, <span class="math notranslate nohighlight">\(f_1\)</span>, <span class="math notranslate nohighlight">\(f_2\)</span>, …,
+satisfies <span class="math notranslate nohighlight">\(f_n&lt;2^n\)</span> for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(a_2\)</span>, <span class="math notranslate nohighlight">\(a_3\)</span>, …, is a sequence of
+numbers which is defined recursively by <span class="math notranslate nohighlight">\(a_1=1\)</span> and
+<span class="math notranslate nohighlight">\(a_n=2a_{n-1}+2^{n-1}\)</span> for <span class="math notranslate nohighlight">\(n&gt;1\)</span>. Prove that
+<span class="math notranslate nohighlight">\(a_n=n2^{n-1}\)</span> for every positive integer <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="induction.html" title="previous page">Mathematical Induction</a>
+    <a class='right-next' id="next-link" href="sequential.html" title="next page">Sequential Circuits</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

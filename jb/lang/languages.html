@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Languages &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regular Expressions" href="regexp.html" />
+    <link rel="prev" title="Formal Languages" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexpapp.html">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsa.html">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bnf.html">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pda.html">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computability.html">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/languages.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-operations">
+   String Operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empty-string">
+   Empty String
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="languages">
+<h1>Languages<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>With the set of mathematical tools from the first two chapters, we
+are now ready to study <strong>languages</strong> and <strong>formal language theory</strong>.
+Our intent is to examine the question of how, and which, languages
+can be mechanically generated and recognized; and, ultimately, to see
+what this tells us about what computers can and can’t do.</p>
+<p>In formal language theory, an <strong>alphabet</strong> is a finite, non-empty
+set. The elements of the set are called <strong>symbols</strong>. A finite
+sequence of symbols <span class="math notranslate nohighlight">\(a_1a_2\ldots a_n\)</span>
+from an alphabet is called a <strong>string</strong> over that alphabet.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> <span class="math notranslate nohighlight">\(\Sigma = \{0,1\}\)</span> is an alphabet, and <code class="docutils literal notranslate"><span class="pre">011</span></code>,
+<code class="docutils literal notranslate"><span class="pre">1010</span></code>, and <code class="docutils literal notranslate"><span class="pre">1</span></code> are all strings over <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<hr class="docutils" />
+<p>Note that strings really are <em>sequences</em> of symbols, which
+implies that
+order matters. Thus <code class="docutils literal notranslate"><span class="pre">011</span></code>, <code class="docutils literal notranslate"><span class="pre">101</span></code>, and <code class="docutils literal notranslate"><span class="pre">110</span></code> are all
+different strings, though they are made up of the same symbols.
+The strings <span class="math notranslate nohighlight">\(x=a_1a_2\ldots a_m\)</span> and <span class="math notranslate nohighlight">\(y=b_1b_2\ldots b_n\)</span> are <strong>equal</strong> only
+if <span class="math notranslate nohighlight">\(m=n\)</span> (<em>i.e.</em>, the strings contain the same number of symbols) and
+<span class="math notranslate nohighlight">\(a_i=b_i\)</span> for all
+<span class="math notranslate nohighlight">\(1 \leq i \leq n\)</span>.</p>
+<div class="section" id="string-operations">
+<h2>String Operations<a class="headerlink" href="#string-operations" title="Permalink to this headline">¶</a></h2>
+<p>Just as there are operations defined on numbers, truth values, sets,
+and other mathematical entities, there are operations defined on
+strings. Some important operations are:</p>
+<ul class="simple">
+<li><p><em>length</em>: the <strong>length</strong> of a string <span class="math notranslate nohighlight">\(x\)</span> is the number of symbols
+in it. The notation for the length of <span class="math notranslate nohighlight">\(x\)</span> is <span class="math notranslate nohighlight">\(|x|\)</span>. Note that
+this is consistent with other uses of <span class="math notranslate nohighlight">\(|\ |\)</span>, all of which
+involve some notion of size: <span class="math notranslate nohighlight">\(|number|\)</span> measures how big a number
+is (in terms of its distance from 0); <span class="math notranslate nohighlight">\(|set|\)</span> measures the size
+of a set (in terms of the number of elements).</p></li>
+</ul>
+<p>We will occasionally refer to a <em>length-n string</em>. This is a
+slightly awkward, but concise, shorthand for “a string whose length
+is <span class="math notranslate nohighlight">\(n\)</span>”.</p>
+<ul class="simple">
+<li><p><em>concatenation</em>: the <strong>concatenation</strong> of two strings <span class="math notranslate nohighlight">\(x=a_1
+a_2\ldots a_m\)</span> and <span class="math notranslate nohighlight">\(y=b_1b_2\ldots b_n\)</span> is the sequence of symbols
+<span class="math notranslate nohighlight">\(a_1\ldots a_mb_1\ldots b_n\)</span>. Sometimes <span class="math notranslate nohighlight">\(\cdot\)</span> is used to denote
+concatenation, but it is far more usual to see the concatenation of
+<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> denoted by <span class="math notranslate nohighlight">\(xy\)</span> than by <span class="math notranslate nohighlight">\(x\cdot y\)</span>. You can easily
+convince yourself that concatenation is associative (<em>i.e.</em>, <span class="math notranslate nohighlight">\((xy)z =
+x(yz)\)</span> for all strings <span class="math notranslate nohighlight">\(x,y\)</span> and <span class="math notranslate nohighlight">\(z\)</span>). Concatenation is not
+commutative (<em>i.e.</em>, it is not always true that <span class="math notranslate nohighlight">\(xy = yx\)</span>:
+for example, if <span class="math notranslate nohighlight">\(x=a\)</span> and <span class="math notranslate nohighlight">\(y=b\)</span> then <span class="math notranslate nohighlight">\(xy=ab\)</span> while <span class="math notranslate nohighlight">\(yx=ba\)</span> and, as
+discussed above, these strings are not equal).</p></li>
+<li><p><em>reversal</em>: the <strong>reverse</strong> of a string <span class="math notranslate nohighlight">\(x=a_1a_2\ldots a_n\)</span> is
+the string <span class="math notranslate nohighlight">\(x^R = a_na_{n-1}\ldots a_2a_1\)</span>.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Example:</strong> Let <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span>, <span class="math notranslate nohighlight">\(x=a\)</span>, <span class="math notranslate nohighlight">\(y=abaa\)</span>, and <span class="math notranslate nohighlight">\(z=bab\)</span>.
+Then <span class="math notranslate nohighlight">\(|x| = 1\)</span>, <span class="math notranslate nohighlight">\(|y| = 4\)</span>, and <span class="math notranslate nohighlight">\(|z|=3\)</span>. Also, <span class="math notranslate nohighlight">\(xx = aa\)</span>, <span class="math notranslate nohighlight">\(xy =
+aabaa\)</span>, <span class="math notranslate nohighlight">\(xz = abab\)</span>, and <span class="math notranslate nohighlight">\(zx = baba\)</span>. Finally, <span class="math notranslate nohighlight">\(x^R = a\)</span>,
+<span class="math notranslate nohighlight">\(y^R = aaba\)</span>, and <span class="math notranslate nohighlight">\(z^R=bab\)</span>.</p>
+<hr class="docutils" />
+<p>By the way, the previous example illustrates a naming convention standard
+throughout language theory texts: if a letter is
+intended to represent a single symbol in an alphabet, the convention
+is to use a letter from the beginning of the English alphabet (<span class="math notranslate nohighlight">\(a\)</span>,
+<span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(d\)</span>); if a letter is intended to represent a string, the
+convention is to use a letter from the end of the English alphabet
+(<span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(v\)</span>, <em>etc</em>.).</p>
+</div>
+<div class="section" id="empty-string">
+<h2>Empty String<a class="headerlink" href="#empty-string" title="Permalink to this headline">¶</a></h2>
+<p>In set theory, we have a special symbol to designate the set that
+contains no elements. Similarly, language theory has a special
+symbol <span class="math notranslate nohighlight">\(\varepsilon\)</span> which is used to represent the <strong>empty string</strong>, the
+string with no
+symbols in it. (Some texts use the symbol <span class="math notranslate nohighlight">\(\lambda\)</span> instead.)
+It is worth noting that <span class="math notranslate nohighlight">\(|\varepsilon| = 0\)</span>, that <span class="math notranslate nohighlight">\(\varepsilon^R = \varepsilon\)</span>,
+and that <span class="math notranslate nohighlight">\(\varepsilon \cdot x = x \cdot \varepsilon = x\)</span> for all strings <span class="math notranslate nohighlight">\(x\)</span>.
+(This last fact may appear a bit confusing. Remember that <span class="math notranslate nohighlight">\(\varepsilon\)</span>
+is not a symbol in a string with length 1, but rather the name given
+to the string made up of 0 symbols. Pasting those 0 symbols onto the
+front or back of a string <span class="math notranslate nohighlight">\(x\)</span> still produces <span class="math notranslate nohighlight">\(x\)</span>.)</p>
+<p>The set of all strings over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span> is denoted <span class="math notranslate nohighlight">\(\Sigma^*\)</span>.
+(In language theory, the symbol <span class="math notranslate nohighlight">\(^*\)</span> is typically used to denote “zero
+or more”, so <span class="math notranslate nohighlight">\(\Sigma^*\)</span> is the set of strings made up of zero or
+more symbols from <span class="math notranslate nohighlight">\(\Sigma\)</span>.) Note that while an alphabet
+<span class="math notranslate nohighlight">\(\Sigma\)</span> is by
+definition a <em>finite</em> set of symbols, and strings are by
+definition <em>finite</em> sequences of those symbols, the set <span class="math notranslate nohighlight">\(\Sigma^*\)</span>
+is <em>always infinite</em> (as long as <span class="math notranslate nohighlight">\(\Sigma\)</span> is not empty). Why is this? Suppose <span class="math notranslate nohighlight">\(\Sigma\)</span> contains <span class="math notranslate nohighlight">\(n\)</span>
+elements. Then there is one string over <span class="math notranslate nohighlight">\(\Sigma\)</span> with 0 symbols,
+<span class="math notranslate nohighlight">\(n\)</span> strings with 1 symbol, <span class="math notranslate nohighlight">\(n^2\)</span> strings with 2 symbols (since there
+are <span class="math notranslate nohighlight">\(n\)</span> choices for the first symbol and <span class="math notranslate nohighlight">\(n\)</span> choices for the second),
+<span class="math notranslate nohighlight">\(n^3\)</span> strings with 3 symbols, <em>etc</em>.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> If <span class="math notranslate nohighlight">\(\Sigma = \{1\}\)</span>, then <span class="math notranslate nohighlight">\(\Sigma^* = \{\varepsilon,
+1, 11, 111, \ldots\}\)</span>. If <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span>, then <span class="math notranslate nohighlight">\(\Sigma^* = \{
+\varepsilon, a, b, aa, ab, ba, bb, aaa, aab, \ldots\}\)</span>.</p>
+<hr class="docutils" />
+<p>We now come to the definition of a <strong>language</strong> in the formal language
+theoretical sense.</p>
+<blockquote>
+<div><p>A language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span> is a subset
+of <span class="math notranslate nohighlight">\(\Sigma^*\)</span>. Thus, a language over <span class="math notranslate nohighlight">\(\Sigma\)</span> is an element of
+<span class="math notranslate nohighlight">\({\mathscr P}(\Sigma^*)\)</span>, the power set of <span class="math notranslate nohighlight">\(\Sigma^*\)</span>.</p>
+</div></blockquote>
+<p>In other words, any set of strings (over alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>) constitutes a
+language (over alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>).</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Let <span class="math notranslate nohighlight">\(\Sigma = \{0,1\}\)</span>. Then the following are all
+languages over <span class="math notranslate nohighlight">\(\Sigma\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_1 = \{011, 1010, 111\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_2 = \{0, 10, 110, 1110, 11110, \ldots\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_3 = \{x \in \Sigma^* \ | \ n_0(x) = n_1(x) \}\)</span>, where the notation
+<span class="math notranslate nohighlight">\(n_0(x)\)</span> stands for the number of 0’s in the string <span class="math notranslate nohighlight">\(x\)</span>, and similarly for <span class="math notranslate nohighlight">\(n_1(x)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_4 = \{x \ | x\textrm{ represents a multiple of 5 in binary}\}\)</span></p></li>
+</ul>
+<hr class="docutils" />
+<p>Note that languages can be either finite or infinite.
+Because <span class="math notranslate nohighlight">\(\Sigma^*\)</span> is infinite, it clearly has an
+infinite number of subsets, and so there are an infinite number of languages
+over <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
+<p>A programming language, such as Java or ReasonML, may be viewed as a formal language:
+if <span class="math notranslate nohighlight">\(\Sigma\)</span> is the set of all ASCII (or, more generally, Unicode) characters, then
+the set of all valid programs in a particular programming language is a language over
+<span class="math notranslate nohighlight">\(\Sigma\)</span>. We will see later how to formally specify such languages, but one step is
+often to describe smaller languages, such as the set of all keywords in the language
+(for Java, it is the 51-element set <span class="math notranslate nohighlight">\(\{\)</span><code class="docutils literal notranslate"><span class="pre">abstract</span></code>, <code class="docutils literal notranslate"><span class="pre">assert</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, …, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">_</span></code><span class="math notranslate nohighlight">\(\}\)</span>),
+or the set of valid identifiers (in Java, a valid identifier starts with a letter, <code class="docutils literal notranslate"><span class="pre">$</span></code>, or <code class="docutils literal notranslate"><span class="pre">_</span></code>, and
+continues with zero or more letters, digits, <code class="docutils literal notranslate"><span class="pre">$</span></code>, or <code class="docutils literal notranslate"><span class="pre">_</span></code>[^Technically there are a few more classes
+of characters that are allowed in Java identifiers, such as other currency symbols and
+“letter numbers”, and the categories of “letters” and “digits” themselves contain thousands of
+choices in Unicode.], except it may not be a keyword or reserved word such as <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code>, or <code class="docutils literal notranslate"><span class="pre">null</span></code>).</p>
+<p>Languages are sets and therefore, as for any sets, it makes sense to talk about
+the union, intersection, and complement of languages. (When taking the complement
+of a language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>, we always consider the univeral set
+to be <span class="math notranslate nohighlight">\(\Sigma^*\)</span>, the set of all strings over <span class="math notranslate nohighlight">\(\Sigma\)</span>.)
+Because languages are
+sets of strings, there are additional operations that can be defined on
+languages, operations that would be meaningless on more general sets. For
+example, the idea of concatenation can be extended from strings to languages.</p>
+<p>For two sets of strings <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(T\)</span>, we define the <strong>concatenation</strong> of <span class="math notranslate nohighlight">\(S\)</span> and
+<span class="math notranslate nohighlight">\(T\)</span> (denoted <span class="math notranslate nohighlight">\(S\cdot T\)</span>
+or just <span class="math notranslate nohighlight">\(ST\)</span>) to
+be the set <span class="math notranslate nohighlight">\(ST = \{ st \ | \ s \in S \land t \in T \}\)</span>. For example, if <span class="math notranslate nohighlight">\(S =
+\{ab, aab\}\)</span> and <span class="math notranslate nohighlight">\(T=\{\varepsilon, 110, 1010\}\)</span>, then
+<span class="math notranslate nohighlight">\(ST = \{ab, ab110, ab1010, aab, aab110, aab1010\}\)</span>.
+Note in particular that <span class="math notranslate nohighlight">\(ab \in ST\)</span>, because <span class="math notranslate nohighlight">\(ab \in S\)</span>, <span class="math notranslate nohighlight">\(\varepsilon \in T\)</span>, and
+<span class="math notranslate nohighlight">\(ab \cdot \varepsilon = ab\)</span>.
+Because
+concatenation of sets is defined in terms of the
+concatenation of the
+strings that the sets contain, concatenation of sets is associative
+and not commutative. (This can easily be verified.)</p>
+<p>When a set <span class="math notranslate nohighlight">\(S\)</span>
+is concatenated with itself, the notation <span class="math notranslate nohighlight">\(SS\)</span> is usually scrapped
+in favour of <span class="math notranslate nohighlight">\(S^2\)</span>; if <span class="math notranslate nohighlight">\(S^2\)</span> is concatenated with <span class="math notranslate nohighlight">\(S\)</span>, we write
+<span class="math notranslate nohighlight">\(S^3\)</span> for the resulting set, <em>etc</em>. So <span class="math notranslate nohighlight">\(S^2\)</span> is the set of all strings formed by
+concatenating two (possibly different, possibly identical) strings from <span class="math notranslate nohighlight">\(S\)</span>,
+<span class="math notranslate nohighlight">\(S^3\)</span> is the set of strings formed by concatenating three strings from <span class="math notranslate nohighlight">\(S\)</span>,
+<em>etc</em>. Extending this notation, we take <span class="math notranslate nohighlight">\(S^1\)</span> to be the set of strings formed
+from one string in <span class="math notranslate nohighlight">\(S\)</span> (<em>i.e.</em>, <span class="math notranslate nohighlight">\(S^1\)</span> is <span class="math notranslate nohighlight">\(S\)</span> itself), and <span class="math notranslate nohighlight">\(S^0\)</span> to be the set of
+strings formed from zero strings in <span class="math notranslate nohighlight">\(S\)</span> (<em>i.e.</em>, <span class="math notranslate nohighlight">\(S^0 = \{\varepsilon\}\)</span>). If we take
+the union <span class="math notranslate nohighlight">\(S^0 \cup S^1 \cup S^2 \cup \ldots\)</span>, then the resulting set is the set of
+all strings formed by concatenating zero or more strings from <span class="math notranslate nohighlight">\(S\)</span>, and is
+denoted <span class="math notranslate nohighlight">\(S^*\)</span>. The set <span class="math notranslate nohighlight">\(S^*\)</span> is called the <strong>Kleene closure</strong>[^Kleene is pronounced KLAY-nee; the operation is named after the mathematician Stephen Kleene.] of <span class="math notranslate nohighlight">\(S\)</span>, and
+the <span class="math notranslate nohighlight">\(^*\)</span> operator is called the <strong>Kleene star</strong> operator.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Let <span class="math notranslate nohighlight">\(S = \{01, ba\}\)</span>. Then</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S^0 = \{\varepsilon\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S^1 = \{01, ba\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S^2 = \{0101, 01ba, ba01, baba\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S^3 = \{010101, 0101ba, 01ba01, 01baba, ba0101, ba01ba, baba01, bababa\}\)</span></p></li>
+</ul>
+<p><em>etc</em>., so <span class="math notranslate nohighlight">\(S^* =\{\varepsilon,01,ba,0101,01ba,ba01,baba,010101,0101ba,\ldots\}.\)</span></p>
+<hr class="docutils" />
+<p>Note that this is the second time we have seen the notation <span class="math notranslate nohighlight">\(\textit{something}^*\)</span>. We
+have previously seen that for an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>, <span class="math notranslate nohighlight">\(\Sigma^*\)</span> is defined to be
+the set of all
+strings over <span class="math notranslate nohighlight">\(\Sigma\)</span>. If you think of <span class="math notranslate nohighlight">\(\Sigma\)</span> as being a set of length-1
+strings, and take its Kleene closure, the result is once again the set of all
+strings over <span class="math notranslate nohighlight">\(\Sigma\)</span>, and so the two notions of <span class="math notranslate nohighlight">\(^*\)</span> coincide.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Let <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span>. Then</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Sigma^0 = \{\varepsilon\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma^1 = \{a,b\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma^2 = \{aa, ab, ba, bb\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma^3 = \{aaa, aab, aba, abb, baa, bab, bba, bbb\}\)</span></p></li>
+</ul>
+<p><em>etc</em>., so <span class="math notranslate nohighlight">\(\Sigma^* =\{\varepsilon,a,b,aa,ab,ba,bb,aaa,aab,aba,abb,baa,bab,\ldots\}.\)</span></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(S = \{\varepsilon, ab, abab\}\)</span> and <span class="math notranslate nohighlight">\(T = \{aa, aba, abba, abbba,
+\ldots\}\)</span>. Find the following:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S^3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S^*\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(ST\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(TS\)</span></p></li>
+</ul>
+</li>
+<li><p>The <strong>reverse</strong> of a language <span class="math notranslate nohighlight">\(L\)</span> is defined to be
+<span class="math notranslate nohighlight">\(L^R = \{ x^R \ | \ x \in L\}\)</span>. Find <span class="math notranslate nohighlight">\(S^R\)</span> and <span class="math notranslate nohighlight">\(T^R\)</span> for the <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(T\)</span> in the
+preceding problem.</p></li>
+<li><p>Give an example of a language <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(L=L^*\)</span>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Formal Languages</a>
+    <a class='right-next' id="next-link" href="regexp.html" title="next page">Regular Expressions</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Map and Reduce on Lists &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DPoodle Graphics" href="doodle.html" />
+    <link rel="prev" title="Types in Functional Programming" href="types.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types.html">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle-project.html">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parser-comb.html">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lambda.html">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/map-reduce.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#helper-functions">
+   Helper Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accumulators">
+   Accumulators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tail-recursion">
+   Tail Recursion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="map-and-reduce-on-lists">
+<h1>Map and Reduce on Lists<a class="headerlink" href="#map-and-reduce-on-lists" title="Permalink to this headline">¶</a></h1>
+<p>Two of the most fundamental operations on lists are <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">reduce</span></code>.
+In an extended form,[^Google’s MapReduce is actually expressed in terms of collections of values paired with <em>keys</em> that are used to distribute and collect related data; the simplification here is that we are essentially giving every value the same key, so the summary produced by <code class="docutils literal notranslate"><span class="pre">reduce</span></code> will be a single item.] they are the basis of one of the big success stories of functional programming: Google’s <a class="reference external" href="http://static.googleusercontent.com/media/research.google.com/es/us/archive/mapreduce-osdi04.pdf">MapReduce</a> framework.
+The idea is fairly simple: given a huge amount of data (say, the result of crawling the web) stored across a large distributed cluster of servers, many jobs can be broken into two steps:</p>
+<ul class="simple">
+<li><p><strong>Map</strong>: apply some function uniformly across all of the pieces of data, running in parallel on all of the machines in the cluster;</p></li>
+<li><p><strong>Reduce</strong>: collect up the results of the map phase into some sort of summary by applying a function that combines several results into one; this can first be done locally on each machine, and then spread to combine results from larger and larger groups of machines until the entire cluster has been summarized.</p></li>
+</ul>
+<p>For example, the map operation might extract keywords from web pages, while the reduce operation might produce a table counting the occurrences of each keyword.
+Engineers at Google recognized that many of their tasks fit this model, and they could save a huge amount of effort by writing a framework to do all of the distributed processing, with associated optimizations and error handling, just once; all that needed to be supplied for any given use of the framework was two (pure) functions: the function to be mapped and the function to perform the reduction.</p>
+<p>Here is what the <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">reduce</span></code>[^This version of reduce is also known as a <strong>left fold</strong> because it repeatedly folds up the list into a result, working from left to right.] operations look like on lists:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">map</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">f</span><span class="ow">,</span> <span class="n">data</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">data</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="bp">[]</span>
+  <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="ow">[</span><span class="n">f</span><span class="ow">(</span><span class="n">head</span><span class="ow">),</span> <span class="ow">...</span><span class="n">map</span><span class="ow">(</span><span class="n">f</span><span class="ow">,</span> <span class="n">tail</span><span class="ow">)]</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">reduce</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">g</span><span class="ow">,</span> <span class="n">init</span><span class="ow">,</span> <span class="n">data</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">data</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="n">init</span>
+  <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="n">reduce</span><span class="ow">(</span><span class="n">g</span><span class="ow">,</span> <span class="n">g</span><span class="ow">(</span><span class="n">init</span><span class="ow">,</span> <span class="n">head</span><span class="ow">),</span> <span class="n">tail</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">map</span><span class="ow">(</span><span class="n">n</span> <span class="ow">=&gt;</span> <span class="mi">2</span> <span class="ow">*</span> <span class="n">n</span><span class="ow">,</span> <span class="ow">[</span><span class="mi">1</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">]);</span>
+<span class="n">reduce</span><span class="ow">((</span><span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">a</span> <span class="ow">+</span> <span class="n">b</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">,</span> <span class="ow">[</span><span class="mi">1</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">]);</span>
+</pre></div>
+</div>
+<p>Given functions <code class="docutils literal notranslate"><span class="pre">f</span></code> and <code class="docutils literal notranslate"><span class="pre">g</span></code> and a list <code class="docutils literal notranslate"><span class="pre">xs</span> <span class="pre">=</span> <span class="pre">[x1,</span> <span class="pre">x2,</span> <span class="pre">...,</span> <span class="pre">xn]</span></code>:</p>
+<ul class="simple">
+<li><p>the action of <code class="docutils literal notranslate"><span class="pre">map(f,</span> <span class="pre">xs)</span></code> is to produce <code class="docutils literal notranslate"><span class="pre">[f(x1),</span> <span class="pre">f(x2),</span> <span class="pre">...,</span> <span class="pre">f(xn)]</span></code>, and</p></li>
+<li><p>the action of <code class="docutils literal notranslate"><span class="pre">reduce(g,</span> <span class="pre">init,</span> <span class="pre">xs)</span></code> is to produce <code class="docutils literal notranslate"><span class="pre">g(...g(g(init,</span> <span class="pre">x1),</span> <span class="pre">x2)...,</span> <span class="pre">xn)</span></code>.</p></li>
+</ul>
+<p>The code shows two simple examples of using <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">reduce</span></code>.
+The first maps the function <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=&gt;</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">n</span></code> over the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, which returns a list where each element has been doubled.
+The second reduces the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> by starting with an initial result of 0.
+The reduction function is <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span> <span class="pre">=&gt;</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>, which says to take the previous result (<code class="docutils literal notranslate"><span class="pre">a</span></code>) and add the next item from the list (<code class="docutils literal notranslate"><span class="pre">b</span></code>).
+At the end of the reduction, the result is the sum of all the numbers in the list.</p>
+<div class="section" id="helper-functions">
+<h2>Helper Functions<a class="headerlink" href="#helper-functions" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes a direct recursive solution to a problem doesn’t quite work.
+For example, suppose we want to convert a list of words into a single string with commas between each word.
+If we try to do this as a reduce operation, the result is close but not correct:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">reduce</span><span class="ow">((</span><span class="n">s</span><span class="ow">,</span> <span class="n">w</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">s</span> <span class="ow">++</span> <span class="s2">&quot;, &quot;</span> <span class="ow">++</span> <span class="n">w</span><span class="ow">,</span> <span class="s2">&quot;&quot;</span><span class="ow">,</span> <span class="ow">[</span><span class="s2">&quot;hello&quot;</span><span class="ow">,</span> <span class="s2">&quot;world&quot;</span><span class="ow">]);</span>
+</pre></div>
+</div>
+<p>The problem is that the initial task is not quite the same as the smaller subtask that is left after we handle one element of the list.
+Every word <em>except</em> the first needs to be preceded by a comma.[^Equivalently, every word except the <em>last</em> needs to be followed by a comma; this observation suggests that another solution is to handle single-word lists as separate base case.]
+One way to fix this is to split the task into an initial function that handles the special cases to get things going, plus a helper function (often called <code class="docutils literal notranslate"><span class="pre">aux</span></code> and defined locally in the body of the main function) that does the recursive work.
+Here is a solution to the “comma-separated string” problem using a helper function:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">string_of_list</span> <span class="ow">=</span> <span class="n">words</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="n">words</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">words</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="s2">&quot;&quot;</span>
+    <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="s2">&quot;, &quot;</span> <span class="ow">++</span> <span class="n">head</span> <span class="ow">++</span> <span class="n">aux</span><span class="ow">(</span><span class="n">tail</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">words</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="s2">&quot;&quot;</span>
+  <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="n">head</span> <span class="ow">++</span> <span class="n">aux</span><span class="ow">(</span><span class="n">tail</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">string_of_list</span><span class="ow">([</span><span class="s2">&quot;hello&quot;</span><span class="ow">,</span> <span class="s2">&quot;world&quot;</span><span class="ow">]);</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">aux</span></code> function here could have just been an application of <code class="docutils literal notranslate"><span class="pre">reduce</span></code> as initially tried above (because we actually <em>do</em> want a comma in front of each word at this point), but we are writing it as its own function to show the pattern.</p>
+</div>
+<div class="section" id="accumulators">
+<h2>Accumulators<a class="headerlink" href="#accumulators" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="tail-recursion">
+<h2>Tail Recursion<a class="headerlink" href="#tail-recursion" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Use a combination of <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">reduce</span></code> to define a function that will compute the length of a vector, given as a list of floats.
+The length of the vector <span class="math notranslate nohighlight">\([x_1, x_2, \ldots, x_n]\)</span> is <span class="math notranslate nohighlight">\(\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}\)</span>.
+The square root function in ReasonML is <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">length([3.0,</span> <span class="pre">4.0,</span> <span class="pre">12.0])</span></code> should be <code class="docutils literal notranslate"><span class="pre">13.0</span></code>.</p></li>
+<li><p>Define a version of <code class="docutils literal notranslate"><span class="pre">reduce</span></code> that folds up the result <em>from the right</em>.
+That is, <code class="docutils literal notranslate"><span class="pre">reduceRight(g,</span> <span class="pre">init,</span> <span class="pre">xs)</span></code> should compute <code class="docutils literal notranslate"><span class="pre">g(x1,</span> <span class="pre">g(x2,</span> <span class="pre">...g(xn,</span> <span class="pre">init)...))</span></code>.</p></li>
+<li><p>Given the function <code class="docutils literal notranslate"><span class="pre">cons</span></code> such that <code class="docutils literal notranslate"><span class="pre">cons(head,</span> <span class="pre">tail)</span></code> is <code class="docutils literal notranslate"><span class="pre">[head,</span> <span class="pre">...tail]</span></code>, what is the result of <code class="docutils literal notranslate"><span class="pre">reduceRight(cons,</span> <span class="pre">[],</span> <span class="pre">xs)</span></code>? What is the result of <code class="docutils literal notranslate"><span class="pre">reduce(cons,</span> <span class="pre">[],</span> <span class="pre">xs)</span></code>?</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="types.html" title="previous page">Types in Functional Programming</a>
+    <a class='right-next' id="next-link" href="doodle.html" title="next page">DPoodle Graphics</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

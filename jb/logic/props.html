@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Propositional Logic &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Boolean Algebra" href="boolean.html" />
+    <link rel="prev" title="Logic" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/props.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#propositions">
+   Propositions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operators-and-or-not">
+   Operators: And, Or, Not
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precedence-and-associativity">
+     Precedence and Associativity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#truth-tables">
+     Truth Tables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-operators">
+   Other Operators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implication">
+     Implication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biconditional">
+     Biconditional
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exclusive-or">
+     Exclusive Or
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functional-completeness-of-and-or-not">
+   Functional Completeness of And, Or, Not
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tautologies-and-contradictions">
+   Tautologies and Contradictions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="propositional-logic">
+<h1>Propositional Logic<a class="headerlink" href="#propositional-logic" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<div class="section" id="propositions">
+<h2>Propositions<a class="headerlink" href="#propositions" title="Permalink to this headline">¶</a></h2>
+<p>A proposition is a statement which is either true or false.
+In propositional logic, we take propositions as basic and
+see what we can do with them. Since this is mathematics, we
+need to be able to talk about propositions without saying
+which particular propositions we are talking about, so we
+use symbolic names to represent them. We will always use
+lowercase letters such as <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span> to represent
+propositions. A letter used in this way is called a
+<strong>propositional variable</strong>. Remember that when I say
+something like “Let <span class="math notranslate nohighlight">\(p\)</span> be a proposition,” I mean “For the rest of
+this discussion, let the symbol <span class="math notranslate nohighlight">\(p\)</span> stand for some particular
+statement, which is either true or false (although I am not
+at the moment making any assumption about which it is).”
+The discussion has <strong>mathematical generality</strong> in that
+<span class="math notranslate nohighlight">\(p\)</span> can represent any statement, and the discussion will be
+valid no matter which statement it represents.</p>
+</div>
+<div class="section" id="operators-and-or-not">
+<h2>Operators: And, Or, Not<a class="headerlink" href="#operators-and-or-not" title="Permalink to this headline">¶</a></h2>
+<p>What we do with propositions is combine them with
+<strong>logical operators</strong>. A logical operator can be
+applied to one or more propositions to produce a new proposition.
+The truth value of the new proposition is completely determined
+by the operator and by the truth values of the propositions
+to which it is applied.[^It is not always true that the truth value
+of a sentence can be determined from the truth values of its component
+parts. For example, if <span class="math notranslate nohighlight">\(p\)</span> is a proposition, then “Sarah Palin believes
+<span class="math notranslate nohighlight">\(p\)</span>” is also a proposition, so “Sarah Palin believes” is some kind of
+operator. However, it does not count as a <em>logical</em> operator because
+just from knowing whether or not <span class="math notranslate nohighlight">\(p\)</span> is true, we get no information at
+all about whether “Sarah Palin believes <span class="math notranslate nohighlight">\(p\)</span>” is true.]
+In English, logical operators are represented by words such
+as “and,” “or,” and “not.” For example, the
+proposition “I wanted to leave and I left” is formed from
+two simpler propositions joined by the word “and.” Adding
+the word “not” to the proposition “I left” gives
+“I did not leave” (after a bit of necessary grammatical adjustment).</p>
+<p>But English is a little too rich for mathematical logic.
+When you read the sentence “I wanted to leave and I left,”
+you probably see a connotation of causality: I left <em>because</em>
+I wanted to leave. This implication does not follow from the
+logical combination of the truth values of the two propositions
+“I wanted to leave” and “I left.” Or consider the
+proposition “I wanted to leave but I did not leave.”
+Here, the word “but” has the same <em>logical</em> meaning
+as the word “and,” but the connotation is very different.
+So, in mathematical logic, we use <em>symbols</em> to represent
+logical operators. These symbols do not carry any connotation
+beyond their defined logical meaning. The logical operators
+corresponding to the English words “and,” “or,” and “not”
+are <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>.</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> be propositions. Then <span class="math notranslate nohighlight">\(p\lor q\)</span>, <span class="math notranslate nohighlight">\(p \land q\)</span>, and
+<span class="math notranslate nohighlight">\(\lnot p\)</span> are propositions, whose truth values are given by the
+rules:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p\land q\)</span> is true when both <span class="math notranslate nohighlight">\(p\)</span> is true and <span class="math notranslate nohighlight">\(q\)</span> is true, and in
+no other case.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\lor q\)</span> is true when either <span class="math notranslate nohighlight">\(p\)</span> is true, or <span class="math notranslate nohighlight">\(q\)</span> is true, or both
+<span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> are true, and in no other case.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot p\)</span> is true when <span class="math notranslate nohighlight">\(p\)</span> is false, and in no other case.</p></li>
+</ul>
+<p>The operators <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span> are referred to as <strong>conjunction</strong>,
+<strong>disjunction</strong>, and <strong>negation</strong>, respectively.
+(Note that <span class="math notranslate nohighlight">\(p\land q\)</span> is read as “<span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>,” <span class="math notranslate nohighlight">\(p\lor q\)</span> is read
+as “<span class="math notranslate nohighlight">\(p\)</span> or <span class="math notranslate nohighlight">\(q\)</span>,” and <span class="math notranslate nohighlight">\(\lnot p\)</span> is read as “not <span class="math notranslate nohighlight">\(p\)</span>.”)</p>
+</div></blockquote>
+<div class="section" id="precedence-and-associativity">
+<h3>Precedence and Associativity<a class="headerlink" href="#precedence-and-associativity" title="Permalink to this headline">¶</a></h3>
+<p>These operators can be used in more complicated expressions,
+such as <span class="math notranslate nohighlight">\(p\land(\lnot q)\)</span> or <span class="math notranslate nohighlight">\((p\lor q)\land(q\lor r)\)</span>. A
+proposition made up of simpler propositions and logical operators
+is called a <strong>compound proposition</strong>. Parentheses can be used
+in compound expressions to indicate the order in which the
+operators are to be evaluated. In the absence of parentheses,
+the order of evaluation is determined by <strong>precedence rules</strong>.
+For the logical operators defined above, the rules are that
+<span class="math notranslate nohighlight">\(\lnot\)</span> has higher precedence that <span class="math notranslate nohighlight">\(\land\)</span>, and <span class="math notranslate nohighlight">\(\land\)</span> has precedence
+over <span class="math notranslate nohighlight">\(\lor\)</span>. This means that in the absence of parentheses,
+any <span class="math notranslate nohighlight">\(\lnot\)</span> operators are evaluated first, followed by any
+<span class="math notranslate nohighlight">\(\land\)</span> operators, followed by any <span class="math notranslate nohighlight">\(\lor\)</span> operators.</p>
+<p>For example, the expression <span class="math notranslate nohighlight">\(\lnot p \lor q \land r\)</span> is
+equivalent to the expression <span class="math notranslate nohighlight">\((\lnot p)\lor (q\land r)\)</span>,
+while <span class="math notranslate nohighlight">\(p\lor q \land q \lor r\)</span> is equivalent to
+<span class="math notranslate nohighlight">\(p \lor (q \land q) \lor r\)</span>. As a practical matter, when you make
+up your own expressions, it is usually better to put in parentheses
+to make your meaning clear. Remember that even if you leave out
+parentheses, your expression has an unambiguous meaning.
+If you say “<span class="math notranslate nohighlight">\(\lnot p \land q\)</span>” when what you meant was
+“<span class="math notranslate nohighlight">\(\lnot (p\land q)\)</span>,” you’ve got it wrong!</p>
+<p>This still leaves open the question of which of the <span class="math notranslate nohighlight">\(\land\)</span> operators
+in the expression <span class="math notranslate nohighlight">\(p\land q \land r\)</span> is evaluated first.
+This is settled by the following rule: When several operators
+of equal precedence occur in the absence of parentheses, they
+are evaluated from left to right. Thus, the expression
+<span class="math notranslate nohighlight">\(p\land q\land r\)</span> is equivalent to <span class="math notranslate nohighlight">\((p\land q)\land r\)</span>
+rather than to <span class="math notranslate nohighlight">\(p\land(q\land r)\)</span>.
+In this particular case, as a matter of fact, it doesn’t really matter
+which <span class="math notranslate nohighlight">\(\land\)</span> operator is evaluated first, since
+the two compound propositions <span class="math notranslate nohighlight">\((p\land q)\land r\)</span> and
+<span class="math notranslate nohighlight">\(p\land (q\land r)\)</span> always have the same value,
+no matter what logical values the component propositions <span class="math notranslate nohighlight">\(p\)</span>,
+<span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span> have. We say that <span class="math notranslate nohighlight">\(\land\)</span> is an
+<strong>associative</strong> operation. We’ll see more about associativity
+and other properties of operations in the next section.</p>
+</div>
+<div class="section" id="truth-tables">
+<h3>Truth Tables<a class="headerlink" href="#truth-tables" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we want to verify that, in fact, <span class="math notranslate nohighlight">\((p\land q)\land r\)</span> and
+<span class="math notranslate nohighlight">\(p\land (q\land r)\)</span> do always have the same value. To do so,
+we have to consider all possible combinations of values
+of <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span>, and check that for all such combinations,
+the two compound expressions do indeed have the same value.
+It is convenient to organize this computation into a
+truth table. A <strong>truth table</strong> is a table that shows the
+value of one or more compound propositions for each possible
+combination of values of the propositional variables that they contain.
+Shown below is a truth table that compares the
+value of <span class="math notranslate nohighlight">\((p\land q)\land r\)</span> to the value of <span class="math notranslate nohighlight">\(p\land (q\land r)\)</span>
+for all possible values of <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span>. There are
+eight rows in the table because there are exactly eight different
+ways in which truth values can be assigned to <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and
+<span class="math notranslate nohighlight">\(r\)</span>.[^In general, if there are <span class="math notranslate nohighlight">\(n\)</span> variables, then there are <span class="math notranslate nohighlight">\(2^n\)</span>
+different ways to assign truth values to the variables. This might
+become clear to you if you try to come up with a scheme for
+systematically listing all possible sets of values. If not, you’ll
+find a rigorous proof of the fact later in this chapter.] In this
+table, we see that the last two columns, representing the values of
+<span class="math notranslate nohighlight">\((p\land q)\land r\)</span> and <span class="math notranslate nohighlight">\(p\land (q\land r)\)</span>, are
+identical.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(r\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\land q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(q\land r\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\((p\land q)\land r\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\land (q\land r)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<p>More generally, we say that two compound propositions are
+<strong>logically equivalent</strong> if they always have the same value,
+no matter what truth values are assigned to the propositional
+variables that they contain. If the number of propositional
+variables is small, it is easy to use a truth table to check
+whether or not two propositions are logically equivalent.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="other-operators">
+<h2>Other Operators<a class="headerlink" href="#other-operators" title="Permalink to this headline">¶</a></h2>
+<p>There are other logical operators besides <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and
+<span class="math notranslate nohighlight">\(\lnot\)</span>. We will consider the <strong>conditional
+operator</strong>, <span class="math notranslate nohighlight">\(\rightarrow\)</span>, the <strong>biconditional operator</strong>, <span class="math notranslate nohighlight">\(\leftrightarrow\)</span>,
+and the <strong>exclusive or operator</strong>, <span class="math notranslate nohighlight">\(\oplus\)</span>.[^Note that the symbols used in
+this book for the logical operators are not universal. While <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>,
+and <span class="math notranslate nohighlight">\(\rightarrow\)</span> are fairly standard, <span class="math notranslate nohighlight">\(\lnot\)</span> is often replaced by <span class="math notranslate nohighlight">\(\sim\)</span> and
+<span class="math notranslate nohighlight">\(\leftrightarrow\)</span> is sometimes represented by <span class="math notranslate nohighlight">\(\equiv\)</span> or <span class="math notranslate nohighlight">\(\Leftrightarrow\)</span>.
+There is even less standardization of the exclusive or operator, but that
+operator is generally not so important as the others.] These operators
+can be completely defined by a truth table that shows their
+values for the four possible combinations
+of truth values of <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<blockquote>
+<div><p>For any propositions <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, we define the propositions
+<span class="math notranslate nohighlight">\(p\rightarrow q\)</span>, <span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span>, and <span class="math notranslate nohighlight">\(p\oplus q\)</span> according to the truth table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\rightarrow q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\oplus q\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+</tr>
+</tbody>
+</table>
+<p>When these operators are used in expressions, in the absence of parentheses
+to indicate order of evaluation, we use the following precedence rules:
+The exclusive or operator, <span class="math notranslate nohighlight">\(\oplus\)</span>, has the same precedence as <span class="math notranslate nohighlight">\(\lor\)</span>. The
+conditional operator, <span class="math notranslate nohighlight">\(\rightarrow\)</span>, has lower precedence than
+<span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, <span class="math notranslate nohighlight">\(\lnot\)</span>, and <span class="math notranslate nohighlight">\(\oplus\)</span>, and is therefore evaluated after
+them. Finally, the biconditional operator, <span class="math notranslate nohighlight">\(\leftrightarrow\)</span>, has the lowest
+precedence and is therefore evaluated last. For example,
+the expression “<span class="math notranslate nohighlight">\(p\rightarrow q \land r \leftrightarrow \lnot p \oplus s\)</span>” is evaluated
+as if it were written “<span class="math notranslate nohighlight">\((p\rightarrow (q\land r))\leftrightarrow((\lnot p) \oplus s)\)</span>.”</p>
+</div></blockquote>
+<p>In order to work effectively with the logical operators, you need
+to know more about their meaning and how they relate to ordinary
+English expressions.</p>
+<div class="section" id="implication">
+<h3>Implication<a class="headerlink" href="#implication" title="Permalink to this headline">¶</a></h3>
+<p>The proposition <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is called
+an <strong>implication</strong> or a <strong>conditional</strong>. It is usually
+read as “<span class="math notranslate nohighlight">\(p\)</span> implies <span class="math notranslate nohighlight">\(q\)</span>.”
+In English, <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is often expressed as “if <span class="math notranslate nohighlight">\(p\)</span> then <span class="math notranslate nohighlight">\(q\)</span>.”
+For example, if <span class="math notranslate nohighlight">\(p\)</span> represents the proposition “Bill Gates is poor”
+and <span class="math notranslate nohighlight">\(q\)</span> represents “the moon is made of green cheese,” then <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>
+could be expressed in English as “If Bill Gates is poor,
+then the moon is made of green cheese.” In this example, <span class="math notranslate nohighlight">\(p\)</span> is
+false and <span class="math notranslate nohighlight">\(q\)</span> is also false. Checking the definition of <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>,
+we see that <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is a true statement. Most people would agree
+with this. It’s worth looking at a similar example in more detail.
+Suppose that I assert that “If the Mets are a great team, then
+I’m the king of France.” This statement has the form <span class="math notranslate nohighlight">\(m\rightarrow k\)</span>
+where <span class="math notranslate nohighlight">\(m\)</span> is the proposition “the Mets are a great team” and <span class="math notranslate nohighlight">\(k\)</span>
+is the proposition “I’m the king of France.” Now, demonstrably
+I am not the king of France, so <span class="math notranslate nohighlight">\(k\)</span> is false. Since <span class="math notranslate nohighlight">\(k\)</span> is false,
+the only way for <span class="math notranslate nohighlight">\(m\rightarrow k\)</span> to be true is for <span class="math notranslate nohighlight">\(m\)</span> to be false as well.
+(Check the definition of <span class="math notranslate nohighlight">\(\rightarrow\)</span> in the table!)
+So, by asserting <span class="math notranslate nohighlight">\(m\rightarrow k\)</span>, I am really asserting that the Mets are
+<em>not</em> a great team.</p>
+<p>Or consider the statement, “If the party is on Tuesday, then I’ll
+be there.” What am I trying to say if I assert this statement?
+I am asserting that <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is true, where <span class="math notranslate nohighlight">\(p\)</span> represents “The party
+is on Tuesday” and <span class="math notranslate nohighlight">\(q\)</span> represents “I will be at the party.”
+Suppose that <span class="math notranslate nohighlight">\(p\)</span> is true, that is, the party does in fact take place
+on Tuesday. Checking the definition of <span class="math notranslate nohighlight">\(\rightarrow\)</span>, we see that in the
+only case where <span class="math notranslate nohighlight">\(p\)</span> is true and <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is true, <span class="math notranslate nohighlight">\(q\)</span> is also true.
+So from the truth of “If the party is on Tuesday, then I will be at the party”
+and “The party is in fact on Tuesday,” you can deduce that
+“I will be at the party” is also true. But suppose, on the other
+hand, that the party is actually on Wednesday. Then <span class="math notranslate nohighlight">\(p\)</span> is false.
+When <span class="math notranslate nohighlight">\(p\)</span> is false and <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is true, the definition of <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>
+allows <span class="math notranslate nohighlight">\(q\)</span> to be either true or false. So, in this case, you can’t
+make any deduction about whether or not I will be at the party.
+The statement “If the party is on Tuesday, then I’ll be there”
+doesn’t assert anything about what will happen if the party is on
+some other day than Tuesday.</p>
+<p>The implication <span class="math notranslate nohighlight">\((\lnot q)\rightarrow(\lnot p)\)</span> is called the <strong>contrapositive</strong>
+of <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>. An implication is logically equivalent
+to its contrapositive. The contrapositive of “If this is Tuesday,
+then we are in Belgium” is “If we aren’t in Belgium, then this
+isn’t Tuesday.” These two sentences assert exactly the same
+thing.</p>
+<p>Note that <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is <em>not</em> logically equivalent to
+<span class="math notranslate nohighlight">\(q\rightarrow p\)</span>. The implication <span class="math notranslate nohighlight">\(q\rightarrow p\)</span> is called the
+<strong>converse</strong> of <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>. The converse of “If this is
+Tuesday, then we are in Belgium” is “If we are in Belgium,
+then this is Tuesday.” Note that it is possible for either
+one of these statements to be true while the other is false.
+In English, I might express the fact that both
+statements are true by saying “If this is Tuesday, then we are
+in Belgium, <em>and conversely</em>.” In logic, this would be expressed
+with a proposition of the form <span class="math notranslate nohighlight">\((p\rightarrow q)\land(q\rightarrow p)\)</span>.</p>
+</div>
+<div class="section" id="biconditional">
+<h3>Biconditional<a class="headerlink" href="#biconditional" title="Permalink to this headline">¶</a></h3>
+<p>The biconditional operator is closely related to the
+conditional operator. In fact, <span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span> is logically
+equivalent to <span class="math notranslate nohighlight">\((p\rightarrow q)\land (q\rightarrow p)\)</span>.
+The proposition <span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span> is usually read as “<span class="math notranslate nohighlight">\(p\)</span> if and only if <span class="math notranslate nohighlight">\(q\)</span>.”
+(The “<span class="math notranslate nohighlight">\(p\)</span> if <span class="math notranslate nohighlight">\(q\)</span>” part represents <span class="math notranslate nohighlight">\(q\rightarrow p\)</span>, while “<span class="math notranslate nohighlight">\(p\)</span> only if <span class="math notranslate nohighlight">\(q\)</span>”
+is another way of asserting that <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>.)
+It could also be expressed as “if <span class="math notranslate nohighlight">\(p\)</span> then <span class="math notranslate nohighlight">\(q\)</span>, and conversely.”
+Occasionally in English, “if … then” is used when what is
+really meant is “if and only if.” For example, if a parent tells
+a child, “If you are good, then Santa will bring you toys,”
+the parent probably really means to say “Santa will bring you toys
+if and only if you are good.” (The parent would probably not
+respond well to the child’s perfectly logical plea “But you never said
+what would happen if I wasn’t good!”)</p>
+</div>
+<div class="section" id="exclusive-or">
+<h3>Exclusive Or<a class="headerlink" href="#exclusive-or" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we turn to the exclusive or operator. The English word
+“or” is actually somewhat ambiguous. The two operators <span class="math notranslate nohighlight">\(\oplus\)</span>
+and <span class="math notranslate nohighlight">\(\lor\)</span> express the two possible meanings of this word.
+The proposition <span class="math notranslate nohighlight">\(p\lor q\)</span> can be expressed unambiguously as
+“<span class="math notranslate nohighlight">\(p\)</span> or <span class="math notranslate nohighlight">\(q\)</span>, <em>or both</em>,” while <span class="math notranslate nohighlight">\(p\oplus q\)</span> stands for
+“<span class="math notranslate nohighlight">\(p\)</span> or <span class="math notranslate nohighlight">\(q\)</span>, <em>but not both</em>.” If a menu says that you can
+choose soup or salad, it doesn’t mean that you can have both. In
+this case, “or” is an exclusive or. On the other hand, in
+“You are at risk of heart disease if you smoke or drink,” the
+or is inclusive since you certainly don’t get off the hook if you
+both smoke and drink. In mathematics, the word “or” is always
+taken in the inclusive sense of <span class="math notranslate nohighlight">\(p\lor q\)</span>.</p>
+</div>
+</div>
+<div class="section" id="functional-completeness-of-and-or-not">
+<span id="id1"></span><h2>Functional Completeness of And, Or, Not<a class="headerlink" href="#functional-completeness-of-and-or-not" title="Permalink to this headline">¶</a></h2>
+<p>Now, any compound proposition that uses any of the operators
+<span class="math notranslate nohighlight">\(\rightarrow\)</span>, <span class="math notranslate nohighlight">\(\leftrightarrow\)</span>, and <span class="math notranslate nohighlight">\(\oplus\)</span> can be rewritten as a logically
+equivalent proposition that uses only <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>.
+It is easy to check that <span class="math notranslate nohighlight">\(p\rightarrow q\)</span> is logically equivalent
+to <span class="math notranslate nohighlight">\(\lnot p\lor q\)</span>. (Just make a truth table for <span class="math notranslate nohighlight">\(\lnot p\lor q\)</span>.)
+Similarly, <span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span> can be expressed as
+<span class="math notranslate nohighlight">\((\lnot p \lor q)\land (\lnot q\lor p)\)</span>, while <span class="math notranslate nohighlight">\(p\oplus q\)</span> is the same as
+<span class="math notranslate nohighlight">\((p\lor q)\land\lnot(p\land q)\)</span>.
+So, in a strict logical sense, <span class="math notranslate nohighlight">\(\rightarrow\)</span>, <span class="math notranslate nohighlight">\(\leftrightarrow\)</span>, and <span class="math notranslate nohighlight">\(\oplus\)</span> are
+unnecessary. (Nevertheless, they are useful and important, and
+we won’t give them up.)</p>
+<p>Even more is true: In a strict logical sense, we could do without
+the conjunction operator <span class="math notranslate nohighlight">\(\land\)</span>. It’s easy to check that
+<span class="math notranslate nohighlight">\(p\land q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\lnot(\lnot p\lor\lnot q)\)</span>,
+so any expression that uses <span class="math notranslate nohighlight">\(\land\)</span> can be rewritten as one that
+uses only <span class="math notranslate nohighlight">\(\lnot\)</span> and <span class="math notranslate nohighlight">\(\lor\)</span>. Alternatively, we could do without
+<span class="math notranslate nohighlight">\(\lor\)</span> and write everything in terms of <span class="math notranslate nohighlight">\(\lnot\)</span> and <span class="math notranslate nohighlight">\(\land\)</span>.</p>
+</div>
+<div class="section" id="tautologies-and-contradictions">
+<h2>Tautologies and Contradictions<a class="headerlink" href="#tautologies-and-contradictions" title="Permalink to this headline">¶</a></h2>
+<p>Certain types of proposition will play a special role in our
+further work with logic. In particular, we define tautologies
+and contradictions as follows:</p>
+<blockquote>
+<div><p>A compound proposition is said to be a <strong>tautology</strong> if and only if
+it is <em>true</em> for all possible combinations of truth values of
+the propositional variables which it contains.
+A compound proposition is said to be a <strong>contradiction</strong> if and only if
+it is <em>false</em> for all possible combinations of truth values of
+the propositional variables which it contains.</p>
+</div></blockquote>
+<p>For example, the proposition <span class="math notranslate nohighlight">\(((p\lor q)\land \lnot q)\rightarrow p\)</span> is a tautology.
+This can be checked with a truth table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\lor q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\lnot q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\((p\lor q)\land\lnot q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(((p\lor q)\land\lnot q)\rightarrow p\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>true</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>false</p></td>
+<td class="text-align:center"><p>true</p></td>
+</tr>
+</tbody>
+</table>
+<p>The fact that all entries in the last column are true tells us that
+this expression is a tautology. Note that for any compound proposition
+<span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(P\)</span> is a tautology if and only if <span class="math notranslate nohighlight">\(\lnot P\)</span> is a contradiction.
+(Here and in the future, I use uppercase letters to represent
+compound propositions. <span class="math notranslate nohighlight">\(P\)</span> stands for any formula made up of
+simple propositions, propositional variables, and logical operators.)
+Logical equivalence can be defined in terms of tautology:</p>
+<blockquote>
+<div><p>Two compound propositions, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, are said to be <strong>logically equivalent</strong> if
+and only if the proposition <span class="math notranslate nohighlight">\(P\leftrightarrow Q\)</span> is a tautology.</p>
+</div></blockquote>
+<p>The assertion that <span class="math notranslate nohighlight">\(P\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(Q\)</span> will
+be expressed symbolically as “<span class="math notranslate nohighlight">\(P\equiv Q\)</span>.” For example,
+<span class="math notranslate nohighlight">\((p\rightarrow q)\equiv(\lnot p\lor q)\)</span>,
+and <span class="math notranslate nohighlight">\(p\oplus q\equiv (p\lor q)\land\lnot(p\land q)\)</span>.</p>
+</div>
+<div class="section" id="exercises">
+<span id="props-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Give the three truth tables that define the logical operators
+<span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>.</p></li>
+<li><p>Insert parentheses into the following compound propositions to show
+the order in which the operators are evaluated:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot p \lor q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p\land q \lor \lnot p\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p\lor q \land r\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p \land \lnot q \lor r\)</span></p></li>
+</ul>
+</li>
+<li><p>List the 16 possible combinations of truth values for
+the four propositional variables <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, <span class="math notranslate nohighlight">\(r\)</span>. Try to find
+a systematic way to list the values. (Hint: Start with the
+eight combinations of values for <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span>, as given in
+the truth table <a class="reference external" href="#truth-tables">above</a>.) Now, explain why there
+are 32 possible combinations of values for five variables, and
+describe how they could be listed systematically.</p></li>
+<li><p>Some of the following compound propositions are tautologies,
+some are contradictions, and some are neither. In each case, use a
+truth table to decide to which of these categories the proposition
+belongs:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((p\land (p\rightarrow q))\rightarrow q\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(((p\rightarrow q)\land(q\rightarrow r))\rightarrow (p\rightarrow r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p\land(\lnot p)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((p\lor q)\rightarrow(p\land q)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(p\lor(\lnot p)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((p\land q)\rightarrow(p\lor q)\)</span></p></li>
+</ul>
+</li>
+<li><p>Use truth tables to show that each of the following
+propositions is logically equivalent to <span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((p\rightarrow q)\land (q\rightarrow p)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\lnot p)\leftrightarrow(\lnot q)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((p\rightarrow q)\land((\lnot p)\rightarrow(\lnot q))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot(p\oplus q)\)</span></p></li>
+</ul>
+</li>
+<li><p>Is <span class="math notranslate nohighlight">\(\rightarrow\)</span> an associative operation? That is,
+is <span class="math notranslate nohighlight">\((p\rightarrow q)\rightarrow r\)</span> logically equivalent to
+<span class="math notranslate nohighlight">\(p\rightarrow(q\rightarrow r)\)</span>? Is <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> associative?</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(p\)</span> represent the proposition “You leave” and let
+<span class="math notranslate nohighlight">\(q\)</span> represent the proposition “I leave.” Express the following
+sentences as compound propositions using <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, and show
+that they are logically equivalent:</p>
+<ul class="simple">
+<li><p>Either you leave or I do. (Or both!)</p></li>
+<li><p>If you don’t leave, I will.</p></li>
+</ul>
+</li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(m\)</span> represents the proposition “The Earth moves,”
+<span class="math notranslate nohighlight">\(c\)</span> represents “The Earth is the center of the universe,” and
+<span class="math notranslate nohighlight">\(g\)</span> represents “Galileo was railroaded.” Translate each of the
+following compound propositions into English:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot g\land c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m\rightarrow\lnot c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m\leftrightarrow\lnot c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((m\rightarrow g)\land (c\rightarrow \lnot g)\)</span></p></li>
+</ul>
+</li>
+<li><p>Give the converse and the contrapositive of each of
+the following English sentences:</p>
+<ul class="simple">
+<li><p>If you are good, Santa brings you toys.</p></li>
+<li><p>If the package weighs more than one ounce, then you need extra postage.</p></li>
+<li><p>If I have a choice, I don’t eat eggplant.</p></li>
+</ul>
+</li>
+<li><p>In an ordinary deck of fifty-two playing cards, for how many cards is it true</p>
+<ul class="simple">
+<li><p>that “This card is a ten and this card is a heart”?</p></li>
+<li><p>that “This card is a ten or this card is a heart”?</p></li>
+<li><p>that “If this card is a ten, then this card is a heart”?</p></li>
+<li><p>that “This card is a ten if and only if this card is a heart”?</p></li>
+</ul>
+</li>
+<li><p>Define a logical operator <span class="math notranslate nohighlight">\(\downarrow\)</span> so that <span class="math notranslate nohighlight">\(p\downarrow q\)</span> is logically
+equivalent to <span class="math notranslate nohighlight">\(\lnot(p\lor q)\)</span>. (This operator, known as the <strong>Peirce
+Arrow</strong>,[^Wikipedia helpfully points out that this is not to be confused with
+the Pierce-Arrow automobile; Google, as I was writing this, repeatedly
+insisted on correcting Peirce to Pierce…. Charles Sanders Peirce, pronounced
+“Purse” (1839–1914), was an American scientist and philosopher who wrote
+many influential papers, and many more that would have been influential if they
+had been published during his lifetime. In addition to the functional completeness
+result mentioned here, he helped develop and promote modern logical notation and
+the use of truth tables, and he worked out the foundations of what became
+relational database theory a century later. Arthur Burks, a 1936 DePauw graduate
+who went on to help build ENIAC, credited Peirce with having the idea of building
+an electrical computing machine, based on wiring up switches to perform logical
+operations, fifty years before such a machine was built!]
+is usually referred to as “NOR,” short for “not or”). Show that each of the
+propositions <span class="math notranslate nohighlight">\(\lnot p\)</span>, <span class="math notranslate nohighlight">\(p\land q\)</span>, <span class="math notranslate nohighlight">\(p\lor q\)</span>, <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>,
+<span class="math notranslate nohighlight">\(p\leftrightarrow q\)</span>, and <span class="math notranslate nohighlight">\(p\oplus q\)</span> can be rewritten as a logically
+equivalent proposition that uses <span class="math notranslate nohighlight">\(\downarrow\)</span> as its only operator; we say
+that <span class="math notranslate nohighlight">\(\downarrow\)</span> is a <strong>functionally complete</strong> operator, since it may be
+used to express all of the other operations.</p></li>
+<li><p>Show that the <strong>Sheffer Stroke</strong> operator <span class="math notranslate nohighlight">\(\uparrow\)</span>, defined so that
+<span class="math notranslate nohighlight">\(p\uparrow q\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\lnot(p\land q)\)</span>, is also
+functionally complete.[^Functional completeness is not merely an academic
+curiosity. The NAND and NOR gates are particularly simple to implement in
+silicon (each needs essentially one transistor per input), and building an
+entire circuit out of identical building blocks makes both design and
+fabrication easier. Indeed, the very first computer built from integrated
+circuits was the Apollo Guidance Computer, which used about 5600 three-input
+NOR gates to help Apollo 11 land on the moon.] This operator is also known as
+“NAND,” short for “not and.”</p></li>
+</ol>
+<p>[[spoiler | Answer]]
+| Since <span class="math notranslate nohighlight">\(\lnot p\equiv(p\uparrow p)\)</span> and <span class="math notranslate nohighlight">\((p\land q)\equiv(p\uparrow q)\uparrow(p\uparrow q)\)</span>,
+| and <span class="math notranslate nohighlight">\(\{\lnot,\land\}\)</span> is a functionally complete set, we are done.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Logic</a>
+    <a class='right-next' id="next-link" href="boolean.html" title="next page">Boolean Algebra</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction to Functional Programming &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Types in Functional Programming" href="types.html" />
+    <link rel="prev" title="Functional Programming" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types.html">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle-project.html">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parser-comb.html">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lambda.html">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#partial-and-impure-functions">
+   Partial and Impure Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pure-functional-programming">
+   Pure Functional Programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-class-functions">
+   First-Class Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anonymous-functions">
+   Anonymous functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-functional-programming">
+<h1>Introduction to Functional Programming<a class="headerlink" href="#introduction-to-functional-programming" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>Functions are fundamental in computer programming,
+although not everything in programming that goes by the name of “function”
+is a function according to the mathematical definition.</p>
+<p>In computer programming, a function is a routine that is given
+some data as input and that will calculate and return an
+answer based on that data.  For example, in the Java programming
+language, a function that calculates the cube of an integer
+could be written</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">cube</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In Java, <em>int</em> is a data type.  From the mathematical
+point of view, a data type is a set.  The data type <em>int</em>
+is the set of all integers that can be represented as 32-bit
+binary numbers.  Mathematically, then, <span class="math notranslate nohighlight">\(\textit{int}\subseteq\Z\)</span>.
+(You should get used to the fact that sets and functions can
+have names that consist of more than one character, since
+it’s done all the time in computer programming.)
+The first line of the above function definition,
+“<code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cube(int</span> <span class="pre">n)</span></code>”, says that we are defining
+a function named <em>cube</em> whose range is <em>int</em>
+and whose domain is <em>int</em>.  In the usual notation for
+functions, we would express this as <span class="math notranslate nohighlight">\(\textit{cube}\colon \textit{int}\to\textit{int}\)</span>,
+or possibly as <span class="math notranslate nohighlight">\(\textit{cube}\in{\textit{int}}^{\textit{\small{int}}}\)</span>,
+where <span class="math notranslate nohighlight">\({\textit{int}}^{\textit{\small{int}}}\)</span> is the set of all
+functions that map the set <em>int</em> to the set <em>int</em>.</p>
+<p>The first line of the function, <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cube(int</span> <span class="pre">n)</span></code>, is called
+the <strong>signature</strong> of the function (in some languages, such as C++, it
+is called the <strong>prototype</strong>).  The signature specifies the
+name, the domain, and the range of the function and so carries
+exactly the same information as the notation “<span class="math notranslate nohighlight">\(f\colon A\to B\)</span>”.
+The “<span class="math notranslate nohighlight">\(n\)</span>” in “<code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">cube(int</span> <span class="pre">n)</span></code>” is a name for
+an arbitrary element of the data type <em>int</em>.  In computer
+jargon, <span class="math notranslate nohighlight">\(n\)</span> is called a <strong>parameter</strong> of the function.
+The rest of the definition of <em>cube</em> tells the computer
+to calculate the value of <span class="math notranslate nohighlight">\(\textit{cube}(n)\)</span> for any <span class="math notranslate nohighlight">\(n\in\textit{int}\)</span>
+by multiplying <span class="math notranslate nohighlight">\(n\times n\times n\)</span>.  The statement “<code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">n</span></code>”
+says that <span class="math notranslate nohighlight">\(n\times n\times n\)</span> is the value that is computed, or “returned,”
+by the function.  (The <span class="math notranslate nohighlight">\(*\)</span> stands for multiplication.)</p>
+<p>Java has many data types in addition to <em>int</em>.  There is
+a boolean data type named <em>boolean</em>.  The values of type
+<em>boolean</em> are <em>true</em> and <em>false</em>.  Mathematically,
+<em>boolean</em> is a name for the set <span class="math notranslate nohighlight">\(\{\textit{true},\,\textit{false}\}\)</span>.
+The type <em>double</em> consists of real numbers, which can
+include a decimal point.  Of course, on a computer, it’s not
+possible to represent the entire infinite set of real numbers,
+so <em>double</em> represents some subset of the mathematical set
+of real numbers.  There is also a data type whose values are
+strings of characters, such as “Hello world” or “xyz152QQZ”.
+The name for this data type in Java is <em>String</em>.  All these
+types, and many others, can be used in functions.  For example,
+in Java, <span class="math notranslate nohighlight">\(m\,\%\,n\)</span> is the remainder when the integer <span class="math notranslate nohighlight">\(m\)</span> is
+divided by the integer <span class="math notranslate nohighlight">\(n\)</span>.  We can define a function to test
+whether an integer is even as follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">boolean</span> <span class="nf">even</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">)</span>
+      <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You don’t need to worry about all the details here, but you should
+understand that the signature, <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">even(int</span> <span class="pre">k)</span></code>,
+says that <em>even</em> is a function from the set <em>int</em>
+to the set <em>boolean</em>.  That is,
+<span class="math notranslate nohighlight">\(\textit{even}\colon\textit{int}\to\textit{boolean}\)</span>.  Given
+an integer <span class="math notranslate nohighlight">\(N\)</span>, <span class="math notranslate nohighlight">\(\textit{even}(N)\)</span> has the value <em>true</em>
+if <span class="math notranslate nohighlight">\(N\)</span> is an even integer, and it has the value <em>false</em>
+if <span class="math notranslate nohighlight">\(N\)</span> is an odd integer.</p>
+<p>A function can have more than one parameter.  For example, we might
+define a function with signature <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">index(String</span> <span class="pre">str,</span> <span class="pre">String</span> <span class="pre">sub)</span></code>.
+If <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> are strings, then <span class="math notranslate nohighlight">\(\textit{index}(s,t)\)</span> would be the
+<em>int</em> that is the value of the function at the ordered pair
+<span class="math notranslate nohighlight">\((s,t)\)</span>.  We see that the domain of <em>index</em> is the cross product
+<span class="math notranslate nohighlight">\(\textit{String}\times\textit{String}\)</span>, and we can write
+<span class="math notranslate nohighlight">\(\textit{index}\colon \textit{String}\times\textit{String}\to\textit{int}\)</span>
+or, equivalently, <span class="math notranslate nohighlight">\(\textit{index}\in\textit{int}^{\textit{String}\times\textit{String}}\)</span>.</p>
+<div class="section" id="partial-and-impure-functions">
+<h2>Partial and Impure Functions<a class="headerlink" href="#partial-and-impure-functions" title="Permalink to this headline">¶</a></h2>
+<p>Not every Java function is actually a function in the mathematical
+sense.  In mathematics, a function must associate a single value in
+its range to each value in its domain.  There are two things
+that can go wrong:  The value of the function might not be defined
+for every element of the domain, and the function might associate
+several different values to the same element of the domain.
+Both of these things can happen with Java functions.</p>
+<p>In computer programming, it is very common for a “function” to be
+undefined for some values of its parameter.  In mathematics,
+a <strong>partial function</strong> from a set <span class="math notranslate nohighlight">\(A\)</span> to
+a set <span class="math notranslate nohighlight">\(B\)</span> is defined to be a function from a subset of <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>.
+A partial function from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> can be undefined for some
+elements of <span class="math notranslate nohighlight">\(A\)</span>, but when it is defined for some <span class="math notranslate nohighlight">\(a\in A\)</span>,
+it associates just one element of <span class="math notranslate nohighlight">\(B\)</span> to <span class="math notranslate nohighlight">\(a\)</span>.  Many functions
+in computer programs are actually partial functions.  (When
+dealing with partial functions, an ordinary function, which is
+defined for every element of its domain, is sometimes referred to
+as a <strong>total function</strong>.  Note that—with the mind-boggling
+logic that is typical of mathematicians—a total function is
+a type of partial function, because a set is a subset of itself.)</p>
+<p>It’s also very common for a “function” in a computer program
+to produce a variety of values for the same value of its parameter.
+This most frequently occurs because the function is <strong>impure</strong>—either
+it has a <strong>side-effect</strong> (such as changing the value of a global
+variable) beyond just computing a result, or it relies on a value that
+has been changed as a side-effect of some other part of the program.
+Another way to say that a function is impure is that it depends on a
+<strong>hidden state</strong>—some extra information affecting the result that
+is not provided by the function’s direct inputs.
+A common example is the method in the <em>java.util.Random</em> class with signature
+<code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">nextInt(int</span> <span class="pre">N)</span></code>, which returns a random integer between
+0 and <span class="math notranslate nohighlight">\(N-1\)</span>.  The value of <em>nextInt</em>(5) could be 0, 1, 2, 3, or 4.
+This is not the behavior of a mathematical function! Behind the scenes,
+this function is storing a variable called the “seed”, which is used to
+generate a random value, plus a new value for the seed, each time the
+function is called. Each time the seed changes, the next value to be
+returned is likely to change.</p>
+<p>Even though many functions in computer programs are not really
+mathematical functions, I will continue to refer to them as
+functions in this section.  Mathematicians will just have to stretch
+their definitions a bit to accommodate the realities of computer
+programming.</p>
+</div>
+<div class="section" id="pure-functional-programming">
+<h2>Pure Functional Programming<a class="headerlink" href="#pure-functional-programming" title="Permalink to this headline">¶</a></h2>
+<p>Unlike Java, a typical functional programming language such as Scala,
+Haskell, or ReasonML will actively discourage the use of side-effects
+in functions.[^The most common exception is for functions that send
+output to the console, such as the <code class="docutils literal notranslate"><span class="pre">print_int</span></code> function in ReasonML.
+Being able to track execution and easily display results is very
+useful, and printing a line on the console is a fairly benign
+side-effect—it won’t cause the function to return different
+values for the same arguments. However, printing a result can still
+interfere with algebraic reasoning about a program, because interchanging
+such a function call with its value can affect whether and how many times
+the output is printed.] The benefit of restricting the programmer to
+<strong>pure</strong> functions, that always return the same value for a given
+argument, is that it becomes possible to reason about the behavior
+<strong>algebraically</strong>, freely substituting the returned values in place
+of function calls without having to worry about whether some “hidden state”
+might have changed since the last time the function was called.</p>
+<p>For example, suppose that we have a function that computes the value of
+some polynomial, such as <span class="math notranslate nohighlight">\(f(x)=x^2+2x+1\)</span>. If we know that another function
+<span class="math notranslate nohighlight">\(g\colon\textit{String}\to\textit{int}\)</span> is pure, then we can be sure
+that <span class="math notranslate nohighlight">\(f(g(s))\)</span> is the same as <span class="math notranslate nohighlight">\(g(s)^2+2\cdot g(s)+1\)</span>, as well as
+<span class="math notranslate nohighlight">\((g(s)+1)^2\)</span>. All of these are algebraically equivalent, as long as <span class="math notranslate nohighlight">\(g\)</span>
+is pure. This allows the programmer to reason more easily about the
+correctness of their program, and it also enables the computer to choose
+any equivalent expression for evaluation, ideally choosing the most
+efficient version.</p>
+<p>One of the most common ways that a functional language will encourage
+pure functions is to do away with, or at least severely restrict, the
+ability to update the value assigned to a variable. In ReasonML, there
+is no assignment statement. When a value is bound to a variable with a
+<code class="docutils literal notranslate"><span class="pre">let</span></code> statement, that variable will then remain bound to that value for
+as long as the variable exists. A variable will cease to exist when the
+block (such as a function body) containing it is finished:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="ow">{</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">42</span><span class="ow">;</span>
+  <span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span> <span class="cm">/* prints 42 */</span>
+<span class="ow">}</span>
+<span class="cm">/* x no longer exists here */</span>
+</pre></div>
+</div>
+<p>A variable may be temporarily <strong>shadowed</strong> by another variable with the same
+name. This may look like an assignment of a changed value to a variable,
+but each use of the <code class="docutils literal notranslate"><span class="pre">let</span></code> statement will create a new named location in
+memory; if the shadowing variable goes away, the original one will become
+visible again with its correct value:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">42</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span> <span class="cm">/* prints 42 */</span>
+<span class="ow">{</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">17</span><span class="ow">;</span> <span class="cm">/* shadows earlier definition of x */</span>
+  <span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span> <span class="cm">/* prints 17 */</span>
+<span class="ow">}</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span> <span class="cm">/* prints 42 again */</span>
+</pre></div>
+</div>
+<p>Again, this behavior permits algebraic reasoning about the program. The above
+code is equivalent to</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">42</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="ow">{</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="ow">=</span> <span class="mi">17</span><span class="ow">;</span>
+  <span class="n">print_int</span><span class="ow">(</span><span class="n">y</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="ow">}</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="n">x</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>where we have uniformly renamed the inner variable <em>x</em> as <em>y</em> to make it clear
+that they are distinct variables. It is also equivalent to</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">print_int</span><span class="ow">(</span><span class="mi">42</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="mi">17</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="n">print_int</span><span class="ow">(</span><span class="mi">42</span><span class="ow">);</span> <span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>where we have replaced each use of our identifiers with its value. The output is
+slightly different in this case, because we no longer have the top-level
+binding of 42 to <em>x</em> that would have been available if we wrote additional lines
+at the bottom of the program, but it is equivalent if we just look at the printed
+results.</p>
+</div>
+<div class="section" id="first-class-functions">
+<h2>First-Class Functions<a class="headerlink" href="#first-class-functions" title="Permalink to this headline">¶</a></h2>
+<p>In most programming languages, functions are not first-class
+objects.  That is, a function cannot
+be treated as a data value in the same way as a <em>String</em>
+or an <em>int</em>.  However, recent versions of Java have taken a step in this
+direction.  It is possible for a function to be a parameter
+to another function, as long as it is wrapped in a “function object”.
+For example, consider the function signature</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sumten</span><span class="p">(</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">f</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a signature for a function named <em>sumten</em> whose
+parameter is a function object.  The parameter is specified by the
+type “<code class="docutils literal notranslate"><span class="pre">Function&lt;Integer,</span> <span class="pre">Integer&gt;</span></code>”.  If <em>S</em> and <em>T</em> are types, then
+the type <code class="docutils literal notranslate"><span class="pre">Function&lt;S,</span> <span class="pre">T&gt;</span></code> represents functions from <em>S</em> to <em>T</em>. Therefore,
+the parameter of <em>sumten</em> is essentially a function from <em>int</em> to <em>int</em>.[^For
+our purposes we may ignore the distinction between <em>int</em> and <em>Integer</em> in Java.]
+The parameter name, <span class="math notranslate nohighlight">\(f\)</span>, stands for an arbitrary such function.  Mathematically,
+<span class="math notranslate nohighlight">\(f\in \textit{int}^{\textit{int}}\)</span>, and so
+<span class="math notranslate nohighlight">\(\textit{sumten}\colon \textit{int}^{\textit{int}}\to\textit{int}\)</span>.</p>
+<p>My idea is that <span class="math notranslate nohighlight">\(\textit{sumten}(f)\)</span> would compute
+<span class="math notranslate nohighlight">\(f(1)+f(2)+\cdots+f(10)\)</span>.  A more useful function would
+be able to compute <span class="math notranslate nohighlight">\(f(a)+f(a+1)+\cdots+f(b)\)</span> for any integers
+<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.  This just means that <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> should be
+parameters to the function.  The signature for the improved
+function would look like</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span> <span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The parameters to <em>sum</em> form an ordered triple in which
+the first coordinate is a function and the second and third
+coordinates are integers.  So, we could write
+<span class="math notranslate nohighlight">\($
+\textit{sum}\colon \textit{int}^{\textit{int}}
+       \times\textit{int}\times\textit{int}\to\textit{int}
+$\)</span>
+It’s interesting that computer programmers deal routinely
+with such complex objects.</p>
+<p>There are several ways of providing a function object as an
+argument in Java. If we want to pass the method <em>m</em> of an object
+<em>x</em>, where the signature of <em>m</em> is <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">m(</span> <span class="pre">int</span> <span class="pre">i</span> <span class="pre">)</span></code>, then
+we can call our function as <code class="docutils literal notranslate"><span class="pre">sum(x::m,</span> <span class="pre">a,</span> <span class="pre">b)</span></code>. However, a more
+general technique is to use an <strong>anonymous function</strong>, also known
+as a <strong>lambda</strong>.[^The mathematician Alonzo Church introduced in
+the 1930’s the use of the Greek letter lambda (<span class="math notranslate nohighlight">\(\lambda\)</span>) to indicate an
+otherwise unnamed function defined by a formula. That is, instead
+of writing “the function <span class="math notranslate nohighlight">\(f\)</span> where <span class="math notranslate nohighlight">\(f(x) = \textit{some formula}\)</span>”,
+he wrote “<span class="math notranslate nohighlight">\(\lambda x(\textit{some formula})\)</span>”. When the first
+functional programming language, LISP (invented in the late 1950’s),
+needed a way to create function values, John McCarthy adopted Church’s
+use of lambda, and the name has stuck.]</p>
+</div>
+<div class="section" id="anonymous-functions">
+<h2>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h2>
+<p>In Java, an expression such as <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">-&gt;</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i;</span> <span class="pre">}</span></code>
+creates a function object that takes an <em>int</em> (this will be
+determined from the context) and returns another <em>int</em>. This
+particular function cubes its input. Thus, if we call our <em>sum</em> function as
+follows:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span> <span class="p">},</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>the result will be <span class="math notranslate nohighlight">\(3^3 + 4^3 + 5^3\)</span>,
+which is 216.</p>
+<p>Many languages now support a similar syntax for creating anonymous
+function values, and offer some facility for working with functions
+as (mostly) first-class objects. For example, the same function
+is expressed in ReasonML as <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i</span> <span class="pre">}</span></code>. Since one of the hallmarks of
+the functional languages is their ability to work with function
+values, you can imagine that they tend to provide the most
+thorough integration of functions with other kinds of values.</p>
+<p>Here are complete demos of the <em>sum</em> example, first in Java and
+then in ReasonML:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.function.Function</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SumDemo</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">sum</span><span class="p">(</span><span class="n">Function</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">,</span> <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">total</span> <span class="o">+=</span> <span class="n">f</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">i</span><span class="p">;</span> <span class="p">},</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">sum</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">f</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">a</span> <span class="ow">&gt;</span> <span class="n">b</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="mi">0</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">f</span><span class="ow">(</span><span class="n">a</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">sum</span><span class="ow">(</span><span class="n">f</span><span class="ow">,</span> <span class="n">a</span><span class="ow">+</span><span class="mi">1</span><span class="ow">,</span> <span class="n">b</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">print_int</span><span class="ow">(</span><span class="n">sum</span><span class="ow">(</span><span class="n">i</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">i</span> <span class="ow">*</span> <span class="n">i</span> <span class="ow">*</span> <span class="n">i</span> <span class="ow">},</span> <span class="mi">3</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">));</span>
+<span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>Note that we define the function <em>sum</em> in ReasonML by binding
+a function value to the name <em>sum</em>, just as we can bind other
+types of values to identifiers. The keyword “rec” after the “let”
+indicates that the right-hand side expression is allowed to make
+use of the name that is currently being defined, so that we can
+make our function recursive. Without the “rec”, any use of <em>sum</em>
+in the right-hand expression would refer to an older binding to
+that name.</p>
+<p>As a simpler function definition in ReasonML, not needing the “rec”
+keyword, here is our <em>cube</em> function again:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">cube</span> <span class="ow">=</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">n</span> <span class="ow">*</span> <span class="n">n</span> <span class="ow">*</span> <span class="n">n</span> <span class="ow">};</span>
+</pre></div>
+</div>
+<p>This is just binding the anonymous function we have been using above
+to the name <em>cube</em>. Note that the function <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">}</span></code> is
+exactly the same as the function <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i</span> <span class="pre">*</span> <span class="pre">i</span> <span class="pre">}</span></code>, because the name
+of the parameter does not matter outside the function.</p>
+<p>An interesting fact about ReasonML is that the operators are also functions,
+bound to names made out of operator symbols instead of letters and digits. To
+refer to an operator as a function value, just put the operator in parentheses:
+<code class="docutils literal notranslate"><span class="pre">(+)</span></code>, <code class="docutils literal notranslate"><span class="pre">(*)</span></code>, <code class="docutils literal notranslate"><span class="pre">(==)</span></code>, …. Therefore, an expression such as <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span> <span class="pre">*</span> <span class="pre">c</span></code>
+can also be written as <code class="docutils literal notranslate"><span class="pre">(+)(a,</span> <span class="pre">(*)(b,</span> <span class="pre">c))</span></code> (note that this takes into account
+the usual higher precedence of multiplication over addition).
+For example, if we wanted to define an exponentiation operator on <em>int</em>, and
+call it <code class="docutils literal notranslate"><span class="pre">***</span></code>, we could define it as follows:<a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="ow">(***)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">n</span><span class="ow">,</span> <span class="n">p</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">p</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="mi">1</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="k">if</span> <span class="ow">(</span><span class="n">p</span> <span class="ow">mod</span> <span class="mi">2</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">(</span><span class="n">n</span> <span class="ow">*</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">***</span> <span class="ow">(</span><span class="n">p</span> <span class="o">/</span> <span class="mi">2</span><span class="ow">)</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">n</span> <span class="ow">*</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">***</span> <span class="ow">(</span><span class="n">p</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>It is even possible in functional languages for a function to return
+another function as its value.  For example,</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">monomial</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="n">x</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">a</span> <span class="ow">*</span> <span class="n">x</span> <span class="ow">***</span> <span class="n">n</span> <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">***</span> <span class="pre">n</span></code> is our exponentiation operator from above, which computes <span class="math notranslate nohighlight">\(x^n\)</span>, so for any
+integers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(n\)</span>, the value of <span class="math notranslate nohighlight">\(\textit{monomial}(a,n)\)</span> is
+a function that computes <span class="math notranslate nohighlight">\(ax^n\)</span>.  Thus,</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="ow">=</span> <span class="n">monomial</span><span class="ow">(</span><span class="mi">2</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>would define <span class="math notranslate nohighlight">\(f\)</span> to be the function that satisfies <span class="math notranslate nohighlight">\(f(x)=2x^3\)</span>. This is
+now ready to be handed to our <em>sum</em> function:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">print_int</span><span class="ow">(</span> <span class="n">sum</span><span class="ow">(</span> <span class="n">f</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">,</span> <span class="mi">6</span> <span class="ow">)</span> <span class="ow">);</span>
+</pre></div>
+</div>
+<p>would compute <span class="math notranslate nohighlight">\(2*3^3+2*4^3+2*5^3+2*6^3\)</span>.  In fact, <em>monomial</em>
+can be used to create an unlimited number of new functions
+from scratch.  It is even possible to write <em>monomial</em>(2, 3)(5)
+to indicate the result of applying the function <em>monomial</em>(2, 3)
+to the value 5.  The value represented by <em>monomial</em>(2, 3)(5)
+is <span class="math notranslate nohighlight">\(2*5^3\)</span>, or 250.  This is real functional programming and
+might give you some idea of its power.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>For each of the following Java function signatures, translate the
+signature into a standard mathematical function specification, such
+as <span class="math notranslate nohighlight">\(\textit{func}\colon\textit{double}\to\textit{int}\)</span>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">strlen(String</span> <span class="pre">s)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">pythag(double</span> <span class="pre">x,</span> <span class="pre">double</span> <span class="pre">y)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">round(double</span> <span class="pre">x)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">sub(String</span> <span class="pre">s,</span> <span class="pre">int</span> <span class="pre">n,</span> <span class="pre">int</span> <span class="pre">m)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">unlikely(Function&lt;String,</span> <span class="pre">Integer&gt;</span> <span class="pre">f)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">h(Function&lt;Integer,</span> <span class="pre">Integer&gt;</span> <span class="pre">f,</span> <span class="pre">Function&lt;Integer,</span> <span class="pre">Integer&gt;</span> <span class="pre">g)</span></code></p></li>
+</ul>
+</li>
+<li><p>Write a Java function signature for a function that
+belongs to each of the following sets.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\textit{String}^{\textit{String}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\textit{boolean}^{\textit{double}\times\textit{double}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\textit{double}^{ \textit{int}^{\textit{int}} }\)</span></p></li>
+</ul>
+</li>
+<li><p>It is possible to define new types in Java.  For example, the
+definition</p></li>
+</ol>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Point</span> <span class="p">{</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="n">x</span><span class="p">;</span>
+  <span class="kd">public</span> <span class="kt">double</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>defines a new type named <em>Point</em>.  A value of type <em>Point</em>
+contains two values of type <em>double</em>.  What mathematical operation
+corresponds to the construction of this data type?  Why?</p>
+<ol class="simple">
+<li><p>Let <em>cube</em>, <em>sum</em> and <em>monomial</em>
+be the ReasonML functions described in this section.  What is the
+value of each of the following?</p>
+<ul class="simple">
+<li><p><em>sum</em>(<em>cube</em>, 2, 4)</p></li>
+<li><p><em>sum</em>(<em>monomial</em>(5, 2), 1, 3)</p></li>
+<li><p><em>monomial</em>(<em>cube</em>(2), 7)</p></li>
+<li><p><em>sum</em>(<span class="math notranslate nohighlight">\(n\Rightarrow\{ 2*n \}\)</span>, 1, 5)</p></li>
+<li><p><em>cube</em>(<em>sum</em>(<em>monomial</em>(2, 3), 1, 2))
+}</p></li>
+</ul>
+</li>
+<li><p>Write a ReasonML function named <em>compose</em>
+that computes the composition of two functions.  That
+is, <span class="math notranslate nohighlight">\(\textit{compose}(f, g)\)</span> is <span class="math notranslate nohighlight">\(f\circ g\)</span>, where
+<span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> are functions of one parameter.  Recall that
+<span class="math notranslate nohighlight">\(f\circ g\)</span> is the function defined by <span class="math notranslate nohighlight">\((f\circ g)(x)=f(g(x))\)</span>.</p></li>
+<li><p>Consider the following ReasonML function:</p></li>
+</ol>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">exercise</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="n">m</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">x</span><span class="ow">,</span> <span class="n">y</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">x</span> <span class="ow">-</span> <span class="n">y</span> <span class="ow">};</span>
+  <span class="k">let</span> <span class="n">s</span> <span class="ow">=</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">n</span> <span class="ow">*</span> <span class="n">n</span> <span class="ow">};</span>
+  <span class="k">let</span> <span class="n">c</span> <span class="ow">=</span> <span class="n">m</span><span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">);</span>
+  <span class="k">let</span> <span class="n">d</span> <span class="ow">=</span> <span class="n">m</span><span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">c</span><span class="ow">);</span>
+  <span class="k">let</span> <span class="n">e</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">+</span> <span class="n">d</span><span class="ow">;</span>
+  <span class="n">s</span><span class="ow">(</span><span class="n">d</span><span class="ow">)</span> <span class="ow">-</span> <span class="n">s</span><span class="ow">(</span><span class="n">e</span><span class="ow">)</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>What is the value of <code class="docutils literal notranslate"><span class="pre">exercise(4,</span> <span class="pre">5)</span></code>?</p></li>
+<li><p>What is the value of <code class="docutils literal notranslate"><span class="pre">exercise(12,</span> <span class="pre">13)</span></code>?</p></li>
+<li><p>Use algebraic substitution to evaluate <code class="docutils literal notranslate"><span class="pre">exercise(a,</span> <span class="pre">b)</span></code> in terms of the
+variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+</ul>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>The code here is based on the solution to an exercise in the <a class="reference internal" href="../logic/recursion.html"><span class="doc std std-doc">Recursion</span></a> section.]</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Functional Programming</a>
+    <a class='right-next' id="next-link" href="types.html" title="next page">Types in Functional Programming</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

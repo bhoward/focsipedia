@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Common Circuit Components &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Predicates and Quantifiers" href="preds.html" />
+    <link rel="prev" title="Circuit Simplification" href="simplify.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/components.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adders">
+   Adders
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enabling-input">
+   Enabling Input
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#divide-and-conquer-design">
+   Divide-and-Conquer Design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="common-circuit-components">
+<h1>Common Circuit Components<a class="headerlink" href="#common-circuit-components" title="Permalink to this headline">¶</a></h1>
+<p>Just as a complicated piece of software is never written from scratch entirely
+from the most basic program statements, a complicated hardware design is not
+approached purely at the gate level. Where a programmer will break the task into
+a hierarchy of objects and functions, relying on familiar idioms and existing
+code from program libraries to avoid reinventing the wheel, a hardware designer
+will use a hierarchy of functional blocks, relying on familiar patterns and
+existing libraries of subcircuits.</p>
+<div class="section" id="adders">
+<h2>Adders<a class="headerlink" href="#adders" title="Permalink to this headline">¶</a></h2>
+<p>We have already seen one of these common
+components—<a class="reference external" href="circuits#circuits-as-expression-trees">one of the sample circuits seen earlier</a>
+is known as the <strong>half adder</strong>. Here it is again:</p>
+<p>&lt;img src={useBaseUrl(‘img/HalfAdder.png’)}
+alt=”Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b” className=”centered-figure” /&gt;</p>
+<p>If <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> represent one-bit binary numbers, then <span class="math notranslate nohighlight">\(s\)</span> is their one-bit sum
+and <span class="math notranslate nohighlight">\(c\)</span> is the carry into the next bit. For example, when <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are both
+1, <span class="math notranslate nohighlight">\(s\)</span> is 0 and <span class="math notranslate nohighlight">\(c\)</span> is 1; in binary, this says <span class="math notranslate nohighlight">\(1+1=10\)</span>. We may represent this
+block in a circuit diagram with an appropriately named box:</p>
+<p>&lt;img src={useBaseUrl(‘img/HalfAdderSymbol.png’)}
+alt=”Symbol for a half adder” className=”centered-figure” /&gt;</p>
+<p>It is called a half adder because, when you are adding multiple columns of bits, it only does half the work: it adds the two bits for a column, but it doesn’t add in the carry from the next smaller column. A <strong>full adder</strong> takes three inputs: <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, plus the incoming carry, <span class="math notranslate nohighlight">\(c_\textit{\scriptsize in}\)</span>. The outputs are <span class="math notranslate nohighlight">\(s\)</span>, the sum that stays in the column, plus the outgoing carry to the next column, <span class="math notranslate nohighlight">\(c_\textit{\scriptsize out}\)</span>. We may build a full adder out of two half adders by first adding <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(b\)</span>, then adding <span class="math notranslate nohighlight">\(c_\textit{\scriptsize in}\)</span>; since the highest total in a full adder is three (11), we will never have a carry out of more than one of the half adders, so the resulting <span class="math notranslate nohighlight">\(c_\textit{\scriptsize out}\)</span> is just the \textsc{or} of the two half adder carries. Here is the circuit with its block symbol and its truth table:</p>
+<p>&lt;img src={useBaseUrl(‘img/FullAdder.png’)}
+alt=”Circuit diagram for a full adder” className=”centered-figure” /&gt;</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{ccl|rc}
+a &amp; b &amp; c_\textit{\scriptsize in} &amp; c_\textit{\scriptsize out} &amp; s\\ \hline
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1
+\end{array} \end{split}\]</div>
+<p>Given a full adder, we may construct multiple-bit adders by <strong>cascading</strong> them,
+with the carry from each column feeding into the next. Here, for example, is a
+four-bit adder; the inputs are <span class="math notranslate nohighlight">\(a_3a_2a_1a_0\)</span> and <span class="math notranslate nohighlight">\(b_3b_2b_1b_0\)</span>, plus an
+incoming carry <span class="math notranslate nohighlight">\(c_\textit{\scriptsize in}\)</span> to column 0 (the one’s column), and
+the outputs are <span class="math notranslate nohighlight">\(s_3s_2s_1s_0\)</span>, plus a carry from column 3 (the eight’s column),
+<span class="math notranslate nohighlight">\(c_\textit{\scriptsize out}\)</span>:</p>
+<p>&lt;img src={useBaseUrl(‘img/4BitAdder.png’)}
+alt=”Circuit diagram for a four-bit adder” className=”centered-figure” /&gt;</p>
+<p>One of the exercises below explores whether this is a good design.</p>
+</div>
+<div class="section" id="enabling-input">
+<h2>Enabling Input<a class="headerlink" href="#enabling-input" title="Permalink to this headline">¶</a></h2>
+<p>A common pattern in logic circuits is to use the AND gate to “enable” (or
+disable) some signal. For example, in the half adder, the sum output, <span class="math notranslate nohighlight">\(s\)</span>, is
+true when one of the inputs is true (<span class="math notranslate nohighlight">\(a+b\)</span>), except it is disabled when there is
+a carry (both are true, <span class="math notranslate nohighlight">\(a\land b\)</span>). For another example, suppose we have a
+circuit which is supposed to compute one of two functions, either <span class="math notranslate nohighlight">\(f\)</span> or <span class="math notranslate nohighlight">\(g\)</span>,
+depending on a “select” input; the circuit might look like this:</p>
+<p>&lt;img src={useBaseUrl(‘img/ForG.png’)}
+alt=”Circuit diagram selecting the output of one of two subcircuits” className=”centered-figure” /&gt;</p>
+<p>When <em>select</em> is 0, the output is computed by <span class="math notranslate nohighlight">\(f\)</span>; when it is 1, the output is computed by <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>The idea of selecting from two signals may be generalized to using a <span class="math notranslate nohighlight">\(k\)</span>-bit
+input to select from one of up to <span class="math notranslate nohighlight">\(2^k\)</span> signals; the result is known as a
+<strong>multiplexer</strong> (often abbreviated MUX). For example, with two select lines,
+<span class="math notranslate nohighlight">\(s_1s_0\)</span>, you can choose one of four inputs: <span class="math notranslate nohighlight">\(a_{00}\)</span>, <span class="math notranslate nohighlight">\(a_{01}\)</span>, <span class="math notranslate nohighlight">\(a_{10}\)</span>, or
+<span class="math notranslate nohighlight">\(a_{11}\)</span>. Each input is enabled by an appropriate combination of the select
+lines and their complements, then all four possibilities (of which at most one
+may be true) are combined with OR. Here is the circuit and its common
+symbol:</p>
+<p>&lt;img src={useBaseUrl(‘img/MUX.png’)}
+alt=”Circuit diagram and symbol for a multiplexer” className=”centered-figure” /&gt;</p>
+<p>Note the similarity of the multiplexer circuit to the layers of the
+sum-of-products circuit from the <a class="reference internal" href="simplify.html"><span class="doc std std-doc">Circuit Simplification</span></a> section. If
+we view the input lines <span class="math notranslate nohighlight">\(a_{ij}\)</span> as the enabling inputs, then a multiplexer
+gives a direct way of implementing a truth table: hard-wire the input lines to 0
+or 1 according to the corresponding entries in the truth table, then use the
+select lines to choose the desired row to send to the output. For example, if
+<span class="math notranslate nohighlight">\(a_{01}\)</span> and <span class="math notranslate nohighlight">\(a_{10}\)</span> are both tied to 1, while <span class="math notranslate nohighlight">\(a_{00}\)</span> and <span class="math notranslate nohighlight">\(a_{11}\)</span> are 0,
+then the output of the multiplexer will be the exclusive-OR of <span class="math notranslate nohighlight">\(s_1\)</span> and <span class="math notranslate nohighlight">\(s_0\)</span>.</p>
+<p>The opposite of a multiplexer is a <strong>demultiplexer</strong> (DEMUX). It takes one input
+signal plus <span class="math notranslate nohighlight">\(k\)</span> select lines, and delivers the input signal to one of <span class="math notranslate nohighlight">\(2^k\)</span>
+output lines. A special case is known as a <strong>(<span class="math notranslate nohighlight">\(k\)</span>-bit) decoder</strong>: if the input
+signal is fixed at 1, then the decoder will send a 1 to exactly one of its
+output lines. Alternately, a demultiplexer can be viewed as a decoder with an
+“enable” input, where the selected output line will be 1 only if the enabling
+input signal is 1. Here is the common symbol for a four-line demultiplexer:</p>
+<p>&lt;img src={useBaseUrl(‘img/DEMUX.png’)}
+alt=”Circuit symbol for a multiplexer” className=”centered-figure” /&gt;</p>
+<p>The implementation of this circuit is left as an exercise.</p>
+</div>
+<div class="section" id="divide-and-conquer-design">
+<h2>Divide-and-Conquer Design<a class="headerlink" href="#divide-and-conquer-design" title="Permalink to this headline">¶</a></h2>
+<p>See Sections 13.5–7 of Aho &amp; Ullman.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Compute the total gate delays for a half adder, a full adder, and a four-bit
+cascaded adder as described in this section. The total delay is the maximum
+number of gate delays between any input signal changing and all output
+signals stabilizing to reflect the changed input.</p></li>
+<li><p>Draw the circuit diagram for an implementation of a four-line demultiplexer.</p></li>
+<li><p>A <strong>parity bit generator</strong> is a circuit that takes some number of lines of
+input and produces one output which is 0 if an even number of the inputs are
+1, and 1 if an odd number of the inputs are 1. If the input bits are
+transmitted along with the generated parity bit, then a recipient can check
+whether any single bit was mis-transmitted by ensuring that the total number
+of 1 bits received is even. A two-input parity bit generator is just the
+exclusive-OR circuit, whose common symbol is:</p></li>
+</ol>
+<p>&lt;img src={useBaseUrl(‘img/XOR.png’)}
+alt=”Circuit symbol for exclusive OR” className=”centered-figure” /&gt;</p>
+<p>Give an implementation of a two-input parity bit generator using only NAND
+gates, and then show how to use XOR gates to build an eight-input parity bit
+generator.</p>
+<ol class="simple">
+<li><p>The opposite of a decoder is an <strong>encoder</strong>: given <span class="math notranslate nohighlight">\(2^k\)</span> input lines, the
+output will be a <span class="math notranslate nohighlight">\(k\)</span>-bit binary number representing which input is 1. In case
+more than one input line is 1, the output will give the highest such line
+number; this is known as a “priority encoder.” For example, when <span class="math notranslate nohighlight">\(k=3\)</span>, if
+lines <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(a_4\)</span>, and <span class="math notranslate nohighlight">\(a_5\)</span> are all 1, while the rest are 0, then the
+output will be 101 (5 in binary). If no input line is 1, then the output will
+be 000. There is one additional output line, <span class="math notranslate nohighlight">\(g\)</span> (the “group” signal) that
+will only be 1 if at least one of the inputs is 1; this allows us to tell the
+difference between no input and only line <span class="math notranslate nohighlight">\(a_0\)</span> being 1.</p></li>
+</ol>
+<p>Give a truth table for a four-input (<span class="math notranslate nohighlight">\(k=2\)</span>) priority encoder, then draw a
+circuit diagram that implements it.</p>
+<ol class="simple">
+<li><p>Show how to construct a <span class="math notranslate nohighlight">\(2k\)</span>-input parity bit generator given a block that
+implements a <span class="math notranslate nohighlight">\(k\)</span>-input parity bit generator.</p></li>
+<li><p>Show how to construct a <span class="math notranslate nohighlight">\(2k\)</span>-input priority encoder given a block that
+implements a <span class="math notranslate nohighlight">\(k\)</span>-input priority encoder.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="simplify.html" title="previous page">Circuit Simplification</a>
+    <a class='right-next' id="next-link" href="preds.html" title="next page">Predicates and Quantifiers</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>DPoodle Graphics Drawing Project &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scala Doodle" href="scaladoodle.html" />
+    <link rel="prev" title="DPoodle Graphics" href="doodle.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types.html">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parser-comb.html">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lambda.html">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/doodle-project.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="dpoodle-graphics-drawing-project">
+<h1>DPoodle Graphics Drawing Project<a class="headerlink" href="#dpoodle-graphics-drawing-project" title="Permalink to this headline">¶</a></h1>
+<p>For Monday, March 30, create a drawing using the <a class="reference internal" href="doodle.html"><span class="doc std std-doc">DPoodle</span></a> graphics library. You should feel free to be as creative as you like, the only requirement is that the drawing use recursion in an essential way.</p>
+<p>Here is an editor where you can enter your code. <em>Be sure to copy and paste it somewhere else</em> because this editor will be cleared when the page reloads. I suggest keeping a copy in a text editor such as WordPad or TextEdit. When you are done, upload it to Moodle: <a class="reference external" href="https://moodle.depauw.edu/mod/assign/view.php?id=243021">Section A</a> or <a class="reference external" href="https://moodle.depauw.edu/mod/assign/view.php?id=243023">Section B</a>.</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * your code here</span>
+<span class="cm"> */</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>Here are some examples to give you ideas:</p>
+<p>Bralin Coleman, Fall 2019:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">col</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">k</span> <span class="ow">=&gt;</span> <span class="n">fill</span><span class="ow">(</span><span class="n">hsl</span><span class="ow">(</span><span class="n">float_of_int</span><span class="ow">(</span><span class="n">k</span><span class="ow">),</span> <span class="mi">1</span><span class="ow">.</span><span class="mi">0</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">.</span><span class="mi">5</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">10</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">box</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="n">col</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">|||</span> <span class="n">box</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">5</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">row</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="n">row</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">10</span><span class="ow">)</span> <span class="ow">---</span> <span class="ow">(</span><span class="n">col</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">|||</span> <span class="n">box</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">5</span><span class="ow">))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">rowR</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">col</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">|||</span> <span class="n">box</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">5</span><span class="ow">))</span> <span class="ow">---</span> <span class="n">rowR</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">10</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">diamond</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="n">row</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">---</span> <span class="n">rowR</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">draw</span><span class="ow">(</span><span class="n">diamond</span><span class="ow">(</span><span class="mi">200</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>Kien Ta, Fall 2019:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">sample</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">start</span><span class="ow">,</span> <span class="n">radius</span><span class="ow">,</span> <span class="n">samples</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="n">step</span> <span class="ow">=</span> <span class="mi">10</span><span class="ow">.;</span>
+  <span class="k">let</span> <span class="n">dot</span> <span class="ow">=</span> <span class="n">triangle</span><span class="ow">(</span><span class="mi">10</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.);</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">loop</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">angle</span> <span class="ow">=</span> <span class="n">radians</span><span class="ow">(</span><span class="n">step</span> <span class="ow">*.</span> <span class="n">float_of_int</span><span class="ow">(</span><span class="n">count</span><span class="ow">));</span>
+    <span class="k">let</span> <span class="n">r</span> <span class="ow">=</span> <span class="n">radius</span> <span class="o">/.</span> <span class="n">float_of_int</span><span class="ow">(</span><span class="n">samples</span><span class="ow">)</span> <span class="ow">*.</span> <span class="n">float_of_int</span><span class="ow">(</span><span class="n">count</span><span class="ow">);</span> 
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+    <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="n">fill</span><span class="ow">(</span><span class="n">hsl</span><span class="ow">(</span><span class="n">float_of_int</span><span class="ow">(</span><span class="mi">240</span> <span class="ow">+</span> <span class="n">count</span> <span class="ow">*</span> <span class="mi">50</span><span class="ow">),</span> <span class="mi">1</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.</span><span class="mi">5</span><span class="ow">),</span>
+        <span class="n">translate</span><span class="ow">(</span><span class="n">r</span> <span class="ow">*.</span> <span class="n">cos</span><span class="ow">(</span><span class="n">angle</span><span class="ow">),</span> <span class="n">r</span> <span class="ow">*.</span> <span class="n">sin</span><span class="ow">(</span><span class="n">angle</span><span class="ow">),</span> <span class="n">dot</span><span class="ow">))</span> <span class="ow">+++</span> <span class="n">loop</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="n">loop</span><span class="ow">(</span><span class="n">samples</span><span class="ow">)</span>
+<span class="ow">};</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">sample</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">250</span><span class="ow">.,</span> <span class="mi">200</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>Michael Lackey, Fall 2019:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">sky</span> <span class="ow">=</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;skyblue&quot;</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">400</span><span class="ow">.,</span> <span class="mi">200</span><span class="ow">.));</span>
+<span class="k">let</span> <span class="n">ground</span> <span class="ow">=</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;green&quot;</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">400</span><span class="ow">.,</span> <span class="mi">100</span><span class="ow">.));</span>
+<span class="k">let</span> <span class="n">roof</span> <span class="ow">=</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;red&quot;</span><span class="ow">),</span> <span class="n">triangle</span><span class="ow">(</span><span class="mi">50</span><span class="ow">.,</span> <span class="mi">50</span><span class="ow">.));</span>
+<span class="k">let</span> <span class="n">frontDoor</span> <span class="ow">=</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;blue&quot;</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">50</span><span class="ow">.,</span> <span class="mi">15</span><span class="ow">.))</span> <span class="ow">---</span>
+  <span class="ow">(</span><span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">10</span><span class="ow">.,</span> <span class="mi">25</span><span class="ow">.))</span> <span class="ow">+++</span>
+    <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;blue&quot;</span><span class="ow">),</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">50</span><span class="ow">.,</span> <span class="mi">25</span><span class="ow">.)));</span>
+<span class="k">let</span> <span class="n">house</span> <span class="ow">=</span> <span class="n">roof</span> <span class="ow">---</span> <span class="n">frontDoor</span><span class="ow">;</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">town</span> <span class="ow">=</span> <span class="n">count</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">count</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span>
+  <span class="ow">|</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="n">house</span> <span class="ow">|||</span> <span class="n">town</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">townPlace</span> <span class="ow">=</span> <span class="n">town</span><span class="ow">(</span><span class="mi">5</span><span class="ow">);</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">translate</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">40</span><span class="ow">.,</span> <span class="n">townPlace</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">100</span><span class="ow">.,</span> <span class="n">ground</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">sky</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Abby Hutson-Comeaux, Fall 2019:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Establishing colors for the honeycomb &amp; bee */</span>
+<span class="k">let</span> <span class="n">orangeYellow</span> <span class="ow">=</span> <span class="n">rgb</span><span class="ow">(</span><span class="mi">255</span><span class="ow">,</span> <span class="mi">215</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">yellow</span> <span class="ow">=</span> <span class="n">rgb</span><span class="ow">(</span><span class="mi">255</span><span class="ow">,</span> <span class="mi">255</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">black</span> <span class="ow">=</span> <span class="n">rgb</span><span class="ow">(</span><span class="mi">0</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">,</span> <span class="mi">0</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">white</span> <span class="ow">=</span> <span class="n">rgb</span><span class="ow">(</span><span class="mi">255</span><span class="ow">,</span> <span class="mi">255</span><span class="ow">,</span> <span class="mi">255</span><span class="ow">);</span>
+
+<span class="cm">/* Creating a plain yellow background */</span>
+<span class="k">let</span> <span class="n">background</span> <span class="ow">=</span> <span class="n">solid</span><span class="ow">(</span><span class="n">yellow</span><span class="ow">,</span> <span class="n">rectangle</span><span class="ow">(</span><span class="mi">400</span><span class="ow">.,</span> <span class="mi">300</span><span class="ow">.));</span>
+
+<span class="cm">/* oneComb generates each individual honey comb piece */</span>
+<span class="k">let</span> <span class="n">oneComb</span> <span class="ow">=</span> <span class="n">strokeWidth</span><span class="ow">(</span><span class="mi">3</span><span class="ow">.,</span> <span class="n">stroke</span><span class="ow">(</span><span class="n">yellow</span><span class="ow">,</span> <span class="n">fill</span><span class="ow">(</span><span class="n">orangeYellow</span><span class="ow">,</span> <span class="n">regularPolygon</span><span class="ow">(</span><span class="mi">6</span><span class="ow">,</span> <span class="mi">15</span><span class="ow">.,</span> <span class="mi">90</span><span class="ow">.))));</span>
+
+<span class="cm">/* Method to create each row with the desired number of combs per row */</span>
+<span class="k">let</span> <span class="k">rec</span> <span class="n">combsPerRow</span> <span class="ow">=</span> <span class="n">num</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">num</span><span class="ow">)</span> <span class="ow">{</span> 
+  <span class="ow">|</span> <span class="mi">1</span> <span class="ow">=&gt;</span> <span class="n">oneComb</span>
+  <span class="ow">|</span> <span class="n">num</span> <span class="ow">=&gt;</span> <span class="n">oneComb</span> <span class="ow">|||</span> <span class="n">combsPerRow</span><span class="ow">(</span><span class="n">num</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="cm">/* Method to actually create the honey comb that will be placed over the background */</span>
+<span class="k">let</span> <span class="k">rec</span> <span class="n">honeyComb</span> <span class="ow">=</span> <span class="n">rows</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">rows</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="mi">0</span> <span class="ow">=&gt;</span> <span class="n">empty</span> 
+  <span class="ow">|</span> <span class="n">rows</span> <span class="ow">=&gt;</span> <span class="n">combsPerRow</span><span class="ow">(</span><span class="mi">16</span><span class="ow">)</span> <span class="ow">---</span> <span class="n">honeyComb</span><span class="ow">(</span><span class="n">rows</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="cm">/* Making the bottom piece to the bee, including the lines */</span>
+<span class="k">let</span> <span class="n">beeButt</span> <span class="ow">=</span> <span class="n">fill</span><span class="ow">(</span><span class="n">yellow</span><span class="ow">,</span> <span class="n">openPath</span><span class="ow">([</span>
+  <span class="n">moveXY</span><span class="ow">(-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">curveXY</span><span class="ow">(-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">35</span><span class="ow">.,</span> <span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span>
+  <span class="n">moveXY</span><span class="ow">(-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">curveXY</span><span class="ow">(-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">35</span><span class="ow">.,</span> <span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span>
+  <span class="cm">/* add lines for the bees body */</span>
+  <span class="n">moveXY</span><span class="ow">(-</span><span class="mi">15</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">12</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(-</span><span class="mi">15</span><span class="ow">.,</span> <span class="mi">12</span><span class="ow">.),</span>
+  <span class="n">moveXY</span><span class="ow">(-</span><span class="mi">5</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">16</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(-</span><span class="mi">5</span><span class="ow">.,</span> <span class="mi">16</span><span class="ow">.),</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">5</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">16</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="mi">5</span><span class="ow">.,</span> <span class="mi">16</span><span class="ow">.),</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">15</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">12</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="mi">15</span><span class="ow">.,</span> <span class="mi">12</span><span class="ow">.)</span>
+<span class="ow">]));</span>
+
+<span class="cm">/* Adding the wing to the bottom of the bee */</span>
+<span class="k">let</span> <span class="n">bottomWing</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">17</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">35</span><span class="ow">.),</span>
+<span class="ow">])</span> <span class="ow">+++</span> <span class="n">fill</span><span class="ow">(</span><span class="n">white</span><span class="ow">,</span> <span class="n">closedPath</span><span class="ow">([</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.),</span> <span class="n">curveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">15</span><span class="ow">.,</span> <span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">40</span><span class="ow">.),</span>
+  <span class="n">curveXY</span><span class="ow">(</span><span class="mi">15</span><span class="ow">.,</span> <span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.)</span>
+<span class="ow">]));</span>
+
+<span class="cm">/* Adding the wing to the top of the bee */</span>
+<span class="k">let</span> <span class="n">topWing</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">17</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">35</span><span class="ow">.),</span>
+<span class="ow">])</span> <span class="ow">+++</span> <span class="n">fill</span><span class="ow">(</span><span class="n">white</span><span class="ow">,</span> <span class="n">closedPath</span><span class="ow">([</span>
+  <span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">10</span><span class="ow">.),</span> <span class="n">curveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">10</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">15</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">40</span><span class="ow">.),</span>
+  <span class="n">curveXY</span><span class="ow">(</span><span class="mi">15</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">10</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">10</span><span class="ow">.)</span>
+<span class="ow">]));</span>
+
+<span class="k">let</span> <span class="n">beeBody</span> <span class="ow">=</span> <span class="n">fill</span><span class="ow">(</span><span class="n">black</span><span class="ow">,</span> <span class="n">circle</span><span class="ow">(</span><span class="mi">11</span><span class="ow">.));</span>
+<span class="k">let</span> <span class="n">beeHead</span> <span class="ow">=</span> <span class="n">fill</span><span class="ow">(</span><span class="n">yellow</span><span class="ow">,</span> <span class="n">circle</span><span class="ow">(</span><span class="mi">7</span><span class="ow">.));</span>
+
+<span class="cm">/* Combining the parts of the bee */</span>
+<span class="k">let</span> <span class="n">bee</span> <span class="ow">=</span> <span class="n">beeBody</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(</span><span class="mi">12</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="n">beeHead</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(-</span><span class="mi">25</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.,</span> <span class="n">beeButt</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">finalBee</span> <span class="ow">=</span> <span class="n">bee</span> <span class="ow">+++</span> <span class="n">bottomWing</span> <span class="ow">+++</span> <span class="n">topWing</span><span class="ow">;</span>
+
+<span class="k">let</span> <span class="n">words</span> <span class="ow">=</span> <span class="n">fill</span><span class="ow">(</span><span class="n">black</span><span class="ow">,</span> <span class="n">withFont</span><span class="ow">(</span><span class="mi">3</span><span class="ow">.</span><span class="mi">0</span><span class="ow">,</span> <span class="nc">Serif</span><span class="ow">,</span> <span class="nc">Regular</span><span class="ow">,</span> <span class="nc">Normal</span><span class="ow">,</span> <span class="n">text</span><span class="ow">(</span><span class="s2">&quot;~Bee Happy~&quot;</span><span class="ow">)));</span>
+
+<span class="cm">/* Joining the text, honey comb, and bee all together */</span>
+<span class="k">let</span> <span class="n">finalHoneyComb</span> <span class="ow">=</span> <span class="n">words</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">10</span><span class="ow">.,</span> <span class="n">honeyComb</span><span class="ow">(</span><span class="mi">10</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">background</span><span class="ow">);</span>
+
+<span class="cm">/* Add bees to the drawing */</span>
+<span class="k">let</span> <span class="n">oneBee</span> <span class="ow">=</span> <span class="n">rotate</span><span class="ow">(</span><span class="mi">320</span><span class="ow">.,</span> <span class="n">finalBee</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(</span><span class="mi">120</span><span class="ow">.,</span> <span class="mi">55</span><span class="ow">.,</span> <span class="n">finalHoneyComb</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">twoBee</span> <span class="ow">=</span> <span class="n">rotate</span><span class="ow">(</span><span class="mi">140</span><span class="ow">.,</span> <span class="n">finalBee</span><span class="ow">)</span> <span class="ow">+++</span> <span class="n">translate</span><span class="ow">(-</span><span class="mi">230</span><span class="ow">.,</span> <span class="ow">-</span><span class="mi">120</span><span class="ow">.,</span> <span class="n">oneBee</span><span class="ow">);</span>
+
+<span class="n">draw</span><span class="ow">(</span><span class="n">twoBee</span><span class="ow">);</span>
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="doodle.html" title="previous page">DPoodle Graphics</a>
+    <a class='right-next' id="next-link" href="scaladoodle.html" title="next page">Scala Doodle</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

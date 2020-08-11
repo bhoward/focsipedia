@@ -1,0 +1,1104 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Types in Functional Programming &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Map and Reduce on Lists" href="map-reduce.html" />
+    <link rel="prev" title="Introduction to Functional Programming" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle-project.html">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parser-comb.html">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lambda.html">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/types.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-inference">
+   Type Inference
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#currying">
+     Currying
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuples">
+   Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuples-and-parameters">
+     Tuples and Parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-aliases-and-parameterized-types">
+   Type Aliases and Parameterized Types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#constructors-and-variants">
+   Constructors and Variants
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enumerations">
+     Enumerations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algebraic-data-types">
+     Algebraic Data Types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pattern-matching">
+     Pattern Matching
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#recursive-types">
+     Recursive Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connection-to-natural-deduction">
+   Connection to Natural Deduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#todo">
+   TODO
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="types-in-functional-programming">
+<h1>Types in Functional Programming<a class="headerlink" href="#types-in-functional-programming" title="Permalink to this headline">¶</a></h1>
+<p>One of the hallmarks of modern functional programming is a strong and rich
+systems of types. The type of an expression can be thought of as the set of all
+values that the expression might have; by specifying the type of a parameter to
+a function, it constrains the values that may be provided as input. In this
+sense, the type of a function is then a form of contract: if the input satisfies
+some condition (is a value in the parameter type), then the output is also
+guaranteed to satisfy a condition (be a value of the result type).</p>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>In ReasonML we write the type of functions from <code class="docutils literal notranslate"><span class="pre">A</span></code> to <code class="docutils literal notranslate"><span class="pre">B</span></code> as <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=&gt;</span> <span class="pre">B</span></code>. Given a
+function <code class="docutils literal notranslate"><span class="pre">f</span></code> of that type, if <code class="docutils literal notranslate"><span class="pre">x</span></code> is a value (or more generally any expression)
+of type <code class="docutils literal notranslate"><span class="pre">A</span></code>, then the <strong>application</strong> <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> will give us a result of type <code class="docutils literal notranslate"><span class="pre">B</span></code>.
+The value <code class="docutils literal notranslate"><span class="pre">x</span></code> to which we apply the function is known as the <strong>argument</strong>.
+For example, <code class="docutils literal notranslate"><span class="pre">string_of_int</span></code> is a function of type <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=&gt;</span> <span class="pre">string</span></code>; when we
+apply it to an integer, it returns the string of digits representing the argument:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">string_of_int</span><span class="ow">(</span><span class="mi">42</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Since functions are first-class values, we may bind a function to another name:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="ow">=</span> <span class="n">string_of_int</span><span class="ow">;</span>
+<span class="n">f</span><span class="ow">(</span><span class="mi">42</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>To create a function value, we use the double arrow to show that we are taking
+a parameter, for example <code class="docutils literal notranslate"><span class="pre">p</span></code>, and using it to compute a result:
+<code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">...result</span> <span class="pre">expression...</span> <span class="pre">}</span></code>. The parameter may be any variable name—it
+will represent the value of the argument just within the block containing the
+result expressions. That is, if the variable name had been used outside the function,
+it will be temporarily “shadowed” by the new binding; when the function has returned
+its result, the local binding to the argument goes away.</p>
+<p>Consider the following example:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">5</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">f</span> <span class="ow">=</span> <span class="n">x</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">x</span> <span class="ow">+</span> <span class="mi">12</span> <span class="ow">};</span>
+<span class="n">f</span><span class="ow">(</span><span class="n">x</span> <span class="ow">*</span> <span class="n">x</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">x</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>The first binding to <code class="docutils literal notranslate"><span class="pre">x</span></code> is the integer 5. When <code class="docutils literal notranslate"><span class="pre">f</span></code> is applied to its argument,
+which is <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span></code>, or 25, we will temporarily bind 25 to a new, local variable
+named <code class="docutils literal notranslate"><span class="pre">x</span></code> and evaluate the body of the function: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">12</span></code>, which gives 37.
+Continuing to evaluate the expression <code class="docutils literal notranslate"><span class="pre">f(x</span> <span class="pre">*</span> <span class="pre">x)</span> <span class="pre">+</span> <span class="pre">x</span></code>, we now have <code class="docutils literal notranslate"><span class="pre">37</span> <span class="pre">+</span> <span class="pre">x</span></code>;
+since <code class="docutils literal notranslate"><span class="pre">x</span></code> here refers to the original binding, this is <code class="docutils literal notranslate"><span class="pre">37</span> <span class="pre">+</span> <span class="pre">5</span></code>, so it produces
+the final answer 42.</p>
+</div>
+<div class="section" id="type-inference">
+<h2>Type Inference<a class="headerlink" href="#type-inference" title="Permalink to this headline">¶</a></h2>
+<p>ReasonML does not require that we specify the types of variables most of the
+time, because it can usually infer what types they should have from the context
+and how they are used. Looking at the example above, since 5 is an int, we know
+that <code class="docutils literal notranslate"><span class="pre">x</span></code> must have type <code class="docutils literal notranslate"><span class="pre">int</span></code>. In the second line, the local <code class="docutils literal notranslate"><span class="pre">x</span></code> must also be an
+<code class="docutils literal notranslate"><span class="pre">int</span></code>, since we can add 12 to it.[^ReasonML, unlike many common languages,
+distinguishes between the integer addition operator, written <code class="docutils literal notranslate"><span class="pre">+</span></code>, and the
+floating-point addition operator, which is written <code class="docutils literal notranslate"><span class="pre">+.</span></code>. In part this is done to
+make type inference easier.] The result of the function body will be an <code class="docutils literal notranslate"><span class="pre">int</span></code>, so
+the type of <code class="docutils literal notranslate"><span class="pre">f</span></code> is <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=&gt;</span> <span class="pre">int</span></code>. Finally, the application of <code class="docutils literal notranslate"><span class="pre">f</span></code> in the third line
+checks out, because it is applied to an integer argument (<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span></code>), and its result
+is used in a further integer addition. We could be explicit about the types and
+add a <strong>type annotation</strong> to each of the bindings:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span><span class="ow">:</span> <span class="kt">int</span> <span class="ow">=</span> <span class="mi">5</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">f</span><span class="ow">:</span> <span class="kt">int</span> <span class="ow">=&gt;</span> <span class="kt">int</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">x</span><span class="ow">:</span> <span class="kt">int</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">x</span> <span class="ow">+</span> <span class="mi">12</span> <span class="ow">};</span>
+<span class="k">let</span> <span class="n">y</span><span class="ow">:</span> <span class="kt">int</span> <span class="ow">=</span> <span class="n">f</span><span class="ow">(</span><span class="n">x</span> <span class="ow">*</span> <span class="n">x</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">x</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">z</span><span class="ow">:</span> <span class="kt">string</span> <span class="ow">=</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">y</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>However, the convention in ReasonML is that type annotations are not generally
+used except as documentation and as a check that the compiler is doing what we
+think it is.</p>
+<div class="section" id="currying">
+<h3>Currying<a class="headerlink" href="#currying" title="Permalink to this headline">¶</a></h3>
+<p>When we write a function that takes multiple arguments, we may list the parameters
+in parentheses, separated by commas:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">average</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">float_of_int</span><span class="ow">(</span><span class="n">a</span> <span class="ow">+</span> <span class="n">b</span><span class="ow">)</span> <span class="o">/.</span> <span class="mi">2</span><span class="ow">.</span><span class="mi">0</span> <span class="ow">};</span>
+<span class="n">average</span><span class="ow">(</span><span class="mi">7</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>This is actually a lie! In ReasonML, functions can only have a single argument.
+Behind the scenes, the code above is translated to the following:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">average</span> <span class="ow">=</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">b</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">float_of_int</span><span class="ow">(</span><span class="n">a</span> <span class="ow">+</span> <span class="n">b</span><span class="ow">)</span> <span class="o">/.</span> <span class="mi">2</span><span class="ow">.</span><span class="mi">0</span> <span class="ow">}</span> <span class="ow">};</span>
+<span class="n">average</span><span class="ow">(</span><span class="mi">7</span><span class="ow">)(</span><span class="mi">10</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>That is, <code class="docutils literal notranslate"><span class="pre">average</span></code> is a function that takes an integer parameter <code class="docutils literal notranslate"><span class="pre">a</span></code> and returns
+another function. This second function expects to be given another integer
+parameter, named <code class="docutils literal notranslate"><span class="pre">b</span></code>, and then it will compute the result (which is a <code class="docutils literal notranslate"><span class="pre">float</span></code>
+for variety). The computation on the second line corresponds to this: first
+<code class="docutils literal notranslate"><span class="pre">average</span></code> is applied to the argument 7. The resulting function is then further
+applied to the argument 10, producing the desired floating-point result.</p>
+<p>Here is the same code, written out more explicitly:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">average</span><span class="ow">:</span> <span class="kt">int</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="kt">int</span> <span class="ow">=&gt;</span> <span class="kt">float</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">a</span><span class="ow">:</span> <span class="kt">int</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="ow">(</span><span class="n">b</span><span class="ow">:</span> <span class="kt">int</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="n">float_of_int</span><span class="ow">(</span><span class="n">a</span> <span class="ow">+</span> <span class="n">b</span><span class="ow">)</span> <span class="o">/.</span> <span class="mi">2</span><span class="ow">.</span><span class="mi">0</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="k">let</span> <span class="n">result1</span><span class="ow">:</span> <span class="kt">int</span> <span class="ow">=&gt;</span> <span class="kt">float</span> <span class="ow">=</span> <span class="n">average</span><span class="ow">(</span><span class="mi">7</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">result</span><span class="ow">:</span> <span class="kt">float</span> <span class="ow">=</span> <span class="n">result1</span><span class="ow">(</span><span class="mi">10</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>This replacement of multiple-parameter functions with a sequence of single-parameter
+functions is called <strong>currying</strong>, named after the logician Haskell B. Curry.[^As
+is often the case when things are named, Curry did not originate this idea. He got it
+from Moses Schönfinkel, who may have picked it up from Gottlob Frege, but “currying”
+is easier to say than “schönfinkeling” or “fregeing”….] One advantage of this,
+other than the simplicity of only needing one kind of function, is that it is often
+useful to create a <strong>partially applied</strong> function, where some of its arguments have
+been supplied to create a new function ready to be given the rest. For example, suppose
+we have a function for formatting exam grades:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">format_grade</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">exam</span><span class="ow">,</span> <span class="n">total</span><span class="ow">,</span> <span class="n">name</span><span class="ow">,</span> <span class="n">points</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="n">name</span> <span class="ow">++</span> <span class="s2">&quot;, &quot;</span> <span class="ow">++</span> <span class="n">exam</span> <span class="ow">++</span> <span class="s2">&quot;: &quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">points</span><span class="ow">)</span> <span class="ow">++</span> <span class="s2">&quot;/&quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">total</span><span class="ow">)</span> 
+<span class="ow">};</span>
+<span class="n">format_grade</span><span class="ow">(</span><span class="s2">&quot;Midterm&quot;</span><span class="ow">,</span> <span class="mi">100</span><span class="ow">,</span> <span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>We could take advantage of currying to create a specialized function for formatting the
+midterm grades:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">format_midterm</span> <span class="ow">=</span> <span class="n">format_grade</span><span class="ow">(</span><span class="s2">&quot;Midterm&quot;</span><span class="ow">,</span> <span class="mi">100</span><span class="ow">);</span>
+<span class="n">format_midterm</span><span class="ow">(</span><span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">);</span>
+<span class="n">format_midterm</span><span class="ow">(</span><span class="s2">&quot;Alice&quot;</span><span class="ow">,</span> <span class="mi">97</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>The first two arguments of <code class="docutils literal notranslate"><span class="pre">format_grade</span></code> have been provided with the exam name
+(“Midterm”) and the total number of points (100). Now we have a new function,
+bound to <code class="docutils literal notranslate"><span class="pre">format_midterm</span></code>, that just needs to be applied to a student name and
+grade, and then it can produce a string with all four components.</p>
+</div>
+</div>
+<div class="section" id="tuples">
+<h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps the most basic form of data structure is the <strong>tuple</strong>. We have already
+seen this in the context of
+<a class="reference external" href="../sets/functions#pairs">sets and cartesian products</a>: an <span class="math notranslate nohighlight">\(n\)</span>-tuple is simply
+an ordered listing of <span class="math notranslate nohighlight">\(n\)</span> values, traditionally shown in parentheses separated
+by commas. The ReasonML syntax for a tuple type is likewise an ordered listing
+of each value’s type, in parentheses and separated by commas. For example, the
+tuple <code class="docutils literal notranslate"><span class="pre">(42,</span> <span class="pre">&quot;hello&quot;,</span> <span class="pre">3.1416)</span></code> has type <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">string,</span> <span class="pre">float)</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">demo</span><span class="ow">:</span> <span class="ow">(</span><span class="kt">int</span><span class="ow">,</span> <span class="kt">string</span><span class="ow">,</span> <span class="kt">float</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">42</span><span class="ow">,</span> <span class="s2">&quot;hello&quot;</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">.</span><span class="mi">1416</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>In the case <span class="math notranslate nohighlight">\(n=2\)</span>, a tuple is just the familiar <strong>pair</strong>. For example, the type
+of two-dimensional points with integer coordinates is <code class="docutils literal notranslate"><span class="pre">(int,</span> <span class="pre">int)</span></code>. Pairs come
+with accessor functions named <code class="docutils literal notranslate"><span class="pre">fst</span></code> and <code class="docutils literal notranslate"><span class="pre">snd</span></code> to access the first and second
+coordinates, respectively:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">p</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">5</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">x</span> <span class="ow">=</span> <span class="n">fst</span><span class="ow">(</span><span class="n">p</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">y</span> <span class="ow">=</span> <span class="n">snd</span><span class="ow">(</span><span class="n">p</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>The standard library does not provide accessor functions for arbitrary
+<span class="math notranslate nohighlight">\(n\)</span>-tuples.[^Part of the reason for this is simply tradition, but another
+important factor is that ReasonML does not have an easy way to give a type for a
+function that would take an <span class="math notranslate nohighlight">\(n\)</span>-tuple plus an integer, say from 1 to <span class="math notranslate nohighlight">\(n\)</span>, and
+return that component of the tuple; since each component may have a different
+type, what would the return type of that accessor be?] Instead, we may retrieve
+the components of a tuple through an extension of the binding operation, <code class="docutils literal notranslate"><span class="pre">let</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">demo</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">42</span><span class="ow">,</span> <span class="s2">&quot;hello&quot;</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">.</span><span class="mi">1416</span><span class="ow">);</span> <span class="cm">/* construct a tuple */</span>
+<span class="k">let</span> <span class="ow">(</span><span class="n">a</span><span class="ow">,</span> <span class="n">b</span><span class="ow">,</span> <span class="n">c</span><span class="ow">)</span> <span class="ow">=</span> <span class="n">demo</span><span class="ow">;</span>             <span class="cm">/* &quot;destruct&quot; a tuple */</span>
+</pre></div>
+</div>
+<p>If we only want to extract some of the components, the other positions may be
+filled with a place-holder, the so-called <strong>wildcard</strong> identifier, <code class="docutils literal notranslate"><span class="pre">_</span></code>
+(underscore):</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">demo</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">42</span><span class="ow">,</span> <span class="s2">&quot;hello&quot;</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">.</span><span class="mi">1416</span><span class="ow">);</span>
+<span class="k">let</span> <span class="ow">(_,</span> <span class="n">greeting</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=</span> <span class="n">demo</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>An <span class="math notranslate nohighlight">\(n\)</span>-tuple when <span class="math notranslate nohighlight">\(n=1\)</span> is just an ordinary value (which may be enclosed in
+parentheses as usual just for grouping purposes). However, the case when
+<span class="math notranslate nohighlight">\(n=0\)</span> is more interesting: the only value is the empty tuple, <code class="docutils literal notranslate"><span class="pre">()</span></code>, and its type
+is named <code class="docutils literal notranslate"><span class="pre">unit</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">a</span><span class="ow">:</span> <span class="kt">unit</span> <span class="ow">=</span> <span class="bp">()</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>Since there is only one value of type <code class="docutils literal notranslate"><span class="pre">unit</span></code>, it carries no information. We
+will use it when we need to specify a type but its value does not matter. For
+example, look at the types of the print functions in ReasonML:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">a</span> <span class="ow">=</span> <span class="n">print_int</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">b</span> <span class="ow">=</span> <span class="n">print_string</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">c</span> <span class="ow">=</span> <span class="n">print_float</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">d</span> <span class="ow">=</span> <span class="n">print_newline</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>All of them return a value of type <code class="docutils literal notranslate"><span class="pre">unit</span></code> because there is nothing to be
+returned. In fact, this is a strong hint that these functions do their work via
+side-effects (albeit the relatively benign side-effect of sending some
+characters to the console). The <code class="docutils literal notranslate"><span class="pre">print_newline</span></code> function also takes <code class="docutils literal notranslate"><span class="pre">unit</span></code> as
+its argument type—it needs no input, but there still needs to be some
+argument passed in so that it knows to do its job (emitting an end-of-line
+character). Note the difference between the function value expression
+<code class="docutils literal notranslate"><span class="pre">print_newline</span></code>, as seen above in the binding to <code class="docutils literal notranslate"><span class="pre">d</span></code>, and the function <em>call</em>
+expression <code class="docutils literal notranslate"><span class="pre">print_newline()</span></code>, which actually produces output:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">print_string</span><span class="ow">(</span><span class="s2">&quot;line 1, &quot;</span><span class="ow">);</span>
+<span class="n">print_newline</span><span class="ow">;</span>
+<span class="n">print_string</span><span class="ow">(</span><span class="s2">&quot;still line 1&quot;</span><span class="ow">);</span>
+<span class="n">print_newline</span><span class="bp">()</span><span class="ow">;</span>
+<span class="n">print_string</span><span class="ow">(</span><span class="s2">&quot;line 2&quot;</span><span class="ow">);</span>
+</pre></div>
+</div>
+<div class="section" id="tuples-and-parameters">
+<h3>Tuples and Parameters<a class="headerlink" href="#tuples-and-parameters" title="Permalink to this headline">¶</a></h3>
+<p>It might seem that tuples should be used to pass multiple parameters to
+functions, but as we have seen, ReasonML handles this by currying the function
+into a series of functions each taking a single parameter. We can force it
+to pass tuples of arguments, and bind them to tuples of parameters, by
+including an extra pair of parentheses:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span><span class="ow">:</span> <span class="ow">((</span><span class="kt">string</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="kt">string</span> <span class="ow">=</span> <span class="ow">((</span><span class="n">name</span><span class="ow">,</span> <span class="n">points</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="n">name</span> <span class="ow">++</span> <span class="s2">&quot;: &quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">points</span><span class="ow">)</span> <span class="ow">++</span> <span class="s2">&quot;/100&quot;</span>
+<span class="ow">};</span>
+<span class="n">print_string</span><span class="ow">(</span> <span class="n">f</span><span class="ow">((</span><span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">))</span> <span class="ow">);</span>
+</pre></div>
+</div>
+<p>Now, that’s ugly, and unless you really need to do that, don’t do it. However,
+this brings up an interesting equivalence of types. Note that the type for <code class="docutils literal notranslate"><span class="pre">f</span></code>
+here is <code class="docutils literal notranslate"><span class="pre">((string,</span> <span class="pre">int))</span> <span class="pre">=&gt;</span> <span class="pre">string</span></code>; in terms of sets, this is the set of
+functions <span class="math notranslate nohighlight">\(\text{string}^{\text{string}\times\text{int}}\)</span>. Compare this with the
+equivalent but curried function <code class="docutils literal notranslate"><span class="pre">g</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">g</span><span class="ow">:</span> <span class="kt">string</span> <span class="ow">=&gt;</span> <span class="kt">int</span> <span class="ow">=&gt;</span> <span class="kt">string</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">name</span><span class="ow">,</span> <span class="n">points</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="n">name</span> <span class="ow">++</span> <span class="s2">&quot;: &quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">points</span><span class="ow">)</span> <span class="ow">++</span> <span class="s2">&quot;/100&quot;</span>
+<span class="ow">};</span>
+<span class="n">print_string</span><span class="ow">(</span> <span class="n">g</span><span class="ow">(</span><span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">)</span> <span class="ow">);</span>
+</pre></div>
+</div>
+<p>The type of <code class="docutils literal notranslate"><span class="pre">g</span></code> here is <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">=&gt;</span> <span class="pre">int</span> <span class="pre">=&gt;</span> <span class="pre">string</span></code>; in terms of sets, this is the
+set <span class="math notranslate nohighlight">\((\text{string}^{\text{int}})^{\text{string}}\)</span>. If these types are truly equivalent,
+in the sense that every function in one corresponds to a unique function in the other,
+then that suggests that there might be a general equivalence of the form
+<span class="math notranslate nohighlight">\($
+A^{B\times C}\equiv(A^C)^B
+$\)</span>
+This is indeed true (and it should remind you of a corresponding fact about exponents from
+ordinary algebra), and we can write the functions in ReasonML that mediate this
+equivalence:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">curry</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">f</span><span class="ow">:</span> <span class="ow">((</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">c</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="ow">(</span><span class="n">b</span><span class="ow">:</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">c</span><span class="ow">:</span> <span class="k">&#39;</span><span class="n">c</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">f</span><span class="ow">((</span><span class="n">b</span><span class="ow">,</span> <span class="n">c</span><span class="ow">))</span>
+<span class="ow">};</span>
+<span class="k">let</span> <span class="n">uncurry</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">g</span><span class="ow">:</span> <span class="k">&#39;</span><span class="n">b</span> <span class="ow">=&gt;</span> <span class="k">&#39;</span><span class="n">c</span> <span class="ow">=&gt;</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="ow">((</span><span class="n">b</span><span class="ow">,</span> <span class="n">c</span><span class="ow">):</span> <span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">c</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">g</span><span class="ow">(</span><span class="n">b</span><span class="ow">)(</span><span class="n">c</span><span class="ow">)</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>That is, given any function from the pair type <code class="docutils literal notranslate"><span class="pre">('b,</span> <span class="pre">'c)</span></code> to <code class="docutils literal notranslate"><span class="pre">'a</span></code> (type variables in
+ReasonML always start with an apostrophe (<code class="docutils literal notranslate"><span class="pre">'</span></code>)), we can apply the <code class="docutils literal notranslate"><span class="pre">curry</span></code> function to
+it to get the corresponding curried function of type <code class="docutils literal notranslate"><span class="pre">'b</span> <span class="pre">=&gt;</span> <span class="pre">'c</span> <span class="pre">=&gt;</span> <span class="pre">'a</span></code>. The <code class="docutils literal notranslate"><span class="pre">uncurry</span></code>
+function is the inverse of this. Since we have functions going each direction that
+are inverses to each other, this shows that the two types (or sets) are equivalent.</p>
+</div>
+</div>
+<div class="section" id="type-aliases-and-parameterized-types">
+<h2>Type Aliases and Parameterized Types<a class="headerlink" href="#type-aliases-and-parameterized-types" title="Permalink to this headline">¶</a></h2>
+<p>Given the importance of types, and potentially complicated type expressions, in
+ReasonML, it should not be a surprise that they can be named and manipulated
+much like ordinary values with variables and functions.[^ReasonML does not go
+quite all the way with making types be first-class values. There is currently
+active work on creating industrial-strength languages with so-called <strong>dependent
+types</strong>, where types are values and values can be used in types. Good examples are
+Agda (https://github.com/agda/agda), Idris (https://www.idris-lang.org/), and Lean
+(https://leanprover.github.io/).] We give a name to a type with the <code class="docutils literal notranslate"><span class="pre">type</span></code> statement:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">int_point</span> <span class="ow">=</span> <span class="ow">(</span><span class="kt">int</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">);</span>
+<span class="k">type</span> <span class="n">math_op</span> <span class="ow">=</span> <span class="kt">float</span> <span class="ow">=&gt;</span> <span class="kt">float</span> <span class="ow">=&gt;</span> <span class="kt">float</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">p</span><span class="ow">:</span> <span class="n">int_point</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">5</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">plus</span><span class="ow">:</span> <span class="n">math_op</span> <span class="ow">=</span> <span class="ow">(+.);</span>
+</pre></div>
+</div>
+<p>If we have a family of types where one or more parts can be substituted with an
+arbitrary type, then we can introduce a <strong>parameterized type alias</strong> by adding
+type parameters. As we saw above, type variables start with an apostrophe:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">point</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">);</span>
+<span class="k">type</span> <span class="n">binary_op</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">operand</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">result</span><span class="ow">)</span> <span class="ow">=</span> <span class="k">&#39;</span><span class="n">operand</span> <span class="ow">=&gt;</span> <span class="k">&#39;</span><span class="n">operand</span> <span class="ow">=&gt;</span> <span class="k">&#39;</span><span class="n">result</span><span class="ow">;</span>
+<span class="k">type</span> <span class="n">printer</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">t</span><span class="ow">)</span> <span class="ow">=</span> <span class="k">&#39;</span><span class="n">t</span> <span class="ow">=&gt;</span> <span class="kt">unit</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">p1</span><span class="ow">:</span> <span class="n">point</span><span class="ow">(</span><span class="kt">int</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">5</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">p2</span><span class="ow">:</span> <span class="n">point</span><span class="ow">(</span><span class="kt">float</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="mi">5</span><span class="ow">.</span><span class="mi">0</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">.</span><span class="mi">0</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">int_plus</span><span class="ow">:</span> <span class="n">binary_op</span><span class="ow">(</span><span class="kt">int</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(+);</span>
+<span class="k">let</span> <span class="n">string_eq</span><span class="ow">:</span> <span class="n">binary_op</span><span class="ow">(</span><span class="kt">string</span><span class="ow">,</span> <span class="kt">bool</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(==);</span>
+<span class="k">let</span> <span class="n">print_point</span><span class="ow">:</span> <span class="n">printer</span><span class="ow">(</span><span class="n">point</span><span class="ow">(</span><span class="kt">int</span><span class="ow">))</span> <span class="ow">=</span> <span class="ow">((</span><span class="n">x</span><span class="ow">,</span> <span class="n">y</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="nn">Printf</span><span class="p">.</span><span class="n">printf</span><span class="ow">(</span><span class="s2">&quot;(%d, %d)&quot;</span><span class="ow">,</span> <span class="n">x</span><span class="ow">,</span> <span class="n">y</span><span class="ow">)</span>
+<span class="ow">};</span>
+<span class="n">print_point</span><span class="ow">(</span><span class="n">p1</span><span class="ow">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constructors-and-variants">
+<h2>Constructors and Variants<a class="headerlink" href="#constructors-and-variants" title="Permalink to this headline">¶</a></h2>
+<p>A tuple is a rather generic way of packaging up data. When you are building a larger
+program, it would not be very meaningful to see a value like <code class="docutils literal notranslate"><span class="pre">(&quot;Brian&quot;,</span> <span class="pre">93)</span></code> out of
+context. Just as programmers are encouraged to use symbolic names for constants (for
+example, <code class="docutils literal notranslate"><span class="pre">LINE_WIDTH</span></code> instead of 80), we can attach names to particular uses of tuples
+to make them more readable and maintainable. If we create a type alias where the
+right-hand-side prefixes the tuple with a <strong>constructor</strong> name (which needs to start
+with a capital letter in ReasonML), then it will introduce a new type of tuples that
+need to be labeled with that constructor:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">grade_entry</span> <span class="ow">=</span> <span class="nc">Entry</span><span class="ow">(</span><span class="kt">string</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">entry</span> <span class="ow">=</span> <span class="nc">Entry</span><span class="ow">(</span><span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>If we want to extract the components of this new type, we use a corresponding
+named pattern in the <code class="docutils literal notranslate"><span class="pre">let</span></code> binding:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="nc">Entry</span><span class="ow">(</span><span class="n">name</span><span class="ow">,</span> <span class="n">grade</span><span class="ow">)</span> <span class="ow">=</span> <span class="n">entry</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>Here is another version of the <code class="docutils literal notranslate"><span class="pre">format_grade</span></code> example, using the above <code class="docutils literal notranslate"><span class="pre">grade_entry</span></code>
+type plus another that describes a particular grading item (with a title and maximum
+number of points). Even though both are essentially a pair of a string and an integer,
+we can now tell them apart:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">grade_entry</span> <span class="ow">=</span> <span class="nc">Entry</span><span class="ow">(</span><span class="kt">string</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">);</span>
+<span class="k">type</span> <span class="n">grading_item</span> <span class="ow">=</span> <span class="nc">Item</span><span class="ow">(</span><span class="kt">string</span><span class="ow">,</span> <span class="kt">int</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">format_grade</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">item</span><span class="ow">,</span> <span class="n">entry</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="nc">Item</span><span class="ow">(</span><span class="n">title</span><span class="ow">,</span> <span class="n">max</span><span class="ow">)</span> <span class="ow">=</span> <span class="n">item</span><span class="ow">;</span>
+  <span class="k">let</span> <span class="nc">Entry</span><span class="ow">(</span><span class="n">name</span><span class="ow">,</span> <span class="n">grade</span><span class="ow">)</span> <span class="ow">=</span> <span class="n">entry</span><span class="ow">;</span>
+  <span class="n">name</span> <span class="ow">++</span> <span class="s2">&quot;, &quot;</span> <span class="ow">++</span> <span class="n">title</span> <span class="ow">++</span> <span class="s2">&quot;: &quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">grade</span><span class="ow">)</span> <span class="ow">++</span> <span class="s2">&quot;/&quot;</span> <span class="ow">++</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">max</span><span class="ow">)</span>
+<span class="ow">};</span>
+<span class="n">format_grade</span><span class="ow">(</span><span class="nc">Item</span><span class="ow">(</span><span class="s2">&quot;Midterm&quot;</span><span class="ow">,</span> <span class="mi">100</span><span class="ow">),</span> <span class="nc">Entry</span><span class="ow">(</span><span class="s2">&quot;Brian&quot;</span><span class="ow">,</span> <span class="mi">93</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>So far we have seen types where all of the data have the same form: the same number
+of components, each with the same set of types, across all values of the type. However,
+most interesting data will come in several forms, and our programs will need to make
+appropriate decisions based on the form of each piece of data.</p>
+<div class="section" id="enumerations">
+<h3>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this headline">¶</a></h3>
+<p>The simplest case of having several <strong>variants</strong> of a data type is an <strong>enumeration</strong>.
+An enumerated type is specified as a list of constant constructors, separated by vertical
+bars:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">suit</span> <span class="ow">=</span> <span class="nc">Club</span> <span class="ow">|</span> <span class="nc">Diamond</span> <span class="ow">|</span> <span class="nc">Heart</span> <span class="ow">|</span> <span class="nc">Spade</span><span class="ow">;</span>
+<span class="k">type</span> <span class="n">rank</span> <span class="ow">=</span> <span class="nc">Ace</span> <span class="ow">|</span> <span class="nc">Two</span> <span class="ow">|</span> <span class="nc">Three</span> <span class="ow">|</span> <span class="nc">Four</span> <span class="ow">|</span> <span class="nc">Five</span> <span class="ow">|</span> <span class="nc">Six</span> <span class="ow">|</span> <span class="nc">Seven</span>
+          <span class="ow">|</span> <span class="nc">Eight</span> <span class="ow">|</span> <span class="nc">Nine</span> <span class="ow">|</span> <span class="nc">Ten</span> <span class="ow">|</span> <span class="nc">Jack</span> <span class="ow">|</span> <span class="nc">Queen</span> <span class="ow">|</span> <span class="nc">King</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>Unlike the case with tuples or simple tuple-like constructors, we can not just
+expect to match an enumerated value with a <code class="docutils literal notranslate"><span class="pre">let</span></code> binding. Instead, we need a construct
+that gives us a selection among <em>several</em> bindings, one for each variant. In ReasonML,
+as in many programming languages, this construct is the <code class="docutils literal notranslate"><span class="pre">switch</span></code> expression (sometimes
+called a match or case statement):</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">suit1</span> <span class="ow">=</span> <span class="nc">Club</span><span class="ow">;</span>
+<span class="k">switch</span> <span class="ow">(</span><span class="n">suit1</span><span class="ow">)</span> <span class="ow">{</span>
+<span class="ow">|</span> <span class="nc">Club</span> <span class="ow">=&gt;</span> <span class="s2">&quot;It&#39;s a club&quot;</span>
+<span class="ow">|</span> <span class="nc">Diamond</span> <span class="ow">=&gt;</span> <span class="s2">&quot;It&#39;s a diamond&quot;</span>
+<span class="ow">|</span> <span class="nc">Heart</span> <span class="ow">=&gt;</span> <span class="s2">&quot;It&#39;s a heart&quot;</span>
+<span class="ow">|</span> <span class="nc">Spade</span> <span class="ow">=&gt;</span> <span class="s2">&quot;It&#39;s a spade&quot;</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>Try changing the value bound to <code class="docutils literal notranslate"><span class="pre">suit1</span></code> and check the output. Each of the lines starting
+with a vertical bar is one <strong>case</strong>, and the expression to the right of the double arrow
+is the code to evaluate when that case matches the value in the switch.</p>
+<p>ReasonML will guarantee that the only possible values of an expression of an enumerated
+type are those in the list, and it will also check whether all of the cases are covered
+in a switch. Try removing one of the cases above and see what happens.</p>
+</div>
+<div class="section" id="algebraic-data-types">
+<h3>Algebraic Data Types<a class="headerlink" href="#algebraic-data-types" title="Permalink to this headline">¶</a></h3>
+<p>By combining variants with tuple-like constructors, we get what are known as <strong>algebraic
+data types</strong>. The idea is that the values of a type are formed by one of several
+constructors, each of which takes some number of component values. If we think of a
+tuple as the “product” of its component types, and a variant as a “sum” of several
+choices, then an algebraic type is just our old familiar sum-of-products construction
+from propositional logic!</p>
+<p>For example, suppose we want a type that describes some shapes. A shape will be either
+a rectangle, with a given width and height, or a circle, with a given radius. The
+variant type may be defined as</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">shape</span> <span class="ow">=</span> <span class="nc">Rectangle</span><span class="ow">(</span><span class="kt">float</span><span class="ow">,</span> <span class="kt">float</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">Circle</span><span class="ow">(</span><span class="kt">float</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Algebraically, this is the set <span class="math notranslate nohighlight">\(\text{float}\times\text{float} + \text{float}\)</span>, where
+the <span class="math notranslate nohighlight">\(+\)</span> operation is forming a <strong>disjoint sum</strong> of two sets—similar to a union, but
+attaching some sort of tag to the element of each set so that there are no duplicates.[^For
+example, we could define <span class="math notranslate nohighlight">\(A+B=(\{0\}\times A)\cup(\{1\}\times B)\)</span>. Then each element
+in the disjoint sum would be a pair whose first component is a tag of 0 if the element
+came from <span class="math notranslate nohighlight">\(A\)</span> and 1 if it came from <span class="math notranslate nohighlight">\(B\)</span>. Any element in common between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> will
+still be distinguishable by its tag.]</p>
+<p>We may define a function to compute the area of a shape by doing a case analysis:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">area</span> <span class="ow">=</span> <span class="n">sh</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">sh</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Rectangle</span><span class="ow">(</span><span class="n">width</span><span class="ow">,</span> <span class="n">height</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">width</span> <span class="ow">*.</span> <span class="n">height</span>
+  <span class="ow">|</span> <span class="nc">Circle</span><span class="ow">(</span><span class="n">radius</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="mi">3</span><span class="ow">.</span><span class="mi">141592653589</span> <span class="ow">*.</span> <span class="n">radius</span> <span class="ow">*.</span> <span class="n">radius</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">area</span><span class="ow">(</span><span class="nc">Rectangle</span><span class="ow">(</span><span class="mi">5</span><span class="ow">.</span><span class="mi">0</span><span class="ow">,</span> <span class="mi">10</span><span class="ow">.</span><span class="mi">0</span><span class="ow">));</span>
+<span class="n">area</span><span class="ow">(</span><span class="nc">Circle</span><span class="ow">(</span><span class="mi">10</span><span class="ow">.</span><span class="mi">0</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>If you are familiar with interfaces and subclasses in an object-oriented language such
+as Java, it is instructive to compare this with a typical object-oriented approach:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Shape</span> <span class="p">{</span>
+  <span class="kt">double</span> <span class="nf">area</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Rectangle</span> <span class="kd">implements</span> <span class="n">Shape</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">double</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="nf">Rectangle</span><span class="p">(</span><span class="kt">double</span> <span class="n">width</span><span class="p">,</span> <span class="kt">double</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">width</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">height</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Circle</span> <span class="kd">implements</span> <span class="n">Shape</span> <span class="p">{</span>
+  <span class="kd">private</span> <span class="kt">double</span> <span class="n">radius</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="nf">Circle</span><span class="p">(</span><span class="kt">double</span> <span class="n">radius</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="na">radius</span> <span class="o">=</span> <span class="n">radius</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kt">double</span> <span class="nf">area</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mf">3.141592653589</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In Java, each class implementing <code class="docutils literal notranslate"><span class="pre">Shape</span></code> is one variant, and the interface
+requires it to provide an <code class="docutils literal notranslate"><span class="pre">area</span></code> method with the correct signature. When we
+execute code such as <code class="docutils literal notranslate"><span class="pre">sh.area()</span></code>, where <code class="docutils literal notranslate"><span class="pre">sh</span></code> is a variable of type <code class="docutils literal notranslate"><span class="pre">Shape</span></code>,
+the underlying Java virtual machine code essentially does a case analysis
+of the object currently in <code class="docutils literal notranslate"><span class="pre">sh</span></code> to determine which <code class="docutils literal notranslate"><span class="pre">area</span></code> method to run.</p>
+<p>One difference between the functional and object-oriented approaches is that
+the functional version makes it easy to add new operations (such as a
+<code class="docutils literal notranslate"><span class="pre">perimeter</span></code> function), but to change the list of variants (for example, to
+add triangular shapes) is hard because we have to add a case to all of the
+existing operations. Conversely, the object-oriented version makes it easy to
+add new variants (just define another class implementing <code class="docutils literal notranslate"><span class="pre">Shape</span></code>), but if we
+want to add a new operation to the interface (such as <code class="docutils literal notranslate"><span class="pre">perimeter</span></code>) we need
+to implement that method in all of the existing subclasses. This tradeoff
+has led to considerable work on hybrid object-functional languages, such as
+Scala.</p>
+</div>
+<div class="section" id="pattern-matching">
+<h3>Pattern Matching<a class="headerlink" href="#pattern-matching" title="Permalink to this headline">¶</a></h3>
+<p>The pattern matching case analysis in a switch statement can be very powerful,
+since patterns may contain other patterns. We may match on not only variants,
+constructors, and tuples, but also on individual primitive values (such as
+integers or strings). As long as the patterns cover all of the cases, they
+are allowed to overlap (that is, more than one pattern might match a given
+value); if so, then the first matching case is selected. At any point in a
+pattern we may use the special <strong>wildcard</strong> pattern, underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>), which
+will match any value (but not bind it to anything). Switch statements will
+often have a final case matching the wildcard pattern as a “default” case.</p>
+<p>For example, here are some functions using the playing card enumerations
+from above. First we will define a variant for a playing card, which is either
+an ordinary card with a rank and a suit, or a joker:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">card</span> <span class="ow">=</span> <span class="nc">Card</span><span class="ow">(</span><span class="n">rank</span><span class="ow">,</span> <span class="n">suit</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">Joker</span><span class="ow">;</span>
+<span class="k">let</span> <span class="n">card1</span> <span class="ow">=</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Two</span><span class="ow">,</span> <span class="nc">Club</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">card2</span> <span class="ow">=</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Jack</span><span class="ow">,</span> <span class="nc">Spade</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">card3</span> <span class="ow">=</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Ace</span><span class="ow">,</span> <span class="nc">Heart</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">card4</span> <span class="ow">=</span> <span class="nc">Joker</span><span class="ow">;</span>
+</pre></div>
+</div>
+<p>Here is a function that determines whether a card is a face card:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">isFace</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">c</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Jack</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Queen</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">King</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="bp">false</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">isFace</span><span class="ow">(</span><span class="n">card2</span><span class="ow">);</span>
+<span class="n">isFace</span><span class="ow">(</span><span class="n">card3</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Here is a function that tells us if a card is “wild”, if we are playing a friendly
+game where jokers and black twos are wild:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">isWild</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">c</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Two</span><span class="ow">,</span> <span class="nc">Club</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Two</span><span class="ow">,</span> <span class="nc">Spade</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="nc">Joker</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+  <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="bp">false</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">isWild</span><span class="ow">(</span><span class="n">card1</span><span class="ow">);</span>
+<span class="n">isWild</span><span class="ow">(</span><span class="n">card2</span><span class="ow">);</span>
+<span class="n">isWild</span><span class="ow">(</span><span class="n">card3</span><span class="ow">);</span>
+<span class="n">isWild</span><span class="ow">(</span><span class="n">card4</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Finally, here is a function that will take two cards plus a string, either
+“high” or “low”. It will return the card with the higher rank; if they have the
+same rank, it will just return the first card. If the string argument is “high”,
+then aces will rank higher than kings, otherwise they will rank lower than twos
+(this is somewhat artificial, but I want to show an example with a string
+pattern). Jokers are always the highest. The code takes advantage of the
+ordering automatically defined on an enumeration, where earlier variants are
+less than (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>) later ones:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">higher</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">c1</span><span class="ow">,</span> <span class="n">c2</span><span class="ow">,</span> <span class="n">rule</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">((</span><span class="n">c1</span><span class="ow">,</span> <span class="n">c2</span><span class="ow">,</span> <span class="n">rule</span><span class="ow">))</span> <span class="ow">{</span>
+  <span class="cm">/* First handle the Jokers */</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">Joker</span><span class="ow">,</span> <span class="ow">_,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="n">c1</span>
+  <span class="ow">|</span> <span class="ow">(_,</span> <span class="nc">Joker</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="n">c2</span>
+  <span class="cm">/* Handle all of the Ace cases now */</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">Card</span><span class="ow">(</span><span class="nc">Ace</span><span class="ow">,</span> <span class="ow">_),</span> <span class="ow">_,</span> <span class="s2">&quot;high&quot;</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">c1</span>
+  <span class="ow">|</span> <span class="ow">(_,</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Ace</span><span class="ow">,</span> <span class="ow">_),</span> <span class="s2">&quot;high&quot;</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">c2</span> 
+  <span class="ow">|</span> <span class="ow">(_,</span> <span class="nc">Card</span><span class="ow">(</span><span class="nc">Ace</span><span class="ow">,</span> <span class="ow">_),</span> <span class="s2">&quot;low&quot;</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">c1</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">Card</span><span class="ow">(</span><span class="nc">Ace</span><span class="ow">,</span> <span class="ow">_),</span> <span class="ow">_,</span> <span class="s2">&quot;low&quot;</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">c2</span>
+  <span class="cm">/* Handle the remaining cases by comparison */</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">Card</span><span class="ow">(</span><span class="n">rank1</span><span class="ow">,</span> <span class="ow">_),</span> <span class="nc">Card</span><span class="ow">(</span><span class="n">rank2</span><span class="ow">,</span> <span class="ow">_),</span> <span class="ow">_)</span> <span class="ow">=&gt;</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">rank1</span> <span class="ow">&gt;=</span> <span class="n">rank2</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="n">c1</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="n">c2</span>
+      <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">}</span>
+<span class="n">higher</span><span class="ow">(</span><span class="n">card1</span><span class="ow">,</span> <span class="n">card2</span><span class="ow">,</span> <span class="s2">&quot;high&quot;</span><span class="ow">);</span> <span class="cm">/* should be the Jack */</span>
+<span class="n">higher</span><span class="ow">(</span><span class="n">card1</span><span class="ow">,</span> <span class="n">card3</span><span class="ow">,</span> <span class="s2">&quot;high&quot;</span><span class="ow">);</span> <span class="cm">/* should be the Ace */</span>
+<span class="n">higher</span><span class="ow">(</span><span class="n">card1</span><span class="ow">,</span> <span class="n">card3</span><span class="ow">,</span> <span class="s2">&quot;low&quot;</span><span class="ow">);</span> <span class="cm">/* should be the Two */</span>
+<span class="n">higher</span><span class="ow">(</span><span class="n">card3</span><span class="ow">,</span> <span class="n">card4</span><span class="ow">,</span> <span class="s2">&quot;high&quot;</span><span class="ow">);</span> <span class="cm">/* should be the Joker */</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="recursive-types">
+<h3>Recursive Types<a class="headerlink" href="#recursive-types" title="Permalink to this headline">¶</a></h3>
+<p>When we define a type with the <code class="docutils literal notranslate"><span class="pre">type</span></code> statement, the right-hand-side is allowed to
+refer to the new type when assigning the types of components. When specifying such
+a <strong>recursive type</strong> there generally needs to be a variant that does not refer to
+the new type, to serve as a base case (otherwise it is difficult to get off the
+ground when building values of the type). Here are two characteristic examples
+that we will be exploring more later:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">myList</span> <span class="ow">=</span> <span class="nc">Empty</span> <span class="ow">|</span> <span class="nc">ListNode</span><span class="ow">(</span><span class="kt">int</span><span class="ow">,</span> <span class="n">myList</span><span class="ow">);</span>
+<span class="k">type</span> <span class="n">myTree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">Leaf</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">myTree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">),</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="n">myTree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>The type <code class="docutils literal notranslate"><span class="pre">myList</span></code> represents linked lists of integers. Each value is either
+an empty list or a list node containing an integer and a value for the rest of
+the list. For example, the list <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> would be represented by the following
+value:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">list123</span> <span class="ow">=</span> <span class="nc">ListNode</span><span class="ow">(</span><span class="mi">1</span><span class="ow">,</span> <span class="nc">ListNode</span><span class="ow">(</span><span class="mi">2</span><span class="ow">,</span> <span class="nc">ListNode</span><span class="ow">(</span><span class="mi">3</span><span class="ow">,</span> <span class="nc">Empty</span><span class="ow">)));</span>
+</pre></div>
+</div>
+<p>The natural way to write a function over such a list is by pattern matching, with
+the additional wrinkle that we may recursively use the function to process the
+rest of the list (since it is a smaller list, we can use structural induction to
+prove properties of such a function). Here is a function to add up the numbers
+in a list:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">sumList</span> <span class="ow">=</span> <span class="n">nums</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">nums</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Empty</span> <span class="ow">=&gt;</span> <span class="mi">0</span>
+  <span class="ow">|</span> <span class="nc">ListNode</span><span class="ow">(</span><span class="n">n</span><span class="ow">,</span> <span class="n">rest</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">n</span> <span class="ow">+</span> <span class="n">sumList</span><span class="ow">(</span><span class="n">rest</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">sumList</span><span class="ow">(</span><span class="n">list123</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>The type <code class="docutils literal notranslate"><span class="pre">myTree('a,</span> <span class="pre">'b)</span></code> is a parameterized type. It represents binary trees that
+are either leaves containing a value of type <code class="docutils literal notranslate"><span class="pre">'a</span></code>, or tree nodes that contain two
+subtrees and a value of type <code class="docutils literal notranslate"><span class="pre">'b</span></code>. For example, here is a tree with integers in the
+leaves and string labels on the interior nodes; it is meant to represent the
+arithmetic expression <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">tree123</span> <span class="ow">=</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">Leaf</span><span class="ow">(</span><span class="mi">1</span><span class="ow">),</span> <span class="s2">&quot;+&quot;</span><span class="ow">,</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">Leaf</span><span class="ow">(</span><span class="mi">2</span><span class="ow">),</span> <span class="s2">&quot;*&quot;</span><span class="ow">,</span> <span class="nc">Leaf</span><span class="ow">(</span><span class="mi">3</span><span class="ow">)));</span>
+</pre></div>
+</div>
+<p>Here is a function defined by pattern matching over trees that evaluates such an
+expression:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">eval</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Leaf</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">n</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="s2">&quot;+&quot;</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">eval</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">eval</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="s2">&quot;*&quot;</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">eval</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="ow">*</span> <span class="n">eval</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">eval</span><span class="ow">(</span><span class="n">tree123</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Note that we get a warning that the pattern match is not exhaustive, because we
+don’t provide cases for all of the possible operator strings. We will look at
+better solutions for this eventually.</p>
+</div>
+</div>
+<div class="section" id="connection-to-natural-deduction">
+<h2>Connection to Natural Deduction<a class="headerlink" href="#connection-to-natural-deduction" title="Permalink to this headline">¶</a></h2>
+<p>Finally, here is the “big reveal” about natural deduction. The proofs that we
+constructed were really just programs in a close relative of ReasonML! Here is
+a table explaining the analogy:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Functional Programming</p></th>
+<th class="text-align:left head"><p>Natural Deduction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>function type <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=&gt;</span> <span class="pre">B</span></code></p></td>
+<td class="text-align:left"><p>implication <span class="math notranslate nohighlight">\(A\rightarrow B\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>function value <code class="docutils literal notranslate"><span class="pre">(x:</span> <span class="pre">A)</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">body</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">B</span> <span class="pre">...</span> <span class="pre">}</span></code></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> Introduction</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>application <code class="docutils literal notranslate"><span class="pre">f(a)</span></code></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> Elimination, from <span class="math notranslate nohighlight">\(f: A\rightarrow B\)</span> and <span class="math notranslate nohighlight">\(a: A\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>tuple type <code class="docutils literal notranslate"><span class="pre">(A,</span> <span class="pre">B)</span></code></p></td>
+<td class="text-align:left"><p>conjunction <span class="math notranslate nohighlight">\(A\land B\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>tuple value <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\land\)</span> Introduction from <span class="math notranslate nohighlight">\(a: A\)</span> and <span class="math notranslate nohighlight">\(b: B\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>projections <code class="docutils literal notranslate"><span class="pre">fst</span></code>, <code class="docutils literal notranslate"><span class="pre">snd</span></code></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\land\)</span> Elimination 1 and 2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>variant type <code class="docutils literal notranslate"><span class="pre">Left(A)</span></code> | <code class="docutils literal notranslate"><span class="pre">Right(B)</span></code></p></td>
+<td class="text-align:left"><p>disjunction <span class="math notranslate nohighlight">\(A\lor B\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>constructors <code class="docutils literal notranslate"><span class="pre">Left</span></code>, <code class="docutils literal notranslate"><span class="pre">Right</span></code></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\lor\)</span> Introduction 1 and 2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>switch statement</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\lor\)</span> Elimination</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">unit</span></code> type</p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\T\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The most complicated comparison here is viewing the switch statement as doing <span class="math notranslate nohighlight">\(\lor\)</span>
+elimination. Consider a proof such as
+<span class="math notranslate nohighlight">\($ \begin{array}{l|l}
+\ell_1: p\lor q &amp; \text{premise}\\
+\ell_2: p\Rightarrow\{\\
+\quad\ell_3: q\lor p &amp; \lor I_2\ \ell_2\\
+\}\\
+\ell_4: q\Rightarrow\{\\
+\quad\ell_5: q\lor p &amp; \lor I_1\ \ell_2\\
+\}\\
+\ell_6: q\lor p &amp; \lor E\ \ell_1, \ell_2, \ell_4
+\end{array} $\)</span>
+Here is an analogous ReasonML function:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">Left</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">Right</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">orCommutative</span><span class="ow">:</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">l1</span><span class="ow">:</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="n">l6</span><span class="ow">:</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="k">switch</span> <span class="ow">(</span><span class="n">l1</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Left</span><span class="ow">(</span><span class="n">l2</span><span class="ow">:</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">l3</span><span class="ow">:</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">Right</span><span class="ow">(</span><span class="n">l2</span><span class="ow">);</span>
+      <span class="n">l3</span>
+    <span class="ow">}</span>
+  <span class="ow">|</span> <span class="nc">Right</span><span class="ow">(</span><span class="n">l4</span><span class="ow">:</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">l5</span><span class="ow">:</span> <span class="n">disj</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">Left</span><span class="ow">(</span><span class="n">l4</span><span class="ow">);</span>
+      <span class="n">l5</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+  <span class="n">l6</span>
+<span class="ow">};</span>
+<span class="n">orCommutative</span><span class="ow">(</span><span class="nc">Left</span><span class="ow">(</span><span class="mi">42</span><span class="ow">));</span>
+<span class="n">orCommutative</span><span class="ow">(</span><span class="nc">Right</span><span class="ow">(</span><span class="s2">&quot;hello&quot;</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>More idiomatically, taking advantage of type inference and not using so many
+<code class="docutils literal notranslate"><span class="pre">let</span></code> statements to label each “line” of the proof, we can write this as:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">orCommutative</span> <span class="ow">=</span> <span class="n">a_or_b</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">a_or_b</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Left</span><span class="ow">(</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Right</span><span class="ow">(</span><span class="n">a</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">Right</span><span class="ow">(</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Left</span><span class="ow">(</span><span class="n">b</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+<span class="n">orCommutative</span><span class="ow">(</span><span class="nc">Left</span><span class="ow">(</span><span class="mi">42</span><span class="ow">));</span>
+<span class="n">orCommutative</span><span class="ow">(</span><span class="nc">Right</span><span class="ow">(</span><span class="s2">&quot;hello&quot;</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>One of the very powerful aspects of this analogy between typed functional
+programming and logical proofs is that, for those parts of a program that
+are just doing the “administrative” work of shuffling around pieces of
+data structures in a generic way, there is just one straightforward way to
+put the pieces together that will satisfy the type-checker. Writing this
+kind of program is akin to proving an equivalence in logic, and there is
+a strong hope that this sort of code could be generated automatically, or
+at least with significant machine assistance, leaving programmers to work
+on the more interesting parts of the problem.</p>
+<p>Missing from this analogy is how to treat negation and contradiction (<span class="math notranslate nohighlight">\(\F\)</span>).
+The simplest approach in ReasonML is probably to treat negation <span class="math notranslate nohighlight">\(\lnot A\)</span> as
+equivalent to the implication <span class="math notranslate nohighlight">\(A\rightarrow\F\)</span>. We do not have a type that
+corresponds to <span class="math notranslate nohighlight">\(\F\)</span>, because there are not supposed to be any values of that
+type (since they would correspond to proofs of a contradiction!). However,
+we can extend our analogy so that reaching a contradiction is like throwing
+an exception to abort the program. In ReasonML, the expression <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">Exit</span></code>
+may be used where <em>any</em> type of value is expected, and if it is evaluated then
+the program will abort (unless we have an exception handler in place…).
+This corresponds to <em>ex falso quodlibet</em>, the <span class="math notranslate nohighlight">\(\F\)</span> elimination rule: if we
+reach a contradiction, we can get a proof of any proposition, <em>i.e.</em>, a result
+of any type. If negation is an implication of <span class="math notranslate nohighlight">\(\F\)</span>, then the analogue to
+<span class="math notranslate nohighlight">\(\lnot A\)</span> in ReasonML would be a function that takes a parameter of type <code class="docutils literal notranslate"><span class="pre">A</span></code>
+and throws an exception—if it is truly the case that there is no value
+of type <code class="docutils literal notranslate"><span class="pre">A</span></code> (that is, no proof of <span class="math notranslate nohighlight">\(A\)</span>, which is what we would hope if <span class="math notranslate nohighlight">\(\lnot A\)</span>
+is true), then this function can never be called.[^This now accounts for all
+of natural deduction except for the double-negation elimination rule, which
+we already observed is difficult to justify from a computational viewpoint.
+It would allow us to go from knowing that <span class="math notranslate nohighlight">\(\lnot A\)</span> is not true to somehow
+having a proof that <span class="math notranslate nohighlight">\(A\)</span> is true, but there is a long distance from knowing that
+a number is not prime, for example, to being able to show that it is composite by giving
+its factors—much of modern cryptography relies on this distance!]</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Write ReasonML functions that compute the inclusive and exclusive OR
+operations. That is, write Boolean functions <code class="docutils literal notranslate"><span class="pre">or(x,</span> <span class="pre">y)</span></code> and <code class="docutils literal notranslate"><span class="pre">xor(x,</span> <span class="pre">y)</span></code> that
+will return <code class="docutils literal notranslate"><span class="pre">true</span></code> if one of <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>; in the inclusive case,
+<code class="docutils literal notranslate"><span class="pre">or(true,</span> <span class="pre">true)</span></code> is also <code class="docutils literal notranslate"><span class="pre">true</span></code>, while for the exclusive case,
+<code class="docutils literal notranslate"><span class="pre">xor(true,</span> <span class="pre">true)</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>. Use pattern matching for one, and <code class="docutils literal notranslate"><span class="pre">if</span></code>
+expressions for the other (but do not use the built-in logical operators such
+as <code class="docutils literal notranslate"><span class="pre">||</span></code>).</p></li>
+<li><p>Add a <code class="docutils literal notranslate"><span class="pre">Triangle</span></code> variant to the <code class="docutils literal notranslate"><span class="pre">shape</span></code> type above. The constructor should
+take two floats: the base and the height. Extend the <code class="docutils literal notranslate"><span class="pre">area</span></code> function to
+handle triangles, and then define a <code class="docutils literal notranslate"><span class="pre">perimeter</span></code> function for shapes.</p></li>
+<li><p>Define a function that takes a <code class="docutils literal notranslate"><span class="pre">myTree('a,</span> <span class="pre">'b)</span></code> value and counts the number
+of leaves. That is, the function call
+<code class="docutils literal notranslate"><span class="pre">numLeaves(TreeNode(Leaf(27),</span> <span class="pre">&quot;+&quot;,</span> <span class="pre">TreeNode(Leaf(3),</span> <span class="pre">&quot;*&quot;,</span> <span class="pre">Leaf(5))))</span></code>
+should return 3. <em>Hint:</em> Define it using a pattern match.</p></li>
+<li><p>Based on the <code class="docutils literal notranslate"><span class="pre">curry</span></code> and <code class="docutils literal notranslate"><span class="pre">uncurry</span></code> functions, give a natural deduction proof
+of the arguments <span class="math notranslate nohighlight">\((p\land q)\rightarrow r\vdash p\rightarrow(q\rightarrow r)\)</span>
+and its converse <span class="math notranslate nohighlight">\(p\rightarrow(q\rightarrow r)\vdash(p\land q)\rightarrow r\)</span>.</p></li>
+<li><p>We have observed that modus ponens, the <span class="math notranslate nohighlight">\(\rightarrow\)</span> elimination rule,
+corresponds to function application. What operation on functions corresponds
+to the Law of Syllogism (<span class="math notranslate nohighlight">\(p\rightarrow q,q\rightarrow r\vdash p\rightarrow
+r\)</span>)?</p></li>
+<li><p>Prove the logical equivalence <span class="math notranslate nohighlight">\((p\lor q)\rightarrow r\equiv(p\rightarrow
+r)\land(q\rightarrow r)\)</span>. Give the analogous ReasonML functions that show the
+1-1 correspondence between the types <code class="docutils literal notranslate"><span class="pre">disj('a,</span> <span class="pre">'b)</span> <span class="pre">=&gt;</span> <span class="pre">'c</span></code> and
+<code class="docutils literal notranslate"><span class="pre">('a</span> <span class="pre">=&gt;</span> <span class="pre">'c,</span> <span class="pre">'b</span> <span class="pre">=&gt;</span> <span class="pre">'c)</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
+<p>another page on common patterns of recursion: map, reduce, fold, accumulator,
+auxilliary function, tail-recursion, mutual recursion. A page on functional graphics.
+A summary page on ReasonML.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Introduction to Functional Programming</a>
+    <a class='right-next' id="next-link" href="map-reduce.html" title="next page">Map and Reduce on Lists</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

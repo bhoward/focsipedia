@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Binary Search Trees and Heaps &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Graphs" href="graphs.html" />
+    <link rel="prev" title="Trees" href="trees.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Data Structures
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lists.html">
+     Sorting Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees.html">
+     Trees
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Binary Search Trees and Heaps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     Graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ds/bst.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-search-trees">
+   Binary Search Trees
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worst-case-for-binary-search">
+     Worst Case for Binary Search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tree-sort">
+     Tree Sort
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heaps">
+   Heaps
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heapsort">
+     Heapsort
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="binary-search-trees-and-heaps">
+<h1>Binary Search Trees and Heaps<a class="headerlink" href="#binary-search-trees-and-heaps" title="Permalink to this headline">¶</a></h1>
+<p>Let us consider binary trees whose values can be ordered.
+For concreteness, we will just take the value type to be <code class="docutils literal notranslate"><span class="pre">int</span></code>, although it could just as well be <code class="docutils literal notranslate"><span class="pre">string</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> or anything else with a comparison operator.</p>
+<div class="section" id="binary-search-trees">
+<h2>Binary Search Trees<a class="headerlink" href="#binary-search-trees" title="Permalink to this headline">¶</a></h2>
+<p>If we add the restriction to binary trees that all of the values in the left subtree of any node have to be less than (or equal to) the value in the node, and all of the values in the right subtree have to be greater than (or equal to) that value, then we get a <strong>binary search tree</strong>.</p>
+<p>Here is our type definition for binary trees again, plus a function that checks whether the binary search tree (BST) condition holds for a given <code class="docutils literal notranslate"><span class="pre">tree(int)</span></code>.
+It works by checking that the root value is between <code class="docutils literal notranslate"><span class="pre">int_min</span></code> and <code class="docutils literal notranslate"><span class="pre">int_max</span></code> (which should be trivially true), and then recursively checking that each subtree contains values in an appropriate restriction of that range.</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">EmptyTree</span> <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">));</span>
+
+<span class="k">let</span> <span class="n">leaf</span> <span class="ow">=</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="nc">EmptyTree</span><span class="ow">)</span> <span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">checkBST</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="cm">/* check that all values in t are between min and max, inclusive,</span>
+<span class="cm">   * and that all subtrees satisfy the BST condition</span>
+<span class="cm">   */</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">min</span><span class="ow">,</span> <span class="n">max</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+    <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">min</span> <span class="ow">&lt;=</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">&amp;&amp;</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">&lt;=</span> <span class="n">max</span><span class="ow">)</span>
+        <span class="ow">&amp;&amp;</span> <span class="n">aux</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">min</span><span class="ow">,</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">&amp;&amp;</span> <span class="n">aux</span><span class="ow">(</span><span class="n">right</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">max</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="n">aux</span><span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">min_int</span><span class="ow">,</span> <span class="n">max_int</span><span class="ow">)</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">demo</span> <span class="ow">=</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">17</span><span class="ow">),</span> <span class="mi">34</span><span class="ow">,</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">38</span><span class="ow">),</span> <span class="mi">42</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">50</span><span class="ow">)));</span>
+<span class="n">checkBST</span><span class="ow">(</span><span class="n">demo</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Here is the <code class="docutils literal notranslate"><span class="pre">demo</span></code> tree rendered with the <code class="docutils literal notranslate"><span class="pre">showTree</span></code> function:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">showTree</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">show</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">circle</span><span class="ow">(</span><span class="mi">2</span><span class="ow">.))</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">lt</span><span class="ow">,</span> <span class="n">value</span><span class="ow">,</span> <span class="n">rt</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">showLeft</span> <span class="ow">=</span> <span class="n">showTree</span><span class="ow">(</span><span class="n">lt</span><span class="ow">,</span> <span class="n">show</span><span class="ow">);</span>
+      <span class="k">let</span> <span class="n">showRight</span> <span class="ow">=</span> <span class="n">showTree</span><span class="ow">(</span><span class="n">rt</span><span class="ow">,</span> <span class="n">show</span><span class="ow">);</span>
+      <span class="k">let</span> <span class="n">leftShift</span> <span class="ow">=</span> <span class="n">right</span><span class="ow">(</span><span class="n">showLeft</span><span class="ow">)</span> <span class="ow">+.</span> <span class="mi">10</span><span class="ow">.;</span>
+      <span class="k">let</span> <span class="n">rightShift</span> <span class="ow">=</span> <span class="n">left</span><span class="ow">(</span><span class="n">showRight</span><span class="ow">)</span> <span class="ow">-.</span> <span class="mi">10</span><span class="ow">.;</span>
+      <span class="k">let</span> <span class="n">leftLine</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span><span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="n">leftShift</span><span class="ow">,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.)]);</span>
+      <span class="k">let</span> <span class="n">rightLine</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span><span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="n">rightShift</span><span class="ow">,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.)]);</span>
+      <span class="k">let</span> <span class="n">leftImage</span> <span class="ow">=</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">TR</span><span class="ow">,</span> <span class="n">showLeft</span> <span class="ow">+++</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">BL</span><span class="ow">,</span> <span class="n">leftLine</span><span class="ow">));</span>
+      <span class="k">let</span> <span class="n">rightImage</span> <span class="ow">=</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">TL</span><span class="ow">,</span> <span class="n">showRight</span> <span class="ow">+++</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">BR</span><span class="ow">,</span> <span class="n">rightLine</span><span class="ow">));</span>
+      <span class="k">let</span> <span class="n">valueImage</span> <span class="ow">=</span> <span class="n">stroke</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;none&quot;</span><span class="ow">),</span> <span class="n">fill</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">text</span><span class="ow">(</span><span class="n">show</span><span class="ow">(</span><span class="n">value</span><span class="ow">))))</span>
+        <span class="ow">+++</span> <span class="n">stroke</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">fill</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;white&quot;</span><span class="ow">),</span> <span class="n">square</span><span class="ow">(</span><span class="mi">20</span><span class="ow">.)));</span>
+      <span class="n">valueImage</span> <span class="ow">+++</span> <span class="n">leftImage</span> <span class="ow">+++</span> <span class="n">rightImage</span>
+    <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">demo</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>The advantage of a binary search tree is that it provides a fast way to determine whether a given value is in the data structure.
+If we just have a list of <span class="math notranslate nohighlight">\(N\)</span> elements, then the best we can do is a linear traversal that will take <span class="math notranslate nohighlight">\(O(N)\)</span> time.
+By sorting the list, we can stop looking for an element as soon as we see something greater than or equal to it; on average this will require looking through only half of the list, but that is still <span class="math notranslate nohighlight">\(O(N)\)</span>.
+If we had a way to access the <span class="math notranslate nohighlight">\(i^\textrm{th}\)</span> element of the list in constant (<span class="math notranslate nohighlight">\(O(1)\)</span>) time, then we could do better on a sorted list by using binary search, but the linked list data structure does not permit quick access to an arbitrary element; you have to traverse the entire list to get to the <span class="math notranslate nohighlight">\(i^\textrm{th}\)</span> node.</p>
+<p>However, a binary search tree is arranged precisely to allow direct access to each of the elements needed when performing a binary search.
+In a well-balanced tree, the root will be (close to) the middle element, where the search starts.
+Each time we inspect a node, if we do not find the value we are looking for then we can narrow our search to one of the two subtrees.
+The root of the selected subtree should be (close to) the middle element of half of the elements remaining to be searched.
+Since we cut the set of values to be searched (the <strong>search space</strong>) roughly in half after each element we examine, we will only need to look at <span class="math notranslate nohighlight">\(O(\log N)\)</span> elements to decide whether our given value is present.
+Because the logarithm function grows so slowly, this means that even for billions of data items we will only have to look at a few dozen of them![^A nice rule of thumb is that every factor of 1000 adds ten to the number of comparisons in binary search, since <span class="math notranslate nohighlight">\(\log_2 1000\approx 10\)</span>.]</p>
+<p>Binary search is very easy to write by pattern matching on a tree:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">search</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">x</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="bp">false</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">x</span> <span class="ow">==</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="bp">true</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="k">if</span> <span class="ow">(</span><span class="n">x</span> <span class="ow">&lt;</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="n">search</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">x</span><span class="ow">)</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="n">search</span><span class="ow">(</span><span class="n">right</span><span class="ow">,</span> <span class="n">x</span><span class="ow">)</span>
+      <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">search</span><span class="ow">(</span><span class="n">demo</span><span class="ow">,</span> <span class="mi">42</span><span class="ow">);</span>
+<span class="n">search</span><span class="ow">(</span><span class="n">demo</span><span class="ow">,</span> <span class="mi">43</span><span class="ow">);</span>
+</pre></div>
+</div>
+<div class="section" id="worst-case-for-binary-search">
+<h3>Worst Case for Binary Search<a class="headerlink" href="#worst-case-for-binary-search" title="Permalink to this headline">¶</a></h3>
+<p>Of course, the calculations above about running time only apply if the tree is well-balanced.
+In the worst case, suppose that the root of the tree had the smallest (or largest) value; then all of the
+other values would be concentrated in just one of the subtrees.
+If <em>every</em> node had that misfortune, then at each comparison we would only reduce the search space by 1.
+That would mean that in the worst case we would have to examine every node in the tree: that would be <span class="math notranslate nohighlight">\(O(N)\)</span>, and we might as well be using a linked list!</p>
+<p>You might think that this case is very unlikely, but consider the following function to build a binary search tree from a given list:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">insert</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">x</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="n">leaf</span><span class="ow">(</span><span class="n">x</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">x</span> <span class="ow">&lt;</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">insert</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">x</span><span class="ow">),</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">insert</span><span class="ow">(</span><span class="n">right</span><span class="ow">,</span> <span class="n">x</span><span class="ow">))</span>
+      <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">insertAll</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">xs</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">xs</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="n">t</span>
+  <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="n">insertAll</span><span class="ow">(</span><span class="n">insert</span><span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">head</span><span class="ow">),</span> <span class="n">tail</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">buildBST</span> <span class="ow">=</span> <span class="n">nums</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">insertAll</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">,</span> <span class="n">nums</span><span class="ow">)</span> <span class="ow">};</span>
+</pre></div>
+</div>
+<p>Here is what happens if we build a BST from an already sorted list:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">badBST</span> <span class="ow">=</span> <span class="n">buildBST</span><span class="ow">([</span><span class="mi">1</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">3</span><span class="ow">,</span> <span class="mi">4</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">,</span> <span class="mi">6</span><span class="ow">,</span> <span class="mi">7</span><span class="ow">,</span> <span class="mi">8</span><span class="ow">,</span> <span class="mi">9</span><span class="ow">]);</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">badBST</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>It is not at all unusual to build a binary search tree from a collection that is already sorted, or even close to sorted, so a serious implementation of this data structure will have to do extra work to ensure that it stays balanced.
+We will not go into the details here, but good approaches to binary search trees that are guaranteed to be balanced are Red-Black trees or AVL trees.</p>
+</div>
+<div class="section" id="tree-sort">
+<h3>Tree Sort<a class="headerlink" href="#tree-sort" title="Permalink to this headline">¶</a></h3>
+<p>By combining the <code class="docutils literal notranslate"><span class="pre">buildBST</span></code> function with an inorder traversal that collects all of the elements of the tree back into a list, we get another way to sort a list of numbers:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">inorderCollect</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="bp">[]</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">inorderCollect</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="o">@</span> <span class="ow">[</span><span class="n">n</span><span class="ow">]</span> <span class="o">@</span> <span class="n">inorderCollect</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">treeSort</span> <span class="ow">=</span> <span class="n">nums</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">inorderCollect</span><span class="ow">(</span><span class="n">buildBST</span><span class="ow">(</span><span class="n">nums</span><span class="ow">))</span> <span class="ow">};</span>
+
+<span class="n">treeSort</span><span class="ow">([</span><span class="mi">3</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="mi">4</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">,</span> <span class="mi">9</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">6</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">]);</span>
+</pre></div>
+</div>
+<p>This will have an average case running time of <span class="math notranslate nohighlight">\(O(N\log N)\)</span>, and if we put some effort into ensuring that the intermediate tree was well-balanced then that would also be the worst-case time.</p>
+</div>
+</div>
+<div class="section" id="heaps">
+<h2>Heaps<a class="headerlink" href="#heaps" title="Permalink to this headline">¶</a></h2>
+<p>Another interesting data structure related to the binary search tree is the (binary) heap.
+Just as before, we will consider trees with <code class="docutils literal notranslate"><span class="pre">int</span></code> values, but now the ordering condition will be that the root value is less than or equal to <em>all</em> of the rest of the values in the tree; as with the BST condition, this <strong>heap condition</strong> needs to hold recursively for every subtree.</p>
+<p>Here is a function to check the heap condition:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">checkHeap</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">min</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="bp">true</span>
+    <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">min</span> <span class="ow">&lt;=</span> <span class="n">n</span><span class="ow">)</span>
+        <span class="ow">&amp;&amp;</span> <span class="n">aux</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">)</span> <span class="ow">&amp;&amp;</span> <span class="n">aux</span><span class="ow">(</span><span class="n">right</span><span class="ow">,</span> <span class="n">n</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="n">aux</span><span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">min_int</span><span class="ow">)</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">heapDemo</span> <span class="ow">=</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">42</span><span class="ow">),</span> <span class="mi">17</span><span class="ow">,</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">50</span><span class="ow">),</span> <span class="mi">34</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">38</span><span class="ow">)));</span>
+<span class="n">checkHeap</span><span class="ow">(</span><span class="n">heapDemo</span><span class="ow">);</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">heapDemo</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>Note that the ordering condition for a heap is somewhat looser than for a BST: there is no restriction on the relative values between the left and right subtrees, only between the root and its descendents.</p>
+<p>The heap condition guarantees that the smallest value will always be at the root.
+This makes the heap a good implementation of the concept of a <strong>priority queue</strong>.
+Like an ordinary queue, values can be added and removed from a priority queue; instead of removing the value that has been in the queue the longest, however, the value removed from a priority queue will be the <em>smallest</em>.
+(This is technically known as a <strong>minheap</strong>.
+Reversing the test in the condition will give a <strong>maxheap</strong>, where the largest value is at the root and the corresponding priority queue always returns the largest remaining element.)</p>
+<p>The most important operation on heaps is the <code class="docutils literal notranslate"><span class="pre">heapMerge</span></code>: given two heaps, combine their elements into a single heap. As usual, this is straightforward by pattern matching. In fact, here is a version known as the <strong>skew merge</strong> that has a surprising additional property:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">heapMerge</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">h1</span><span class="ow">,</span> <span class="n">h2</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">h1</span><span class="ow">,</span> <span class="n">h2</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">,</span> <span class="ow">_)</span> <span class="ow">=&gt;</span> <span class="n">h2</span>
+  <span class="ow">|</span> <span class="ow">(_,</span> <span class="nc">EmptyTree</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">h1</span>
+  <span class="ow">|</span> <span class="ow">(</span><span class="nc">TreeNode</span><span class="ow">(</span><span class="n">l1</span><span class="ow">,</span> <span class="n">n1</span><span class="ow">,</span> <span class="n">r1</span><span class="ow">),</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">l2</span><span class="ow">,</span> <span class="n">n2</span><span class="ow">,</span> <span class="n">r2</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">n1</span> <span class="ow">&lt;=</span> <span class="n">n2</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">heapMerge</span><span class="ow">(</span><span class="n">h2</span><span class="ow">,</span> <span class="n">r1</span><span class="ow">),</span> <span class="n">n1</span><span class="ow">,</span> <span class="n">l1</span><span class="ow">)</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">heapMerge</span><span class="ow">(</span><span class="n">h1</span><span class="ow">,</span> <span class="n">r2</span><span class="ow">),</span> <span class="n">n2</span><span class="ow">,</span> <span class="n">l2</span><span class="ow">)</span>
+      <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>The new smallest element must be either the root of <code class="docutils literal notranslate"><span class="pre">h1</span></code> (<code class="docutils literal notranslate"><span class="pre">n1</span></code>) or <code class="docutils literal notranslate"><span class="pre">h2</span></code> (<code class="docutils literal notranslate"><span class="pre">n2</span></code>). After deciding to put that value at the root of the resulting tree, we have its two children plus the other heap to deal with, but we only have space for two subheaps. By merging the other heap with the right child, but putting the result on the left, the skew merge can be shown to be <strong>self-adjusting</strong>; that is, it will stay balanced enough that, at least over the long run, all operations can be performed in logarithmic time.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">heapMerge</span></code> function, we can implement <code class="docutils literal notranslate"><span class="pre">heapInsert</span></code> and <code class="docutils literal notranslate"><span class="pre">removeMin</span></code> easily:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">heapInsert</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">h</span><span class="ow">,</span> <span class="n">x</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">heapMerge</span><span class="ow">(</span><span class="n">h</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="n">x</span><span class="ow">))</span> <span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">removeMin</span> <span class="ow">=</span> <span class="n">h</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">h</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="nc">None</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">n</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Some</span><span class="ow">((</span><span class="n">n</span><span class="ow">,</span> <span class="n">heapMerge</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="nc">Some</span><span class="ow">((</span><span class="n">min</span><span class="ow">,</span> <span class="n">rest</span><span class="ow">))</span> <span class="ow">=</span> <span class="n">removeMin</span><span class="ow">(</span><span class="n">heapDemo</span><span class="ow">);</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">rest</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<div class="section" id="heapsort">
+<h3>Heapsort<a class="headerlink" href="#heapsort" title="Permalink to this headline">¶</a></h3>
+<p>Finally, if we start with a list, insert each of the numbers in turn into an initially empty heap, and then repeatedly remove the smallest element from the heap until it is empty, we get another efficient sorting algorithm.
+Known as <strong>Heapsort</strong>, it is guaranteed to be <span class="math notranslate nohighlight">\(O(N\log N)\)</span>, as long as we can ensure the heap is relatively balanced.</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">heapInsertAll</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">h</span><span class="ow">,</span> <span class="n">nums</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">nums</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="bp">[]</span> <span class="ow">=&gt;</span> <span class="n">h</span>
+  <span class="ow">|</span> <span class="ow">[</span><span class="n">head</span><span class="ow">,</span> <span class="ow">...</span><span class="n">tail</span><span class="ow">]</span> <span class="ow">=&gt;</span> <span class="n">heapInsertAll</span><span class="ow">(</span><span class="n">heapInsert</span><span class="ow">(</span><span class="n">h</span><span class="ow">,</span> <span class="n">head</span><span class="ow">),</span> <span class="n">tail</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">buildHeap</span> <span class="ow">=</span> <span class="n">nums</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="n">heapInsertAll</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">,</span> <span class="n">nums</span><span class="ow">)</span> <span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">removeAll</span> <span class="ow">=</span> <span class="n">h</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">removeMin</span><span class="ow">(</span><span class="n">h</span><span class="ow">))</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">None</span> <span class="ow">=&gt;</span> <span class="bp">[]</span>
+  <span class="ow">|</span> <span class="nc">Some</span><span class="ow">((</span><span class="n">min</span><span class="ow">,</span> <span class="n">rest</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">[</span><span class="n">min</span><span class="ow">,</span> <span class="ow">...</span><span class="n">removeAll</span><span class="ow">(</span><span class="n">rest</span><span class="ow">)]</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="n">heapSort</span> <span class="ow">=</span> <span class="n">nums</span> <span class="ow">=&gt;</span> <span class="n">removeAll</span><span class="ow">(</span><span class="n">buildHeap</span><span class="ow">(</span><span class="n">nums</span><span class="ow">));</span>
+
+<span class="n">heapSort</span><span class="ow">([</span><span class="mi">3</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="mi">4</span><span class="ow">,</span> <span class="mi">1</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">,</span> <span class="mi">9</span><span class="ow">,</span> <span class="mi">2</span><span class="ow">,</span> <span class="mi">6</span><span class="ow">,</span> <span class="mi">5</span><span class="ow">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Consider the following tree:</p></li>
+</ol>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">t</span> <span class="ow">=</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">5</span><span class="ow">),</span> <span class="mi">3</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">7</span><span class="ow">)),</span> <span class="mi">2</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">4</span><span class="ow">)),</span> <span class="mi">1</span><span class="ow">,</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">9</span><span class="ow">),</span> <span class="mi">6</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">8</span><span class="ow">)));</span>
+<span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>List the values according to the preorder, inorder, postorder, and level order traversals.</p>
+<p>[[spoiler | Answer]]
+| Preorder: 1, 2, 3, 5, 7, 4, 6, 9, 8
+|
+| Inorder: 5, 3, 7, 2, 4, 1, 9, 6, 8
+|
+| Postorder: 5, 7, 3, 4, 2, 9, 8, 6, 1
+|
+| Level order: 1, 2, 6, 3, 4, 9, 8, 5, 7</p>
+<ol class="simple">
+<li><p>Show the result of removing the minimum item from the tree in Exercise 1, treating it as a binary heap (you may use either the skew merge function described above or the complete binary tree implementation described in class).</p></li>
+</ol>
+<p>[[spoiler | Answer]]
+| Using the skew merge:
+| <code class="docutils literal notranslate"><span class="pre">reason</span> <span class="pre">hidden</span> <span class="pre">|</span> <span class="pre">switch</span> <span class="pre">(removeMin(t))</span> <span class="pre">{</span> <span class="pre">|</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=&gt;</span> <span class="pre">()</span> <span class="pre">|</span> <span class="pre">|</span> <span class="pre">Some((min,</span> <span class="pre">rest))</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">Printf.printf(&quot;Minimum</span> <span class="pre">value</span> <span class="pre">is</span> <span class="pre">%d\n&quot;,</span> <span class="pre">min);</span> <span class="pre">|</span>&#160;&#160;&#160;&#160; <span class="pre">draw(showTree(rest,</span> <span class="pre">string_of_int));</span> <span class="pre">|</span>&#160;&#160; <span class="pre">}</span> <span class="pre">|</span> <span class="pre">}</span> <span class="pre">|</span> </code>
+|
+| Using the complete tree implementation:
+| <code class="docutils literal notranslate"><span class="pre">reason</span> <span class="pre">hidden</span> <span class="pre">|</span> <span class="pre">print_string(&quot;Minimum</span> <span class="pre">value</span> <span class="pre">is</span> <span class="pre">1\n&quot;);</span> <span class="pre">|</span> <span class="pre">let</span> <span class="pre">t2</span> <span class="pre">=</span> <span class="pre">TreeNode(TreeNode(TreeNode(leaf(7),</span> <span class="pre">5,</span> <span class="pre">EmptyTree),</span> <span class="pre">3,</span> <span class="pre">leaf(4)),</span> <span class="pre">2,</span> <span class="pre">TreeNode(leaf(9),</span> <span class="pre">6,</span> <span class="pre">leaf(8)));</span> <span class="pre">|</span> <span class="pre">draw(showTree(t2,</span> <span class="pre">string_of_int));</span> <span class="pre">|</span> </code></p>
+<ol class="simple">
+<li><p>Suppose you tried to use the tree from Exercise 1 as a binary search tree. For which values would the <code class="docutils literal notranslate"><span class="pre">search</span></code> function return <code class="docutils literal notranslate"><span class="pre">true</span></code>?</p></li>
+</ol>
+<p>[[spoiler | Answer]]
+| Searching for 1, 6, and 8 would be successful.
+| Searching for any of the other numbers would result in the search looking at the wrong subtree at some point.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="trees.html" title="previous page">Trees</a>
+    <a class='right-next' id="next-link" href="graphs.html" title="next page">Graphs</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

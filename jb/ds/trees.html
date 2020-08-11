@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trees &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Binary Search Trees and Heaps" href="bst.html" />
+    <link rel="prev" title="Sorting Lists" href="lists.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Data Structures
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lists.html">
+     Sorting Lists
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bst.html">
+     Binary Search Trees and Heaps
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="graphs.html">
+     Graphs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ds/trees.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-trees">
+   Binary Trees
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traversals">
+     Traversals
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expression-trees">
+     Expression Trees
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="trees">
+<h1>Trees<a class="headerlink" href="#trees" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="binary-trees">
+<h2>Binary Trees<a class="headerlink" href="#binary-trees" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>binary tree</strong> is a data structure that is either empty or it consists of a root node with three pieces of data: a value (often a number or a string), and two subtrees, one on the left and one on the right.
+This can be expressed with the following recursive data type in ReasonML:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">EmptyTree</span> <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="n">tree</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">));</span>
+
+<span class="k">let</span> <span class="n">leaf</span> <span class="ow">=</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="ow">{</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">,</span> <span class="n">a</span><span class="ow">,</span> <span class="nc">EmptyTree</span><span class="ow">)</span> <span class="ow">};</span>
+<span class="k">let</span> <span class="n">demo</span> <span class="ow">=</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">1</span><span class="ow">),</span> <span class="mi">2</span><span class="ow">,</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="mi">3</span><span class="ow">),</span> <span class="mi">4</span><span class="ow">,</span> <span class="n">leaf</span><span class="ow">(</span><span class="mi">5</span><span class="ow">)));</span>
+</pre></div>
+</div>
+<p>We use a type variable <code class="docutils literal notranslate"><span class="pre">'a</span></code> as a parameter to specify the type of values in the tree.
+The function <code class="docutils literal notranslate"><span class="pre">leaf</span></code> is a convenience, so that we can write <code class="docutils literal notranslate"><span class="pre">leaf(1)</span></code> for the tree with just the value 1 and two empty children instead of <code class="docutils literal notranslate"><span class="pre">TreeNode(EmptyTree,</span> <span class="pre">1,</span> <span class="pre">EmptyTree)</span></code>.
+Note the similarity to a list of type <code class="docutils literal notranslate"><span class="pre">list('a)</span></code>, which is either an empty list or a list node with a head value (of type <code class="docutils literal notranslate"><span class="pre">'a</span></code>) and a sublist of the rest of the elements (the tail).</p>
+<p>The natural way to write a function that takes a binary tree is to use (surprise) Pattern Matching, which corresponds to doing structural induction over the construction of the tree.
+For example, suppose we want to know how many nodes a tree has:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">size</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="mi">0</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="ow">_,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">size</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="ow">+</span> <span class="mi">1</span> <span class="ow">+</span> <span class="n">size</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">size</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">);</span>
+<span class="n">size</span><span class="ow">(</span><span class="n">leaf</span><span class="ow">(</span><span class="s2">&quot;hello&quot;</span><span class="ow">));</span>
+<span class="n">size</span><span class="ow">(</span><span class="n">demo</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>If we have a list with integer values, we might want to get the total of all the values in the tree:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">total</span> <span class="ow">=</span> <span class="n">t</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="mi">0</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">value</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">total</span><span class="ow">(</span><span class="n">left</span><span class="ow">)</span> <span class="ow">+</span> <span class="n">value</span> <span class="ow">+</span> <span class="n">total</span><span class="ow">(</span><span class="n">right</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">total</span><span class="ow">(</span><span class="nc">EmptyTree</span><span class="ow">);</span>
+<span class="n">total</span><span class="ow">(</span><span class="n">demo</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>Note that type inference is able to figure out that the argument must be a <code class="docutils literal notranslate"><span class="pre">tree(int)</span></code> in this case, because we are using integer addition on the values.</p>
+<p>A useful function on trees will be to have a visualization of the tree.
+Here is a simple rendering of a tree with DPoodle (the second argument, <code class="docutils literal notranslate"><span class="pre">show</span></code>, is a function from <code class="docutils literal notranslate"><span class="pre">'a</span></code> to <code class="docutils literal notranslate"><span class="pre">string</span></code>, so that we can visualize trees with any type of value; note that the size of the box around the value will need to be changed if the strings are more than one character):</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">showTree</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">show</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="n">solid</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">circle</span><span class="ow">(</span><span class="mi">2</span><span class="ow">.))</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">lt</span><span class="ow">,</span> <span class="n">value</span><span class="ow">,</span> <span class="n">rt</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">showLeft</span> <span class="ow">=</span> <span class="n">showTree</span><span class="ow">(</span><span class="n">lt</span><span class="ow">,</span> <span class="n">show</span><span class="ow">);</span>
+      <span class="k">let</span> <span class="n">showRight</span> <span class="ow">=</span> <span class="n">showTree</span><span class="ow">(</span><span class="n">rt</span><span class="ow">,</span> <span class="n">show</span><span class="ow">);</span>
+      <span class="k">let</span> <span class="n">leftShift</span> <span class="ow">=</span> <span class="n">right</span><span class="ow">(</span><span class="n">showLeft</span><span class="ow">)</span> <span class="ow">+.</span> <span class="mi">10</span><span class="ow">.;</span>
+      <span class="k">let</span> <span class="n">rightShift</span> <span class="ow">=</span> <span class="n">left</span><span class="ow">(</span><span class="n">showRight</span><span class="ow">)</span> <span class="ow">-.</span> <span class="mi">10</span><span class="ow">.;</span>
+      <span class="k">let</span> <span class="n">leftLine</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span><span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="n">leftShift</span><span class="ow">,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.)]);</span>
+      <span class="k">let</span> <span class="n">rightLine</span> <span class="ow">=</span> <span class="n">openPath</span><span class="ow">([</span><span class="n">moveXY</span><span class="ow">(</span><span class="mi">0</span><span class="ow">.,</span> <span class="mi">0</span><span class="ow">.),</span> <span class="n">lineXY</span><span class="ow">(</span><span class="n">rightShift</span><span class="ow">,</span> <span class="ow">-</span><span class="mi">30</span><span class="ow">.)]);</span>
+      <span class="k">let</span> <span class="n">leftImage</span> <span class="ow">=</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">TR</span><span class="ow">,</span> <span class="n">showLeft</span> <span class="ow">+++</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">BL</span><span class="ow">,</span> <span class="n">leftLine</span><span class="ow">));</span>
+      <span class="k">let</span> <span class="n">rightImage</span> <span class="ow">=</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">TL</span><span class="ow">,</span> <span class="n">showRight</span> <span class="ow">+++</span> <span class="n">focus</span><span class="ow">(</span><span class="nc">BR</span><span class="ow">,</span> <span class="n">rightLine</span><span class="ow">));</span>
+      <span class="k">let</span> <span class="n">valueImage</span> <span class="ow">=</span> <span class="n">stroke</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;none&quot;</span><span class="ow">),</span> <span class="n">fill</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">text</span><span class="ow">(</span><span class="n">show</span><span class="ow">(</span><span class="n">value</span><span class="ow">))))</span>
+        <span class="ow">+++</span> <span class="n">stroke</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;black&quot;</span><span class="ow">),</span> <span class="n">fill</span><span class="ow">(</span><span class="nc">Color</span><span class="ow">(</span><span class="s2">&quot;white&quot;</span><span class="ow">),</span> <span class="n">square</span><span class="ow">(</span><span class="mi">20</span><span class="ow">.)));</span>
+      <span class="n">valueImage</span> <span class="ow">+++</span> <span class="n">leftImage</span> <span class="ow">+++</span> <span class="n">rightImage</span>
+    <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">draw</span><span class="ow">(</span><span class="n">showTree</span><span class="ow">(</span><span class="n">demo</span><span class="ow">,</span> <span class="n">string_of_int</span><span class="ow">));</span>
+</pre></div>
+</div>
+<div class="section" id="traversals">
+<h3>Traversals<a class="headerlink" href="#traversals" title="Permalink to this headline">¶</a></h3>
+<p>Processing a binary tree is often expressed as a <strong>traversal</strong>.
+There are several common tree traversals:</p>
+<ul class="simple">
+<li><p><strong>Preorder</strong>: To process a non-empty tree, first process the value in its root node, then process the left child followed by the right child.</p></li>
+<li><p><strong>Inorder</strong>: To process a non-empty tree, first process the left child, then the value in the root node, and finally the right child.</p></li>
+<li><p><strong>Postorder</strong>: To process a non-empty tree, first process the left child, then the right child, and finish with the value in the root node.</p></li>
+<li><p><strong>Level order</strong>: Process the value in the root node, then process the values in its children from left to right, then process its children’s children from left to right, and so on, until there are no more nodes.</p></li>
+</ul>
+<p>The first three traversals have very easy recursive implementations. For example, here is the preorder traversal, which takes a <code class="docutils literal notranslate"><span class="pre">tree('a)</span></code> and a function <code class="docutils literal notranslate"><span class="pre">process:</span> <span class="pre">'a</span> <span class="pre">=&gt;</span> <span class="pre">unit</span></code>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">preOrder</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">t</span><span class="ow">,</span> <span class="n">process</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">t</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">EmptyTree</span> <span class="ow">=&gt;</span> <span class="bp">()</span>
+  <span class="ow">|</span> <span class="nc">TreeNode</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">value</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="n">process</span><span class="ow">(</span><span class="n">value</span><span class="ow">);</span>
+      <span class="n">preOrder</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">process</span><span class="ow">);</span>
+      <span class="n">preOrder</span><span class="ow">(</span><span class="n">right</span><span class="ow">,</span> <span class="n">process</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">preOrder</span><span class="ow">(</span><span class="n">demo</span><span class="ow">,</span> <span class="n">print_int</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>We will have to wait a bit to see how to do the level order traversal.</p>
+<p>To see an interesting connection between traversals and programming languages, we will consider a variation on binary trees called <strong>expression trees</strong>.</p>
+</div>
+<div class="section" id="expression-trees">
+<h3>Expression Trees<a class="headerlink" href="#expression-trees" title="Permalink to this headline">¶</a></h3>
+<p>An expression tree represents the structure of an expression.
+This could be an arithmetic expression, such as <span class="math notranslate nohighlight">\((a+b)\cdot c\)</span>, or a boolean expression such as <span class="math notranslate nohighlight">\((p\lor q)\land r\)</span>; it also generalizes to expressions in a programming language, such as <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(a</span> <span class="pre">&lt;</span> <span class="pre">b)</span> <span class="pre">c</span> <span class="pre">else</span> <span class="pre">d</span></code> in ReasonML.
+For now we will limit our consideration to expressions with boolean operators and integer operands, which can be described by the following recursive type:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">expr</span> <span class="ow">=</span> <span class="nc">Const</span><span class="ow">(</span><span class="kt">int</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">expr</span><span class="ow">,</span> <span class="kt">string</span><span class="ow">,</span> <span class="n">expr</span><span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">sample</span> <span class="ow">=</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="nc">BinOp</span><span class="ow">(</span><span class="nc">Const</span><span class="ow">(</span><span class="mi">1</span><span class="ow">),</span> <span class="s2">&quot;+&quot;</span><span class="ow">,</span> <span class="nc">Const</span><span class="ow">(</span><span class="mi">2</span><span class="ow">)),</span> <span class="s2">&quot;*&quot;</span><span class="ow">,</span> <span class="nc">Const</span><span class="ow">(</span><span class="mi">3</span><span class="ow">));</span>
+</pre></div>
+</div>
+<p>Now we may define functions that perform preorder, inorder, and postorder traversals of expression trees to produce string representations of an expression:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">prefix</span> <span class="ow">=</span> <span class="n">e</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">e</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Const</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;%s(%s, %s)&quot;</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">prefix</span><span class="ow">(</span><span class="n">left</span><span class="ow">),</span> <span class="n">prefix</span><span class="ow">(</span><span class="n">right</span><span class="ow">))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">infix</span> <span class="ow">=</span> <span class="n">e</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">e</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Const</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;(%s %s %s)&quot;</span><span class="ow">,</span> <span class="n">infix</span><span class="ow">(</span><span class="n">left</span><span class="ow">),</span> <span class="n">op</span><span class="ow">,</span> <span class="n">infix</span><span class="ow">(</span><span class="n">right</span><span class="ow">))</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">postfix</span> <span class="ow">=</span> <span class="n">e</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">switch</span> <span class="ow">(</span><span class="n">e</span><span class="ow">)</span> <span class="ow">{</span>
+  <span class="ow">|</span> <span class="nc">Const</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">string_of_int</span><span class="ow">(</span><span class="n">n</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">left</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">right</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;%s %s %s&quot;</span><span class="ow">,</span> <span class="n">postfix</span><span class="ow">(</span><span class="n">left</span><span class="ow">),</span> <span class="n">postfix</span><span class="ow">(</span><span class="n">right</span><span class="ow">),</span> <span class="n">op</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+
+<span class="n">prefix</span><span class="ow">(</span><span class="n">sample</span><span class="ow">);</span>
+<span class="n">infix</span><span class="ow">(</span><span class="n">sample</span><span class="ow">);</span>
+<span class="n">postfix</span><span class="ow">(</span><span class="n">sample</span><span class="ow">);</span>
+</pre></div>
+</div>
+<p>The preorder traversal of an expression tree gives the <strong>prefix</strong> form of the expression, where the operator comes in front of both of its operands.
+With the extra parentheses and commas added above, you can see that this is our familiar function call notation: <code class="docutils literal notranslate"><span class="pre">+(1,</span> <span class="pre">2)</span></code> is just the application of the addition function to the arguments <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<p>The inorder traversal of an expression tree gives the <strong>infix</strong> form of the expression, where the operator takes its usual position between its operands.
+The extra parentheses are essential here, to avoid the ambiguity of whether <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span></code> is an addition of <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span></code>, or whether it is a multiplication of <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> by <code class="docutils literal notranslate"><span class="pre">3</span></code>.
+In practical use we get around this by adopting conventions of <strong>precedence</strong>, saying for example that multiplication takes precedence over addition, so that <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">3</span></code> has an addition operator at the root.
+In the sample expression tree, however, the multiplication is at the root, so we have to insert at least one pair of parentheses to get the correct expression: <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">+</span> <span class="pre">2)</span> <span class="pre">*</span> <span class="pre">3</span></code>.</p>
+<p>The postorder traversal of an expression tree gives the <strong>postfix</strong> form of the expression, which may not be as familiar.
+Back in the Dark Ages[^The 1970’s. See https://www.hpmuseum.org/rpn.htm for more details on RPN.] of computing, Hewlett-Packard made a series of powerful calculators that became very popular, particularly with engineers.
+At the time, calculators were not able to handle arbitrarily complex infix expressions (many of them didn’t even have parentheses…), and HP’s solution was elegant: use postfix instead of infix!
+They referred to this as Reverse Polish Notation (RPN) in honor of the logician Jan Łukasiewicz (1878–1956), who invented postfix in the 1920’s as a way to write logical expressions without parentheses.</p>
+<p>The key to interpreting a postfix expression is to imagine maintaining a <strong>stack</strong> of values as you read from left to right.
+When you see a number, <em>push</em> that value onto the stack.
+When you see an operator, since it must be following its two operands, <em>pop</em> two values from the stack, perform the operation, and <em>push</em> the result back on the stack.
+For the sample above, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">*</span></code>, you can check that the resulting value on the stack at the end of the expression is the expected <code class="docutils literal notranslate"><span class="pre">9</span></code>.</p>
+<p>More recent uses of postfix expressions and stack-based evaluation are the PostScript page description language used by many printers (which also forms the basis of the PDF document format), and the Java Virtual Machine code produced by the Java compiler.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ds"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="lists.html" title="previous page">Sorting Lists</a>
+    <a class='right-next' id="next-link" href="bst.html" title="next page">Binary Search Trees and Heaps</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Circuit Simplification &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Common Circuit Components" href="components.html" />
+    <link rel="prev" title="Logic Circuits" href="circuits.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/simplify.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#karnaugh-map">
+   Karnaugh Map
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#don-t-care-values">
+   Don’t Care Values
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-blowup">
+   Exponential Blowup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="circuit-simplification">
+<h1>Circuit Simplification<a class="headerlink" href="#circuit-simplification" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>As noted above, a physical circuit does have some dependence on time, since each
+device in the circuit requires a non-zero time to respond to a change in its
+inputs. A more precise model needs to take these delays into account—a circuit
+is modeled by a Boolean expression <em>plus</em> a set of delay factors (other
+cost measures may also be important: power consumption, heat production, area
+occupied, <em>etc</em>., but we will focus on the delay issue here). We will
+make the simplifying assumption that all gates have the same delay time, so we
+will measure the total delay of a circuit in terms of the number of gate delays
+required before the output values accurately reflect a change to the input
+values.</p>
+<p>Given a combinational circuit, we may compute the delay, also known as the
+<strong>span</strong>, by finding the number of gates on the longest path (the <strong>critical
+path</strong>) from an input to an output. For example, the circuit in
+the figure below has a span of three gate delays, with the critical path
+passing either through the AND, NOT, AND sequence along the top, or through the
+NOT, OR, AND along the bottom. Note that this is a conservative estimate of the
+delay required, although for certain inputs the output may become stable
+sooner—for example, if the <span class="math notranslate nohighlight">\(B\)</span> input changes from 0 to 1 while <span class="math notranslate nohighlight">\(A\)</span> is 0,
+then after one gate delay the output of the OR will become 1; since the output
+of the upper NOT was already 1 in this case (why?), the final output will settle
+at 1 after only two gate delays. However, other combinations of inputs may well
+take the entire three gate delays to correctly determine the value of the
+output.</p>
+<p>&lt;img src={useBaseUrl(‘img/fig1-6.png’)}
+alt=”Finding the proposition whose value is computed by a
+combinational logic circuit.” className=”centered-figure” /&gt;</p>
+<p>One approach to reducing the delay of a circuit is to use the <a class="reference external" href="./circuits#disjunctive-normal-form">disjunctive normal
+form</a>, also known as the <strong>sum-of-products</strong>. Since
+an expression in DNF is the OR of a collection of terms which are the AND of
+some number of simple terms, and a simple term is either an input or a negated
+input, the corresponding circuit can be constructed in three layers:</p>
+<p>&lt;img src={useBaseUrl(‘img/DNFlayers.png’)}
+alt=”Three-layer circuit for disjunctive normal form” className=”centered-figure” /&gt;</p>
+<p>An interesting property of the sum-of-products representation falls out of the
+De Morgan laws. Since <span class="math notranslate nohighlight">\((a\land b)\lor(c\land d)=\lnot(\lnot(a\land
+b)\land\lnot(c\land d))=(a\uparrow b)\uparrow(c\uparrow d)\)</span>, the two layers of
+AND and OR gates may be replaced entirely with NAND gates to get an
+equivalent circuit!</p>
+<p>&lt;img src={useBaseUrl(‘img/DNFlayersNand.png’)}
+alt=”Three-layer circuit for disjunctive normal form using only NAND gates” className=”centered-figure” /&gt;</p>
+<p>Unfortunately, this does not mean that any Boolean expression can be computed by
+a circuit with only three gate delays. One problem comes when we need AND and OR
+gates (or NAND gates) with more than two inputs—in general, with <span class="math notranslate nohighlight">\(n\)</span> input
+variables, there may be AND gates that need <span class="math notranslate nohighlight">\(n\)</span> inputs, and there could be on
+the order of <span class="math notranslate nohighlight">\(2^n\)</span> gates in the AND level, requiring an OR gate with that many
+input lines. We will see in the next section how to build gates with a larger
+number of inputs out of gates with just two inputs, at the cost of an increased
+gate delay.</p>
+<div class="section" id="karnaugh-map">
+<h2>Karnaugh Map<a class="headerlink" href="#karnaugh-map" title="Permalink to this headline">¶</a></h2>
+<p>Another problem with DNF comes if we use the full DNF expression extracted from
+a truth table. If we use the DNF Theorem to produce an expression from the truth
+table for the implication <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>, we will get <span class="math notranslate nohighlight">\((\lnot p\land\lnot
+q)\lor(\lnot p\land q)\lor(p\land q)\)</span>. However, we may use Boolean algebra identities to
+find an equivalent DNF expression, <span class="math notranslate nohighlight">\(\lnot p\lor q\)</span> (which only needs two gate
+delays, since the AND layer disappears). There are general techniques for
+finding simpler DNF expressions such as this; we will look at a straightforward
+technique called a <strong>Karnaugh map</strong>, although for computer implementation
+the related Quine-McCluskey algorithm is better (and for large numbers of input
+variables a heuristic approach is necessary).</p>
+<p>A Karnaugh map is a way of visualizing entries in a truth table so that adjacent
+entries only differ on the value of one input variable. For example, the entry
+for <span class="math notranslate nohighlight">\(\lnot p\land q\)</span> will be next to the entry for <span class="math notranslate nohighlight">\(p\land q\)</span>. If adjacent
+entries each contain 1, meaning that those terms would participate in the full
+DNF expression, then they may be replaced by a single term with just the
+variables that are the same: in the example, this corresponds to the
+simplification <span class="math notranslate nohighlight">\((\lnot p\land q)\lor(p\land q)=(\lnot p\lor p)\land q=\T\land
+q=q\)</span>.</p>
+<p>For two input variables, a Karnaugh map is a <span class="math notranslate nohighlight">\(2\times 2\)</span> array:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{r|cc}
+&amp; \lnot{q} &amp; q\\ \hline
+\lnot{p} &amp; x_{00} &amp; x_{01}\\
+p &amp; x_{10} &amp; x_{11}
+\end{array}
+\end{split}\]</div>
+<p>This is just a compact rearrangement of the truth table:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{cc|c}
+p &amp; q &amp; x\\ \hline
+0 &amp; 0 &amp; x_{00}\\
+0 &amp; 1 &amp; x_{01}\\
+1 &amp; 0 &amp; x_{10}\\
+1 &amp; 1 &amp; x_{11}
+\end{array} \end{split}\]</div>
+<p>However, note that the adjacent cell condition is true: horizontally adjacent
+cells only differ on <span class="math notranslate nohighlight">\(q\)</span>, while vertically adjacent cells only differ on <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>Once we have laid out the Karnaugh map, a simplified expression may be read off
+by finding a way to cover all of the 1’s in the map with “implicants.” An
+implicant is a rectangle whose side lengths are a power of 2; it corresponds to
+finding a collection of adjacent cells in the map (all of which contain 1) that
+all agree on some of the input literals and that collectively include all
+combinations (negated or not) of the other input variables. The resulting term
+for an implicant is just the product of the common literals among all the cells
+covered by the implicant.</p>
+<p>On a <span class="math notranslate nohighlight">\(2\times 2\)</span> map, the only implicants are individual cells (<span class="math notranslate nohighlight">\(1\times 1\)</span>), a
+row (<span class="math notranslate nohighlight">\(1\times 2\)</span>), a column (<span class="math notranslate nohighlight">\(2\times 1\)</span>), or the entire map (<span class="math notranslate nohighlight">\(2\times 2\)</span>). The
+cells correspond to terms such as <span class="math notranslate nohighlight">\(p\land\lnot{q}\)</span>, the rows are either
+<span class="math notranslate nohighlight">\(\lnot{p}\)</span> or <span class="math notranslate nohighlight">\(p\)</span>, the columns are either <span class="math notranslate nohighlight">\(\lnot{q}\)</span> or <span class="math notranslate nohighlight">\(q\)</span>, and the entire map
+is <span class="math notranslate nohighlight">\(1\)</span> (the empty product). To get the simplest expression, we want to take the
+fewest number of the largest possible implicants that between them cover all of
+the 1’s in the map. Implicants may overlap, as long as all of (and only) the 1’s
+are covered by at least one implicant.</p>
+<p>Here is the example again. First the truth table for <span class="math notranslate nohighlight">\(p\rightarrow q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{cc|c}
+p &amp; q &amp; x\\ \hline
+0 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 1\\
+1 &amp; 0 &amp; 0\\
+1 &amp; 1 &amp; 1
+\end{array} \end{split}\]</div>
+<p>As a Karnaugh map, this is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{r|cc}
+&amp; \lnot{q} &amp; q\\ \hline
+\lnot{p} &amp; 1 &amp; 1\\
+p &amp; 0 &amp; 1
+\end{array} \end{split}\]</div>
+<p>The best way to cover this map with implicants is to take the first row and the
+second column. That gives the simplified terms <span class="math notranslate nohighlight">\(\lnot{p}\)</span> and <span class="math notranslate nohighlight">\(q\)</span>, so the final
+simplified expression is <span class="math notranslate nohighlight">\(\lnot{p}\lor q\)</span>. Here is the map with the implicants
+outlined:</p>
+<p>&lt;img src={useBaseUrl(‘img/KarnaughImp.png’)}
+alt=”Karnaugh map for implication” className=”centered-figure” /&gt;</p>
+<p>A Karnaugh map can also work with three or four input variables, producing
+either a <span class="math notranslate nohighlight">\(2\times 4\)</span> or a <span class="math notranslate nohighlight">\(4\times 4\)</span> array. The same procedure applies, with
+three complications:
+\begin{enumerate}
+\item To satisfy the adjacent cell condition, successive rows or columns must
+change only one variable at a time: for example, the rows might be labelled in
+order <span class="math notranslate nohighlight">\(\lnot{p}\land\lnot{q}\)</span>, <span class="math notranslate nohighlight">\(\lnot{p}\land q\)</span>, <span class="math notranslate nohighlight">\(p\land q\)</span>, and <span class="math notranslate nohighlight">\(p\lnot{q}\)</span>;
+\item Implicants may be 1, 2, or 4 rows tall by 1, 2, or 4 columns wide; and
+\item Implicants may “wrap around” from one side of the map to the other.
+\end{enumerate}
+For example, on a <span class="math notranslate nohighlight">\(4\times 4\)</span> map, one possible implicant is the middle two
+rows; another is the leftmost and rightmost columns (wrapping horizontally); a
+third is the <span class="math notranslate nohighlight">\(2\times 2\)</span> block consisting of the middle two elements of the top
+row and the middle two elements of the bottom row (wrapping vertically); a final
+example is the last two elements of the third row:</p>
+<p>&lt;img src={useBaseUrl(‘img/KarnaughImplicants.png’)}
+alt=”Examples of Karnaugh Map implicants” className=”centered-figure” /&gt;</p>
+</div>
+<div class="section" id="don-t-care-values">
+<h2>Don’t Care Values<a class="headerlink" href="#don-t-care-values" title="Permalink to this headline">¶</a></h2>
+<p>A Karnaugh map also allows us to find simple circuits in the case that some
+combinations of inputs will never occur, so that we do not care what the output
+is in those rows of the truth table. By entering a <strong>don’t care</strong> value, such
+as X, in the map, we have the freedom to either ignore or include those cells
+when covering the map with implicants; by including a cell with an X along with
+a group of 1’s, we might be able to construct a larger (and hence simpler)
+implicant.</p>
+<p>For example, suppose we have the following truth table for a four-variable
+Boolean expression (this represents the inputs that are binary numbers less than
+ten and divisible by three):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{cccc|c}
+p &amp; q &amp; r &amp; s &amp; x\\ \hline
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 1\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; X\\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; X\\
+1 &amp; 1 &amp; 0 &amp; 0 &amp; X\\
+1 &amp; 1 &amp; 0 &amp; 1 &amp; X\\
+1 &amp; 1 &amp; 1 &amp; 0 &amp; X\\
+1 &amp; 1 &amp; 1 &amp; 1 &amp; X
+\end{array} \end{split}\]</div>
+<p>As a Karnaugh map, this is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{r|cccc}
+&amp; \lnot{r}\land\lnot{s} &amp; \lnot{r}\land s &amp; r\land s &amp; r\land\lnot{s}\\ \hline
+\lnot{p}\land\lnot{q} &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+\lnot{p}\land q &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+p\land q &amp; X &amp; X &amp; X &amp; X\\
+p\land\lnot{q} &amp; 0 &amp; 1 &amp; X &amp; X
+\end{array} \end{split}\]</div>
+<p>The 1’s, plus some of the X’s, may be covered by four implicants:
+<span class="math notranslate nohighlight">\(\lnot{p}\land\lnot{q}\land\lnot{r}\land\lnot{s}\)</span>, <span class="math notranslate nohighlight">\(\lnot{q}\land r\land s\)</span>,
+<span class="math notranslate nohighlight">\(q\land r\land\lnot{s}\)</span>, and <span class="math notranslate nohighlight">\(p\land s\)</span>. Note that the second implicant wraps
+around from the third cell on the top row to the third cell (with an X, which is
+also covered by the <span class="math notranslate nohighlight">\(p\land s\)</span> implicant) on the bottom row; if it were just the
+1 on the top row, then the term would be <span class="math notranslate nohighlight">\(\lnot{p}\land\lnot{q}\land r\land s\)</span>,
+which is not as simple. Here are the cells that end up being covered:</p>
+<p>&lt;img src={useBaseUrl(‘img/KarnaughExampleMap.png’)}
+alt=”Example Karnaugh Map with implicants outlined” className=”centered-figure” /&gt;</p>
+<p>Therefore, the simplified expression is
+<span class="math notranslate nohighlight">\((\lnot{p}\land\lnot{q}\land\lnot{r}\land\lnot{s})\lor(\lnot{q}\land r\land
+s)\lor(q\land r\land\lnot{s})\lor(p\land s)\)</span>. This may be computed by the
+following circuit:</p>
+<p>&lt;img src={useBaseUrl(‘img/KarnaughExampleCircuit.png’)}
+alt=”Resulting circuit for a Karnaugh Map example” className=”centered-figure” /&gt;</p>
+<p>In the next section, we will see how to implement this with a total delay of 5, using only two-input AND and OR gates.</p>
+</div>
+<div class="section" id="exponential-blowup">
+<h2>Exponential Blowup<a class="headerlink" href="#exponential-blowup" title="Permalink to this headline">¶</a></h2>
+<p>The final difficulty with building low-delay circuits from DNF expressions is
+that, even with the simplification provided by something like a Karnaugh map,
+many Boolean functions lead to an exponential blowup when expressed in DNF. In
+the worst case, an expression with <span class="math notranslate nohighlight">\(n\)</span> input variables may require <span class="math notranslate nohighlight">\(O(2^n)\)</span>
+terms in a sum-of-product representation—consider the case of a Karnaugh
+map where the 1’s are in a checkerboard arrangement, so that none are adjacent.
+When <span class="math notranslate nohighlight">\(n\)</span> is large enough, it might not even be practical to consider the truth
+table at all; for example, a circuit that can add two 32-bit numbers requires 64
+input lines, which would lead to a truth table with <span class="math notranslate nohighlight">\(2^{64}\approx 10^{19}\)</span>
+entries. The next section will also discuss approaches to this kind of problem.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>For each of the following Boolean expressions, compute the total delay of the
+direct translation of the expression into a circuit.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))\)</span></p></li>
+</ul>
+</li>
+<li><p>For each of the expressions in the previous problem, use a Karnaugh map to
+find an equivalent sum-of-products expression, and draw the resulting
+circuit.</p></li>
+<li><p>Suppose we want to build a counter that cycles through the numbers 0, 1, 2,
+3, 4, and back to 0. One element of this counter will be a circuit that takes
+the current number, expressed in binary, and outputs the next number. Here is
+the truth table for this function, with three inputs (<span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span>) and
+three outputs (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span>):</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{ccc|ccc}
+a &amp; b &amp; c &amp; x &amp; y &amp; z\\ \hline
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+1 &amp; 0 &amp; 1 &amp; X &amp; X &amp; X\\
+1 &amp; 1 &amp; 0 &amp; X &amp; X &amp; X\\
+1 &amp; 1 &amp; 1 &amp; X &amp; X &amp; X\\
+\end{array} \end{split}\]</div>
+<p>Since the counter should never reach numbers 5, 6, or 7, we do not care about
+the output when <span class="math notranslate nohighlight">\(abc\)</span> is 101, 110, or 111. Use Karnaugh maps to find a simple
+circuit for this function.</p>
+<ol>
+<li><p>In <strong>binary-coded decimal</strong> (BCD), four bits are used to represent the
+numbers 0 (0000) through 9 (1001); the other six bit patterns (1010 through
+1111) are unused. BCD is often used in circuits where decimal numbers need to
+be displayed; a common device for doing so is the <strong>seven-segment display</strong>.
+Using only seven elements (for example, light-emitting diodes), we may form a
+reasonable approximation of all the digits 0–9:</p>
+<p>&lt;img src={useBaseUrl(‘img/SevenSegmentDigits.png’)}
+alt=”Digits 0 through 9 as shown in a seven-segment display” className=”centered-figure” /&gt;</p>
+<p>Construct a truth table with four inputs and seven outputs showing how to
+produce these characters from input in BCD (be sure to include a diagram
+indicating which output column corresponds to which display element). Use
+Karnaugh maps to design a relatively simple circuit that implements a
+seven-segment decoder.</p>
+</li>
+<li><p>An exercise in the <a class="reference external" href="./circuits#exercises">Circuits</a> section examines
+conjunctive normal form (CNF), the dual of DNF. Explore what kind of circuits
+result from CNF, and how to extract a simplified CNF expression from a
+Karnaugh map <em>(Hint: look at blocks of 0’s.)</em>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="circuits.html" title="previous page">Logic Circuits</a>
+    <a class='right-next' id="next-link" href="components.html" title="next page">Common Circuit Components</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

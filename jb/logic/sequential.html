@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sequential Circuits &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="State Machines" href="state.html" />
+    <link rel="prev" title="Recursion and Induction" href="recursion.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/sequential.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#memory-devices">
+   Memory Devices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sequential-circuits">
+<h1>Sequential Circuits<a class="headerlink" href="#sequential-circuits" title="Permalink to this headline">¶</a></h1>
+<p>All of the circuits we have considered so far have been acyclic; this was an essential part of the definition of a combinational circuit.
+In general, if a circuit has a cycle, its output behavior might not be well-behaved—consider the simple example of a NOT gate whose output feeds back to its input, so that if the output went high, it would be forced low after one gate delay, then back high after another delay, <em>etc</em>.[^In fact, since a physical device can only be an approximation of a pure logic gate, it is more likely that the output would hover around some intermediate level, neither high nor low.]</p>
+<p>In this section, we will explore two ways of adding cycles to circuits in a controlled fashion.
+The first, operating on the level of just a few gates, will give us circuit components with memory.
+The second, using larger-scale feedback on circuits that include both combinational and memory components, will give us a means of implementing state machines and, ultimately, general-purpose processors.
+On the larger scale, the circuits will be what are known as <strong>synchronous</strong>—that is, a clock signal is used to synchronize the times at which feedback is applied.
+At the small scale, we will start with <strong>asynchronous</strong> circuits, where feedback may arrive as soon as the gate delays permit.
+While it is possible to design large-scale asynchronous circuits, we will not be considering that here.</p>
+<p>Circuits with cycles are known as <strong>sequential logic</strong> circuits, because the output depends on the particular <em>sequence</em> of inputs the device has received in the past; unlike combinational circuits, the output is not solely determined by the current combination of input values but potentially by the entire history of inputs (in other words, it is not purely functional—its behavior depends on side-effects).
+As a result, they can be considerably harder to reason about, and we will need good abstract models, such as state machines.</p>
+<div class="section" id="memory-devices">
+<h2>Memory Devices<a class="headerlink" href="#memory-devices" title="Permalink to this headline">¶</a></h2>
+<p>Although the circuit with one NOT gate feeding back on itself is unstable, a cycle of two NOT gates would be fine:</p>
+<p>&lt;img src={useBaseUrl(‘img/NotLatch.png’)}
+alt=”Not Latch” className=”centered-figure” /&gt;</p>
+<p>Whatever the output is at <span class="math notranslate nohighlight">\(x\)</span>, the output at <span class="math notranslate nohighlight">\(y\)</span> will be the opposite.
+Each one feeds back and reinforces the other, and the circuit is stable.
+Unfortunately, it is not very useful—there is no way to provide input to <em>change</em> the value <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>By replacing the NOT gates with either NAND or NOR gates, we get a circuit known as a latch.
+Here is the diagram for a so-called <span class="math notranslate nohighlight">\(\overline{SR}\)</span> latch:</p>
+<p>&lt;img src={useBaseUrl(‘img/SRLatch.png’)}
+alt=”SR Latch” className=”centered-figure” /&gt;</p>
+<p>When the inputs <span class="math notranslate nohighlight">\(\overline{S}\)</span> (set) and <span class="math notranslate nohighlight">\(\overline{R}\)</span> (reset) are both 1, the latch behaves just like the circuit with two NOT gates (because <span class="math notranslate nohighlight">\(1\uparrow x=\overline{x}\)</span>): whatever the output is at <span class="math notranslate nohighlight">\(Q\)</span>, the opposite value will be at <span class="math notranslate nohighlight">\(\overline{Q}\)</span> (hence its customary label—it is the negation of <span class="math notranslate nohighlight">\(Q\)</span>).</p>
+<p>When the <span class="math notranslate nohighlight">\(\overline{S}\)</span> input is 0, the output <span class="math notranslate nohighlight">\(Q\)</span> is forced to 1—the latch is <strong>set</strong> (the label <span class="math notranslate nohighlight">\(\overline{S}\)</span> suggests that it is “active-low”: the latch will be set when the input is <em>false</em>).
+Again, because of the feedback, when <span class="math notranslate nohighlight">\(Q\)</span> is 1, <span class="math notranslate nohighlight">\(\overline{Q}\)</span> will be 0.
+Returning <span class="math notranslate nohighlight">\(\overline{S}\)</span> to 1 <em>will then leave the latch in the set state</em>.
+This is where the sequential nature of the latch shows: its state depends on its past history (in this case, the fact that the set line was most recently active).</p>
+<p>When the <span class="math notranslate nohighlight">\(\overline{R}\)</span> input is 0, the output <span class="math notranslate nohighlight">\(\overline{Q}\)</span> is forced to 1 and correspondingly <span class="math notranslate nohighlight">\(Q\)</span> will become 0—the latch has been <strong>reset</strong>.
+Again, returning <span class="math notranslate nohighlight">\(\overline{R}\)</span> to 1 will leave it in the reset state, until the set line is next activated.</p>
+<p>If both the set and reset lines are active (0), then both output lines will be forced to 1.
+This presents two problems: it violates the property that <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(\overline{Q}\)</span> are complementary, and it sets up a potential race condition if both lines are restored to 1 at the same time.
+When the inputs become 1, exactly one of the outputs can be high; however, which one “wins” the race will depend on the precise timing of the transitions from 0 to 1, and potentially also on slight imperfections in the gates (if one of the NAND gates responds slightly faster than the other, for example).
+So, don’t do that.</p>
+<p>The <span class="math notranslate nohighlight">\(\overline{SR}\)</span> latch is what is known as a <strong>transparent</strong> latch: the output responds as soon as the input is changed.
+To make sequential design easier, we frequently want memory devices that will only respond at certain times.
+By adding an extra layer of gates to the input, we can make what is known as a <strong>gated D latch</strong>.
+The inputs are <span class="math notranslate nohighlight">\(D\)</span> (data) and <span class="math notranslate nohighlight">\(E\)</span> (enable):</p>
+<p>&lt;img src={useBaseUrl(‘img/DELatch.png’)}
+alt=”DE Latch” className=”centered-figure” /&gt;</p>
+<p>As long as <span class="math notranslate nohighlight">\(E\)</span> is 0 (note that this is now an active-high device), the <span class="math notranslate nohighlight">\(\overline{S}\)</span> and <span class="math notranslate nohighlight">\(\overline{R}\)</span> inputs to the latch will always be 1, regardless of the <span class="math notranslate nohighlight">\(D\)</span> input.
+The gated D latch is only enabled when the <span class="math notranslate nohighlight">\(E\)</span> input is 1.
+When enabled, the latch becomes transparent: if <span class="math notranslate nohighlight">\(D\)</span> is 1, then <span class="math notranslate nohighlight">\(\overline{S}\)</span> will be 0, and the output <span class="math notranslate nohighlight">\(Q\)</span> will be set to 1; if <span class="math notranslate nohighlight">\(D\)</span> goes to 0, then <span class="math notranslate nohighlight">\(\overline{R}\)</span> will be 0 and the latch will be reset.
+There is no combination of inputs for <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(E\)</span> which can make both the set and reset lines active at the same time, so we don’t have to worry about that case.</p>
+<p>When the enable line returns to 0, the gated D latch will remain in whatever state it last entered.
+Here is a truth table for the latch, together with its common symbol when used in a circuit:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(E\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(D\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\overline{Q}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>X</p></td>
+<td class="text-align:center"><p>hold</p></td>
+<td class="text-align:center"><p>hold</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>&lt;img src={useBaseUrl(‘img/DELatchSymbol.png’)}
+alt=”DE Latch Symbol” className=”centered-figure” /&gt;</p>
+<p>When dealing with a sequential circuit, it is often helpful to look at a <strong>timing diagram</strong>, which shows the levels at various points of the circuit over time (increasing from left to right).
+Here is a timing diagram for the gated D latch, which shows that the output is transparent to the <span class="math notranslate nohighlight">\(D\)</span> input only when <span class="math notranslate nohighlight">\(E\)</span> is high:</p>
+<p>&lt;img src={useBaseUrl(‘img/DELatchTiming.png’)}
+alt=”DE Latch Timing Diagram” className=”centered-figure” /&gt;</p>
+<p>Instead of a latch, it is more common to use a device known as a <strong>flip-flop</strong>.
+The distinction from a latch is that a flip-flop will only respond to input for a very brief time; it is what is known as a <strong>clocked</strong> device, since it will only change its state when a clock pulse is received (typically, just as the clock pulse is rising from 0 to 1).
+In <em>synchronous</em> logic design, the entire circuit will use a single clock signal, so that each clock pulse advances the state by one step (and the state has time to propagate through all the gate delays before the next pulse).
+Here is one design for an edge-triggered D flip-flop:</p>
+<p>&lt;img src={useBaseUrl(‘img/DFlipFlop.png’)}
+alt=”D Flip-Flop” className=”centered-figure” /&gt;</p>
+<p>Just as the gated D latch modified an <span class="math notranslate nohighlight">\(\overline{SR}\)</span> latch by adding a layer of two NAND gates, this flip-flop modifies an <span class="math notranslate nohighlight">\(\overline{SR}\)</span> latch by adding a layer of two input latches.
+In each case, the input layer protects the output latch from entering the illegal state (when both <span class="math notranslate nohighlight">\(\overline{S}\)</span> and <span class="math notranslate nohighlight">\(\overline{R}\)</span> are low).</p>
+<p>The idea is that, as long as the clock (<em>Clk</em>) is 0, the set (<span class="math notranslate nohighlight">\(\overline{S}\)</span>) and reset (<span class="math notranslate nohighlight">\(\overline{R}\)</span>) lines of the output latch will stay high (inactive).
+The line marked <span class="math notranslate nohighlight">\(x\)</span> will be whatever <span class="math notranslate nohighlight">\(D\)</span> is, and the line marked <span class="math notranslate nohighlight">\(y\)</span> will be the opposite, <span class="math notranslate nohighlight">\(\overline{D}\)</span>.
+Although one of the input latches will be in an “illegal” state, the output latch will not be affected.</p>
+<p>When the clock goes to 1, the input latches will resolve to consistent states: <span class="math notranslate nohighlight">\(\overline{S}\)</span> will be <span class="math notranslate nohighlight">\(\overline{x}=\overline{D}\)</span>, and <span class="math notranslate nohighlight">\(\overline{R}\)</span> will be <span class="math notranslate nohighlight">\(\overline{y}=D\)</span>.
+That is, if <span class="math notranslate nohighlight">\(D\)</span> was 0, then the output latch will be reset, while if <span class="math notranslate nohighlight">\(D\)</span> was 1 it will be set.
+However, once the clock reaches 1, further changes to <span class="math notranslate nohighlight">\(D\)</span> will be ignored: if the lower input latch is reset (<span class="math notranslate nohighlight">\(\overline{R}\)</span> is 0, meaning <span class="math notranslate nohighlight">\(D\)</span> was 0 at the rising edge), then changing <span class="math notranslate nohighlight">\(D\)</span> will leave it in the reset state; if instead the lower input latch is set (<span class="math notranslate nohighlight">\(\overline{R}\)</span> is 1, meaning <span class="math notranslate nohighlight">\(D\)</span> was 1 at the rising edge), then changing <span class="math notranslate nohighlight">\(D\)</span> will switch it between the set and illegal states (where <span class="math notranslate nohighlight">\(\overline{R}\)</span> is still 1), and the upper input latch will stay in the set state.</p>
+<p>When the clock goes back to 0, the output latch will continue to hold whatever state it had (because both of its inputs will be 1 again), until the next time the clock rises.</p>
+<p>The only danger with this design is if <span class="math notranslate nohighlight">\(D\)</span> is changed at exactly the same time as the rising of the clock signal, because then if one of the input latches was in an illegal state it is possible to have a race condition.
+Designers avoid this by arranging for the <span class="math notranslate nohighlight">\(D\)</span> input to be stable for at least a brief “setup and hold” time around clock pulses.</p>
+<p>Here is a timing diagram for the D flip-flop, and its common circuit signal (the input marked with a triangle indicates that it is a rising-edge-triggered clock):</p>
+<p>&lt;img src={useBaseUrl(‘img/DFlipFlopTiming.png’)}
+alt=”D Flip-Flop Timing Diagram” className=”centered-figure” /&gt;</p>
+<p>&lt;img src={useBaseUrl(‘img/DFlipFlopSymbol.png’)}
+alt=”D Flip-Flop Symbol” className=”centered-figure” /&gt;</p>
+<p>Rather than a truth table, it is useful to give what are known as a <strong>characteristic table</strong> or an <strong>excitation table</strong> for a flip-flop.
+The characteristic table shows how the input (<span class="math notranslate nohighlight">\(D\)</span>) and current state (<span class="math notranslate nohighlight">\(Q\)</span>) lead to the next state (<span class="math notranslate nohighlight">\(Q'\)</span>) after the clock pulse:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(D\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q'\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>The excitation table presents the same information, but from the viewpoint of “given a current state <span class="math notranslate nohighlight">\(Q\)</span> and desired next state <span class="math notranslate nohighlight">\(Q'\)</span>, what does the input need to be?”</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q'\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(D\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here is another implementation of the D flip-flop with a somewhat easier-to-understand circuit (although it uses more gates):</p>
+<p>&lt;img src={useBaseUrl(‘img/D-MS.png’)}
+alt=”D Master-Slave Flip-Flop” className=”centered-figure” /&gt;</p>
+<p>This is known as a <strong>master-slave</strong> design, because it consists of two latches (in this case, they are <span class="math notranslate nohighlight">\(SR\)</span> latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^A nice variation of the master-slave design uses an <span class="math notranslate nohighlight">\(\overline{SR}\)</span> for one layer and an <span class="math notranslate nohighlight">\(SR\)</span> latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.]), each of which is enabled for half of the clock cycle.
+When the clock is high, the first (“master”) latch stores the incoming data signal.
+It is transparent during this time, so if the data is changing then so will its state.
+When the clock goes low (so this is a <strong>trailing-edge triggered</strong> flip-flop), the slave latch is enabled and it copies whatever was
+stored in the master latch at that instant. Although the slave is transparent during its half of the clock cycle, its input will not be changing because the master cannot change while it is disabled.
+Therefore, the flip-flop only changes its state at the instant the clock goes from high to low.
+There is still a race condition possible (it can be shown that there is no flip-flop design without a race condition), if the <span class="math notranslate nohighlight">\(D\)</span> input changes just as the clock goes low.</p>
+<blockquote>
+<div><p>The first electronic latch was the Eccles-Jordan trigger circuit.
+Patented in 1918, it was built out of two vacuum tubes connected in a feedback loop.
+In the early 1940’s, Thomas Flowers (1905–1998) used his experience with telephone switching circuits to build Colossus, one of the code-breaking machines at Bletchley Park.
+The Colossus design used the Eccles-Jordan circuit as a storage register; it is considered the first programmable, electronic, digital computer, although its existence was kept secret until the 1970’s.</p>
+</div></blockquote>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Investigate the behavior of a latch built with NOR gates instead of the NAND gates used in the <span class="math notranslate nohighlight">\(\overline{SR}\)</span> latch.
+Use this new latch to build a gated D latch.</p></li>
+<li><p>There are several other types of flip-flops besides the D.
+Perhaps the most general is the JK flip-flop, which has two inputs, traditionally named <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(K\)</span>, along with a clock input and the complementary <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(\overline{Q}\)</span> outputs.
+When <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(K\)</span> are both 0 and a clock pulse arrives, the state does not change.
+When only <span class="math notranslate nohighlight">\(J\)</span> is 1, the new state will be 1; when only <span class="math notranslate nohighlight">\(K\)</span> is 1, the new state will be 0 (so <span class="math notranslate nohighlight">\(J\)</span> <em>sets</em> and <span class="math notranslate nohighlight">\(K\)</span> <em>resets</em> the flip-flop).
+Finally, when both <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(K\)</span> are 1, the clock pulse will cause the state to <strong>toggle</strong>—that is, it will switch to the negation of its previous state.
+Here is the characteristic table of the JK flip-flop, using <span class="math notranslate nohighlight">\(X\)</span> to indicate “don’t care” inputs:</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(J\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(K\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(Q'\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>X</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>X</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Draw a timing diagram that shows the behavior of the JK flip-flop.</p></li>
+<li><p>Give an excitation table for the JK flip-flop.</p></li>
+<li><p>Show how to construct a JK flip-flop using a D flip-flop plus a few extra gates. <em>(Hint: Combine the <span class="math notranslate nohighlight">\(J\)</span> and <span class="math notranslate nohighlight">\(K\)</span> inputs with the current outputs <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(\overline{Q}\)</span> to generate an appropriate <span class="math notranslate nohighlight">\(D\)</span> input.)</em></p></li>
+</ul>
+<ol class="simple">
+<li><p>Random-access memory (RAM) devices can be made from a quantity of flip-flops plus a few extra components such as multiplexers and demultiplexers.
+To store <span class="math notranslate nohighlight">\(2^k\)</span> individually-addressable bits, you need one D type flip-flop per bit.
+The <span class="math notranslate nohighlight">\(D\)</span> inputs can all be connected to an incoming data line; if each flip-flop’s clock signal is driven by one line of a <span class="math notranslate nohighlight">\(k\)</span>-bit demultiplexer whose input signal is the AND of the system clock signal and a “write enable” input, then the flip-flop selected by the <span class="math notranslate nohighlight">\(k\)</span> address lines will be loaded with the desired data only if a write is enabled at the rise of the clock.
+Connecting the outputs of the flip-flops to a multiplexer, whose <span class="math notranslate nohighlight">\(k\)</span> select lines are also driven by the <span class="math notranslate nohighlight">\(k\)</span>-bit address, will cause the contents of the selected bit to be passed to the output of the MUX.
+Use this description to draw a 16-bit RAM circuit, then show how to expand it to store four bits at each address.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="recursion.html" title="previous page">Recursion and Induction</a>
+    <a class='right-next' id="next-link" href="state.html" title="next page">State Machines</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,809 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pushdown Automata &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General Grammars and Turing Machines" href="tm.html" />
+    <link rel="prev" title="Parsing and Parse Trees" href="parsing.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexpapp.html">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsa.html">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bnf.html">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computability.html">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/pda.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formal-definition">
+   Formal Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="pushdown-automata">
+<h1>Pushdown Automata<a class="headerlink" href="#pushdown-automata" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>In the previous chapter, we saw that there is a neat correspondence
+between regular expressions and finite automata. That is, a language
+is generated by a regular expression if and only if that language is
+accepted by a finite automaton. Finite automata come in two types,
+deterministic and nondeterministic, but the two types of finite
+automata are equivalent in terms of their ability to recognize
+languages. So, the class of regular languages can be defined in
+two ways: either as the set of languages that can be generated by
+regular expressions or as the set of languages that can be recognized
+by finite automata (either deterministic or nondeterministic).</p>
+<p>In this chapter, we have introduced the class of context-free languages,
+and we have considered how context-free grammars can be used to
+generate context-free languages. You might wonder whether there is any
+type of automaton that can be used to recognize context-free languages.
+In fact, there is: The abstract machines known as
+<strong>pushdown automata</strong> can be used to define
+context-free languages. That is, a language is context-free if and only
+if there is a pushdown automaton that accepts that language.</p>
+<p>A pushdown automaton is essentially a finite automaton with an auxiliary
+data structure known as a <strong>stack</strong>. A stack consists of
+a finite list of symbols. Symbols can be added to and removed from the
+list, but only at one end of the list. The end of the list where items
+can be added and removed is called the <strong>top</strong> of the stack.
+The list is usually visualized as a vertical “stack” of symbols,
+with items being added and removed at the top. Adding a symbol at
+the top of the stack is referred to as <strong>pushing</strong> a symbol onto
+the stack, and removing a symbol is referred to as <strong>popping</strong>
+an item from the stack. During each step of its computation,
+a pushdown automaton is capable of doing several
+push and pop operations on its stack (this in addition to possibly reading
+a symbol from the input string that is being processed by the automaton).</p>
+<p>Before giving a formal definition of pushdown automata, we will look
+at how they can be represented by transition diagrams. A diagram of
+a pushdown automaton is similar to a diagram for an NFA, except that
+each transition in the diagram can involve stack operations. We will
+use a label of the form <span class="math notranslate nohighlight">\(\sigma,x\)</span>/<span class="math notranslate nohighlight">\(y\)</span> on a transition to mean
+that the automaton consumes <span class="math notranslate nohighlight">\(\sigma\)</span> from its input string, pops
+<span class="math notranslate nohighlight">\(x\)</span> from the stack, and pushes <span class="math notranslate nohighlight">\(y\)</span> onto the stack. <span class="math notranslate nohighlight">\(\sigma\)</span> can be
+either <span class="math notranslate nohighlight">\(\varepsilon\)</span> or a single symbol.
+<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are strings, possibly empty. (When a string <span class="math notranslate nohighlight">\(x=a_1a_2\ldots a_m\)</span> is
+popped from the stack, <span class="math notranslate nohighlight">\(a_1\)</span> must be the top symbol on the stack, followed by
+<span class="math notranslate nohighlight">\(a_2\)</span>, <em>etc</em>.; for <span class="math notranslate nohighlight">\(y=b_1b_2\ldots b_n\)</span> to be pushed onto a stack, the symbols are
+pushed in the order <span class="math notranslate nohighlight">\(b_n,\ldots,b_1\)</span>, so that
+<span class="math notranslate nohighlight">\(b_1\)</span> ends up on the top of the stack.)
+For example, consider the following transition diagram for a pushdown automaton:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-1.png’)}
+alt=”Sample PDA” className=”centered-figure” /&gt;</p>
+<p>This pushdown automaton has start state <span class="math notranslate nohighlight">\(q_0\)</span> and one accepting
+state, <span class="math notranslate nohighlight">\(q_1\)</span>. It can read strings over the alphabet <span class="math notranslate nohighlight">\(\Sigma=\{a,b\}\)</span>.
+The transition from <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_0\)</span>, labeled with <span class="math notranslate nohighlight">\(a,\varepsilon\)</span>/1,
+means that if the machine is in state <span class="math notranslate nohighlight">\(q_0\)</span>, then it can read an
+<span class="math notranslate nohighlight">\(a\)</span> from its input string, pop nothing from the stack, push 1 onto
+the stack, and remain in state <span class="math notranslate nohighlight">\(q_0\)</span>. Similarly, the transition
+from <span class="math notranslate nohighlight">\(q_1\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span> means that if the machine is in state <span class="math notranslate nohighlight">\(q_1\)</span>,
+it can read a <span class="math notranslate nohighlight">\(b\)</span> from its input string, pop a 1 from the stack,
+and push nothing onto the stack. Finally, the transition
+from state <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span>, labeled with <span class="math notranslate nohighlight">\(\varepsilon,\varepsilon\)</span>/<span class="math notranslate nohighlight">\(\varepsilon\)</span>,
+means that the machine can transition from state <span class="math notranslate nohighlight">\(q_0\)</span> to state <span class="math notranslate nohighlight">\(q_1\)</span>
+without reading, pushing, or popping anything.</p>
+<p>Note that the automation can follow transition <span class="math notranslate nohighlight">\(b,1\)</span>/<span class="math notranslate nohighlight">\(\varepsilon\)</span> only
+if the next symbol in the input string is <span class="math notranslate nohighlight">\(b\)</span> and if <span class="math notranslate nohighlight">\(1\)</span> is on the
+top of the stack. When it makes the transition, it consumes the <span class="math notranslate nohighlight">\(b\)</span> from
+input and pops the <span class="math notranslate nohighlight">\(1\)</span> from the stack. Since in this case, the automaton
+pushes <span class="math notranslate nohighlight">\(\varepsilon\)</span> (that is, no symbols at all) onto the stack, the net
+change in the stack is simply to pop the 1.</p>
+<p>We have to say what it means for this pushdown automaton to accept
+a string. For <span class="math notranslate nohighlight">\(w\in\{a,b\}^*\)</span>, we say that the pushdown automaton
+accepts <span class="math notranslate nohighlight">\(w\)</span> if and only if it is possible for the machine to start
+in its start state, <span class="math notranslate nohighlight">\(q_0\)</span>, read all of <span class="math notranslate nohighlight">\(w\)</span>, and finish in the
+accepting state, <span class="math notranslate nohighlight">\(q_1\)</span>, with an empty stack. Note in particular that
+it is not enough for the machine to finish in an accepting state—it
+must also empty the stack.[^We could relax this restriction
+and require only that the machine finish in an accepting state after
+reading the string <span class="math notranslate nohighlight">\(w\)</span>, without requiring that the stack be empty.
+In fact, using this definition of accepting would not change the
+class of languages that are accepted by pushdown automata.]</p>
+<p>It’s not difficult to see that with this definition, the language
+accepted by our pushdown automaton is <span class="math notranslate nohighlight">\(\{a^nb^n\;|\; n\in\N\}\)</span>.
+In fact, given the string <span class="math notranslate nohighlight">\(w=a^kb^k\)</span>, the machine can process this
+string by following the transition from <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_0\)</span> <span class="math notranslate nohighlight">\(k\)</span> times.
+This will consume all the <span class="math notranslate nohighlight">\(a\)</span>’s and will push <span class="math notranslate nohighlight">\(k\)</span> 1’s onto the stack.
+The machine can then jump to state <span class="math notranslate nohighlight">\(q_1\)</span> and follow the transition from
+<span class="math notranslate nohighlight">\(q_1\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span> <span class="math notranslate nohighlight">\(k\)</span> times. Each time it does so, it consumes one <span class="math notranslate nohighlight">\(b\)</span> from
+the input and pops one 1 from the stack. At the end, the input has been
+completely consumed and the stack is empty. So, the string <span class="math notranslate nohighlight">\(w\)</span> is
+accepted by the automaton. Conversely, this pushdown automaton <em>only</em>
+accepts strings of the form <span class="math notranslate nohighlight">\(a^kb^k\)</span>, since the only way that the
+automaton can finish in the accepting state, <span class="math notranslate nohighlight">\(q_1\)</span>, is to follow
+the transition from <span class="math notranslate nohighlight">\(q_0\)</span> to <span class="math notranslate nohighlight">\(q_0\)</span> some number of times, reading
+<span class="math notranslate nohighlight">\(a\)</span>’s as it does so, then jump at some point to <span class="math notranslate nohighlight">\(q_1\)</span>, and then
+follow the transition from <span class="math notranslate nohighlight">\(q_1\)</span> to <span class="math notranslate nohighlight">\(q_1\)</span> some number of times,
+reading <span class="math notranslate nohighlight">\(b\)</span>’s as it does so. This means that an accepted string
+must be of the form <span class="math notranslate nohighlight">\(a^kb^\ell\)</span> for some <span class="math notranslate nohighlight">\(k,\ell\in\N\)</span>. However, in
+reading this string, the automaton pushes <span class="math notranslate nohighlight">\(k\)</span> 1’s onto the stack
+and pops <span class="math notranslate nohighlight">\(\ell\)</span> 1’s from the stack. For the stack to end up empty,
+<span class="math notranslate nohighlight">\(\ell\)</span> must equal <span class="math notranslate nohighlight">\(k\)</span>, which means that in fact the string is of
+the form <span class="math notranslate nohighlight">\(a^kb^k\)</span>, as claimed.</p>
+<hr class="docutils" />
+<p>Here are two more examples. These pushdown automata use the capability
+to push or pop more than one symbol at a time:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-1b.png’)}
+alt=”Sample PDAs” className=”centered-figure” /&gt;</p>
+<p>The automaton on the left accepts the language
+<span class="math notranslate nohighlight">\(\{a^nb^m\;|\; n\le m\le 2n\}\)</span>. Each time it reads an <span class="math notranslate nohighlight">\(a\)</span>,
+it pushes either one or two 1’s onto the stack, so that
+after reading <span class="math notranslate nohighlight">\(n\)</span> <span class="math notranslate nohighlight">\(a\)</span>’s, the number of 1’s on the stack
+is between <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(2n\)</span>. If the machine then jumps to state
+<span class="math notranslate nohighlight">\(q_1\)</span>, it must be able to read exactly enough <span class="math notranslate nohighlight">\(b\)</span>’s to empty
+the stack, so any string accepted by this machine must
+be of the form <span class="math notranslate nohighlight">\(a^nb^m\)</span> with <span class="math notranslate nohighlight">\(n\le m\le 2n\)</span>. Conversely,
+any such string can be accepted by the machine. Similarly,
+the automaton on the right above accepts the
+language <span class="math notranslate nohighlight">\(\{a^nb^m\;|\; n/2 \le m \le n\}\)</span>.
+To accept <span class="math notranslate nohighlight">\(a^nb^m\)</span>, it must push <span class="math notranslate nohighlight">\(n\)</span> 1’a onto the
+stack and then pop one or two 1’s for each b; this
+can succeed only if the number of <span class="math notranslate nohighlight">\(b\)</span>’s is between
+<span class="math notranslate nohighlight">\(n/2\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<hr class="docutils" />
+<p>Note that an NFA can be considered to be a pushdown automaton that
+does not make any use of its stack. This means that any language
+that can be accepted by an NFA (that is, any regular language) can
+be accepted by a pushdown automaton.
+Since the language <span class="math notranslate nohighlight">\(\{a^nb^n\;|\; n\in\N\}\)</span> is context-free but not regular,
+and since it is accepted by the above pushdown automaton,
+we see that pushdown automata are capable of recognizing context-free languages
+that are not regular, therefore pushdown automata are strictly more
+powerful than finite automata.</p>
+<div class="section" id="formal-definition">
+<h2>Formal Definition<a class="headerlink" href="#formal-definition" title="Permalink to this headline">¶</a></h2>
+<p>Although it is not particularly illuminating, we can give a formal
+definition of pushdown automaton. The definition does at least
+make it clear that the set of symbols that can be used on the
+stack is not necessarily the same as the set of symbols that can
+be used as input.</p>
+<blockquote>
+<div><p>A pushdown automaton <span class="math notranslate nohighlight">\(M\)</span> is specified by six components
+<span class="math notranslate nohighlight">\(M=(Q,\Sigma,\Lambda,q_0,\partial,F)\)</span> where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is a finite set of states.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma\)</span> is an alphabet. <span class="math notranslate nohighlight">\(\Sigma\)</span> is the <strong>input alphabet</strong> for <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Lambda\)</span> is an alphabet. <span class="math notranslate nohighlight">\(\Lambda\)</span> is the <strong>stack alphabet</strong> for <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(q_0\in Q\)</span> is the <strong>start state</strong> of <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F\subseteq Q\)</span> is the set of <strong>final</strong> or <strong>accepting</strong> states in <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\partial\)</span> is the set of transitions in <span class="math notranslate nohighlight">\(M\)</span>. <span class="math notranslate nohighlight">\(\partial\)</span> can be taken
+to be a finite subset of the set
+<span class="math notranslate nohighlight">\((Q\times(\Sigma\cup\{\varepsilon\})\times\Lambda^*\big)\times\big(Q\times\Lambda^*\big)\)</span>.
+An element <span class="math notranslate nohighlight">\(\big((q_1,\sigma,x),(q_2,y)\big)\)</span> of <span class="math notranslate nohighlight">\(\partial\)</span> represents a transition from
+state <span class="math notranslate nohighlight">\(q_1\)</span> to state <span class="math notranslate nohighlight">\(q_2\)</span> in which <span class="math notranslate nohighlight">\(M\)</span> reads <span class="math notranslate nohighlight">\(\sigma\)</span> from its input string,
+pops <span class="math notranslate nohighlight">\(x\)</span> from the stack, and pushes <span class="math notranslate nohighlight">\(y\)</span> onto the stack.</p></li>
+</ul>
+</div></blockquote>
+<p>We can then define the language <span class="math notranslate nohighlight">\(L(M)\)</span> accepted by a pushdown
+automaton <span class="math notranslate nohighlight">\(M=(Q,\Sigma,\Lambda,q_0,\partial,F)\)</span> to be the set
+<span class="math notranslate nohighlight">\(L(M)=\{w\in\Sigma^*\;|\;M\textrm{ can start from }q_0\textrm{, read all of }w\textrm{, and end with an empty stack in a state in }F\}\)</span>.</p>
+<p>With this definition, the class of languages accepted by pushdown automata
+is the same as the class of languages generated by context-free grammars.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+Let <span class="math notranslate nohighlight">\(\Sigma\)</span> be an alphabet, and let <span class="math notranslate nohighlight">\(L\)</span> be a language over <span class="math notranslate nohighlight">\(L\)</span>. Then
+<span class="math notranslate nohighlight">\(L\)</span> is context-free if and only if there is a pushdown automaton whose
+input alphabet is <span class="math notranslate nohighlight">\(\Sigma\)</span> such that <span class="math notranslate nohighlight">\(L=L(M)\)</span>.</p>
+</div></blockquote>
+<p>We will not prove this theorem, but we do discuss how one direction can
+be proved. Suppose that <span class="math notranslate nohighlight">\(L\)</span> is a context-free language over an alphabet
+<span class="math notranslate nohighlight">\(\Sigma\)</span>. Let <span class="math notranslate nohighlight">\(G=(V,\Sigma,P,S)\)</span> be a context-free grammar for <span class="math notranslate nohighlight">\(L\)</span>.
+Then we can construct a pushdown automaton <span class="math notranslate nohighlight">\(M\)</span> that accepts <span class="math notranslate nohighlight">\(L\)</span>. In fact,
+we can take <span class="math notranslate nohighlight">\(M=(Q,\Sigma,\Lambda,q_0,\partial,F)\)</span> where
+<span class="math notranslate nohighlight">\(Q=\{q_0,q_1\}\)</span>, <span class="math notranslate nohighlight">\(\Lambda=\Sigma\cup V\)</span>, <span class="math notranslate nohighlight">\(F=\{q_1\}\)</span>, and
+<span class="math notranslate nohighlight">\(\partial\)</span> contains transitions of the forms</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\big((q_0,\varepsilon,\varepsilon),(q_1,S)\big)\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\big((q_1,\sigma,\sigma),(q_1,\varepsilon)\big)\)</span>, for <span class="math notranslate nohighlight">\(\sigma\in\Sigma\)</span>; and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,x)\big)\)</span>, for each production <span class="math notranslate nohighlight">\(A\longrightarrow x\)</span> in <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
+</ul>
+<p>The transition <span class="math notranslate nohighlight">\(\big((q_0,\varepsilon,\varepsilon),(q_1,S)\big)\)</span> lets <span class="math notranslate nohighlight">\(M\)</span>
+move from the start state <span class="math notranslate nohighlight">\(q_0\)</span> to the accepting state <span class="math notranslate nohighlight">\(q_1\)</span> while reading
+no input and pushing <span class="math notranslate nohighlight">\(S\)</span> onto the stack. This is the only possible first move
+by <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>A transition of the form <span class="math notranslate nohighlight">\(\big((q_1,\sigma,\sigma),(q_1,\varepsilon)\big)\)</span>, for <span class="math notranslate nohighlight">\(\sigma\in\Sigma\)</span>,
+allows <span class="math notranslate nohighlight">\(M\)</span> to read <span class="math notranslate nohighlight">\(\sigma\)</span> from its input string, provided there is a <span class="math notranslate nohighlight">\(\sigma\)</span>
+on the top of the stack. Note that if <span class="math notranslate nohighlight">\(\sigma\)</span> is at the top of the stack, then this
+transition is the <em>only</em> transition that applies. Effectively, any terminal symbol
+that appears at the top of the stack must be matched by the same symbol in the
+input string, and the transition rule allows <span class="math notranslate nohighlight">\(M\)</span> to consume the symbol from the
+input string and remove it from the stack at the same time.</p>
+<p>A transition of the third form, <span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,x)\big)\)</span>, can
+be applied if and only if the non-terminal symbol <span class="math notranslate nohighlight">\(A\)</span> is at the top of
+the stack. <span class="math notranslate nohighlight">\(M\)</span> consumes no input when this rule is applied, but <span class="math notranslate nohighlight">\(A\)</span> is
+replaced on the top of the stack by the string on the right-hand
+side of the production rule <span class="math notranslate nohighlight">\(A\longrightarrow x\)</span>. Since the grammar <span class="math notranslate nohighlight">\(G\)</span> can
+contain several production rules that have <span class="math notranslate nohighlight">\(A\)</span> as their left-hand side,
+there can be several transition rules in <span class="math notranslate nohighlight">\(M\)</span> that apply when <span class="math notranslate nohighlight">\(A\)</span> is on the
+top of the stack. This is the only source of nondeterminism in <span class="math notranslate nohighlight">\(M\)</span>; note
+that is also the source of nondeterminism in <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<p>The proof that <span class="math notranslate nohighlight">\(L(M)=L(G)\)</span> follows from the fact that
+a computation of <span class="math notranslate nohighlight">\(M\)</span> that accepts a string <span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span> corresponds in
+a natural way to a left derivation of <span class="math notranslate nohighlight">\(w\)</span> from <span class="math notranslate nohighlight">\(G\)</span>’s start symbol, <span class="math notranslate nohighlight">\(S\)</span>.
+Instead of giving a proof of this fact, we look at an example.
+Consider the following context-free grammar:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+ S&amp;\longrightarrow AB\\
+ A&amp;\longrightarrow aAb\\
+ A&amp;\longrightarrow \varepsilon\\
+ B&amp;\longrightarrow bB\\
+ B&amp;\longrightarrow b
+\end{aligned}
+$\)</span>
+This grammar generates the language <span class="math notranslate nohighlight">\(\{a^nb^m\;|\; m &gt; n\}\)</span>. The pushdown
+automaton constructed from this grammar by the procedure given above has
+the following set of transition rules:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+ &amp;\big((q_0,\varepsilon,\varepsilon),(q_1,S)\big)\\
+ &amp;\big((q_1,a,a),(q_1,\varepsilon)\big)\\
+ &amp;\big((q_1,b,b),(q_1,\varepsilon)\big)\\
+ &amp;\big((q_1,\varepsilon,S),(q_1,AB)\big)\\
+ &amp;\big((q_1,\varepsilon,A),(q_1,aAb)\big)\\
+ &amp;\big((q_1,\varepsilon,A),(q_1,\varepsilon)\big)\\
+ &amp;\big((q_1,\varepsilon,B),(q_1,bB)\big)\\
+ &amp;\big((q_1,\varepsilon,B),(q_1,b)\big)
+\end{aligned}
+$\)</span>
+Suppose that the automaton is run on the input <span class="math notranslate nohighlight">\(aabbbb\)</span>. We can trace the
+sequence of transitions that are applied in a computation that accepts this
+input, and we can compare that computation to a left derivation of the
+string:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Transition</p></th>
+<th class="text-align:right head"><p>Input Consumed</p></th>
+<th class="text-align:left head"><p>Stack</p></th>
+<th class="text-align:left head"><p>Derivation</p></th>
+<th class="text-align:left head"><p>Production</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_0,\varepsilon,\varepsilon),(q_1,S)\big)\)</span></p></td>
+<td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,S),(q_1,AB)\big)\)</span></p></td>
+<td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(AB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(S\Longrightarrow AB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(S\longrightarrow AB\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,aAb)\big)\)</span></p></td>
+<td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(aAbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\Longrightarrow aAbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(A\longrightarrow aAb\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,a,a),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(AbB\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,aAb)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(aAbbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\Longrightarrow aaAbbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(A\longrightarrow aAb\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,a,a),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aa\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(AbbB\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aa\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(bbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\Longrightarrow aabbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(A\longrightarrow\varepsilon\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,b,b),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aab\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(bB\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,b,b),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aabb\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,B),(q_1,bB)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aabb\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(bB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\Longrightarrow aabbbB\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(B\longrightarrow bB\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,b),(q_1,b,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aabbb\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,B),(q_1,b)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aabbb\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\Longrightarrow aabbbb\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(B\longrightarrow b\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><span class="math notranslate nohighlight">\(\big((q_1,b,b),(q_1,\varepsilon)\big)\)</span></p></td>
+<td class="text-align:right"><p><span class="math notranslate nohighlight">\(aabbbb\)</span></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that at all times during this computation, the concatenation of the input that has been consumed
+so far with the contents of the stack is equal to one of the strings in the left derivation.
+Application of a rule of the form <span class="math notranslate nohighlight">\(\big((q_1,\sigma,\sigma),(q_1,\varepsilon)\big)\)</span> has the
+effect of removing one terminal symbol from the “Stack” column to the “Input Consumed” column.
+Application of a rule of the form <span class="math notranslate nohighlight">\(\big((q_1,\varepsilon,A),(q_1,x)\big)\)</span> has the
+effect of applying the next step in the left derivation to the non-terminal symbol on the top
+of the stack. (In the “Stack” column, the pushdown automaton’s stack is shown with its
+top on the left.) In the end, the entire input string has been consumed and the stack is empty, which
+means that the string has been accepted by the pushdown automaton. It should be easy to see
+that for any context free grammar <span class="math notranslate nohighlight">\(G\)</span>, the same correspondence will always hold between
+left derivations and computations performed by the pushdown automaton constructed from <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<hr class="docutils" />
+<p>The computation of a pushdown automaton can involve nondeterminism.
+That is, at some point in the computation, there might be more than
+one transition rule that apply. When this is not the case—that is,
+when there is no circumstance in which two different transition rules
+apply—then we say that the pushdown automaton is <strong>deterministic</strong>.
+Note that a deterministic pushdown automaton can have transition
+rules of the form <span class="math notranslate nohighlight">\(\big((q_i,\varepsilon,x),(q_j,y)\big)\)</span> (or
+even <span class="math notranslate nohighlight">\(\big((q_i,\varepsilon,\varepsilon),(q_j,y)\big)\)</span> if that is
+the <em>only</em> transition from state <span class="math notranslate nohighlight">\(q_i\)</span>). Note also that is is possible
+for a deterministic pushdown automaton to get “stuck”; that is, it
+is possible that no rules apply in some circumstances even though the
+input has not been completely consumed or the stack is not empty.
+If a deterministic pushdown automaton gets stuck while reading a string
+<span class="math notranslate nohighlight">\(x\)</span>, then <span class="math notranslate nohighlight">\(x\)</span> is not accepted by the automaton.</p>
+<p>The automaton given at the beginning of this section,
+which accepts the language <span class="math notranslate nohighlight">\(\{a^nb^n\;|\; n\in\N\}\)</span>,
+is not deterministic. However, it is easy to construct a deterministic
+pushdown automaton for this language:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-2.png’)}
+alt=”DPDA for a^nb^n” className=”centered-figure” /&gt;</p>
+<p>However, consider the language <span class="math notranslate nohighlight">\(\{ww^R\;|\; w\in\{a,b\}^*\}\)</span>. Here is
+a pushdown automaton that accepts this language:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-3.png’)}
+alt=”PDA for ww^R” className=”centered-figure” /&gt;</p>
+<p>In state <span class="math notranslate nohighlight">\(q_0\)</span>, this machine copies the first part of its input
+string onto the stack. In state <span class="math notranslate nohighlight">\(q_1\)</span>, it tries to match the remainder of the
+input against the contents of the stack. In order for this to work, it must “guess”
+where the middle of the string occurs by following the transition
+from state <span class="math notranslate nohighlight">\(q_0\)</span> to state <span class="math notranslate nohighlight">\(q_1\)</span>.
+In this case, it is by no means clear that it is possible to
+construct a deterministic pushdown automaton that accepts the same
+language.</p>
+<hr class="docutils" />
+<p>At this point, it might be tempting to define a deterministic context-free
+language as one for which there exists a deterministic pushdown automaton
+which accepts that language. However, there is a technical problem with
+this definition: we need to make it possible for the pushdown automaton
+to detect the end of the input string. Consider the language
+<span class="math notranslate nohighlight">\(\{w\;|\; w\in\{a,b\}^* \land n_a(w)=n_b(w)\}\)</span>, which consists of strings over the
+alphabet <span class="math notranslate nohighlight">\(\{a,b\}\)</span> in which the number of <span class="math notranslate nohighlight">\(a\)</span>’s is equal to the number
+of <span class="math notranslate nohighlight">\(b\)</span>’s. This language is accepted by the following pushdown automaton:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-4.png’)}
+alt=”Example PDA” className=”centered-figure” /&gt;</p>
+<p>In this automaton, a <span class="math notranslate nohighlight">\(c\)</span> is first pushed onto the stack,
+and it remains on the bottom of the stack until the computation ends.
+During the process of reading an input string,
+if the machine is in state <span class="math notranslate nohighlight">\(q_3\)</span>, then the
+number of <span class="math notranslate nohighlight">\(a\)</span>’s that have been read is greater than or equal to
+the number of <span class="math notranslate nohighlight">\(b\)</span>’s that have been read, and the stack contains
+(copies of) the excess <span class="math notranslate nohighlight">\(a\)</span>’s that have been read. Similarly,
+if the machine is in state <span class="math notranslate nohighlight">\(q_4\)</span>, then the
+number of <span class="math notranslate nohighlight">\(b\)</span>’s that have been read is greater than or equal to
+the number of <span class="math notranslate nohighlight">\(a\)</span>’s that have been read, and the stack contains
+(copies of) the excess <span class="math notranslate nohighlight">\(b\)</span>’s that have been read.
+As the computation proceeds, if the stack contains nothing but a <span class="math notranslate nohighlight">\(c\)</span>,
+then the number of <span class="math notranslate nohighlight">\(a\)</span>’s that have been consumed by the machine
+is equal to the number of <span class="math notranslate nohighlight">\(b\)</span>’s that have been consumed; in such
+cases, the machine can pop the <span class="math notranslate nohighlight">\(c\)</span> from the stack—leaving the
+stack empty—and jump to state <span class="math notranslate nohighlight">\(q_2\)</span>. If the entire string has
+been read at that time, then the string is accepted. This involves
+nondeterminism because the automaton has to “guess” when to
+jump to state <span class="math notranslate nohighlight">\(q_2\)</span>; it has no way of knowing whether it has
+actually reached the end of the string.</p>
+<p>Although this pushdown automaton is not deterministic, we can
+modify it easily to get a deterministic pushdown automaton that
+accepts a closely related language. We just have to add a
+special end-of-string symbol to the language. We use the
+symbol <span class="math notranslate nohighlight">\(\$\)</span> for this purpose. The following deterministic
+automaton accepts the language ${w$;|; w\in {a,b}^*\land n_a(w)=n_b(w)},$:</p>
+<p>&lt;img src={useBaseUrl(‘img/fig-5-pa-4b.png’)}
+alt=”Example DPDA” className=”centered-figure” /&gt;</p>
+<p>In this modified automaton, it is only possible for the
+machine to reach the accepting state <span class="math notranslate nohighlight">\(q_2\)</span> by reading the end-of-string
+symbol at a time when the number of <span class="math notranslate nohighlight">\(a\)</span>’s that have been consumed is equal
+to the number of <span class="math notranslate nohighlight">\(b\)</span>’s. Taking our cue from this example, we define
+what it means for a language to be deterministic context-free as follows:</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(L\)</span> be a language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>, and let <span class="math notranslate nohighlight">\(\$\)</span> be
+a symbol that is not in <span class="math notranslate nohighlight">\(\Sigma\)</span>. We say that <span class="math notranslate nohighlight">\(L\)</span> is a <strong>deterministic
+context-free language</strong>
+if there is a deterministic pushdown automaton
+that accepts the language <span class="math notranslate nohighlight">\(L\$\)</span> (which is equal to
+${w$;|; w\in L}$).</p>
+</div></blockquote>
+<p>There are context-free languages that are not deterministic context-free.
+An example, given without proof, is the language of even-length palindromes
+over the alphabet <span class="math notranslate nohighlight">\(\{a, b\}\)</span>: <span class="math notranslate nohighlight">\(\{ww^R\;|\; w\in\{a,b\}^*\}\)</span>.
+This means that for pushdown automata, nondeterminism adds real power.
+This contrasts with the case of finite automata, where deterministic
+finite automata and nondeterministic finite automata are equivalent in
+power in the sense that they accept the same class of languages.</p>
+<p>A deterministic context-free language can be parsed efficiently (in <span class="math notranslate nohighlight">\(O(n)\)</span> time,
+where <span class="math notranslate nohighlight">\(n\)</span> is the length of the input).
+LL(1) parsing and LR(1) parsing can both be defined in terms of deterministic
+pushdown automata, although we have not pursued that approach here. It can be shown
+that every deterministic context-free language can be generated by an LR(1) grammar.
+However, the languages that have LL(1) grammars are a strict subset: an example of
+a language that has an LR(1) grammar but not an LL(1) grammar is
+<span class="math notranslate nohighlight">\(\{a^nb^n\;|\; n\in\N\}\cup\{a^nc^n\;|\; n\in\N\}\)</span>.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Identify the context-free language that is accepted by each of the following
+pushdown automata. Explain your answers.</p>
+<p>a)
+&lt;img src={useBaseUrl(‘img/fig-5-pa-ex1.png’)}
+alt=”Exercise PDA” className=”centered-figure” /&gt;</p>
+<p>b)
+&lt;img src={useBaseUrl(‘img/fig-5-pa-ex2.png’)}
+alt=”Exercise PDA” className=”centered-figure” /&gt;</p>
+<p>c)
+&lt;img src={useBaseUrl(‘img/fig-5-pa-ex3.png’)}
+alt=”Exercise PDA” className=”centered-figure” /&gt;</p>
+<p>d)
+&lt;img src={useBaseUrl(‘img/fig-5-pa-ex4.png’)}
+alt=”Exercise PDA” className=”centered-figure” /&gt;</p>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(B\)</span> be the language over the alphabet <span class="math notranslate nohighlight">\(\{\,\texttt{(}\,,\texttt{)}\,\}\)</span> that consists of
+strings of parentheses that are balanced in the sense that every left parenthesis has
+a matching right parenthesis. Examples include <span class="math notranslate nohighlight">\(\texttt{()}\)</span>, <span class="math notranslate nohighlight">\(\texttt{(())()}\)</span>, <span class="math notranslate nohighlight">\(\texttt{((())())()(())}\)</span>,
+and the empty string. Find a deterministic pushdown automaton with a single state that
+accepts the language <span class="math notranslate nohighlight">\(B\)</span>. Explain how your automaton works, and explain the circumstances
+in which it will <em>fail</em> to accept a given string of parentheses.</p></li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(L\)</span> is a language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+Suppose that there is a deterministic pushdown automaton that accepts <span class="math notranslate nohighlight">\(L\)</span>.
+Show that <span class="math notranslate nohighlight">\(L\)</span> is deterministic context-free. That is, show how to construct
+a deterministic pushdown automaton that accepts the language <span class="math notranslate nohighlight">\(L\$\)</span>.
+(Assume that the symbol <span class="math notranslate nohighlight">\(\$\)</span> is not in <span class="math notranslate nohighlight">\(\Sigma\)</span>.)</p></li>
+<li><p>Find a deterministic pushdown automaton that accepts the language <span class="math notranslate nohighlight">\(\{wcw^R\;|\; w\in\{a,b\}^*\}\)</span>.</p></li>
+<li><p>Show that the language <span class="math notranslate nohighlight">\(\{a^nb^m\;|\; n\not=m\}\)</span> is deterministic context-free.</p></li>
+<li><p>Show that the language <span class="math notranslate nohighlight">\(L=\{w\in\{a,b\}^*\;|\; n_a(w) &gt; n_b(w)\}\)</span> is deterministic context-free.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(M=(Q,\Sigma,\Lambda,q_0,\partial,F)\)</span> be a pushdown automaton. Define <span class="math notranslate nohighlight">\(L^\prime(M)\)</span> to be
+the language <span class="math notranslate nohighlight">\(L^\prime(M)=\{w\in\Sigma^*\ |\)</span> it is possible for <span class="math notranslate nohighlight">\(M\)</span> to start in state <span class="math notranslate nohighlight">\(q_0\)</span>,
+read all of <span class="math notranslate nohighlight">\(w\)</span>, and end in an accepting state<span class="math notranslate nohighlight">\(\}\)</span>. <span class="math notranslate nohighlight">\(L^\prime(M)\)</span> differs from <span class="math notranslate nohighlight">\(L(M)\)</span> in that
+for <span class="math notranslate nohighlight">\(w\in L^\prime(M)\)</span>, we do not require that the stack be empty at the end of the computation.</p>
+<ul class="simple">
+<li><p>Show that there is a pushdown automaton <span class="math notranslate nohighlight">\(M^\prime\)</span> such that <span class="math notranslate nohighlight">\(L(M^\prime)=L^\prime(M)\)</span>.</p></li>
+<li><p>Show that a language <span class="math notranslate nohighlight">\(L\)</span> is context-free if and only if there is a pushdown automaton
+<span class="math notranslate nohighlight">\(M\)</span> such that <span class="math notranslate nohighlight">\(L=L^\prime(M)\)</span>.</p></li>
+<li><p>Identify the language <span class="math notranslate nohighlight">\(L^\prime(M)\)</span> for each of the automata in Exercise 1.</p></li>
+</ul>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(L\)</span> be a regular language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>, and let <span class="math notranslate nohighlight">\(K\)</span>
+be a context-free language over the same alphabet. Let <span class="math notranslate nohighlight">\(M=(Q,\Sigma,q_0,\delta,F)\)</span> be a DFA that
+accepts <span class="math notranslate nohighlight">\(L\)</span>, and let <span class="math notranslate nohighlight">\(N=(P,\Sigma,\Lambda,p_0,\partial,E))\)</span> be a pushdown automaton that accepts <span class="math notranslate nohighlight">\(K\)</span>.
+Show that the language <span class="math notranslate nohighlight">\(L\cap K\)</span> is context-free by constructing a pushdown automaton
+that accepts <span class="math notranslate nohighlight">\(L\cap K\)</span>. The pushdown automaton can be constructed as a “cross product”
+of <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> in which the set of states is <span class="math notranslate nohighlight">\(Q\times P\)</span>. The construction is analogous
+to the proof that the intersection of two regular languages is regular, as outlined
+in an exercise in the section on regular languages.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="parsing.html" title="previous page">Parsing and Parse Trees</a>
+    <a class='right-next' id="next-link" href="tm.html" title="next page">General Grammars and Turing Machines</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Finite-State Automata &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nondeterministic Finite-State Automata" href="nfa.html" />
+    <link rel="prev" title="Applications of Regular Expressions" href="regexpapp.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexpapp.html">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bnf.html">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pda.html">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computability.html">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/fsa.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="finite-state-automata">
+<h1>Finite-State Automata<a class="headerlink" href="#finite-state-automata" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>We have seen how regular expressions can be used to generate languages
+mechanically. How might languages be recognized mechanically?
+The question is of interest because if we can mechanically recognize languages
+like <span class="math notranslate nohighlight">\(L= \{\textrm{all legal C++ programs that will not go into infinite loops on any
+input}\}\)</span>, then it would be possible to write über-compilers that can do
+semantic error-checking like testing for infinite loops, in addition to the
+syntactic error-checking they currently do.</p>
+<p>What formalism might we use to model what it means to recognize a language
+“mechanically”? We look for inspiration to a language-recognizer with which
+we are all familiar, and which we’ve already in fact mentioned: a compiler.
+Consider how a C++ compiler might handle recognizing a legal <code class="docutils literal notranslate"><span class="pre">if</span></code>
+statement. Having seen the word <code class="docutils literal notranslate"><span class="pre">if</span></code>, the compiler will be in a <em>state</em>
+or <em>phase of its execution</em> where it expects to see a <code class="docutils literal notranslate"><span class="pre">(</span></code>; in this state,
+any other (non-blank) character will put the compiler in a “failure” state. If the compiler
+does in fact see a <code class="docutils literal notranslate"><span class="pre">(</span></code> next, it will then be in an “expecting a boolean
+condition” state; if it sees a sequence of symbols that make up a legal boolean
+condition, it will then be in an “expecting a <code class="docutils literal notranslate"><span class="pre">)</span></code>” state; and then “expecting
+a <code class="docutils literal notranslate"><span class="pre">{</span></code> or a legal statement”; and so on. Thus one can think of the compiler as
+being in a series of states; on seeing a new input symbol, it moves on to a new
+state; and this sequence of transitions eventually leads to either a “failure”
+state (if the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is not syntactically correct) or a “success”
+state (if the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is legal). We isolate these three
+concepts—states, input-inspired transitions from state to state, and
+“accepting” vs “non-accepting” states—as the key features of a mechanical
+language-recognizer, and capture them in a model called a <em>finite-state
+automaton</em>. (Whether this is a successful distillation of the essence of
+mechanical language recognition remains to be seen; the question will be taken
+up later in this chapter.)</p>
+<p>A <strong>finite-state automaton (FSA)</strong>, then, is a machine which takes, as input,
+a finite
+string of symbols from some alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+There is a finite set of <strong>states</strong> in which the machine can find itself. The
+state it is in before consuming any input is called the <strong>start state</strong>.
+Some of the states are <strong>accepting</strong>
+or <strong>final</strong>. If the machine ends in such a state after completely consuming
+an input string, the string is said to be <strong>accepted</strong> by the machine.
+The actual functioning of the machine is described by something called a
+<strong>transition function</strong>, which specifies
+what happens if the machine is in a particular state and looking at a
+particular input symbol. (“What happens” means “in which state does the
+machine end up”.)</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Below is a table that describes the transition function of a
+finite-state automaton with states <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span>, on inputs <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p></p></th>
+<th class="text-align:center head"><p>p</p></th>
+<th class="text-align:center head"><p>q</p></th>
+<th class="text-align:center head"><p>r</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>p</p></td>
+<td class="text-align:center"><p>q</p></td>
+<td class="text-align:center"><p>r</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>q</p></td>
+<td class="text-align:center"><p>r</p></td>
+<td class="text-align:center"><p>r</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table indicates, for example,
+that if the FSA were in state <span class="math notranslate nohighlight">\(p\)</span> and consumed a <span class="math notranslate nohighlight">\(1\)</span>, it would
+move to state <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<hr class="docutils" />
+<p>FSAs actually come in two flavors depending on what
+properties you require of the transition function. We will look first at a class
+of FSAs called deterministic finite-state automata (DFAs). In these
+machines, the current state of the machine and the current input symbol together
+determine exactly which state the machine ends up in: for every <span class="math notranslate nohighlight">\(\langle\textrm{current state,
+current input symbol}\rangle\)</span> pair, there is exactly one possible next state for the
+machine.</p>
+<blockquote>
+<div><p>Formally,
+a <strong>deterministic finite-state automaton</strong> <span class="math notranslate nohighlight">\(M\)</span> is specified by 5 components:
+<span class="math notranslate nohighlight">\(M=(Q, \Sigma, q_0, \delta, F)\)</span> where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is a finite set of states;</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Sigma\)</span> is an alphabet called the <em>input alphabet</em>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(q_0 \in Q\)</span> is a state which is designated as the <em>start state</em>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(F\)</span> is a subset of <span class="math notranslate nohighlight">\(Q\)</span>; the states in <span class="math notranslate nohighlight">\(F\)</span> are states designated as
+<em>final</em> or <em>accepting</em> states;</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta\)</span> is a transition function that takes
+<span class="math notranslate nohighlight">\(\langle\textrm{state, input symbol}\rangle\)</span> pairs and maps each one to a state: <span class="math notranslate nohighlight">\(\delta : Q \times
+\Sigma \rightarrow Q\)</span>. To say
+<span class="math notranslate nohighlight">\(\delta(q,a) = q'\)</span> means that
+if the machine is in state <span class="math notranslate nohighlight">\(q\)</span> and the input symbol <span class="math notranslate nohighlight">\(a\)</span> is consumed, then the
+machine will move into state <span class="math notranslate nohighlight">\(q'\)</span>. The function <span class="math notranslate nohighlight">\(\delta\)</span> must be a total
+function, meaning that <span class="math notranslate nohighlight">\(\delta(q,a)\)</span> must be defined for every state <span class="math notranslate nohighlight">\(q\)</span> and
+every input symbol <span class="math notranslate nohighlight">\(a\)</span>. (Recall also that, according to the definition of a
+function, there can be only one output for any particular input. This means
+that for any given <span class="math notranslate nohighlight">\(q\)</span> and <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(\delta(q,a)\)</span> can have only one value. This is
+what makes the finite-state automaton deterministic: given the current state and
+input symbol, there is only one possible move the machine can make.)</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Example:</strong> The transition function described by the table in the preceding example is that of
+a DFA.
+If we take <span class="math notranslate nohighlight">\(p\)</span> to be the start state and <span class="math notranslate nohighlight">\(r\)</span> to be a final state, then the
+formal description of the resulting machine is<br />
+<span class="math notranslate nohighlight">\(M= (\{p,q,r\}, \{0,1\}, p, \delta, \{r\})\)</span>, where <span class="math notranslate nohighlight">\(\delta\)</span>
+is given by</p>
+<p><span class="math notranslate nohighlight">\(\hspace{0.5in}\delta(p,0)=p \hspace{1.5in} \delta(p,1)=q\)</span></p>
+<p><span class="math notranslate nohighlight">\(\hspace{0.5in}\delta(q,0)=q \hspace{1.5in} \delta(q,1)=r\)</span></p>
+<p><span class="math notranslate nohighlight">\(\hspace{0.5in}\delta(r,0)=r \hspace{1.5in} \delta(r,1)=r\)</span></p>
+<hr class="docutils" />
+<p>The transition function <span class="math notranslate nohighlight">\(\delta\)</span> describes only individual steps of the machine
+as individual input symbols are consumed. However, we will often want to refer
+to
+“the
+state the automaton will be in if it starts in state <span class="math notranslate nohighlight">\(q\)</span> and consumes input
+string <span class="math notranslate nohighlight">\(w\)</span>”, where <span class="math notranslate nohighlight">\(w\)</span> is a string of input symbols rather than a single symbol.
+Following the usual practice of using <span class="math notranslate nohighlight">\(^*\)</span> to designate
+“0 or more”, we define <span class="math notranslate nohighlight">\(\delta^*(q,w)\)</span> as a convenient shorthand for
+“the state that the automaton will be in
+if it starts in state <span class="math notranslate nohighlight">\(q\)</span> and consumes the input string <span class="math notranslate nohighlight">\(w\)</span>”. For any string,
+it is easy to see, based on <span class="math notranslate nohighlight">\(\delta\)</span>, what steps the machine will
+make as those symbols are consumed, and what <span class="math notranslate nohighlight">\(\delta^*(q,w)\)</span> will be for any <span class="math notranslate nohighlight">\(q\)</span>
+and <span class="math notranslate nohighlight">\(w\)</span>. Note that if no input is consumed, a DFA makes no move, and so
+<span class="math notranslate nohighlight">\(\delta^*(q, \varepsilon) = q\)</span> for any state <span class="math notranslate nohighlight">\(q\)</span>.[^<span class="math notranslate nohighlight">\(\delta^*\)</span> can be defined
+formally by saying that <span class="math notranslate nohighlight">\(\delta^*(q,\varepsilon)=q\)</span> for every state <span class="math notranslate nohighlight">\(q\)</span>,
+and <span class="math notranslate nohighlight">\(\delta^*(q,ax)=\delta^*(\delta(q,a),x)\)</span> for any state <span class="math notranslate nohighlight">\(q\)</span>, <span class="math notranslate nohighlight">\(a\in\Sigma\)</span>
+and <span class="math notranslate nohighlight">\(x\in\Sigma^*\)</span>. Note that this is a recursive definition.]</p>
+<hr class="docutils" />
+<p><strong>Example:</strong>
+Let <span class="math notranslate nohighlight">\(M\)</span> be the automaton in the preceding example. Then:</p>
+<p><span class="math notranslate nohighlight">\(\delta^*(p, 001)=q\)</span>, since <span class="math notranslate nohighlight">\(\delta(p,0)=p\)</span>, <span class="math notranslate nohighlight">\(\delta(p,0)=p\)</span>, and <span class="math notranslate nohighlight">\(\delta(p,1)=q\)</span>;</p>
+<p><span class="math notranslate nohighlight">\(\delta^*(p, 01000)= q\)</span>;</p>
+<p><span class="math notranslate nohighlight">\(\delta^*(p, 1111) = r\)</span>;</p>
+<p><span class="math notranslate nohighlight">\(\delta^*(q, 0010) = r\)</span>.</p>
+<hr class="docutils" />
+<p>We have divided the states of a DFA into accepting and non-accepting states, with
+the idea that some strings will be recognized as “legal” by the automaton, and
+some not. Formally:</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(M=(Q, \Sigma, q_0, \delta, F)\)</span>. A string <span class="math notranslate nohighlight">\(w \in \Sigma^*\)</span> is <strong>accepted</strong>
+by <span class="math notranslate nohighlight">\(M\)</span> iff <span class="math notranslate nohighlight">\(\delta^*(q_0, w) \in F\)</span>. (Don’t get confused by the notation.
+Remember, it’s just a shorter and neater way of saying
+“<span class="math notranslate nohighlight">\(w \in \Sigma^*\)</span> is accepted by <span class="math notranslate nohighlight">\(M\)</span> if and only if the state that <span class="math notranslate nohighlight">\(M\)</span> will end
+up in
+if it starts in <span class="math notranslate nohighlight">\(q_0\)</span> and consumes <span class="math notranslate nohighlight">\(w\)</span> is one of the states in <span class="math notranslate nohighlight">\(F\)</span>.”)</p>
+<p>The <strong>language accepted by <span class="math notranslate nohighlight">\(M\)</span></strong>, denoted <span class="math notranslate nohighlight">\(L(M)\)</span>, is the set of all strings
+<span class="math notranslate nohighlight">\(w \in \Sigma^*\)</span> that are accepted by <span class="math notranslate nohighlight">\(M\)</span>:
+<span class="math notranslate nohighlight">\(L(M) = \{ w \in\Sigma^* \ | \ \delta^*(q_0, w) \in F\}\)</span>.</p>
+</div></blockquote>
+<p>Note that we sometimes use a slightly different phrasing and say that a language
+<span class="math notranslate nohighlight">\(L\)</span> is accepted by some machine <span class="math notranslate nohighlight">\(M\)</span>. We don’t mean by this that <span class="math notranslate nohighlight">\(L\)</span> <em>and
+maybe some other strings</em> are accepted by <span class="math notranslate nohighlight">\(M\)</span>; we mean <span class="math notranslate nohighlight">\(L = L(M)\)</span>, <em>i.e.</em>, <span class="math notranslate nohighlight">\(L\)</span> is
+<em>exactly</em> the set of strings accepted by <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>It may not be easy, looking at a formal specification of a DFA, to determine what
+language that automaton accepts. Fortunately, the mathematical description of
+the automaton <span class="math notranslate nohighlight">\(M=(Q, \Sigma, q_0, \delta, F)\)</span> can be neatly and helpfully
+captured in a picture called a <strong>transition diagram</strong>.
+Consider again the DFA of the two preceding examples. It
+can be represented pictorially as:</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa1.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<!--
+```reason hidden
+type graphLayout('n) = (list(('n, (float, float))), list(('n, 'n)));
+
+let layoutCircle = ((nodes, pairs), radius)=> {
+  let a = 360. /. float_of_int(List.length(nodes));
+  let locs = List.mapi((i, node) => (node, polar(radius, a *. float_of_int(i))), nodes);
+  (locs, pairs)
+};
+
+let layoutGrid = ((nodes, pairs), columns, spacing) => {
+  let shift = float_of_int(columns - 1) *. spacing /. 2.;
+  let locs = List.mapi((i, node) => {
+      let row = i / columns;
+      let col = i mod columns;
+      (node, (float_of_int(col) *. spacing -. shift, float_of_int(row) *. spacing))
+    }, nodes);
+  (locs, pairs)
+};
+
+let renderLayout = ((locs, pairs), string_of_node, styleNode, styleEdge) => {
+  let nodeRadius = 10.;
+  let arrowLength = 5.;
+  let arrowAngle = radians(30.);
+  let loopOut = radians(240.);
+  let loopIn = radians(300.);
+  let nodes = List.map(((node, p)) => {
+      translateP(p,
+        styleNode(node, stroke(Color("none"), fill(Color("black"), text(string_of_node(node))))
+        +++ circle(nodeRadius)))
+    }, locs);
+  let edges = List.map(((n1, n2)) => {
+      if (n1 == n2) {
+        let p = List.assoc(n1, locs);
+        let (x, y) = p;
+        let p1 = (x +. nodeRadius *. cos(loopOut), y +. nodeRadius *. sin(loopOut));
+        let p2 = (x +. nodeRadius *. cos(loopIn), y +. nodeRadius *. sin(loopIn));
+        let c1 = (x +. 3. *. nodeRadius *. cos(loopOut), y +. 3. *. nodeRadius *. sin(loopOut));
+        let c2 = (x +. 3. *. nodeRadius *. cos(loopIn), y +. 3. *. nodeRadius *. sin(loopIn));
+        let (x2, y2) = p2;
+        let p3 = (x2 +. arrowLength *. cos(loopIn +. arrowAngle), y2 +. arrowLength *. sin(loopIn +. arrowAngle));
+        let p4 = (x2 +. arrowLength *. cos(loopIn -. arrowAngle), y2 +. arrowLength *. sin(loopIn -. arrowAngle));
+        setBounds(x -. nodeRadius, x +. nodeRadius, y -. 2.5 *. nodeRadius, y +. nodeRadius,
+          styleEdge(n1, n2, openPath([moveP(p1), curveP(c1, c2, p2), moveP(p2), lineP(p3), moveP(p2), lineP(p4)])))
+      } else {
+        let p1 = List.assoc(n1, locs);
+        let p2 = List.assoc(n2, locs);
+        let (x1, y1) = p1;
+        let (x2, y2) = p2;
+        let dx = x2 -. x1;
+        let dy = y2 -. y1;
+        let a = atan2(dy, dx);
+        let p3 = (x2 -. nodeRadius *. cos(a), y2 -. nodeRadius *. sin(a));
+        let (x3, y3) = p3;
+        let p4 = (x3 -. arrowLength *. cos(a +. arrowAngle), y3 -. arrowLength *. sin(a +. arrowAngle));
+        let p5 = (x3 -. arrowLength *. cos(a -. arrowAngle), y3 -. arrowLength *. sin(a -. arrowAngle));
+        styleEdge(n1, n2, openPath([moveP(p1), lineP(p2), moveP(p3), lineP(p4), moveP(p3), lineP(p5)]))
+      }
+    }, pairs);
+  let nodeImage = List.fold_left((+++), empty, nodes);
+  let edgeImage = List.fold_left((+++), empty, edges);
+  nodeImage +++ edgeImage
+};
+
+let defaultStyleNode = (node, img) => {
+  stroke(Color("black"), fill(Color("white"), img))
+};
+
+let defaultStyleEdge = (n1, n2, img) => {
+  stroke(Color("black"), img)
+};
+
+let acceptNode = (node, img) => {
+  stroke(Color("black"), fill(Color("none"), circle(8.)))
+    +++ defaultStyleNode(node, img)
+}
+
+let labelEdge = (lbl, img) => {
+  let (l, r, t, _) = bbox(img);
+  let lblimg = translate((l +. r) /. 2., t -. 2.,
+    withFont(0.5, Sans, Regular, Normal, stroke(Color("none"), fill(Color("black"), text(lbl)))));
+  lblimg +++ img
+};
+
+let labelLoop = (lbl, img) => {
+  let (l, r, t, _) = bbox(img);
+  let lblimg = translate(l -. 6., t -. 2.,
+    withFont(0.5, Sans, Regular, Normal, stroke(Color("none"), fill(Color("black"), text(lbl)))));
+  lblimg +++ img
+};
+
+let sn1 = (node, img) => {
+  switch (node) {
+  | "Start" => empty
+  | "r" => acceptNode(node, img)
+  | _ => defaultStyleNode(node, img)
+  }
+};
+
+let se1 = (n1, n2, img) => {
+  switch (n1, n2) {
+  | ("p", "p") => labelLoop("0", img)
+  | ("p", "q") => labelEdge("1", img)
+  | ("q", "q") => labelLoop("0", img)
+  | ("q", "r") => labelEdge("1", img)
+  | ("r", "r") => labelLoop("0,1  ", img)
+  | _ => defaultStyleEdge(n1, n2, img)
+  }
+};
+
+let m1 = (["Start", "p", "q", "r"], [("Start", "p"), ("p", "p"), ("p", "q"), ("q", "q"), ("q", "r"), ("r", "r")]);
+
+draw(renderLayout(layoutGrid(m1, 4, 50.), s => s, sn1, se1));
+```
+-->
+<p>The arrow on the left indicates that <span class="math notranslate nohighlight">\(p\)</span> is the start state; double
+circles indicate that a state is accepting. Looking at this picture, it should
+be fairly easy to see that the language accepted by the DFA <span class="math notranslate nohighlight">\(M\)</span> is
+<span class="math notranslate nohighlight">\(L(M) = \{ x \in \{0,1\}^* \ | \ n_1(x) \geq 2\}\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Find the language accepted by the DFA shown below (and describe it using a
+regular expression!):</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa2.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<p>The start state of <span class="math notranslate nohighlight">\(M\)</span> is accepting, which means <span class="math notranslate nohighlight">\(\varepsilon \in L(M)\)</span>. If <span class="math notranslate nohighlight">\(M\)</span> is
+in state <span class="math notranslate nohighlight">\(q_0\)</span>, a
+sequence of two <span class="math notranslate nohighlight">\(a\)</span>’s or three <span class="math notranslate nohighlight">\(b\)</span>’s will move <span class="math notranslate nohighlight">\(M\)</span> back to <span class="math notranslate nohighlight">\(q_0\)</span> and hence
+be accepted. So <span class="math notranslate nohighlight">\(L(M) = L((aa | bbb)^*)\)</span>.</p>
+<hr class="docutils" />
+<p>The state <span class="math notranslate nohighlight">\(q_4\)</span> in the preceding example is often called a <em>garbage</em>, <em>error</em>, or
+<em>trap</em> state: it is a non-accepting state which, once reached by the machine,
+cannot be escaped. It is fairly common to omit such states from transition
+diagrams. For example, one is likely to see the diagram:</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa3.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<p>Note that this cannot be a complete DFA, because a DFA is required to have a
+transition defined for every state-input pair. The diagram is “short for” the
+full diagram:</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa4.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<p>As well as recognizing what language is accepted by a given DFA, we often want to
+do the reverse and come up with a DFA that accepts a given language.
+Building DFAs for specified languages is an art, not a science.
+There is no algorithm that you can apply to produce a DFA from an English-language
+description of the set of strings the DFA should accept. On the other hand, it
+is not generally successful, either, to simply write down a half-dozen strings
+that are in the language and design a DFA to accept those strings—invariably
+there are strings that are in the language that aren’t accepted, and other
+strings that aren’t in the language that are accepted. So how do you go about
+building DFAs that accept all and only the strings they’re supposed to accept?
+The best advice I can give is to
+think about relevant characteristics that determine whether a string is in the
+language or not, and to think about what the possible values or “states” of
+those characteristics
+are; then build a machine that has a state corresponding to each possible
+combination of values of relevant characteristics, and determine how the
+consumption of inputs affects those values. I’ll illustrate what I mean with a
+couple of examples.</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Find a DFA with input alphabet <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span> that accepts the language
+<span class="math notranslate nohighlight">\(L= \{w \in\Sigma^* \ | \ n_a(w) \textrm{ and } n_b(w) \textrm{ are both even } \}\)</span>.</p>
+<p>The characteristics that determine whether or not a string <span class="math notranslate nohighlight">\(w\)</span> is in <span class="math notranslate nohighlight">\(L\)</span> are the
+parity of <span class="math notranslate nohighlight">\(n_a(w)\)</span> and <span class="math notranslate nohighlight">\(n_b(w)\)</span>. There are four possible combinations of
+“values” for these characteristics: both numbers could be even, both could be
+odd, the first could be odd and the second even, or the first could be even and
+the second odd. So we build a machine with four states <span class="math notranslate nohighlight">\(q_1, q_2, q_3, q_4\)</span>
+corresponding to the four cases. We want to set up <span class="math notranslate nohighlight">\(\delta\)</span> so that the machine
+will be in state <span class="math notranslate nohighlight">\(q_1\)</span> exactly when it has consumed a string with an even number
+of <span class="math notranslate nohighlight">\(a\)</span>’s and an even number of <span class="math notranslate nohighlight">\(b\)</span>’s, in state <span class="math notranslate nohighlight">\(q_2\)</span> exactly when it has
+consumed a string with an
+odd number of <span class="math notranslate nohighlight">\(a\)</span>’s and an odd number of <span class="math notranslate nohighlight">\(b\)</span>’s, and so on.</p>
+<p>To do this, we first make
+the state <span class="math notranslate nohighlight">\(q_1\)</span> into our start state,
+because the DFA will be in the start state after consuming the empty string
+<span class="math notranslate nohighlight">\(\varepsilon\)</span>, and <span class="math notranslate nohighlight">\(\varepsilon\)</span> has an even number (zero) of both <span class="math notranslate nohighlight">\(a\)</span>’s and <span class="math notranslate nohighlight">\(b\)</span>’s. Now we
+add transitions by reasoning about how the parity of <span class="math notranslate nohighlight">\(a\)</span>’s and <span class="math notranslate nohighlight">\(b\)</span>’s is changed
+by additional input. For instance, if the machine is in <span class="math notranslate nohighlight">\(q_1\)</span> (meaning an even
+number of <span class="math notranslate nohighlight">\(a\)</span>’s and an even number of <span class="math notranslate nohighlight">\(b\)</span>’s have been seen) and a further <span class="math notranslate nohighlight">\(a\)</span> is
+consumed, then we want the machine to move to state <span class="math notranslate nohighlight">\(q_3\)</span>, since the machine has
+now consumed an odd number of <span class="math notranslate nohighlight">\(a\)</span>’s and still an even number of <span class="math notranslate nohighlight">\(b\)</span>’s. So we add
+the transition <span class="math notranslate nohighlight">\(\delta(q_1, a) = q_3\)</span> to the machine. Similarly, if the machine
+is in <span class="math notranslate nohighlight">\(q_2\)</span> (meaning an odd
+number of <span class="math notranslate nohighlight">\(a\)</span>’s and an odd number of <span class="math notranslate nohighlight">\(b\)</span>’s have been seen) and a further <span class="math notranslate nohighlight">\(b\)</span> is
+consumed, then we want the machine to move to state <span class="math notranslate nohighlight">\(q_3\)</span> again, since the
+machine has
+still consumed an odd number of <span class="math notranslate nohighlight">\(a\)</span>’s, and now an even number of <span class="math notranslate nohighlight">\(b\)</span>’s.
+So we add
+the transition <span class="math notranslate nohighlight">\(\delta(q_2, b) = q_3\)</span> to the machine. Similar reasoning produces
+a total of eight transitions, one for each state-input pair. Finally, we have to
+decide which states should be final states. The only state that corresponds to
+the desired criteria for the language <span class="math notranslate nohighlight">\(L\)</span> is <span class="math notranslate nohighlight">\(q_1\)</span>, so we make <span class="math notranslate nohighlight">\(q_1\)</span> a final
+state. The complete machine is shown below.</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa5.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Find a DFA with input alphabet <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span> that accepts the language
+<span class="math notranslate nohighlight">\(L\)</span> = <span class="math notranslate nohighlight">\(\{w\in\Sigma^* \ | \ n_a(w) \textrm{ is divisible by 3 } \}\)</span>.</p>
+<p>The relevant characteristic here is of course whether or not the number of <span class="math notranslate nohighlight">\(a\)</span>’s
+in a string is divisible by 3, perhaps suggesting a two-state machine. But in
+fact, there is more than one way for a number to not be divisible by 3: dividing
+the number by 3 could produce a remainder of either 1 or 2 (a remainder of 0
+corresponds to the number in fact being divisible by 3). So we build a machine
+with three states <span class="math notranslate nohighlight">\(q_0\)</span>, <span class="math notranslate nohighlight">\(q_1\)</span>, <span class="math notranslate nohighlight">\(q_2\)</span>, and add transitions so that the machine
+will be in state <span class="math notranslate nohighlight">\(q_0\)</span> exactly when the number of <span class="math notranslate nohighlight">\(a\)</span>’s it has consumed is evenly
+divisible by 3, in state <span class="math notranslate nohighlight">\(q_1\)</span> exactly when the number of <span class="math notranslate nohighlight">\(a\)</span>’s it has consumed
+is equivalent to <span class="math notranslate nohighlight">\(1 \bmod{3}\)</span>, and similarly for <span class="math notranslate nohighlight">\(q_2\)</span>. State <span class="math notranslate nohighlight">\(q_0\)</span> will be the
+start state, as <span class="math notranslate nohighlight">\(\varepsilon\)</span> has 0 <span class="math notranslate nohighlight">\(a\)</span>’s and 0 is divisible by 3. The completed
+machine is shown below. Notice that because the consumption of a <span class="math notranslate nohighlight">\(b\)</span> does not
+affect the only relevant characteristic, <span class="math notranslate nohighlight">\(b\)</span>’s do not cause changes of
+state.</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa6.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<hr class="docutils" />
+<p><strong>Example:</strong> Find a DFA with input alphabet <span class="math notranslate nohighlight">\(\Sigma = \{a,b\}\)</span> that accepts the language
+<span class="math notranslate nohighlight">\(L\)</span> = <span class="math notranslate nohighlight">\(\{w\in\Sigma^* \ | w \textrm{ contains three consecutive a's } \}\)</span>.</p>
+<p>Again, it is not quite so simple as making a two-state machine where the states
+correspond to “have seen <span class="math notranslate nohighlight">\(aaa\)</span>” and “have not seen <span class="math notranslate nohighlight">\(aaa\)</span>”.
+Think dynamically: as you move through the
+input string, how do you arrive at the goal of having seen three consecutive
+<span class="math notranslate nohighlight">\(a\)</span>’s? You might have seen two consecutive <span class="math notranslate nohighlight">\(a\)</span>’s and still need a third, or
+you might just have seen one <span class="math notranslate nohighlight">\(a\)</span> and be looking for two more to come
+immediately, or you might just have seen a <span class="math notranslate nohighlight">\(b\)</span> and be right back at the
+beginning as far as seeing 3 consecutive <span class="math notranslate nohighlight">\(a\)</span>’s goes. So this time there will be
+four states, with the “last symbol was not an <span class="math notranslate nohighlight">\(a\)</span>” state being the start
+state. The complete automaton is shown below.</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa7.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<hr class="docutils" />
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Give DFAs that accept the following languages over <span class="math notranslate nohighlight">\(\Sigma =\{a,b\}\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_1= \{ x \ | \ x \textrm{ contains the substring } aba\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_2= L(a^*b^*)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_3= \{ x \ | \ n_a(x)+n_b(x) \textrm{ is even }\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_4= \{ x \ | \ n_a(x) \textrm{ is a multiple of 5 }\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_5= \{ x \ | \ x \textrm{ does not contain the substring } abb\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_6= \{ x \ | \ x \textrm{ has no a's in the even positions} \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L_7 = L(aa^* | aba^*b^*)\)</span></p></li>
+</ul>
+</li>
+<li><p>What languages do the following DFAs accept?</p></li>
+</ol>
+<p>&lt;img src={useBaseUrl(‘img/fsa1ex.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<p>&lt;img src={useBaseUrl(‘img/fsa2ex.png’)}
+alt=”Example DFA” className=”centered-figure” /&gt;</p>
+<ol class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(\Sigma=\{0,1\}\)</span>. Give a DFA that accepts the language
+<span class="math notranslate nohighlight">\($ L = \{ x \in \Sigma^* \ | \ x \textrm{ is the binary representation of an integer
+divisible by 3}\}.\)</span>$</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="regexpapp.html" title="previous page">Applications of Regular Expressions</a>
+    <a class='right-next' id="next-link" href="nfa.html" title="next page">Nondeterministic Finite-State Automata</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

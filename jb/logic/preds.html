@@ -1,0 +1,796 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Predicates and Quantifiers &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deduction" href="deduction.html" />
+    <link rel="prev" title="Common Circuit Components" href="components.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/preds.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantifiers">
+   Quantifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#translating-between-predicate-logic-and-english">
+   Translating between Predicate Logic and English
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logical-equivalence">
+   Logical Equivalence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="predicates-and-quantifiers">
+<h1>Predicates and Quantifiers<a class="headerlink" href="#predicates-and-quantifiers" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>In propositional logic, we can let <span class="math notranslate nohighlight">\(p\)</span> stand for “Roses are red” and
+<span class="math notranslate nohighlight">\(q\)</span> stand for “Violets are blue.”  Then <span class="math notranslate nohighlight">\(p\land q\)</span> will stand for
+“Roses are red and violets are blue.”  But we lose a lot in the
+translation into logic.  Since propositional logic only deals with
+truth values, there’s nothing we can do with <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span> in propositional
+logic that has anything to do with roses, violets, or color.
+To apply logic to such things, we need <strong>predicates</strong>.
+The type of logic that uses predicates is called <strong>predicate
+logic</strong>, or, when the emphasis is on manipulating and reasoning
+with predicates, <strong>predicate calculus</strong>.</p>
+<p>A predicate is a kind of incomplete proposition, which becomes
+a proposition when it is applied to some entity (or, as we’ll see later,
+to several entities).  In the proposition “the rose is red,” the
+predicate is <em>is red</em>.  By itself, “is red” is not a proposition.
+Think of it as having an empty slot, that needs to be filled in
+to make a proposition: “— is red.”  In the proposition
+“the rose is red,” the slot is filled by the entity “the rose,”
+but it could just as well be filled by other entities:
+“the barn is red”; “the wine is red”; “the banana is red.”
+Each of these propositions uses the same predicate, but they are
+different propositions and they can have different truth values.</p>
+<p>If <span class="math notranslate nohighlight">\(P\)</span> is a predicate and <span class="math notranslate nohighlight">\(a\)</span> is an entity, then <span class="math notranslate nohighlight">\(P(a)\)</span> stands for
+the proposition that is formed when <span class="math notranslate nohighlight">\(P\)</span> is applied to <span class="math notranslate nohighlight">\(a\)</span>.  If <span class="math notranslate nohighlight">\(P\)</span>
+represents “is red” and <span class="math notranslate nohighlight">\(a\)</span> stands for “the rose,” then
+<span class="math notranslate nohighlight">\(P(a)\)</span> is “the rose is red.”  If <span class="math notranslate nohighlight">\(M\)</span> is the predicate
+“is mortal” and <span class="math notranslate nohighlight">\(s\)</span> is “Socrates,” then <span class="math notranslate nohighlight">\(M(s)\)</span> is the proposition
+“Socrates is mortal.”</p>
+<p>Now, you might be asking, just what is an <em>entity</em> anyway?
+I am using the term here to mean some specific, identifiable thing
+to which a predicate can be applied.  Generally, it doesn’t make
+sense to apply a given predicate to every possible entity, but only
+to entities in a certain category.  For example, it probably doesn’t
+make sense to apply the predicate “is mortal” to your living room
+sofa.  This predicate only applies to entities in the category of
+living things, since there is no way something can be mortal unless it
+is alive.  This category is called the domain of discourse for
+the predicate.[^In the language
+of set theory, which will be introduced in the next chapter,
+we would say that a domain of discourse is a set, <span class="math notranslate nohighlight">\(U\)</span>, and
+a predicate is a function from <span class="math notranslate nohighlight">\(U\)</span> to the set of truth values.
+The definition should be clear enough without the formal language
+of set theory, and in fact you should think of this definition—and
+many others—as motivation for that language.]</p>
+<p>We are now ready for a formal definition of one-place
+predicates.  A one-place
+predicate, like all the examples we have seen so far, has a single
+slot which can be filled in with one entity:</p>
+<blockquote>
+<div><p>A <strong>one-place predicate</strong> associates a proposition with each entity in some
+collection of entities.  This collection is called the <strong>domain
+of discourse</strong> for the predicate.  If <span class="math notranslate nohighlight">\(P\)</span> is a predicate and <span class="math notranslate nohighlight">\(a\)</span> is
+an entity in the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span>, then <span class="math notranslate nohighlight">\(P(a)\)</span> denotes
+the proposition that is associated with <span class="math notranslate nohighlight">\(a\)</span> by <span class="math notranslate nohighlight">\(P\)</span>.  We say that <span class="math notranslate nohighlight">\(P(a)\)</span>
+is the result of <strong>applying</strong> <span class="math notranslate nohighlight">\(P\)</span> to <span class="math notranslate nohighlight">\(a\)</span>.</p>
+</div></blockquote>
+<p>We can obviously extend this to predicates that can be applied to
+two or more entities.  In the proposition “John loves Mary,”
+<em>loves</em> is a two-place predicate.  Besides John and Mary,
+it could be applied to other pairs of entities:  “John loves Jane,”
+“Bill loves Mary,” “John loves Bill,”  “John loves John.”
+If <span class="math notranslate nohighlight">\(Q\)</span> is a two-place
+predicate, then <span class="math notranslate nohighlight">\(Q(a,b)\)</span> denotes the proposition that is obtained
+when <span class="math notranslate nohighlight">\(Q\)</span> is applied to the entities <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.  Note that each of
+the “slots” in a two-place predicate can have its own domain of
+discourse.  For example, if <span class="math notranslate nohighlight">\(Q\)</span> represents the predicate “owns,”
+then <span class="math notranslate nohighlight">\(Q(a,b)\)</span> will only make sense when <span class="math notranslate nohighlight">\(a\)</span> is a person and <span class="math notranslate nohighlight">\(b\)</span> is an
+inanimate object.  An example of a three-place predicate is
+“<span class="math notranslate nohighlight">\(a\)</span> gave <span class="math notranslate nohighlight">\(b\)</span> to <span class="math notranslate nohighlight">\(c\)</span>,” and a four-place predicate would be
+“<span class="math notranslate nohighlight">\(a\)</span> bought <span class="math notranslate nohighlight">\(b\)</span> from <span class="math notranslate nohighlight">\(c\)</span> for <span class="math notranslate nohighlight">\(d\)</span> dollars.”  But keep in mind that
+not every predicate has to correspond to an English sentence.</p>
+<p>When predicates are applied to entities, the results are propositions,
+and all the operators of propositional logic can be applied to these
+propositions just as they can to any propositions.  Let <span class="math notranslate nohighlight">\(R\)</span> be the
+predicate “is red,” and let <span class="math notranslate nohighlight">\(L\)</span> be the two-place predicate “loves.”
+If <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, and <span class="math notranslate nohighlight">\(b\)</span> are entities belonging to the
+appropriate categories, then we can form compound propositions such
+as:</p>
+<p><span class="math notranslate nohighlight">\($
+\begin{array}{ll}
+   R(a)\land R(b)         &amp;\text{\)</span>a$ is red and <span class="math notranslate nohighlight">\(b\)</span> is red}\
+\lnot R(a)             &amp;\text{<span class="math notranslate nohighlight">\(a\)</span> is not red}\
+L(j,m)\land\lnot L(m,j) &amp;\text{<span class="math notranslate nohighlight">\(j\)</span> loves <span class="math notranslate nohighlight">\(m\)</span>, and <span class="math notranslate nohighlight">\(m\)</span> does not love <span class="math notranslate nohighlight">\(j\)</span>}\
+L(j,m)\rightarrow L(b,m)     &amp;\text{if <span class="math notranslate nohighlight">\(j\)</span> loves <span class="math notranslate nohighlight">\(m\)</span> then <span class="math notranslate nohighlight">\(b\)</span> loves <span class="math notranslate nohighlight">\(m\)</span>}\
+R(a)\leftrightarrow L(j,j)       &amp;\text{<span class="math notranslate nohighlight">\(a\)</span> is red if and only if <span class="math notranslate nohighlight">\(j\)</span> loves <span class="math notranslate nohighlight">\(j\)</span>}\
+\end{array}
+$$</p>
+<div class="section" id="quantifiers">
+<h2>Quantifiers<a class="headerlink" href="#quantifiers" title="Permalink to this headline">¶</a></h2>
+<p>Let’s go back to the proposition with which we started this section:
+“Roses are red.”  This sentence is more difficult to handle than
+it might appear.  We still can’t express it properly in logic.
+The problem is that this proposition is not saying something about
+some particular entity.  It really says that <em>all</em> roses are red
+(which happens to be a false statement, but that’s what it means).
+Predicates can only be applied to individual entities.</p>
+<p>Many other sentences raise similar difficulties:
+“All persons are mortal.”  “Some roses are red, but no roses are black.”
+“All math courses are interesting.”  “Every prime number greater than two
+is odd.”  Words like <em>all</em>, <em>no</em>, <em>some</em>, and <em>every</em>
+are called <strong>quantifiers</strong>.  We need to be able to express similar concepts
+in logic.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(P\)</span> is a predicate, and we want to express the proposition that
+<span class="math notranslate nohighlight">\(P\)</span> is true when applied to any entity in the domain of discourse.
+That is, we want to say “for any entity <span class="math notranslate nohighlight">\(x\)</span> in the domain of discourse,
+<span class="math notranslate nohighlight">\(P(x)\)</span> is true.”  In predicate logic, we write this in symbols as
+<span class="math notranslate nohighlight">\(\forall x(P(x))\)</span>.  The <span class="math notranslate nohighlight">\(\forall\)</span> symbol, which looks like an
+upside-down A, is usually read “for all,” so that <span class="math notranslate nohighlight">\(\forall x(P(x))\)</span>
+is read as “for all <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(P(x)\)</span>.”  (It is understood that this means
+for all <span class="math notranslate nohighlight">\(x\)</span> in the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span>.)  For example,
+if <span class="math notranslate nohighlight">\(R\)</span> is the predicate “is red” and the domain of discourse consists
+of all roses, then <span class="math notranslate nohighlight">\(\forall x(R(x))\)</span> expresses the proposition
+“All roses are red.”  Note that the same proposition could be
+expressed in English as “Every rose is red” or “Any rose is red.”</p>
+<p>Now, suppose we want to say that a predicate, <span class="math notranslate nohighlight">\(P\)</span>, is true for <em>some</em>
+entity in its domain of discourse.  This is expressed in predicate
+logic as <span class="math notranslate nohighlight">\(\exists x(P(x))\)</span>.  The <span class="math notranslate nohighlight">\(\exists\)</span> symbol, which looks like a
+backwards E, is usually read “there exists,” but a more exact reading
+would be “there is at least one.” Thus, <span class="math notranslate nohighlight">\(\exists x(P(x))\)</span> is read
+as “There exists an <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(P(x)\)</span>,” and it means “there is
+at least one <span class="math notranslate nohighlight">\(x\)</span> in the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span> for which <span class="math notranslate nohighlight">\(P(x)\)</span>
+is true.”  If, once again, <span class="math notranslate nohighlight">\(R\)</span> stands for “is red” and the domain
+of discourse is “roses,” then <span class="math notranslate nohighlight">\(\exists x(R(x))\)</span> could be expressed
+in English as “There is a red rose” or “At least one rose is red”
+or “Some rose is red.”  It might also be expressed as “Some roses
+are red,” but the plural is a bit misleading since <span class="math notranslate nohighlight">\(\exists x(R(x))\)</span>
+is true even if there is only one red rose.
+We can now give the formal definitions:</p>
+<blockquote>
+<div><p>Suppose that <span class="math notranslate nohighlight">\(P\)</span> is a one-place predicate.  Then <span class="math notranslate nohighlight">\(\forall x(P(x))\)</span> is
+a proposition, which is true if and only if <span class="math notranslate nohighlight">\(P(a)\)</span> is true for every
+entity <span class="math notranslate nohighlight">\(a\)</span> in the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span>.  And <span class="math notranslate nohighlight">\(\exists x(P(x))\)</span>
+is a proposition which is true if and only if there is at least one
+entity, <span class="math notranslate nohighlight">\(a\)</span>, in the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span> for which <span class="math notranslate nohighlight">\(P(a)\)</span> is
+true.  The <span class="math notranslate nohighlight">\(\forall\)</span> symbol is called the <strong>universal quantifier</strong>,
+and <span class="math notranslate nohighlight">\(\exists\)</span> is called the <strong>existential quantifier</strong>.</p>
+</div></blockquote>
+<p>The <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(\forall x(P(x))\)</span> and <span class="math notranslate nohighlight">\(\exists x(P(x))\)</span> is a variable.
+(More precisely, it is an <em>entity</em> variable, since its value
+can only be an entity.)
+Note that a plain <span class="math notranslate nohighlight">\(P(x)\)</span>—without the <span class="math notranslate nohighlight">\(\forall x\)</span> or <span class="math notranslate nohighlight">\(\exists x\)</span>—is
+not a proposition.  <span class="math notranslate nohighlight">\(P(x)\)</span> is neither true nor false because <span class="math notranslate nohighlight">\(x\)</span>
+is not some particular entity, but just a placeholder in a slot that
+can be filled in with an entity.  <span class="math notranslate nohighlight">\(P(x)\)</span> would stand for
+something like the statement “<span class="math notranslate nohighlight">\(x\)</span> is red,” which is not really a
+statement in English at all.  But it becomes a statement when
+the <span class="math notranslate nohighlight">\(x\)</span> is replaced by some particular entity, such as “the rose.”
+Similarly, <span class="math notranslate nohighlight">\(P(x)\)</span> becomes a proposition if some entity <span class="math notranslate nohighlight">\(a\)</span> is substituted
+for the <span class="math notranslate nohighlight">\(x\)</span>, giving <span class="math notranslate nohighlight">\(P(a)\)</span>.[^There is certainly room for confusion
+about names here.  In this discussion, <span class="math notranslate nohighlight">\(x\)</span> is a variable and <span class="math notranslate nohighlight">\(a\)</span> is
+an entity.  But that’s only because I said so.  Any letter could be used
+in either role, and you have to pay attention to the context to
+figure out what is going on.  Usually, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> will be variables.]</p>
+<p>An <strong>open statement</strong> is an expression that contains one or more entity
+variables, which becomes a proposition when entities are substituted
+for the variables.  (An open statement has open “slots” that need to
+be filled in.)  <span class="math notranslate nohighlight">\(P(x)\)</span> and “<span class="math notranslate nohighlight">\(x\)</span> is red” are examples of open
+statements that contain one variable.  If <span class="math notranslate nohighlight">\(L\)</span> is a two-place predicate
+and <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are variables, then <span class="math notranslate nohighlight">\(L(x,y)\)</span> is an open statement
+containing two variables.  An example in English would be
+“<span class="math notranslate nohighlight">\(x\)</span> loves <span class="math notranslate nohighlight">\(y\)</span>.”  The variables in an open statement are called
+<strong>free variables</strong>.  An open statement that contains <span class="math notranslate nohighlight">\(x\)</span> as a free
+variable can be quantified with <span class="math notranslate nohighlight">\(\forall x\)</span> or <span class="math notranslate nohighlight">\(\exists x\)</span>.
+The variable <span class="math notranslate nohighlight">\(x\)</span> is then said to be <strong>bound</strong>.  For example,
+<span class="math notranslate nohighlight">\(x\)</span> is free in <span class="math notranslate nohighlight">\(P(x)\)</span> and is bound in <span class="math notranslate nohighlight">\(\forall x(P(x))\)</span> and
+<span class="math notranslate nohighlight">\(\exists x(P(x))\)</span>.  The free variable <span class="math notranslate nohighlight">\(y\)</span> in <span class="math notranslate nohighlight">\(L(x,y)\)</span> becomes
+bound in <span class="math notranslate nohighlight">\(\forall y(L(x,y))\)</span> and in <span class="math notranslate nohighlight">\(\exists y(L(x,y))\)</span>.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\forall y(L(x,y))\)</span> is still an open statement, since
+it contains <span class="math notranslate nohighlight">\(x\)</span> as a free variable.
+Therefore, it is possible to
+apply the quantifier <span class="math notranslate nohighlight">\(\forall x\)</span> or <span class="math notranslate nohighlight">\(\exists x\)</span> to <span class="math notranslate nohighlight">\(\forall y(L(x,y))\)</span>,
+giving <span class="math notranslate nohighlight">\(\forall x\big(\forall y(L(x,y))\big)\)</span> and
+<span class="math notranslate nohighlight">\(\exists x\big(\forall y(L(x,y))\big)\)</span>.  Since all the variables are
+bound in these expressions, they are propositions.  If <span class="math notranslate nohighlight">\(L(x,y)\)</span> represents
+“<span class="math notranslate nohighlight">\(x\)</span> loves <span class="math notranslate nohighlight">\(y\)</span>,” then <span class="math notranslate nohighlight">\(\forall y(L(x,y))\)</span> is something like “<span class="math notranslate nohighlight">\(x\)</span> loves
+everyone,”  and <span class="math notranslate nohighlight">\(\exists x\big(\forall y(L(x,y))\big)\)</span> is the
+proposition, “There is someone who loves everyone.”  Of course, we
+could also have started with <span class="math notranslate nohighlight">\(\exists x(L(x,y))\)</span>: “There is someone
+who loves <span class="math notranslate nohighlight">\(y\)</span>.”  Applying <span class="math notranslate nohighlight">\(\forall y\)</span> to this gives
+<span class="math notranslate nohighlight">\(\forall y\big(\exists x(L(x,y))\big)\)</span>,
+which means “For every person, there is someone who loves that person.”
+Note in particular that <span class="math notranslate nohighlight">\(\exists x\big(\forall y(L(x,y))\big)\)</span> and
+<span class="math notranslate nohighlight">\(\forall y\big(\exists x(L(x,y))\big)\)</span> do <em>not</em> mean the same thing.
+Altogether, there are eight different propositions that can
+be obtained from <span class="math notranslate nohighlight">\(L(x,y)\)</span> by applying quantifiers, with six distinct
+meanings among them.</p>
+<p>(From now on, I will leave out parentheses when there is no ambiguity.
+For example, I will write <span class="math notranslate nohighlight">\(\forall x\, P(x)\)</span> instead of <span class="math notranslate nohighlight">\(\forall x(P(x))\)</span>
+and <span class="math notranslate nohighlight">\(\exists x\,\exists y\,L(x,y)\)</span> instead of
+<span class="math notranslate nohighlight">\(\exists x\big(\exists y(L(x,y))\big)\)</span>.  Furthermore, I will
+sometimes give predicates and entities names that are complete words
+instead of just letters, as in  <span class="math notranslate nohighlight">\(Red(x)\)</span> and <span class="math notranslate nohighlight">\(Loves(john,mary)\)</span>.
+This might help to make examples more readable.)</p>
+</div>
+<div class="section" id="translating-between-predicate-logic-and-english">
+<h2>Translating between Predicate Logic and English<a class="headerlink" href="#translating-between-predicate-logic-and-english" title="Permalink to this headline">¶</a></h2>
+<p>In predicate logic, the operators and laws of Boolean algebra still
+apply.  For example, if <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> are one-place predicates and
+<span class="math notranslate nohighlight">\(a\)</span> is an entity in the domain of discourse, then <span class="math notranslate nohighlight">\(P(a)\rightarrow Q(a)\)</span>
+is a proposition, and it is logically equivalent to <span class="math notranslate nohighlight">\(\lnot P(a)\lor Q(a)\)</span>.
+Furthermore, if <span class="math notranslate nohighlight">\(x\)</span> is a variable, then <span class="math notranslate nohighlight">\(P(x)\rightarrow Q(x)\)</span> is an open
+statement, and <span class="math notranslate nohighlight">\(\forall x(P(x)\rightarrow Q(x))\)</span> is a proposition.
+So are <span class="math notranslate nohighlight">\(P(a)\land(\exists x\,Q(x))\)</span> and <span class="math notranslate nohighlight">\((\forall x\,P(x))\rightarrow(\exists xP(x))\)</span>.
+Obviously, predicate logic can be very expressive.  Unfortunately,
+the translation between predicate logic and English sentences is not
+always obvious.</p>
+<p>Let’s look one more time at the proposition “Roses are red.”
+If the domain of discourse consists of roses, this translates into
+predicate logic as <span class="math notranslate nohighlight">\(\forall x\, Red(x)\)</span>.  However, the sentence makes
+more sense if the domain of discourse is larger—for example if it
+consists of all flowers.  Then “Roses are red” has to be read as
+“All flowers which are roses are red,” or “For any flower,
+if that flower is a rose, then it is red.” The last form translates
+directly into logic as <span class="math notranslate nohighlight">\(\forall x\big(Rose(x)\rightarrow Red(x)\big)\)</span>.
+Suppose we want to say that all red roses are pretty.  The phrase
+“red rose” is saying both that the flower is a rose and that it is
+red, and it must be translated as a conjunction, <span class="math notranslate nohighlight">\(Rose(x)\land Red(x)\)</span>.
+So, “All red roses are pretty” can be rendered as
+<span class="math notranslate nohighlight">\(\forall x\big((Rose(x)\land Red(x))\rightarrow Pretty(x)\big)\)</span>.</p>
+<p>Here are a few more examples of translations from predicate logic
+to English.  Let <span class="math notranslate nohighlight">\(H(x)\)</span> represent “<span class="math notranslate nohighlight">\(x\)</span> is happy,” let
+<span class="math notranslate nohighlight">\(C(y)\)</span> represent “<span class="math notranslate nohighlight">\(y\)</span> is a computer,” and let <span class="math notranslate nohighlight">\(O(x,y)\)</span> represent
+“<span class="math notranslate nohighlight">\(x\)</span> owns <span class="math notranslate nohighlight">\(y\)</span>.”  (The domain of discourse for <span class="math notranslate nohighlight">\(x\)</span> consists of
+people, and the domain for <span class="math notranslate nohighlight">\(y\)</span> consists of inanimate objects.)
+Then we have the following translations:</p>
+<ul class="simple">
+<li><p>Jack owns a computer: <span class="math notranslate nohighlight">\(\exists x\big(O(jack,x)\land C(x)\big)\)</span>.
+(That is, there is at least one thing such that Jack owns that thing and that thing
+is a computer.)</p></li>
+<li><p>Everything Jack owns is a computer: <span class="math notranslate nohighlight">\(\forall x\big(O(jack,x)\rightarrow C(x)\big)\)</span>.</p></li>
+<li><p>If Jack owns a computer, then he’s happy: <span class="math notranslate nohighlight">\(\big(\exists y(O(jack,y)\land C(y))\big)\rightarrow H(jack)\)</span>.</p></li>
+<li><p>Everyone who owns a computer is happy: <span class="math notranslate nohighlight">\(\forall x\big(\,\big(\exists y(O(x,y)\land C(y)\big)\rightarrow H(x)\big)\,\big)\)</span>.</p></li>
+<li><p>Everyone owns a computer: <span class="math notranslate nohighlight">\(\forall x\,\exists y\big(C(y)\land O(x,y)\big)\)</span>.
+(Note that this allows each person to own a different computer.
+The proposition <span class="math notranslate nohighlight">\(\exists y\,\forall x\big(C(y)\land O(x,y)\big)\)</span>
+would mean that there is a single computer which is owned by
+everyone.)</p></li>
+<li><p>Everyone is happy: <span class="math notranslate nohighlight">\(\forall xH(x)\)</span>.</p></li>
+<li><p>Everyone is unhappy: <span class="math notranslate nohighlight">\(\forall x(\lnot H(x))\)</span>.</p></li>
+<li><p>Someone is unhappy: <span class="math notranslate nohighlight">\(\exists x(\lnot H(x))\)</span>.</p></li>
+<li><p>At least two people are happy:
+<span class="math notranslate nohighlight">\(\exists x \exists y\big(H(x) \land H(y) \land (x\ne y)\big)\)</span>.  (The stipulation
+that <span class="math notranslate nohighlight">\(x\ne y\)</span> is necessary because two different variables can refer to
+the same entity.  The proposition <span class="math notranslate nohighlight">\(\exists x\exists y(H(x)\land H(y))\)</span> is
+true even if there is only one happy person.)</p></li>
+<li><p>There is exactly one happy person: <span class="math notranslate nohighlight">\(\big(\exists x H(x)\big)) \land \big(\forall y \forall z((H(y)\land H(z))\rightarrow (y=z))\big)\)</span>.
+(The first part of this conjunction says that there is at least one happy person.
+The second part says that if <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> are both happy people, then they are actually
+the same person. That is, it’s not possible to find two \emph{different} people who
+are happy.)</p></li>
+</ul>
+</div>
+<div class="section" id="logical-equivalence">
+<h2>Logical Equivalence<a class="headerlink" href="#logical-equivalence" title="Permalink to this headline">¶</a></h2>
+<p>To calculate in predicate logic, we need a notion of logical equivalence.
+Clearly, there are pairs of propositions in predicate logic that mean the same
+thing.  Consider the propositions <span class="math notranslate nohighlight">\(\lnot(\forall x H(x))\)</span> and <span class="math notranslate nohighlight">\(\exists x(\lnot H(x))\)</span>, where
+<span class="math notranslate nohighlight">\(H(x)\)</span> represents “<span class="math notranslate nohighlight">\(x\)</span> is happy.” The first of these propositions means
+“Not everyone is happy,” and the second means “Someone is not happy.”
+These statements have the same truth value:  If not everyone is happy, then someone is
+unhappy and vice versa.  But logical equivalence is much stronger than just
+having the same truth value.  In propositional logic, logical equivalence
+is defined in terms of propositional variables:  two compound propositions
+are logically equivalent if they have the same truth values for all possible
+truth values of the propositional variables they contain.  In predicate logic, two
+formulas are logically equivalent
+if they have the same truth value for all
+possible predicates.</p>
+<p>Consider <span class="math notranslate nohighlight">\(\lnot(\forall x P(x))\)</span> and <span class="math notranslate nohighlight">\(\exists x(\lnot P(x))\)</span>.
+These formulas make
+sense for any predicate <span class="math notranslate nohighlight">\(P\)</span>, and for any predicate <span class="math notranslate nohighlight">\(P\)</span> they have the same truth
+value.  Unfortunately, we can’t—as we did in propositional logic—just check
+this fact with a truth table: there are no subpropositions, connected by
+<span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, etc, out of which to build a table.  So, let’s reason it out:
+To say <span class="math notranslate nohighlight">\(\lnot(\forall x P(x))\)</span> is true is just to say that it is not the case that
+<span class="math notranslate nohighlight">\(P(x)\)</span> is true for all possible entities <span class="math notranslate nohighlight">\(x\)</span>.  So, there must be some entity <span class="math notranslate nohighlight">\(a\)</span>
+for which <span class="math notranslate nohighlight">\(P(a)\)</span> is false.  Since <span class="math notranslate nohighlight">\(P(a)\)</span> is false, <span class="math notranslate nohighlight">\(\lnot P(a)\)</span> is true.
+But saying that there is an <span class="math notranslate nohighlight">\(a\)</span> for which <span class="math notranslate nohighlight">\(\lnot P(a)\)</span> is true is just saying
+that <span class="math notranslate nohighlight">\(\exists x(\lnot P(x))\)</span> is true.  So, the truth of <span class="math notranslate nohighlight">\(\lnot(\forall x P(x))\)</span>
+implies the truth of <span class="math notranslate nohighlight">\(\exists x (\lnot P(x))\)</span>.  On the other hand, if
+<span class="math notranslate nohighlight">\(\lnot(\forall x P(x))\)</span> is false, then <span class="math notranslate nohighlight">\(\forall x P(x)\)</span> is true.  Since <span class="math notranslate nohighlight">\(P(x)\)</span>
+is true for every <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(\lnot P(x)\)</span> is false for every <span class="math notranslate nohighlight">\(x\)</span>; that is, there is no
+entity <span class="math notranslate nohighlight">\(a\)</span> for which the statement <span class="math notranslate nohighlight">\(\lnot P(a)\)</span> is true.
+But this just means that the statement <span class="math notranslate nohighlight">\(\exists x(\lnot P(x))\)</span>
+is false.  In any case, then, the truth values of <span class="math notranslate nohighlight">\(\lnot(\forall x P(x))\)</span> and
+<span class="math notranslate nohighlight">\(\exists x(\lnot P(x))\)</span> are the same.  Since this is true for any predicate <span class="math notranslate nohighlight">\(P\)</span>,
+we will say that these two formulas are logically equivalent and write
+<span class="math notranslate nohighlight">\(\lnot(\forall x P(x)) \equiv \exists x(\lnot P(x))\)</span>.</p>
+<p>A similar argument would show that <span class="math notranslate nohighlight">\(\lnot(\exists x P(x)) \equiv \forall x(\lnot P(x))\)</span>.
+These two equivalences, which explicate the relation between negation and quantification,
+are known as De Morgan’s Laws for predicate logic.  (They are closely related to
+De Morgan’s Laws for propositional logic; see the exercises.)  These
+laws can be used to help simplify expressions.  For example,</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p><span class="math notranslate nohighlight">\(\lnot\,\forall y (R(y)\lor Q(y))\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv \exists y(\lnot(R(y)\lor Q(y)))\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv \exists y((\lnot R(y))\land(\lnot Q(y))\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>It might not be clear exactly why this qualifies as a “simplification,”
+but it’s generally considered simpler to have the negation operator applied
+to basic propositions such as <span class="math notranslate nohighlight">\(R(y)\)</span>, rather than to quantified expressions
+such as <span class="math notranslate nohighlight">\(\forall y (R(y)\lor Q(y))\)</span>.
+For a more complicated example:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:right head"><p></p></th>
+<th class="text-align:left head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:right"><p><span class="math notranslate nohighlight">\(\lnot\,\exists x\big(P(x)\land (\forall y (Q(y)\rightarrow Q(x)))\big)\)</span></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big(\lnot\big(P(x)\land (\forall y (Q(y)\rightarrow Q(x)))\big)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big((\lnot P(x))\lor (\lnot \forall y (Q(y)\rightarrow Q(x)))\big)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big((\lnot P(x))\lor (\exists y(\lnot (Q(y)\rightarrow Q(x))))\big)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big((\lnot P(x))\lor (\exists y(\lnot (\lnot Q(y)\lor Q(x))))\big)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big((\lnot P(x))\lor (\exists y(\lnot\lnot Q(y)\land \lnot Q(x)))\big)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:right"><p></p></td>
+<td class="text-align:left"><p><span class="math notranslate nohighlight">\(\equiv\forall x\big((\lnot P(x))\lor (\exists y(Q(y)\land \lnot Q(x)))\big)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>De Morgan’s Laws are listed in the following figure along with two
+other laws of predicate logic.  The other laws allow you to interchange
+the order of the variables when two quantifiers of the same type
+(both <span class="math notranslate nohighlight">\(\exists\)</span> or <span class="math notranslate nohighlight">\(\forall\)</span>) occur together. <span class="math notranslate nohighlight">\(P\)</span> can be any one-place predicate,
+and <span class="math notranslate nohighlight">\(Q\)</span> can be any two-place predicate.</p>
+<p>+————-+—————————————————————-+
+| De Morgan   | <span class="math notranslate nohighlight">\(\lnot\,(\forall x P(x)) \equiv \exists x(\lnot P(x))\)</span>         |
+|             +—————————————————————-+
+|             | <span class="math notranslate nohighlight">\(\lnot\,(\exists x P(x)) \equiv \forall x(\lnot P(x))\)</span>         |
++————-+—————————————————————-+
+| Interchange | <span class="math notranslate nohighlight">\(\forall x \forall y Q(x,y) \equiv \forall y \forall x Q(x,y)\)</span> |
+|             +—————————————————————-+
+|             | <span class="math notranslate nohighlight">\(\exists x \exists y Q(x,y) \equiv \exists y \exists x Q(x,y)\)</span> |
++————-+—————————————————————-+</p>
+<p>To define logical equivalence in predicate logic more formally,
+we need to talk about formulas that contain predicate variables,
+that is, variables that act as place-holders for arbitrary predicates
+in the same way that propositional variables are place-holders for
+propositions and entity variables are place-holders for
+entities.  With this in mind, we can define logical equivalence
+and the closely related concept of tautology for predicate logic.</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(\mathscr{P}\)</span> be a formula of predicate logic which contains one or more
+predicate variables.  <span class="math notranslate nohighlight">\(\mathscr{P}\)</span> is said to be a <strong>tautology</strong>
+if it is true whenever all the predicate variables that it contains are replaced
+by actual predicates.  Two formulas <span class="math notranslate nohighlight">\(\mathscr{P}\)</span> and <span class="math notranslate nohighlight">\(\mathscr{Q}\)</span> are
+said to be <strong>logically equivalent</strong> if <span class="math notranslate nohighlight">\(\mathscr{P}\leftrightarrow\mathscr{Q}\)</span> is
+a tautology, that is if <span class="math notranslate nohighlight">\(\mathscr{P}\)</span> and <span class="math notranslate nohighlight">\(\mathscr{Q}\)</span> always have the same
+truth value when the predicate variables they contain are replaced by actual
+predicates.  The notation <span class="math notranslate nohighlight">\(\mathscr{P}\equiv\mathscr{Q}\)</span> asserts that
+<span class="math notranslate nohighlight">\(\mathscr{P}\)</span> is logically equivalent to <span class="math notranslate nohighlight">\(\mathscr{Q}\)</span>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Simplify each of the following propositions.  In your answer, the
+<span class="math notranslate nohighlight">\(\lnot\)</span> operator should be applied only to individual predicates.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot\,\forall x (\lnot P(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\,\exists x(P(x)\land Q(x))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot \,\forall z(P(z)\rightarrow Q(z))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\big((\forall x P(x))\land \forall y(Q(y))\big)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\, \forall x \exists y P(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\,\exists x (R(x)\land \forall y S(x,y))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\,\exists y(P(y)\leftrightarrow Q(y))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot \big(\forall x (P(x)\rightarrow (\exists y Q(x,y)))\big)\)</span></p></li>
+</ul>
+</li>
+<li><p>Give a careful argument to show that the second of De Morgan’s laws for
+predicate calculus,
+<span class="math notranslate nohighlight">\(\lnot(\forall x P(x)) \equiv \exists x(\lnot P(x))\)</span>, is valid.</p></li>
+<li><p>Find the negation of each of the following propositions.
+Simplify the result; in your answer, the
+<span class="math notranslate nohighlight">\(\lnot\)</span> operator should be applied only to individual predicates.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span><span class="math notranslate nohighlight">\(\exists n (\forall s C(s,n))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span><span class="math notranslate nohighlight">\(\exists n (\forall s (L(s,n) \rightarrow P(s)))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span><span class="math notranslate nohighlight">\(\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z Q(x,y,z))))\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot\)</span><span class="math notranslate nohighlight">\(\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z (s=xyz \land 
+R(x,y) \land T(y) \land U(x,y,z))))\)</span>.</p></li>
+</ul>
+</li>
+<li><p>Suppose that the domain of discourse for a predicate <span class="math notranslate nohighlight">\(P\)</span>
+contains only two entities.  Show that <span class="math notranslate nohighlight">\(\forall x\, P(x)\)</span> is equivalent to
+a conjunction of two simple propositions, and <span class="math notranslate nohighlight">\(\exists x\, P(x)\)</span> is equivalent
+to a disjunction.  Show that in this case, De Morgan’s Laws for propositional
+logic and De Morgan’s Laws for predicate logic actually say exactly the same
+thing.  Extend the results to a domain of discourse that contains exactly
+three entities.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(H(x)\)</span> stand for “<span class="math notranslate nohighlight">\(x\)</span> is happy,” where the domain of discourse
+consists of people.  Express the proposition “There are exactly three happy
+people” in predicate logic.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(T(x,y)\)</span> stand for “<span class="math notranslate nohighlight">\(x\)</span> has taken <span class="math notranslate nohighlight">\(y\)</span>,” where the
+domain of discourse for <span class="math notranslate nohighlight">\(x\)</span> consists of students and the domain
+of discourse for <span class="math notranslate nohighlight">\(y\)</span> consists of math courses (at your school).
+Translate each of the following propositions into an unambiguous English sentence:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\forall x\,\forall y \,T(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall x \,\exists y \,T(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall y \,\exists x \,T(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x\,\exists y \,T(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists x \,\forall y \,T(x,y)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists y \,\forall x \,T(x,y)\)</span></p></li>
+</ul>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(F(x,t)\)</span> stand for “You can fool person <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.”
+Translate the following sentence into predicate logic:
+“You can fool some of the people all of the time, and you can fool
+all of the people some of the time, but you can’t fool all of the
+people all of the time.”</p></li>
+<li><p>Translate each of the following sentences into a proposition
+using predicate logic.  Make up any predicates you need.  State what
+each predicate means and what its domain of discourse is.</p>
+<ul class="simple">
+<li><p>All crows are black.</p></li>
+<li><p>Any white bird is not a crow.</p></li>
+<li><p>Not all politicians are honest.</p></li>
+<li><p>All green elephants have purple feet.</p></li>
+<li><p>There is no one who does not like pizza.</p></li>
+<li><p>Anyone who passes the final exam will pass the course.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x\)</span> is any positive number, then there is a number <span class="math notranslate nohighlight">\(y\)</span> such that
+<span class="math notranslate nohighlight">\(y^2=x\)</span>.</p></li>
+</ul>
+</li>
+<li><p>The sentence “Someone has the answer to every question” is
+ambiguous.  Give two translations of this sentence into predicate logic,
+and explain the difference in meaning.</p></li>
+<li><p>The sentence “Jane is looking for a dog” is ambiguous.
+One meaning is that there is some particular dog—maybe the one she lost—that
+Jane is looking for.  The other meaning is that Jane is looking for any old
+dog—maybe because she wants to buy one.  Express the first meaning in
+predicate logic.  Explain why the second meaning is <em>not</em>
+expressed by <span class="math notranslate nohighlight">\(\forall x(Dog(x)\rightarrow LooksFor(jane,x))\)</span>.  In fact, the
+second meaning cannot be expressed in predicate logic.  Philosophers
+of language spend a lot of time thinking about things like this.
+They are especially fond of the sentence “Jane is looking for a unicorn,”
+which is not ambiguous when applied to the real world.  Why is that?</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="components.html" title="previous page">Common Circuit Components</a>
+    <a class='right-next' id="next-link" href="deduction.html" title="next page">Deduction</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

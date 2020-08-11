@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Functions &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Functional Programming" href="../fp/index.html" />
+    <link rel="prev" title="Programming with Sets" href="programming.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Sets
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="concepts.html">
+     Set Concepts
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="algebra.html">
+     Boolean Algebra of Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="programming.html">
+     Programming with Sets
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/sets/functions.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#composition">
+   Composition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pairs">
+   Pairs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-concepts">
+   Additional Concepts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-class-functions">
+   First-Class Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>Both the real world and the world of mathematics are full of
+what are called, in mathematics, “functional relationships.”
+A functional relationship is a relationship between two sets,
+which associates exactly one element from the second set to
+each element of the first set.</p>
+<p>For example, each item for sale in a store has a price.
+The first set in this relationship is the set of items in the store. For each
+item in the store, there is an associated price, so the
+second set in the relationship is the set of possible prices.
+The relationship is a functional relationship because
+each item has a price. That is, the question “What is the price
+of this item?” has a single, definite answer for each item
+in the store.</p>
+<p>Similarly, the question “Who is the (biological) mother of this person?” has
+a single, definite answer for each person. So, the
+relationship “mother of” defines a functional relationship.
+In this case, the two sets in the relationship are the same set,
+namely the set of people.[^I’m avoiding here the question
+of Adam and Eve or of pre-human ape-like ancestors. (Take your
+pick.)] On the other hand, the relationship “child of”
+is not a functional relationship. The question “Who is the
+child of this person?” does not have a single, definite answer for
+each person. A given person might not have any child at all.
+And a given person might have more than one child. Either of
+these cases—a person with no child or a person with more than
+one child—is enough to show that the relationship
+“child of” is not a functional relationship.</p>
+<p>Or consider an ordinary map, such as a map of New York State or
+a street map of Rome. The whole point of the map, if it is
+accurate, is that there is a functional relationship between
+points on the map and points on the surface of the Earth.
+Perhaps because of this example, a functional relationship
+is sometimes called a <strong>mapping</strong>.</p>
+<p>There are also many natural examples of functional relationships
+in mathematics. For example, every rectangle has an associated
+area. This fact expresses a functional relationship between the
+set of rectangles and the set of numbers. Every natural number <span class="math notranslate nohighlight">\(n\)</span>
+has a square, <span class="math notranslate nohighlight">\(n^2\)</span>. The relationship “square of” is a functional
+relationship from the set of natural numbers to itself.</p>
+<p>In mathematics, of course, we need to work with functional
+relationships in the abstract. To do this, we introduce
+the idea of <strong>function</strong>. You should think of a function
+as a mathematical object that expresses a functional relationship
+between two sets. The notation <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> expresses
+the fact that <span class="math notranslate nohighlight">\(f\)</span> is a function from the set <span class="math notranslate nohighlight">\(A\)</span> to the
+set <span class="math notranslate nohighlight">\(B\)</span>. That is, <span class="math notranslate nohighlight">\(f\)</span> is a name for a mathematical object
+that expresses a functional relationship from the set <span class="math notranslate nohighlight">\(A\)</span> to the set <span class="math notranslate nohighlight">\(B\)</span>.
+The notation <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> is
+read as “<span class="math notranslate nohighlight">\(f\)</span> is a function from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>” or more simply
+as “<span class="math notranslate nohighlight">\(f\)</span> maps <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>.”</p>
+<p>If <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and if <span class="math notranslate nohighlight">\(a\in A\)</span>, the fact that <span class="math notranslate nohighlight">\(f\)</span> is
+a functional relationship from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> means that <span class="math notranslate nohighlight">\(f\)</span> associates
+some element of <span class="math notranslate nohighlight">\(B\)</span> to <span class="math notranslate nohighlight">\(a\)</span>. That element is denoted <span class="math notranslate nohighlight">\(f(a)\)</span>.
+That is, for each <span class="math notranslate nohighlight">\(a\in A\)</span>, <span class="math notranslate nohighlight">\(f(a)\in B\)</span> and <span class="math notranslate nohighlight">\(f(a)\)</span> is the single,
+definite answer to the question “What element of <span class="math notranslate nohighlight">\(B\)</span> is
+associated to <span class="math notranslate nohighlight">\(a\)</span> by the function <span class="math notranslate nohighlight">\(f\,\)</span>?” The fact that
+<span class="math notranslate nohighlight">\(f\)</span> is a function from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> means that this question
+has a single, well-defined answer. Given <span class="math notranslate nohighlight">\(a\in A\)</span>,
+<span class="math notranslate nohighlight">\(f(a)\)</span> is called the <strong>value</strong>
+of the function <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>For example, if <span class="math notranslate nohighlight">\(I\)</span> is the set of items for sale in a
+given store and <span class="math notranslate nohighlight">\(M\)</span> is the set of possible prices,
+then there is function <span class="math notranslate nohighlight">\(c\colon I\to M\)</span> which
+is defined by the fact that for each <span class="math notranslate nohighlight">\(x\in I\)</span>, <span class="math notranslate nohighlight">\(c(x)\)</span>
+is the price of the item <span class="math notranslate nohighlight">\(x\)</span>. Similarly, if
+<span class="math notranslate nohighlight">\(P\)</span> is the set of people, then there is a function
+<span class="math notranslate nohighlight">\(m\colon P\to P\)</span> such that for each person <span class="math notranslate nohighlight">\(p\)</span>,
+<span class="math notranslate nohighlight">\(m(p)\)</span> is the mother of <span class="math notranslate nohighlight">\(p\)</span>. And if <span class="math notranslate nohighlight">\(\N\)</span> is the set
+of natural numbers, then the formula <span class="math notranslate nohighlight">\(s(n) = n^2\)</span>
+specifies a function <span class="math notranslate nohighlight">\(s\colon \N\to\N\)</span>. It is in the
+form of formulas such as <span class="math notranslate nohighlight">\(s(n)=n^2\)</span> or <span class="math notranslate nohighlight">\(f(x)=x^3-3x+7\)</span> that
+most people first encounter functions. But you should
+note that a formula by itself is not a function, although it might
+well specify a function between two given sets of numbers.
+Functions are much more general than formulas, and they
+apply to all kinds of sets, not just to sets of numbers.</p>
+<div class="section" id="composition">
+<h2>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and <span class="math notranslate nohighlight">\(g\colon B\to C\)</span> are functions.
+Given <span class="math notranslate nohighlight">\(a\in A\)</span>, there is an associated element <span class="math notranslate nohighlight">\(f(a)\in B\)</span>.
+Since <span class="math notranslate nohighlight">\(g\)</span> is a function from <span class="math notranslate nohighlight">\(B\)</span> to <span class="math notranslate nohighlight">\(C\)</span>, and since <span class="math notranslate nohighlight">\(f(a)\in B\)</span>,
+<span class="math notranslate nohighlight">\(g\)</span> associates some element of <span class="math notranslate nohighlight">\(C\)</span> to <span class="math notranslate nohighlight">\(f(a)\)</span>. That element
+is <span class="math notranslate nohighlight">\(g(f(a))\)</span>. Starting with an element <span class="math notranslate nohighlight">\(a\)</span> of <span class="math notranslate nohighlight">\(A\)</span>, we have
+produced an associated element <span class="math notranslate nohighlight">\(g(f(a))\)</span> of <span class="math notranslate nohighlight">\(C\)</span>. This means
+that we have defined a new function from the set <span class="math notranslate nohighlight">\(A\)</span> to
+the set <span class="math notranslate nohighlight">\(C\)</span>. This function is called the <strong>composition</strong>
+of <span class="math notranslate nohighlight">\(g\)</span> with <span class="math notranslate nohighlight">\(f\)</span>, and it is denoted by <span class="math notranslate nohighlight">\(g\circ f\)</span>.
+That is, if <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and <span class="math notranslate nohighlight">\(g\colon B\to C\)</span> are functions,
+then <span class="math notranslate nohighlight">\(g\circ f\colon A\to C\)</span> is the function which is defined
+by
+<span class="math notranslate nohighlight">\($
+(g\circ f)(a) = g(f(a))
+$\)</span>
+for each <span class="math notranslate nohighlight">\(a\in A\)</span>. For example, suppose that <span class="math notranslate nohighlight">\(p\)</span> is the function
+that associates to each item in a store the price of the item,
+and suppose that <span class="math notranslate nohighlight">\(t\)</span> is a function that associates the amount of
+tax on a price to each possible price. The composition,
+<span class="math notranslate nohighlight">\(t\circ p\)</span>, is the function that associates to each item the
+amount of tax on that item. Or suppose that
+<span class="math notranslate nohighlight">\(s\colon\N\to\N\)</span> and <span class="math notranslate nohighlight">\(r\colon\N\to\N\)</span> are the functions
+defined by the formulas <span class="math notranslate nohighlight">\(s(n)=n^2\)</span> and <span class="math notranslate nohighlight">\(r(n)=3n+1\)</span>, for each
+<span class="math notranslate nohighlight">\(n\in\N\)</span>. Then <span class="math notranslate nohighlight">\(r\circ s\)</span> is a function from <span class="math notranslate nohighlight">\(\N\)</span> to <span class="math notranslate nohighlight">\(\N\)</span>,
+and for <span class="math notranslate nohighlight">\(n\in\N\)</span>, <span class="math notranslate nohighlight">\((r\circ s)(n) = r(s(n)) = r(n^2) = 3n^2+1\)</span>.
+In this case, we also have the function <span class="math notranslate nohighlight">\(s\circ r\)</span>, which
+satisfies <span class="math notranslate nohighlight">\((s\circ r)(n) = s(r(n)) = s(3n+1) = (3n+1)^2 = 9n^2+6n+1\)</span>.
+Note in particular that <span class="math notranslate nohighlight">\(r\circ s\)</span> and <span class="math notranslate nohighlight">\(s\circ r\)</span> are not
+the same function. The operation <span class="math notranslate nohighlight">\(\circ\)</span> is not commutative.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> is a set and <span class="math notranslate nohighlight">\(f\colon A\to A\)</span>, then <span class="math notranslate nohighlight">\(f\circ f\)</span>,
+the composition of <span class="math notranslate nohighlight">\(f\)</span> with itself, is defined. For example,
+using the function <span class="math notranslate nohighlight">\(s\)</span> from the preceding example,
+<span class="math notranslate nohighlight">\(s\circ s\)</span> is the function from <span class="math notranslate nohighlight">\(\N\)</span> to <span class="math notranslate nohighlight">\(\N\)</span> given by
+the formula <span class="math notranslate nohighlight">\((s\circ s)(n) = s(s(n))= s(n^2) = (n^2)^2 = n^4\)</span>.
+If <span class="math notranslate nohighlight">\(m\)</span> is the function from the set of people to itself which
+associates to each person that person’s mother, then
+<span class="math notranslate nohighlight">\(m\circ m\)</span> is the function that associates to each person
+that person’s maternal grandmother.</p>
+</div>
+<div class="section" id="pairs">
+<h2>Pairs<a class="headerlink" href="#pairs" title="Permalink to this headline">¶</a></h2>
+<p>If <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are entities, then <span class="math notranslate nohighlight">\((a,b)\)</span> denotes the
+<strong>ordered pair</strong> containing <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. The ordered pair
+<span class="math notranslate nohighlight">\((a,b)\)</span> differs from the set <span class="math notranslate nohighlight">\(\{a,b\}\)</span> because a set is
+not ordered. That is, <span class="math notranslate nohighlight">\(\{a,b\}\)</span> and <span class="math notranslate nohighlight">\(\{b,a\}\)</span> denote the
+same set, but if <span class="math notranslate nohighlight">\(a\not=b\)</span>, then <span class="math notranslate nohighlight">\((a,b)\)</span> and <span class="math notranslate nohighlight">\((b,a)\)</span> are
+different ordered pairs. More generally, two
+ordered pairs <span class="math notranslate nohighlight">\((a,b)\)</span> and <span class="math notranslate nohighlight">\((c,d)\)</span> are equal if and only if
+both <span class="math notranslate nohighlight">\(a=c\)</span> and <span class="math notranslate nohighlight">\(b=d\)</span>. If <span class="math notranslate nohighlight">\((a,b)\)</span> is an ordered pair,
+then <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are referred to as the <strong>coordinates</strong> of the
+ordered pair. In particular, <span class="math notranslate nohighlight">\(a\)</span> is the first coordinate and
+<span class="math notranslate nohighlight">\(b\)</span> is the second coordinate.</p>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are sets, then we can form the set
+<span class="math notranslate nohighlight">\(A\times B\)</span> which is defined by
+<span class="math notranslate nohighlight">\($
+A\times B=
+\{(a,b)\mid a\in A \text{ and } b\in B\}.
+$\)</span>
+This set is called the <strong>cross product</strong> or
+<strong>Cartesian product</strong> of the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.
+The set <span class="math notranslate nohighlight">\(A\times B\)</span> contains every ordered pair whose first
+coordinate is an element of <span class="math notranslate nohighlight">\(A\)</span> and whose second coordinate is
+an element of <span class="math notranslate nohighlight">\(B\)</span>. For example, if <span class="math notranslate nohighlight">\(X=\{c,d\}\)</span> and
+<span class="math notranslate nohighlight">\(Y=\{1,2,3\}\)</span>, then <span class="math notranslate nohighlight">\(X\times Y=\{(c,1), (c,2), (c,3), (d,1),(d,2), (d,3)\}\)</span>.
+It is possible to extend this idea to the cross product
+of more than two sets. The cross product of the three sets
+<span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> is denoted <span class="math notranslate nohighlight">\(A\times B\times C\)</span>. It consists
+of all <strong>ordered triples</strong> <span class="math notranslate nohighlight">\((a,b,c)\)</span>
+where <span class="math notranslate nohighlight">\(a\in A\)</span>, <span class="math notranslate nohighlight">\(b\in B\)</span>, and <span class="math notranslate nohighlight">\(c\in C\)</span>. The definition for
+four or more sets is similar. The general term for a member
+of a cross product is <strong>tuple</strong> or, more specifically,
+<strong>ordered n-tuple</strong>. For example, <span class="math notranslate nohighlight">\((a,b,c,d,e)\)</span> is
+an ordered 5-tuple.</p>
+<p>Given a function <span class="math notranslate nohighlight">\(f\colon A\to B\)</span>, consider the
+set <span class="math notranslate nohighlight">\(\{(a,b)\in A\times B\mid a\in A \text{ and } b=f(a)\}\)</span>.
+This set of ordered pairs consists
+of all pairs <span class="math notranslate nohighlight">\((a,b)\)</span> such that <span class="math notranslate nohighlight">\(a\in A\)</span> and <span class="math notranslate nohighlight">\(b\)</span> is the element of
+<span class="math notranslate nohighlight">\(B\)</span> that is associated to <span class="math notranslate nohighlight">\(a\)</span> by the function <span class="math notranslate nohighlight">\(f\)</span>. The set
+<span class="math notranslate nohighlight">\(\{(a,b)\in A\times B\mid a\in A \text{ and } b=f(a)\}\)</span> is called the
+<strong>graph</strong> of the function <span class="math notranslate nohighlight">\(f\)</span>. Since <span class="math notranslate nohighlight">\(f\)</span> is a function,
+each element <span class="math notranslate nohighlight">\(a\in A\)</span> occurs once and only once as a first coordinate
+among the ordered pairs in the graph of <span class="math notranslate nohighlight">\(f\)</span>. Given <span class="math notranslate nohighlight">\(a\in A\)</span>, we
+can determine <span class="math notranslate nohighlight">\(f(a)\)</span> by finding that ordered pair and looking
+at the second coordinate. In fact, it is convenient to consider
+the function and its graph to be the same thing, and to use
+this as our official mathematical definition.[^This is
+a convenient definition for the mathematical world, but as is often
+the case in mathematics, it leaves out an awful lot of the real
+world. Functional relationships in the real world are <em>meaningful</em>,
+but we model them in mathematics with meaningless sets of ordered
+pairs. We do this for the usual reason: to have something precise
+and rigorous enough that we can make logical deductions and prove
+things about it.]</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> be sets. A <strong>function</strong> from <span class="math notranslate nohighlight">\(A\)</span> to
+<span class="math notranslate nohighlight">\(B\)</span> is a subset of <span class="math notranslate nohighlight">\(A\times B\)</span> which has the property that
+for each <span class="math notranslate nohighlight">\(a\in A\)</span>, the set contains one and only one ordered
+pair whose first coordinate is <span class="math notranslate nohighlight">\(a\)</span>. If <span class="math notranslate nohighlight">\((a,b)\)</span> is that
+ordered pair, then <span class="math notranslate nohighlight">\(b\)</span> is called the value of the function at <span class="math notranslate nohighlight">\(a\)</span>
+and is denoted <span class="math notranslate nohighlight">\(f(a)\)</span>. If <span class="math notranslate nohighlight">\(b=f(a)\)</span>, then we also say that the
+function <span class="math notranslate nohighlight">\(f\)</span> <strong>maps</strong> <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(b\)</span>.
+The fact that <span class="math notranslate nohighlight">\(f\)</span> is a function from
+<span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> is indicated by the notation <span class="math notranslate nohighlight">\(f\colon A\to B\)</span>.</p>
+</div></blockquote>
+<p>For example, if <span class="math notranslate nohighlight">\(X=\{a,b\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{1,2,3\}\)</span>, then the
+set <span class="math notranslate nohighlight">\(\{(a,2), (b,1)\}\)</span> is a function from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>,
+and <span class="math notranslate nohighlight">\(\{(1,a), (2,a), (3,b)\}\)</span> is a function from <span class="math notranslate nohighlight">\(Y\)</span> to <span class="math notranslate nohighlight">\(X\)</span>.
+On the other hand, <span class="math notranslate nohighlight">\(\{(1,a),(2,b)\}\)</span> is not a function from
+<span class="math notranslate nohighlight">\(Y\)</span> to <span class="math notranslate nohighlight">\(X\)</span>, since it does not specify any value for 3.
+And <span class="math notranslate nohighlight">\(\{(a,1),(a,2),(b,3)\}\)</span> is not a function from <span class="math notranslate nohighlight">\(X\)</span> to
+<span class="math notranslate nohighlight">\(Y\)</span> because it specifies two different values, 1 and 2,
+associated with the same element, <span class="math notranslate nohighlight">\(a\)</span>, of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Even though the technical definition of a function is a set
+of ordered pairs, it’s usually better to think of a function
+from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> as something that associates some element of
+<span class="math notranslate nohighlight">\(B\)</span> to every element of <span class="math notranslate nohighlight">\(A\)</span>. The set of ordered pairs is one
+way of expressing this association. If the association is
+expressed in some other way, it’s easy to write down the
+set of ordered pairs. For example, the function
+<span class="math notranslate nohighlight">\(s\colon\N\to\N\)</span> which is specified by the formula
+<span class="math notranslate nohighlight">\(s(n)=n^2\)</span> can be written as the set of ordered
+pairs <span class="math notranslate nohighlight">\(\{(n,n^2)\mid n\in \N\}\)</span>.</p>
+</div>
+<div class="section" id="additional-concepts">
+<h2>Additional Concepts<a class="headerlink" href="#additional-concepts" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> is a function from the set
+<span class="math notranslate nohighlight">\(A\)</span> to the set <span class="math notranslate nohighlight">\(B\)</span>. We say that <span class="math notranslate nohighlight">\(A\)</span> is the <strong>domain</strong> of
+the function <span class="math notranslate nohighlight">\(f\)</span> and that <span class="math notranslate nohighlight">\(B\)</span> is the <strong>range</strong> of the function.
+We define the <strong>image</strong> of the function <span class="math notranslate nohighlight">\(f\)</span> to be the
+set <span class="math notranslate nohighlight">\(\{b\in B\mid \exists a\in A\,(b=f(a))\}\)</span>. Put
+more simply, the image of <span class="math notranslate nohighlight">\(f\)</span> is the set <span class="math notranslate nohighlight">\(\{f(a)\mid a\in A\}\)</span>.
+That is, the image is the set of all values, <span class="math notranslate nohighlight">\(f(a)\)</span>, of the
+function, for all <span class="math notranslate nohighlight">\(a\in A\)</span>. (You should note that in some
+cases—particularly in calculus courses—the term “range”
+is used to refer to what I am calling the image.)
+For example, for the function <span class="math notranslate nohighlight">\(s\colon\N\to\N\)</span> that is specified
+by <span class="math notranslate nohighlight">\(s(n)=n^2\)</span>, both the domain and the range are <span class="math notranslate nohighlight">\(\N\)</span>, and
+the image is the set <span class="math notranslate nohighlight">\(\{n^2\mid n\in\N\}\)</span>, or <span class="math notranslate nohighlight">\(\{0,1,4,9,16,\dots\}\)</span>.</p>
+<p>Note that the image of a function is a subset of its range.
+It can be a proper subset, as in the above example, but it is
+also possible for the image of a function to be equal to
+the range. In that case, the function is said to be
+<strong>onto</strong>. Sometimes, the fancier term
+<strong>surjective</strong> is used instead. Formally, a function
+<span class="math notranslate nohighlight">\(f\colon A\to B\)</span> is said to be onto (or surjective) if
+every element of <span class="math notranslate nohighlight">\(B\)</span> is equal to <span class="math notranslate nohighlight">\(f(a)\)</span> for some element of
+<span class="math notranslate nohighlight">\(A\)</span>. In terms of logic, <span class="math notranslate nohighlight">\(f\)</span> is onto if and only if
+<span class="math notranslate nohighlight">\($
+\forall b\in B\,\big(\exists a\in A\, (b=f(a))\big).
+$\)</span>
+For example, let <span class="math notranslate nohighlight">\(X=\{a,b\}\)</span> and <span class="math notranslate nohighlight">\(Y=\{1,2,3\}\)</span>, and consider
+the function from <span class="math notranslate nohighlight">\(Y\)</span> to <span class="math notranslate nohighlight">\(X\)</span> specified by the set of ordered
+pairs <span class="math notranslate nohighlight">\(\{(1,a),(2,a),(3,b)\}\)</span>. This function is onto because
+its image, <span class="math notranslate nohighlight">\(\{a,b\}\)</span>, is equal to the range, <span class="math notranslate nohighlight">\(X\)</span>. However,
+the function from <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span> given by <span class="math notranslate nohighlight">\(\{(a,1),(b,3)\}\)</span> is not
+onto, because its image, <span class="math notranslate nohighlight">\(\{1,3\}\)</span>, is a proper subset of
+its range, <span class="math notranslate nohighlight">\(Y\)</span>. As a further example, consider the function
+<span class="math notranslate nohighlight">\(f\)</span> from <span class="math notranslate nohighlight">\(\Z\)</span> to <span class="math notranslate nohighlight">\(\Z\)</span> given by <span class="math notranslate nohighlight">\(f(n) = n-52\)</span>. To show that <span class="math notranslate nohighlight">\(f\)</span>
+is onto, we need to pick an arbitrary <span class="math notranslate nohighlight">\(b\)</span> in the range <span class="math notranslate nohighlight">\(\Z\)</span>
+and show that there is some number <span class="math notranslate nohighlight">\(a\)</span> in the domain <span class="math notranslate nohighlight">\(\Z\)</span>
+such that <span class="math notranslate nohighlight">\(f(a) = b\)</span>. So let <span class="math notranslate nohighlight">\(b\)</span> be an arbitrary integer;
+we want to find an <span class="math notranslate nohighlight">\(a\)</span> such that <span class="math notranslate nohighlight">\(a-52=b\)</span>. Clearly this equation
+will be true when <span class="math notranslate nohighlight">\(a=b+52\)</span>. So every element <span class="math notranslate nohighlight">\(b\)</span> is the image
+of the number <span class="math notranslate nohighlight">\(a=b+52\)</span>, and <span class="math notranslate nohighlight">\(f\)</span> is therefore onto. Note that if
+<span class="math notranslate nohighlight">\(f\)</span> had been specified to have domain <span class="math notranslate nohighlight">\(\N\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> would
+<em>not</em> be onto, as for some <span class="math notranslate nohighlight">\(b \in \Z\)</span> the number <span class="math notranslate nohighlight">\(a=b+52\)</span>
+is not in the domain <span class="math notranslate nohighlight">\(\N\)</span> (for example, the integer <span class="math notranslate nohighlight">\(-73\)</span> is
+not in the image of <span class="math notranslate nohighlight">\(f\)</span>, since <span class="math notranslate nohighlight">\(-21\)</span> is not in <span class="math notranslate nohighlight">\(\N\)</span>.)</p>
+<p>If <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and if <span class="math notranslate nohighlight">\(a\in A\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is associated to
+only one element of <span class="math notranslate nohighlight">\(B\)</span>. This is part of the definition of
+a function. However, no such restriction holds for elements
+of <span class="math notranslate nohighlight">\(B\)</span>. If <span class="math notranslate nohighlight">\(b\in B\)</span>, it is possible for <span class="math notranslate nohighlight">\(b\)</span> to be associated
+to zero, one, two, three, \dots, or even to an infinite
+number of elements of <span class="math notranslate nohighlight">\(A\)</span>. In the case where each element of
+the range is associated to at most one element of the domain,
+the function is said to be <strong>one-to-one</strong>. Sometimes,
+the term <strong>injective</strong> is used instead. The function <span class="math notranslate nohighlight">\(f\)</span>
+is one-to-one (or injective) if for any two distinct elements <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in
+the domain of <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(f(y)\)</span> are also distinct. In
+terms of logic, <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> is one-to-one if and only if
+<span class="math notranslate nohighlight">\($
+\forall x\in A\,\,\forall y\in A\,\big(x\not=y\rightarrow f(x)\not=f(y)\big).
+$\)</span>
+Since a proposition is equivalent to its contrapositive,
+we can write this condition equivalently as
+<span class="math notranslate nohighlight">\($
+\forall x\in A\,\,\forall y\in A\,\big(f(x)=f(y)\rightarrow x=y\big).
+$\)</span>
+Sometimes, it is easier to work with the definition of one-to-one
+when it is expressed in this form.
+The function that associates every person to his or her mother is
+not one-to-one because it is possible for two different people
+to have the same mother. The function <span class="math notranslate nohighlight">\(s\colon\N\to\N\)</span> specified
+by <span class="math notranslate nohighlight">\(s(n)=n^2\)</span> is one-to-one. However,
+we can define a function <span class="math notranslate nohighlight">\(r\colon\Z\to\Z\)</span> by the same formula:
+<span class="math notranslate nohighlight">\(r(n)=n^2\)</span>, for <span class="math notranslate nohighlight">\(n\in\Z\)</span>. The function <span class="math notranslate nohighlight">\(r\)</span> is <em>not</em>
+one-to-one since two different integers can have the same square.
+For example, <span class="math notranslate nohighlight">\(r(-2)=r(2)\)</span>.</p>
+<p>A function that is both one-to-one and onto is said to be
+<strong>bijective</strong>. The function that associates each point in
+a map of New York State to a point in the state itself is
+presumably bijective. For each point on the map, there is
+a corresponding point in the state, and <em>vice versa</em>.
+If we specify the function <span class="math notranslate nohighlight">\(f\)</span> from the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span> to the
+set <span class="math notranslate nohighlight">\(\{a,b,c\}\)</span> as the set of ordered pairs
+<span class="math notranslate nohighlight">\(\{(1,b),(2,a),(3,c)\}\)</span>, then <span class="math notranslate nohighlight">\(f\)</span> is a bijective function.
+Or consider the function from <span class="math notranslate nohighlight">\(\Z\)</span> to <span class="math notranslate nohighlight">\(\Z\)</span> given by <span class="math notranslate nohighlight">\(f(n) =
+n-52\)</span>. We have already shown that <span class="math notranslate nohighlight">\(f\)</span> is onto. We can show
+that it is also one-to-one: pick an arbitrary <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>
+in <span class="math notranslate nohighlight">\(\Z\)</span> and assume that <span class="math notranslate nohighlight">\(f(x) = f(y)\)</span>. This means that
+<span class="math notranslate nohighlight">\(x-52 = y-52\)</span>, and adding 52 to both sides of the equation
+gives <span class="math notranslate nohighlight">\(x=y\)</span>. Since <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> were arbitrary, we have proved
+<span class="math notranslate nohighlight">\(\forall x\in \Z\,\,\forall y\in \Z\,(f(x)=f(y)\rightarrow x=y)\)</span>,
+that is, that <span class="math notranslate nohighlight">\(f\)</span> is one-to-one. Altogether, then, <span class="math notranslate nohighlight">\(f\)</span> is a bijection.</p>
+</div>
+<div class="section" id="first-class-functions">
+<h2>First-Class Functions<a class="headerlink" href="#first-class-functions" title="Permalink to this headline">¶</a></h2>
+<p>One difficulty that people sometimes have with mathematics
+is its generality. A set is a collection of entities, but
+an “entity” can be anything at all, including other sets.
+Once we have defined ordered pairs, we can use ordered pairs as elements
+of sets. We could also make ordered pairs of sets.
+Now that we have defined functions, every function is itself
+an entity. This means that we can have sets that contain
+functions. We can even have a function whose domain and
+range are sets of functions. Similarly, the domain or
+range of a function might be a set of sets, or a set of
+ordered pairs. Computer scientists
+have a good name for this. They would say that sets, ordered pairs, and
+functions are first-class objects. Once a set, ordered pair, or function
+has been defined, it can be used just like any other entity.
+If they were not first-class objects, there could be restrictions
+on the way they can be used. For example, it might not be
+possible to use functions as members of sets. (This would make them
+“second class.”)</p>
+<p>For example, suppose that <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> are sets. Then
+since <span class="math notranslate nohighlight">\(A\times B\)</span> is a set, we might have a function
+<span class="math notranslate nohighlight">\(f\colon A\times B\to C\)</span>. If <span class="math notranslate nohighlight">\((a,b)\in A\times B\)</span>, then
+the value of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\((a,b)\)</span> would be denoted <span class="math notranslate nohighlight">\(f((a,b))\)</span>.
+In practice, though, one set of parentheses is usually dropped,
+and the value of <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\((a,b)\)</span> is denoted <span class="math notranslate nohighlight">\(f(a,b)\)</span>.
+As a particular example, we might define a function
+<span class="math notranslate nohighlight">\(p\colon \N\times\N\to\N\)</span> with the formula <span class="math notranslate nohighlight">\(p(n,m)=nm+1\)</span>.
+Similarly, we might define a function
+<span class="math notranslate nohighlight">\(q\colon \N\times\N\times\N\to\N\times\N\)</span> by
+<span class="math notranslate nohighlight">\(q(n,m,k)=(nm-k,nk-n)\)</span>.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are sets. There are, in general, many
+functions that map <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>. We can gather all those functions
+into a set. This set, whose elements are
+all the functions from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>, is denoted <span class="math notranslate nohighlight">\(B^A\)</span>.
+(We’ll see later why this notation is reasonable.) Using this notation,
+saying <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> is exactly the same as saying
+<span class="math notranslate nohighlight">\(f\in B^A\)</span>. Both of these notations assert that <span class="math notranslate nohighlight">\(f\)</span> is a function
+from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>. Of course, we can also form an unlimited number
+of other sets, such as the power set <span class="math notranslate nohighlight">\({\mathscr P}\big(B^A\big)\)</span>,
+the cross product <span class="math notranslate nohighlight">\(B^A\times A\)</span>, or the set <span class="math notranslate nohighlight">\(A^{A\times A}\)</span>,
+which contains all the functions from the set <span class="math notranslate nohighlight">\(A\times A\)</span>
+to the set <span class="math notranslate nohighlight">\(A\)</span>. And of course, any of these sets can be
+the domain or range of a function. An example of this
+is the function <span class="math notranslate nohighlight">\({\mathscr E}\colon B^A\times A\to B\)</span> defined
+by the formula <span class="math notranslate nohighlight">\({\mathscr E}(f,a) = f(a)\)</span>. Let’s see if
+we can make sense of this notation. Since the domain of
+<span class="math notranslate nohighlight">\({\mathscr E}\)</span> is <span class="math notranslate nohighlight">\(B^A\times A\)</span>, an element in the domain
+is an ordered pair in which the first coordinate is a function
+from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span> and the second coordinate is an element of <span class="math notranslate nohighlight">\(A\)</span>.
+Thus, <span class="math notranslate nohighlight">\({\mathscr E}(f,a)\)</span> is defined for a function <span class="math notranslate nohighlight">\(f\colon A\to B\)</span>
+and an element <span class="math notranslate nohighlight">\(a\in A\)</span>. Given such an <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(a\)</span>, the notation
+<span class="math notranslate nohighlight">\(f(a)\)</span> specifies an element of <span class="math notranslate nohighlight">\(B\)</span>, so the definition of
+<span class="math notranslate nohighlight">\({\mathscr E}(f,a)\)</span> as <span class="math notranslate nohighlight">\(f(a)\)</span> makes sense. The function <span class="math notranslate nohighlight">\({\mathscr E}\)</span>
+is called the “evaluation function” since it captures the idea
+of evaluating a function at an element of its domain.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(A=\{1,2,3,4\}\)</span> and let <span class="math notranslate nohighlight">\(B=\{a,b,c\}\)</span>.
+Find the sets <span class="math notranslate nohighlight">\(A\times B\)</span> and <span class="math notranslate nohighlight">\(B\times A\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A\)</span> be the set <span class="math notranslate nohighlight">\(\{a,b,c,d\}\)</span>. Let <span class="math notranslate nohighlight">\(f\)</span> be the
+function from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(A\)</span> given by the set of ordered pairs
+<span class="math notranslate nohighlight">\(\{(a,b),(b,b),(c,a),(d,c)\}\)</span>, and let <span class="math notranslate nohighlight">\(g\)</span> be the function
+given by the set of ordered pairs <span class="math notranslate nohighlight">\(\{(a,b),(b,c),(c,d),(d,d)\}\)</span>.
+Find the set of ordered pairs for the composition <span class="math notranslate nohighlight">\(g\circ f\)</span>.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(A=\{a,b,c\}\)</span> and let <span class="math notranslate nohighlight">\(B=\{0,1\}\)</span>. Find all
+possible functions from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>. Give each function as
+a set of ordered pairs. (Hint: Every such function corresponds
+to one of the subsets of <span class="math notranslate nohighlight">\(A\)</span>.)</p></li>
+<li><p>Consider the functions from <span class="math notranslate nohighlight">\(\Z\)</span> to <span class="math notranslate nohighlight">\(\Z\)</span> which are
+defined by the following formulas. Decide whether each
+function is onto and whether it is one-to-one; prove your answers.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(n)=2n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(n)=n+1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h(n)=n^2+n+1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s(n)=n/2\)</span>, if <span class="math notranslate nohighlight">\(n\)</span> is even, and <span class="math notranslate nohighlight">\(s(n)=(n+1)/2\)</span>, if <span class="math notranslate nohighlight">\(n\)</span> is odd</p></li>
+</ul>
+</li>
+<li><p>Prove that composition of functions is an associative
+operation. That is, prove that for functions
+<span class="math notranslate nohighlight">\(f\colon A\to B\)</span>, <span class="math notranslate nohighlight">\(g\colon B\to C\)</span>, and <span class="math notranslate nohighlight">\(h\colon C\to D\)</span>,
+the compositions <span class="math notranslate nohighlight">\((h\circ g)\circ f\)</span> and <span class="math notranslate nohighlight">\(h\circ(g\circ f)\)</span>
+are equal.</p></li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and <span class="math notranslate nohighlight">\(g\colon B\to C\)</span> are
+functions and that <span class="math notranslate nohighlight">\(g\circ f\)</span> is one-to-one.</p>
+<ul class="simple">
+<li><p>Prove that <span class="math notranslate nohighlight">\(f\)</span> is one-to-one. (Hint: use a proof by contradiction.)</p></li>
+<li><p>Find a specific example that shows that <span class="math notranslate nohighlight">\(g\)</span> is not necessarily one-to-one.</p></li>
+</ul>
+</li>
+<li><p>Suppose that <span class="math notranslate nohighlight">\(f\colon A\to B\)</span> and <span class="math notranslate nohighlight">\(g\colon B\to C\)</span>,
+and suppose that the composition <span class="math notranslate nohighlight">\(g\circ f\)</span> is an onto
+function.</p>
+<ul class="simple">
+<li><p>Prove that <span class="math notranslate nohighlight">\(g\)</span> is an onto function.</p></li>
+<li><p>Find a specific example that shows that <span class="math notranslate nohighlight">\(f\)</span> is not necessarily onto.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./sets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="programming.html" title="previous page">Programming with Sets</a>
+    <a class='right-next' id="next-link" href="../fp/index.html" title="next page">Functional Programming</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

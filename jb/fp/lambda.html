@@ -1,0 +1,581 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lambda Calculus &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Structures" href="../ds/index.html" />
+    <link rel="prev" title="Recursive Descent and Parser Combinators" href="parser-comb.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types.html">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle-project.html">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parser-comb.html">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/lambda.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#church-numerals-and-arithmetic">
+   Church Numerals and Arithmetic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#booleans-and-conditionals">
+   Booleans and Conditionals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pairs-and-lists">
+   Pairs and Lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursion">
+   Recursion
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="lambda-calculus">
+<h1>Lambda Calculus<a class="headerlink" href="#lambda-calculus" title="Permalink to this headline">¶</a></h1>
+<p>The section on <a class="reference internal" href="../lang/computability.html"><span class="doc std std-doc">computability</span></a> mentioned the <strong>Church-Turing Thesis</strong> that Turing machines
+fully capture our notion of what may be computed.[^The thesis was explicitly named in 1952 by Church’s student Stephen Kleene, also known for introducing
+the star operator of regular expressions.] Part of the original justification for this belief is that Alan Turing
+showed in 1936 that his machine model was equivalent in power to another model of computation being developed at around the
+same time by Alonzo Church. This model is now known as the <strong>lambda calculus</strong>, and it forms the core of the theory of
+functional programming.</p>
+<p>As already mentioned in the <a class="reference external" href="intro/#fn-3">introductory section</a> on functional programming, the symbol lambda (<span class="math notranslate nohighlight">\(\lambda\)</span>) is used to
+indicate an anonymous function defined by an expression. For example, <span class="math notranslate nohighlight">\(\lambda x(x + 1)\)</span> is the function that takes any argument <span class="math notranslate nohighlight">\(x\)</span> and
+returns that argument plus one; in ReasonML, this would be written <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">{</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">}</span></code>.
+The fundamental operation in <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus is known as <strong>beta (<span class="math notranslate nohighlight">\(\beta\)</span>) reduction</strong>. Given an expression
+that contains a <span class="math notranslate nohighlight">\(\lambda\)</span> function applied to an argument, <span class="math notranslate nohighlight">\(\beta\)</span> reduction allows the application to be replaced by the body of the function
+with the argument substituted for the variable.[^There is also a notion of <strong>alpha (<span class="math notranslate nohighlight">\(\alpha\)</span>) equivalence</strong>, which allows us to uniformly rename the bound
+parameter throughout a function, so that <span class="math notranslate nohighlight">\(\lambda x(x + 1)\)</span> is the same function as <span class="math notranslate nohighlight">\(\lambda y(y + 1)\)</span>. This is important for precise theoretical work, but
+we will be able to ignore the issue.]</p>
+<p>For example, <span class="math notranslate nohighlight">\((\lambda x(x+1))(41)\)</span> may be reduced to the expression <span class="math notranslate nohighlight">\(41+1\)</span>. To avoid an explosion of parentheses, we will often write a lambda function
+with a dot after the parameter name, meaning that the body of the function extends as far as possible to the right within the surrounding expression.
+We will also often omit the parentheses around the argument in a function application, writing <span class="math notranslate nohighlight">\(f\;x\)</span> instead of <span class="math notranslate nohighlight">\(f(x)\)</span>.
+When a term is applied to multiple arguments we will associate the application to the left, so that <span class="math notranslate nohighlight">\(M\;N\;P\)</span> is the same as <span class="math notranslate nohighlight">\(((M\;N)\;P)\)</span>.
+With these conventions, the previous example becomes <span class="math notranslate nohighlight">\((\lambda x.\;x+1)\;41\)</span>.</p>
+<p>Formally, the lambda calculus deals with terms of just three forms:</p>
+<ul class="simple">
+<li><p>variables (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, …),</p></li>
+<li><p>applications (<span class="math notranslate nohighlight">\(M\; N\)</span>, where <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span> are arbitrary lambda terms), and</p></li>
+<li><p>abstractions (<span class="math notranslate nohighlight">\(\lambda x.\;M\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is a variable and <span class="math notranslate nohighlight">\(M\)</span> is a lambda term).
+Although the example above used additional symbols such as <span class="math notranslate nohighlight">\(+\)</span> and <span class="math notranslate nohighlight">\(41\)</span>, these are not necessary. The remainder of this section will show how to encode common
+data types and operations with lambda terms. The development is based on the Church encoding as presented in the <a class="reference external" href="https://en.wikipedia.org/wiki/Lambda_calculus">Wikipedia article on the lambda calculus</a>; other encodings are possible.</p></li>
+</ul>
+<div class="section" id="church-numerals-and-arithmetic">
+<h2>Church Numerals and Arithmetic<a class="headerlink" href="#church-numerals-and-arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>We may encode the natural numbers as follows:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+   0&amp;\equiv\lambda f.\lambda x.\; x\\
+   1&amp;\equiv\lambda f.\lambda x.\; f(x)\\
+   2&amp;\equiv\lambda f.\lambda x.\; f(f(x))\\
+   &amp;\ldots\\
+   n&amp;\equiv\lambda f.\lambda x.\; f^{(n)}(x)
+\end{aligned}
+$\)</span></p>
+<p>That is, the encoding of <span class="math notranslate nohighlight">\(n\)</span> is a function that takes a function <span class="math notranslate nohighlight">\(f\)</span> and a value <span class="math notranslate nohighlight">\(x\)</span> and iteratively applies <span class="math notranslate nohighlight">\(f\)</span> to <span class="math notranslate nohighlight">\(x\)</span> a total of <span class="math notranslate nohighlight">\(n\)</span> times.
+The successor function, <span class="math notranslate nohighlight">\(\lambda y.\;y+1\)</span>, is then given by <span class="math notranslate nohighlight">\(\textrm{SUCC}\equiv\lambda y.\lambda f.\lambda x.\;f(y f x)\)</span>. Using this, we may define
+addition by noticing that adding <span class="math notranslate nohighlight">\(y\)</span> to <span class="math notranslate nohighlight">\(z\)</span> is the same as taking the successor of <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(y\)</span> times:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+   \textrm{PLUS}&amp;\equiv\lambda y.\lambda z.\;y\;\textrm{SUCC}\;z
+\end{aligned}
+$\)</span></p>
+<p>Similarly, since multiplication is repeated addition, we may define
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+   \textrm{MULT}&amp;\equiv\lambda y.\lambda z.\;y\;(\textrm{PLUS}\;z)\;0
+\end{aligned}
+$\)</span></p>
+<p>For example,
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{MULT}\;6\;7&amp;=(\lambda y.\lambda z.\;y\;(\textrm{PLUS}\;z)\;0)\;6\;7\\
+                   &amp;=(\lambda z.\;6\;(\textrm{PLUS}\;z)\;0)\;7\\
+                   &amp;=6\;(\textrm{PLUS}\;7)\;0\\
+                   &amp;=(\textrm{PLUS}\;7)^{(6)}(0)\\
+                   &amp;=(\textrm{PLUS}\;7)^{(5)}(\textrm{PLUS}\;7\;0)\\
+                   &amp;=(\textrm{PLUS}\;7)^{(5)}(7)\\
+                   &amp;=(\textrm{PLUS}\;7)^{(4)}(14)\\
+                   &amp;=\cdots\\
+                   &amp;=\textrm{PLUS}\;7\;35\\
+                   &amp;=42.
+\end{aligned}
+$\)</span></p>
+<p>If we had a function PRED that computed the “predecessor” (<span class="math notranslate nohighlight">\(\lambda x.\;x - 1\)</span>, except the predecessor of zero is zero because we are limiting our
+arithmetic to the natural numbers for the moment), then we could similarly define subtraction as the iteration of PRED:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+   \textrm{SUB}&amp;\equiv\lambda y.\lambda z.\;z\;\textrm{PRED}\;y
+\end{aligned}
+$\)</span>
+Note that <span class="math notranslate nohighlight">\(\textrm{SUB}\;m\;n\)</span> is zero whenever <span class="math notranslate nohighlight">\(m\leq n\)</span>; this is often called the “modified minus” or <strong>monus</strong> operation.
+The function PRED itself will be defined below.</p>
+</div>
+<div class="section" id="booleans-and-conditionals">
+<h2>Booleans and Conditionals<a class="headerlink" href="#booleans-and-conditionals" title="Permalink to this headline">¶</a></h2>
+<p>Fundamentally, the role of a Boolean value is to make a distinction: true or false, yes or no, do this or else do that.
+The encoding of a Boolean will therefore take two arguments, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, and select one of them:[^Interestingly, the encoding
+for FALSE is the same (up to <span class="math notranslate nohighlight">\(\alpha\)</span>-equivalence) as the encoding of zero—apparently C made the right choice in equating
+zero and false!]
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{TRUE}&amp;\equiv\lambda a.\lambda b.\;a\\
+\textrm{FALSE}&amp;\equiv\lambda a.\lambda b.\;b
+\end{aligned}
+$\)</span>
+Given these encodings, we may then define Boolean operations and the conditional as follows:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{AND}&amp;\equiv\lambda p.\lambda q.\;p\;q\;p\\
+\textrm{OR}&amp;\equiv\lambda p.\lambda q.\;p\;p\;q\\
+\textrm{NOT}&amp;\equiv\lambda p.\;p\;\textrm{FALSE}\;\textrm{TRUE}\\
+\textrm{IF}&amp;\equiv\lambda p.\;p
+\end{aligned}
+$\)</span>
+You should convince yourself that these operations are correct, by evaluating each possible combination:
+<span class="math notranslate nohighlight">\(\textrm{AND}\;\textrm{FALSE}\;\textrm{FALSE}\)</span>, ….
+Note that IF is trivial, since <span class="math notranslate nohighlight">\(\textrm{IF}\;p\;a\;b\)</span> is the same as just applying <span class="math notranslate nohighlight">\(p\;a\;b\)</span>; essentially, the meaning of a Boolean
+<em>is</em> the conditional, just as the meaning of a natural number <em>is</em> the ability to iterate a particular number of times.</p>
+<p>The most basic operation on natural numbers that returns a Boolean is the predicate ISZERO, which takes a number and returns TRUE
+if it is zero and FALSE otherwise. This is easy to implement as the <span class="math notranslate nohighlight">\(n\)</span>-fold iteration of the constant FALSE function, starting from the initial
+value TRUE:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{ISZERO}&amp;\equiv\lambda n.\;n\;(\lambda x.\;\textrm{FALSE})\;\textrm{TRUE}
+\end{aligned}
+$\)</span>
+If <span class="math notranslate nohighlight">\(n\)</span> is zero, then we just get TRUE. If <span class="math notranslate nohighlight">\(n\)</span> is non-zero, then the constant FALSE function will be applied at least once, making the result FALSE.</p>
+<p>Building on this, we get less-than-or-equal-to and equality predicates by using subtraction:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{LEQ}&amp;\equiv\lambda m.\lambda n.\;\textrm{ISZERO}\;(\textrm{SUB}\;m\;n)\\
+\textrm{EQ}&amp;\equiv\lambda m.\lambda n.\;\textrm{AND}\;(\textrm{LEQ}\;m\;n)\;(\textrm{LEQ}\;n\;m)
+\end{aligned}
+$\)</span></p>
+<p>This encoding of Booleans is actually found in some pure object-oriented languages, such as Smalltalk.
+The idea is that, if everything is an object, then the natural way to do anything is to call a method on an object.
+The TRUE and FALSE objects have methods that ask them to choose one of two things; the method in TRUE is implemented to
+return the first thing, while the implementation in FALSE returns the second. Here is what this might look like
+implemented in Java:</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.function.Supplier</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Boolean</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifFalse</span><span class="p">);</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Runnable</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Runnable</span> <span class="n">ifFalse</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">True</span> <span class="kd">implements</span> <span class="n">Boolean</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifFalse</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">ifTrue</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Runnable</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Runnable</span> <span class="n">ifFalse</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">ifTrue</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">False</span> <span class="kd">implements</span> <span class="n">Boolean</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">T</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">ifFalse</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">ifFalse</span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">ifThenElse</span><span class="p">(</span><span class="n">Runnable</span> <span class="n">ifTrue</span><span class="p">,</span> <span class="n">Runnable</span> <span class="n">ifFalse</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">ifFalse</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">Boolean</span> <span class="n">b1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">True</span><span class="p">();</span>
+		<span class="n">Boolean</span> <span class="n">b2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">False</span><span class="p">();</span>
+		<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">b1</span><span class="p">.</span><span class="na">ifThenElse</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="mi">42</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="mi">37</span> <span class="o">/</span> <span class="mi">0</span><span class="p">);</span>
+		<span class="n">b2</span><span class="p">.</span><span class="na">ifThenElse</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Boo!&quot;</span><span class="p">),</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The answer is &quot;</span> <span class="o">+</span> <span class="n">result</span><span class="p">));</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Supplier&lt;T&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">Runnable</span></code> types are used because we want to pass in <strong>thunks</strong> to the <code class="docutils literal notranslate"><span class="pre">ifThenElse</span></code> method.
+A thunk is an anonymous function that takes no arguments; it is used to delay the execution of a block of code
+until we are ready to <code class="docutils literal notranslate"><span class="pre">get()</span></code> its value or <code class="docutils literal notranslate"><span class="pre">run()</span></code> it. This is needed in Java (and in almost all common programming
+languages except Haskell and Scala) because otherwise <code class="docutils literal notranslate"><span class="pre">ifThenElse</span></code> would evaluate both of its arguments before performing
+the method call; in the example, without using thunks, the call to <code class="docutils literal notranslate"><span class="pre">b1.ifThenElse</span></code> would result in a division by zero
+exception, and the call to <code class="docutils literal notranslate"><span class="pre">b2.ifThenElse</span></code> would print <code class="docutils literal notranslate"><span class="pre">Boo!</span></code> as well as the correct answer.[^Side effects!]</p>
+</div>
+<div class="section" id="pairs-and-lists">
+<h2>Pairs and Lists<a class="headerlink" href="#pairs-and-lists" title="Permalink to this headline">¶</a></h2>
+<p>Inspired by the object-oriented view of the Boolean encoding, one way to represent a pair of values is to construct a
+function holding both values and expecting a “selector” that can retrieve either one of them on demand. Since the selector
+is just a function that chooses which of the two elements to retrieve, it can be a Boolean. This leads to the following
+encoding:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{PAIR}&amp;\equiv\lambda a.\lambda b.\lambda s.\;s\;a\;b\\
+\textrm{FIRST}&amp;\equiv\lambda p.\;p\;\textrm{TRUE}\\
+\textrm{SECOND}&amp;\equiv\lambda p.\;p\;\textrm{FALSE}
+\end{aligned}
+$\)</span>
+You should check that if <span class="math notranslate nohighlight">\(p\equiv\textrm{PAIR}\;1\;2\)</span>, then <span class="math notranslate nohighlight">\(\textrm{FIRST}\;p\)</span> reduces to 1, while <span class="math notranslate nohighlight">\(\textrm{SECOND}\;p\)</span> reduces to 2.</p>
+<p>Using pairs, we may build up lists with the following two helpers:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{NIL}&amp;\equiv\lambda s.\;\textrm{TRUE}\\
+\textrm{ISNIL}&amp;\equiv\lambda p.\;p\;(\lambda a.\lambda b.\;\textrm{FALSE})
+\end{aligned}
+$\)</span>
+The list <span class="math notranslate nohighlight">\([1, 2, 3]\)</span> is encoded as <span class="math notranslate nohighlight">\(\textrm{PAIR}\;1\;(\textrm{PAIR}\;2\;(\textrm{PAIR}\;3\;\textrm{NIL}))\)</span>.
+Given a list <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(\textrm{ISNIL}\;\ell\)</span> returns TRUE if the list is empty and FALSE otherwise.
+If <span class="math notranslate nohighlight">\(\ell\)</span> is non-empty, then <span class="math notranslate nohighlight">\(\textrm{FIRST}\;\ell\)</span> extracts its head and <span class="math notranslate nohighlight">\(\textrm{SECOND}\;\ell\)</span> its tail.</p>
+<p>We may also use pairs to construct the promised function PRED.[^This version of the predecessor function was discovered by Stephen Kleene,
+reportedly while visiting the dentist.] Consider the function
+<span class="math notranslate nohighlight">\(F\equiv\lambda p.\;\textrm{PAIR}\;(\textrm{SECOND}\;p)\;(\textrm{SUCC}\;(\textrm{SECOND}\;p))\)</span>.
+Then <span class="math notranslate nohighlight">\(F\;(\textrm{PAIR}\;m\;n)=\textrm{PAIR}(n, n+1)\)</span>. If you iterate <span class="math notranslate nohighlight">\(F\)</span> a non-zero number <span class="math notranslate nohighlight">\(n\)</span> times and apply it to <span class="math notranslate nohighlight">\(\textrm{PAIR}\;0\;0\)</span>, then the
+result will be <span class="math notranslate nohighlight">\(\textrm{PAIR}\;(n-1)\;n\)</span> (prove this by induction on <span class="math notranslate nohighlight">\(n\)</span>). Therefore, we may define PRED as:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{PRED}&amp;\equiv\lambda n.\;\textrm{FIRST}\;(n\;F\;(\textrm{PAIR}\;0\;0))
+\end{aligned}
+$\)</span>
+This has the disadvantage that computing the predecessor of <span class="math notranslate nohighlight">\(n\)</span> takes <span class="math notranslate nohighlight">\(O(n)\)</span> time, but no one said the Church encodings were efficient.</p>
+</div>
+<div class="section" id="recursion">
+<h2>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h2>
+<p>Consider the recursive definition of the factorial function in ReasonML:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">fact</span> <span class="ow">=</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="mi">1</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">n</span> <span class="ow">*</span> <span class="n">fact</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>The body of the function needs to have access to the definition of <code class="docutils literal notranslate"><span class="pre">fact</span></code> itself; this is the point of the <code class="docutils literal notranslate"><span class="pre">rec</span></code> qualifier with <code class="docutils literal notranslate"><span class="pre">let</span></code>.
+If we could provide the definition of <code class="docutils literal notranslate"><span class="pre">fact</span></code> as another argument to the function, then we could express factorial with the following
+“template”:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">fact_template</span> <span class="ow">=</span> <span class="n">f</span> <span class="ow">=&gt;</span> <span class="n">n</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+  <span class="k">if</span> <span class="ow">(</span><span class="n">n</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="mi">1</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="n">n</span> <span class="ow">*</span> <span class="n">f</span><span class="ow">(</span><span class="n">n</span> <span class="ow">-</span> <span class="mi">1</span><span class="ow">)</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>This template describes how we could define <code class="docutils literal notranslate"><span class="pre">fact</span></code> if we already had the <code class="docutils literal notranslate"><span class="pre">fact</span></code> function: <code class="docutils literal notranslate"><span class="pre">fact</span> <span class="pre">=</span> <span class="pre">fact_template(fact)</span></code>.
+To break out of the circularity of this definition, what we really need is a way to solve the equation <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">fact_template(f)</span></code> for <code class="docutils literal notranslate"><span class="pre">f</span></code>; such a
+solution is known as a <strong>fixed point</strong> of <code class="docutils literal notranslate"><span class="pre">fact_template</span></code>.[^Another way to view this is that each application of <code class="docutils literal notranslate"><span class="pre">fact_template</span></code> takes an imperfect
+approximation to factorial and produces a better approximation. Finding the fixed point is just taking the limit of this series of approximations.]
+A remarkable fact about the lambda calculus is that there is a term that will find such a fixed point:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{FIX}&amp;\equiv\lambda f.\;(\lambda x.\;f\;(x\;x))\;(\lambda x.\;f\;(x\;x))
+\end{aligned}
+$\)</span>
+Observe what happens when we reduce <span class="math notranslate nohighlight">\(\textrm{FIX}\;g\)</span>:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{FIX}\;g&amp;=(\lambda x.\;g\;(x\;x))\;(\lambda x.\;g\;(x\;x))\\
+&amp;=g((\lambda x.\;g\;(x\;x))\;(\lambda x.\;g\;(x\;x)))
+\end{aligned}
+$\)</span>
+That is, <span class="math notranslate nohighlight">\(\textrm{FIX}\;g=g(\textrm{FIX}\;g)\)</span>, so <span class="math notranslate nohighlight">\(f=\textrm{FIX}\;g\)</span> is a solution to the equation <span class="math notranslate nohighlight">\(f=g(f)\)</span>!</p>
+<p>Using FIX, we may define the factorial function (and by this point you should be convinced that we may define any pure function that we could have
+written in ReasonML) as follows:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\textrm{FACT}&amp;\equiv\textrm{FIX}\;(\lambda f.\lambda n.\;\textrm{IF}\;(\textrm{ISZERO}\;n)\;1\;(\textrm{MULT}\;n\;(f\;(\textrm{PRED}\;n))))
+\end{aligned}
+$\)</span></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="parser-comb.html" title="previous page">Recursive Descent and Parser Combinators</a>
+    <a class='right-next' id="next-link" href="../ds/index.html" title="next page">Data Structures</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Logic Circuits &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Circuit Simplification" href="simplify.html" />
+    <link rel="prev" title="Boolean Algebra" href="boolean.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/circuits.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gates">
+   Gates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-circuit-from-a-proposition">
+   Building a Circuit from a Proposition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circuits-as-expression-trees">
+   Circuits as Expression Trees
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-a-proposition-from-a-combinational-circuit">
+   Extracting a Proposition from a Combinational Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#disjunctive-normal-form">
+   Disjunctive Normal Form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equivalent-circuits">
+   Equivalent Circuits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binary-arithmetic">
+   Binary Arithmetic
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="logic-circuits">
+<h1>Logic Circuits<a class="headerlink" href="#logic-circuits" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<div class="section" id="gates">
+<h2>Gates<a class="headerlink" href="#gates" title="Permalink to this headline">¶</a></h2>
+<p>Computers have a reputation—not always deserved—for being “logical.”
+But fundamentally, deep down, they are made of logic in a very real
+sense. The building blocks of computers are <strong>logic gates</strong>,
+which are electronic components that compute the values of simple
+propositions such as <span class="math notranslate nohighlight">\(p\land q\)</span> and <span class="math notranslate nohighlight">\(\lnot p\)</span>. (Each gate is in turn
+built of even smaller electronic components called transistors; we will
+explore this briefly below.)</p>
+<p>A wire in a computer can be in one of two states, which we can
+think of as being <em>on</em> and <em>off</em>. These two states
+can be naturally associated with the Boolean values <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> and <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>.
+When a computer computes, the multitude of wires inside it are
+turned on and off in patterns that are determined by certain rules.
+The rules involved can be most naturally expressed in terms of logic.
+A simple rule might be, “turn wire <span class="math notranslate nohighlight">\(C\)</span> on whenever wire <span class="math notranslate nohighlight">\(A\)</span> is on
+and wire <span class="math notranslate nohighlight">\(B\)</span> is on.” This rule can be implemented in hardware as
+an <strong>AND gate</strong>. An AND gate is an electronic
+component with two input wires and one output wire, whose job is
+to turn its output on when both of its inputs are on and to turn
+its output off in any other case. If we associate “on” with
+<span class="math notranslate nohighlight">\(\mathbb{T}\)</span> and “off” with <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>, and if we give the names <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> to
+the inputs of the gate, then the gate computes the value of the
+logical expression <span class="math notranslate nohighlight">\(A\land B\)</span>. In effect, <span class="math notranslate nohighlight">\(A\)</span> is a proposition
+with the meaning “the first input is on,” and <span class="math notranslate nohighlight">\(B\)</span> is a proposition
+with the meaning “the second input is on.” The AND gate
+functions to ensure that the output is described by the
+proposition <span class="math notranslate nohighlight">\(A \land B\)</span>. That is, the output is on if and only if
+the first input is on and the second input is on.</p>
+<p>An <strong>OR gate</strong> is an electronic component with two inputs and one output which
+turns its output on if either (or both) of its inputs is on. If the inputs are
+given names <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, then the OR gate computes the logical value of
+<span class="math notranslate nohighlight">\(A\lor B\)</span>. A <strong>NOT gate</strong> has one input and one output, and it turns its output
+off when the input is on and on when the input is off. If the input is named <span class="math notranslate nohighlight">\(A\)</span>,
+then the NOT gate computes the value of <span class="math notranslate nohighlight">\(\lnot A\)</span>.</p>
+<p>Other types of logic gates are, of course, possible. Gates could be made to
+compute <span class="math notranslate nohighlight">\(A\rightarrow B\)</span> or <span class="math notranslate nohighlight">\(A\oplus B\)</span>, for example. However, any computation
+that can be performed by logic gates can be done using only AND, OR, and NOT
+gates, as we will see below. (In practice, however, NAND gates and NOR gates,
+which compute the values of <span class="math notranslate nohighlight">\(\lnot(A\land B)\)</span> and <span class="math notranslate nohighlight">\(\lnot(A\lor B)\)</span> respectively,
+are often used because they are easier to build from transistors than AND and OR
+gates.)</p>
+<p>The three types of logic gates are represented by standard symbols, as shown in
+<a class="reference internal" href="#fig1-3"><span class="std std-numref">Fig. 1</span></a>. Since the inputs and outputs of logic gates are just wires
+carrying on/off signals, logic gates can be wired together by connecting outputs
+from some gates to inputs of other gates. The result is a <strong>logic circuit</strong>. The
+figure also shows an example circuit that computes the value of the logical
+expression <span class="math notranslate nohighlight">\((\lnot A)\land(B\lor\lnot(A\land C))\)</span>. The input wires to each logic
+gate are on the left, with the output wire on the right. Note that when wires
+cross each other in a diagram such as this, the wires don’t actually intersect
+unless there is a black circle at the point where they cross.</p>
+<div class="figure align-default" id="fig1-3">
+<img alt="../_images/fig1-3.png" src="../_images/fig1-3.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">AND, OR, and NOT gates, plus an example logic circuit</span><a class="headerlink" href="#fig1-3" title="Permalink to this image">¶</a></p>
+</div>
+<p>The logic circuit in <a class="reference internal" href="#fig1-3"><span class="std std-numref">Fig. 1</span></a> has three inputs, labeled
+<span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>. The circuit computes the value of the
+compound proposition <span class="math notranslate nohighlight">\((\lnot A)\land(B\lor\lnot(A\land C))\)</span>.
+That is, when <span class="math notranslate nohighlight">\(A\)</span> represents the proposition “the input wire
+labeled <span class="math notranslate nohighlight">\(A\)</span> is on,” and similarly for <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(C\)</span>, then
+the output of the circuit is on if and only if the
+value of the compound proposition <span class="math notranslate nohighlight">\((\lnot A)\land(B\lor\lnot(A\land C))\)</span>
+is true.</p>
+<p>Here is a simulator in which you can experiment with this circuit:</p>
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo-3ff02919-c180-490a-9845-991f64ae18e2" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+<div class="admonition-constructing-gates-from-transistors admonition">
+<p class="admonition-title">Constructing Gates from Transistors</p>
+<p>It is useful to have some idea of how digital logic gates are built out of
+lower-level electronic devices such as transistors. For our purposes, a
+<strong>transistor</strong> is a voltage-controlled switch: when the controlling voltage is high,
+the switch is closed (that is, it conducts electricity); when the controlling voltage
+is low, the switch is open (breaking the connection). <a class="reference internal" href="#nmosgates"><span class="std std-numref">Fig. 2</span></a>
+shows n-type metal-oxide-semiconductor (<strong>NMOS</strong>) implementations of
+NOT, NOR, and NAND gates; we will study these
+instead of the more common complementary MOS (CMOS) gates, because they are
+slightly simpler—CMOS has the practical advantage of using significantly
+less power, at the cost of doubling the number of transistors, but the basic
+principles are very similar.</p>
+<div class="figure align-default" id="nmosgates">
+<img alt="../_images/NMOSgates.png" src="../_images/NMOSgates.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">NMOS implementations of NOT, NOR, and NAND gates</span><a class="headerlink" href="#nmosgates" title="Permalink to this image">¶</a></p>
+</div>
+<p>The NOT gate consists of a single transistor in the lower half:
+the <strong>gate</strong> on the left is connected to the input signal, <span class="math notranslate nohighlight">\(a\)</span>; the <strong>source</strong>
+at the bottom is connected to ground (0), and the <strong>drain</strong> at the top is connected
+to the output, <span class="math notranslate nohighlight">\(\overline{a}=\lnot a\)</span>, and a <strong>pull-up resistor</strong> (the jagged line) whose
+other end is at the high voltage level (1). When <span class="math notranslate nohighlight">\(a=0\)</span> and the switch is open (so the
+transistor effectively has infinite resistance), the output will be pulled high
+(so <span class="math notranslate nohighlight">\(\overline{a}=1\)</span>). When <span class="math notranslate nohighlight">\(a=1\)</span> and the switch is closed, the lower resistance
+through the transistor will pull the output low (so <span class="math notranslate nohighlight">\(\overline{a}=0\)</span>).</p>
+<p>The NOR gate uses two transistors in parallel: if either <span class="math notranslate nohighlight">\(a\)</span> or <span class="math notranslate nohighlight">\(b\)</span> is
+high, then the output (<span class="math notranslate nohighlight">\(a\downarrow b=\lnot(a\lor b)\)</span>) will be pulled low.
+Conversely, the NAND gate
+uses two transistors in series: both have to be closed (so <span class="math notranslate nohighlight">\(a=b=1\)</span>) for the
+output (<span class="math notranslate nohighlight">\(a\uparrow b=\lnot(a\land b)\)</span>) to be pulled to 0. <a class="reference internal" href="#nandnor"><span class="std std-numref">Fig. 3</span></a> shows the conventional
+circuit symbols for NAND and NOR gates (note that the circle
+on the output indicates negation, just like on the NOT gate; the
+unnegated version of NOT, drawn as a simple triangle, is known as a
+<strong>buffer</strong>, because it copies its input to its output unchanged, after a short delay).</p>
+<div class="figure align-default" id="nandnor">
+<img alt="../_images/NandNor.png" src="../_images/NandNor.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The standard symbols for the NAND and NOR gates</span><a class="headerlink" href="#nandnor" title="Permalink to this image">¶</a></p>
+</div>
+<p>Those three gates are the simplest to implement with transistors. As we saw in the
+Propositional Logic <a class="reference internal" href="props.html#props-exercises"><span class="std std-ref">Exercises</span></a>, all other Boolean operators can be constructed from NAND alone, or NOR alone. For example, an AND gate is
+a NAND followed by a NOT, so it can be built out of three transistors;<a class="footnote-reference brackets" href="#fn1" id="id1">1</a>
+an OR gate also takes three, using a NOR and a NOT. In <a class="reference internal" href="simplify.html"><span class="doc std std-doc">Circuit Simplification</span></a>
+we will see another way to construct circuits using only NAND gates.</p>
+</div>
+</div>
+<div class="section" id="building-a-circuit-from-a-proposition">
+<h2>Building a Circuit from a Proposition<a class="headerlink" href="#building-a-circuit-from-a-proposition" title="Permalink to this headline">¶</a></h2>
+<p>Given any compound proposition made from the operators
+<span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>, it is possible to build a logic
+circuit that computes the value of that proposition. The
+proposition itself is a blueprint for the circuit. As noted
+in <a class="reference internal" href="props.html#functional-completeness-of-and-or-not"><span class="std std-ref">Functional Completeness of And, Or, Not</span></a>, every logical operator that we have
+encountered can be expressed in terms of <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>,
+so in fact every compound proposition that we know how to write
+can be computed by a logic circuit.</p>
+<p>Given a proposition constructed
+from <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span> operators, it is
+easy to build a circuit to compute it. First, identify the main
+operator in the proposition—the one whose value will be
+computed <em>last</em>. Consider <span class="math notranslate nohighlight">\((A\lor B)\land\lnot(A\land B)\)</span>.
+This circuit has two input values, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, which are represented
+by wires coming into the circuit. The circuit has an output wire
+that represents the computed value of the proposition.
+The main operator in <span class="math notranslate nohighlight">\((A\lor B)\land\lnot(A\land B)\)</span>,
+is the first <span class="math notranslate nohighlight">\(\land\)</span>, which computes the
+value of the expression as a whole by combining the values
+of the subexpressions <span class="math notranslate nohighlight">\(A\lor B\)</span> and <span class="math notranslate nohighlight">\(\lnot(A\land B)\)</span>. This <span class="math notranslate nohighlight">\(\land\)</span>
+operator corresponds to an AND gate in the circuit that
+computes the final output of the circuit.</p>
+<p>Once the main operator has been identified and represented as
+a logic gate, you just have to build circuits to compute the
+input or inputs to that operator. In <a class="reference internal" href="#fig1-4"><span class="std std-numref">Fig. 4</span></a>,
+the inputs to the main AND gate come from two subcircuits.
+One subcircuit computes the value of <span class="math notranslate nohighlight">\(A\lor B\)</span> and the other
+computes the value of <span class="math notranslate nohighlight">\(\lnot(A\land B)\)</span>. Building each subcircuit
+is a separate problem, but smaller than the problem you started
+with. Eventually, you’ll come to a gate whose input comes directly
+from one of the input wires—<span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> in this case—instead of
+from a subcircuit.</p>
+<div class="figure align-default" id="fig1-4">
+<img alt="../_images/fig1-4.png" src="../_images/fig1-4.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Stages in the construction of an example logic circuit</span><a class="headerlink" href="#fig1-4" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="circuits-as-expression-trees">
+<h2>Circuits as Expression Trees<a class="headerlink" href="#circuits-as-expression-trees" title="Permalink to this headline">¶</a></h2>
+<p>A combinational circuit is one in which the output is entirely determined by the
+inputs—it is a pure function, with no dependence on state or time (apart
+from the initial time it takes the circuit to compute the output; we will
+discuss this more in the <a class="reference internal" href="simplify.html"><span class="doc std std-doc">next section</span></a>). As such, its behavior is completely
+determined by a truth table; as we have seen, this means that it corresponds to
+a logical expression built up from the inputs and our basic operators.</p>
+<p>When implementing a Boolean expression as a digital circuit, it is conventional
+to use a two-dimensional graphical representation of the circuit. This is partly
+because the circuit will eventually be laid out on a physical circuit board or
+semiconductor chip, and the relative locations of the gates and their
+interconnections will be important (although we will not go to this level of
+detail), but also because it can be easier to examine some of the properties and
+behavior of a circuit in a graphical form.</p>
+<p>Another way to get this graphical representation is to use an <strong>expression
+tree</strong>, which is a variation of the parse trees studied later in the course. For
+example, we may picture the expression <span class="math notranslate nohighlight">\(s=(a\lor b)\land\lnot(a\land b)\)</span> as the
+following:</p>
+<div class="figure align-default" id="exprtree">
+<img alt="../_images/exprtree.png" src="../_images/exprtree.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Expression tree for s=(a OR b) AND NOT (a AND b)</span><a class="headerlink" href="#exprtree" title="Permalink to this image">¶</a></p>
+</div>
+<p>Of course, we are usually interested in circuits that may have multiple outputs, so we may use a forest of expression trees. The next figure shows a forest for the same expression as above, along with the additional output <span class="math notranslate nohighlight">\(c\)</span> given by <span class="math notranslate nohighlight">\(a\land b\)</span>:</p>
+<div class="figure align-default" id="exprforest">
+<img alt="../_images/exprforest.png" src="../_images/exprforest.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Expression forest for s=(a OR b) AND NOT (a AND b) and c=a AND b</span><a class="headerlink" href="#exprforest" title="Permalink to this image">¶</a></p>
+</div>
+<p>Upon doing this, we might notice that the subtree for <span class="math notranslate nohighlight">\(a\land b\)</span> is duplicated. It would be nice to share common parts of the circuit, thus giving us an expression DAG (<strong>directed acyclic graph</strong>) instead of a tree or forest. One way to do this is shown next:</p>
+<div class="figure align-default" id="exprdag">
+<img alt="../_images/exprdag.png" src="../_images/exprdag.png" />
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b</span><a class="headerlink" href="#exprdag" title="Permalink to this image">¶</a></p>
+</div>
+<p>We could also share the inputs rather than repeating them, as shown next; this is still a DAG:</p>
+<div class="figure align-default" id="exprdagshared">
+<img alt="../_images/exprdagshared.png" src="../_images/exprdagshared.png" />
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b, with shared inputs</span><a class="headerlink" href="#exprdagshared" title="Permalink to this image">¶</a></p>
+</div>
+<p>Finally, instead of using the words AND, OR, and NOT, we will use the corresponding circuit symbols; we also draw the DAG “on its side,” so that the flow from inputs to outputs is left-to-right. The final result is a circuit diagram such as this:</p>
+<div class="figure align-default" id="halfadder">
+<img alt="../_images/HalfAdder.png" src="../_images/HalfAdder.png" />
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b</span><a class="headerlink" href="#halfadder" title="Permalink to this image">¶</a></p>
+</div>
+<p>It is important to realize, though, that this is just another presentation of the logical expressions we started with. Any set of Boolean expressions may be drawn this way, and any circuit where all of the information flows from left to right may be read as a set of expressions.</p>
+<p>In addition to visualizing the layout of gates in a digital circuit, a circuit diagram may be used to “trace” its operation on particular inputs. For example, the diagram below shows our example circuit annotated with 0/1 logic values on each wire, to trace its behavior when both inputs <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are 1. Since the logic values flow from left to right, the output of each successive gate may be determined from its inputs. By tracing each combination of inputs, we may construct a truth table corresponding to the circuit; the result is</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(a\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(b\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(s\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-default" id="halfadder11">
+<img alt="../_images/HalfAdder11.png" src="../_images/HalfAdder11.png" />
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Annotated diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b when a=1 and b=1</span><a class="headerlink" href="#halfadder11" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="extracting-a-proposition-from-a-combinational-circuit">
+<h2>Extracting a Proposition from a Combinational Circuit<a class="headerlink" href="#extracting-a-proposition-from-a-combinational-circuit" title="Permalink to this headline">¶</a></h2>
+<p>So, every compound proposition is computed by a logic circuit
+with one output wire. Is the reverse true? That is, given
+a logic circuit with one output, is there a proposition that
+expresses the value of the output in terms of the values of
+the inputs? Not quite. When you wire together some logic
+gates to make a circuit, there is nothing to stop you from
+introducing feedback loops. A feedback loop occurs when
+the output from a gate is connected—possibly through one
+or more intermediate gates—back to an input of the same gate.
+Here is an example of a circuit with
+a feedback loop:</p>
+<div class="figure align-default" id="fig1-5">
+<img alt="../_images/fig1-5.png" src="../_images/fig1-5.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Stages in the construction of an example logic circuit</span><a class="headerlink" href="#fig1-5" title="Permalink to this image">¶</a></p>
+</div>
+<p>The feedback loop includes the AND gate and the OR gate on the right. This
+circuit does not compute the value of a compound proposition. This circuit does,
+however, play an important role in computer memories, since it can be used to
+store a logical value.</p>
+<p>Feedback loops cannot be described by compound propositions,
+basically because there is no place to start, no input to
+associate with a propositional variable. But feedback
+loops are really the only thing that can go wrong when trying
+to describe a circuit with propositional logic. A logic circuit
+that does not contain any feedback loops is called a
+<strong>combinational logic circuit</strong>, because the output is determined
+solely by the combination of values on the inputs.[^By contrast, a
+circuit with a feedback loop is called a <strong>sequential logic circuit</strong>,
+because the behavior of the circuit depends on the exact sequence of
+when input signals change.] Every combinational
+logic circuit with just one output computes the value of
+some compound proposition. The propositional variables in
+the compound proposition are just names associated with
+the input wires of the circuit. (Of course, if the circuit has
+more than one output, you can simply use a different proposition
+for each output.)</p>
+<p>The key to understanding why this is true
+is to note that each wire in the circuit—not just the final
+output wire—represents the value of some proposition.
+Furthermore, once you know which proposition is represented by
+each input wire to a gate, it’s obvious what proposition is
+represented by the output: You just combine the input propositions
+with the appropriate <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, or <span class="math notranslate nohighlight">\(\lnot\)</span> operator, depending
+on what type of gate it is. To find
+the proposition associated with the final output, you just have to
+start from the inputs and move through the circuit, labeling the
+output wire of each gate with the proposition that it represents.
+This figure illustrates the process:</p>
+<div class="figure align-default" id="fig1-6">
+<img alt="../_images/fig1-6.png" src="../_images/fig1-6.png" />
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Finding the proposition whose value is computed by a
+combinational logic circuit.</span><a class="headerlink" href="#fig1-6" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each wire in the circuit is labeled with the proposition that it represents. The
+numbering of the labels shows one of the orders in which they can be associated
+with the wires. The circuit as a whole computes the value of
+<span class="math notranslate nohighlight">\(\lnot(A\land B)\land(B\lor\lnot C)\)</span>.</p>
+</div>
+<div class="section" id="disjunctive-normal-form">
+<h2>Disjunctive Normal Form<a class="headerlink" href="#disjunctive-normal-form" title="Permalink to this headline">¶</a></h2>
+<p>So, compound propositions correspond naturally with combinational
+logic circuits. But we have still not quite settled the question
+of just how powerful these circuits and propositions are.
+We’ve looked at a number of logical operators and noted that they
+can all be expressed in terms of <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>.
+But might there be other operators that cannot be so expressed?
+Equivalently, might there be other types of logic gates—possibly
+with some large number of inputs—whose
+computations cannot be duplicated with AND, OR, and
+NOT gates? Any logical operator or logic gate computes
+a value for each possible combination of logical values of its inputs.
+We could always make a truth table showing the output for each
+possible combination of inputs. As it turns out, given <em>any</em> such
+truth table, it is possible to find a proposition, containing only
+the <span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span> operators, whose value for each combination
+of inputs is given precisely by that table.</p>
+<p>To see why this is true, it is useful to introduce a particular type
+of compound proposition. Define a <strong>simple term</strong> to be either
+a propositional variable or the negation of a propositional variable.
+A conjunction of simple terms would then consist of one or more
+simple terms put together with <span class="math notranslate nohighlight">\(\land\)</span> operators. (A “conjunction of
+one simple term” is just a single simple term by itself. This might
+not make grammatical sense, but it’s the way mathematicians think.)
+Some examples of conjunctions of simple terms would be
+<span class="math notranslate nohighlight">\(p\land q\)</span>, <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(\lnot q\)</span>, and <span class="math notranslate nohighlight">\(p\land\lnot r\land \lnot w\land s\land t\)</span>.
+Finally, we can take one or more such conjunctions and join them
+into a “disjunction of conjunctions of simple terms.” This is the
+type of compound proposition we need. We can avoid some redundancy
+by assuming that no propositional variable occurs more than once
+in a single conjunction (since <span class="math notranslate nohighlight">\(p\land p\)</span> can be replaced by <span class="math notranslate nohighlight">\(p\)</span>,
+and if <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\lnot p\)</span> both occur in a conjunction, then the value
+of the conjuction is false, and it can be eliminated.) We can also
+assume that the same conjunction does not occur twice in the
+disjunction.</p>
+<blockquote>
+<div><p>A compound proposition is said to be in <strong>disjunctive normal form</strong>,
+or DNF, if it is a disjunction of conjunctions of simple terms,
+and if, furthermore, each propositional variable occurs at most once
+in each conjunction and each conjunction occurs at most once in the
+disjunction.</p>
+</div></blockquote>
+<p>Using <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(B\)</span> as propositional variables,
+here are a few examples of propositions that are in disjunctive
+normal form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c}
+(p\land q\land r)\lor(p\land\lnot q\land r\land s)\lor(\lnot p\land\lnot q)\\
+(p\land \lnot q)\\
+(A\land \lnot B)\lor(\lnot A\land B)\\
+p\lor(\lnot p\land q)\lor(\lnot p\land\lnot q\land r)\lor(\lnot p\land\lnot q\land\lnot r\land w)\\
+\end{array}
+\end{split}\]</div>
+<p>Propositions in DNF are just what we need to deal with input/output
+tables of the type that we have been discussing. Any such table
+can be computed by a proposition in disjunctive normal form.
+It follows that it is possible to build a circuit\index{logic circuit!for an input/output table} to compute that
+table using only AND, OR, and NOT gates.</p>
+<blockquote>
+<div><p><strong>Theorem: DNF</strong></p>
+<p>Consider a table that lists a logical output value for every
+combination of values of several propositional variables.
+Assume that at least one of the output values is true.
+Then there is a proposition containing those variables such that
+the value of the proposition for each possible combination of
+the values of the variables is precisely the value specified
+in the table. It is possible to choose the proposition to
+be in disjunctive normal form.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong></p>
+<p>Consider any row in the table for which the output value is <span class="math notranslate nohighlight">\(\mathbb{T}\)</span>.
+Form a conjunction of simple terms as follows: For each variable, <span class="math notranslate nohighlight">\(p\)</span>,
+whose value is <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> in that row, include <span class="math notranslate nohighlight">\(p\)</span> itself in the conjunction;
+for each variable, <span class="math notranslate nohighlight">\(q\)</span>, whose value is <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> in the row, include
+<span class="math notranslate nohighlight">\(\lnot q\)</span> in the conjunction. The value of this conjunction is
+<span class="math notranslate nohighlight">\(\mathbb{T}\)</span> for the combination of variable values given in that row
+of the table, since each of the simple terms in the conjuction is true
+for that combination of variables. Furthermore, for any <em>other</em>
+possible combination of variable values, the value of the conjunction
+will be <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>, since at least one of the simple terms in the
+conjunction will be false.</p>
+<p>Take the disjunction of all such conjunctions constructed in this
+way, for each row in the table where the output value is true.
+This disjunction has the value <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> if and only if one of
+the conjunctions that make it up has the value <span class="math notranslate nohighlight">\(\mathbb{T}\)</span>—and that is
+precisely when the output value specified by the table is <span class="math notranslate nohighlight">\(\mathbb{T}\)</span>.
+So, this disjunction of conjunctions satisfies the requirements of
+the theorem.</p>
+</div></blockquote>
+<p>As an example, consider the table below.
+This table specifies a desired output value for each possible
+combination of values for the propositional variables <span class="math notranslate nohighlight">\(p\)</span>,
+<span class="math notranslate nohighlight">\(q\)</span>, and <span class="math notranslate nohighlight">\(r\)</span>. Look at the second row of the table, where
+the output value is true. According to the proof of the theorem,
+this row corresponds to the conjunction <span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r)\)</span>.
+This conjunction is true when <span class="math notranslate nohighlight">\(p\)</span> is false, <span class="math notranslate nohighlight">\(q\)</span> is false,
+and <span class="math notranslate nohighlight">\(r\)</span> is true; in all other cases it is false, since in any other
+case at least one of the terms <span class="math notranslate nohighlight">\(\lnot p\)</span>, <span class="math notranslate nohighlight">\(\lnot q\)</span>, or <span class="math notranslate nohighlight">\(r\)</span> is
+false. The other two rows where the output is true give
+two more conjunctions. The three conjunctions are combined
+to produce the DNF proposition <span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r) \lor
+(\lnot p\land q\land r) \lor (p\land q\land r)\)</span>. This proposition
+computes all the output values specified in the table.
+Using this proposition as a blueprint, we get a logic circuit
+whose outputs match those given in the table.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(p\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(q\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(r\)</span></p></th>
+<th class="text-align:center head"><p>output</p></th>
+<th class="text-align:center head"><p>conjunction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\((\lnot p\land q\land r)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{F}\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\mathbb{T}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(p\land q\land r\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="equivalent-circuits">
+<h2>Equivalent Circuits<a class="headerlink" href="#equivalent-circuits" title="Permalink to this headline">¶</a></h2>
+<p>Now, given any combinational logic circuit, there are many
+other circuits that have the same input/output behavior.
+When two circuits have the same input/output table,
+the compound propositions associated with
+the two circuits are logically equivalent. To put this another
+way, propositions that are logically equivalent produce circuits
+that have the same input/output behavior. As a practical matter,
+we will usually prefer the circuit that is simpler. The
+correspondence between circuits and propositions allows us
+to apply <a class="reference internal" href="boolean.html"><span class="doc std std-doc">Boolean algebra</span></a>
+to the simplification of circuits.</p>
+<p>For example, consider the DNF proposition corresponding to the
+table above. In <span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r) \lor
+(\lnot p\land q\land r) \lor (p\land q\land r)\)</span>, we can factor <span class="math notranslate nohighlight">\((q\land r)\)</span>
+from the last two terms, giving <span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r) \lor
+((\lnot p\lor p) \land (q\land r))\)</span>. Since <span class="math notranslate nohighlight">\(\lnot p\lor p\equiv\mathbb{T}\)</span>,
+and <span class="math notranslate nohighlight">\(\mathbb{T}\land Q\equiv Q\)</span> for any proposition <span class="math notranslate nohighlight">\(Q\)</span>,
+this can be simplified to <span class="math notranslate nohighlight">\((\lnot p\land\lnot q\land r) \lor (q\land r)\)</span>.
+Again, we can apply the distributive law to this to factor
+out an <span class="math notranslate nohighlight">\(r\)</span>, giving <span class="math notranslate nohighlight">\(((\lnot p\land \lnot q)\lor q)\land r)\)</span>.
+This compound proposition is logically equivalent to the one we
+started with, but implementing it in a circuit
+requires only five logic gates, instead of the
+ten required by the original proposition.<a class="footnote-reference brackets" href="#fn2" id="id2">2</a></p>
+<p>If you start with a circuit instead of a proposition, it is
+often possible to find the associated proposition, simplify it
+using Boolean algebra, and use the simplified proposition to
+build an equivalent circuit that is simpler than the original.</p>
+</div>
+<div class="section" id="binary-arithmetic">
+<h2>Binary Arithmetic<a class="headerlink" href="#binary-arithmetic" title="Permalink to this headline">¶</a></h2>
+<p>All this explains nicely the relationship between logic
+and circuits, but it doesn’t explain why logic circuits
+should be used in computers in the first place. Part of
+the explanation is found in the fact that computers use binary
+numbers. A binary number is a string of zeros and ones.
+Binary numbers are easy to represent in an electronic device
+like a computer: Each position in the number corresponds to
+a wire. When the wire is on, it represents one; when the
+wire is off, it represents zero. When we are thinking in terms
+of logic, the same states of the wire represent true and false,
+but either representation is just an interpretation of the
+reality, which is a wire that is on or off. The question is
+whether the interpretation is fruitful.</p>
+<p>Once wires are thought of as representing zeros and ones,
+we can build circuits to do computations with binary numbers.
+Which computations? Any that we want! If we know
+what the answer should be for each combination of inputs,
+then by the DNF Theorem we can build a circuit to compute
+that answer. Of course, the procedure described in that
+theorem is only practical for small circuits, but small
+circuits can be used as building blocks to make all the
+calculating circuits in a computer.</p>
+<p>For example, let’s look at binary addition. To add two ordinary,
+decimal numbers, you line them up one on top of the other,
+and add the digits in each column. In each column, there might
+also be a carry from the previous column. To add up a
+column, you only need to remember a small number of rules,
+such as <span class="math notranslate nohighlight">\(7+6+1=14\)</span> and <span class="math notranslate nohighlight">\(3+5+0=8\)</span>. For binary addition, it’s
+even easier, since the only digits are 0 and 1. There are
+only eight rules:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{cc}
+0+0+0=00 &amp; 1+0+0=01\\
+0+0+1=01 &amp; 1+0+1=10\\
+0+1+0=01 &amp; 1+1+0=10\\
+0+1+1=10 &amp; 1+1+1=11\\
+\end{array} \end{split}\]</div>
+<p>Here, I’ve written each sum using two digits. In a multi-column
+addition, one of these digits is carried over to the next column.
+Here, we have a calculation that has three inputs and two outputs.
+We can make an input/output table for each of the two outputs. The
+table is shown below. We know that the outputs in this table
+can be implemented as combinational circuits, so we know that
+circuits can add binary numbers. To add multi-digit binary numbers,
+we just need one copy of the basic addition circuit for each column
+in the sum.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(A\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(B\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(C\)</span></p></th>
+<th class="text-align:center head"><p>carry output</p></th>
+<th class="text-align:center head"><p>sum output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Using only AND, OR, and NOT gates,
+draw circuits that compute the value of each of the propositions
+<span class="math notranslate nohighlight">\(A\rightarrow B\)</span>, <span class="math notranslate nohighlight">\(A\leftrightarrow B\)</span>, and <span class="math notranslate nohighlight">\(A\oplus B\)</span>.</p></li>
+<li><p>For each of the following propositions, find a combinational
+logic circuit that computes that proposition:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\land (B\lor \lnot C)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((p\land q)\land\lnot(p\land\lnot q)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((p\lor q\lor r)\land (\lnot p\lor \lnot q\lor \lnot r)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lnot(A\land (B\lor C)) \lor (B\land \lnot A)\)</span></p></li>
+</ul>
+</li>
+<li><p>Find the compound proposition computed by each of the
+following circuits:</p></li>
+</ol>
+<img alt="../_images/fig-1-label.png" id="fig-1-label" src="../_images/fig-1-label.png" />
+<ol class="simple">
+<li><p>This section describes a method for finding the compound
+proposition computed by any combinational logic circuit. This method
+fails if you try to apply it to a circuit that contains a feedback loop.
+What goes wrong? Give an example.</p></li>
+<li><p>Show that every compound proposition which is not a contradiction
+is equivalent to a proposition in disjunctive normal form. (Note: We can
+eliminate the restriction that the compound proposition is not a
+contradiction by agreeing that “<span class="math notranslate nohighlight">\(\mathbb{F}\)</span>” counts as a proposition in
+disjunctive normal form. <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> is logically equivalent to any contradiction.)</p></li>
+<li><p>A proposition in <strong>conjunctive normal form</strong> (CNF) is a conjunction of
+disjunctions of simple terms (with the proviso, as in the definition of DNF,
+that a single item also counts as a disjunction). Show that every compound
+proposition which is not a tautology is logically equivalent to a compound
+proposition in conjunctive normal form. (Hint: What happens if you take the
+negation of a DNF proposition and apply De Morgan’s Laws?)</p></li>
+<li><p>Use the laws of Boolean algebra to simplify each of the
+following circuits:</p></li>
+</ol>
+<img alt="../_images/fig-1-simplify.png" id="fig-1-simplify" src="../_images/fig-1-simplify.png" />
+<ol class="simple">
+<li><p>Design circuits to implement the input/output tables
+for addition, as given in <a class="reference external" href="#binary-arithmetic">the section above</a>. Try to
+make your circuits as simple as possible. (The circuits that are
+used in real computers for this purpose are more simplified than
+the ones you will probably come up with, but the general approach
+of using logic to design computer circuits is valid.)</p></li>
+</ol>
+<hr class="docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="fn1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A NOT gate may be thought of as
+a degenerate, single-input version of either NAND or NOR, which requires only a single transistor in NMOS.</p>
+</dd>
+<dt class="label" id="fn2"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>No, I didn’t
+count wrong. There are eleven logical operators in the original
+expression, but you can get by with ten gates in the circuit:
+Use a single NOT gate to compute <span class="math notranslate nohighlight">\(\lnot p\)</span>, and connect
+the output of that gate to two different AND gates.
+Reusing the output of a logic gate is an obvious way to simplify
+circuits that does not correspond to any operation on propositions.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="boolean.html" title="previous page">Boolean Algebra</a>
+    <a class='right-next' id="next-link" href="simplify.html" title="next page">Circuit Simplification</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

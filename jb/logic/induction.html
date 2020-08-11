@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mathematical Induction &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Recursion and Induction" href="recursion.html" />
+    <link rel="prev" title="Natural Deduction for Predicate Logic" href="pred-deduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pred-deduction.html">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/induction.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#strong-mathematical-induction">
+   Strong Mathematical Induction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="mathematical-induction">
+<h1>Mathematical Induction<a class="headerlink" href="#mathematical-induction" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>When we want to prove quantified statements such as <span class="math notranslate nohighlight">\(\forall xP(x)\)</span>, we can only
+get so far with the natural deduction rules seen in the previous section. For
+most results we will need to know more about the structure of the domain of discourse.</p>
+<p>The structure of the natural numbers—0, 1, 2, 3, and on to infinity—makes
+possible a powerful proof technique known as <strong>induction</strong> or <strong>mathematical induction</strong>.
+The idea behind induction is simple. Let <span class="math notranslate nohighlight">\(P\)</span> be a one-place predicate
+whose domain of discourse includes the natural numbers. Suppose that
+we can prove that <span class="math notranslate nohighlight">\(P(0)\)</span> is true. Suppose that we can also prove
+the statements <span class="math notranslate nohighlight">\(P(0)\rightarrow P(1)\)</span>, <span class="math notranslate nohighlight">\(P(1)\rightarrow P(2)\)</span>, <span class="math notranslate nohighlight">\(P(2)\rightarrow P(3)\)</span>,
+and so on. The principal of mathematical induction is the observation
+that we can then conclude that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for <em>all</em> natural
+numbers <span class="math notranslate nohighlight">\(n\)</span>.
+This should be clear. Since <span class="math notranslate nohighlight">\(P(0)\)</span> and <span class="math notranslate nohighlight">\(P(0)\rightarrow P(1)\)</span> are true,
+we can apply the rule of <em>modus ponens</em> to conclude that <span class="math notranslate nohighlight">\(P(1)\)</span>
+is true. Then, since <span class="math notranslate nohighlight">\(P(1)\)</span> and <span class="math notranslate nohighlight">\(P(1)\rightarrow P(2)\)</span> are true, we can
+conclude by <em>modus ponens</em> that <span class="math notranslate nohighlight">\(P(2)\)</span> is true. From <span class="math notranslate nohighlight">\(P(2)\)</span>
+and <span class="math notranslate nohighlight">\(P(2)\rightarrow P(3)\)</span>, we conclude that <span class="math notranslate nohighlight">\(P(3)\)</span> is true. For any
+given <span class="math notranslate nohighlight">\(n\)</span> in the set <span class="math notranslate nohighlight">\(\N\)</span>, we can continue this chain of deduction for <span class="math notranslate nohighlight">\(n\)</span> steps
+to prove that <span class="math notranslate nohighlight">\(P(n)\)</span> is true.</p>
+<p>When applying induction, we don’t actually prove each of the
+implications <span class="math notranslate nohighlight">\(P(0)\rightarrow P(1)\)</span>, <span class="math notranslate nohighlight">\(P(1)\rightarrow P(2)\)</span>, and so on, individually.
+That would require an infinite amount of work. The whole point of
+induction is to avoid any infinitely long process. Instead, we
+prove <span class="math notranslate nohighlight">\(\forall k\,(P(k)\rightarrow P(k+1))\)</span> (where the domain of discourse for the
+predicate <span class="math notranslate nohighlight">\(P\)</span> is <span class="math notranslate nohighlight">\(\N\)</span>).
+The statement <span class="math notranslate nohighlight">\(\forall k\,(P(k)\rightarrow P(k+1))\)</span> summarizes all the
+infinitely many implications in a single statement. Stated formally,
+the principle of
+mathematical induction says that if we can prove the statement
+<span class="math notranslate nohighlight">\(P(0)\land \big(\forall k\,(P(k)\rightarrow P(k+1)\big)\)</span>, then we
+can deduce that <span class="math notranslate nohighlight">\(\forall n\,P(n)\)</span> (again, with <span class="math notranslate nohighlight">\(\N\)</span> as the domain
+of discourse).</p>
+<p>It should be intuitively clear that the principle of induction
+is valid. It follows from the fact that the list 0, 1, 2, 3, …,
+if extended long enough, will eventually include any given
+natural number. If we start from <span class="math notranslate nohighlight">\(P(0)\)</span> and take enough steps
+of the form <span class="math notranslate nohighlight">\(P(k)\rightarrow P(k+1)\)</span>, we can get <span class="math notranslate nohighlight">\(P(n)\)</span> for any given natural number <span class="math notranslate nohighlight">\(n\)</span>.
+However, whenever we deal with infinity, we are courting the possibility
+of paradox. We can prove the principle of induction rigorously, but for now
+we just state it as a theorem:</p>
+<blockquote>
+<div><p><strong>Theorem: Mathematical Induction</strong><br />
+Let <span class="math notranslate nohighlight">\(P\)</span> be a one-place predicate whose domain of discourse includes
+the natural numbers. Suppose that <span class="math notranslate nohighlight">\(P(0)\land \big(\forall k\in\N\,(P(k)\rightarrow P(k+1))\big)\)</span>.
+Then <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>. (That is,
+the statement <span class="math notranslate nohighlight">\(\forall n\,P(n)\)</span> is true, where the domain of discourse for <span class="math notranslate nohighlight">\(P\)</span> is
+the set of natural numbers.)</p>
+</div></blockquote>
+<p>Mathematical induction can be applied in many situations:
+you can prove things about strings of characters by doing induction on the
+length of the string, things about graphs by doing induction on the
+number of nodes in the graph, things about grammars by doing induction on
+the number of productions in the grammar, and so on. An extension known as
+<strong>structural induction</strong> will allow us to prove things about data structures
+such as lists and trees. We’ll
+be looking at applications of induction for the rest of this chapter,
+and throughout the remainder of the text.
+Although proofs by induction can be very different from one
+another, they all follow just a few basic structures. A proof based
+on the preceding theorem always has two parts. First, <span class="math notranslate nohighlight">\(P(0)\)</span>
+is proved. This is called the <strong>base case</strong> of the induction.
+Then the statement <span class="math notranslate nohighlight">\(\forall k\,(P(k)\rightarrow P(k+1))\)</span> is proved.
+This statement can be proved by letting <span class="math notranslate nohighlight">\(k\)</span> be an arbitrary
+element of <span class="math notranslate nohighlight">\(\N\)</span> and proving <span class="math notranslate nohighlight">\(P(k)\rightarrow P(k+1)\)</span>. This in turn can
+be proved by assuming that <span class="math notranslate nohighlight">\(P(k)\)</span> is true and proving that
+the truth of <span class="math notranslate nohighlight">\(P(k+1)\)</span> follows from that assumption. This case is called
+the <strong>inductive case</strong>, and <span class="math notranslate nohighlight">\(P(k)\)</span> is called the <strong>inductive hypothesis</strong> or
+the <strong>induction hypothesis</strong>.
+Note that the base case is just as important
+as the inductive case. By itself, the truth of the statement <span class="math notranslate nohighlight">\(\forall k\,(P(k)\rightarrow P(k+1))\)</span>
+says nothing at all about the truth of any of the individual statements <span class="math notranslate nohighlight">\(P(n)\)</span>.
+The chain of implications <span class="math notranslate nohighlight">\(P(0)\rightarrow P(1)\)</span>, <span class="math notranslate nohighlight">\(P(1)\rightarrow P(2)\)</span>, …,
+<span class="math notranslate nohighlight">\(P(n-1)\rightarrow P(n)\)</span> says nothing about <span class="math notranslate nohighlight">\(P(n)\)</span> unless the chain is
+anchored at the other end by the truth of <span class="math notranslate nohighlight">\(P(0)\)</span>. Let’s look
+at a few examples.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+The number <span class="math notranslate nohighlight">\(2^{2n}-1\)</span> is divisible by 3 for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Here, <span class="math notranslate nohighlight">\(P(n)\)</span> is the statement that <span class="math notranslate nohighlight">\(2^{2n}-1\)</span> is divisible by 3.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> When <span class="math notranslate nohighlight">\(n=0\)</span>, <span class="math notranslate nohighlight">\(2^{2n}-1 = 2^0-1=1-1=0\)</span> and <span class="math notranslate nohighlight">\(0\)</span> is divisible by 3
+(since <span class="math notranslate nohighlight">\(0=3\cdot 0\)</span>.) Therefore the statement holds when <span class="math notranslate nohighlight">\(n=0\)</span>.</p>
+<p><strong>Inductive case:</strong> We want to show that if the statement is true for <span class="math notranslate nohighlight">\(n=k\)</span>
+(where <span class="math notranslate nohighlight">\(k\)</span> is an arbitrary natural number),
+then it is true for <span class="math notranslate nohighlight">\(n=k+1\)</span> also. That is, we must prove the implication
+<span class="math notranslate nohighlight">\(P(k) \rightarrow P(k+1)\)</span>. So we assume <span class="math notranslate nohighlight">\(P(k)\)</span>, that is, we assume that <span class="math notranslate nohighlight">\(2^{2k}-1\)</span> is
+divisible by 3. This means that <span class="math notranslate nohighlight">\(2^{2k} -1 = 3m\)</span> for some integer <span class="math notranslate nohighlight">\(m\)</span>.
+We want to prove <span class="math notranslate nohighlight">\(P(k+1)\)</span>, that is, that <span class="math notranslate nohighlight">\(2^{2(k+1)}-1\)</span> is also divisible by 3:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{rll}
+   2^{2(k+1)}-1 &amp;= 2^{2k+2}-1 &amp;\\
+                       &amp;= 2^{2k}\cdot2^2 - 1 &amp;\text{properties of exponents}\\
+                       &amp;= 4\cdot 2^{2k} -1 \\
+                       &amp;= 4\cdot 2^{2k} -4 + 4 -1 \\
+                       &amp;= 4(2^{2k} -1) + 3 &amp;\text{algebra} \\
+                       &amp;= 4(3m) + 3 &amp; \text{the inductive hypothesis}\\
+                       &amp;= 3(4m+1) &amp; \text{algebra}
+\end{array} \end{split}\]</div>
+<p>and from the last line we see that <span class="math notranslate nohighlight">\(2^{2k+1}\)</span> is in fact divisible by 3. (The
+third step—subtracting and adding 4—was done to enable us to use our inductive
+hypothesis.)</p>
+<p>Altogether, we have proved that <span class="math notranslate nohighlight">\(P(0)\)</span> holds and that, for all <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(P(k) \rightarrow
+P(k+1)\)</span> is true. Therefore, by the principle of induction, <span class="math notranslate nohighlight">\(P(n)\)</span> is true for
+all <span class="math notranslate nohighlight">\(n\)</span> in <span class="math notranslate nohighlight">\(\N\)</span>, i.e. <span class="math notranslate nohighlight">\(2^{2n}-1\)</span> is divisible by 3 for all <span class="math notranslate nohighlight">\(n\)</span> in <span class="math notranslate nohighlight">\(\N\)</span>.</p>
+<p>The principal of mathematical induction gives a method for proving <span class="math notranslate nohighlight">\(P(n)\)</span> for
+all <span class="math notranslate nohighlight">\(n\)</span> in the set <span class="math notranslate nohighlight">\(\N\)</span>. It should be clear that if <span class="math notranslate nohighlight">\(M\)</span> is any natural number, a similar method can
+be used to show that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all natural numbers
+<span class="math notranslate nohighlight">\(n\)</span> that satisfy <span class="math notranslate nohighlight">\(n\ge M\)</span>. Just start the induction with a base
+case of <span class="math notranslate nohighlight">\(n=M\)</span> instead of with a base case of <span class="math notranslate nohighlight">\(n=0\)</span>. I leave the
+proof of this extension of the principle of induction as an exercise.
+We can use the extended principle of induction to prove a result
+that was first mentioned in the section on <a class="reference external" href="props#truth-tables">truth tables</a>.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+Suppose that a compound proposition contains exactly <span class="math notranslate nohighlight">\(n\)</span> propositional
+variables, where <span class="math notranslate nohighlight">\(n\ge 1\)</span>. Then there are exactly <span class="math notranslate nohighlight">\(2^n\)</span> different ways
+of assigning truth values to the <span class="math notranslate nohighlight">\(n\)</span> variables.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement “There are exactly <span class="math notranslate nohighlight">\(2^n\)</span> different ways
+of assigning truth values to <span class="math notranslate nohighlight">\(n\)</span> propositional variables.” We will
+use induction to prove the <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all <span class="math notranslate nohighlight">\(n\ge1\)</span>.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> First, we prove the statement <span class="math notranslate nohighlight">\(P(1)\)</span>. If there is exactly
+one variable, then there are exactly two ways of assigning a truth
+value to that variable. Namely, the variable can be either _true
+or <em>false</em>. Since <span class="math notranslate nohighlight">\(2=2^1\)</span>, <span class="math notranslate nohighlight">\(P(1)\)</span> is true.</p>
+<p><strong>Inductive case:</strong> Suppose that <span class="math notranslate nohighlight">\(P(k)\)</span> is already known to be true.
+We want to prove that, under this assumption, <span class="math notranslate nohighlight">\(P(k+1)\)</span> is also true.
+Suppose that <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_{k+1}\)</span> are <span class="math notranslate nohighlight">\(k+1\)</span> propositional
+variables. Since we are assuming that <span class="math notranslate nohighlight">\(P(k)\)</span> is true, we know
+that there are <span class="math notranslate nohighlight">\(2^k\)</span> ways of assigning truth values to
+<span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_k\)</span>. But each assignment of truth values
+to <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_k\)</span> can be extended to the complete
+list <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_k\)</span>, <span class="math notranslate nohighlight">\(p_{k+1}\)</span> in two ways. Namely,
+<span class="math notranslate nohighlight">\(p_{k+1}\)</span> can be assigned the value <em>true</em> or the value
+<em>false</em>. It follows that there are <span class="math notranslate nohighlight">\(2\cdot 2^k\)</span> ways of
+assigning truth values to <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_{k+1}\)</span>.
+Since <span class="math notranslate nohighlight">\(2\cdot2^k=2^{k+1}\)</span>, this finishes the proof.</p>
+<p>The sum of an arbitrary number of terms is written using the
+symbol <span class="math notranslate nohighlight">\(\sum\)</span>. (This symbol is the Greek letter sigma, which is
+equivalent to the Latin letter S and stands for “sum.”) Thus, we
+have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l}
+   \displaystyle\sum_{i=1}^5 i^2 = 1^2+2^2+3^2+4^2+5^2\\
+   \displaystyle\sum_{k=3}^7 a_k = a_3+a_4+a_5+a_6+a_7\\
+   \displaystyle\sum_{n=0}^N \frac{1}{n+1} = \frac{1}{0+1}+\frac{1}{1+1}+\frac{1}{2+1}+\cdots+\frac{1}{N+1}\\
+\end{array} \end{split}\]</div>
+<p>This notation for a sum, using the <span class="math notranslate nohighlight">\(\sum\)</span> operator, is called
+<strong>summation notation</strong>. A similar notation for products uses the
+symbol <span class="math notranslate nohighlight">\(\prod\)</span>. (This is the Greek letter pi, which is equivalent
+to the Latin letter P and stands for “product.”) For example,
+<span class="math notranslate nohighlight">\($ \begin{array}{l}
+   \displaystyle\prod_{k=2}^5 (3k+2) = (3\cdot 2+2)(3\cdot 3+2)(3\cdot 4+2)(3\cdot 5+2)\\
+   \displaystyle\prod_{i=1}^n \frac{1}{i} = \frac{1}{1}\cdot \frac{1}{2}\cdots \frac{1}{n}
+\end{array} $\)</span></p>
+<p>Induction can be used to prove many formulas that use these notations.
+Here are two examples:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+<span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^n\, i=\frac{n(n+1)}{2}\)</span> for any integer <span class="math notranslate nohighlight">\(n\)</span> greater than zero.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^n\,i=\frac{n(n+1)}{2}\)</span>.
+We use induction to show that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all <span class="math notranslate nohighlight">\(n\geq 1\)</span>.</p>
+</div></blockquote>
+<p><strong>Base case:</strong> Consider the case <span class="math notranslate nohighlight">\(n=1\)</span>. <span class="math notranslate nohighlight">\(P(1)\)</span> is the statement
+that <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^1\,i=\frac{1(1+1)}{2}\)</span>.
+Since <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^1\,i=1\)</span> and <span class="math notranslate nohighlight">\(\displaystyle\frac{1(1+1)}{2}=1\)</span>,
+<span class="math notranslate nohighlight">\(P(1)\)</span> is true.</p>
+<p><strong>Inductive case:</strong> Let <span class="math notranslate nohighlight">\(k&gt;1\)</span> be arbitrary, and assume that <span class="math notranslate nohighlight">\(P(k)\)</span> is true.
+We want to show that <span class="math notranslate nohighlight">\(P(k+1)\)</span> is true. <span class="math notranslate nohighlight">\(P(k+1)\)</span> is the statement
+<span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^{k+1}\,i=\frac{(k+1)(k+2)}{2}\)</span>. But</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{rll}
+   \sum_{i=1}^{k+1}\,i &amp;= \left(\sum_{i=1}^k\,i\right)+(k+1) &amp;\\
+                       &amp;= \frac{k(k+1)}{2}+(k+1) &amp;\text{(inductive hypothesis)}\\
+                       &amp;= \frac{k(k+1)}{2}+\frac{2(k+1)}{2}\\
+                       &amp;= \frac{k(k+1)+2(k+1)}{2}\\
+                       &amp;= \frac{(k+2)(k+1)}{2}\\
+                       &amp;= \frac{(k+1)(k+2)}{2}
+\end{array} \end{split}\]</div>
+<p>which is what we wanted to show. This computation completes the induction.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+<span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^n\,i2^{i-1}=(n-1)\cdot2^n+1\)</span> for any natural number <span class="math notranslate nohighlight">\(n&gt;0\)</span>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^n\,i2^{i-1}=(n-1)\cdot2^n+1\)</span>.
+We use induction to show that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all <span class="math notranslate nohighlight">\(n&gt;0\)</span></p>
+</div></blockquote>
+<p><strong>Base case:</strong> Consider the case <span class="math notranslate nohighlight">\(n=1\)</span>. <span class="math notranslate nohighlight">\(P(1)\)</span> is the statement
+that <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^1\,i2^{i-1}=(1-1)\cdot2^1+1\)</span>.
+Since each side of this equation is equal to one, this is true.</p>
+<p><strong>Inductive case:</strong> Let <span class="math notranslate nohighlight">\(k&gt;1\)</span> be arbitrary, and assume that <span class="math notranslate nohighlight">\(P(k)\)</span> is
+true. We want to show that <span class="math notranslate nohighlight">\(P(k+1)\)</span> is true. <span class="math notranslate nohighlight">\(P(k+1)\)</span> is the
+statement <span class="math notranslate nohighlight">\(\displaystyle \sum_{i=1}^{k+1}\,i2^{i-1}=((k+1)-1)\cdot2^{k+1}+1\)</span>.
+But, we can compute that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{rll}
+   \sum_{i=1}^{k+1}\,i2^{i-1} &amp;= \left(\sum_{i=1}^k\,i2^{i-1}\right)+(k+1)2^{(k+1)-1}\\
+                              &amp;= \left((k-1)\cdot2^k+1\right)+(k+1)2^k &amp;\text{(inductive hypothesis)}\\
+                              &amp;= \big((k-1)+(k+1)\big)2^k+1\\
+                              &amp;= (k\cdot2)\cdot2^k+1\\
+                              &amp;= k2^{k+1}+1
+\end{array} \end{split}\]</div>
+<p>which is what we wanted to show. This completes the induction.</p>
+<p>For example, these theorems show that <span class="math notranslate nohighlight">\(\displaystyle\sum_{i=1}^{100}i=1+2+3+4+\cdots+100=\frac{100(100+1)}{2}= 5050\)</span>
+and that <span class="math notranslate nohighlight">\(1\cdot2^0+2\cdot2^1+3\cdot2^2+4\cdot2^3+5\cdot2^4=(5-1)2^5+1=129\)</span>,
+as well as infinitely many other such sums.</p>
+<div class="section" id="strong-mathematical-induction">
+<h2>Strong Mathematical Induction<a class="headerlink" href="#strong-mathematical-induction" title="Permalink to this headline">¶</a></h2>
+<p>There is a second form of the principle of mathematical induction
+which is useful in some cases. To apply the first form of induction,
+we assume <span class="math notranslate nohighlight">\(P(k)\)</span> for an arbitrary natural number <span class="math notranslate nohighlight">\(k\)</span> and show
+that <span class="math notranslate nohighlight">\(P(k+1)\)</span> follows from that assumption. In the second form of
+induction, the assumption is that <span class="math notranslate nohighlight">\(P(x)\)</span> holds for all <span class="math notranslate nohighlight">\(x\)</span> between 0 and
+<span class="math notranslate nohighlight">\(k\)</span> inclusive, and we show that <span class="math notranslate nohighlight">\(P(k+1)\)</span> follows from this. This gives
+us a lot more to work with when deducing <span class="math notranslate nohighlight">\(P(k+1)\)</span>. We will need this
+second form of induction in the next two sections.</p>
+<blockquote>
+<div><p><strong>Theorem: Strong Mathematical Induction</strong><br />
+Let <span class="math notranslate nohighlight">\(P\)</span> be a one-place predicate whose domain of discourse includes
+the natural numbers. Suppose that <span class="math notranslate nohighlight">\(P(0)\)</span> is true and that</p>
+</div></blockquote>
+<div class="math notranslate nohighlight">
+\[
+(P(0)\land P(1)\land\cdots\land P(k))\rightarrow P(k+1)
+\]</div>
+<p>is true for each natural number <span class="math notranslate nohighlight">\(k\geq 0\)</span>.
+Then <span class="math notranslate nohighlight">\(P(n)\)</span> is true for every natural number <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>For example, we can use this theorem to prove that every integer greater
+than one can be written as a product of prime numbers (where a
+number that is itself prime is considered to be a product of
+one prime number). The proof illustrates an important point about
+applications of this theorem: When proving <span class="math notranslate nohighlight">\(P(k+1)\)</span>, you don’t necessarily
+have to <em>use</em> the assumptions that <span class="math notranslate nohighlight">\(P(0)\)</span>, <span class="math notranslate nohighlight">\(P(1)\)</span>, …, and <span class="math notranslate nohighlight">\(P(k)\)</span>
+are true. If <span class="math notranslate nohighlight">\(P(k+1)\)</span> is proved by <em>any</em> means—possibly including the
+assumptions—then the statement <span class="math notranslate nohighlight">\((P(0)\land P(1)\land\cdots\land P(k))\rightarrow P(k+1)\)</span>
+has been shown to be true. It follows from this observation that
+several numbers, not just zero, can be “base cases” in
+the sense that <span class="math notranslate nohighlight">\(P(x+1)\)</span> can be proved independently of <span class="math notranslate nohighlight">\(P(0)\)</span> through
+<span class="math notranslate nohighlight">\(P(x)\)</span>. In this sense, 0, 1, and every prime number are base cases
+in the following theorem.</p>
+<blockquote>
+<div><p><strong>Theorem:</strong>
+Every natural number greater than one can be written as a product of
+prime numbers.</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Proof:</strong>
+Let <span class="math notranslate nohighlight">\(P(n)\)</span> be the statement “if <span class="math notranslate nohighlight">\(n&gt;1\)</span>, then <span class="math notranslate nohighlight">\(n\)</span> can be written as a
+product of prime numbers.” We will prove that <span class="math notranslate nohighlight">\(P(n)\)</span> is true for all
+<span class="math notranslate nohighlight">\(n\)</span> by applying the strong principle of induction.</p>
+</div></blockquote>
+<p>Note that <span class="math notranslate nohighlight">\(P(0)\)</span> and <span class="math notranslate nohighlight">\(P(1)\)</span> are both automatically true, since <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span>
+do not satisfy the condition that <span class="math notranslate nohighlight">\(n&gt;1\)</span>, and <span class="math notranslate nohighlight">\(P(2)\)</span> is true
+since 2 is the product of the single prime number 2. Suppose that <span class="math notranslate nohighlight">\(k\)</span> is an arbitrary
+natural number with <span class="math notranslate nohighlight">\(k&gt;1\)</span>, and suppose that <span class="math notranslate nohighlight">\(P(0)\)</span>, <span class="math notranslate nohighlight">\(P(1)\)</span>, …, <span class="math notranslate nohighlight">\(P(k)\)</span>
+are already known to be true; we want to show that <span class="math notranslate nohighlight">\(P(k+1)\)</span> is true.
+In the case where <span class="math notranslate nohighlight">\(k+1\)</span> is a prime number,
+then <span class="math notranslate nohighlight">\(k+1\)</span> is a product of one prime number, so <span class="math notranslate nohighlight">\(P(k+1)\)</span> is true.</p>
+<p>Consider the case where <span class="math notranslate nohighlight">\(k+1\)</span> is not prime. Then, according to the
+definition of prime number, it is possible to write <span class="math notranslate nohighlight">\(k+1=ab\)</span> where
+<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are numbers in the range from 2 to <span class="math notranslate nohighlight">\(k\)</span> inclusive. Since
+<span class="math notranslate nohighlight">\(P(0)\)</span> through <span class="math notranslate nohighlight">\(P(k)\)</span> are known to be true, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> can
+each be written as a product of prime numbers. Since <span class="math notranslate nohighlight">\(k+1=ab\)</span>,
+<span class="math notranslate nohighlight">\(k+1\)</span> can also be written as a product of prime numbers. We have
+shown that <span class="math notranslate nohighlight">\(P(k+1)\)</span> follows from <span class="math notranslate nohighlight">\(P(0)\land P(1)\land\cdots\land P(k)\)</span>,
+and this completes the induction.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Use induction to prove that <span class="math notranslate nohighlight">\(n^3 + 3n^2 + 2n\)</span> is divisible by 3
+for all natural numbers <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>Use induction to prove that
+<span class="math notranslate nohighlight">\($
+\sum_{i=0}^{n}r^i=\frac{1-r^{n+1}}{1-r}
+$\)</span>
+for any natural number <span class="math notranslate nohighlight">\(n\)</span> and for any real number <span class="math notranslate nohighlight">\(r\)</span> such that <span class="math notranslate nohighlight">\(r\not=1\)</span>.</p></li>
+<li><p>Use induction to prove that for any natural number <span class="math notranslate nohighlight">\(n\)</span>,
+<span class="math notranslate nohighlight">\($
+\sum_{i=0}^{n}\frac{1}{2^i}=2-\frac{1}{2^{n}}
+$\)</span>
+In addition to proving this by induction, show that it follows
+as a corollary of Exercise 2.</p></li>
+<li><p>Use induction to prove that for any natural number <span class="math notranslate nohighlight">\(n\)</span>,
+<span class="math notranslate nohighlight">\($
+\sum_{i=0}^{n}2^i=2^{n+1}-1
+$\)</span>
+In addition to proving this by induction, show that it follows
+as a corollary of Exercise 2.</p></li>
+<li><p>Use induction to prove that for any positive integer <span class="math notranslate nohighlight">\(n\)</span>,
+<span class="math notranslate nohighlight">\($
+\sum_{i=1}^ni^2=\frac{n(n+1)(2n+1)}{6}
+$\)</span></p></li>
+<li><p>Use induction to prove that for any positive integer <span class="math notranslate nohighlight">\(n\)</span>,
+<span class="math notranslate nohighlight">\($
+\sum_{i=1}^n(2i-1)=n^2
+$\)</span></p></li>
+<li><p>Evaluate the following sums, using results proved in this
+section and in the previous exercises:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1+3+5+7+9+11+13+15+17+19\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle 1+\frac{1}{3}+\frac{1}{3^2}+\frac{1}{3^3}+\frac{1}{3^4}+\frac{1}{3^5}+\frac{1}{3^6}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(50+51+52+53+\cdots+99+100\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(1+4+9+16+25+36+49+81+100\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\displaystyle \frac{1}{2^2}+\frac{1}{2^3}+\cdots+\frac{1}{2^{99}}\)</span></p></li>
+</ul>
+</li>
+<li><p>Write each of the sums in the preceding problem using
+summation notation.</p></li>
+<li><p>Use induction to prove the following generalized distributive
+laws for propositional logic: For any natural number <span class="math notranslate nohighlight">\(n&gt;1\)</span> and any
+propositions <span class="math notranslate nohighlight">\(q\)</span>, <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_n\)</span>,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q\land(p_1\lor p_2\lor\cdots\lor p_n)=(q\land p_1)\lor(q\land p_2)\lor\cdots\lor(q\land p_n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(q\lor(p_1\land p_2\land\cdots\land p_n)=(q\lor p_1)\land(q\lor p_2)\land\cdots\land(q\lor p_n)\)</span></p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="pred-deduction.html" title="previous page">Natural Deduction for Predicate Logic</a>
+    <a class='right-next' id="next-link" href="recursion.html" title="next page">Recursion and Induction</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

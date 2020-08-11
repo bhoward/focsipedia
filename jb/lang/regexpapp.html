@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Applications of Regular Expressions &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Finite-State Automata" href="fsa.html" />
+    <link rel="prev" title="Regular Expressions" href="regexp.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsa.html">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bnf.html">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pda.html">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computability.html">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/regexpapp.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="applications-of-regular-expressions">
+<h1>Applications of Regular Expressions<a class="headerlink" href="#applications-of-regular-expressions" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>A common operation when editing text is to search for a
+given string of characters, sometimes with the purpose of
+replacing it with another string.  Many “search and replace” facilities have the option of using regular expressions
+instead of simple strings of characters.  A regular expression describes
+a language, that is, a <em>set</em> of strings.  We can think of a regular
+expression as a <strong>pattern</strong> that matches certain strings, namely all
+the strings in the language described by the regular expression.
+When a regular expression is used in a search operation, the
+goal is to find a string that matches the expression.  This type
+of <strong>pattern matching</strong> is very useful.</p>
+<p>The ability to do pattern matching with regular expressions is provided
+in many text editors, including <em>jedit</em> and <em>kwrite</em>.
+Programming languages often come with libraries for working with
+regular expressions.  Java (as of version 1.4) provides regular
+expression handling though a package named <code class="docutils literal notranslate"><span class="pre">java.util.regexp</span></code>.
+C++ typically provides a header file named <code class="docutils literal notranslate"><span class="pre">regexp.h</span></code> for
+the same purpose.  In all these applications, many new notations are added to the syntax to make it
+more convenient to use.  The syntax can vary from one implementation
+to another, but most implementations include the capabilities
+discussed in this section.</p>
+<p>In applications of regular expressions, the alphabet usually includes
+all the characters on the keyboard.  This leads to a problem, because
+regular expressions actually use two types of symbols:  symbols that
+are members of the alphabet and special symbols such as <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">)</span></code> that
+are used to construct expressions.  These special symbols, which
+are not part of the language being described but are used in the
+description, are called <strong>meta-characters</strong>.  The problem is,
+when the alphabet includes all the available characters, what do we
+do about meta-characters?  If the language that we are describing
+uses the <code class="docutils literal notranslate"><span class="pre">*</span></code> character, for example, how can we represent the
+Kleene star operation?</p>
+<p>The solution is to use a so-called “escape character,” which is
+usually the backslash, <code class="docutils literal notranslate"><span class="pre">\</span></code>.  We agree, for example, that the notation
+<code class="docutils literal notranslate"><span class="pre">\*</span></code> refers to the symbol <code class="docutils literal notranslate"><span class="pre">*</span></code> that is a member of
+the alphabet, while <code class="docutils literal notranslate"><span class="pre">*</span></code> by itself is the meta-character
+that represents the Kleene star operation.  Similarly,
+<code class="docutils literal notranslate"><span class="pre">(</span></code> and <code class="docutils literal notranslate"><span class="pre">)</span></code> are the meta-characters that are used
+for grouping, while the corresponding characters in the language
+are written as <code class="docutils literal notranslate"><span class="pre">\(</span></code> and <code class="docutils literal notranslate"><span class="pre">\)</span></code>.  For example,
+a regular expression that matches the string <code class="docutils literal notranslate"><span class="pre">a*b</span></code> repeated
+any number of times would be written: <code class="docutils literal notranslate"><span class="pre">(a\*b)*</span></code>.
+The backslash is also used to represent certain non-printing
+characters.  For example, a tab is represented as <code class="docutils literal notranslate"><span class="pre">\t</span></code>
+and a new line character is <code class="docutils literal notranslate"><span class="pre">\n</span></code>.</p>
+<p>We introduce two new common operations on regular expressions and two
+new meta-characters to represent them.
+The first operation is represented by the meta-character <code class="docutils literal notranslate"><span class="pre">+</span></code>:
+If <code class="docutils literal notranslate"><span class="pre">r</span></code> is a regular expression, then <code class="docutils literal notranslate"><span class="pre">r+</span></code> represents the
+occurrence of <code class="docutils literal notranslate"><span class="pre">r</span></code> one or more times.  The second operation
+is represented by <code class="docutils literal notranslate"><span class="pre">?</span></code>: The notation <code class="docutils literal notranslate"><span class="pre">r?</span></code> represents an occurrence of <code class="docutils literal notranslate"><span class="pre">r</span></code>
+zero or one times.  That is to say, <code class="docutils literal notranslate"><span class="pre">r?</span></code> represents an optional
+occurrence of <code class="docutils literal notranslate"><span class="pre">r</span></code>.  Note that these operations are introduced
+for convenience only and do not represent any real increase
+in the power.  In fact, <code class="docutils literal notranslate"><span class="pre">r+</span></code> is exactly equivalent to
+<code class="docutils literal notranslate"><span class="pre">rr*</span></code>, and <code class="docutils literal notranslate"><span class="pre">r?</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">(r|ε)</span></code>
+(except that in applications there is generally no equivalent to <code class="docutils literal notranslate"><span class="pre">ε</span></code>).</p>
+<p>To make it easier to deal with the large number of characters in the
+alphabet, <strong>character classes</strong> are introduced.  A character class
+consists of a list of characters enclosed between brackets, <code class="docutils literal notranslate"><span class="pre">[</span></code> and
+<code class="docutils literal notranslate"><span class="pre">]</span></code>.  (The brackets are meta-characters.)  A character class
+matches a single character, which can be any of the characters in
+the list.  For example, <code class="docutils literal notranslate"><span class="pre">[0123456789]</span></code> matches any one of
+the digits 0 through 9.  The same thing could be expressed
+as <code class="docutils literal notranslate"><span class="pre">(0|1|2|3|4|5|6|7|8|9)</span></code>, so once again
+we have added only convenience, not new representational power.
+For even more convenience, a hyphen can be included in a character
+class to indicate a range of characters.  This means that
+<code class="docutils literal notranslate"><span class="pre">[0123456789]</span></code> could also be written as <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code>
+and that the regular expression <code class="docutils literal notranslate"><span class="pre">[a-z]</span></code> will match any
+single lowercase letter.  A character class can include multiple
+ranges, so that <code class="docutils literal notranslate"><span class="pre">[a-zA-Z]</span></code> will match any letter, lower- or
+uppercase.  The period (<code class="docutils literal notranslate"><span class="pre">.</span></code>) is a meta-character that will
+match any single character, except (in most implementations)
+for an end-of-line.
+These notations can, of course, be used in more complex
+regular expressions.  For example, <code class="docutils literal notranslate"><span class="pre">[A-Z][a-zA-Z]*</span></code>
+will match any capitalized word, and <code class="docutils literal notranslate"><span class="pre">\(.*\)</span></code> matches
+any string of characters enclosed in parentheses.</p>
+<p>In most implementations, the meta-character <code class="docutils literal notranslate"><span class="pre">^</span></code> can be used in
+a regular expression to match the beginning of a line of text, so that
+the expression <code class="docutils literal notranslate"><span class="pre">^[a-zA-Z]+</span></code> will only match a word that
+occurs at the start of a line.  Similarly, <code class="docutils literal notranslate"><span class="pre">$</span></code> is used
+as a meta-character to match the end of a line.  Some implementations
+also have a way of matching beginnings and ends of words.
+Typically, <code class="docutils literal notranslate"><span class="pre">\b</span></code> will match such “word boundaries.”
+Using this notation,
+the pattern <code class="docutils literal notranslate"><span class="pre">\band\b</span></code> will match the string “and”
+when it occurs as a word, but will not match the a-n-d
+in the word “random.”  We are going a bit beyond
+basic regular expressions here: Previously, we only thought of
+a regular expression as something that either will match
+or will not match a given string in its entirety.   When
+we use a regular expression for a search operation, however,
+we want to find a <em>substring</em> of a given string that
+matches the expression.  The notations <code class="docutils literal notranslate"><span class="pre">^</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$</span></code> and <code class="docutils literal notranslate"><span class="pre">\b</span></code> put restrictions
+on <em>where</em> the matching substring can be located in the string.</p>
+<p>When regular expressions are used in search-and-replace operations,
+a regular expression is used for the search pattern.  A search is
+made in a (typically long) string for a substring that matches the pattern,
+and then the substring is replaced by a specified replacement
+pattern.  The replacement pattern is not used for matching
+and is not a regular expression.  However, it can be more than
+just a simple string.  It’s possible to include parts of the
+substring that is being replaced in the replacement string.
+The notations <code class="docutils literal notranslate"><span class="pre">\0</span></code>, <code class="docutils literal notranslate"><span class="pre">\1</span></code>, …, <code class="docutils literal notranslate"><span class="pre">\9</span></code>
+are used for this purpose.  The first of these, <code class="docutils literal notranslate"><span class="pre">\0</span></code>,
+stands for the entire substring that is being replaced.
+The others are only available when parentheses are used in
+the search pattern.  The notation <code class="docutils literal notranslate"><span class="pre">\1</span></code> stands for
+“the part of the substring that matched the part of the
+search pattern beginning with the first <code class="docutils literal notranslate"><span class="pre">(</span></code> in the
+pattern and ending with the matching <code class="docutils literal notranslate"><span class="pre">)</span></code>.”  Similarly,
+<code class="docutils literal notranslate"><span class="pre">\2</span></code> represents whatever matched the part of the
+search pattern between the second pair of parentheses, and so on.</p>
+<p>Suppose, for example, that you would like to search for
+a name in the form <em>last-name, first-name</em> and
+replace it with the same name in the form <em>first-name last-name</em>.
+For example, “Reeves, Keanu” should be converted to “Keanu Reeves”.
+Assuming that names contain only letters,
+this could be done using the search pattern <code class="docutils literal notranslate"><span class="pre">([A-Za-z]+),</span> <span class="pre">([A-Za-z]+)</span></code>
+and the replacement pattern <code class="docutils literal notranslate"><span class="pre">\2</span> <span class="pre">\1</span></code>.  When the match is
+made, the first <code class="docutils literal notranslate"><span class="pre">([A-Za-z]+)</span></code> will match “Reeves”,[^Anyone who
+tells you the comma always belongs inside the quotation marks has never
+had to punctuate a sentence like this….]
+so that in the replacement pattern, <code class="docutils literal notranslate"><span class="pre">\1</span></code> represents the
+substring “Reeves”. Similarly, <code class="docutils literal notranslate"><span class="pre">\2</span></code> will represent
+“Keanu”.  Note that the parentheses
+are included in the search pattern <em>only</em> to specify what parts
+of the string are represented by <code class="docutils literal notranslate"><span class="pre">\1</span></code> and <code class="docutils literal notranslate"><span class="pre">\2</span></code>.
+In practice, you might use <code class="docutils literal notranslate"><span class="pre">^([A-Za-z]+),</span> <span class="pre">([A-Za-z])$</span></code>
+as the search pattern to constrain it so that it will only
+match a complete line of text.  By using a “global” search-and-replace,
+you could convert an entire file of names from one format to the other
+in a single operation.</p>
+<p>Regular expressions are a powerful and useful technique that
+should be part of any computer scientist’s toolbox.  This section
+has given you a taste of what they can do, but you should check
+out the specific capabilities of the regular expression implementation
+in the tools and programming languages that you use.</p>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The backslash is itself a meta-character.  Suppose that
+you want to match a string that contains a backslash
+character.  How do you suppose you would represent the backslash in
+the regular expression?</p></li>
+<li><p>Using the notation introduced in this section,
+write a regular expression that could be used to match
+each of the following:</p>
+<ul class="simple">
+<li><p>Any sequence of letters (upper- or lowercase) that
+includes the letter Z (in uppercase).</p></li>
+<li><p>Any tem-digit telephone number written in the form
+<code class="docutils literal notranslate"><span class="pre">(xxx)xxx-xxxx</span></code>.</p></li>
+<li><p>Any ten-digit telephone number <em>either</em>
+in the form <code class="docutils literal notranslate"><span class="pre">(xxx)xxx-xxxx</span></code> or <code class="docutils literal notranslate"><span class="pre">xxx-xxx-xxxx</span></code>.</p></li>
+<li><p>A non-negative real number with an optional decimal
+part.  The expression should match numbers such as
+17, 183.9999, 182., 0, 0.001, and 21333.2.</p></li>
+<li><p>A complete line of  text that contains only letters.</p></li>
+<li><p>A C++ style one-line comment consisting of <code class="docutils literal notranslate"><span class="pre">//</span></code> and all the
+following characters up to the end-of-line.</p></li>
+</ul>
+</li>
+<li><p>Give a search pattern and a replace pattern that could
+be used to perform the following conversions:</p>
+<ul class="simple">
+<li><p>Convert a string that is enclosed in a pair of double quotes to
+the same string with the double quotes replaced by single quotes.</p></li>
+<li><p>Convert ten-digit telephone numbers in the format
+<code class="docutils literal notranslate"><span class="pre">xxx-xxx-xxxx</span></code> to the format <code class="docutils literal notranslate"><span class="pre">(xxx)xxx-xxxx</span></code>.</p></li>
+<li><p>Convert C++ one-line comments, consisting of characters
+between <code class="docutils literal notranslate"><span class="pre">//</span></code> and end-of-line, to C style comments enclosed
+between <code class="docutils literal notranslate"><span class="pre">/*</span></code> and <code class="docutils literal notranslate"><span class="pre">*/</span></code>.</p></li>
+<li><p>Convert any number of consecutive spaces and tabs to
+a single space.</p></li>
+</ul>
+</li>
+<li><p>In some implementations of “regular expressions,” the
+notations <code class="docutils literal notranslate"><span class="pre">\1</span></code>, <code class="docutils literal notranslate"><span class="pre">\2</span></code>, and so on can occur
+in a <em>search</em> pattern.  For example, consider the search pattern
+<code class="docutils literal notranslate"><span class="pre">^([a-zA-Z]).*\1$</span></code>.  Here, <code class="docutils literal notranslate"><span class="pre">\1</span></code> represents
+a recurrence of the same substring that matched <code class="docutils literal notranslate"><span class="pre">[a-zA-Z]</span></code>,
+the part of the pattern between the first pair of parentheses.
+The entire pattern, therefore, will match a line of text that
+begins and ends with the same letter.  Using this notation,
+write a pattern that matches all strings in the language
+<span class="math notranslate nohighlight">\(L=\{a^nba^n\,|\,n\ge0\}\)</span>.  (Later in this chapter, we will
+see that <span class="math notranslate nohighlight">\(L\)</span> is <em>not</em> a regular language, so allowing the
+use of <code class="docutils literal notranslate"><span class="pre">\1</span></code> in a “regular expression” means that it’s
+not really a regular expression at all!  This notation can add
+a real increase in expressive power to the patterns that contain it.)</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="regexp.html" title="previous page">Regular Expressions</a>
+    <a class='right-next' id="next-link" href="fsa.html" title="next page">Finite-State Automata</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

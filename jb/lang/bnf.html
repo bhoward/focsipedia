@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Backus-Naur Form &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parsing and Parse Trees" href="parsing.html" />
+    <link rel="prev" title="Context-Free Grammars" href="cfg.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexpapp.html">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsa.html">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pda.html">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="computability.html">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/bnf.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="backus-naur-form">
+<h1>Backus-Naur Form<a class="headerlink" href="#backus-naur-form" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>Context-free grammars are used to describe some aspects of
+the syntax of programming languages. However, a notation
+that is often used for grammars in the context of programming languages
+is somewhat different from the notation introduced in the
+preceding section. The notation that is used is called
+<strong>Backus-Naur Form</strong> or BNF. It is named after computer
+scientists John Backus and Peter Naur, who developed the
+notation. Actually, several variations of BNF exist.
+I will discuss one of them here. BNF can be used to describe
+the syntax of natural languages, as well as programming languages,
+and some of the examples in this section will deal with the
+syntax of English.</p>
+<p>Like context-free grammars, BNF grammars make use of production rules, non-terminals,
+and terminals. The non-terminals are usually given meaningful,
+multi-character names. Here, I will follow a common practice
+of enclosing non-terminals in angle brackets, so that they can
+be easily distinguished. For example, <span class="math notranslate nohighlight">\(\langle\textit{noun}\rangle\)</span> and <span class="math notranslate nohighlight">\(\langle\textit{sentence}\rangle\)</span>
+could be non-terminals in a BNF grammar for English, while
+<span class="math notranslate nohighlight">\(\langle\textit{program}\rangle\)</span> and <span class="math notranslate nohighlight">\(\langle\textit{if-statement}\rangle\)</span> might be used in a BNF grammar
+for a programming language. Note that a BNF non-terminal
+usually represents a meaningful <strong>syntactic category</strong>,
+that is, a certain type of building block in the syntax of
+the language that is being described, such as an adverb,
+a prepositional phrase, or a variable declaration statement.
+The terminals of a BNF grammar are the things that actually
+appear in the language that is being described. In the case
+of natural language, the terminals are individual words.</p>
+<p>In BNF production rules, I will use the symbol “::=”
+in place of the “<span class="math notranslate nohighlight">\(\longrightarrow\)</span>” that is used in context-free grammars.
+BNF production rules are more powerful than the production rules in
+context-free grammars. That is, one BNF rule might be equivalent to
+several context-free grammar rules. As for context-free grammars,
+the left-hand side of a BNF production rule is a single
+non-terminal symbol. The right hand side can include terminals
+and non-terminals, and can also use the following notations,
+which should remind you of notations used in regular expressions:</p>
+<ul class="simple">
+<li><p>A vertical bar, <span class="math notranslate nohighlight">\(|\)</span>, indicates a choice of
+alternatives. For example,
+<span class="math notranslate nohighlight">\($
+\langle\textit{digit}\rangle\ ::=\ 0 \;|\; 1 \;|\; 2
+\;|\; 3 \;|\; 4 \;|\; 5 \;|\; 6 \;|\; 7
+\;|\; 8 \;|\; 9
+$\)</span>
+indicates that the non-terminal <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\)</span> can be replaced
+by any one of the terminal symbols 0, 1, \dots, 9.</p></li>
+<li><p>Items enclosed in brackets are optional. For example,
+<span class="math notranslate nohighlight">\($
+\langle\textit{declaration}\rangle\ ::=\ \langle\textit{type}\rangle\ \langle\textit{variable}\rangle
+\ [\ =\ \langle\textit{expression}\rangle\ ]\ ;
+$\)</span>
+says that <span class="math notranslate nohighlight">\(\langle\textit{declaration}\rangle\)</span> can be replaced either
+by “<span class="math notranslate nohighlight">\(\langle\textit{type}\rangle\ \langle\textit{variable}\rangle\ ;\)</span>” or by “<span class="math notranslate nohighlight">\(\langle\textit{type}\rangle\ \langle\textit{variable}\rangle\ =\ \langle\textit{expression}\rangle\ ;\)</span>”.
+(The symbols “=” and “;” are terminal symbols in this rule.)</p></li>
+<li><p>Items enclosed between “<span class="math notranslate nohighlight">\([\)</span>” and “<span class="math notranslate nohighlight">\(]\ldots\)</span>”
+can be repeated zero or more times. (This has the same effect
+as a “<span class="math notranslate nohighlight">\(*\)</span>”in a regular expression.) For example,
+<span class="math notranslate nohighlight">\($
+\langle\textit{integer}\rangle\ ::=\ \langle\textit{digit}\rangle\ [\ \langle\textit{digit}\rangle\ ]\ldots
+$\)</span>
+says that an <span class="math notranslate nohighlight">\(\langle\textit{integer}\rangle\)</span> consists of a <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\)</span> followed
+optionally by any number of additional <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\)</span>’s. That is,
+the non-terminal <span class="math notranslate nohighlight">\(\langle\textit{integer}\rangle\)</span> can be replaced by <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\)</span> or
+by <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\ \langle\textit{digit}\rangle\)</span> or by <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\ \langle\textit{digit}\rangle\ \langle\textit{digit}\rangle\)</span>, and so on.</p></li>
+<li><p>Parentheses can be used as usual, for grouping.</p></li>
+</ul>
+<p>All these notations can be expressed in a context-free grammar
+by introducing additional production rules. For example, the
+BNF rule “<span class="math notranslate nohighlight">\(\langle\textit{sign}\rangle\ ::=\ +\;|\;-\)</span>” is equivalent
+to the two rules, “<span class="math notranslate nohighlight">\(\langle\textit{sign}\rangle\ ::=\ +\)</span>”
+and “<span class="math notranslate nohighlight">\(\langle\textit{sign}\rangle\ ::=\ -\)</span>“. A rule that contains an
+optional item can also be replaced by two rules. For example,
+<span class="math notranslate nohighlight">\($
+\langle\textit{declaration}\rangle\ ::=\ \langle\textit{type}\rangle\ \langle\textit{variable}\rangle
+\ [\ =\ \langle\textit{expression}\rangle\ ]\ ;
+$\)</span>
+can be replaced by the two rules
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+   &amp;\langle\textit{declaration}\rangle\ ::=\ \langle\textit{type}\rangle\ \langle\textit{variable}\rangle\ ;\\
+   &amp;\langle\textit{declaration}\rangle\ ::=\ \langle\textit{type}\rangle\ \langle\textit{variable}\rangle
+     \ =\ \langle\textit{expression}\rangle\ ;
+\end{aligned}
+$\)</span>
+In context-free grammars, repetition can be expressed by
+using a recursive rule such as “<span class="math notranslate nohighlight">\(S\longrightarrow aS\)</span>”, in which the
+same non-terminal symbol appears both on the left-hand side and on the right-hand
+side of the rule. BNF-style notation using “<span class="math notranslate nohighlight">\([\)</span>” and “<span class="math notranslate nohighlight">\(]\ldots\)</span>” can
+be eliminated by replacing it with a new non-terminal symbol and adding
+a recursive rule to allow that symbol to repeat zero or more times.
+For example, the production rule
+<span class="math notranslate nohighlight">\($
+\langle\textit{integer}\rangle\ ::=\ \langle\textit{digit}\rangle\ [\ \langle\textit{digit}\rangle\ ]\ldots
+$\)</span>
+can be replaced by three rules using a new non-terminal symbol
+<span class="math notranslate nohighlight">\(\langle\textit{digit-list}\rangle\)</span> to represent a string of zero or more <span class="math notranslate nohighlight">\(\langle\textit{digit}\rangle\)</span>’s:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+&amp;\langle\textit{integer}\rangle\ ::=\ \langle\textit{digit}\rangle\ \langle\textit{digit-list}\rangle\\
+&amp;\langle\textit{digit-list}\rangle\ ::=\ \langle\textit{digit}\rangle\ \langle\textit{digit-list}\rangle\\
+&amp;\langle\textit{digit-list}\rangle\ ::=\ \varepsilon
+\end{aligned}
+$\)</span></p>
+<p>As an example of a complete BNF grammar, let’s look at a BNF grammar for a very small
+subset of English. The start symbol for the grammar
+is <span class="math notranslate nohighlight">\(\langle\textit{sentence}\rangle\)</span>, and the terminal symbols are English words.
+All the sentences that can be produced from this grammar
+are syntactically correct English sentences, although you wouldn’t
+encounter many of them in conversation. Here is the grammar:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+&amp;\langle\textit{sentence}\rangle\ ::=\ \langle\textit{simple-sentence}\rangle\ [\ \textrm{and}\ \langle\textit{simple-sentence}\rangle\ ]\ldots\\
+&amp;\langle\textit{simple-sentence}\rangle\ ::=\ \langle\textit{noun-part}\rangle\ \langle\textit{verb-part}\rangle\\
+&amp;\langle\textit{noun-part}\rangle\ ::=\ \langle\textit{article}\rangle\ \langle\textit{noun}\rangle\ [\ \textrm{who}\ \langle\textit{verb-part}\rangle\ ]\ldots\\
+&amp;\langle\textit{verb-part}\rangle\ ::=\ \langle\textit{intransitive-verb}\rangle \;|\; (\ \langle\textit{transitive-verb}\rangle\ \langle\textit{noun-part}\rangle\ )\\
+&amp;\langle\textit{article}\rangle\ ::=\ \textrm{the} \;|\; \textrm{a}\\
+&amp;\langle\textit{noun}\rangle\ ::=\ \textrm{man} \;|\; \textrm{woman} \;|\; \textrm{dog} \;|\; \textrm{cat} \;|\; \textrm{computer}\\
+&amp;\langle\textit{intransitive-verb}\rangle\ ::=\ \textrm{runs} \;|\; \textrm{jumps} \;|\; \textrm{hides}\\
+&amp;\langle\textit{transitive-verb}\rangle\ ::=\ \textrm{knows} \;|\; \textrm{loves} \;|\; \textrm{chases} \;|\; \textrm{owns}
+\end{aligned}
+$\)</span>
+This grammar can generate sentences such as “A dog chases the cat and
+the cat hides” and “The man loves a woman who runs.”
+The second sentence, for example, is generated by the derivation
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+ \langle\textit{sentence}\rangle\ &amp;\Longrightarrow\ \langle\textit{simple-sentence}\rangle\\
+  &amp;\Longrightarrow\ \langle\textit{noun-part}\rangle\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \langle\textit{article}\rangle\ \langle\textit{noun}\rangle\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \langle\textit{noun}\rangle\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \langle\textit{transitive-verb}\rangle\ \langle\textit{noun-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \langle\textit{noun-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \langle\textit{article}\rangle
+    \ \langle\textit{noun}\rangle\ \textrm{who}\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \textrm{a}
+    \ \langle\textit{noun}\rangle\ \textrm{who}\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \textrm{a}
+    \ \textrm{woman}\ \textrm{who}\ \langle\textit{verb-part}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \textrm{a}
+    \ \textrm{woman}\ \textrm{who}\ \langle\textit{intransitive-verb}\rangle\\
+  &amp;\Longrightarrow\ \textrm{the}\ \textrm{man}\ \textrm{loves}\ \textrm{a}
+    \ \textrm{woman}\ \textrm{who}\ \textrm{runs}
+\end{aligned}
+$\)</span></p>
+<p>BNF is most often used to specify the syntax of programming languages.
+Most programming languages are not, in fact, context-free languages, and
+BNF is not capable of expressing all aspects of their syntax.
+For example, BNF cannot express the fact that a variable must
+be declared before it is used or the fact that the number of
+actual parameters in a subroutine call statement must match the number
+of formal parameters in the declaration of the subroutine.
+So BNF is used to express the context-free aspects of the syntax
+of a programming language, and other restrictions on the syntax—such
+as the rule about declaring a variable before it is used—are expressed
+using informal English descriptions.</p>
+<p>When BNF is applied to programming languages, the terminal symbols
+are generally “tokens,” which are the minimal meaningful units in
+a program. For example, the pair of symbols <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> constitute a
+single token, as does a string such as <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>.
+Every number is represented by a single token. (The actual value
+of the number is stored as a so-called “attribute” of the token,
+but the value plays no role in the context-free syntax of the
+language.) I will use the
+symbol <span class="math notranslate nohighlight">\(\textbf{number}\)</span> to represent a numerical token.
+Similarly, every variable name, subroutine name, or other identifier
+in the program is represented by the same token, which I will denote
+as <span class="math notranslate nohighlight">\(\textbf{ident}\)</span>. One final complication: Some symbols
+used in programs, such as “]” and “(“, are also used with
+a special meaning in BNF grammars. When such a symbol occurs as
+a terminal symbol, I will enclose it in double quotes. For
+example, in the BNF production rule
+<span class="math notranslate nohighlight">\($
+\langle\textit{array-reference}\rangle\ ::=\ \textbf{ident}\ ``[&quot;\ \langle\textit{expression}\rangle\ ``]&quot;
+$\)</span>
+the “[” and “]” are terminal symbols in the language
+that is being described, rather than the BNF notation for an
+optional item. With this notation, here is part of a BNF
+grammar that describes statements in the Java programming
+language:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+&amp;\langle\textit{statement}\rangle\ ::=\ \langle\textit{block-statement}\rangle \;|\; \langle\textit{if-statement}\rangle
+         \;|\; \langle\textit{while-statement}\rangle\\
+&amp;\hspace{1.5 in} \;|\; \langle\textit{assignment-statement}\rangle \;|\; \langle\textit{null-statement}\rangle\\
+&amp;\langle\textit{block-statement}\rangle\ ::=\ \{\ [\ \langle\textit{statement}\rangle\ ]\dots\ \}\\
+&amp;\langle\textit{if-statement}\rangle\ ::=\ \textrm{if}\ ``(&quot;\ \langle\textit{condition}\rangle\ ``)&quot;\ \langle\textit{statement}\rangle\ [\ \textrm{else}\ \langle\textit{statement}\rangle\ ]\\
+&amp;\langle\textit{while-statement}\rangle\ ::=\ \textrm{while}\ ``(&quot;\ \langle\textit{condition}\rangle\ ``)&quot;\ \langle\textit{statement}\rangle\\
+&amp;\langle\textit{assignment-statement}\rangle\ ::=\ \langle\textit{variable}\rangle\ =\ \langle\textit{expression}\rangle\ ;\\
+&amp;\langle\textit{null-statement}\rangle\ ::=\ \varepsilon
+\end{aligned}
+$\)</span>
+The non-terminals <span class="math notranslate nohighlight">\(\langle\textit{condition}\rangle\)</span>, <span class="math notranslate nohighlight">\(\langle\textit{variable}\rangle\)</span>, and
+<span class="math notranslate nohighlight">\(\langle\textit{expression}\rangle\)</span> would, of course, have to be defined by other
+production rules in the grammar. Here is a set of rules that
+define simple expressions, made up of numbers, identifiers,
+parentheses and the arithmetic operators <span class="math notranslate nohighlight">\(+\)</span>, <span class="math notranslate nohighlight">\(-\)</span>, <span class="math notranslate nohighlight">\(*\)</span> and <span class="math notranslate nohighlight">\(/\)</span>:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+&amp;\langle\textit{expression}\rangle\ ::=\ \langle\textit{term}\rangle\ [\ [\ + \;|\; -\ ]\ \langle\textit{term}\rangle\ ]\ldots\\
+&amp;\langle\textit{term}\rangle\ ::=\ \langle\textit{factor}\rangle\ [\ [\ * \;|\; /\ ]\ \langle\textit{factor}\rangle\ ]\ldots\\
+&amp;\langle\textit{factor}\rangle\ ::=\ \textbf{ident} \;|\; \textbf{number} \;|\; ``(&quot;\ \langle\textit{expression}\rangle\ ``)&quot;
+\end{aligned}
+$\)</span>
+The first rule says that an <span class="math notranslate nohighlight">\(\langle\textit{expression}\rangle\)</span> is a sequence of
+one or more <span class="math notranslate nohighlight">\(\langle\textit{term}\rangle\)</span>’s, separated by plus or minus signs.
+The second rule defines a <span class="math notranslate nohighlight">\(\langle\textit{term}\rangle\)</span> to be a sequence of one or more
+<span class="math notranslate nohighlight">\(\langle\textit{factor}\rangle\)</span>’s, separated by multiplication or division operators.
+The last rule says that a <span class="math notranslate nohighlight">\(\langle\textit{factor}\rangle\)</span> can be either an identifier
+or a number or an <span class="math notranslate nohighlight">\(\langle\textit{expression}\rangle\)</span> enclosed in parentheses.
+This small BNF grammar can generate expressions
+such as “<span class="math notranslate nohighlight">\(3*5\)</span>” and “<span class="math notranslate nohighlight">\(x*(x+1) - 3/(z+2*(3-x)) + 7\)</span>”.
+The latter expression is made up of three terms: <span class="math notranslate nohighlight">\(x*(x+1)\)</span>,
+<span class="math notranslate nohighlight">\(3/(z+2*(3-x))\)</span>, and <span class="math notranslate nohighlight">\(7\)</span>. The first of these terms is made
+up of two factors, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\((x+1)\)</span>. The factor <span class="math notranslate nohighlight">\((x+1)\)</span> consists
+of the expression <span class="math notranslate nohighlight">\(x+1\)</span> inside a pair of parentheses.</p>
+<p>The nice thing about this grammar is that the precedence rules
+for the operators are implicit in the grammar. For example, according
+to the grammar, the expression <span class="math notranslate nohighlight">\(3+5*7\)</span> is seen as <span class="math notranslate nohighlight">\(\langle\textit{term}\rangle\ +\ \langle\textit{term}\rangle\)</span>
+where the first term is <span class="math notranslate nohighlight">\(3\)</span> and the second term is <span class="math notranslate nohighlight">\(5*7\)</span>.
+The <span class="math notranslate nohighlight">\(5*7\)</span> occurs as a group, which must be evaluated before the
+result is added to <span class="math notranslate nohighlight">\(3\)</span>. Parentheses can change the order of
+evaluation. For example, <span class="math notranslate nohighlight">\((3+5)*7\)</span> is generated by the grammar
+as a single <span class="math notranslate nohighlight">\(\langle\textit{term}\rangle\)</span> of the form <span class="math notranslate nohighlight">\(\langle\textit{factor}\rangle\ *\ \langle\textit{factor}\rangle\)</span>.
+The first <span class="math notranslate nohighlight">\(\langle\textit{factor}\rangle\)</span> is <span class="math notranslate nohighlight">\((3+5)\)</span>. When <span class="math notranslate nohighlight">\((3+5)*7\)</span> is evaluated,
+the value of <span class="math notranslate nohighlight">\((3+5)\)</span> is computed first and then multiplied
+by <span class="math notranslate nohighlight">\(7\)</span>. This is an example of how a grammar that describes
+the syntax of a language can also reflect its meaning.</p>
+<p>Although this section has not introduced any really new ideas
+or theoretical results, I hope it has demonstrated how
+context-free grammars can be applied in practice.</p>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>One of the examples in this section was a grammar for
+a subset of English. Give five more examples of sentences that
+can be generated from that grammar. Your examples should, collectively,
+use all the rules of the grammar.</p></li>
+<li><p>Rewrite the example BNF grammar for a subset of English as
+a context-free grammar.</p></li>
+<li><p>Write a single BNF production rule that is equivalent to
+the following context-free grammar:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+S &amp;\longrightarrow aSa\\
+S &amp;\longrightarrow bB\\
+B &amp;\longrightarrow bB\\
+B &amp;\longrightarrow \varepsilon
+\end{aligned}
+$\)</span></p></li>
+<li><p>Write a BNF production rule that specifies the syntax of
+real numbers, as they appear in programming languages such as Java and C.
+Real numbers can include a sign, a decimal point and an exponential part.
+Some examples are: <code class="docutils literal notranslate"><span class="pre">17.3</span></code>, <code class="docutils literal notranslate"><span class="pre">.73</span></code>, <code class="docutils literal notranslate"><span class="pre">23.1e67</span></code>, <code class="docutils literal notranslate"><span class="pre">-1.34E-12</span></code>, <code class="docutils literal notranslate"><span class="pre">+0.2</span></code>, and <code class="docutils literal notranslate"><span class="pre">100E+100</span></code>.</p></li>
+<li><p>Variable references in the Java programming language can be
+rather complicated. Some examples include:
+<code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">list.next</span></code>, <code class="docutils literal notranslate"><span class="pre">A[7]</span></code>, <code class="docutils literal notranslate"><span class="pre">a.b.c</span></code>, <code class="docutils literal notranslate"><span class="pre">S[i+1].grid[r][c].red</span></code>, ….
+Write a BNF production rule for Java variables.
+You can use the token <span class="math notranslate nohighlight">\(\textbf{ident}\)</span> and the non-terminal
+<span class="math notranslate nohighlight">\(\langle\textit{expression}\rangle\)</span> in your rule.</p></li>
+<li><p>Use BNF to express the syntax of the <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">...</span> <span class="pre">catch</span></code> statement in the
+Java programming language.</p></li>
+<li><p>Give a BNF grammar for compound propositions made up
+of propositional variables, parentheses, and the logical operators
+<span class="math notranslate nohighlight">\(\land\)</span>, <span class="math notranslate nohighlight">\(\lor\)</span>, and <span class="math notranslate nohighlight">\(\lnot\)</span>. Use the non-terminal symbol <span class="math notranslate nohighlight">\(\langle\textit{pv}\rangle\)</span> to represent
+a propositional variable. You do not have to give a definition of
+<span class="math notranslate nohighlight">\(\langle\textit{pv}\rangle\)</span>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="cfg.html" title="previous page">Context-Free Grammars</a>
+    <a class='right-next' id="next-link" href="parsing.html" title="next page">Parsing and Parse Trees</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

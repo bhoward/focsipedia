@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Computability &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Halting Problem" href="halting.html" />
+    <link rel="prev" title="General Grammars and Turing Machines" href="tm.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Formal Languages
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="languages.html">
+     Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexp.html">
+     Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="regexpapp.html">
+     Applications of Regular Expressions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsa.html">
+     Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nfa.html">
+     Nondeterministic Finite-State Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="fsareg.html">
+     Finite-State Automata and Regular Languages
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cfg.html">
+     Context-Free Grammars
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bnf.html">
+     Backus-Naur Form
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="parsing.html">
+     Parsing and Parse Trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pda.html">
+     Pushdown Automata
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tm.html">
+     General Grammars and Turing Machines
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Computability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="halting.html">
+     The Halting Problem
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lang/computability.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extended-turing-machines">
+   Extended Turing Machines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recursively-enumerable-languages">
+   Recursively Enumerable Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-grammars">
+   General Grammars
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#turing-decidability">
+   Turing Decidability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="computability">
+<h1>Computability<a class="headerlink" href="#computability" title="Permalink to this headline">¶</a></h1>
+<p>(Content adapted from Critchlow &amp; Eck)</p>
+<p>At this point, it would be useful to look at increasingly complex
+Turing machines, which compute increasingly complex functions and languages.
+Although Turing machines are very simple devices, it turns out that
+they can perform very sophisticated computations. In fact, any
+computation that can be carried out by a modern digital computer—even
+one with an unlimited amount of memory—can be carried out by
+a Turing machine. Although it is not something that can be
+proved, it is widely believed that anything that can reasonably
+be called “computation” can be done by a Turing machine. This
+claim is known as the <strong>Church-Turing Thesis</strong>.</p>
+<p>We do not have time to look at enough examples to convince you that
+Turing machines are as powerful as computers, but the proof reduces
+to the fact that computers are actually fairly simple in their basic
+operation. Everything that a computer does comes down to copying
+data from one place to another, making simple comparisons between
+two pieces of data, and performing some basic arithmetic operations.
+It’s possible for Turing machines to do all these things. In fact,
+it’s possible to build a Turing machine to simulate the step-by-step
+operation of a given computer. Doing so proves that the Turing machine
+can do any computation that the computer could do, although it will,
+of course, work much, much more slowly.</p>
+<div class="section" id="extended-turing-machines">
+<h2>Extended Turing Machines<a class="headerlink" href="#extended-turing-machines" title="Permalink to this headline">¶</a></h2>
+<p>We can, however, look briefly at some other models of computation
+and see how they compare with Turing machines. For example, there
+are various ways in which we might try to increase the power of
+a Turing machine. For example, consider a <strong>two-tape Turing machine</strong>
+that has two tapes, with a read/write head on each tape. In each step
+of its computation, a two-tape Turing machine reads the symbols under
+its read/write heads on both tapes.
+Based on these symbols and on its current state, it
+can write a new symbol onto each tape, independently
+move the read/write head on each tape one cell to the left or
+right, and change state.</p>
+<p>It might seem that with two tapes available, two-tape Turing machines
+might be able to do computations that are impossible for ordinary
+one-tape machines. In fact, though, this is not the case. The reason,
+again, is simulation: Given any two-tape Turing machine, it is possible
+to build a one-tape Turing machine that simulates the step-by-step
+computation of the two-tape machine. Let <span class="math notranslate nohighlight">\(M\)</span> be a two-tape Turing
+machine. To simulate <span class="math notranslate nohighlight">\(M\)</span> with a one-tape machine, <span class="math notranslate nohighlight">\(K\)</span>, we must store
+the contents of both of <span class="math notranslate nohighlight">\(M\)</span>’s tapes on one tape, and we must keep
+track of the positions of both of <span class="math notranslate nohighlight">\(M\)</span>’s read/write heads.
+Let &#64; and $ be symbols that are not in the alphabet of <span class="math notranslate nohighlight">\(M\)</span>.
+The &#64; will be used to mark the position of a read/write head, and
+the $ will be used to delimit the parts of <span class="math notranslate nohighlight">\(K\)</span>’s tape that
+represent the two tapes of <span class="math notranslate nohighlight">\(M\)</span>. For example, suppose that one
+of <span class="math notranslate nohighlight">\(M\)</span>’s tapes contains the symbols “abb##cca” with the
+read/write head on the first b, and that the other tape contains
+“01#111#001” with the read/write head on the final 1. This
+configuration would be represented on <span class="math notranslate nohighlight">\(K\)</span>’s tape as
+“$a&#64;bb##cca$01#111#00&#64;1$”. To simulate one
+step of <span class="math notranslate nohighlight">\(M\)</span>’s computation, <span class="math notranslate nohighlight">\(K\)</span> must scan its entire tape, looking for
+the &#64;’s and noting the symbol to the right of each &#64;. Based on
+this information, <span class="math notranslate nohighlight">\(K\)</span> can update its tape and its own state to
+reflect <span class="math notranslate nohighlight">\(M\)</span>’s new configuration after one step of computation.
+Obviously, <span class="math notranslate nohighlight">\(K\)</span> will take more steps than <span class="math notranslate nohighlight">\(M\)</span> and it will operate
+much more slowly, but this argument makes it clear that one-tape
+Turing machines can do anything that can be done by two-tape
+machines.</p>
+<p>We needn’t stop there. We can imagine <span class="math notranslate nohighlight">\(n\)</span>-tape Turing machines, for
+<span class="math notranslate nohighlight">\(n&gt;2\)</span>. We might allow a Turing machine to have multiple read/write
+heads that move independently on each tape. We could even allow
+two or three-dimensional tapes. None of this makes any difference
+as far as computational power goes, since each type of Turing machine
+can simulate any of the other types.[^We can also define
+<strong>non-deterministic Turing machines</strong> that can have several possible
+actions at each step. Non-deterministic Turing machines cannot be
+used to compute functions, since a function can have only one possible
+output for any given input. However, they can be used to accept
+languages. We say that a non-deterministic Turing machine accepts
+a language <span class="math notranslate nohighlight">\(L\)</span> is it is <em>possible</em> for the machine to halt
+on input <span class="math notranslate nohighlight">\(w\)</span> if and only if <span class="math notranslate nohighlight">\(w\in L\)</span>. The class of languages
+accepted by non-deterministic Turing machines is the same as the
+class of languages accepted by deterministic Turing machines.
+So, non-determinism does not add any computational power.]</p>
+</div>
+<div class="section" id="recursively-enumerable-languages">
+<h2>Recursively Enumerable Languages<a class="headerlink" href="#recursively-enumerable-languages" title="Permalink to this headline">¶</a></h2>
+<p>We have used Turing machines to define Turing-acceptable languages
+and Turing-decidable languages. The definitions seem to depend
+very much on the peculiarities of Turing machines. But the same
+classes of languages can be defined in other ways. For example,
+we could use programs running on an idealized computer, with an
+unlimited amount of memory, to accept or decide languages. Or we
+could use <span class="math notranslate nohighlight">\(n\)</span>-tape Turing machines. The
+resulting classes of languages would be exactly the same as the
+Turing-acceptable and Turing-decidable languages.</p>
+<p>We could look at other ways of specifying languages “computationally.”
+One of the most natural is to imagine a Turing machine or computer
+program that runs forever and outputs an infinite list of strings
+over some alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>. In the case of Turing machines, it’s
+convenient to think of a two-tape Turing machine that lists the strings
+on its second tape. The strings in the list form a language
+over <span class="math notranslate nohighlight">\(\Sigma\)</span>. A language that can be listed in this way is
+said to be <strong>recursively enumerable</strong>.
+Note that we make no
+assumption that the strings must be listed in any particular order,
+and we allow the same string to appear in the output any number of
+times. Clearly, a recursively enumerable language is “computable”
+in some sense. Perhaps we have found a new type of computable language.
+But no—it turns out that we have just found another way of
+describing the Turing-acceptable languages. The following theorem
+makes this fact official and adds one more way of describing
+the same class of languages:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> Let <span class="math notranslate nohighlight">\(\Sigma\)</span> be an alphabet and let <span class="math notranslate nohighlight">\(L\)</span> be a language over <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+Then the following are equivalent:</p>
+<ul class="simple">
+<li><p>There is a Turing machine that accepts <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p>There is a two-tape Turing machine that runs forever, making
+a list of strings on its second tape, such that a string <span class="math notranslate nohighlight">\(w\)</span> is in
+the list if and only if <span class="math notranslate nohighlight">\(w\in L\)</span>.</p></li>
+<li><p>There is a Turing-computable function <span class="math notranslate nohighlight">\(f\colon\{a\}^*\to\Sigma^*\)</span>
+such that <span class="math notranslate nohighlight">\(L\)</span> is the range of the function <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ul>
+</div></blockquote>
+<p>While I will not give a complete, formal proof of this theorem, it’s not
+too hard to see why it is true. Consider a language that satisfies the third
+property. We can use the fact that <span class="math notranslate nohighlight">\(L\)</span> is the range of a Turing-computable function, <span class="math notranslate nohighlight">\(f\)</span>,
+to build a two-tape Turing machine that lists <span class="math notranslate nohighlight">\(L\)</span>. The machine will
+consider each of the strings <span class="math notranslate nohighlight">\(a^n\)</span>, for <span class="math notranslate nohighlight">\(n\in \N\)</span>, in turn, and it will compute
+<span class="math notranslate nohighlight">\(f(a^n)\)</span> for each <span class="math notranslate nohighlight">\(n\)</span>. Once the value of <span class="math notranslate nohighlight">\(f(a^n)\)</span> has been computed, it can be copied
+onto the machine’s second tape, and the machine can move on to do the same
+with <span class="math notranslate nohighlight">\(a^{n+1}\)</span>. This machine writes all the elements of <span class="math notranslate nohighlight">\(L\)</span>
+(the range of <span class="math notranslate nohighlight">\(f\)</span>) onto its second tape,
+so <span class="math notranslate nohighlight">\(L\)</span> satisfies the second property. Conversely, suppose that
+there is a two-tape Turing machine, <span class="math notranslate nohighlight">\(M\)</span>, that lists <span class="math notranslate nohighlight">\(L\)</span>. Define a function
+<span class="math notranslate nohighlight">\(g\colon\{a\}^*\to\Sigma^*\)</span> such that for <span class="math notranslate nohighlight">\(n\in\N\)</span>, <span class="math notranslate nohighlight">\(g(a^n)\)</span> is the <span class="math notranslate nohighlight">\((n+1)^{th}\)</span> item in the
+list produced by <span class="math notranslate nohighlight">\(M\)</span>. Then the range of <span class="math notranslate nohighlight">\(g\)</span> is <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(g\)</span> is Turing-computable
+since it can be computed as follows: On input <span class="math notranslate nohighlight">\(a^n\)</span>, simulate the computation
+of <span class="math notranslate nohighlight">\(M\)</span> until it has produced <span class="math notranslate nohighlight">\(n+1\)</span> strings, then halt, giving the <span class="math notranslate nohighlight">\((n+1)^{th}\)</span>
+string as output. This shows that the second property implies the third property, so these
+properties are in fact equivalent.</p>
+<p>We can also check that the second property is equivalent to the first.
+Suppose that <span class="math notranslate nohighlight">\(L\)</span> satisfies the second property. Consider
+a two-tape Turing machine, <span class="math notranslate nohighlight">\(T\)</span>, that lists the elements of <span class="math notranslate nohighlight">\(L\)</span>. We must build
+a Turing machine, <span class="math notranslate nohighlight">\(M\)</span>, which accepts <span class="math notranslate nohighlight">\(L\)</span>. We do this
+as follows: Given an input <span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span>,
+<span class="math notranslate nohighlight">\(M\)</span> will simulate the computation of <span class="math notranslate nohighlight">\(T\)</span>. Every time the simulated <span class="math notranslate nohighlight">\(T\)</span> produces a string
+in the list, <span class="math notranslate nohighlight">\(M\)</span> compares that string to <span class="math notranslate nohighlight">\(w\)</span>. If they are the same, <span class="math notranslate nohighlight">\(M\)</span> halts.
+If <span class="math notranslate nohighlight">\(w\in L\)</span>, eventually it will be produced by <span class="math notranslate nohighlight">\(T\)</span>, so <span class="math notranslate nohighlight">\(M\)</span> will eventually halt.
+If <span class="math notranslate nohighlight">\(w\not\in L\)</span>, then it will never turn up in the list produced by <span class="math notranslate nohighlight">\(T\)</span>, so
+<span class="math notranslate nohighlight">\(M\)</span> will never halt. Thus, <span class="math notranslate nohighlight">\(M\)</span> accepts the language <span class="math notranslate nohighlight">\(L\)</span>. This shows that the second
+property implies the first one.</p>
+<p>The fact that the first property implies the second is somewhat harder to see.
+First, we note that it is possible for a Turing
+machine to generate every possible string in <span class="math notranslate nohighlight">\(\Sigma^*\)</span>, one-by-one,
+in some definite order (such
+as order of increasing length, with something like alphabetical order
+for strings of the same length). Now, suppose that <span class="math notranslate nohighlight">\(L\)</span> is Turing-acceptable
+and that <span class="math notranslate nohighlight">\(M\)</span> is a Turing machine that accepts <span class="math notranslate nohighlight">\(L\)</span>. We need a two-tape
+Turing machine, <span class="math notranslate nohighlight">\(T\)</span> that makes a list of all the elements of <span class="math notranslate nohighlight">\(L\)</span>.
+Unfortunately, the following idea does <em>not</em> work: Generate each
+of the elements in <span class="math notranslate nohighlight">\(\Sigma^*\)</span> in turn, and see whether <span class="math notranslate nohighlight">\(M\)</span> accepts it.
+If so, then add it to the list on the second tape. It looks like we have a machine that
+lists all the elements of <span class="math notranslate nohighlight">\(L\)</span>. The problem is that the only way for <span class="math notranslate nohighlight">\(T\)</span> to
+“see whether <span class="math notranslate nohighlight">\(M\)</span> accepts” a string is to simulate the computation of <span class="math notranslate nohighlight">\(M\)</span>.
+Unfortunately, as soon as we try this for any string <span class="math notranslate nohighlight">\(w\)</span> that is not in <span class="math notranslate nohighlight">\(L\)</span>,
+the computation never ends! <span class="math notranslate nohighlight">\(T\)</span> will get stuck in the simulation and will
+never even move on to the next string. To avoid this problem, <span class="math notranslate nohighlight">\(T\)</span> must simulate
+multiple computations of <span class="math notranslate nohighlight">\(M\)</span> at the same time. <span class="math notranslate nohighlight">\(T\)</span> can keep track of
+these computations in different regions of its first tape (separated by $’s).
+Let the list of all strings in <span class="math notranslate nohighlight">\(\Sigma^*\)</span> be <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>, …. Then <span class="math notranslate nohighlight">\(T\)</span> should
+operate as follows:</p>
+<ul class="simple">
+<li><p>1: Set up the simulation of <span class="math notranslate nohighlight">\(M\)</span> on input <span class="math notranslate nohighlight">\(x_1\)</span>, and simulate one
+step of the computation for <span class="math notranslate nohighlight">\(x_1\)</span></p></li>
+<li><p>2: Set up the simulation of <span class="math notranslate nohighlight">\(M\)</span> on input <span class="math notranslate nohighlight">\(x_2\)</span>, and simulate one
+step of the computation for <span class="math notranslate nohighlight">\(x_1\)</span> and one step of the computation for <span class="math notranslate nohighlight">\(x_2\)</span>.</p></li>
+<li><p>3: Set up the simulation of <span class="math notranslate nohighlight">\(M\)</span> on input <span class="math notranslate nohighlight">\(x_3\)</span>, and simulate one
+step of each of the computations, for <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>.</p></li>
+<li><p>…</p></li>
+<li><p>n: Set up the simulation of <span class="math notranslate nohighlight">\(M\)</span> on input <span class="math notranslate nohighlight">\(x_n\)</span>, and simulate one
+step of each of the computations, for <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, \dots, <span class="math notranslate nohighlight">\(x_n\)</span>.</p></li>
+</ul>
+<p>and so on. Each time one of the computations halts, <span class="math notranslate nohighlight">\(T\)</span> should
+write the corresponding <span class="math notranslate nohighlight">\(x_i\)</span> onto its second tape. Over the course of
+time, <span class="math notranslate nohighlight">\(T\)</span> simulates the computation of <span class="math notranslate nohighlight">\(M\)</span> for each input <span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span>
+for an arbitrary number of steps. If <span class="math notranslate nohighlight">\(w\in L\)</span>, the simulated computation for <span class="math notranslate nohighlight">\(w\)</span> will
+eventually end and it will appear on <span class="math notranslate nohighlight">\(T\)</span>’s second tape. On the other hand,
+if <span class="math notranslate nohighlight">\(w\not\in L\)</span>, then the simulated computation will never end, so <span class="math notranslate nohighlight">\(w\)</span> will
+not appear in the list. So we see that <span class="math notranslate nohighlight">\(T\)</span> does in fact make a list of all
+the elements, and only the elements of <span class="math notranslate nohighlight">\(L\)</span>. This completes an outline of
+the proof of the theorem.</p>
+</div>
+<div class="section" id="general-grammars">
+<h2>General Grammars<a class="headerlink" href="#general-grammars" title="Permalink to this headline">¶</a></h2>
+<p>Next, we compare Turing machines to a completely different method
+of specifying languages: general grammars. Suppose <span class="math notranslate nohighlight">\(G=(V,\Sigma,P,S)\)</span> is a general
+grammar and that <span class="math notranslate nohighlight">\(L\)</span> is the language
+generated by <span class="math notranslate nohighlight">\(G\)</span>. Then there is a Turing machine, <span class="math notranslate nohighlight">\(M\)</span>, that accepts
+the same language, <span class="math notranslate nohighlight">\(L\)</span>. The alphabet for <span class="math notranslate nohighlight">\(M\)</span> will be $V\cup\Sigma\cup{$,#}$,
+where $ is a symbol that is not in <span class="math notranslate nohighlight">\(V\cup\Sigma\)</span>. (We also assume that # is not in <span class="math notranslate nohighlight">\(V\cup\Sigma\)</span>.)
+Suppose that <span class="math notranslate nohighlight">\(M\)</span> is started with input <span class="math notranslate nohighlight">\(w\)</span>, where <span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span>.
+We have to design <span class="math notranslate nohighlight">\(M\)</span> so that it will halt if and only if <span class="math notranslate nohighlight">\(w\in L\)</span>.
+The idea is to have <span class="math notranslate nohighlight">\(M\)</span> find each string that can be derived
+from the start symbol <span class="math notranslate nohighlight">\(S\)</span>. The strings will be written to <span class="math notranslate nohighlight">\(M\)</span>’s tape
+and separated by $’s. <span class="math notranslate nohighlight">\(M\)</span> can begin by writing the start symbol,
+<span class="math notranslate nohighlight">\(S\)</span>, on its tape, separated from <span class="math notranslate nohighlight">\(w\)</span> by a $. Then it repeats
+the following process indefinitely: For each string on the tape
+and for each production rule, <span class="math notranslate nohighlight">\(x\longrightarrow y\)</span>, of <span class="math notranslate nohighlight">\(G\)</span>, search the
+string for occurrences of <span class="math notranslate nohighlight">\(x\)</span>. When one is found, add a $ to the
+end of the tape and copy the string to the end of the tape, replacing
+the occurrence of <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(y\)</span>. The new string represents the results
+of applying the production rule <span class="math notranslate nohighlight">\(x\longrightarrow y\)</span> to the string.
+Each time <span class="math notranslate nohighlight">\(M\)</span> produces a new string, it compares
+that string to <span class="math notranslate nohighlight">\(w\)</span>. If they are equal, then <span class="math notranslate nohighlight">\(M\)</span> halts. If <span class="math notranslate nohighlight">\(w\)</span> is
+in fact in <span class="math notranslate nohighlight">\(L\)</span>, then eventually <span class="math notranslate nohighlight">\(M\)</span> will produce the string <span class="math notranslate nohighlight">\(w\)</span> and
+will halt. Conversely, if <span class="math notranslate nohighlight">\(w\)</span> is not in <span class="math notranslate nohighlight">\(L\)</span>, then <span class="math notranslate nohighlight">\(M\)</span> will go on producing
+strings forever without ever finding <span class="math notranslate nohighlight">\(w\)</span>, so <span class="math notranslate nohighlight">\(M\)</span> will never halt.
+This shows that, in fact, the language <span class="math notranslate nohighlight">\(L\)</span> is accepted by <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>Conversely, suppose that <span class="math notranslate nohighlight">\(L\)</span> is a language over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>,
+and that <span class="math notranslate nohighlight">\(L\)</span> is Turing-acceptable. Then it is possible to find a grammar
+<span class="math notranslate nohighlight">\(G\)</span> that generates <span class="math notranslate nohighlight">\(L\)</span>. To do this, it’s convenient to use the
+fact that, as discussed above, there is a Turing-computable function
+<span class="math notranslate nohighlight">\(f\colon \{a\}^*\to\Sigma\)</span> such that <span class="math notranslate nohighlight">\(L\)</span> is the range of <span class="math notranslate nohighlight">\(f\)</span>.
+Let <span class="math notranslate nohighlight">\(M=(Q,\Lambda,q_0,\delta)\)</span> be a Turing machine that computes
+the function <span class="math notranslate nohighlight">\(f\)</span>. We can build a grammar, <span class="math notranslate nohighlight">\(G\)</span>, that imitates the computations
+performed by <span class="math notranslate nohighlight">\(M\)</span>. The idea is that most of the production rules of <span class="math notranslate nohighlight">\(G\)</span> will
+imitate steps in the computation of <span class="math notranslate nohighlight">\(M\)</span>. Some additional rules are added
+to get things started, to clean up, and to otherwise bridge the
+conceptual gap between grammars and Turing machines.</p>
+<p>The terminal symbols of <span class="math notranslate nohighlight">\(G\)</span> will be the symbols from the alphabet, <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+For the non-terminal symbols,
+we use: the states of <span class="math notranslate nohighlight">\(M\)</span>, every member of <span class="math notranslate nohighlight">\(\Lambda\)</span> that is not
+in <span class="math notranslate nohighlight">\(\Sigma\)</span>, two special symbols <span class="math notranslate nohighlight">\(&lt;\)</span> and <span class="math notranslate nohighlight">\(&gt;\)</span>, and two additional
+symbols <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(A\)</span>. (We can assume that all
+these symbols are distinct.) <span class="math notranslate nohighlight">\(S\)</span> will be the start symbol of <span class="math notranslate nohighlight">\(G\)</span>.
+As for production rules, we begin with the following three rules:
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+  S&amp;\longrightarrow &lt;q_0A&gt;\\
+  A&amp;\longrightarrow aA\\
+  A&amp;\longrightarrow\varepsilon
+\end{aligned}
+$\)</span>
+These rules make it possible to produce any string of the form
+<span class="math notranslate nohighlight">\(&lt;q_0a^n&gt;\)</span>. This is the only role that <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(A\)</span> play
+in the grammar. Once we’ve gotten rid of <span class="math notranslate nohighlight">\(S\)</span> and <span class="math notranslate nohighlight">\(A\)</span>, strings
+of the remaining terminal and non-terminal symbols represent
+configurations of the Turing machine <span class="math notranslate nohighlight">\(M\)</span>. The string will contain
+exactly one of the states of <span class="math notranslate nohighlight">\(M\)</span> (which is, remember, one of the
+non-terminal symbols of <span class="math notranslate nohighlight">\(G\)</span>). This tells us which state <span class="math notranslate nohighlight">\(M\)</span> is
+in. The position of the state-symbol tells us where
+<span class="math notranslate nohighlight">\(M\)</span> is positioned on the tape: the state-symbol is located
+in the string to the left of the symbol on which <span class="math notranslate nohighlight">\(M\)</span> is positioned.
+And the special symbols <span class="math notranslate nohighlight">\(&lt;\)</span> and <span class="math notranslate nohighlight">\(&gt;\)</span> just represent
+the beginning and the end of a portion of the tape of <span class="math notranslate nohighlight">\(M\)</span>.
+So, the initial string <span class="math notranslate nohighlight">\(&lt;q_0a^n&gt;\)</span> represents
+a configuration in which <span class="math notranslate nohighlight">\(M\)</span> is in its start state, and
+is positioned on the first <span class="math notranslate nohighlight">\(a\)</span> in a string of <span class="math notranslate nohighlight">\(n\)</span> <span class="math notranslate nohighlight">\(a\)</span>’s.
+This is the starting configuration of <span class="math notranslate nohighlight">\(M\)</span> when it is run
+with input <span class="math notranslate nohighlight">\(a^n\)</span>.</p>
+<p>Now, we need some production
+rules that will allow the grammar to simulate the computations
+performed by <span class="math notranslate nohighlight">\(M\)</span>. For each state <span class="math notranslate nohighlight">\(q_i\)</span> and each symbol <span class="math notranslate nohighlight">\(\sigma\in\Lambda\)</span>,
+we need a production rule that imitates the transition rule <span class="math notranslate nohighlight">\(\delta(q_i,\sigma)
+=(\tau,d,q_j)\)</span>. If <span class="math notranslate nohighlight">\(d=R\)</span>, that is if the machine moves to the right,
+then all we need is the rule
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+  q_i\sigma&amp;\longrightarrow \tau q_j
+\end{aligned}
+$\)</span>
+This represents that fact that <span class="math notranslate nohighlight">\(M\)</span> converts the <span class="math notranslate nohighlight">\(\sigma\)</span> to a <span class="math notranslate nohighlight">\(\tau\)</span>,
+moves to the right, and changes to state <span class="math notranslate nohighlight">\(q_j\)</span>. If <span class="math notranslate nohighlight">\(d=L\)</span>, that is
+if the machine moves to the left, then we will need several rules—one rule for
+each <span class="math notranslate nohighlight">\(\lambda\in\Lambda\)</span>, namely
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+  \lambda q_i\sigma&amp;\longrightarrow q_j\lambda\tau
+\end{aligned}
+$\)</span>
+This rule says that <span class="math notranslate nohighlight">\(M\)</span> changes the <span class="math notranslate nohighlight">\(\sigma\)</span> to a <span class="math notranslate nohighlight">\(\tau\)</span>, moves left,
+and changes to state <span class="math notranslate nohighlight">\(q_j\)</span>. The <span class="math notranslate nohighlight">\(\lambda\)</span> doesn’t affect the
+application of the rule, but is necessary to represent the fact
+that <span class="math notranslate nohighlight">\(M\)</span> moves left.</p>
+<p>Each application of one of these rules represents one step in
+the computation of <span class="math notranslate nohighlight">\(M\)</span>. There is one remaining requirement for correctly
+simulating <span class="math notranslate nohighlight">\(M\)</span>. Since <span class="math notranslate nohighlight">\(M\)</span>’s tape contains an infinite number of cells
+and we are only representing a finite portion of that tape, we need a way
+to add and remove #’s at the ends of the string. We can use the
+following four rules to do this:
+$$
+\begin{aligned}
+&lt;&amp;\longrightarrow &lt;#\
+&lt;#&amp;\longrightarrow &lt;\</p>
+<blockquote>
+<div><p>&amp;\longrightarrow #&gt;\
+#&gt;&amp;\longrightarrow &gt;
+\end{aligned}
+$$
+These rules allow blank symbols to appear at the ends of the string
+when they are needed to continue the computation, and to disappear
+from the ends of the string whenever we like.</p>
+</div></blockquote>
+<p>Now, suppose that <span class="math notranslate nohighlight">\(w\)</span> is some element of <span class="math notranslate nohighlight">\(L\)</span>. Then <span class="math notranslate nohighlight">\(w=f(a^n)\)</span> for some <span class="math notranslate nohighlight">\(n\in\N\)</span>.
+We know that on input <span class="math notranslate nohighlight">\(a^n\)</span>, <span class="math notranslate nohighlight">\(M\)</span> halts with output <span class="math notranslate nohighlight">\(w\)</span>. If we
+translate the computation of <span class="math notranslate nohighlight">\(M\)</span> into the corresponding sequence
+of production rules in <span class="math notranslate nohighlight">\(G\)</span>,
+we see that for the grammar <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(&lt;q_0a^n&gt;\Longrightarrow^*&lt;hw&gt;\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is the halt state of <span class="math notranslate nohighlight">\(M\)</span>.
+Since we already know that <span class="math notranslate nohighlight">\(S\Longrightarrow^*&lt;q_0a^n&gt;\)</span>,
+for every <span class="math notranslate nohighlight">\(n\in\N\)</span>, we see that in fact <span class="math notranslate nohighlight">\(S\Longrightarrow^*&lt;hw&gt;\)</span> for each <span class="math notranslate nohighlight">\(w\in L\)</span>. We almost have it! We
+want to show that <span class="math notranslate nohighlight">\(S\Longrightarrow^*w\)</span>.
+If we can just
+get rid of the <span class="math notranslate nohighlight">\(&lt;\)</span>, the <span class="math notranslate nohighlight">\(h\)</span>, and the <span class="math notranslate nohighlight">\(&gt;\)</span>, we will have that
+<span class="math notranslate nohighlight">\(&lt;hw&gt;\Longrightarrow^*w\)</span> and we can then deduce that
+<span class="math notranslate nohighlight">\(S\Longrightarrow^*w\)</span> for each <span class="math notranslate nohighlight">\(w\in L\)</span>, as desired. We can do this by adding
+just a few more rules to <span class="math notranslate nohighlight">\(G\)</span>. We want to let the <span class="math notranslate nohighlight">\(h\)</span> eliminate the <span class="math notranslate nohighlight">\(&lt;\)</span>,
+move through the <span class="math notranslate nohighlight">\(w\)</span>, and then eliminate the <span class="math notranslate nohighlight">\(&gt;\)</span> along with itself.
+We need the rules
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+  &lt;h&amp;\longrightarrow h\\
+  h&gt;&amp;\longrightarrow \varepsilon
+\end{aligned}
+$\)</span>
+and, for each <span class="math notranslate nohighlight">\(\sigma\in\Sigma\)</span>,
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+  h\sigma&amp;\longrightarrow \sigma h
+\end{aligned}
+$\)</span>
+We have constructed <span class="math notranslate nohighlight">\(G\)</span> so that it generates every string in <span class="math notranslate nohighlight">\(L\)</span>.
+It is not difficult to see that the strings in <span class="math notranslate nohighlight">\(L\)</span> are in fact the
+only strings that are generated by <span class="math notranslate nohighlight">\(G\)</span>. That is, <span class="math notranslate nohighlight">\(L\)</span> is precisely
+<span class="math notranslate nohighlight">\(L(G)\)</span>.</p>
+<p>We have now shown, somewhat informally, that a language
+<span class="math notranslate nohighlight">\(L\)</span> is Turing-acceptable if and only if there is a grammar <span class="math notranslate nohighlight">\(G\)</span>
+that generates <span class="math notranslate nohighlight">\(L\)</span>. Even though Turing machines and grammars
+are very different things, they are equivalent in terms of
+their ability to describe languages. We state this as a theorem:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> A language <span class="math notranslate nohighlight">\(L\)</span> is Turing acceptable (equivalently, recursively enumerable)
+if and only if there is a general grammar that generates <span class="math notranslate nohighlight">\(L\)</span>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="turing-decidability">
+<h2>Turing Decidability<a class="headerlink" href="#turing-decidability" title="Permalink to this headline">¶</a></h2>
+<p>In this section, we have been talking mostly about recursively enumerable
+languages (also known as the Turing-acceptable languages). What
+about the Turing-decidable languages?
+We already know that if a language <span class="math notranslate nohighlight">\(L\)</span> is Turing-decidable,
+then it is Turing-acceptable. The converse is not true (although
+we won’t be able to prove this until the next section). However, suppose
+that <span class="math notranslate nohighlight">\(L\)</span> is a language over the alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span> and that both
+<span class="math notranslate nohighlight">\(L\)</span> and its complement, <span class="math notranslate nohighlight">\(\overline{L}=\Sigma^*\smallsetminus L\)</span>, are Turing-acceptable.
+Then <span class="math notranslate nohighlight">\(L\)</span> is Turing-decidable.</p>
+<p>For suppose that <span class="math notranslate nohighlight">\(M\)</span> is a Turing machine that accepts the language
+<span class="math notranslate nohighlight">\(L\)</span> and that <span class="math notranslate nohighlight">\(M'\)</span> is a Turing machine that accepts <span class="math notranslate nohighlight">\(\overline{L}\)</span>.
+We must show that <span class="math notranslate nohighlight">\(L\)</span> is Turing-decidable. That is,
+we have to build a Turing machine <span class="math notranslate nohighlight">\(T\)</span> that decides <span class="math notranslate nohighlight">\(L\)</span>. For each
+<span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span>, when <span class="math notranslate nohighlight">\(T\)</span> is run with input <span class="math notranslate nohighlight">\(w\)</span>, it should halt with
+output 1 if <span class="math notranslate nohighlight">\(w\in L\)</span> and with output <span class="math notranslate nohighlight">\(0\)</span> if <span class="math notranslate nohighlight">\(w\not\in L\)</span>. To do this,
+<span class="math notranslate nohighlight">\(T\)</span> will simulate the computation of both <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(M'\)</span> on input <span class="math notranslate nohighlight">\(w\)</span>.
+(It will simulate one step in the computation of <span class="math notranslate nohighlight">\(M\)</span>, then one step
+in the computation of <span class="math notranslate nohighlight">\(M'\)</span>, then one step of <span class="math notranslate nohighlight">\(M\)</span>, then one step of <span class="math notranslate nohighlight">\(M'\)</span>,
+and so on.) If and when the simulated computation of <span class="math notranslate nohighlight">\(M\)</span> halts, then
+<span class="math notranslate nohighlight">\(T\)</span> will halt with output 1; since <span class="math notranslate nohighlight">\(M\)</span> accepts <span class="math notranslate nohighlight">\(L\)</span>, this will happen if and
+only if <span class="math notranslate nohighlight">\(w\in L\)</span>. If and when the simulated computation of <span class="math notranslate nohighlight">\(M'\)</span> halts, then
+<span class="math notranslate nohighlight">\(T\)</span> will halt with output 0; since <span class="math notranslate nohighlight">\(M\)</span> accepts <span class="math notranslate nohighlight">\(L\)</span>, this will happen if and
+only if <span class="math notranslate nohighlight">\(w\not\in L\)</span>. So, for any <span class="math notranslate nohighlight">\(w\in\Sigma^*\)</span>, <span class="math notranslate nohighlight">\(T\)</span> halts with the
+desired output. This means that <span class="math notranslate nohighlight">\(T\)</span> does in fact decide the language <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<p>It is easy to prove the converse, and the proof is left as an exercise. So
+we see that a language is Turing-decidable if and only if both it and
+its complement are Turing-acceptable. Since Turing-acceptability can
+be defined using other forms of computation besides Turing machines,
+so can Turing-decidability. For example, a language is Turing-decidable
+if and only if both it and its complement can be generated by general grammars.
+We introduced the term “recursively enumerable”
+as a synonym for Turing-acceptable, to get away from the association with a
+particular form of computation. Similarly, we define the term “recursive”
+as a synonym for Turing-decidable. That is, a language <span class="math notranslate nohighlight">\(L\)</span>
+is said to be <strong>recursive</strong> if and only if it
+is Turing-decidable. We then have the theorem:</p>
+<blockquote>
+<div><p><strong>Theorem:</strong> Let <span class="math notranslate nohighlight">\(\Sigma\)</span> be an alphabet and let <span class="math notranslate nohighlight">\(L\)</span> be a language over <span class="math notranslate nohighlight">\(\Sigma\)</span>.
+Then <span class="math notranslate nohighlight">\(L\)</span> is recursive if and only if both <span class="math notranslate nohighlight">\(L\)</span> and its
+complement, <span class="math notranslate nohighlight">\(\Sigma^*\smallsetminus L\)</span>, are recursively enumerable.</p>
+</div></blockquote>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The language <span class="math notranslate nohighlight">\(L=\{a^m\;|\; m&gt;0\}\)</span> is the range of the function
+<span class="math notranslate nohighlight">\(f(a^n)=a^{n+1}\)</span>. Design a Turing machine that computes this function,
+and find the grammar that generates the language <span class="math notranslate nohighlight">\(L\)</span> by
+imitating the computation of that machine.</p></li>
+<li><p>Complete the proof of the above theorem by proving
+the following: If <span class="math notranslate nohighlight">\(L\)</span> is a recursive language over an
+alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>, then both
+<span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(\Sigma^*\smallsetminus L\)</span> are recursively enumerable.</p></li>
+<li><p>Show that a language <span class="math notranslate nohighlight">\(L\)</span> over an alphabet <span class="math notranslate nohighlight">\(\Sigma\)</span>
+is recursive if and only if there are grammars <span class="math notranslate nohighlight">\(G\)</span>
+and <span class="math notranslate nohighlight">\(H\)</span> such that the language generated by <span class="math notranslate nohighlight">\(G\)</span> is <span class="math notranslate nohighlight">\(L\)</span> and the
+language generated by <span class="math notranslate nohighlight">\(H\)</span> is <span class="math notranslate nohighlight">\(\Sigma^*\smallsetminus L\)</span>.</p></li>
+<li><p>This section discusses recursive languages and recursively
+enumerable languages. How could one define recursive subsets of
+<span class="math notranslate nohighlight">\(\N\)</span> and recursively enumerable subsets of <span class="math notranslate nohighlight">\(\N\)</span>?</p></li>
+<li><p>Give an informal argument to show that a subset <span class="math notranslate nohighlight">\(X\subseteq\N\)</span> is
+recursive if and only if there is a computer program
+that prints out the elements of <span class="math notranslate nohighlight">\(X\)</span> <em>in increasing order</em>.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lang"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="tm.html" title="previous page">General Grammars and Turing Machines</a>
+    <a class='right-next' id="next-link" href="halting.html" title="next page">The Halting Problem</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

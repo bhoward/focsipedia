@@ -1,0 +1,899 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Recursive Descent and Parser Combinators &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lambda Calculus" href="lambda.html" />
+    <link rel="prev" title="State Machines in Java and ReasonML" href="state.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../logic/index.html">
+   Logic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Functional Programming
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Introduction to Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types.html">
+     Types in Functional Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="map-reduce.html">
+     Map and Reduce on Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle.html">
+     DPoodle Graphics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="doodle-project.html">
+     DPoodle Graphics Drawing Project
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scaladoodle.html">
+     Scala Doodle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20A.html">
+     Spring 2020 DPoodle Gallery, Section A
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="galleryS20B.html">
+     Spring 2020 DPoodle Gallery, Section B
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines in Java and ReasonML
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Recursive Descent and Parser Combinators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lambda.html">
+     Lambda Calculus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/fp/parser-comb.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parser-combinators">
+   Parser Combinators
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="recursive-descent-and-parser-combinators">
+<h1>Recursive Descent and Parser Combinators<a class="headerlink" href="#recursive-descent-and-parser-combinators" title="Permalink to this headline">¶</a></h1>
+<p>It is particularly easy to turn an LL(1) grammar into an efficient parser
+using the technique of <strong>recursive descent parsing</strong>. For each non-terminal in
+the grammar, we write a function that recognizes strings produced from that
+non-terminal. If there are multiple productions for the non-terminal, we use
+the next available character to decide which one to use. To parse the right-hand
+side of the chosen production rule, we have to recognize a sequence of terminals
+and non-terminals in order. To recognize a terminal, we just check that the current
+character from the input matches the expected symbol. To recognize a non-terminal,
+we call the associated function for that non-terminal.</p>
+<p>Therefore, our parser will be a set of mutually recursive functions, one for each
+non-terminal. To parse a word in the language, we call the function corresponding
+to the starting non-terminal; if that function returns without error, then we have
+successfully matched a word. In addition to recognizing a string of characters, it
+is common for each recursive descent parsing function to return a data structure
+(the parse tree, or a close relative known as an <strong>abstract syntax tree</strong>) representing
+the input that was parsed.</p>
+<p>Here is code for a recursive descent parser in Java, corresponding to the following
+grammar (expressed here in <a class="reference internal" href="../lang/bnf.html"><span class="doc std std-doc">Backus-Naur form</span></a>; it is very similar
+to the example <span class="math notranslate nohighlight">\(G_2\)</span> discussed in the <a class="reference internal" href="../lang/parsing.html"><span class="doc std std-doc">parsing</span></a> section):
+<span class="math notranslate nohighlight">\($
+\begin{aligned}
+\langle\textit{Expr}\rangle\ &amp;::=\ \langle\textit{Term}\rangle\ [\ (\ +\ |\ -\ )\ \langle\textit{Term}\rangle\ ]\ldots\\
+\langle\textit{Term}\rangle\ &amp;::=\ \langle\textit{Factor}\rangle\ [\ (\ *\ |\ /\ )\ \langle\textit{Factor}\rangle\ ]\ldots\\
+\langle\textit{Factor}\rangle\ &amp;::=\ \textrm{ident}\ |\ \textrm{num}\ |\ \textrm{``(''}\ \langle\textit{Expr}\rangle\ \textrm{``)''}
+\end{aligned}
+$\)</span></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Represents an expression node in an abstract syntax tree.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Expr</span> <span class="p">{</span>
+	<span class="c1">// instance methods appropriate to the application should be declared here</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Parse an expression (sum/difference of one or more terms).</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @param input</span>
+<span class="cm">	 * @return</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Expr</span> <span class="nf">parse</span><span class="p">(</span><span class="n">Input</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">Expr</span> <span class="n">e</span> <span class="o">=</span> <span class="n">parseTerm</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span> <span class="o">||</span> <span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">BinOp</span> <span class="n">op</span> <span class="o">=</span> <span class="n">BinOp</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+			<span class="n">Expr</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">Expr</span><span class="p">.</span><span class="na">parseTerm</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+			<span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BinOpExpr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">e2</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="n">e</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Parse a term (product/quotient of one or more factors).</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @param input</span>
+<span class="cm">	 * @return</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Expr</span> <span class="nf">parseTerm</span><span class="p">(</span><span class="n">Input</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">Expr</span> <span class="n">e</span> <span class="o">=</span> <span class="n">parseFactor</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+		<span class="k">while</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;*&#39;</span> <span class="o">||</span> <span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;/&#39;</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">BinOp</span> <span class="n">op</span> <span class="o">=</span> <span class="n">BinOp</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+			<span class="n">Expr</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">Expr</span><span class="p">.</span><span class="na">parseFactor</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+			<span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BinOpExpr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">e2</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="n">e</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Parse a factor (identifier, number, or parenthesized expression). Throws a</span>
+<span class="cm">	 * RuntimeException if a factor is not available.</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @param input</span>
+<span class="cm">	 * @return</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Expr</span> <span class="nf">parseFactor</span><span class="p">(</span><span class="n">Input</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isLetter</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()))</span> <span class="p">{</span>
+			<span class="n">String</span> <span class="n">id</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="na">readIdent</span><span class="p">();</span>
+			<span class="k">return</span> <span class="k">new</span> <span class="n">IdentExpr</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">Character</span><span class="p">.</span><span class="na">isDigit</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()))</span> <span class="p">{</span>
+			<span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+			<span class="k">return</span> <span class="k">new</span> <span class="n">NumExpr</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">==</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">skip</span><span class="p">();</span>
+			<span class="n">Expr</span> <span class="n">e</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">match</span><span class="p">(</span><span class="sc">&#39;)&#39;</span><span class="p">);</span>
+			<span class="k">return</span> <span class="n">e</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;expected a factor&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BinOpExpr</span> <span class="kd">implements</span> <span class="n">Expr</span> <span class="p">{</span>
+	<span class="kd">private</span> <span class="n">Expr</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="n">BinOp</span> <span class="n">op</span><span class="p">;</span>
+
+	<span class="kd">public</span> <span class="nf">BinOpExpr</span><span class="p">(</span><span class="n">Expr</span> <span class="n">left</span><span class="p">,</span> <span class="n">BinOp</span> <span class="n">op</span><span class="p">,</span> <span class="n">Expr</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">op</span> <span class="o">=</span> <span class="n">op</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">right</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">&quot;BinOp(&quot;</span> <span class="o">+</span> <span class="n">left</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">op</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">right</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">IdentExpr</span> <span class="kd">implements</span> <span class="n">Expr</span> <span class="p">{</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="p">;</span>
+
+	<span class="kd">public</span> <span class="nf">IdentExpr</span><span class="p">(</span><span class="n">String</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">&quot;Ident(&quot;</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumExpr</span> <span class="kd">implements</span> <span class="n">Expr</span> <span class="p">{</span>
+	<span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+
+	<span class="kd">public</span> <span class="nf">NumExpr</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="s">&quot;Num(&quot;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Represents the binary operators available in the abstract syntax for</span>
+<span class="cm"> * expressions.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="n">BinOp</span> <span class="p">{</span>
+	<span class="n">PLUS</span><span class="p">,</span> <span class="n">MINUS</span><span class="p">,</span> <span class="n">TIMES</span><span class="p">,</span> <span class="n">DIVIDE</span><span class="p">;</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Parse a binary operator from the given Input. Should only be called when the</span>
+<span class="cm">	 * current character may start an operator.</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @param input</span>
+<span class="cm">	 * @return</span>
+<span class="cm">	 */</span>
+	<span class="kd">static</span> <span class="n">BinOp</span> <span class="nf">parse</span><span class="p">(</span><span class="n">Input</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">switch</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">peek</span><span class="p">())</span> <span class="p">{</span>
+		<span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="p">:</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">skip</span><span class="p">();</span>
+			<span class="k">return</span> <span class="n">PLUS</span><span class="p">;</span>
+		<span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="p">:</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">skip</span><span class="p">();</span>
+			<span class="k">return</span> <span class="n">MINUS</span><span class="p">;</span>
+		<span class="k">case</span> <span class="sc">&#39;*&#39;</span><span class="p">:</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">skip</span><span class="p">();</span>
+			<span class="k">return</span> <span class="n">TIMES</span><span class="p">;</span>
+		<span class="k">case</span> <span class="sc">&#39;/&#39;</span><span class="p">:</span>
+			<span class="n">input</span><span class="p">.</span><span class="na">skip</span><span class="p">();</span>
+			<span class="k">return</span> <span class="n">DIVIDE</span><span class="p">;</span>
+		<span class="k">default</span><span class="p">:</span>
+			<span class="k">return</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// shouldn&#39;t happen</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Wrapper around a Reader that provides useful abstractions for recursive</span>
+<span class="cm"> * descent parsing.</span>
+<span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Input</span> <span class="p">{</span>
+	<span class="kd">private</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">Reader</span> <span class="n">source</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="kt">char</span> <span class="n">next</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="kt">boolean</span> <span class="n">atEnd</span><span class="p">;</span>
+
+	<span class="kd">public</span> <span class="nf">Input</span><span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">Reader</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+		<span class="n">skip</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * @return current available character</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">char</span> <span class="nf">peek</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">next</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * @return true if no more characters available</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">atEnd</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">atEnd</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Read the next available character, skipping over whitespace</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">skip</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">readNext</span><span class="p">();</span>
+		<span class="n">skipWhitespace</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * If the current character is c, skip to the next. Throw a RuntimeException if</span>
+<span class="cm">	 * the character does not match.</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @param c</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">match</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">next</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">skip</span><span class="p">();</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s">&quot;expected &quot;</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="s">&quot; but found &quot;</span> <span class="o">+</span> <span class="n">next</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Read an identifier (letter followed by zero or more letters or digits). This</span>
+<span class="cm">	 * should only be called when the current character is a letter.</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @return the identifier</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">readIdent</span><span class="p">()</span> <span class="p">{</span>
+		<span class="n">StringBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+		<span class="n">builder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+		<span class="n">readNext</span><span class="p">();</span>
+		<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">atEnd</span> <span class="o">&amp;&amp;</span> <span class="n">Character</span><span class="p">.</span><span class="na">isLetterOrDigit</span><span class="p">(</span><span class="n">next</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">builder</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">next</span><span class="p">);</span>
+			<span class="n">readNext</span><span class="p">();</span>
+		<span class="p">}</span>
+		<span class="n">skipWhitespace</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">builder</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="cm">/**</span>
+<span class="cm">	 * Read an integer (digit followed by zero or more additional digits). This</span>
+<span class="cm">	 * should only be called when the current character is a digit.</span>
+<span class="cm">	 * </span>
+<span class="cm">	 * @return the number</span>
+<span class="cm">	 */</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">readInt</span><span class="p">()</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">next</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+		<span class="n">readNext</span><span class="p">();</span>
+		<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">atEnd</span> <span class="o">&amp;&amp;</span> <span class="n">Character</span><span class="p">.</span><span class="na">isDigit</span><span class="p">(</span><span class="n">next</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">next</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="p">;</span>
+			<span class="n">readNext</span><span class="p">();</span>
+		<span class="p">}</span>
+		<span class="n">skipWhitespace</span><span class="p">();</span>
+		<span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">readNext</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">try</span> <span class="p">{</span>
+			<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">source</span><span class="p">.</span><span class="na">read</span><span class="p">();</span>
+			<span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+				<span class="n">next</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="n">c</span><span class="p">;</span>
+				<span class="n">atEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+				<span class="n">next</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+				<span class="n">atEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">next</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+			<span class="n">atEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="kd">private</span> <span class="kt">void</span> <span class="nf">skipWhitespace</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">atEnd</span> <span class="o">&amp;&amp;</span> <span class="n">Character</span><span class="p">.</span><span class="na">isWhitespace</span><span class="p">(</span><span class="n">next</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">readNext</span><span class="p">();</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Demo</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">String</span> <span class="n">sample</span> <span class="o">=</span> <span class="s">&quot;  3*abc + (x1 - x0) * r2d2/42 \n&quot;</span><span class="p">;</span>
+		<span class="n">Input</span> <span class="n">input</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Input</span><span class="p">(</span><span class="k">new</span> <span class="n">StringReader</span><span class="p">(</span><span class="n">sample</span><span class="p">));</span>
+		<span class="n">Expr</span> <span class="n">e</span> <span class="o">=</span> <span class="n">Expr</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="na">atEnd</span><span class="p">())</span> <span class="p">{</span>
+			<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Found &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;unscanned input after parsing &quot;</span> <span class="o">+</span> <span class="n">e</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="parser-combinators">
+<h2>Parser Combinators<a class="headerlink" href="#parser-combinators" title="Permalink to this headline">¶</a></h2>
+<p>Instead of giving a direct translation of the Java version into ReasonML, it is
+common in functional languages to use what are known as <strong>parser combinators</strong>
+to write recursive descent parsers. A parser is viewed as a function from input
+to the pair of a result plus the remaining input (since in a functional language
+we do not want to use side-effects to update the “current character” available from
+an input source). A parser combinator is then a function that can combine one or
+more of these parsing functions into a composite parser.</p>
+<p>For example, given parsers <code class="docutils literal notranslate"><span class="pre">p1</span></code> and <code class="docutils literal notranslate"><span class="pre">p2</span></code>, the combinator <code class="docutils literal notranslate"><span class="pre">&lt;|&gt;</span></code> produces the parser
+<code class="docutils literal notranslate"><span class="pre">p1</span> <span class="pre">&lt;|&gt;</span> <span class="pre">p2</span></code> which attempts to parse according to <code class="docutils literal notranslate"><span class="pre">p1</span></code>; if it fails, then it attempts
+to use <code class="docutils literal notranslate"><span class="pre">p2</span></code> instead. This corresponds to the <span class="math notranslate nohighlight">\(|\)</span> (choice) operator in BNF (and also
+in regular expressions). Some of the other combinators used below are <code class="docutils literal notranslate"><span class="pre">&lt;*&gt;</span></code>, which
+corresponds to sequencing one parser after another, and <code class="docutils literal notranslate"><span class="pre">rep</span></code>, which repeats a
+parser zero or more times (like the Kleene star).</p>
+<p>Here is code for parser combinators in ReasonML, based on
+<a class="reference external" href="https://github.com/henoc/bs-little-parser">bs-little-parser</a>:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Input</span> <span class="ow">=</span> <span class="ow">{</span>
+  <span class="k">type</span> <span class="n">t</span> <span class="ow">=</span> <span class="ow">{</span><span class="n">text</span><span class="ow">:</span> <span class="kt">string</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="kt">int</span><span class="ow">,</span> <span class="n">whitespace</span><span class="ow">:</span> <span class="kt">string</span><span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">fromString</span> <span class="ow">=</span> <span class="n">s</span> <span class="ow">=&gt;</span> <span class="ow">{</span><span class="n">text</span><span class="ow">:</span> <span class="n">s</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="mi">0</span><span class="ow">,</span> <span class="n">whitespace</span><span class="ow">:</span> <span class="s2">&quot; </span><span class="se">\t\n</span><span class="s2">&quot;</span><span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">skipWhitespace</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">whitespace</span> <span class="ow">=</span> <span class="n">input</span><span class="ow">.</span><span class="n">whitespace</span><span class="ow">;</span>
+    <span class="k">let</span> <span class="n">spaceChars</span> <span class="ow">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">init</span><span class="ow">(</span><span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">whitespace</span><span class="ow">),</span> <span class="nn">String</span><span class="p">.</span><span class="n">get</span><span class="ow">(</span><span class="n">whitespace</span><span class="ow">));</span>
+    
+    <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">)</span> <span class="ow">&lt;=</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="n">input</span> 
+      <span class="ow">}</span> <span class="k">else</span> <span class="k">if</span> <span class="ow">(</span><span class="nn">List</span><span class="p">.</span><span class="n">mem</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">.[</span><span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">],</span> <span class="n">spaceChars</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="n">aux</span><span class="ow">({...</span><span class="n">input</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">+</span><span class="mi">1</span><span class="ow">})</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="n">input</span>
+      <span class="ow">}</span>
+    <span class="ow">};</span>
+    <span class="n">aux</span><span class="ow">(</span><span class="n">input</span><span class="ow">)</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">atEnd</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="n">input</span><span class="ow">.</span><span class="n">index</span> <span class="ow">==</span> <span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">)</span>
+  <span class="ow">};</span>
+<span class="ow">};</span>
+
+<span class="k">module</span> <span class="nc">Result</span> <span class="ow">=</span> <span class="ow">{</span>
+  <span class="k">type</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=</span> <span class="nc">Ok</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">|</span> <span class="nc">Error</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">);</span>
+
+  <span class="k">let</span> <span class="n">map</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">f</span><span class="ow">,</span> <span class="n">result</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">result</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nc">Ok</span><span class="ow">(</span><span class="n">r</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Ok</span><span class="ow">(</span><span class="n">f</span><span class="ow">(</span><span class="n">r</span><span class="ow">))</span>
+    <span class="ow">|</span> <span class="nc">Error</span><span class="ow">(</span><span class="n">s</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Error</span><span class="ow">(</span><span class="n">s</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">get</span> <span class="ow">=</span> <span class="n">result</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">result</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nc">Ok</span><span class="ow">(</span><span class="n">r</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="nc">Some</span><span class="ow">(</span><span class="n">r</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="nc">None</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+<span class="ow">};</span>
+
+<span class="k">module</span> <span class="nc">Parser</span> <span class="ow">=</span> <span class="ow">{</span>
+  <span class="k">type</span> <span class="n">parseResult</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nn">Result</span><span class="p">.</span><span class="n">t</span><span class="ow">((</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">,</span> <span class="nn">Input</span><span class="p">.</span><span class="n">t</span><span class="ow">),</span> <span class="ow">(</span><span class="kt">string</span><span class="ow">,</span> <span class="nn">Input</span><span class="p">.</span><span class="n">t</span><span class="ow">))</span>
+  <span class="k">type</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=</span> <span class="nn">Input</span><span class="p">.</span><span class="n">t</span> <span class="ow">=&gt;</span> <span class="n">parseResult</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">);</span>
+
+  <span class="k">let</span> <span class="n">success</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">result</span><span class="ow">,</span> <span class="n">input</span><span class="ow">):</span> <span class="n">parseResult</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+    <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">result</span><span class="ow">,</span> <span class="n">input</span><span class="ow">));</span>
+  
+  <span class="k">let</span> <span class="n">failure</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">):</span> <span class="n">parseResult</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+    <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">));</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="ow">&lt;*&gt;</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">q</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">result1</span><span class="ow">,</span> <span class="n">input2</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="k">switch</span> <span class="ow">(</span><span class="n">q</span><span class="ow">(</span><span class="n">input2</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">result2</span><span class="ow">,</span> <span class="n">input3</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">success</span><span class="ow">((</span><span class="n">result1</span><span class="ow">,</span> <span class="n">result2</span><span class="ow">),</span> <span class="n">input3</span><span class="ow">)</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+        <span class="ow">}</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="ow">&lt;*</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">q</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span><span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">result1</span><span class="ow">,</span> <span class="n">input2</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="k">switch</span> <span class="ow">(</span><span class="n">q</span><span class="ow">(</span><span class="n">input2</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((_,</span> <span class="n">input3</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">success</span><span class="ow">(</span><span class="n">result1</span><span class="ow">,</span> <span class="n">input3</span><span class="ow">)</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+        <span class="ow">}</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="ow">*&gt;</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">q</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span><span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((_,</span> <span class="n">input2</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="k">switch</span> <span class="ow">(</span><span class="n">q</span><span class="ow">(</span><span class="n">input2</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">result2</span><span class="ow">,</span> <span class="n">input3</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">success</span><span class="ow">(</span><span class="n">result2</span><span class="ow">,</span> <span class="n">input3</span><span class="ow">)</span>
+        <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+            <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+        <span class="ow">}</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span>
+        <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="ow">&lt;|&gt;</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">q</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">s</span><span class="ow">,</span> <span class="n">t</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="n">s</span><span class="ow">,</span> <span class="n">t</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="n">q</span><span class="ow">(</span><span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">rep</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">accum</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+      <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">r</span><span class="ow">,</span> <span class="n">i</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">aux</span><span class="ow">([</span><span class="n">r</span><span class="ow">,</span> <span class="ow">...</span><span class="n">accum</span><span class="ow">],</span> <span class="n">i</span><span class="ow">)</span>
+      <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="nn">List</span><span class="p">.</span><span class="n">rev</span><span class="ow">(</span><span class="n">accum</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span>
+      <span class="ow">}</span>
+    <span class="ow">};</span>
+
+    <span class="n">aux</span><span class="ow">(</span><span class="bp">[]</span><span class="ow">,</span> <span class="n">input</span><span class="ow">);</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">rep1</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">p</span> <span class="ow">&lt;*&gt;</span> <span class="n">rep</span><span class="ow">(</span><span class="n">p</span><span class="ow">);</span>
+
+  <span class="k">let</span> <span class="n">opt</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">r</span><span class="ow">,</span> <span class="n">i</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="nc">Some</span><span class="ow">(</span><span class="n">r</span><span class="ow">),</span> <span class="n">i</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="nc">None</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">andPred</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">r</span><span class="ow">,</span> <span class="ow">_))</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="n">r</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">notPred</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((_,</span> <span class="n">i</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">failure</span><span class="ow">(</span><span class="s2">&quot;notPred failure&quot;</span><span class="ow">,</span> <span class="n">i</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="ow">_</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="bp">()</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="ow">&gt;&gt;</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">f</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">r</span><span class="ow">,</span> <span class="n">i</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">f</span><span class="ow">(</span><span class="n">r</span><span class="ow">,</span> <span class="n">i</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="ow">(</span> <span class="o">^^</span> <span class="ow">)</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">p</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">f</span><span class="ow">,</span> <span class="n">input</span><span class="ow">):</span> <span class="n">parseResult</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">b</span><span class="ow">)</span> <span class="ow">=&gt;</span>
+    <span class="nn">Result</span><span class="p">.</span><span class="n">map</span><span class="ow">(((</span><span class="n">r</span><span class="ow">,</span> <span class="n">i</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">f</span><span class="ow">(</span><span class="n">r</span><span class="ow">),</span> <span class="n">i</span><span class="ow">),</span> <span class="n">p</span><span class="ow">(</span><span class="n">input</span><span class="ow">));</span>
+
+  <span class="k">let</span> <span class="n">chr</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">c</span><span class="ow">,</span> <span class="n">rawInput</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="ow">=</span> <span class="nn">Input</span><span class="p">.</span><span class="n">skipWhitespace</span><span class="ow">(</span><span class="n">rawInput</span><span class="ow">);</span>
+    <span class="k">if</span> <span class="ow">(</span><span class="nn">Input</span><span class="p">.</span><span class="n">atEnd</span><span class="ow">(</span><span class="n">input</span><span class="ow">))</span> <span class="ow">{</span>
+      <span class="n">failure</span><span class="ow">(</span><span class="s2">&quot;not enough input&quot;</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">firstChar</span> <span class="ow">=</span> <span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">.[</span><span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">];</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">firstChar</span> <span class="ow">==</span> <span class="n">c</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="n">success</span><span class="ow">(</span><span class="n">c</span><span class="ow">,</span> <span class="ow">{...</span><span class="n">input</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">+</span><span class="mi">1</span><span class="ow">})</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="n">failure</span><span class="ow">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;mismatch: %C found, expected %C&quot;</span><span class="ow">,</span> <span class="n">firstChar</span><span class="ow">,</span> <span class="n">c</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span>
+      <span class="ow">}</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">str</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">s</span><span class="ow">,</span> <span class="n">rawInput</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="ow">=</span> <span class="nn">Input</span><span class="p">.</span><span class="n">skipWhitespace</span><span class="ow">(</span><span class="n">rawInput</span><span class="ow">);</span>
+    <span class="k">let</span> <span class="n">slen</span> <span class="ow">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">s</span><span class="ow">);</span>
+    <span class="k">if</span> <span class="ow">(</span><span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">)</span> <span class="ow">-</span> <span class="n">slen</span> <span class="ow">&lt;</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">)</span> <span class="ow">{</span>
+      <span class="n">failure</span><span class="ow">(</span><span class="s2">&quot;not enough input&quot;</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+      <span class="k">let</span> <span class="n">substr</span> <span class="ow">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">sub</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">,</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">,</span> <span class="n">slen</span><span class="ow">);</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="n">substr</span> <span class="ow">==</span> <span class="n">s</span><span class="ow">)</span> <span class="ow">{</span>
+        <span class="n">success</span><span class="ow">(</span><span class="n">s</span><span class="ow">,</span> <span class="ow">{...</span><span class="n">input</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">+</span><span class="n">slen</span><span class="ow">})</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="n">failure</span><span class="ow">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;mismatch: %S found, expected %S&quot;</span><span class="ow">,</span> <span class="n">substr</span><span class="ow">,</span> <span class="n">s</span><span class="ow">),</span> <span class="n">input</span><span class="ow">)</span>
+      <span class="ow">}</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">dfa</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">init</span><span class="ow">,</span> <span class="n">step</span><span class="ow">,</span> <span class="n">finish</span><span class="ow">,</span> <span class="n">rawInput</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="ow">=</span> <span class="nn">Input</span><span class="p">.</span><span class="n">skipWhitespace</span><span class="ow">(</span><span class="n">rawInput</span><span class="ow">);</span>
+    <span class="k">let</span> <span class="k">rec</span> <span class="n">aux</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">state</span><span class="ow">,</span> <span class="n">i</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+      <span class="k">if</span> <span class="ow">(</span><span class="nn">Input</span><span class="p">.</span><span class="n">atEnd</span><span class="ow">(</span><span class="n">i</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="ow">(</span><span class="n">state</span><span class="ow">,</span> <span class="n">i</span><span class="ow">)</span>
+      <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+        <span class="k">let</span> <span class="n">nextChar</span> <span class="ow">=</span> <span class="n">i</span><span class="ow">.</span><span class="n">text</span><span class="ow">.[</span><span class="n">i</span><span class="ow">.</span><span class="n">index</span><span class="ow">];</span>
+        <span class="k">switch</span> <span class="ow">(</span><span class="n">step</span><span class="ow">(</span><span class="n">state</span><span class="ow">,</span> <span class="n">nextChar</span><span class="ow">))</span> <span class="ow">{</span>
+        <span class="ow">|</span> <span class="nc">Some</span><span class="ow">(</span><span class="n">nextState</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">aux</span><span class="ow">(</span><span class="n">nextState</span><span class="ow">,</span> <span class="ow">{...</span><span class="n">i</span><span class="ow">,</span> <span class="n">index</span><span class="ow">:</span> <span class="n">i</span><span class="ow">.</span><span class="n">index</span><span class="ow">+</span><span class="mi">1</span><span class="ow">})</span>
+        <span class="ow">|</span> <span class="nc">None</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="n">state</span><span class="ow">,</span> <span class="n">i</span><span class="ow">)</span>
+        <span class="ow">}</span>
+      <span class="ow">}</span>
+    <span class="ow">};</span>
+    <span class="k">let</span> <span class="ow">(</span><span class="n">finalState</span><span class="ow">,</span> <span class="n">input2</span><span class="ow">)</span> <span class="ow">=</span> <span class="n">aux</span><span class="ow">(</span><span class="n">init</span><span class="ow">,</span> <span class="n">input</span><span class="ow">);</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">finish</span><span class="ow">(</span><span class="n">finalState</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nc">Ok</span><span class="ow">(</span><span class="n">result</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">success</span><span class="ow">(</span><span class="n">result</span><span class="ow">,</span> <span class="n">input2</span><span class="ow">)</span>
+    <span class="ow">|</span> <span class="nc">Error</span><span class="ow">(</span><span class="n">message</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="n">failure</span><span class="ow">(</span><span class="n">message</span><span class="ow">,</span> <span class="n">input2</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">eoi</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">rawInput</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="ow">=</span> <span class="nn">Input</span><span class="p">.</span><span class="n">skipWhitespace</span><span class="ow">(</span><span class="n">rawInput</span><span class="ow">);</span>
+    <span class="k">let</span> <span class="n">remain</span> <span class="ow">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">length</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">)</span> <span class="ow">-</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">;</span>
+    <span class="k">if</span> <span class="ow">(</span><span class="n">remain</span> <span class="ow">==</span> <span class="mi">0</span><span class="ow">)</span> <span class="ow">{</span>
+      <span class="n">success</span><span class="ow">(</span><span class="bp">()</span><span class="ow">,</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+      <span class="n">failure</span><span class="ow">(</span><span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span><span class="ow">(</span><span class="s2">&quot;unscanned input at end of parse: %S&quot;</span><span class="ow">,</span> <span class="nn">String</span><span class="p">.</span><span class="n">sub</span><span class="ow">(</span><span class="n">input</span><span class="ow">.</span><span class="n">text</span><span class="ow">,</span> <span class="n">input</span><span class="ow">.</span><span class="n">index</span><span class="ow">,</span> <span class="n">remain</span><span class="ow">)),</span> <span class="n">input</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">parse</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">input</span><span class="ow">,</span> <span class="n">parser</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="n">parser</span><span class="ow">(</span><span class="n">input</span><span class="ow">)</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">parseAll</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">input</span><span class="ow">,</span> <span class="n">parser</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="ow">(</span><span class="n">parser</span> <span class="ow">&lt;*</span> <span class="n">eoi</span><span class="ow">)(</span><span class="n">input</span><span class="ow">)</span>
+  <span class="ow">};</span>
+
+  <span class="k">let</span> <span class="n">test</span> <span class="ow">=</span> <span class="ow">(</span><span class="n">parser</span><span class="ow">:</span> <span class="n">t</span><span class="ow">(</span><span class="k">&#39;</span><span class="n">a</span><span class="ow">),</span> <span class="n">s</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="ow">{</span>
+    <span class="k">switch</span> <span class="ow">(</span><span class="n">parseAll</span><span class="ow">(</span><span class="nn">Input</span><span class="p">.</span><span class="n">fromString</span><span class="ow">(</span><span class="n">s</span><span class="ow">),</span> <span class="n">parser</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Ok</span><span class="ow">((</span><span class="n">r</span><span class="ow">,</span> <span class="ow">_))</span> <span class="ow">=&gt;</span> <span class="n">r</span>
+    <span class="ow">|</span> <span class="nn">Result</span><span class="p">.</span><span class="nc">Error</span><span class="ow">((</span><span class="n">m</span><span class="ow">,</span> <span class="ow">_))</span> <span class="ow">=&gt;</span> <span class="n">failwith</span><span class="ow">(</span><span class="n">m</span><span class="ow">)</span>
+    <span class="ow">}</span>
+  <span class="ow">}</span>
+<span class="ow">};</span>
+</pre></div>
+</div>
+<p>Here is the parser for arithmetic expressions, corresponding to the Java example above.
+Note how the definitions of <code class="docutils literal notranslate"><span class="pre">expr</span></code>, <code class="docutils literal notranslate"><span class="pre">term</span></code>, and <code class="docutils literal notranslate"><span class="pre">factor</span></code> are very close to the original BNF:</p>
+<div class="highlight-reason notranslate"><div class="highlight"><pre><span></span><span class="k">open</span> <span class="nc">Parser</span><span class="ow">;</span>
+
+<span class="k">type</span> <span class="n">exp</span> <span class="ow">=</span>
+  <span class="ow">|</span> <span class="nc">Ident</span><span class="ow">(</span><span class="kt">string</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">Num</span><span class="ow">(</span><span class="kt">int</span><span class="ow">)</span>
+  <span class="ow">|</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">exp</span><span class="ow">,</span> <span class="kt">char</span><span class="ow">,</span> <span class="n">exp</span><span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">isLetter</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="sc">&#39;A&#39;</span> <span class="ow">&lt;=</span> <span class="n">c</span> <span class="ow">&amp;&amp;</span> <span class="n">c</span> <span class="ow">&lt;=</span> <span class="sc">&#39;Z&#39;</span><span class="ow">)</span> <span class="ow">||</span> <span class="ow">(</span><span class="sc">&#39;a&#39;</span> <span class="ow">&lt;=</span> <span class="n">c</span> <span class="ow">&amp;&amp;</span> <span class="n">c</span> <span class="ow">&lt;=</span> <span class="sc">&#39;z&#39;</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">isDigit</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">=&gt;</span> <span class="ow">(</span><span class="sc">&#39;0&#39;</span> <span class="ow">&lt;=</span> <span class="n">c</span> <span class="ow">&amp;&amp;</span> <span class="n">c</span> <span class="ow">&lt;=</span> <span class="sc">&#39;9&#39;</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">isLetterOrDigit</span> <span class="ow">=</span> <span class="n">c</span> <span class="ow">=&gt;</span> <span class="n">isLetter</span><span class="ow">(</span><span class="n">c</span><span class="ow">)</span> <span class="ow">||</span> <span class="n">isDigit</span><span class="ow">(</span><span class="n">c</span><span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">ident</span> <span class="ow">=</span> <span class="n">dfa</span><span class="ow">(</span>
+  <span class="s2">&quot;&quot;</span><span class="ow">,</span>
+  <span class="ow">(</span><span class="n">s</span><span class="ow">,</span> <span class="n">c</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="k">if</span> <span class="ow">((</span><span class="n">s</span> <span class="ow">==</span> <span class="s2">&quot;&quot;</span> <span class="ow">&amp;&amp;</span> <span class="n">isLetter</span><span class="ow">(</span><span class="n">c</span><span class="ow">))</span> <span class="ow">||</span> <span class="ow">(</span><span class="n">s</span> <span class="ow">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">&amp;&amp;</span> <span class="n">isLetterOrDigit</span><span class="ow">(</span><span class="n">c</span><span class="ow">)))</span> <span class="ow">{</span>
+      <span class="nc">Some</span><span class="ow">(</span><span class="n">s</span> <span class="ow">++</span> <span class="nn">String</span><span class="p">.</span><span class="n">make</span><span class="ow">(</span><span class="mi">1</span><span class="ow">,</span> <span class="n">c</span><span class="ow">))</span>
+    <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+      <span class="nc">None</span>
+    <span class="ow">},</span>
+  <span class="n">s</span> <span class="ow">=&gt;</span> <span class="k">if</span> <span class="ow">(</span><span class="n">s</span> <span class="ow">==</span> <span class="s2">&quot;&quot;</span><span class="ow">)</span> <span class="ow">{</span>
+      <span class="nc">Error</span><span class="ow">(</span><span class="s2">&quot;expected identifier&quot;</span><span class="ow">)</span>
+    <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+      <span class="nc">Ok</span><span class="ow">(</span><span class="nc">Ident</span><span class="ow">(</span><span class="n">s</span><span class="ow">))</span>
+    <span class="ow">}</span>
+<span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">number</span> <span class="ow">=</span> <span class="n">dfa</span><span class="ow">(</span>
+  <span class="s2">&quot;&quot;</span><span class="ow">,</span>
+  <span class="ow">(</span><span class="n">s</span><span class="ow">,</span> <span class="n">c</span><span class="ow">)</span> <span class="ow">=&gt;</span> <span class="k">if</span> <span class="ow">(</span><span class="n">isDigit</span><span class="ow">(</span><span class="n">c</span><span class="ow">))</span> <span class="ow">{</span>
+    <span class="nc">Some</span><span class="ow">(</span><span class="n">s</span> <span class="ow">++</span> <span class="nn">String</span><span class="p">.</span><span class="n">make</span><span class="ow">(</span><span class="mi">1</span><span class="ow">,</span> <span class="n">c</span><span class="ow">))</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="nc">None</span>
+  <span class="ow">},</span>
+  <span class="n">s</span> <span class="ow">=&gt;</span> <span class="k">if</span> <span class="ow">(</span><span class="n">s</span> <span class="ow">==</span> <span class="s2">&quot;&quot;</span><span class="ow">)</span> <span class="ow">{</span>
+    <span class="nc">Error</span><span class="ow">(</span><span class="s2">&quot;expected number&quot;</span><span class="ow">)</span>
+  <span class="ow">}</span> <span class="k">else</span> <span class="ow">{</span>
+    <span class="nc">Ok</span><span class="ow">(</span><span class="nc">Num</span><span class="ow">(</span><span class="n">int_of_string</span><span class="ow">(</span><span class="n">s</span><span class="ow">)))</span>
+  <span class="ow">}</span>
+<span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">addop</span> <span class="ow">=</span> <span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;+&#39;</span><span class="ow">)</span> <span class="ow">&lt;|&gt;</span> <span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;-&#39;</span><span class="ow">);</span>
+<span class="k">let</span> <span class="n">mulop</span> <span class="ow">=</span> <span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;*&#39;</span><span class="ow">)</span> <span class="ow">&lt;|&gt;</span> <span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;/&#39;</span><span class="ow">);</span>
+
+<span class="k">let</span> <span class="k">rec</span> <span class="n">expr</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">(</span>
+  <span class="ow">(</span><span class="n">term</span> <span class="ow">&lt;*&gt;</span> <span class="n">rep</span><span class="ow">(</span><span class="n">addop</span> <span class="ow">&lt;*&gt;</span> <span class="n">term</span><span class="ow">))</span>
+  <span class="o">^^</span> <span class="ow">((</span><span class="n">t</span><span class="ow">,</span> <span class="n">ts</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">fold_left</span><span class="ow">((</span><span class="n">l</span><span class="ow">,</span> <span class="ow">(</span><span class="n">op</span><span class="ow">,</span> <span class="n">r</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">l</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">r</span><span class="ow">),</span> <span class="n">t</span><span class="ow">,</span> <span class="n">ts</span><span class="ow">)</span>
+<span class="ow">)(</span><span class="n">input</span><span class="ow">)</span>
+<span class="ow">and</span> <span class="n">term</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">(</span>
+  <span class="ow">(</span><span class="n">factor</span> <span class="ow">&lt;*&gt;</span> <span class="n">rep</span><span class="ow">(</span><span class="n">mulop</span> <span class="ow">&lt;*&gt;</span> <span class="n">factor</span><span class="ow">))</span>
+  <span class="o">^^</span> <span class="ow">((</span><span class="n">f</span><span class="ow">,</span> <span class="n">fs</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">fold_left</span><span class="ow">((</span><span class="n">l</span><span class="ow">,</span> <span class="ow">(</span><span class="n">op</span><span class="ow">,</span> <span class="n">r</span><span class="ow">))</span> <span class="ow">=&gt;</span> <span class="nc">BinOp</span><span class="ow">(</span><span class="n">l</span><span class="ow">,</span> <span class="n">op</span><span class="ow">,</span> <span class="n">r</span><span class="ow">),</span> <span class="n">f</span><span class="ow">,</span> <span class="n">fs</span><span class="ow">)</span>
+<span class="ow">)(</span><span class="n">input</span><span class="ow">)</span>
+<span class="ow">and</span> <span class="n">factor</span> <span class="ow">=</span> <span class="n">input</span> <span class="ow">=&gt;</span> <span class="ow">(</span>
+  <span class="n">ident</span>
+  <span class="ow">&lt;|&gt;</span> <span class="n">number</span>
+  <span class="ow">&lt;|&gt;</span> <span class="ow">(</span><span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;(&#39;</span><span class="ow">)</span> <span class="ow">*&gt;</span> <span class="n">expr</span> <span class="ow">&lt;*</span> <span class="n">chr</span><span class="ow">(</span><span class="sc">&#39;)&#39;</span><span class="ow">))</span>
+<span class="ow">)(</span><span class="n">input</span><span class="ow">);</span>
+
+<span class="k">let</span> <span class="n">sample</span> <span class="ow">=</span> <span class="s2">&quot;  3*abc + (x1 - x0) * r2d2/42 </span><span class="se">\n</span><span class="s2">&quot;</span><span class="ow">;</span>
+<span class="nn">Result</span><span class="p">.</span><span class="n">get</span><span class="ow">(</span><span class="n">parseAll</span><span class="ow">(</span><span class="nn">Input</span><span class="p">.</span><span class="n">fromString</span><span class="ow">(</span><span class="n">sample</span><span class="ow">),</span> <span class="n">expr</span><span class="ow">));</span>
+<span class="n">test</span><span class="ow">(</span><span class="n">expr</span><span class="ow">,</span> <span class="n">sample</span><span class="ow">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./fp"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="state.html" title="previous page">State Machines in Java and ReasonML</a>
+    <a class='right-next' id="next-link" href="lambda.html" title="next page">Lambda Calculus</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>

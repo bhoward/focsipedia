@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Natural Deduction for Predicate Logic &#8212; FoCSipedia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mathematical Induction" href="induction.html" />
+    <link rel="prev" title="Deduction" href="deduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/SmartFoxLogo.jpeg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">FoCSipedia</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   Attribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../topics.html">
+   Topics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview of Topics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="index.html">
+   Logic
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro.html">
+     Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="props.html">
+     Propositional Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boolean.html">
+     Boolean Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="circuits.html">
+     Logic Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simplify.html">
+     Circuit Simplification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="components.html">
+     Common Circuit Components
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="preds.html">
+     Predicates and Quantifiers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deduction.html">
+     Deduction
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Natural Deduction for Predicate Logic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="induction.html">
+     Mathematical Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="recursion.html">
+     Recursion and Induction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sequential.html">
+     Sequential Circuits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="state.html">
+     State Machines
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sets/index.html">
+   Sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../fp/index.html">
+   Functional Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ds/index.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../lang/index.html">
+   Formal Languages
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/logic/pred-deduction.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#universal-quantification">
+   Universal Quantification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#existential-quantification">
+   Existential Quantification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="natural-deduction-for-predicate-logic">
+<h1>Natural Deduction for Predicate Logic<a class="headerlink" href="#natural-deduction-for-predicate-logic" title="Permalink to this headline">¶</a></h1>
+<p>Before seeing the natural deduction rules for handling the quantifiers
+(<span class="math notranslate nohighlight">\(\forall\)</span> and <span class="math notranslate nohighlight">\(\exists\)</span>), we will need to be careful about how we handle
+variables in proofs. We will now have three[^There is also a fourth use, if we
+are maintaining a library of previous proofs and applying them by name, such as
+“Modus Tollens”, to justify steps in later proofs.] different uses of
+identifiers in our proofs, representing different entities that we want to be
+able to refer to by name:</p>
+<ul class="simple">
+<li><p>Propositions (<span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, …) and predicates (<span class="math notranslate nohighlight">\(P\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, …) stand
+for primitive statements that may be true or false, perhaps depending on the
+values of arguments. When we show that an argument is valid for <span class="math notranslate nohighlight">\(p\)</span> and
+<span class="math notranslate nohighlight">\(Q(a)\)</span>, for example, we have also shown that the argument is valid when those
+propositional and predicate variables are replaced by actual statements, such
+as “It is raining” or “<span class="math notranslate nohighlight">\(a\)</span> is an even number”. As long as we are consistent
+about replacing variables with the same statement each time they occur, the
+resulting argument will have the same structure and be equally valid. If we
+are careful, we can even perform substitutions such as <span class="math notranslate nohighlight">\(p\)</span> becomes <span class="math notranslate nohighlight">\(q\)</span> and
+(simultaneously) <span class="math notranslate nohighlight">\(q\)</span> becomes <span class="math notranslate nohighlight">\(\lnot p\)</span>; for example, if we have proven the
+argument <span class="math notranslate nohighlight">\(p\rightarrow q, \lnot q\vdash\lnot p\)</span> (Modus Tollens), then applying
+this substitution would allow us to also use the argument <span class="math notranslate nohighlight">\(q\rightarrow\lnot
+p, \lnot\lnot p\vdash\lnot q\)</span> as a step in a proof.</p></li>
+<li><p>Line labels (<span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(j\)</span>, …, as well as <span class="math notranslate nohighlight">\(\ell_1\)</span>, <span class="math notranslate nohighlight">\(\ell_2\)</span>, …)
+allow us to name individual steps and assumptions in our proofs. I have been
+following the convention that lines in an actual proof are named <span class="math notranslate nohighlight">\(\ell_1\)</span>,
+<span class="math notranslate nohighlight">\(\ell_2\)</span>, …, although they could be given more meaningful names such as
+<em>hypothesis</em>, <em>first_case</em>, or <em>premise2</em>. When describing the deduction
+rules, I have been using labels such as <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> to emphasize that the line
+being referenced could be anywhere earlier in the proof (as long as it is not
+local to a nested subproof).</p></li>
+<li><p>Entity variables (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, …, as well as <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, …) stand for
+entities from the domain of discourse. I have been using <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, … to
+stand for particular values, such as the number 42 or the student Joe, that
+might be used in an argument, so <span class="math notranslate nohighlight">\(Q(a)\)</span> could represent the statement “42 is
+an even number.” When the variable is bound by a quantifier, I generally use
+<span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(y\)</span> instead, to emphasize that the formula is saying something about
+the full range of values from the domain of discourse, and we are not free to
+interpret it as any particular entity. The actual name of a bound variable
+does not matter, only the association between its uses and the quantifier that
+is binding it. That is, we will consider <span class="math notranslate nohighlight">\(\exists xP(x)\)</span> and <span class="math notranslate nohighlight">\(\exists yP(y)\)</span>
+to be the same (and we may choose the name of the variable to avoid confusion
+with other variables as needed).[^The analogy in programming is to note that
+the index variable for a loop can be anything; although we might usually use
+<em>i</em>, we may consistently switch to using <em>j</em> for a given loop if there is
+already a variable named <em>i</em> in that part of the program.]</p></li>
+</ul>
+<p>Just as we can introduce temporary assumptions into subproofs, that are only
+available within that nested block of the proof, we will also introduce
+temporary entity variables in proofs by writing an assumption such as “fresh
+<span class="math notranslate nohighlight">\(x_0\)</span>” (or <span class="math notranslate nohighlight">\(x_1\)</span>, …, as needed). This means that, within that subproof,
+the variable <span class="math notranslate nohighlight">\(x_0\)</span> will refer to some entity from the domain of discourse.
+Unlike the variables (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, …) bound by quantifiers, such a fresh
+variable should be understood as representing a single entity; it can stand
+alone in a statement such as <span class="math notranslate nohighlight">\(Q(x_0)\)</span>. However, unlike the top-level free
+variables (<span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, …), we do not get to choose a value for a fresh
+variable, nor is it allowed to escape from its subproof. That is, no formula
+outside of the braces is allowed to refer to <span class="math notranslate nohighlight">\(x_0\)</span>.</p>
+<div class="section" id="universal-quantification">
+<h2>Universal Quantification<a class="headerlink" href="#universal-quantification" title="Permalink to this headline">¶</a></h2>
+<p>To prove a proposition <span class="math notranslate nohighlight">\(\forall xP(x)\)</span>, and “introduce” a universal quantifier,
+we need to show that <span class="math notranslate nohighlight">\(P(x)\)</span> is true
+regardless of which entity is substituted for <span class="math notranslate nohighlight">\(x\)</span>. This is what a subproof with
+a fresh variable gives us:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l}
+i: \text{fresh}\ x_0\Rightarrow\{\\
+\quad\ldots\\
+\quad P(x_0)\\
+\}\\ \hline\therefore
+\forall xP(x), \quad\forall I\ i
+\end{array} \end{split}\]</div>
+<p>The nested proof is a demonstration that <span class="math notranslate nohighlight">\(P(x_0)\)</span> is true with no external
+assumptions on which entity <span class="math notranslate nohighlight">\(x_0\)</span> refers to. The only way we can do this is if
+<span class="math notranslate nohighlight">\(P(x)\)</span> is actually true for all entities <span class="math notranslate nohighlight">\(x\)</span> in the domain of discourse, that
+is, <span class="math notranslate nohighlight">\(\forall xP(x)\)</span>.</p>
+<p>Here is an example, proving the validity of the argument
+<span class="math notranslate nohighlight">\(p\vdash\forall x(Q(x)\rightarrow p\land Q(x))\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: p &amp; \text{premise}\\
+\ell_2: \text{fresh}\ x_0\Rightarrow\{\\
+\quad\ell_3: Q(x_0)\Rightarrow\{\\
+\quad\quad\ell_4: p\land Q(x_0) &amp; \land I\ \ell_1, \ell_3\\
+\quad\}\\
+\quad\ell_5: Q(x_0)\rightarrow p\land Q(x_0) &amp; \rightarrow I\ \ell_2\\
+\}\\
+\ell_6: \forall x(Q(x)\rightarrow p\land Q(x)) &amp; \forall I\ \ell_1
+\end{array} \end{split}\]</div>
+<p>At step <span class="math notranslate nohighlight">\(\ell_5\)</span>, we are asserting that <span class="math notranslate nohighlight">\(Q(x_0)\rightarrow p\land Q(x_0)\)</span>
+is true for <em>some</em> entity <span class="math notranslate nohighlight">\(x_0\)</span>, but since we were able to conclude this with
+no extra conditions on which entity that is, in <span class="math notranslate nohighlight">\(\ell_6\)</span> we can introduce the
+universal quantifier. At this point, there are no remaining references to <span class="math notranslate nohighlight">\(x_0\)</span>,
+so nothing about the result can depend on which entity we use—it must be
+true for all of them.</p>
+<p>The corresponding elimination rule for the universal quantifier is simple:
+from the premise <span class="math notranslate nohighlight">\(\forall xP(x)\)</span> we may conclude that the predicate <span class="math notranslate nohighlight">\(P\)</span> holds
+for <em>any</em> entity <span class="math notranslate nohighlight">\(a\)</span> in the domain of discourse:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l}
+i: \forall xP(x)\\ \hline\therefore
+P(a), \quad\forall E\ i, a
+\end{array} \end{split}\]</div>
+<p>For example, we can use this to prove the following quantified version of
+modus ponens: <span class="math notranslate nohighlight">\(\forall x(P(x)\rightarrow Q(x)), P(a)\vdash Q(a)\)</span>. That is, if
+<span class="math notranslate nohighlight">\(P(x)\)</span> implies <span class="math notranslate nohighlight">\(Q(x)\)</span> for each <span class="math notranslate nohighlight">\(x\)</span>, then knowing that <span class="math notranslate nohighlight">\(P(a)\)</span> holds for some <span class="math notranslate nohighlight">\(a\)</span>
+lets us conclude that also <span class="math notranslate nohighlight">\(Q(a)\)</span> holds. Here is the proof:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: \forall x(P(x)\rightarrow Q(x)) &amp; \text{premise}\\
+\ell_2: P(a)\rightarrow Q(a) &amp; \forall E\ \ell_1, a\\
+\ell_3: P(a) &amp; \text{premise}\\
+\ell_4: Q(a) &amp; \rightarrow E\ \ell_2, \ell_3
+\end{array} \end{split}\]</div>
+<p>Here is a longer example showing a quantified version of the law of syllogism,
+<span class="math notranslate nohighlight">\(\forall x(P(x)\rightarrow Q(x)), \forall x(Q(x)\rightarrow R(x))\vdash\forall
+x(P(x)\rightarrow R(x))\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: \text{fresh}\ x_0\Rightarrow\{\\
+\quad\ell_2: P(x_0)\Rightarrow\{\\
+\quad\quad\ell_3: \forall x(P(x)\rightarrow Q(x)) &amp; \text{premise}\\
+\quad\quad\ell_4: P(x_0)\rightarrow Q(x_0) &amp; \forall E\ \ell_3, x_0\\
+\quad\quad\ell_5: Q(x_0) &amp; \rightarrow E\ \ell_4, \ell_2\\
+\quad\quad\ell_6: \forall x(Q(x)\rightarrow R(x)) &amp; \text{premise}\\
+\quad\quad\ell_7: Q(x_0)\rightarrow R(x_0) &amp; \forall E\ \ell_6, x_0\\
+\quad\quad\ell_8: R(x_0) &amp; \rightarrow E\ \ell_7, \ell_5\\
+\quad\}\\
+\quad\ell_9: P(x_0)\rightarrow R(x_0) &amp; \rightarrow I\ \ell_2\\
+\}\\
+\ell_{10}: \forall x(P(x)\rightarrow R(x)) &amp; \forall I\ \ell_1
+\end{array} \end{split}\]</div>
+</div>
+<div class="section" id="existential-quantification">
+<h2>Existential Quantification<a class="headerlink" href="#existential-quantification" title="Permalink to this headline">¶</a></h2>
+<p>Extending the analogy between the conjunction/disjunction operators and the
+universal/existential quantifiers, we find that the rule for introducing an
+existential is the dual of the universal elimination rule:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l}
+i: P(a)\\ \hline\therefore
+\exists xP(x), \quad\exists I\ i, a
+\end{array} \end{split}\]</div>
+<p>That is, to show that there exists some <span class="math notranslate nohighlight">\(x\)</span> making <span class="math notranslate nohighlight">\(P(x)\)</span> true it is enough
+to show a specific <span class="math notranslate nohighlight">\(a\)</span> in the domain of discourse such that <span class="math notranslate nohighlight">\(P(a)\)</span> holds.</p>
+<p>For example, we may prove the validity of the argument <span class="math notranslate nohighlight">\(\forall
+xP(x)\vdash\exists xP(x)\)</span>, as long as we are able to name some element <span class="math notranslate nohighlight">\(a\)</span> of
+the domain of discourse:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: \forall xP(x) &amp; \text{premise}\\
+\ell_2: P(a) &amp; \forall E\ \ell_1, a\\
+\ell_3: \exists xP(x) &amp; \exists I\ \ell_2, a
+\end{array} \end{split}\]</div>
+<p>For a different sort of example, suppose we are proving statements of
+arithmetic, and we have some means of deriving various equations and inequations
+about integers. Then we might see the following in a proof:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: 6\cdot 7=42 &amp; \text{arithmetic}\\
+\ell_2: 7&gt;1 &amp; \text{arithmetic}\\
+\ell_3: 7&gt;1 \land 6\cdot 7=42 &amp; \land I\ \ell_2, \ell_1\\
+\ell_4: \exists n(n&gt;1 \land 6\cdot n=42) &amp; \exists I\ \ell_3, 7\\
+\ell_5: 6&gt;1 &amp; \text{arithmetic}\\
+\ell_6: 6&gt;1 \land \exists n(n&gt;1 \land 6\cdot n=42) &amp; \land I\ \ell_5, \ell_4\\
+\ell_7: \exists m(m&gt;1 \land \exists n(n&gt;1 \land m\cdot n=42)) &amp; \exists I\ \ell_6, 6
+\end{array} \end{split}\]</div>
+<p>The conclusion on the last line shows that the number 42 is composite. There are other
+proofs of this fact (for example, starting from <span class="math notranslate nohighlight">\(3\cdot 14=42\)</span>); to show that 42 is
+composite, we only have to come up with one way of factoring it into numbers greater than 1.</p>
+<p>Finally, just as with the elimination rule for disjunction, the elimination rule for
+the existential is somewhat more complicated. However, instead of doing a case
+analysis of the two ways that <span class="math notranslate nohighlight">\(p\lor q\)</span> could be true, and show that we can conclude
+a common result <span class="math notranslate nohighlight">\(r\)</span> in either case, for the existential we must analyze the
+potentially infinite number of cases (over all of the entities in our domain of
+discourse) and show that in each case we may conclude the same common result. The
+idea of conducting a subproof with extra assumptions, including a fresh variable
+to stand for whatever entity it is that “witnesses” the truth of the existential,
+captures what we need here:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l}
+i: \exists xP(x)\\
+j: \text{fresh}\ x_0, P(x_0)\Rightarrow\{\\
+\quad\ldots\\
+\quad r\\
+\}\\ \hline\therefore
+r, \quad\exists E\ i, j
+\end{array} \end{split}\]</div>
+<p>In the nested proof, we assume <em>two</em> additional pieces of information: first, that
+<span class="math notranslate nohighlight">\(x_0\)</span> is the name of a value in the domain of discourse, and second, that we have
+the additional fact that <span class="math notranslate nohighlight">\(P(x_0)\)</span> is true. Within the subproof, we may use this extra
+knowledge to prove our conclusion <span class="math notranslate nohighlight">\(r\)</span>. However, since <span class="math notranslate nohighlight">\(x_0\)</span> needs to be “fresh” to
+the subproof, the identity of the witnessing entity is not allowed to escape from the
+block[^There is some sort of “witness protection program” analogy to be made here….]
+This meshes with our understanding of the existential—it tells us that there is
+<em>some</em> <span class="math notranslate nohighlight">\(x\)</span> making <span class="math notranslate nohighlight">\(P(x)\)</span> true, but it doesn’t tell us which entity it is.</p>
+<p>We may now prove a law about the interaction of the existential and conjunction:
+<span class="math notranslate nohighlight">\(\exists x(P(x)\land Q(x))\vdash(\exists xP(x))\land(\exists xQ(x))\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: \exists x(P(x)\land Q(x)) &amp; \text{premise}\\
+\ell_2: \text{fresh}\ x_0, P(x_0)\land Q(x_0)\Rightarrow\{\\
+\quad\ell_3: P(x_0) &amp; \land E_1\ \ell_2\\
+\quad\ell_4: \exists xP(x) &amp; \exists I\ \ell_3, x_0\\
+\quad\ell_5: Q(x_0) &amp; \land E_2\ \ell_2\\
+\quad\ell_6: \exists xQ(x) &amp; \exists I\ \ell_5, x_0\\
+\quad\ell_7: (\exists xP(x))\land(\exists xQ(x)) &amp; \land I\ \ell_4, \ell_6\\
+\}\\
+\ell_8: (\exists xP(x))\land(\exists xQ(x)) &amp; \exists E\ \ell_1, \ell_2
+\end{array} \end{split}\]</div>
+<p>It is instructive to see where the proof attempt fails if we try to go the other
+direction and show <span class="math notranslate nohighlight">\((\exists xP(x))\land(\exists xQ(x))\vdash\exists x(P(x)\land Q(x))\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{array}{l|l}
+\ell_1: (\exists xP(x))\land(\exists xQ(x)) &amp; \text{premise}\\
+\ell_2: \exists xP(x) &amp; \land E_1\ \ell_1\\
+\ell_3: \text{fresh}\ x_0, P(x_0)\Rightarrow\{\\
+\quad\ell_4: \exists xQ(x) &amp; \land E_2\ \ell_1\\
+\quad\ell_5: \text{fresh}\ x_1, Q(x_1)\Rightarrow\{\\
+\quad\quad\ell_6: P(x_0)\land Q(x_1) &amp; \land I\ \ell_3, \ell_5\\
+\quad\quad\ldots?
+\end{array} \end{split}\]</div>
+<p>The problem comes in step <span class="math notranslate nohighlight">\(\ell_5\)</span>, where we must introduce a <em>different</em>
+variable, <span class="math notranslate nohighlight">\(x_1\)</span>, as the witness for <span class="math notranslate nohighlight">\(\exists xQ(x)\)</span>, because of the requirement
+that the variable be fresh. This should match your intuition for why the claim
+failed: although there exists an <span class="math notranslate nohighlight">\(x\)</span> making <span class="math notranslate nohighlight">\(P(x)\)</span> true and there also exists
+an <span class="math notranslate nohighlight">\(x\)</span> making <span class="math notranslate nohighlight">\(Q(x)\)</span> true, there is no reason to believe that they are the same
+entities. Indeed, if <span class="math notranslate nohighlight">\(P(x)\)</span> says “<span class="math notranslate nohighlight">\(x\)</span> is odd” and <span class="math notranslate nohighlight">\(Q(x)\)</span> says “<span class="math notranslate nohighlight">\(x\)</span> is even”, then
+there will be no overlap in the entities making each true. There are odd numbers,
+and there are even numbers, but there are no numbers that are both odd and even.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Prove a similar result to the one just above, showing the interaction of
+the existential and the universal quantifiers:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\exists x\forall yP(x, y)\vdash\forall y\exists xP(x, y)\]</div>
+<ol class="simple">
+<li><p>Discuss why the opposite direction of the previous problem is not a valid argument:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\forall y\exists xP(x, y)\vdash\exists x\forall yP(x, y)\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./logic"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="deduction.html" title="previous page">Deduction</a>
+    <a class='right-next' id="next-link" href="induction.html" title="next page">Mathematical Induction</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian T. Howard, based in part on material by Carol Critchlow and David Eck<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
