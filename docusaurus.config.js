@@ -31,7 +31,7 @@ module.exports = {
       },
       links: [
         {to: 'docs/topics', label: 'Topics', position: 'left'},
-        {to: 'blog', label: 'Blog', position: 'left'},
+        // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/bhoward/focsipedia',
           label: 'GitHub',
@@ -62,10 +62,10 @@ module.exports = {
         {
           title: 'Social',
           items: [
-            {
-              label: 'Blog',
-              to: 'blog',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: 'blog',
+            // },
             {
               label: 'GitHub',
               href: 'https://github.com/bhoward/focsipedia',
@@ -76,19 +76,19 @@ module.exports = {
             },
           ],
         },
-        {
-          title: 'Blog Feed',
-          items: [
-            {
-              label: 'RSS',
-              to: 'blog/rss.xml',
-            },
-            {
-              label: 'Atom',
-              to: 'blog/atom.xml',
-            },
-          ],
-        },
+        // {
+        //   title: 'Blog Feed',
+        //   items: [
+        //     {
+        //       label: 'RSS',
+        //       to: 'blog/rss.xml',
+        //     },
+        //     {
+        //       label: 'Atom',
+        //       to: 'blog/atom.xml',
+        //     },
+        //   ],
+        // },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
     },

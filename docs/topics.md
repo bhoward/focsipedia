@@ -3,34 +3,37 @@ id: topics
 title: Topics
 ---
 
-## Week 1: [Logic](logic/intro.md)
+This page gives the order of topics as they are covered in the DePauw course CSC 233, Foundations of Computation.
+Note that it does not precisely follow the order in the book's table of contents, because some of the dependencies among sections cut across the chapter topics.
+
+## Week 1: Introduction
+### [Course Overview](overview.md) and [Introduction to Functional Programming](fp/intro.md)
+
 ### [Propositional Logic](logic/props.md) and [Boolean Algebra](logic/boolean.md)
 
+## Week 2: [Logic](logic/intro.md)
 ### [Logic Circuits](logic/circuits.md) and [Circuit Simplification](logic/simplify.md)
 
-## Week 2:
 ### [Common Circuit Components and Design](logic/components.md)
 
+## Week 3:
 ### Sets: [Concepts](sets/concepts.md), [Boolean Algebra](sets/algebra.md), and [Programming](sets/programming.md)
 
-## Week 3:
 ### [Predicates and Quantifiers](logic/preds.md), Proofs and Theorem Provers
 
+## Week 4:
 ### Natural Deduction for [Propositions](logic/deduction.md), and [Predicates](logic/pred-deduction.md)
 
-## Week 4: Functional Programming
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
-### [Functions](sets/functions.md) and [Functional Programming](fp/intro.md)
+## Week 5: Functional Programming
+### [Functions](sets/functions.md) and [Relations](sets/relations.md)
 
-## Week 5:
 ### [Algebraic Data Types](fp/types.md) and Pattern Matching; [MapReduce](fp/map-reduce.md)
-
-### Running Time and Recurrences
+### [Functional Graphics](fp/doodle.md)
 
 ## Week 6: Exam 1
-
-### [Functional Graphics](fp/doodle.md)
+### Running Time and Recurrences
 
 ## Week 7: Lists
 ### [Functional Sorting](ds/lists.md)
@@ -48,7 +51,7 @@ title: Topics
 ## Week 10: Machine Models
 ### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
-### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](fsareg.md)
+### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](lang/fsareg.md)
 
 ## Week 11: Exam 2
 

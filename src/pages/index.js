@@ -25,15 +25,15 @@ const features = [
       </>
     ),
   },
-  {
-    title: <>Blog</>,
-    linkUrl: 'blog',
-    description: (
-      <>
-        Daily readings and assignments.
-      </>
-    ),
-  },
+  // {
+  //   title: <>Blog</>,
+  //   linkUrl: 'blog',
+  //   description: (
+  //     <>
+  //       Daily readings and assignments.
+  //     </>
+  //   ),
+  // },
 ];
 
 function Feature({linkUrl, title, description}) {

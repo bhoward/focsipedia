@@ -7,7 +7,11 @@
 
 module.exports = {
   someSidebar: {
-    'Course Info': ['policies', 'topics'],
+    'Course Info': ['attribution',
+      'policies',
+      'topics',
+      'overview',
+    ],
     Logic: ['logic/intro',
       'logic/props',
       'logic/boolean',
@@ -26,6 +30,7 @@ module.exports = {
       'sets/algebra',
       'sets/programming',
       'sets/functions',
+      'sets/relations',
     ],
     FP: ['fp/intro',
       'fp/types',
