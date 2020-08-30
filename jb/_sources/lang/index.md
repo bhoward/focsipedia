@@ -1,4 +1,0 @@
-# Formal Languages
-
-```{tableofcontents}
-```
