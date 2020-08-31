@@ -20,15 +20,21 @@ Each of these languages has a specification that determines how valid programs a
 The page is hierarchically represented in a tree-like data structure known as the DOM (Document Object Model); the rules of CSS interact with this model to apply relevant styles to particular nodes and subtrees.
 * JavaScript is a general-purpose programming language that can be used to attach behavior to various events (such as hovering, clicking, or typing) that occur while interacting with a web page.
 As interactions have become more demanding (think Google Docs, or Facebook), there has been much work on improving the speed and power of the language's implementation in the browser, as well as on sophisticated frameworks and even entirely new languages layered on top of JavaScript to make developers more productive and able to produce reliable code.
-For example, a programmer at Facebook might build a component using the functional language ReasonML; it gets compiled to JavaScript and downloaded to a browser along with supporting code from the React framework (which applies functional programming techniques to JavaScript and the DOM); as the browser runs all of this JavaScript, it may identify portions of the program that can be compiled to native code to speed things up.
-* communication with server and database
-* hyperlink graph
-* network graph
-* network protocols
+For example, a programmer at Facebook might build a component using the functional language ReasonML; it gets compiled to JavaScript and downloaded to a browser along with supporting code from the React framework (which applies functional programming techniques to JavaScript and the DOM); as the browser runs all of this JavaScript, it may identify portions of the program graph that can be compiled to native code to speed things up.
+* Web pages are the result of sending requests to a server, which may be running any of a large number of general-purpose languages to satisfy page requests and other interactions.
+Companies such as Google, Twitter, and Facebook have made good use of functional programming techniques to improve the performance of their server-side code.
+Servers also typically interact with databases, using the declarative language SQL (which has direct roots in logic and set theory) to efficiently query large amounts of data.
+* The hyperlinks between web pages form a vast graph that needs to be traversed by web crawlers to support search engines.
+At a lower level, the internet itself is a graph with billions of devices, each directly connected to no more than a few other nodes but all of them able to exchange messages thanks to the graph algorithms powering the network protocols.
+* Finally, those network protocols themselves are described using techniques from formal languages and state machines; those protocols may be implemented in machine code or directly in digital logic circuits.
 
-## Example: CPU Design
+## Example: Processor Design
 
-* Combinatory and sequential logic
-* State machines
-* Graph layout
-* Verification
+At the level of individual microprocessors, there are several further applications of the ideas we study in Foundations:
+* Just above the level of the individual transistors etched in silicon chips is the abstraction of digital logic gates.
+These are a direct implementation of logical operations such as AND, OR, and NOT, and they may be effectively designed through the techniques of combinational and sequential circuits.
+* One tool for modeling the behavior of a sequential circuit is a finite state machine, which is a very simple model of computation that guarantees an efficient implementation.
+By adding more capabilities to this model (generally expressed in the form of data structures such as stacks, queues, and arrays), we can model the entire behavior of a computer's processor.
+* One benefit of a formal model of the processor is that its operation may be verified correct relative to a specification.
+This is essential at the level of hardware, where a single bug may make the processor useless.
+Verification typically takes the form of providing formal, machine-checked proofs of properties expressed in logic.
