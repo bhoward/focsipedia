@@ -7,12 +7,14 @@
 
 module.exports = {
   someSidebar: {
-    'Course Info': ['attribution',
+    'Course Info': [
+      'attribution',
       'policies',
       'topics',
       'overview',
     ],
-    Logic: ['logic/intro',
+    Logic: [
+      'logic/intro',
       'logic/props',
       'logic/boolean',
       'logic/circuits',
@@ -26,13 +28,16 @@ module.exports = {
       'logic/sequential',
       'logic/state',
     ],
-    Sets: ['sets/concepts',
+    Sets: [
+      'sets/concepts',
       'sets/algebra',
       'sets/programming',
       'sets/functions',
       'sets/relations',
     ],
-    FP: ['fp/intro',
+    'Functional Programming': [
+      'fp/overview',
+      'fp/intro',
       'fp/types',
       'fp/map-reduce',
       'fp/doodle',
@@ -61,7 +66,8 @@ module.exports = {
       'lang/computability',
       'lang/halting',
     ],
-    Features: ['reason',
+    Features: [
+      'reason',
       'ocaml',
       'styleGuide',
     ],

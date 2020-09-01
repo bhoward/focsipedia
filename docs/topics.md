@@ -7,7 +7,7 @@ This page gives the order of topics as they are covered in the DePauw course CSC
 Note that it does not precisely follow the order in the book's table of contents, because some of the dependencies among sections cut across the chapter topics.
 
 ## Week 1: Introduction
-### [Course Overview](overview.md) and [Introduction to Functional Programming](fp/intro.md)
+### [Overview of Foundations](overview.md) and [Functional Programming](fp/overview.md)
 
 ### [Propositional Logic](logic/props.md) and [Boolean Algebra](logic/boolean.md)
 
@@ -27,7 +27,7 @@ Note that it does not precisely follow the order in the book's table of contents
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
 ## Week 5: Functional Programming
-### [Functions](sets/functions.md) and [Relations](sets/relations.md)
+### [Functions](sets/functions.md) and [Relations](sets/relations.md); [Introduction to Functional Programming](fp/intro.md)
 
 ### [Algebraic Data Types](fp/types.md) and Pattern Matching; [MapReduce](fp/map-reduce.md)
 ### [Functional Graphics](fp/doodle.md)
