@@ -412,16 +412,33 @@ following compound propositions into English:
 9. Give the converse and the contrapositive of each of
 the following English sentences:
    * If you are good, Santa brings you toys.
+   [[spoiler | Answer]]
+   | Converse: If Santa brings you toys, then you are good.<br/>
+   | Contrapositive: If Santa does not bring you toys, then you are not good.
    * If the package weighs more than one ounce, then you need extra postage.
+   [[spoiler | Answer]]
+   | Converse: If you need extra postage, then the package weighs more than one ounce.<br/>
+   | Contrapositive: If you do not need extra postage, then the package weighs no more than one ounce.
    * If I have a choice, I don't eat eggplant.
+   [[spoiler | Answer]]
+   | Converse: If I don't eat eggplant, then I have a choice.<br/>Contrapositive: If I eat eggplant, then I don't have a choice.
 
 1. In an ordinary deck of fifty-two playing cards, for how many cards is it true 
    * that "This card is a ten and this card is a heart"?
+   [[spoiler | Answer]]
+   | Only one card: the ten of hearts
    * that "This card is a ten or this card is a heart"?
+   [[spoiler | Answer]]
+   | The 13 heart cards (including the 10 of hearts) plus the other three tens satisfy this, for a total of 16 
    * that "If this card is a ten, then this card is a heart"?
+   [[spoiler | Answer]]
+   | It is true for the 10 of hearts, but it is also true for the 48 cards that are not tens, for a total of 49 
    * that "This card is a ten if and only if this card is a heart"?
+   [[spoiler | Answer]]
+   | This is true for the 10 of hearts, as well as for all of the non-tens that are also not hearts;
+   | there are 36 cards that are neither tens nor hearts, for a total of 37 cards making this true
 
-1. Define a logical operator $\downarrow$ so that $p\downarrow q$ is logically
+2. Define a logical operator $\downarrow$ so that $p\downarrow q$ is logically
    equivalent to $\lnot(p\lor q)$. (This operator, known as the **Peirce
    Arrow**,[^Wikipedia helpfully points out that this is not to be confused with
    the Pierce-Arrow automobile; Google, as I was writing this, repeatedly
@@ -442,7 +459,16 @@ the following English sentences:
    that $\downarrow$ is a **functionally complete** operator, since it may be
    used to express all of the other operations.
 
-1. Show that the **Sheffer Stroke** operator $\uparrow$, defined so that
+   [[spoiler | Answer]]
+   | Notice that $(p\downarrow p)\equiv\lnot p$. Since $(p\downarrow q)\equiv\lnot(p\lor q)$,
+   | this means that $p\lor q$ is equivalent to $\lnot(p\downarrow q)$, which in turn can
+   | be expressed as $(p\downarrow q)\downarrow(p\downarrow q)$. Since we saw above that
+   | $(p\land q)\equiv\lnot(\lnot p\lor\lnot q)$, we may also express $\land$ in terms of
+   | $\downarrow$ (although it isn't pretty&hellip;). As observed before, $\land$, $\lor$, and
+   | $\lnot$ are functionally complete, so we can also express $\rightarrow$, $\leftrightarrow$,
+   | and $\oplus$ using $\downarrow$.
+
+3. Show that the **Sheffer Stroke** operator $\uparrow$, defined so that
    $p\uparrow q$ is logically equivalent to $\lnot(p\land q)$, is also
    functionally complete.[^Functional completeness is not merely an academic
    curiosity. The NAND and NOR gates are particularly simple to implement in
@@ -453,7 +479,7 @@ the following English sentences:
    NOR gates to help Apollo 11 land on the moon.] This operator is also known as
    "NAND," short for "not and."
 
-[[spoiler | Answer]]
-| Since $\lnot p\equiv(p\uparrow p)$ and $(p\land q)\equiv(p\uparrow q)\uparrow(p\uparrow q)$,
-| and $\{\lnot,\land\}$ is a functionally complete set, we are done.
+   [[spoiler | Answer]]
+   | Since $\lnot p\equiv(p\uparrow p)$ and $(p\land q)\equiv(p\uparrow q)\uparrow(p\uparrow q)$,
+   | and $\{\lnot,\land\}$ is a functionally complete set, we are done.
 
