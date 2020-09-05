@@ -355,13 +355,40 @@ and $p\oplus q\equiv (p\lor q)\land\lnot(p\land q)$.
 
 1. Give the three truth tables that define the logical operators
 $\land$, $\lor$, and $\lnot$.
+[[spoiler | Answer]]
+| | $p$ | $q$ | $p\land q$ |
+| | :-: | :-: | :-: |
+| | false | false | false |
+| | false | true | false |
+| | true | false | false |
+| | true | true | true |
+|
+| | $p$ | $q$ | $p\lor q$ |
+| | :-: | :-: | :-: |
+| | false | false | false |
+| | false | true | true |
+| | true | false | true |
+| | true | true | true |
+|
+| | $p$ | $\lnot p$ |
+| | :-: | :-: |
+| | false | true |
+| | true | false |
 
-2. Insert parentheses into the following compound propositions to show
+1. Insert parentheses into the following compound propositions to show
 the order in which the operators are evaluated:
    * $\lnot p \lor q$
+   [[spoiler | Answer]]
+   | $(\lnot p)\lor q$ 
    * $p\land q \lor \lnot p$
+   [[spoiler | Answer]]
+   | $(p\land q) \lor (\lnot p)$
    * $p\lor q \land r$
+   [[spoiler | Answer]]
+   | $p\lor (q \land r)$ 
    * $p \land \lnot q \lor r$
+   [[spoiler | Answer]]
+   | $(p \land (\lnot q)) \lor r$ 
 
 3. List the 16 possible combinations of truth values for
 the four propositional variables $s$, $p$, $q$, $r$. Try to find
@@ -370,19 +397,58 @@ eight combinations of values for $p$, $q$, and $r$, as given in
 the truth table [above](#truth-tables).) Now, explain why there
 are 32 possible combinations of values for five variables, and
 describe how they could be listed systematically.
+[[spoiler | Answer]]
+| | $s$ | $p$ | $q$ | $r$ |
+| | :-: | :-: | :-: | :-: |
+| | false | false | false | false |
+| | false | false | false | true |
+| | false | false | true | false |
+| | false | false | true | true |
+| | false | true | false | false |
+| | false | true | false | true |
+| | false | true | true | false |
+| | false | true | true | true |
+| | true | false | false | false |
+| | true | false | false | true |
+| | true | false | true | false |
+| | true | false | true | true |
+| | true | true | false | false |
+| | true | true | false | true |
+| | true | true | true | false |
+| | true | true | true | true |
+|
+| The first eight combinations are the eight for $p$, $q$, and $r$, with $s$ false;
+| the other eight are the same with $s$ true.
+|
+| To list the 32 combinations for five variables systematically, first list the 16
+| above combinations with an additional first variable being false, and then list them
+| again with that additional variable being true.
 
 4. Some of the following compound propositions are tautologies,
 some are contradictions, and some are neither. In each case, use a
 truth table to decide to which of these categories the proposition
 belongs:
    * $(p\land (p\rightarrow q))\rightarrow q$
+   [[spoiler | Answer]]
+   | Tautology 
    * $((p\rightarrow q)\land(q\rightarrow r))\rightarrow (p\rightarrow r)$
+   [[spoiler | Answer]]
+   | Tautology 
    * $p\land(\lnot p)$
+   [[spoiler | Answer]]
+   | Contradiction 
    * $(p\lor q)\rightarrow(p\land q)$
+   [[spoiler | Answer]]
+   | Neither: false when $p$ true and $q$ false, or when $p$ false and $q$ true
+   | (so this is equivalent to $p\leftrightarrow q$) 
    * $p\lor(\lnot p)$
+   [[spoiler | Answer]]
+   | Tautology 
    * $(p\land q)\rightarrow(p\lor q)$
+   [[spoiler | Answer]]
+   | Tautology 
 
-5. Use truth tables to show that each of the following
+1. Use truth tables to show that each of the following
 propositions is logically equivalent to $p\leftrightarrow q$.
    * $(p\rightarrow q)\land (q\rightarrow p)$
    * $(\lnot p)\leftrightarrow(\lnot q)$
@@ -392,36 +458,75 @@ propositions is logically equivalent to $p\leftrightarrow q$.
 6. Is $\rightarrow$ an associative operation? That is,
 is $(p\rightarrow q)\rightarrow r$ logically equivalent to
 $p\rightarrow(q\rightarrow r)$? Is $\leftrightarrow$ associative?
+[[spoiler | Answer]]
+| To show that two expressions are equivalent we need to handle every case
+| (by making a truth table). However, to show that they are _not_ equivalent
+| we only need to come up with one counter-example. Suppose that $p$ is false:
+| then $p\rightarrow(q\rightarrow r)$ is true, regardless of $q$ and $r$.
+| However, if $p$ and $r$ are both false, then $(p\rightarrow q)\rightarrow r$
+| is false (because $p\rightarrow q$ is true while $r$ is false). Therefore,
+| $\rightarrow$ is not associative.
+|
+| For the case of $\leftrightarrow$, it is not possible to find such a
+| counter-example, because all of the rows are the same. In fact, a little
+| reflection shows that, for both $(p\leftrightarrow q)\leftrightarrow r$ and
+| $p\leftrightarrow(q\leftrightarrow r)$, they are true when either all three
+| of $p$, $q$, and $r$ are true, or when exactly one of them is true.
+| (There is a similar property for $p\oplus q\oplus r$, which is true when exactly
+| zero or two of the variables are true. These properties extend to any number of
+| variables all combined with $\oplus$ or $\leftrightarrow$; for one operator the combination
+| will be true exactly when an even number of variables are true, and for the other when an odd
+| number are true, so these operations give a way to compute the even or odd "parity"
+| of a set of inputs.)
 
-7. Let $p$ represent the proposition "You leave" and let
+1. Let $p$ represent the proposition "You leave" and let
 $q$ represent the proposition "I leave." Express the following
 sentences as compound propositions using $p$ and $q$, and show
 that they are logically equivalent:
    * Either you leave or I do. (Or both!)
    * If you don't leave, I will.
+  [[spoiler | Answer]]
+  | The first sentence is $p\lor q$, while the second is $\lnot p\rightarrow q$.
+  | We can show that they are equivalent by making truth tables and showing that they have
+  | the same truth value in every case. The only case where $p\lor q$ is false is if both
+  | $p$ and $q$ are false; the only case where $\lnot p\rightarrow q$ is false is if
+  | $\lnot p$ is true but $q$ is false&mdash;that is, when $p$ and $q$ are both false.
+  | Therefore, the truth tables will be the same and they are equivalent.
 
-8. Suppose that $m$ represents the proposition "The Earth moves,"
+1. Suppose that $m$ represents the proposition "The Earth moves,"
 $c$ represents "The Earth is the center of the universe," and
 $g$ represents "Galileo was railroaded." Translate each of the
 following compound propositions into English:
    * $\lnot g\land c$
+   [[spoiler | Answer]]
+   | Galileo was not railroaded and the Earth is the center of the universe. 
    * $m\rightarrow\lnot c$
+   [[spoiler | Answer]]
+   | If the Earth moves then the Earth is not the center of the universe. 
    * $m\leftrightarrow\lnot c$
+   [[spoiler | Answer]]
+   | The Earth moves if and only if the Earth is not the center of the universe. 
    * $(m\rightarrow g)\land (c\rightarrow \lnot g)$
+   [[spoiler | Answer]]
+   | If the Earth moves then Galileo was railroaded, and if the Earth is the center of the universe then Galileo was not railroaded. 
    
 9. Give the converse and the contrapositive of each of
 the following English sentences:
    * If you are good, Santa brings you toys.
    [[spoiler | Answer]]
-   | Converse: If Santa brings you toys, then you are good.<br/>
+   | Converse: If Santa brings you toys, then you are good.
+   |
    | Contrapositive: If Santa does not bring you toys, then you are not good.
    * If the package weighs more than one ounce, then you need extra postage.
    [[spoiler | Answer]]
-   | Converse: If you need extra postage, then the package weighs more than one ounce.<br/>
+   | Converse: If you need extra postage, then the package weighs more than one ounce.
+   |
    | Contrapositive: If you do not need extra postage, then the package weighs no more than one ounce.
    * If I have a choice, I don't eat eggplant.
    [[spoiler | Answer]]
-   | Converse: If I don't eat eggplant, then I have a choice.<br/>Contrapositive: If I eat eggplant, then I don't have a choice.
+   | Converse: If I don't eat eggplant, then I have a choice.
+   |
+   | Contrapositive: If I eat eggplant, then I don't have a choice.
 
 1. In an ordinary deck of fifty-two playing cards, for how many cards is it true 
    * that "This card is a ten and this card is a heart"?
