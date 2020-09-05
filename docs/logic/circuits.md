@@ -74,6 +74,9 @@ the output of the circuit is on if and only if the
 value of the compound proposition $(\lnot A)\land(B\lor\lnot(A\land C))$
 is true.
 
+Here is a tool where you can play with the above circuit:
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo-3ff02919-c180-490a-9845-991f64ae18e2" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+
 ## Constructing Gates from Transistors
 
 It is useful to have some idea of how digital logic gates are built out of
@@ -161,6 +164,9 @@ from a subcircuit.
 <img src={useBaseUrl('img/fig1-4.png')}
 alt="Stages in the construction of an example logic circuit" className="centered-figure" />
 
+Here is the resulting circuit in CircuitVerse:
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo2" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+
 ## Circuits as Expression Trees
 
 A combinational circuit is one in which the output is entirely determined by the
@@ -220,6 +226,11 @@ In addition to visualizing the layout of gates in a digital circuit, a circuit d
 <img src={useBaseUrl('img/HalfAdder11.png')}
 alt="Annotated diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b when a=1 and b=1" className="centered-figure" />
 
+The CircuitVerse simulator can also be used to interactively trace the behavior of a circuit.
+Click on the inputs (A and B) in the circuit to see the effect on the outputs.
+Wires with a 1 value show up as bright green.
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo3" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+
 ## Extracting a Proposition from a Combinational Circuit
 
 So, every compound proposition is computed by a logic circuit
@@ -241,6 +252,11 @@ The feedback loop includes the AND gate and the OR gate on the right. This
 circuit does not compute the value of a compound proposition. This circuit does,
 however, play an important role in computer memories, since it can be used to
 store a logical value.
+
+Here is that circuit in CircuitVerse. Leaving X at 0, choose a value for Y (either 0 or 1).
+Now toggle X to 1 and back to 0, and observe that Z remembers the chosen value of Y for as
+long as X remains 0, even if you change the Y input.
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo4" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 Feedback loops cannot be described by compound propositions,
 basically because there is no place to start, no input to
@@ -281,6 +297,9 @@ Each wire in the circuit is labeled with the proposition that it represents. The
 numbering of the labels shows one of the orders in which they can be associated
 with the wires. The circuit as a whole computes the value of
 $\lnot(A\land B)\land(B\lor\lnot C)$.
+
+Once more, here is the same circuit in CircuitVerse:
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo5" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 ## Disjunctive Normal Form
 
@@ -394,7 +413,7 @@ to produce the DNF proposition $(\lnot p\land\lnot q\land r) \lor
 (\lnot p\land q\land r) \lor (p\land q\land r)$. This proposition
 computes all the output values specified in the table.
 Using this proposition as a blueprint, we get a logic circuit
-whose outputs match those given in the table.
+whose outputs match those given in the table (see below).
 
 | $p$ | $q$ | $r$ | output | conjunction |
 | :-: | :-: | :-: | :----: | :---------: |
@@ -430,9 +449,12 @@ and $\T\land Q\equiv Q$ for any proposition $Q$,
 this can be simplified to $(\lnot p\land\lnot q\land r) \lor (q\land r)$.
 Again, we can apply the distributive law to this to factor
 out an $r$, giving $((\lnot p\land \lnot q)\lor q)\land r)$.
+One more application of the distributive law will turn this into
+$((\lnot p\lor q)\land(\lnot q\lor q))\land r$, which further simplifies to
+$(\lnot p\lor q)\land r$.
 This compound proposition is logically equivalent to the one we
 started with, but implementing it in a circuit
-requires only five logic gates, instead of the
+requires only three logic gates, instead of the
 ten required by the original proposition.[^No, I didn't
 count wrong. There are eleven logical operators in the original
 expression, but you can get by with ten gates in the circuit:
@@ -440,6 +462,15 @@ Use a single NOT gate to compute $\lnot p$, and connect
 the output of that gate to two different AND gates.
 Reusing the output of a logic gate is an obvious way to simplify
 circuits that does not correspond to any operation on propositions.]
+
+Here are three versions (select the "tabs" in the upper-left) of circuits
+implementing this truth table in CircuitVerse:
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo6" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+
+The "DNF" tab is the direct implementation of the DNF expression, using three-input AND and OR gates.
+The "DNF-2Input" tab is the same circuit using only two-input gates.
+The "Simplified" tab is the final equivalent circuit.
+You should check that all three have the same truth table behavior.
 
 If you start with a circuit instead of a proposition, it is
 often possible to find the associated proposition, simplify it
