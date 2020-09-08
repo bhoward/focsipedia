@@ -361,7 +361,7 @@ $$
 Propositions in DNF are just what we need to deal with input/output
 tables of the type that we have been discussing. Any such table
 can be computed by a proposition in disjunctive normal form.
-It follows that it is possible to build a circuit\index{logic circuit!for an input/output table} to compute that 
+It follows that it is possible to build a circuit to compute that 
 table using only AND, OR, and NOT gates.
 
 > **Theorem: DNF**
@@ -546,6 +546,13 @@ in the sum.
 1. Using only AND, OR, and NOT gates,
 draw circuits that compute the value of each of the propositions
 $A\rightarrow B$, $A\leftrightarrow B$, and $A\oplus B$.
+[[spoiler | Answer]]
+| The circuits may easily be drawn from the expressions:
+| * $A\rightarrow B\equiv\lnot A\lor B$
+| * $A\leftrightarrow B\equiv(\lnot A\lor B)\land(A\lor\lnot B)$
+| * $A\oplus B\equiv(\lnot A\land B)\lor(A\land\lnot B)$
+|
+| Other solutions are possible.
 
 1. For each of the following propositions, find a combinational
 logic circuit that computes that proposition:
@@ -560,23 +567,46 @@ following circuits:
 <img src={useBaseUrl('img/fig-1-label.png')}
 alt="Two circuits for an exercise" className="centered-figure" />
 
+[[spoiler | Answer]]
+| The first is $(A\land B)\land\lnot C$, and the second is $\lnot(A\land B)\lor(\lnot B\lor C)$.
+
 4. This section describes a method for finding the compound
 proposition computed by any combinational logic circuit. This method
 fails if you try to apply it to a circuit that contains a feedback loop.
 What goes wrong? Give an example.
+[[spoiler | Answer]]
+| When there is a loop, it is not possible to give expressions for all the inputs of a gate in
+| the loop until you know an expression for its output. For example, suppose we have a loop
+| where the output of an OR feeds one input of an AND, which in turn feeds back to one of the
+| inputs of the OR. We do not have an expression for both of the inputs to the OR until we have
+| an expression for the output of the AND, which depends on knowing an expression for the output
+| of the OR.
 
 1. Show that every compound proposition which is not a contradiction
 is equivalent to a proposition in disjunctive normal form. (Note: We can
 eliminate the restriction that the compound proposition is not a
 contradiction by agreeing that "$\F$" counts as a proposition in
 disjunctive normal form. $\F$ is logically equivalent to any contradiction.)
+[[spoiler | Answer]]
+| This follows directly from the proof of the DNF theorem, since if a proposition
+| is not a contradiction then at least one of the rows of its truth tables must be true.
 
 1. A proposition in **conjunctive normal form** (CNF) is a conjunction of
-   disjunctions of simple terms (with the proviso, as in the definition of DNF,
-   that a single item also counts as a disjunction). Show that every compound
-   proposition which is not a tautology is logically equivalent to a compound
-   proposition in conjunctive normal form. (Hint: What happens if you take the
-   negation of a DNF proposition and apply De Morgan's Laws?)
+disjunctions of simple terms (with the proviso, as in the definition of DNF,
+that a single item also counts as a disjunction). Show that every compound
+proposition which is not a tautology is logically equivalent to a compound
+proposition in conjunctive normal form. (Hint: What happens if you take the
+negation of a DNF proposition and apply De Morgan's Laws?)
+[[spoiler | Answer]]
+| Given a proposition that is not a tautology, its negation will be a propostion
+| that is not a contradiction. As in the previous exercise, the DNF theorem allows
+| us to construct a DNF expression that is equivalent to the negation of the original
+| proposition. Taking the negation of this DNF expression (which will give us a
+| result that is equivalent to the original proposition) and applying De Morgan's
+| laws, will turn the disjunction of some conjunctions of simple terms into the
+| conjunction of some disjunctions of negated simple terms. Finally, a negated simple
+| term is equivalent to a simple term, because if it was already a negated variable
+| then we can use the double-negation law to turn it into a plain variable.
 
 1. Use the laws of Boolean algebra to simplify each of the
 following circuits:
@@ -584,9 +614,16 @@ following circuits:
 <img src={useBaseUrl('img/fig-1-simplify.png')}
 alt="Three circuits for an exercise" className="centered-figure" />
 
+[[spoiler | Answer]]
+| * $(A\land B)\lor(B\land C)\equiv(A\lor C)\land B$
+| * $\lnot\lnot A\land B\equiv A\land B$
+| * $((A\land B)\lor (\lnot A\land B))\land C\equiv((A\lor\lnot A)\land B)\land C\equiv(\T\land B)\land C\equiv B\land C$
+
 8. Design circuits to implement the input/output tables
 for addition, as given in [the section above](#binary-arithmetic). Try to
 make your circuits as simple as possible. (The circuits that are
 used in real computers for this purpose are more simplified than
 the ones you will probably come up with, but the general approach
 of using logic to design computer circuits is valid.)
+[[spoiler | Answer]]
+| For one approach, see the full adder circuit in [Common Circuit Components](components#adders).
