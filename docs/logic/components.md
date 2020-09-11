@@ -29,7 +29,7 @@ block in a circuit diagram with an appropriately named box:
 <img src={useBaseUrl('img/HalfAdderSymbol.png')}
 alt="Symbol for a half adder" className="centered-figure" />
 
-It is called a half adder because, when you are adding multiple columns of bits, it only does half the work: it adds the two bits for a column, but it doesn't add in the carry from the next smaller column. A **full adder** takes three inputs: $a$ and $b$, plus the incoming carry, $c_\textit{\scriptsize in}$. The outputs are $s$, the sum that stays in the column, plus the outgoing carry to the next column, $c_\textit{\scriptsize out}$. We may build a full adder out of two half adders by first adding $a$ to $b$, then adding $c_\textit{\scriptsize in}$; since the highest total in a full adder is three (11), we will never have a carry out of more than one of the half adders, so the resulting $c_\textit{\scriptsize out}$ is just the \textsc{or} of the two half adder carries. Here is the circuit with its block symbol and its truth table:
+It is called a half adder because, when you are adding multiple columns of bits, it only does half the work: it adds the two bits for a column, but it doesn't add in the carry from the next smaller column. A **full adder** takes three inputs: $a$ and $b$, plus the incoming carry, $c_\textit{\scriptsize in}$. The outputs are $s$, the sum that stays in the column, plus the outgoing carry to the next column, $c_\textit{\scriptsize out}$. We may build a full adder out of two half adders by first adding $a$ to $b$, then adding $c_\textit{\scriptsize in}$; since the highest total in a full adder is three (11), we will never have a carry out of more than one of the half adders, so the resulting $c_\textit{\scriptsize out}$ is just the OR of the two half adder carries. Here is the circuit with its block symbol and its truth table:
 
 <img src={useBaseUrl('img/FullAdder.png')}
 alt="Circuit diagram for a full adder" className="centered-figure" />
@@ -57,6 +57,8 @@ $c_\textit{\scriptsize out}$:
 alt="Circuit diagram for a four-bit adder" className="centered-figure" />
 
 One of the exercises below explores whether this is a good design.
+Here is a collection of CircuitVerse circuits where you can explore these adders:
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/adders-bf30825c-95e5-47fe-aa6e-2f77c2cb2fd9" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 ## Enabling Input
 

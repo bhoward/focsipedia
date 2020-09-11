@@ -297,6 +297,8 @@ alt="Digits 0 through 9 as shown in a seven-segment display" className="centered
    indicating which output column corresponds to which display element). Use
    Karnaugh maps to design a relatively simple circuit that implements a
    seven-segment decoder.
+[[spoiler | Answer]]
+| See a [solution at CircuitVerse](https://circuitverse.org/users/30869/projects/sevensegdemo)
 
 5. An exercise in the [Circuits](./circuits#exercises) section examines
    conjunctive normal form (CNF), the dual of DNF. Explore what kind of circuits

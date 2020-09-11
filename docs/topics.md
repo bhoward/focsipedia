@@ -17,43 +17,45 @@ Note that it does not precisely follow the order in the book's table of contents
 ### [Common Circuit Components and Design](logic/components.md)
 
 ## Week 3:
-### Sets: [Concepts](sets/concepts.md), [Boolean Algebra](sets/algebra.md), and [Programming](sets/programming.md)
+### Sets: [Concepts](sets/concepts.md) and [Boolean Algebra](sets/algebra.md)
 
-### [Predicates and Quantifiers](logic/preds.md), Proofs and Theorem Provers
+### [Predicates and Quantifiers](logic/preds.md), Natural Deduction for [Propositions](logic/deduction.md)
 
 ## Week 4:
-### Natural Deduction for [Propositions](logic/deduction.md), and [Predicates](logic/pred-deduction.md)
+### Natural Deduction for [Predicates](logic/pred-deduction.md), and 
 
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
-## Week 5: Functional Programming
-### [Functions](sets/functions.md) and [Relations](sets/relations.md); [Introduction to Functional Programming](fp/intro.md)
+## Week 5:
+### [Programming](sets/programming.md) with Sets, [Functions](sets/functions.md) and [Relations](sets/relations.md)
 
+### [Introduction to Functional Programming](fp/intro.md)
+
+## Week 6:
+### Exam 1
+
+## Week 7: Functional Programming
 ### [Algebraic Data Types](fp/types.md) and Pattern Matching; [MapReduce](fp/map-reduce.md)
+
 ### [Functional Graphics](fp/doodle.md)
 
-## Week 6: Exam 1
-### Running Time and Recurrences
-
-## Week 7: Lists
+## Week 8: Trees
 ### [Functional Sorting](ds/lists.md)
 
-### Program Verification
+### Running Time and Recurrences; Program Verification
 
-## Week 8: Trees
+## Week 9: Trees and Graphs
 ### [Tree Traversals](ds/trees.md); [Binary Search Trees and Heaps](ds/bst.md)
 
-### Relations and Relational Databases
-
-## Week 9: Graphs
-### [Graphs, Representations, Traversals](ds/graphs.md)
+### [Graphs, Representations, Traversals](ds/graphs.md); Relational Databases
 
 ## Week 10: Machine Models
 ### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
 ### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](lang/fsareg.md)
 
-## Week 11: Exam 2
+## Week 11:
+### Exam 2
 
 ## Week 12:
 ### [Sequential Circuits](logic/sequential.md)
