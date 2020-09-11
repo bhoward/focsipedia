@@ -108,6 +108,23 @@ alt="Circuit symbol for a multiplexer" className="centered-figure" />
 
 The implementation of this circuit is left as an exercise.
 
+As an application of adders, multiplexers, and demultiplexers, here is a fragment of
+a simple CPU design:
+
+<iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/cpu-fragment" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+
+The four 8-bit inputs on the left represent the incoming values from four machine registers, and
+the four 8-bit outputs on the right represent the new value to be stored in one of the registers (the
+other three outputs show all zeros and should be ignored). The 9-bit input at the top represents a
+machine instruction, which specifies two input registers (the first two pairs of bits) and an output
+register (the last pair of bits), along with an operation code (a 3-bit control signal).
+The operation code is used to select which operation is performed by the ALU (arithmetic and logic unit) device,
+which in this implementation has seven different operations it can perform. For example, when
+the opcode is 000, it computes the bitwise-AND of its inputs, while when the opcode is 010 it adds
+the inputs. The ALU itself is a combination of an 8-bit adder and some other circuits performing various
+logical operations, with some additional enabling circuitry to choose which subcircuit will have its
+output selected to be the result of the ALU.
+
 ## Divide-and-Conquer Design
 
 See Sections 13.5&ndash;7 of Aho & Ullman.
