@@ -108,6 +108,8 @@ alt="Circuit symbol for a multiplexer" className="centered-figure" />
 
 The implementation of this circuit is left as an exercise.
 
+### CPU Fragment
+
 As an application of adders, multiplexers, and demultiplexers, here is a fragment of
 a simple CPU design:
 
