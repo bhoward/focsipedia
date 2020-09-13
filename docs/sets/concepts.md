@@ -68,8 +68,8 @@ same set. Note in particular that it's incorrect to say that
 the set $\{a,b,a,a,b,c,a\}$ contains seven elements, since some of the
 elements in the list are identical. The notation $\{a,b,c\}$ can lead
 to some confusion, since it might not be clear whether the letters $a$,
-$b$, and $c$ are assumed to refer to three \emph{different} entities.
-A mathematician would generally \emph{not} make this assumption without
+$b$, and $c$ are assumed to refer to three _different entities_.
+A mathematician would generally _not_ make this assumption without
 stating it explicitly, so that the set denoted by $\{a,b,c\}$ could
 actually contain either one, two, or three elements. When it is important
 that different letters refer to different entities, I will say so explicitly,
@@ -378,30 +378,63 @@ then the set denoted by $\{a,b,c\}$ might actually contain either 1, 2, or 3
 elements. How many different elements might the set
 $\{\,a,\,b,\,\{a\},\,\{a,c\},\,\{a,b,c\}\,\}$
 contain? Explain your answer.
+[[spoiler | Answer]]
+| If they are all distinct, then there are five elements: $a$, $b$, and the sets $\{a\}$, $\{a,c\}$, and $\{a,b,c\}$.
+| If $a$ and $b$ are the same, then there are three elements: $a$, $\{a\}$, and $\{a,c\}$ (which is the same as $\{a,b,c\}$).
+| If $a$ and $c$ are the same, then there are four elements: $a$, $b$, $\{a\}$, and $\{a,b\}$.
+| If $b$ and $c$ are the same, then we actually get the same four elements as when $a$ and $c$ are the same (this should make
+| sense, because if $c$ is the same as either of the others, then it is redundant in both of the places it occurs).
+| Finally, if all three are the same, then we have just two elements: $a$ and $\{a\}$.
 
 2. Compute $A\cup B$, $A\cap B$, and $A\smallsetminus B$ for each of the following
 pairs of sets
 
    * $A =\{a,b,c\},\ B=\emptyset$
+   [[spoiler | Answer]]
+   | $A\cup B=A$, $A\cap B=B$, $A\smallsetminus B=A$ 
    * $A =\{1,2,3,4,5\},\ B=\{2,4,6,8,10\}$
+   [[spoiler | Answer]]
+   | $A\cup B=\{1,2,3,4,5,6,8,10\}$, $A\cap B=\{2,4\}$, $A\smallsetminus B=\{1,3,5\}$
    * $A =\{a,b\},\ B=\{a,b,c,d\}$
+   [[spoiler | Answer]]
+   | $A\cup B=B$, $A\cap B=A$, $A\smallsetminus B=\emptyset$
    * $A =\{a,b,\{a,b\}\},\ B=\{\{a\},\{a,b\}\}$
+   [[spoiler | Answer]]
+   | $A\cup B=\{a,b,\{a\},\{a,b\}\}$, $A\cap B=\{\{a,b\}\}$, $A\smallsetminus B=\{a,b\}$
 
-3. Recall that $\N$ represents the set of natural numbers. That is,
+1. Recall that $\N$ represents the set of natural numbers. That is,
 $\N=\{0,1,2,3,\dots\}$. Let $X=\{n\in\N\mid n\ge 5\}$,
 let $Y=\{n\in\N\mid n\le10\}$, and let $Z=\{n\in\N\mid \text{\textit{n} is an even number}\}$.
 Find each of the following sets:
 
    * $X\cap Y$
+   [[spoiler | Answer]]
+   | $\{5,6,7,8,9,10\}$
    * $X\cup Y$
+   [[spoiler | Answer]]
+   | $\N$
    * $X\smallsetminus Y$
+   [[spoiler | Answer]]
+   | $Y=\{n\in\N\mid n>10\}$
    * $\N\smallsetminus Z$
+   [[spoiler | Answer]]
+   | $\{n\in\N\mid \text{\textit{n} is an odd number}\}$
    * $X\cap Z$
+   [[spoiler | Answer]]
+   | $\{n\in\N\mid \text{\textit{n} is an even number greater than 5}\}$
    * $Y\cap Z$
+   [[spoiler | Answer]]
+   | $\{0,2,4,6,8,10\}$
    * $Y\cup Z$
+   [[spoiler | Answer]]
+   | $\{n\in\N\mid \text{\textit{n} is an even number or less than 10}\}$
    * $Z\smallsetminus\N$
+   [[spoiler | Answer]]
+   | $\emptyset$
 
 4. Find ${\mathscr P}\big(\{1,2,3\}\big)$. (It has eight elements.)
+[[spoiler | Answer]]
+| $\{\emptyset,\{1\},\{2\},\{3\},\{1,2\},\{1,3\},\{2,3\},\{1,2,3\}\}$
 
 5. Assume that $a$ and $b$ are entities and that $a\not=b$. Let $A$ and $B$ be the sets defined by
 $A=\{\,a,\,\{b\},\,\{a,b\}\,\}$ and $B=\{\,a,\,b,\,\{a,\{b\}\}\,\}$.
@@ -409,34 +442,93 @@ Determine whether each of the following statements is true or false. Explain
 your answers.
 
    * $b\in A$
+   [[spoiler | Answer]]
+   | False. The set $\{b\}$ is an element of $A$, but not the entity $b$ itself.
    * $\{a,b\}\subseteq A$
+   [[spoiler | Answer]]
+   | False, since $b\not\in A$.
    * $\{a,b\}\subseteq B$
+   [[spoiler | Answer]]
+   | True, since both $a$ and $b$ are elements of $B$.
    * $\{a,b\}\in B$
+   [[spoiler | Answer]]
+   | False. The set $\{a,b\}$ is distinct from each of the three elements of $B$.
    * $\{a,\{b\}\}\in A$
+   [[spoiler | Answer]]
+   | False. Although $\{a,\{b\}\}\subseteq A$, it is not an element of $A$.
    * $\{a,\{b\}\}\in B$
+   [[spoiler | Answer]]
+   | True. It is one of the elements of $B$, along with $a$ and $b$.
 
 6. Since ${\mathscr P}(A)$ is a set, it is possible to form the set
 ${\mathscr P}\big({\mathscr P}(A)\big)$. What is ${\mathscr P}\big({\mathscr P}(\emptyset)\big)\,$?
 What is ${\mathscr P}\big({\mathscr P}(\{a,b\})\big)\,$? (It has sixteen elements.)
+[[spoiler | Answer]]
+| Since $\emptyset$ has 0 elements, its powerset ${\mathscr P}(\emptyset)$ will have $2^0=1$ element, and the
+| powerset of that will have $2^1=2$ elements: $\{\emptyset,\{\emptyset\}\}$.
+|
+| The powerset ${\mathscr P}(\{a,b\})$ has $2^2=4$ elements: $\{\emptyset,\{a\},\{b\},\{a,b\}\}$.
+| Therefore, its powerset will contain the following sixteen elements (listed individually for clarity):
+| * $\emptyset$
+| * $\{\emptyset\}$
+| * $\{\{a\}\}$
+| * $\{\emptyset,\{a\}\}$
+| * $\{\{b\}\}$
+| * $\{\emptyset,\{b\}\}$
+| * $\{\{a\},\{b\}\}$
+| * $\{\emptyset,\{a\},\{b\}\}$
+| * $\{\{a,b\}\}$
+| * $\{\emptyset,\{a,b\}\}$
+| * $\{\{a\},\{a,b\}\}$
+| * $\{\emptyset,\{a\},\{a,b\}\}$
+| * $\{\{b\},\{a,b\}\}$
+| * $\{\emptyset,\{b\},\{a,b\}\}$
+| * $\{\{a\},\{b\},\{a,b\}\}$
+| * $\{\emptyset,\{a\},\{b\},\{a,b\}\}$
 
 7. In the English sentence, "She likes men who are tall, dark, and
 handsome," does she like an intersection or a union of sets of men?
 How about in the sentence, "She likes men who are tall, men who are dark,
 and men who are handsome?"
+[[spoiler | Answer]]
+| In the first sentence it is an intersection: she likes the men who are in all three of the sets "tall", "dark", and "handsome".
+| In the second sentence it is a union: she likes men in the "tall" set, men in the "dark" set, and men in the "handsome" set.
 
 8. If $A$ is any set, what can you say about $A\cup A\,$?
 About $A\cap A\,$? About $A\smallsetminus A\,$? Why?
+[[spoiler | Answer]]
+| $A\cup A=A$, since adding the elements of $A$ to itself doesn't add anything new.
+| $A\cap A=A$ as well, since they have every element of $A$ in common.
+| $A\smallsetminus A=\emptyset$, since removing all of the elements of $A$ from $A$ leaves nothing.
 
 9. Suppose that $A$ and $B$ are sets such that $A\subseteq B$.
 What can you say about $A\cup B\,$? About $A\cap B\,$?
 About $A\smallsetminus B\,$? Why?
+[[spoiler | Answer]]
+| $A\cup B=B$, since everything in $A$ is already in $B$.
+| $A\cap B=A$, since every element of $A$ is also in $B$.
+| $A\smallsetminus B=\emptyset$, since every element of $A$ will be removed.
 
 1. Suppose that $A$, $B$, and $C$ are sets. Show that
 $C\subseteq A\cap B$ if and only if $(C\subseteq A)\land (C\subseteq B)$.
+[[spoiler | Answer]]
+| If $C\subseteq A\cap B$, then for each $c\in C$ we know that $c\in\{x\mid x\in A\land x\in B\}$, which means $c\in A$ and $c\in B$.
+| Since this is true for every $c\in C$, we may conclude $C\subseteq A$ and $C\subseteq B$.
+|
+| Conversely, suppose that $(C\subseteq A)\land (C\subseteq B)$. That means that for each $c\in C$, we know that $c\in A$ and $c\in B$, which
+| is enough to establish that $c\in\{x\mid x\in A\land x\in B\}$. Therefore, $C\subseteq A\cap B$.
 
 1. Suppose that $A$, $B$, and $C$ are sets, and that
 $A\subseteq B$ and $B\subseteq C$. Show that $A\subseteq C$.
+[[spoiler | Answer]]
+| If $A\subseteq B$ and $B\subseteq C$, then take any $x\in A$. We know that $x\in B$ because $A$ is a subset of $B$; furthermore, we also find
+| that $x\in C$ because $B$ is a subset of $C$. Therefore, for every $x\in A$ we also have $x\in C$, hence $A\subseteq C$.
 
 1. Suppose that $A$ and $B$ are sets such that $A\subseteq B$.
 Is it necessarily true that ${\mathscr P}(A)\subseteq {\mathscr P}(B)\,$?
 Why or why not?
+[[spoiler | Answer]]
+| If $x\in{\mathscr P}(A)$, then by the definition of the powerset we know that $x\subseteq A$.
+| Since $A\subseteq B$, we know by the previous exercise that $x\subseteq B$, therefore we also have
+| $x\in{\mathscr P}(B)$.
+| Since this is true for arbitrary $x$, we find that ${\mathscr P}(A)\subseteq {\mathscr P}(B)$ is true.
