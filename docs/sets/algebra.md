@@ -323,23 +323,70 @@ $C\smallsetminus(A\cup B)=(C\smallsetminus A)\cap(C\smallsetminus B)$ and
 $C\smallsetminus(A\cap B)=(C\smallsetminus A)\cup(C\smallsetminus B)$. 
 
 8. Show that $A\cup (A\cap B)= A$ for any sets $A$ and $B$.
+[[spoiler | Answer]]
+| | | | |
+| | -: | :- | :- |
+| | $A\cup(A\cap B)$ | $=(A\cup A)\cap(A\cup B)$ | Distributive Law |
+| | | $=A\cap(A\cup B)$ | Idempotence |
+| | | $=(A\cup\emptyset)\cap(A\cup B)$ | Identity |
+| | | $=A\cup(\emptyset\cap B)$ | Distributive |
+| | | $=A\cup\emptyset$ | Intersection with empty set |
+| | | $=A$ | Identity |
 
 9. Let $X$ and $Y$ be sets. Simplify each of the
 following expressions. Justify each step in the simplification
 with one of the rules of set theory.
 
    * $X\cup (Y\cup X)$
+   [[spoiler | Answer]]
+   | | | | |
+   | | -: | :- | :- |
+   | | $X\cup(Y\cup X)$ | $=X\cup(X\cup Y)$ | Commutative |
+   | | | $=(X\cup X)\cup Y$ | Associative |
+   | | | $=X\cup Y$ | Idempotent |
    * $(X\cap Y) \cap \overline{X}$
+   [[spoiler | Answer]]
+   | | | | |
+   | | -: | :- | :- |
+   | | $(X\cap Y) \cap \overline{X}$ | $=(Y\cap X)\cap\overline{X}$ | Commutative |
+   | | | $=Y\cap(X\cap\overline{X})$ | Associative |
+   | | | $=Y\cap\emptyset$ | Disjoint |
+   | | | $=\emptyset$ | Intersection with empty set |
    * $(X\cup Y)\cap \overline{Y}$
+   [[spoiler | Answer]]
+   | | | | |
+   | | -: | :- | :- |
+   | | $(X\cup Y)\cap \overline{Y}$ | $=(X\cap\overline{Y})\cup(Y\cap\overline{Y})$ | Distributive |
+   | | | $=(X\cap\overline{Y})\cup\emptyset$ | Disjoint |
+   | | | $=X\cap\overline{Y}$ | Identity |
+   | | | $=X\smallsetminus Y$ | Definition of $\smallsetminus$ |
    * $(X\cup Y) \cup (X\cap Y)$
+   [[spoiler | Answer]]
+   | | | | |
+   | | -: | :- | :- |
+   | | $(X\cup Y) \cup (X\cap Y)$ | $=X\cup(Y\cup(X\cap Y))$ | Associative |
+   | | | $=X\cup(Y\cup(Y\cap X))$ | Commutative |
+   | | | $=X\cup Y$ | Previous exercise (Absorption Law) |
 
-9. Let $A$, $B$, and $C$ be sets. Simplify each of the following
+1. Let $A$, $B$, and $C$ be sets. Simplify each of the following
 expressions. In your answer, the complement operator should only
 be applied to the individual sets $A$, $B$, and $C$.
 
    * $\overline{A\cup B \cup C}$
+   [[spoiler | Answer]]
+   | $\overline{A}\cap\overline{B}\cap\overline{C}$
    * $\overline{A\cup B \cap C}$
+   [[spoiler | Answer]]
+   | $\overline{A}\cap\overline{B\cap C}=\overline{A}\cap(\overline{B}\cup\overline{C})$ (note that intersection has precedence over union)
    * $\overline{\overline{A\cup B}}$
+   [[spoiler | Answer]]
+   | $A\cup B$ (double complement)
    * $\overline{B\cap \overline{C}}$
+   [[spoiler | Answer]]
+   | $\overline{B}\cup C$
    * $\overline{A\cap \overline{B\cap \overline C}}$
+   [[spoiler | Answer]]
+   | $\overline{A}\cup(B\cap\overline{C})$
    * $A\cap \overline{A\cup B}$
+   [[spoiler | Answer]]
+   | $A\cap\overline{A}\cap\overline{B}=\emptyset\cap\overline{B}=\emptyset$
