@@ -268,7 +268,7 @@ everyone.)
 * There is exactly one happy person: $\big(\exists x H(x)\big)) \land \big(\forall y \forall z((H(y)\land H(z))\rightarrow (y=z))\big)$.
  (The first part of this conjunction says that there is at least one happy person.
  The second part says that if $y$ and $z$ are both happy people, then they are actually
- the same person. That is, it's not possible to find two \emph{different} people who
+ the same person. That is, it's not possible to find two _different_ people who
  are happy.)
 
 ## Logical Equivalence

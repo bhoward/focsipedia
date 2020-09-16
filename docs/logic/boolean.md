@@ -365,9 +365,9 @@ them wrong. But they do make sense. When considering $\lnot(p\land q)$,
 you should ask yourself, how can "$p$ and $q$" _fail_ to be true.
 It will fail to be true if either $p$ is false _or_ if $q$ is false (or both).
 That is, $\lnot(p \land q)$ is equivalent to $(\lnot p)\lor(\lnot q)$. Consider
-the sentence "A raven is large and black." If a bird is \emph{not} large and black,
+the sentence "A raven is large and black." If a bird is _not_ large and black,
 then it is not a raven. But what exactly does it mean to be
-"\emph{not (large and black)}"? How can you tell whether the assertion "not (large
+"_not (large and black)_"? How can you tell whether the assertion "not (large
 and black)" is true of something? This will be true if it is either
 not large _or_ not black. (It doesn't have to be both&mdash;it could be
 large and white, it could be small and black.) Similarly, for "$p$ or $q$"
