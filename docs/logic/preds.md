@@ -268,7 +268,7 @@ everyone.)
 * There is exactly one happy person: $\big(\exists x H(x)\big)) \land \big(\forall y \forall z((H(y)\land H(z))\rightarrow (y=z))\big)$.
  (The first part of this conjunction says that there is at least one happy person.
  The second part says that if $y$ and $z$ are both happy people, then they are actually
- the same person. That is, it's not possible to find two \emph{different} people who
+ the same person. That is, it's not possible to find two _different_ people who
  are happy.)
 
 ## Logical Equivalence
@@ -374,26 +374,60 @@ $\mathscr{P}$ is logically equivalent to $\mathscr{Q}$.
 1. Simplify each of the following propositions.  In your answer, the
 $\lnot$ operator should be applied only to individual predicates.
    * $\lnot\,\forall x (\lnot P(x))$
+   [[spoiler | Answer]]
+   |  $\exists x(P(x))$
    * $\lnot\,\exists x(P(x)\land Q(x))$
+   [[spoiler | Answer]]
+   | $\forall x(\lnot P(x)\lor\lnot Q(x))$
    * $\lnot \,\forall z(P(z)\rightarrow Q(z))$
-   * $\lnot\big((\forall x P(x))\land \forall y(Q(y))\big)$
+   [[spoiler | Answer]]
+   | $\exists z(P(z)\land\lnot Q(z))$
+   * $\lnot\big((\forall x P(x))\land(\forall y Q(y))\big)$
+   [[spoiler | Answer]]
+   | $(\exists x\lnot P(x))\lor(\exists y\lnot Q(y))$
    * $\lnot\, \forall x \exists y P(x,y)$
+   [[spoiler | Answer]]
+   | $\exists x\forall y\lnot P(x, y)$
    * $\lnot\,\exists x (R(x)\land \forall y S(x,y))$
+   [[spoiler | Answer]]
+   | $\forall x((\lnot R(x))\lor\exists y\lnot S(x,y))$
    * $\lnot\,\exists y(P(y)\leftrightarrow Q(y))$
+   [[spoiler | Answer]]
+   | $\forall y(P(y)\leftrightarrow\lnot Q(y))$, or $\forall y(P(y)\oplus Q(y))$
    * $\lnot \big(\forall x (P(x)\rightarrow (\exists y Q(x,y)))\big)$
+   [[spoiler | Answer]]
+   | $\exists x(P(x)\land\forall y\lnot Q(x,y))$
 
 2. Give a careful argument to show that the second of De Morgan's laws for
 predicate calculus,
-$\lnot(\forall x P(x)) \equiv \exists x(\lnot P(x))$, is valid.
+$\lnot(\exists x P(x)) \equiv \forall x(\lnot P(x))$, is valid.
+[[spoiler | Answer]]
+| [Note that this question used to be about the equivalence of $\lnot(\forall x P(x))$ and $\exists x(\lnot P(x))$,
+| but that argument is detailed in the text.]
+| Suppose that $\lnot(\exists x P(x))$. Consider any entity $a$ in the domain of discourse. If $P(a)$ were true,
+| then we would have $\exists x P(x)$, but that contradicts our assumption. Therefore, $\lnot P(a)$ holds.
+| Since the choice of $a$ was arbitrary, we may conclude that $\forall x(\lnot P(x))$.
+|
+| Conversely, suppose that $\forall x(\lnot P(x))$. If we also assume that $\exists x P(x)$ is true, then that says
+| that there is some entity $a$ such that $P(a)$ is true. However, by our first assumption, we know that $\lnot P(a)$
+| (since $\lnot P(x)$ holds for all entities $x$). This is a contradiction, so if $\forall x(\lnot P(x))$ is true then
+| $\lnot(\exists x P(x))$ is also true. This concludes the argument that the two expressions are equivalent.
 
-3. Find the negation of each of the following propositions.
+1. Find the negation of each of the following propositions.
 Simplify the result; in your answer, the
 $\lnot$ operator should be applied only to individual predicates.
-   * $\lnot$$\exists n (\forall s C(s,n))$
-   * $\lnot$$\exists n (\forall s (L(s,n) \rightarrow P(s)))$
-   * $\lnot$$\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z Q(x,y,z))))$.
-   * $\lnot$$\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z (s=xyz \land 
-R(x,y) \land T(y) \land U(x,y,z))))$.
+   * $\exists n (\forall s C(s,n))$
+   [[spoiler | Answer]]
+   | $\forall n(\exists s \lnot C(s, n))$
+   * $\exists n (\forall s (L(s,n) \rightarrow P(s)))$
+   [[spoiler | Answer]]
+   | $\forall n(\exists s(L(s, n)\land\lnot P(s)))$
+   * $\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z Q(x,y,z))))$
+   [[spoiler | Answer]]
+   | $\forall n(\exists s(L(s, n)\land\forall x\forall y\forall z\lnot Q(x,y,z)))$
+   * $\exists n (\forall s (L(s,n) \rightarrow (\exists x \exists y \exists z (s=xyz \land R(x,y) \land T(y) \land U(x,y,z))))$
+   [[spoiler | Answer]]
+   | $\forall n(\exists s(L(s, n)\land\forall x\forall y\forall z(s\ne xyz\lor\lnot R(x, y)\lor\lnot T(y)\lor\lnot U(x,y,z))))$
 
 4. Suppose that the domain of discourse for a predicate $P$
 contains only two entities.  Show that $\forall x\, P(x)$ is equivalent to
@@ -402,43 +436,96 @@ to a disjunction.  Show that in this case, De Morgan's Laws for propositional
 logic and De Morgan's Laws for predicate logic actually say exactly the same
 thing.  Extend the results to a domain of discourse that contains exactly
 three entities.
+[[spoiler | Answer]]
+| If the domain of discourse is $\{a,b\}$, then the expression $\forall x\,P(x)$ means the same as $P(a)\land P(b)$.
+| Similarly, $\exists x\,P(x)$ means $P(a)\lor P(b)$. The De Morgan laws for the quantifiers are then exactly the
+| De Morgan laws for $\land$ and $\lor$: $\lnot\forall x\,P(x)\equiv\lnot(P(a)\land P(b))\equiv(\lnot P(a))\lor(\lnot P(b))\equiv\exists x\,\lnot P(x)$,
+| and similarly for the dual statement.
+|
+| If the domain has three entities, $\{a,b,c\}$, then $\forall x\,P(x)$ means $P(a)\land P(b)\land P(c)$, and $\exists x\,P(x)$ means $P(a)\lor P(b)\lor P(c)$.
+| Again, the De Morgan laws for the quantifiers can easily be seen to be equivalent to those for $\land$ and $\lor$. This observation extends to any finite domain of discourse.
 
 5. Let $H(x)$ stand for "$x$ is happy," where the domain of discourse
 consists of people.  Express the proposition "There are exactly three happy
 people" in predicate logic.
+[[spoiler | Answer]]
+| We can express "there are at least three happy people" with $\exists x\exists y\exists z\,(H(x)\land H(y)\land H(z)\land x\ne y\land x\ne z\land y\ne z)$. That is,
+| there are three people $x$, $y$, and $z$ that are all happy, and none of them are equal to each other (they are "pairwise distinct").
+| To require that there are exactly three happy people, we may add the extra condition $\forall w\,(H(w)\rightarrow(w=x\lor w=y\lor w=z))$. This says that, in addition,
+| if there were any other happy person $w$, then they would have to be one of the three already listed.
 
 6. Let $T(x,y)$ stand for "$x$ has taken $y$," where the
 domain of discourse for $x$ consists of students and the domain
 of discourse for $y$ consists of math courses (at your school).
 Translate each of the following propositions into an unambiguous English sentence:
    * $\forall x\,\forall y \,T(x,y)$
+   [[spoiler | Answer]]
+   | Every student has taken every math course.
    * $\forall x \,\exists y \,T(x,y)$
+   [[spoiler | Answer]]
+   | Every student has taken at least one math course.
    * $\forall y \,\exists x \,T(x,y)$
+   [[spoiler | Answer]]
+   | Every math course has been taken by at least one student.
    * $\exists x\,\exists y \,T(x,y)$
+   [[spoiler | Answer]]
+   | There is a student who has taken a math course.
    * $\exists x \,\forall y \,T(x,y)$
+   [[spoiler | Answer]]
+   | There is a student who has taken all of the math courses.
    * $\exists y \,\forall x \,T(x,y)$
+   [[spoiler | Answer]]
+   | There is a math course that all of the students have taken.
 
 7. Let $F(x,t)$ stand for "You can fool person $x$ at time $t$."
 Translate the following sentence into predicate logic:
 "You can fool some of the people all of the time, and you can fool
 all of the people some of the time, but you can't fool all of the
 people all of the time."
+[[spoiler | Answer]]
+| $(\exists x\forall t\,F(x, t))\land(\forall x\exists t\,F(x, t))\land\lnot(\forall x\forall t\,F(x, t))$
 
 8. Translate each of the following sentences into a proposition 
 using predicate logic.  Make up any predicates you need.  State what
 each predicate means and what its domain of discourse is.
    * All crows are black.
+   [[spoiler | Answer]]
+   | Let the domain of discourse be all birds, and consider the predicates $C(b)$ meaning "$b$ is a crow$ and $B(b)$ meaning "$b$ is black."
+   | The sentence is then $\forall b\,(C(b)\rightarrow B(b))$.
    * Any white bird is not a crow.
+   [[spoiler | Answer]]
+   | To the previous answer add the predicate $W(b)$ meaning "$b$ is white."
+   | The sentence is $\forall b\,(W(b)\rightarrow\lnot C(b))$.
    * Not all politicians are honest.
+   [[spoiler | Answer]]
+   | If the domain of discourse is just politicians and $H(p)$ means that "$p$ is honest," then the sentence is $\lnot\forall p\,H(p)$.
+   |
+   | However, if we take the domain to be larger (such as all people), then we also need a predicate $P(p)$ to mean that "$p$ is a politician."
+   | Now the sentence becomes $\lnot\forall p\,(P(p)\rightarrow H(p))$. Equivalently, we may write $\exists p\,(P(p)\land\lnot H(p))$&mdash;"There is a politician who is not honest."
    * All green elephants have purple feet.
+   [[spoiler | Answer]]
+   | One choice is to have the domain be all elephants, with the predicates $G(e)$ for "$e$ is green" and $P(e)$ for "$e$ has purple feet."
+   | In this case, the sentence is $\forall e\,(G(e)\rightarrow P(e))$. Other solutions are possible.
    * There is no one who does not like pizza.
+   [[spoiler | Answer]]
+   | Let the domain of discourse be all people, and the predicate $P(p)$ means that "$p$ likes pizza."
+   | The sentence is then expressed by $\lnot\exists p\,\lnot P(p)$. This can also be written $\forall p\,P(p)$&mdash;"Everyone likes pizza."
    * Anyone who passes the final exam will pass the course.
-   * If $x$ is any positive number, then there is a number $y$ such that
-$y^2=x$.
+   [[spoiler | Answer]]
+   | Take the domain to be all students. If the predicates are $E(s)$ for "$s$ passes the final exam" and $C(s)$ for "$s$ passes the course", then
+   | our sentence is $\forall s\,(E(s)\rightarrow C(s))$.
+   * If $x$ is any positive number, then there is a number $y$ such that $y^2=x$.
+   [[spoiler | Answer]]
+   | If the domain of discourse is the real numbers, then we are saying $\forall x\,(x>0\rightarrow\exists y\,(y^2=x))$.
 
 9. The sentence "Someone has the answer to every question" is
 ambiguous.  Give two translations of this sentence into predicate logic,
 and explain the difference in meaning.
+[[spoiler | Answer]]
+| Let the domains be people ($p$) and questions ($q$), and use the predicate $A(p, q)$ to mean "$p$ has the answer to $q$."
+| One translation is $\exists p\forall q\,A(p, q)$; that is, there is a single person who knows all of the answers.
+| Another translation is $\forall q\exists p\,A(p, q)$, which says that, for each question, someone knows the answer, although it
+| might be different people for different questions.
 
 9. The sentence "Jane is looking for a dog" is ambiguous.
 One meaning is that there is some particular dog&mdash;maybe the one she lost&mdash;that
@@ -450,4 +537,9 @@ second meaning cannot be expressed in predicate logic.  Philosophers
 of language spend a lot of time thinking about things like this.
 They are especially fond of the sentence "Jane is looking for a unicorn,"
 which is not ambiguous when applied to the real world.  Why is that?
-
+[[spoiler | Answer]]
+| The first meaning is expressed by $\exists x(Dog(x)\land LooksFor(jane,x))$.
+| For the second meaning, the given expression would say that Jane is looking for _all_ dogs&mdash;for any $x$ that is a dog, Jane is looking for it.
+| That would be exhausting for Jane.
+| The problem with the second meaning, and the unicorn version, is that just because Jane is looking for the thing does not mean that there is such a thing in the
+| domain of discourse, so a quantifier over that domain will not suffice.
