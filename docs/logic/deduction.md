@@ -902,6 +902,31 @@ on the subject.
 
 1. Verify the validity of _modus tollens_ and the Law of
 Syllogism.
+[[spoiler | Answer]]
+| For _modus tollens_, we need to check that $((p\rightarrow q)\land\lnot q)\rightarrow\lnot p$ is a tautology.
+| One way to do this is with a truth table:
+|
+| | $p$ | $q$ | $(p\rightarrow q$ | $\land$ | $\lnot q)$ | $\rightarrow$ | $\lnot p$ |
+| | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| | false | false | true | true | true | **true** | true |
+| | false | true | true | false | false | **true** | true |
+| | true | false | false | false | true | **true** | false |
+| | true | true | true | false | false | **true** | false |
+|
+| For the Law of Syllogism, we need to check that $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ is a tautology.
+| Rather than building an eight-row truth table, let's do this with the laws of Boolean algebra, using the equivalence $(p\rightarrow q)\equiv(\lnot p\lor q)$:
+|
+| | | | |
+| | -: | :- | :- |
+| | $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ | $\equiv\lnot((\lnot p\lor q)\land(\lnot q\lor r))\lor(\lnot p\lor r)$ | Definition of $\rightarrow$ |
+| | | $\equiv\lnot(\lnot p\lor q)\lor\lnot(\lnot q\lor r)\lor(\lnot p\lor r)$ | De Morgan |
+| | | $\equiv(p\land\lnot q)\lor(q\land\lnot r)\lor\lnot p\lor r$ | De Morgan, Double Negation |
+| | | $\equiv(p\land\lnot q)\lor\lnot p\lor(q\land\lnot r)\lor r$ | Commutative |
+| | | $\equiv((p\lor\lnot p)\land(\lnot q\lor\lnot p))\lor((q\lor r)\land(\lnot r\lor r))$ | Distributive |
+| | | $\equiv(\T\land(\lnot q\lor\lnot p))\lor((q\lor r)\land\T)$ | Excluded Middle |
+| | | $\equiv\lnot q\lor\lnot p\lor q\lor r$ | Identity |
+| | | $\equiv\T\lor\lnot p\lor r$ | Excluded Middle |
+| | | $\equiv\T$ | Annihilation |
 
 2. Each of the following is a valid rule of deduction.
 For each one, give an example of a valid argument in English that
@@ -912,22 +937,30 @@ p\lor q\\
 \lnot p\\ \hline\therefore
 q
 \end{array} $$
+[[spoiler | Answer]]
+| I have soup or a salad with my meal. I do not have soup with my meal. Therefore, I have a salad with my meal.
 
 $$ \begin{array}{l}
 p\\
 q\\ \hline\therefore
 p\land q
 \end{array} $$
+[[spoiler | Answer]]
+| I have an apple. I have a banana. Therefore, I have an apple and a banana.
 
 $$ \begin{array}{l}
 p\land q\\ \hline\therefore
 p
 \end{array} $$
+[[spoiler | Answer]]
+| I have an apple and a banana. Therefore, I have an apple.
 
 $$ \begin{array}{l}
 p\\ \hline\therefore
 p\lor q
 \end{array} $$
+[[spoiler | Answer]]
+| I walked ten miles. Therefore, I walked ten miles or ran ten miles.
 
 3. There are two notorious invalid arguments that look
 deceptively like _modus ponens_ and _modus tollens_:
@@ -946,6 +979,12 @@ p\rightarrow q\\
 
 Show that each of these arguments is invalid. Give an English
 example that uses each of these arguments.
+[[spoiler | Answer]]
+| The first argument fails when $p$ is false while $q$ is true.
+| For example, "If I were a millionaire, then I would own a house. I own a house. Therefore, I am a millionaire."
+|
+| The second argument also fails when $p$ is false while $q$ is true.
+| For example, "If the moon is made of blue cheese, then $2+2=4$. The moon is not made of blue cheese. Therefore, $2+2\not=4$."
 
 4. Decide whether each of the following arguments is valid.
 If it is valid, give a formal proof. If it is invalid, show that
@@ -957,6 +996,8 @@ to propositional variables.
    q\rightarrow s\\ \hline\therefore
    p
    \end{array} $$
+   [[spoiler | Answer]]
+   | Invalid. Take $p$ and $q$ false, so that both premises are vacuously true but the conclusion is false.
 
    2. $$ \begin{array}{l}
    p\land q\\
@@ -964,6 +1005,23 @@ to propositional variables.
    \lnot r\\ \hline\therefore
    s
    \end{array} $$
+   [[spoiler | Answer]]
+   | Valid:
+   | $$ \begin{array}{l|l}
+   | \ell_1: p\land q & \text{premise}\\
+   | \ell_2: q & \land E_2\ \ell_1\\
+   | \ell_3: q\rightarrow(r\lor s) & \text{premise}\\
+   | \ell_4: r\lor s & \rightarrow E\ \ell_3,\ell_2\\
+   | \ell_5: r\Rightarrow\{\\
+   | \quad\ell_6: \lnot r & \text{premise}\\
+   | \quad\ell_7: \F & \lnot E\ \ell_6,\ell_5\\
+   | \quad\ell_8: s & \F E\ \ell_7\\
+   | \}\\
+   | \ell_9: s\Rightarrow\{\\
+   | \quad\ell_{10}: s & \ell_9\\
+   | \}\\
+   | \ell_{11}: s & \lor E\ \ell_4,\ell_5,\ell_9
+   | \end{array} $$
    
    3. $$ \begin{array}{l}
    p\lor q\\
@@ -971,6 +1029,22 @@ to propositional variables.
    \lnot p\\ \hline\therefore
    s
    \end{array} $$
+   [[spoiler | Answer]]
+   | Valid:
+   | $$ \begin{array}{l|l}
+   | \ell_1: p\lor q & \text{premise}\\
+   | \ell_2: p\Rightarrow\{\\
+   | \quad\ell_3: \lnot p & \text{premise}\\
+   | \quad\ell_4: \F & \lnot E\ \ell_3,\ell_2\\
+   | \quad\ell_5: s & \F E\ \ell_4\\
+   | \}\\
+   | \ell_6: q\Rightarrow\{\\
+   | \quad\ell_7: q\rightarrow(r\land s) & \text{premise}\\
+   | \quad\ell_8: r\land s & \rightarrow E\ \ell_7,\ell_6\\
+   | \quad\ell_9: s & \land E_2\ \ell_8\\
+   | \}\\
+   | \ell_{10}: s & \lor E\ \ell_1,\ell_2,\ell_6
+   | \end{array} $$
    
    4. $$ \begin{array}{l}
    (\lnot p)\rightarrow t\\
@@ -979,6 +1053,19 @@ to propositional variables.
    \lnot(q\lor t)\\ \hline\therefore
    p
    \end{array} $$
+   [[spoiler | Answer]]
+   | Valid:
+   | $$ \begin{array}{l|l}
+   | \ell_1: \lnot p\Rightarrow\{\\
+   | \quad\ell_2: (\lnot p)\rightarrow t & \text{premise}\\
+   | \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
+   | \quad\ell_4: q\lor t & \lor I_2\ \ell_3\\
+   | \quad\ell_5: \lnot(q\lor t) & \text{premise}\\
+   | \quad\ell_6: \F & \lnot E\ \ell_5,\ell_4\\
+   | \}\\
+   | \ell_7: \lnot\lnot p & \lnot I\ \ell_1\\
+   | \ell_8: p & \lnot\lnot E\ \ell_7
+   | \end{array} $$
    
    5. $$ \begin{array}{l}
    p\\
@@ -987,6 +1074,8 @@ to propositional variables.
    q\rightarrow\lnot p\\ \hline\therefore
    \lnot s
    \end{array} $$
+   [[spoiler | Answer]]
+   | Invalid. Take $p$, $r$, and $s$ all true, while $q$ is false. All of the premises are true, but the conclusion is false.
    
    6. $$ \begin{array}{l}
    q\rightarrow t\\
@@ -994,6 +1083,19 @@ to propositional variables.
    p\\ \hline\therefore
    q\rightarrow s
    \end{array} $$
+   [[spoiler | Answer]]
+   | Valid:
+   | $$ \begin{array}{l|l}
+   | \ell_1: q\Rightarrow\{\\
+   | \quad\ell_2: q\rightarrow t & \text{premise}\\
+   | \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
+   | \quad\ell_4: p\rightarrow(t\rightarrow s) & \text{premise}\\
+   | \quad\ell_5: p & \text{premise}\\
+   | \quad\ell_6: t\rightarrow s & \rightarrow E\ \ell_4,\ell_5\\
+   | \quad\ell_7: s & \rightarrow E\ \ell_6,\ell_3\\
+   | \}\\
+   | \ell_8: q\rightarrow s & \rightarrow I\ \ell_1
+   | \end{array} $$
 
 5. For each of the following English arguments, express the
 argument in terms of propositional logic and determine whether the
@@ -1001,11 +1103,57 @@ argument is valid or invalid.
 
    * If it is Sunday, it rains or snows. Today, it is Sunday
 and it's not raining. Therefore, it must be snowing.
+[[spoiler | Answer]]
+| Let $p$ be "it is Sunday", $r$ be "it is raining", and $s$ be "it is snowing."
+| The argument is then
+| $$ \begin{array}{l}
+| p\rightarrow(r\lor s)\\
+| p\land\lnot r\\ \hline\therefore
+| s
+| \end{array} $$
+| This argument is valid:
+| $$ \begin{array}{l|l}
+| \ell_1: p\rightarrow(r\lor s) & \text{premise}\\
+| \ell_2: p\land\lnot r & \text{premise}\\
+| \ell_3: p & \land E_1\ \ell_2\\
+| \ell_4: r\lor s & \rightarrow E\ \ell_1,\ell_3\\
+| \ell_5: \lnot r & \land E_2\ \ell_2\\
+| \ell_6: s & \text{disjunctive syllogism}
+| \end{array} $$
+| The Law of Disjunctive Syllogism cited on line 6 was seen as the first argument in Exercise 2.
+| It is a common enough argument (used for example in Exercise 4(ii)) that I decided to introduce it as a shortcut here.
 
    * If there are anchovies on the pizza, Jack won't eat it.
 If Jack doesn't eat pizza, he gets angry. Jack is angry.
 Therefore, there were anchovies on the pizza.
+[[spoiler | Answer]]
+| Let $a$ be "There are anchovies on the pizza", $b$ be "Jack doesn't eat the pizza", and $c$ be "Jack is angry."
+| The argument is then
+| $$ \begin{array}{l}
+| a\rightarrow b\\
+| b\rightarrow c\\
+| c\\ \hline\therefore
+| a
+| \end{array} $$
+| This argument is invalid. Maybe Jack never eats pizza and is angry all the time (that is, $b$ and $c$ are true, making all the premises true with no obligation for $a$ to be true).
 
    * At 8:00, Jane studies in the library or works at home.
 It's 8:00 and Jane is not studying in the library. So she must
 be working at home.
+[[spoiler | Answer]]
+| Let $e$ be "it is 8:00", $s$ be "Jane studies in the library", and $w$ be "Jane works at home."
+| The argument is then
+| $$ \begin{array}{l}
+| e\rightarrow(s\lor w)\\
+| e\land\lnot s\\ \hline\therefore
+| w
+| \end{array} $$
+| This argument is valid:
+| $$ \begin{array}{l|l}
+| \ell_1: e\rightarrow(s\lor w) & \text{premise}\\
+| \ell_2: e\land\lnot s & \text{premise}\\
+| \ell_3: e & \land E_1\ \ell_2\\
+| \ell_4: s\lor w & \rightarrow E\ \ell_1,\ell_3\\
+| \ell_5: \lnot s & \land E_2\ \ell_2\\
+| \ell_6: w & \text{disjunctive syllogism}
+| \end{array} $$
