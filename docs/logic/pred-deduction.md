@@ -256,8 +256,34 @@ and there are even numbers, but there are no numbers that are both odd and even.
 1. Prove a similar result to the one just above, showing the interaction of
 the existential and the universal quantifiers:
 
-$$\exists x\forall yP(x, y)\vdash\forall y\exists xP(x, y)$$
+$$\exists x\forall y P(x, y)\vdash\forall y\exists x P(x, y)$$
+[[spoiler | Answer]]
+| $$ \begin{array}{l|l}
+| \ell_1: \text{fresh}\ y_0\Rightarrow\{\\
+| \quad\ell_2: \exists x\forall y P(x, y) & \text{premise}\\
+| \quad\ell_3: \text{fresh}\ x_0, \forall y P(x_0, y)\Rightarrow\{\\
+| \quad\quad\ell_4: P(x_0, y_0) & \forall E\ \ell_3,y_0\\
+| \quad\quad\ell_5: \exists x P(x, y_0) & \exists I\ \ell_4,x_0\\
+| \quad\}\\
+| \quad\ell_6: \exists x P(x, y_0) & \exists E\ \ell_2,\ell_3\\
+| \}\\
+| \ell_7: \forall y\exists x P(x, y) & \forall I\ \ell_1
+| \end{array} $$
 
 2. Discuss why the opposite direction of the previous problem is not a valid argument:
 
 $$\forall y\exists xP(x, y)\vdash\exists x\forall yP(x, y)$$
+[[spoiler | Answer]]
+| The premise claims that for any $y$ you can find an $x$ making $P(x, y)$ true, but it might
+| be a different $x$ for each $y$. That is, the _existential witness_ for $x$ should be
+| expressed as a function of $y$: given input $y$, the output of the function is an appropriate
+| witness (a value of $x$ such that $P(x, y)$ for that particular choice of $y$).
+|
+| However, the conclusion of the argument asserts that there is a single $x$ that makes $P(x, y)$
+| true for _all_ values of $y$. That's a much stronger statement, saying that we can choose the
+| witness $x$ independent of knowing $y$.
+|
+| For a simple example, let $P(x, y)$ be $x=2y$. The premise claims $\forall y\exists x(x=2y)$,
+| and it is easy to see that the function giving the witness is just $f(y)=2y$. However, the
+| conclusion of this invalid argument would claim that $\exists x\forall y(x=2y)$, but there is
+| no way that we can choose a single $x$ that is simultaneously equal to all of the even numbers!
