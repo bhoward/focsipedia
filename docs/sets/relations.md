@@ -4,7 +4,7 @@ title: Relations
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-(Content adapted from Critchlow & Eck)
+(Content adapted from Critchlow &amp; Eck)
 
 In the [Functions section](functions.md), we saw that "mother of" is a functional
 relationship because every person has one and only one mother,

@@ -4,7 +4,7 @@ title: Programming with Sets
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-(Content adapted from Critchlow & Eck)
+(Content adapted from Critchlow &amp; Eck)
 
 On a computer, all data are represented, ultimately, as strings
 of zeros and ones. At times, computers need to work with
@@ -158,7 +158,7 @@ $\sim x$ represents the complement,
 $\overline{X}$.
 
 
-The operators $\,|\,$, \&, and $\sim$
+The operators $\,|\,$, $\&$, and $\sim$
 are called **bitwise logical operators**
 because of the way they operate on the individual bits of the numbers
 to which they are applied. The languages descended from C have one more bitwise logical
