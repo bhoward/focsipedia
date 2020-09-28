@@ -22,24 +22,24 @@ Note that it does not precisely follow the order in the book's table of contents
 ### [Predicates and Quantifiers](logic/preds.md), Natural Deduction for [Propositions](logic/deduction.md)
 
 ## Week 4:
-### Natural Deduction for [Predicates](logic/pred-deduction.md), and 
+### Natural Deduction for [Predicates](logic/pred-deduction.md)
 
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
 ## Week 5:
 ### [Programming](sets/programming.md) with Sets, [Functions](sets/functions.md) and [Relations](sets/relations.md)
 
-### [Introduction to Functional Programming](fp/intro.md)
+### [Databases](database.md)
 
 ## Week 6:
 ### Exam 1
 
-## Week 7: Functional Programming
+## Week 7: [Functional Programming](fp/intro.md)
 ### [Algebraic Data Types](fp/types.md) and Pattern Matching; [MapReduce](fp/map-reduce.md)
 
 ### [Functional Graphics](fp/doodle.md)
 
-## Week 8: Trees
+## Week 8: Lists and Sorting
 ### [Functional Sorting](ds/lists.md)
 
 ### Running Time and Recurrences; Program Verification
