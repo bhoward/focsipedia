@@ -29,7 +29,7 @@ Note that it does not precisely follow the order in the book's table of contents
 ## Week 5:
 ### [Programming](sets/programming.md) with Sets, [Functions](sets/functions.md) and [Relations](sets/relations.md)
 
-### [Databases](database.md)
+### [Relational Databases](sets/database.md)
 
 ## Week 6:
 ### Exam 1
