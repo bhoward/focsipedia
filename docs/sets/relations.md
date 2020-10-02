@@ -348,24 +348,46 @@ each of the following binary relations on $A$. Is the relation
 reflexive? Symmetric? Antisymmetric? Transitive? Is it a 
 partial order? An equivalence relation?
    * ${\mathscr R}=\{ (a,b),\, (a,c),\, (a,d) \}$.
+   [[spoiler | Answer]]
+   | Antisymmetric and transitive.
    * ${\mathscr S}=\{ (a,a),\, (b,b),\, (c,c),\, (d,d),\, (a,b),\, (b,a) \}$.
+   [[spoiler | Answer]]
+   | Reflexive, symmetric, transitive, hence equivalence relation.
    * ${\mathscr T}=\{ (b,b),\, (c,c),\, (d,d)\}$.
+   [[spoiler | Answer]]
+   | Antisymmetric, symmetric and transitive. It is an equivalence relation on the subset $\{b,c,d\}$, but not on the full set $A$.
    * ${\mathscr C}=\{ (a,b),\, (b,c),\, (a,c),\, (d,d)\}$.
+   [[spoiler | Answer]]
+   | Antisymmetric and transitive only.
    * ${\mathscr D}=\{ (a,b),\, (b,a),\, (c,d),\, (d,c)\}$.
+   [[spoiler | Answer]]
+   | Symmetric only.
 
 2. Let $A$ be the set $\{1,2,3,4,5,6\}$. Consider the
 partition of $A$ into the subsets $\{1,4,5\}$, $\{3\}$, and $\{2,6\}$.
 Write out the associated equivalence relation on $A$ as a set
 of ordered pairs.
+[[spoiler | Answer]]
+| $\{(1,1), (1,4), (1,5), (4,1), (4,4), (4,5), (5,1), (5,4), (5,5), (3,3), (2,2), (2,6), (6,2), (6,6)\}$
 
 3. Consider each of the following relations on the set of people.
 Is the relation reflexive? Symmetric? Transitive?
 Is it an equivalence relation?
    * $x$ is related to $y$ if $x$ and $y$ have the same biological parents.
+   [[spoiler | Answer]]
+   | This is reflexive, symmetric, transitive, and hence an equivalence relation.
    * $x$ is related to $y$ if $x$ and $y$ have at least one biological parent in common.
+   [[spoiler | Answer]]
+   | This is reflexive and symmetric, but not transitive (Alice and Bob might share a mother, while Bob and Carla share a father, while Alice and Carla have no parent in common).
    * $x$ is related to $y$ if $x$ and $y$ were born in the same year.
+   [[spoiler | Answer]]
+   | This is reflexive, symmetric, transitive, and hence an equivalence relation.
    * $x$ is related to $y$ if $x$ is taller than $y$.
+   [[spoiler | Answer]]
+   | This is transitive only.
    * $x$ is related to $y$ if $x$ and $y$ have both visited Honolulu.
+   [[spoiler | Answer]]
+   | This is reflexive, symmetric, transitive, and hence an equivalence relation.
 
 4. It is possible for a relation to be both symmetric and
 antisymmetric. For example, the equality relation, $=$, is
@@ -375,21 +397,49 @@ is both symmetric and antisymmetric. Show that $\mathscr R$ is
 a subset of $=$ (when both relations are considered as sets of
 ordered pairs). That is, show that for any $a$ and $b$ in $A$,
 $(a\,{\mathscr R}\,b)\rightarrow (a=b)$.
+[[spoiler | Answer]]
+| If we have $a\,{\mathscr R}\,b$, then we also know $b\,{\mathscr R}\,a$, because
+| $\mathscr R$ is symmetric. However, that can only be true if $a=b$, because $\mathscr R$
+| is antisymmetric. The relation $\mathscr R$ may be a proper subset of $=$ because
+| there may be some $a\in A$ that are not related to anything by $\mathscr R$. In fact,
+| _every_ subset of $=$ is a symmetric and antisymmetric relation, including the empty set.
 
 5. Let $\sim$ be the relation on $\R$, the set of real numbers,
 such that for $x$ and $y$ in $\R$, $x\sim y$ if and only if
 $x-y\in\Z$. For example, $\sqrt{2\,}-1\sim\sqrt{2\,}+17$
 because the difference, $(\sqrt{2\,}-1)-(\sqrt{2\,}+17)$,
-is $-${}$18$, which is an integer. Show that $\sim$ is an equivalence
+is $-18$, which is an integer. Show that $\sim$ is an equivalence
 relation. Show that each equivalence class $[x]_{\sim}$ contains
 exactly one number $a$ which satisfies $0\le a<1$. (Thus,
 the set of equivalence classes under $\sim$ is in one-to-one
 correspondence with the half-open interval $[0,1)$.)
+[[spoiler | Answer]]
+| * $\sim$ is reflexive because for any $x\in\R$, $x-x=0\in\Z$, so $x\sim x$.
+| * $\sim$ is symmetric because if $x\sim y$, then $x-y=n$ for some $n\in\Z$.
+|   But $y-x=-(x-y)=-n$, which is also in $\Z$, so $y\sim x$.
+| * $\sim$ is transitive because if $x\sim y$ and $y\sim z$, then we know
+|   $x-y=m$ and $y-z=n$ for some $m,n\in\Z$. But $x-z=(x-y)+(y-z)=m+n$, which is also in $\Z$, so $x\sim z$.
+|
+| Therefore $\sim$ is an equivalence relation.
+|
+| Given any $x\in\R$, we may find an $a\in\R$ such that $x\sim a$ and $0\le a<1$: let $n$
+| be the largest integer less than or equal to $x$ (the **floor** of $x$, often written $\lfloor x\rfloor$),
+| and take $a=x-n$. Then $x-a=n\in\Z$ (so $x\sim a$), $0\le a$ (because $n\le x$), and $a<1$ (because if not,
+| then $n+1\le x$, contradicting the choice of $n$ as the largest such integer).
+| Therefore $a\in[x]_{\sim}$ has the stated property. If there were another $b\in[x]_{\sim}$ such that
+| $0\le b<1$, then we would also have $a\sim b$, hence $a-b\in\Z$. But if $a$ and $b$ are different, then
+| $a-b$ must be a non-zero integer, and either $b<0$ or $b\ge 1$, which is a contradiction. Therefore, $a$ is unique.
 
 6. Let $A$ and $B$ be any sets, and suppose $f\colon A\to B$.
-Define a relation $\sim$ on $B$ such that for any $x$ and $y$ in $A$,
+Define a relation $\sim$ on $A$ such that for any $x$ and $y$ in $A$,
 $x\sim y$ if and only if $f(x)=f(y)$. Show that $\sim$ is an
 equivalence relation on $A$.
+[[spoiler | Answer]]
+| * For any $x$, obviously $f(x)=f(x)$, so $x\sim x$.
+| * If $x\sim y$, then we know $f(x)=f(y)$. This is the same as saying $f(y)=f(x)$, so we also find $y\sim x$.
+| * If $x\sim y$ and $y\sim z$, then $f(x)=f(y)$ and $f(y)=f(z)$. Therefore $f(x)=f(z)$, so $x\sim z$.
+|
+| Thus $\sim$ is reflexive, symmetric, and transitive, so it is an equivalence relation.
 
 7. Let $\Z^+$ be the set of positive integers $\{1,2,3,\dots\}$.
 Define a binary relation $\mathscr D$ on $\Z^+$ such
@@ -398,6 +448,15 @@ $n$ divides evenly into $m$, with no remainder. Equivalently,
 $n\,{\mathscr D}\,m$ if $n$ is a factor of $m$, that is, if
 there is a $k$ in $\Z^+$ such that $m=nk$. Show that $\mathscr D$
 is a partial order.
+[[spoiler | Answer]]
+| * For any $n\in\Z^+$, $n$ evenly divides $n$, so $n\,{\mathscr D}\,n$.
+| * If $m\,{\mathscr D}\,n$ and $n\,{\mathscr D}\,m$, then we know that each evenly divides the other.
+|   However, if one positive integer evenly divides another, it must be less than or equal to the other.
+|   Therefore, we know $m\le n$ and $n\le m$, so $m=n$.
+| * If $m\,{\mathscr D}\,n$ and $n\,{\mathscr D}\,p$, then we know that there exist $j,k\in\Z^+$ such that
+|   $n=jm$ and $p=kn$. Therefore, $p=(kj)m$, so we also have $m\,{\mathscr D}\,p$.
+|
+| Since $\mathscr D$ is reflexive, antisymmetric, and transitive, it is a partial order.
 
 8. Consider the set $\N\times\N$, which consists of all
 ordered pairs of natural numbers. Since $\N\times\N$ is
@@ -408,26 +467,82 @@ for $(m,n)$ and $(k,\ell)$ in $\N\times\N$, $(m,n)\preceq(k,\ell)$
 if and only if either $m<k$ or $((m=k)\land (n\le\ell))$. Which of the following
 are true?
    * $(2,7)\preceq(5,1)$
+   [[spoiler | Answer]]
+   | True 
    * $(8,5)\preceq(8,0)$
+   [[spoiler | Answer]]
+   | False 
    * $(0,1)\preceq(0,2)$
+   [[spoiler | Answer]]
+   | True 
    * $(17,17)\preceq(17,17)$
+   [[spoiler | Answer]]
+   | True 
   
    Show that $\preceq$ is a total order on $\N\times\N$.
+   [[spoiler | Answer]]
+   | This ordering is known as the **lexicographic** ordering on $\N\times\N$, because it is a
+   | generalization of the way words are ordered in a dictionary (a "lexicon"). Let us first show
+   | that it is a partial order:
+   | * For any $(m,n)$, we have $(m,n)\preceq(m,n)$, because $(m=m)\land(n\le n)$.
+   | * If $(m,n)\preceq(k,\ell)$ and $(k,\ell)\preceq(m,n)$, then it cannot be the case that either $m<k$ or $k<m$, so we know $m=k$.
+   |   Therefore, we know that $n\le\ell$ and $\ell\le n$, hence $n=\ell$ and we have $(m,n)=(k,\ell)$.
+   | * If $(m,n)\preceq(k,\ell)$ and $(k,\ell)\preceq(p,q)$, then we know that $m\le k$ and $k\le p$, so $m\le p$.
+   |   If it is the case that $m<p$, then we certainly have $(m,n)\preceq(p,q)$, so consider the case when $m=p$.
+   |   When $m=p$ we also know $m=k$ and $k=p$, so we must have $n\le\ell$ and $\ell\le q$. Therefore $n\le q$, and we again find $(m,n)\preceq(p,q)$.
+   |
+   | Since $\preceq$ is reflexive, antisymmetric, and transitive, it is a partial order.
+   | Now suppose that we have two pairs $(m,n)$ and $(k,\ell)$ in $\N\times\N$. We know that $m<k$, $m>k$, or $m=k$; in the first two cases,
+   | we see that either $(m,n)\preceq(k,\ell)$ or $(k,\ell)\preceq(m,n)$. Therefore, consider the case $m=k$.
+   | If also $n\le\ell$, then $(m,n)\preceq(k,\ell)$, while if $n>\ell$, then $(k,\ell)\preceq(m,n)$ (and if $n=\ell$ they are both true).
+   | Therefore in every case either $(m,n)\preceq(k,\ell)$ or $(k,\ell)\preceq(m,n)$, so $\preceq$ is a total order.
 
-9. Let $\sim$ be the relation defined on $\N\times\N$
+8. Let $\sim$ be the relation defined on $\N\times\N$
 such that $(n,m)\sim(k,\ell)$ if and only if $n+\ell=m+k$.
 Show that $\sim$ is an equivalence relation.
+[[spoiler | Answer]]
+| * For any $(n,m)$, we have $(n,m)\sim(n,m)$, because $n+m=m+n$.
+| * If $(n,m)\sim(k,\ell)$, then $n+\ell=m+k$. But this is equivalent to saying $k+m=\ell+n$, which means we also have $(k,\ell)\sim(n,m)$.
+| * If $(n,m)\sim(k,\ell)$ and $(k,\ell)\sim(p,q)$, then we know $n+\ell=m+k$ and $k+q=\ell+p$. Therefore $n+\ell+q=m+k+q=m+\ell+p$; subtracting $\ell$
+|   from both sides gives $n+q=m+p$, which is what we need to show $(n,m)\sim(p,q)$.
+|
+| Therefore $\sim$ is an equivalence relation, because it is reflexive, symmetric, and transitive.
+| Another way to look at this relation is that $(n,m)\sim(k,\ell)$ if $(n-m)=(k-\ell)$, although we have to be careful to perform the subtraction in $\Z$
+| because it is not always defined in $\N$. The equivalence classes of $\sim$ are actually in one-to-one correspondence with the integers ($\Z$), so this
+| gives us a way to encode the integers using only the natural numbers.
 
 9. Let $P$ be the set of people and let $\mathscr C$ be the
 "child of" relation. That is $x\,{\mathscr C}\,y$ means that
 $x$ is a child of $y$. What is the meaning of the transitive
 closure ${\mathscr C}^*$? Explain your answer.
+[[spoiler | Answer]]
+| The relation ${\mathscr C}^*$ is the "descendant of" relation.
+| That is, $x\,{\mathscr C}^*\,y$ holds if there is a chain of people $p_0$, $p_1$, &hellip;, $p_n$ for some $n>0$
+| such that $x=p_0$, $p_n=y$, and for each $i<n$ we have that $p_i$ is a child of $p_{i+1}$.
 
 9. Let $\mathscr R$ be the binary relation on $\N$ such that
 $x\,{\mathscr R}\,y$ if and only if $y=x+1$. Identify the
 transitive closure ${\mathscr R}^*$. (It is a well-known relation.)
 Explain your answer.
+[[spoiler | Answer]]
+| If there is a chain of numbers $x=a_0$, $a_1$, &hellip;, $a_n=y$ for some $n>0$ such that
+| $a_{i+1}=a_i+1$ for each $i<n$, then it is easy to check that $a_i=x+i$, so $y=x+n$.
+| Therefore, $x\,{\mathscr R}^*\,y$ is equivalent to saying $y=x+n$ for some $n>0$. This is
+| true exactly when $x<y$.
 
 9. Suppose that $\mathscr R$ is a reflexive, symmetric
 binary relation on a set $A$. Show that the transitive closure
 ${\mathscr R}^*$ is an equivalence relation.
+[[spoiler | Answer]]
+| * Since $x\,{\mathscr R}\,x$ for every $x\in A$, we also know that $x\,{\mathscr R}^*\,x$
+|   (take the chain $x=a_0$ and $a_1=x$).
+| * Suppose we have $x\,{\mathscr R}^*\,y$ for some $x,y\in A$. Then there is a chain
+|   $x=a_0$, $a_1$, &hellip;, $a_n=y$ for some $n>0$ such that $a_i\,{\mathscr R}\,a_{i+1}$ for each $i<n$.
+|   Since $\mathscr R$ is symmetric, this also gives us a chain $y=a_n$, $a_{n-1}$, &hellip;, $a_0=x$ where
+|   $a_{i+1}\,{\mathscr R}\,a_i$ for each $i<n$. Therefore, $y\,{\mathscr R}^*\,x$.
+| * If $x\,{\mathscr R}^*\,y$ and $y\,{\mathscr R}^*\,z$, then we know there are chains
+|   $x=a_0$, $a_1$, &hellip;, $a_n=y$ and $y=b_0$, $b_1$, &hellip;, $b_m=z$ for some $n,m>0$,
+|   such that $a_i\,{\mathscr R}\,a_{i+1}$ and $b_j\,{\mathscr R}\,b_{j+1}$ for all $i<n$ and $j<m$.
+|   These chains may be "pasted together" into a single chain establishing that $x\,{\mathscr R}^*\,z$.
+|
+| Therefore, ${\mathscr R}^*$ is reflexive, symmetric, and transitive, so it must be an equivalence relation.
