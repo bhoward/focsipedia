@@ -34,6 +34,7 @@ module.exports = {
       'sets/programming',
       'sets/functions',
       'sets/relations',
+      'sets/database',
     ],
     'Functional Programming': [
       'fp/overview',
