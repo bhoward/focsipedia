@@ -253,8 +253,14 @@ entries. The next section will also discuss approaches to this kind of problem.
 1. For each of the following Boolean expressions, compute the total delay of the
    direct translation of the expression into a circuit.
    * $\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})$
+   [[spoiler | Answer]]
+   | The longest path has four gate delays.
    * $(\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})$
+   [[spoiler | Answer]]
+   | The longest path has five gate delays.
    * $(((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))$
+   [[spoiler | Answer]]
+   | The longest path has four gate delays.
 
 2. For each of the expressions in the previous problem, use a Karnaugh map to
    find an equivalent sum-of-products expression, and draw the resulting

@@ -195,6 +195,28 @@ generator.
 
 Give a truth table for a four-input ($k=2$) priority encoder, then draw a
 circuit diagram that implements it.
+[[spoiler | Answer]]
+| | $a_0$ | $a_1$ | $a_2$ | $a_3$ | $e_1$ | $e_0$ | $g$ |
+| | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
+| | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
+| | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
+| | 0 | 1 | 0 | 0 | 1 | 0 | 1 |
+| | 0 | 1 | 0 | 1 | 1 | 0 | 1 |
+| | 0 | 1 | 1 | 0 | 1 | 0 | 1 |
+| | 0 | 1 | 1 | 1 | 1 | 0 | 1 |
+| | 1 | 0 | 0 | 0 | 1 | 1 | 1 |
+| | 1 | 0 | 0 | 1 | 1 | 1 | 1 |
+| | 1 | 0 | 1 | 0 | 1 | 1 | 1 |
+| | 1 | 0 | 1 | 1 | 1 | 1 | 1 |
+| | 1 | 1 | 0 | 0 | 1 | 1 | 1 |
+| | 1 | 1 | 0 | 1 | 1 | 1 | 1 |
+| | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
+| | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+|
+| Here is a circuit (drawn with the CircuitVerse combinational analysis tool):
+| <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/4-priority" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 5. Show how to construct a $2k$-input parity bit generator given a block that
    implements a $k$-input parity bit generator.
@@ -203,3 +225,15 @@ circuit diagram that implements it.
 
 6. Show how to construct a $2k$-input priority encoder given a block that
    implements a $k$-input priority encoder.
+   [[spoiler | Answer]]
+   | If we apply a $k$-input priority encoder to the first $k$ inputs to get a
+   | group signal $g^0$ and an encoded output $e^0_{k-1}\ldots e^0_1e^0_0$, and
+   | another to the remaining $k$ inputs to get a group signal $g^1$ and encoded
+   | output $e^1_{k-1}\ldots e^1_1e^1_0$, then the combined group signal is just
+   | $g=g^1\lor g^0$. If $g^1$ is true, then there must be a 1 in the second half
+   | of the inputs, and the binary number for the highest 1 line will be
+   | $1e^1_{k-1}\ldots e^1_1e^1_0$. However, if $g^1$ is false, then if there is a
+   | 1 it must be in the first half, and the binary number for the highest 1 line
+   | will be $0e^0_{k-1}\ldots e^0_1e^0_0$. Therefore the overall encoded output is
+   | given by $e_k=g^1$ and $e_i=(g^1\land e^1_i)\lor(\lnot g^1\land e^0_i)$, for
+   | $0\le i<k$.

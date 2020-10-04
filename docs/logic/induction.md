@@ -324,7 +324,7 @@ $$
 $$
 for any natural number $n$ and for any real number $r$ such that $r\not=1$.
 
-3. Use induction to prove that for any natural number $n$,
+1. Use induction to prove that for any natural number $n$,
 $$
   \sum_{i=0}^{n}\frac{1}{2^i}=2-\frac{1}{2^{n}}
 $$
