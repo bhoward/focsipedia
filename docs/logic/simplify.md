@@ -265,6 +265,17 @@ entries. The next section will also discuss approaches to this kind of problem.
 2. For each of the expressions in the previous problem, use a Karnaugh map to
    find an equivalent sum-of-products expression, and draw the resulting
    circuit.
+   [[spoiler | Answer]]
+   | The expression $\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})$ is a tautology,
+   | so an equivalent sum-of-products expression is $\T$.
+   |
+   | The expression $(\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})$
+   | is true everywhere except $p\land q\land\lnot r$, so an equivalent sum-of-products expression is
+   | $\lnot p\lor\lnot q\lor r$.
+   |
+   | The expression $(((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))$
+   | is true when at least three of the inputs are true, so an equivalend sum-of-products expression is
+   | $(p\land q\land r)\lor(p\land q\land s)\lor(p\land r\land s)\lor(q\land r\land s)$.
 
 3. Suppose we want to build a counter that cycles through the numbers 0, 1, 2,
    3, 4, and back to 0. One element of this counter will be a circuit that takes
@@ -287,6 +298,12 @@ a & b & c & x & y & z\\ \hline
    Since the counter should never reach numbers 5, 6, or 7, we do not care about
    the output when $abc$ is 101, 110, or 111. Use Karnaugh maps to find a simple
    circuit for this function.
+
+[[spoiler | Answer]]
+| The only case where we need $x$ to be true is when $b\land c$ is true. Similarly,
+| $z$ must be true when $\lnot a\land\lnot c$ is true. Finally, $y$ is true when
+| $b\oplus c$ is true, or $(\lnot b\land c)\lor(b\land\lnot c)$:
+| <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/5-counter" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 4. In **binary-coded decimal** (BCD), four bits are used to represent the
    numbers 0 (0000) through 9 (1001); the other six bit patterns (1010 through
