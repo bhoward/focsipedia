@@ -137,8 +137,22 @@ See Sections 13.5&ndash;7 of Aho & Ullman.
    cascaded adder as described in this section. The total delay is the maximum
    number of gate delays between any input signal changing and all output
    signals stabilizing to reflect the changed input.
+   [[spoiler | Answer]]
+   | For the half adder, it takes only one gate delay for the Carry output to
+   | stabilize, but three gate delays for the Sum output. Therefore, when two
+   | half adders are connected into a full adder, it will take six gate delays
+   | for the outputs to fully stabilize (although the Carry is correct after only
+   | five delays).
+   |
+   | In the cascaded adder, each successive unit adds two gate delays to incorporate
+   | the Carry coming in and stabilize on the Carry going out; an additional gate delay
+   | is required before the Sum is finished and stable. Therefore, the total delay
+   | for the four-bit adder is $5+2+2+3=12$ gate delays, with the longest path going
+   | from $a_0$ and $b_0$ to $s_3$.
 
 2. Draw the circuit diagram for an implementation of a four-line demultiplexer.
+   [[spoiler | Answer]]
+   | <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/4-demux" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 3. A **parity bit generator** is a circuit that takes some number of lines of
    input and produces one output which is 0 if an even number of the inputs are
@@ -154,6 +168,20 @@ alt="Circuit symbol for exclusive OR" className="centered-figure" />
 Give an implementation of a two-input parity bit generator using only NAND
 gates, and then show how to use XOR gates to build an eight-input parity bit
 generator.
+[[spoiler | Answer]]
+| The XOR operation is computed by $p\oplus q=(\lnot p\land q)\lor(p\land\lnot q)$.
+| Using the NAND operator ($\uparrow$) and De Morgan's laws, this is equivalent to
+| $(\lnot p\uparrow q)\uparrow(p\uparrow\lnot q)$:
+| <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/nand-xor" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+|
+| If we split the inputs to a $2k$-input parity bit generator into two groups (each of
+| size $k$, although the following argument doesn't depend on the groups having the same
+| size), then the total number of 1 bits will be the sum of the 1 bits in each group.
+| The only way for the sum of two numbers to be odd is if one is odd and the other is
+| even. This means that if we can compute the parity bit for each group, then the overall
+| parity bit is just the XOR of those two parity bits Therefore, we may construct an
+| eight-input parity bit generator by cascading XOR gates as follows:
+| <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/8-parity" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
 
 4. The opposite of a decoder is an **encoder**: given $2^k$ input lines, the
    output will be a $k$-bit binary number representing which input is 1. In case
@@ -170,6 +198,8 @@ circuit diagram that implements it.
 
 5. Show how to construct a $2k$-input parity bit generator given a block that
    implements a $k$-input parity bit generator.
+   [[spoiler | Answer]]
+   | See the answer to question 3 above.
 
 6. Show how to construct a $2k$-input priority encoder given a block that
    implements a $k$-input priority encoder.
