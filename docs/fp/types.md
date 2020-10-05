@@ -718,9 +718,3 @@ its factors&mdash;much of modern cryptography relies on this distance!]
    r)\land(q\rightarrow r)$. Give the analogous ReasonML functions that show the
    1-1 correspondence between the types `disj('a, 'b) => 'c` and
    `('a => 'c, 'b => 'c)`.
-
-
-## TODO
-another page on common patterns of recursion: map, reduce, fold, accumulator,
-auxilliary function, tail-recursion, mutual recursion. A page on functional graphics.
-A summary page on ReasonML.

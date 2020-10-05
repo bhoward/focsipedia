@@ -47,7 +47,7 @@ Note that it does not precisely follow the order in the book's table of contents
 ## Week 9: Trees and Graphs
 ### [Tree Traversals](ds/trees.md); [Binary Search Trees and Heaps](ds/bst.md)
 
-### [Graphs, Representations, Traversals](ds/graphs.md); Relational Databases
+### [Graphs, Representations, Traversals](ds/graphs.md)
 
 ## Week 10: Machine Models
 ### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
