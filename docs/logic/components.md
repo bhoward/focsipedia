@@ -196,24 +196,24 @@ generator.
 Give a truth table for a four-input ($k=2$) priority encoder, then draw a
 circuit diagram that implements it.
 [[spoiler | Answer]]
-| | $a_0$ | $a_1$ | $a_2$ | $a_3$ | $e_1$ | $e_0$ | $g$ |
-| | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
-| | 0 | 0 | 1 | 0 | 0 | 1 | 1 |
-| | 0 | 0 | 1 | 1 | 0 | 1 | 1 |
-| | 0 | 1 | 0 | 0 | 1 | 0 | 1 |
-| | 0 | 1 | 0 | 1 | 1 | 0 | 1 |
-| | 0 | 1 | 1 | 0 | 1 | 0 | 1 |
-| | 0 | 1 | 1 | 1 | 1 | 0 | 1 |
-| | 1 | 0 | 0 | 0 | 1 | 1 | 1 |
-| | 1 | 0 | 0 | 1 | 1 | 1 | 1 |
-| | 1 | 0 | 1 | 0 | 1 | 1 | 1 |
-| | 1 | 0 | 1 | 1 | 1 | 1 | 1 |
-| | 1 | 1 | 0 | 0 | 1 | 1 | 1 |
-| | 1 | 1 | 0 | 1 | 1 | 1 | 1 |
-| | 1 | 1 | 1 | 0 | 1 | 1 | 1 |
-| | 1 | 1 | 1 | 1 | 1 | 1 | 1 |
+| | $a_3$ | $a_2$ | $a_1$ | $a_0$ | $e_1e_0$ | $g$ |
+| | :-: | :-: | :-: | :-: | :-: | :-: |
+| | 0 | 0 | 0 | 0 | 00 | 0 |
+| | 0 | 0 | 0 | 1 | 00 | 1 |
+| | 0 | 0 | 1 | 0 | 01 | 1 |
+| | 0 | 0 | 1 | 1 | 01 | 1 |
+| | 0 | 1 | 0 | 0 | 10 | 1 |
+| | 0 | 1 | 0 | 1 | 10 | 1 |
+| | 0 | 1 | 1 | 0 | 10 | 1 |
+| | 0 | 1 | 1 | 1 | 10 | 1 |
+| | 1 | 0 | 0 | 0 | 11 | 1 |
+| | 1 | 0 | 0 | 1 | 11 | 1 |
+| | 1 | 0 | 1 | 0 | 11 | 1 |
+| | 1 | 0 | 1 | 1 | 11 | 1 |
+| | 1 | 1 | 0 | 0 | 11 | 1 |
+| | 1 | 1 | 0 | 1 | 11 | 1 |
+| | 1 | 1 | 1 | 0 | 11 | 1 |
+| | 1 | 1 | 1 | 1 | 11 | 1 |
 |
 | Here is a circuit (drawn with the CircuitVerse combinational analysis tool):
 | <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/4-priority" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
