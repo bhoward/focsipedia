@@ -405,18 +405,36 @@ might give you some idea of its power.
 signature into a standard mathematical function specification, such
 as $\textit{func}\colon\textit{double}\to\textit{int}$.
    * `int strlen(String s)`
+   [[spoiler | Answer]]
+   | $\textit{strlen}\colon\textit{String}\to\textit{int}$
    * `double pythag(double x, double y)`
+   [[spoiler | Answer]]
+   | $\textit{pythag}\colon\textit{double}\times\textit{double}\to\textit{double}$
    * `int round(double x)`
+   [[spoiler | Answer]]
+   | $\textit{round}\colon\textit{double}\to\textit{int}$
    * `String sub(String s, int n, int m)`
+   [[spoiler | Answer]]
+   | $\textit{sub}\colon\textit{String}\times\textit{int}\times\textit{int}\to\textit{String}$
    * `String unlikely(Function<String, Integer> f)`
+   [[spoiler | Answer]]
+   | $\textit{unlikely}\colon\textit{int}^\textit{String}\to\textit{String}$
    * `int h(Function<Integer, Integer> f, Function<Integer, Integer> g)`
+   [[spoiler | Answer]]
+   | $\textit{h}\colon\textit{int}^\textit{int}\times\textit{int}^\textit{int}\to\textit{int}$
 
 2. Write a Java function signature for a function that
 belongs to each of the following sets.
 
    * $\textit{String}^{\textit{String}}$
+   [[spoiler | Answer]]
+   | `String foo(String s)`
    * $\textit{boolean}^{\textit{double}\times\textit{double}}$
+   [[spoiler | Answer]]
+   | `boolean bar(double x, double y)`
    * $\textit{double}^{ \textit{int}^{\textit{int}} }$
+   [[spoiler | Answer]]
+   | `double baz(Function<Integer, Integer> f)`
 
 3. It is possible to define new types in Java.  For example, the
 definition
@@ -429,22 +447,36 @@ public class Point {
 defines a new type named _Point_.  A value of type _Point_
 contains two values of type _double_.  What mathematical operation
 corresponds to the construction of this data type?  Why?
+[[spoiler | Answer]]
+| Each element of _Point_ contains a pair of numbers, so the type corresponds
+| to the cartesian product $\textit{double}\times\textit{double}$.
 
 4. Let _cube_, _sum_ and _monomial_
 be the ReasonML functions described in this section.  What is the
 value of each of the following?
    * _sum_(_cube_, 2, 4)
+   [[spoiler | Answer]]
+   | $2^3 + 3^3 + 4^3 = 8 + 27 + 64 = 99$
    * _sum_(_monomial_(5, 2), 1, 3)
+   [[spoiler | Answer]]
+   | $5\cdot1^2 + 5\cdot2^2 + 5\cdot3^2 = 5 + 20 + 45 = 70$
    * _monomial_(_cube_(2), 7)
+   [[spoiler | Answer]]
+   | The function $f$ such that $f(x) = 8x^7$
    * _sum_($n\Rightarrow\{ 2*n \}$, 1, 5)
+   [[spoiler | Answer]]
+   | $2\cdot1 + 2\cdot2 + 2\cdot3 + 2\cdot4 + 2\cdot5 = 2 + 4 + 6 + 8 + 10 = 30$
    * _cube_(_sum_(_monomial_(2, 3), 1, 2))
-}
+   [[spoiler | Answer]]
+   | $(2\cdot1^3 + 2\cdot2^3)^3 = (2 + 16)^3 = 18^3 = 5832$
 
 5. Write a ReasonML function named _compose_
 that computes the composition of two functions.  That
 is, $\textit{compose}(f, g)$ is $f\circ g$, where
 $f$ and $g$ are functions of one parameter.  Recall that
 $f\circ g$ is the function defined by $(f\circ g)(x)=f(g(x))$.
+[[spoiler | Answer]]
+| `let compose = (f, g) => { x => { f(g(x)) } }`
 
 6. Consider the following ReasonML function:
 ```reason edit
@@ -458,6 +490,12 @@ let exercise = (a, b) => {
 };
 ```
    * What is the value of `exercise(4, 5)`?
+   [[spoiler | Answer]]
+   | 9
    * What is the value of `exercise(12, 13)`?
+   [[spoiler | Answer]]
+   | 25
    * Use algebraic substitution to evaluate `exercise(a, b)` in terms of the
      variables `a` and `b`.
+   [[spoiler | Answer]]
+   | First, `c = a - b`, and `d = a - c`, so `d = b`. Now, `e = c + d`, so `e = a`. Finally, the result is `s(d) - s(e)`, which will be `b * b - a * a`.
