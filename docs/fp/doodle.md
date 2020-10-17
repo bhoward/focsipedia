@@ -6,7 +6,7 @@ title: DPoodle Graphics
 ```reason hidden
 let rec logoBackground = n => {
   if (n == 0) {
-    Empty
+    empty
   } else {
     let r = 10.0 *. sqrt(float_of_int(4 * n));
     logoBackground(n - 1) +++

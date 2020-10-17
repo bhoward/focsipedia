@@ -128,6 +128,22 @@ let b = a * 7
 let c = b == 42
 ```
 
+```reason hidden
+/* This block will only show its results, if any */
+let f = x => if (x == 42) {
+  "That's the answer!"
+} else {
+  "Try again"
+};
+
+print_string("Defined function f")
+```
+
+```reason fix
+/* This block is also editable, but it will not automatically run
+ * when the page is loaded. */
+let d = /* TODO: try f(b) */
+```
 ---
 
 ## Tables
