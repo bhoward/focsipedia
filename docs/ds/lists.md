@@ -167,6 +167,72 @@ So, we might wonder if there is a faster approach to such a fundamental operatio
 
 ## Merge Sort
 
+Instead of inserting one element at a time into a sorted list, the strategy for merge sort is to insert an entire sorted collection of items in a single operation.
+Since the items are in order, we know that after finding the correct insertion position for one item we can start looking from there for the next item's position, without having to start back at the beginning.
+If we are merging two sorted lists, each of size $N$, then the total time taken will be $O(N)$ instead of the $O(N^2)$ required to insert $N$ items one at a time.
+Of course, we still need to sort each of the lists being merged, but since these are each only half the size of the total collection of elements we can treat that as a smaller problem to be solved recursively.
+
+First, here is a recursive `merge` function:
+```reason edit
+/* Precondition: nums1 and nums2 are both sorted in increasing order */
+let rec merge = (nums1, nums2) => {
+  switch (nums1, nums2) {
+  | ([], _) => nums2
+  | (_, []) => nums1
+  | ([head1, ...tail1], [head2, ...tail2]) =>
+    if (head1 <= head2) {
+      [head1, ...merge(tail1, nums2)]
+    } else {
+      [head2, ...merge(nums1, tail2)]
+    }
+  }
+};
+
+merge([2, 3, 5, 7], [1, 2, 4, 8]);
+```
+In words, if either list is empty, then the result is the other list. Otherwise, look at the heads of each list; the resulting merged list will start with the smaller of the two heads, followed by a merge of the tail following the smaller head with the entire other list.
+(As a challenge, see if you can write a tail-recursive version of `merge`; as a hint, you might want to make use of the `reverse` function discussed in the section on [accumulators](../fp/map-reduce#accumulators)).
+
+The first part of the merge sort algorithm is to split the input list into two halves (provided there is more than one element), then recursively sort the halves to prepare for merging.
+One way to split a list into halves is to calculate the size of the list, then count off the first half of them into one list and the rest into another (an exercise below asks you to implement this).
+However, because we do not care about the order of the incoming data, a more efficient approach is to walk through the list, alternately putting elements into one or the other of the halves (which are built up in an accumulator containing a pair of lists):
+```reason edit
+let split = nums => {
+  let rec aux = (nums, (left, right)) => {
+    switch (nums) {
+    | [] => (left, right)
+    | [head, ...tail] => aux(tail, (right, [head, ...left]))
+    }
+  }
+  aux(nums, ([], []))
+};
+
+split([]);
+split([1]);
+split([1, 2]);
+split([1, 2, 3]);
+split([1, 2, 3, 4]);
+```
+
+Putting the pieces together then, we get the following `merge_sort` function:
+```reason edit
+let rec merge_sort = nums => {
+  let (left, right) = split(nums);
+  switch (left) { /* base case if left is empty */
+  | [] => nums
+  | _ => merge(merge_sort(left), merge_sort(right))
+  }
+};
+
+merge_sort([3, 1, 4, 1, 5, 9, 2, 6, 5]);
+```
+Note that `merge_sort` makes two recursive calls to itself, so there is no easy way to make it entirely tail-recursive.
+This is not a problem, though, because we know that the number of times that a list of $N$ elements can be split in two before hitting the base case is just $\log_2 N$;
+even if $N$ is one million, this is only around 20, so the stack will never get very deep with recursive calls to `merge_sort`.
+
+This observation allows us to compute the expected running time of merge sort: splitting and merging $N$ items can be done in $O(N)$ time, and there will be $O(\log N)$ levels of recursion (at the second level, there will be two lists of size $\frac{N}{2}$ to split and merge, at the third there will be four lists of size $\frac{N}{4}$, _etc.$, but that is still $O(N)$ total at each level), so the total expected running time is $O(N\log N)$, which is considerably better than $O(N^2)$.
+By comparison, when $N$ is around a million, $N\log N$ is only twenty million, while $N^2$ is a trillion.
+
 ## Quicksort
 
 ## Exercises
@@ -226,3 +292,27 @@ So, we might wonder if there is a faster approach to such a fundamental operatio
 | };
 | ```
 
+3. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
+[[spoiler | Answer]]
+| ```reason
+| let split = nums => {
+|   let rec size = nums => {
+|     switch (nums) {
+|     | [] => 0
+|     | [_, ...tail] => 1 + size(tail)
+|     }
+|   };
+|   let rec aux = (n, nums) => {
+|     switch (n, nums) {
+|     | (0, _) => ([], nums)
+|     | (_, []) => ([], [])
+|     | (_, [head, ...tail]) => {
+|         let (left, right) = aux(n - 1, tail);
+|         ([head, ...left], right)
+|       }
+|     }
+|   };
+|   let n = size(nums) / 2;
+|   aux(n, nums)
+| };
+| ```

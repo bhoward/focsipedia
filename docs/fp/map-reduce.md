@@ -75,11 +75,11 @@ Note that the `aux` function here could have just been an application of `reduce
 
 ## Accumulators
 
-TODO
+TODO discuss the concept of an accumulator here, and show the reverse function on lists.
 
 ## Tail Recursion
 
-TODO
+TODO discuss the benefits of tail recursive functions, and show an example of transforming a non-tail-recursive function.
 
 ## Exercises
 

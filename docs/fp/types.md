@@ -566,6 +566,12 @@ let rec sumList = nums => {
 sumList(list123);
 ```
 
+ReasonML has a list type built in to the language, with a large number of supporting functions in the standard library.
+The type `list('a)` is a list of elements of type `'a`;
+the empty list is written `[]`, and the list node with value `x` at the head of the list and `rest` for the tail is written `[x, ...rest]`.
+The `...` is called the **spread** operator in JavaScript, and ReasonML has adopted it for its list notation;
+the idea is that, if you write `[1, ...[2, 3, 4]]` to mean the list with `1` as the head and `[2, 3, 4]` as the tail, then you can visualize the entire list by "spreading out" the tail in place after the 1: `[1, 2, 3, 4]`.
+
 The type `myTree('a, 'b)` is a parameterized type. It represents binary trees that
 are either leaves containing a value of type `'a`, or tree nodes that contain two
 subtrees and a value of type `'b`. For example, here is a tree with integers in the
