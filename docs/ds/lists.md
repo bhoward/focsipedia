@@ -18,6 +18,7 @@ However, inserting `n` into the `tail` is the same problem we started with (inse
 
 In code, here is the procedure we just described:
 ```reason edit
+/* Precondition: nums is sorted in non-decreasing order */
 let rec insert = (nums, n) => {
   switch (nums) {
   | [] => [n]
@@ -230,14 +231,72 @@ Note that `merge_sort` makes two recursive calls to itself, so there is no easy 
 This is not a problem, though, because we know that the number of times that a list of $N$ elements can be split in two before hitting the base case is just $\log_2 N$;
 even if $N$ is one million, this is only around 20, so the stack will never get very deep with recursive calls to `merge_sort`.
 
-This observation allows us to compute the expected running time of merge sort: splitting and merging $N$ items can be done in $O(N)$ time, and there will be $O(\log N)$ levels of recursion (at the second level, there will be two lists of size $\frac{N}{2}$ to split and merge, at the third there will be four lists of size $\frac{N}{4}$, _etc.$, but that is still $O(N)$ total at each level), so the total expected running time is $O(N\log N)$, which is considerably better than $O(N^2)$.
+This observation allows us to compute the expected running time of merge sort: splitting and merging $N$ items can be done in $O(N)$ time, and there will be $O(\log N)$ levels of recursion (at the second level, there will be two lists of size $\frac{N}{2}$ to split and merge, at the third there will be four lists of size $\frac{N}{4}$, _etc._, but that is still $O(N)$ overall at each level), so the total expected running time is $O(N\log N)$, which is considerably better than $O(N^2)$.
 By comparison, when $N$ is around a million, $N\log N$ is only twenty million, while $N^2$ is a trillion.
 
 ## Quicksort
 
+We saw with insertion and selection sort that we could either do the hard word _after_ the recursion, when we insert into an already-sorted sublist, or _before_ the recursion, when we select and remove the smallest element.
+The merge sort algorithm feels more like insertion sort, because the hard work, the merging, is done after the recursion that sorts the halves.
+This should suggest that we look for an algorithm that will fill in the missing spot in this grid:
+
+| Subproblem Size | Easy Split, Hard Join | Hard Split, Easy Join |
+| :-: | :-: | :-: |
+| $N-1$ | Insertion Sort | Selection Sort |
+| $\frac{N}{2}$ | Merge Sort | ? |
+
+As you should know from the title of this section, the missing algorithm is Quicksort.
+The idea is that we will look at the values while splitting the list in two, in such a way that it will be trivial to join the parts back together after they are recursively sorted.
+This implies that all of the elements in the first part need to be less than the elements in the second part.
+The easiest way to ensure this is to choose a **pivot** element: elements less than the pivot go in the first part, and elements greater than the pivot go in the second part.
+Elements that are equal to the pivot may go in either part.
+A simple (and not very good&hellip;) choice for the pivot is the first element of the list; after using it to partition the rest of the list into two parts, we recursively sort those parts and then append them back together with the pivot element in between.
+
+We may use the standard library function `List.filter` to do the partitioning:
+```reason edit
+let partition = (pivot, nums) => {
+  (List.filter(n => n < pivot, nums), List.filter(n => n >= pivot, nums))
+};
+
+partition(3, [1, 4, 1, 5, 9, 2, 6, 5]);
+```
+
+Now the quicksort function is very easy (making use of the ReasonML list append operator, `@`):
+```reason edit
+let rec quicksort = nums => {
+  switch (nums) {
+  | [] => []
+  | [pivot, ...rest] => {
+      let (first, second) = partition(pivot, rest);
+      quicksort(first) @ [pivot] @ quicksort(second)
+    }
+  }
+};
+
+quicksort([3, 1, 4, 1, 5, 9, 2, 6, 5]);
+```
+
+The analysis of Quicksort is somewhat more difficult that the other sorts, however, because we do not know the sizes of the two parts that `partition` will give us.
+If the pivot is chosen at random, then we expect it to fall somewhere in the middle of the list, so the two parts will be roughly equal in size, and we get an $O(N\log N)$ running time just as for merge sort.
+However, if we consistently choose a pivot that is either very small or very large (for example, if the list was already sorted, and we choose the head element, then the pivot will always be the smallest value!), then one of the parts will only have a few items while the other contains almost all of them.
+In this worst case, the behavior of Quicksort approaches selection sort (which can be seen as the limiting case where we deliberately pivot on the smallest element), and it will run in $O(N^2)$ time.
+It is possible to show that, with a better way to choose the pivot, the quadratic worst case becomes very unlikely, and Quicksort will almost always run in $O(N\log N)$ time, but we will not do this here.
+
 ## Exercises
 
-1. Rewrite the `select_left` function as an application of `List.fold_left` to an appropriate reduction function. When `select_left(nums)` is called on a non-empty list `nums`, the initial value passed into the reduction should be the pair `(head, [])`, representing the initial guess that the head of `nums` is the smallest number, with an empty list of other numbers examined so far.
+1. Explain what will happen to the running time of each of the above sorting algorithms if the input is already sorted.
+[[spoiler | Answer]]
+| `insertion_sort` will run in $O(N)$ time, because each insertion will put its new element at the head of the result.
+| `insertion_sort_left` will run in $O(N^2)$ time, because each insertion will have to put its new element all the way at the end of the result.
+| Selection sort does not depend on the order of the input, because it has to examine the entire list to find the smallest on each pass.
+| Merge sort will always run in $O(N\log N)$ time, because the best case for a merge operation is when everything in one list is smaller than everything in the other, and that only cuts the time by a factor of 2.
+| Quicksort with the pivot taken as the head of the list exhibits its worst-case behavior, $O(N^2)$, as shown above.
+
+2. Give an example of an input list that will cause the simple recursive version of `insertion_sort` to exhibit its worst-case running time. That is, every insertion should need to traverse the entire list to find the correct insertion point.
+[[spoiler | Answer]]
+| Any list sorted in reverse order will do.
+
+3. Rewrite the `select_left` function as an application of `List.fold_left` to an appropriate reduction function. When `select_left(nums)` is called on a non-empty list `nums`, the initial value passed into the reduction should be the pair `(head, [])`, representing the initial guess that the head of `nums` is the smallest number, with an empty list of other numbers examined so far.
 [[spoiler | Answer]]
 | ```reason
 | let select_left2 = nums => {
@@ -254,7 +313,7 @@ By comparison, when $N$ is around a million, $N\log N$ is only twenty million, w
 | };
 | ```
 
-2. Find a way to write the selection sort algorithm using only tail-recursive functions. *Hint: Instead of selecting the smallest element, modify `select_left` to separate out the largest element, then write a sorting function that accumulates the sorted list from back to front.*
+4. Find a way to write the selection sort algorithm using only tail-recursive functions. *Hint: Instead of selecting the smallest element, modify `select_left` to separate out the largest element, then write a sorting function that accumulates the sorted list from back to front.*
 [[spoiler | Answer]]
 | ```reason
 | /* Precondition: nums is non-empty */
@@ -292,7 +351,7 @@ By comparison, when $N$ is around a million, $N\log N$ is only twenty million, w
 | };
 | ```
 
-3. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
+5. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
 [[spoiler | Answer]]
 | ```reason
 | let split = nums => {
@@ -314,5 +373,22 @@ By comparison, when $N$ is around a million, $N\log N$ is only twenty million, w
 |   };
 |   let n = size(nums) / 2;
 |   aux(n, nums)
+| };
+| ```
+
+6. The `partition` implementation for Quicksort shown above makes two passes over the list, once for each call to `List.filter`. Write a version of `partition` that does the job in just one pass, accumulating a pair of the two parts as it traverses the list.
+[[spoiler | Answer]]
+| ```reason
+| let partition = (pivot, nums) => {
+|   List.fold_left(
+|     ((first, second), n) =>
+|       if (n < pivot) {
+|         ([n, ...first], second)
+|       } else {
+|         (first, [n, ...second])
+|       },
+|     ([], []),
+|     nums
+|   )
 | };
 | ```
