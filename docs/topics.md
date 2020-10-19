@@ -42,7 +42,7 @@ Note that it does not precisely follow the order in the book's table of contents
 ## Week 8: Lists and Sorting
 ### [Functional Sorting](ds/lists.md)
 
-### Running Time and Recurrences; Program Verification
+### [Running Time and Recurrences](ds/recurrence.md); [Program Verification](ds/verification.md)
 
 ## Week 9: Trees and Graphs
 ### [Tree Traversals](ds/trees.md); [Binary Search Trees and Heaps](ds/bst.md)
