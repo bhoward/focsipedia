@@ -102,3 +102,5 @@ print_int({
   width * height
 });
 ```
+
+## Exercises

@@ -329,13 +329,28 @@ machine that accepts $L(r)$ into a machine that accepts $L(r^*)$.
 that accepts $L((ab | a)^*(bb))$.
 
 4. Prove that the reverse of a regular language is regular.
+[[spoiler | Answer]]
+| Given a DFA for the language, construct an NFA by reversing all of the edges.
+| The original start state should become the only final state, and there should be
+| a new start state with $\varepsilon$-transitions to each of the original final states.
+| If there is an accepting path from this new start state to the final state, then it
+| must correspond to the reverse of an accepting path in the original machine.
+| Therefore, the new NFA will accept exactly the reverse of the given regular langauge.
 
 5. Show that for any DFA or NFA, there is an NFA with exactly one final
 state that accepts the same language.
+[[spoiler | Answer]]
+| Define the NFA by adding one new state. This state should be the only final state, and
+| all of the original final states should instead have $\varepsilon$-transitions to the new state.
 
 6. Suppose we change the model of NFAs to allow NFAs to have multiple
 start states. Show that for any "NFA" with multiple start states, there is an
 NFA with exactly one start state that accepts the same language.
+[[spoiler | Answer]]
+| Given such an extended NFA, define an ordinary NFA by adding a new state. This state should be the
+| only start state, and it should have $\varepsilon$-transitions to each of the original start states.
 
 7. Show that the closure of regular languages under both union and complement
 is enough to show that they are also closed under intersection.
+[[spoiler | Answer]]
+| This is just an application of DeMorgan's laws: $L_1\cap L_2 = \overline{\overline{L_1}\cup\overline{L_2}}$.

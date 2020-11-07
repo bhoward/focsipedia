@@ -289,7 +289,9 @@ alt="Example DFA" className="centered-figure" />
 ---
 
 ## Exercises
-1. What language does the NFA in the above accept?
+1. What language does the NFA in the above example accept?
+[[spoiler | Answer]]
+| Strings of $a$'s and $b$'s where the third-from-last character is $b$.
 
 2. Give a DFA that accepts the language accepted by the 
 following NFA.

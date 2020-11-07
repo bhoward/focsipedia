@@ -443,8 +443,14 @@ alt="Example DFA" className="centered-figure" />
 <img src={useBaseUrl('img/fsa1ex.png')}
 alt="Example DFA" className="centered-figure" />
 
+[[spoiler | Answer]]
+| Strings of $a$'s and $b$'s with no more than two consecutive $b$'s.
+
 <img src={useBaseUrl('img/fsa2ex.png')}
 alt="Example DFA" className="centered-figure" />
+
+[[spoiler | Answer]]
+| Strings of $a$'s and $b$'s with at least one of each.
 
 3. Let $\Sigma=\{0,1\}$. Give a DFA that accepts the language 
 $$ L = \{ x \in \Sigma^* \ | \ x \textrm{ is the binary representation of an integer

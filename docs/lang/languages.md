@@ -230,16 +230,32 @@ _etc_., so $\Sigma^* =\{\varepsilon,a,b,aa,ab,ba,bb,aaa,aab,aba,abb,baa,bab,\ldo
 
 ## Exercises
 
-1. Let $S = \{\varepsilon, ab, abab\}$ and $T = \{aa, aba, abba, abbba,
-\ldots\}$. Find the following:
+1. Let $S = \{\varepsilon, ab, abab\}$ and $T = \{aa, aba, abba, abbba, \ldots\}$. Find the following:
    * $S^2$
+   [[spoiler | Answer]]
+   | $\{\varepsilon, ab, abab, ababab, abababab\}$
    * $S^3$
+   [[spoiler | Answer]]
+   | $\{\varepsilon, ab, abab, ababab, abababab, ababababab, abababababab\}$
    * $S^*$
+   [[spoiler | Answer]]
+   | $\{\varepsilon, ab, (ab)^2, (ab)^3, \ldots\}$
    * $ST$
+   [[spoiler | Answer]]
+   | $\{aa, abaa, (ab)^2aa, aba, ababa, (ab)^2aba, ab^2a, abab^2a, (ab)^2ab^2a, ab^3a, abab^3a, (ab)^2ab^3a, \ldots\}$
    * $TS$
+   [[spoiler | Answer]]
+   | $\{ab^ia(ab)^j\ |\ 0\leq i\land 0\leq j\leq 2\}$
 
 2. The **reverse** of a language $L$ is defined to be 
 $L^R = \{ x^R \ | \ x \in L\}$. Find $S^R$ and $T^R$ for the $S$ and $T$ in the
 preceding problem.
+[[spoiler | Answer]]
+| $S^R = \{\varepsilon, ba, baba\}$ and $T^R = T$.
 
 3. Give an example of a language $L$ such that $L=L^*$.
+[[spoiler | Answer]]
+| Any language $L$ where $L=M^*$ for some language $M$ will satisfy the property.
+| The only finite language $L$ that satisfies the property is $\{\varepsilon\}$,
+| because if $L$ contains any non-empty string $w$ then it must also contain the
+| infinite set of strings $w^2$, $w^3$, etc.

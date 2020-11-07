@@ -48,6 +48,8 @@ module.exports = {
     ],
     'Lists, Trees, and Graphs': [
       'ds/lists',
+      'ds/recurrence',
+      'ds/verification',
       'ds/trees',
       'ds/bst',
       'ds/graphs',
