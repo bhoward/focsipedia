@@ -54,7 +54,9 @@ insertion_sort([3, 1, 4, 1, 5, 9, 2, 6, 5]);
 Although this is simple, the call to `insertion_sort` is not a tail-recursive call&mdash;that is, the recursive call is not the last thing done, because it still needs to call `insert` after the recursion finishes.
 That can cause problems when the list is large, because each recursive call needs to be saved on the function-call stack and we run the danger of overflowing the stack.
 
-Another approach is to traverse the list from left to right, building up a sorted list by inserting each successive element (thus the sorted list is an **accumulator**&mdash;an extra argument that collects the result as the calculation proceeds; this is a common trick when making a function tail-recursive). Because the last action of the `aux` function in the recursive case is to call itself, this solution is properly tail-recursive and the ReasonML compiler will be able to produce code that doesn't overflow the stack no matter how many numbers we are sorting.[^In fact, when the compiler sees a tail-recursive call, it can essentially turn the recursive call into a loop back up to the top of the function, without needing to push a new function call on the stack. It is able to do this because it knows there is nothing left to do in the original call, so there is no need to return to where we left off.]
+Another approach is to traverse the list from left to right, building up a sorted list by inserting each successive element (thus the sorted list is an **accumulator**&mdash;an extra argument that collects the result as the calculation proceeds; this is a common trick when making a function tail-recursive).
+Because the last action of the `aux` function in the recursive case is to call itself, this solution is properly tail-recursive[^Well, it would be if we also modified the `insert` function itself to be tail-recursive; this is left as an exercise.]
+and the ReasonML compiler will be able to produce code that doesn't overflow the stack no matter how many numbers we are sorting.[^In fact, when the compiler sees a tail-recursive call, it can essentially turn the recursive call into a loop back up to the top of the function, without needing to push a new function call on the stack. It is able to do this because it knows there is nothing left to do in the original call, so there is no need to return to where we left off.]
 ```reason edit
 let insertion_sort_left = nums => {
   let rec aux = (sorted, nums) => {
@@ -351,7 +353,36 @@ It is possible to show that, with a better way to choose the pivot, the quadrati
 | };
 | ```
 
-5. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
+5. Find a way to implement the `insert` function using only tail-recursive functions.
+*Hint: First write a tail-recursive function `reverse_append(a, b)` that appends the reverse of list `a` to the front of list `b`, then
+use a helper function to insert a number into a sorted list by collecting the front half of the list (the elements less than the number)
+in an accumulator; when the correct position is found for the number, use `reverse_append` to move the accumulated elements back onto the front of the result.*
+[[spoiler | Answer]]
+| ```reason
+| let rec reverse_append = (a, b) => {
+|   switch (a) {
+|   | [] => b
+|   | [head, ...tail] => reverse_append(tail, [head, ...b])
+|   }
+| };
+|
+| /* Precondition: nums is sorted in non-decreasing order */
+| let insert_TR = (nums, n) => {
+|   let rec aux = (sorted, acc) => {
+|   	switch (sorted) {
+|     | [] => reverse_append([n, ...acc], [])
+|     | [head, ...tail] => if (n <= head) {
+|         reverse_append(acc, [n, ...sorted])
+|       } else {
+|         aux(tail, [head, ...acc])
+|       }
+|     }
+|   };
+|   aux(nums, [])
+| };
+| ```
+
+1. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
 [[spoiler | Answer]]
 | ```reason
 | let split = nums => {
@@ -376,7 +407,7 @@ It is possible to show that, with a better way to choose the pivot, the quadrati
 | };
 | ```
 
-6. The `partition` implementation for Quicksort shown above makes two passes over the list, once for each call to `List.filter`. Write a version of `partition` that does the job in just one pass, accumulating a pair of the two parts as it traverses the list.
+7. The `partition` implementation for Quicksort shown above makes two passes over the list, once for each call to `List.filter`. Write a version of `partition` that does the job in just one pass, accumulating a pair of the two parts as it traverses the list.
 [[spoiler | Answer]]
 | ```reason
 | let partition = (pivot, nums) => {
