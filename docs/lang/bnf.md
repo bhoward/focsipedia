@@ -212,8 +212,8 @@ define simple expressions, made up of numbers, identifiers,
 parentheses and the arithmetic operators $+$, $-$, $*$ and $/$:
 $$
 \begin{aligned}
-&\langle\textit{expression}\rangle\ ::=\ \langle\textit{term}\rangle\ [\ [\ + \;|\; -\ ]\ \langle\textit{term}\rangle\ ]\ldots\\
-&\langle\textit{term}\rangle\ ::=\ \langle\textit{factor}\rangle\ [\ [\ * \;|\; /\ ]\ \langle\textit{factor}\rangle\ ]\ldots\\
+&\langle\textit{expression}\rangle\ ::=\ \langle\textit{term}\rangle\ [\ (\ + \;|\; -\ )\ \langle\textit{term}\rangle\ ]\ldots\\
+&\langle\textit{term}\rangle\ ::=\ \langle\textit{factor}\rangle\ [\ (\ * \;|\; /\ )\ \langle\textit{factor}\rangle\ ]\ldots\\
 &\langle\textit{factor}\rangle\ ::=\ \textbf{ident} \;|\; \textbf{number} \;|\; ``("\ \langle\textit{expression}\rangle\ ``)"
 \end{aligned}
 $$
