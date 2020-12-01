@@ -267,6 +267,10 @@ $$
  B &\longrightarrow \varepsilon
 \end{aligned}
 $$
+[[spoiler | Answer]]
+| $$ \begin{aligned}
+| &S\ ::=\ a(S\;|\;b[b]\ldots)a
+| \end{aligned} $$
 
 4. Write a BNF production rule that specifies the syntax of
 real numbers, as they appear in programming languages such as Java and C. 
@@ -288,3 +292,9 @@ of propositional variables, parentheses, and the logical operators
 $\land$, $\lor$, and $\lnot$. Use the non-terminal symbol $\langle\textit{pv}\rangle$ to represent
 a propositional variable. You do not have to give a definition of
 $\langle\textit{pv}\rangle$.
+[[spoiler | Answer]]
+| $$ \begin{aligned}
+| &\langle\textit{prop}\rangle\ ::=\ \langle\textit{term}\rangle\ [\lor\ \langle\textit{term}\rangle]\ldots\\
+| &\langle\textit{term}\rangle\ ::=\ \langle\textit{factor}\rangle\ [\land\ \langle\textit{factor}\rangle]\ldots\\
+| &\langle\textit{factor}\rangle\ ::=\ \langle\textit{pv}\rangle\ |\ \lnot\ \langle\textit{factor}\rangle\ |\ ``("\ \langle\textit{prop}\rangle\ ``)"
+| \end{aligned} $$
