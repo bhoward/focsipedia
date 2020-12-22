@@ -1,4 +1,6 @@
-# Website
+# FoCSipedia
+
+This is the source for the [Foundations of Computer Science](https://purl.org/focsipedia) website as used in the DePauw University CSC233 course when taught by Brian Howard.
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
 
