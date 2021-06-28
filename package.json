@@ -15,7 +15,7 @@
     "codemirror": "^5.58.2",
     "create-react-context": "0.2.2",
     "prism-react-renderer": "^1.1.1",
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.24.0",
     "react": "^16.8.4",
     "react-codemirror2": "^7.2.1",
     "react-dom": "^16.8.4",
