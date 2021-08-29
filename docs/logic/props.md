@@ -85,7 +85,7 @@ in compound expressions to indicate the order in which the
 operators are to be evaluated. In the absence of parentheses,
 the order of evaluation is determined by **precedence rules**.
 For the logical operators defined above, the rules are that
-$\lnot$ has higher precedence that $\land$, and $\land$ has precedence
+$\lnot$ has higher precedence than $\land$, and $\land$ has precedence
 over $\lor$. This means that in the absence of parentheses,
 any $\lnot$ operators are evaluated first, followed by any
 $\land$ operators, followed by any $\lor$ operators.
