@@ -288,9 +288,9 @@ for the integer in the root node.
 
 Here is the corresponding definition of a binary tree in ReasonML:
 ```reason demo
-type tree('a) =
+type tree =
   | Empty
-  | Node(tree('a), int, tree('a))
+  | Node(tree, int, tree)
 ```
 Instead of _null_, we use an explicit constructor value for empty
 trees, `Empty`. To construct a tree node from subtrees `left` and
