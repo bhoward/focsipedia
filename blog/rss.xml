@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>FoCSipedia Blog</title>
-        <link>https://bhoward.github.io/blog</link>
+        <link>https://bhoward.github.io/focsipedia/blog</link>
         <description>FoCSipedia Blog</description>
         <lastBuildDate>Wed, 06 May 2020 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>

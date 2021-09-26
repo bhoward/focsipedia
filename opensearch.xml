@@ -4,8 +4,8 @@
   <ShortName>FoCSipedia</ShortName>
   <Description>Search FoCSipedia</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://bhoward.github.io/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://bhoward.github.io//search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://bhoward.github.io//opensearch.xml" />
-  <moz:SearchForm>https://bhoward.github.io/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://bhoward.github.io/focsipedia/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://bhoward.github.io//focsipedia/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://bhoward.github.io//focsipedia/opensearch.xml" />
+  <moz:SearchForm>https://bhoward.github.io//focsipedia/</moz:SearchForm>
 </OpenSearchDescription>
