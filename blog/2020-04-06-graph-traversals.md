@@ -1,5 +1,5 @@
 ---
-id: graph-traversals
+slug: graph-traversals
 title: Graph Traversals
 author: Brian Howard
 ---

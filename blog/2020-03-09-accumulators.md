@@ -1,5 +1,5 @@
 ---
-id: accumulators
+slug: accumulators
 title: Accumulators
 author: Brian Howard
 ---

@@ -1,5 +1,5 @@
 ---
-id: exam1-review
+slug: exam1-review
 title: Exam 1 Review
 author: Brian Howard
 ---

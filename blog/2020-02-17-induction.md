@@ -1,5 +1,5 @@
 ---
-id: induction
+slug: induction
 title: Mathematical Induction
 author: Brian Howard
 ---

@@ -1,5 +1,5 @@
 ---
-id: turing-machines
+slug: turing-machines
 title: Turing Machines
 author: Brian Howard
 ---

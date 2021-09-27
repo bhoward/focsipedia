@@ -1,5 +1,5 @@
 ---
-id: mapreduce
+slug: mapreduce
 title: MapReduce
 author: Brian Howard
 ---

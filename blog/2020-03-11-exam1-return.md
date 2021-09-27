@@ -1,5 +1,5 @@
 ---
-id: exam1-return
+slug: exam1-return
 title: Exam 1 Return
 author: Brian Howard
 ---

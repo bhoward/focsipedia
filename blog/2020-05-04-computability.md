@@ -1,5 +1,5 @@
 ---
-id: computability
+slug: computability
 title: Computability
 author: Brian Howard
 ---

@@ -1,5 +1,5 @@
 ---
-id: class-resumes
+slug: class-resumes
 title: Class Resumes
 author: Brian Howard
 ---

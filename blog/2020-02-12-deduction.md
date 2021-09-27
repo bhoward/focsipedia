@@ -1,5 +1,5 @@
 ---
-id: deduction
+slug: deduction
 title: Natural Deduction
 author: Brian Howard
 ---

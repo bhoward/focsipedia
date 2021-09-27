@@ -1,5 +1,5 @@
 ---
-id: recursion
+slug: recursion
 title: Recursion and Induction
 author: Brian Howard
 ---
