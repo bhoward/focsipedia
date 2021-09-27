@@ -9,9 +9,10 @@
     "deploy": "node --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.58",
-    "@docusaurus/preset-classic": "2.0.0-alpha.58",
+    "@docusaurus/core": "2.0.0-beta.6",
+    "@docusaurus/preset-classic": "2.0.0-beta.6",
     "classnames": "^2.2.6",
+    "clipboard": "^2.0.8",
     "codemirror": "^5.58.2",
     "create-react-context": "0.2.2",
     "prism-react-renderer": "^1.1.1",
