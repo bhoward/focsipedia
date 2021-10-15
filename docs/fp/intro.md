@@ -239,11 +239,12 @@ This is a signature for a function named _sumten_ whose
 parameter is a function object.  The parameter is specified by the
 type "`Function<Integer, Integer>`".  If _S_ and _T_ are types, then
 the type `Function<S, T>` represents functions from _S_ to _T_. Therefore,
-the parameter of _sumten_ is essentially a function from _int_ to _int_.[^For
-our purposes we may ignore the distinction between _int_ and _Integer_ in Java.]
+the parameter of _sumten_ is essentially a function from _int_ to _int_.[^2]
 The parameter name, $f$, stands for an arbitrary such function.  Mathematically,
 $f\in \textit{int}^{\textit{int}}$, and so
 $\textit{sumten}\colon \textit{int}^{\textit{int}}\to\textit{int}$.
+
+[^2]: For our purposes we may ignore the distinction between _int_ and _Integer_ in Java.
 
 My idea is that $\textit{sumten}(f)$ would compute
 $f(1)+f(2)+\cdots+f(10)$.  A more useful function would
@@ -269,14 +270,16 @@ argument in Java. If we want to pass the method _m_ of an object
 _x_, where the signature of _m_ is `int m( int i )`, then
 we can call our function as `sum(x::m, a, b)`. However, a more
 general technique is to use an **anonymous function**, also known
-as a **lambda**.[^The mathematician Alonzo Church introduced in
+as a **lambda**.[^3]
+
+[^3]: The mathematician Alonzo Church introduced in
 the 1930's the use of the Greek letter lambda ($\lambda$) to indicate an
 otherwise unnamed function defined by a formula. That is, instead
 of writing "the function $f$ where $f(x) = \textit{some formula}$",
 he wrote "$\lambda x(\textit{some formula})$". When the first
 functional programming language, LISP (invented in the late 1950's),
 needed a way to create function values, John McCarthy adopted Church's
-use of lambda, and the name has stuck.]
+use of lambda, and the name has stuck.
 
 ## Anonymous functions
 
@@ -359,9 +362,9 @@ refer to an operator as a function value, just put the operator in parentheses:
 can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
 the usual higher precedence of multiplication over addition).
 For example, if we wanted to define an exponentiation operator on _int_, and
-call it `***`, we could define it as follows:[^1]
+call it `***`, we could define it as follows:[^4]
 
-[^1]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
+[^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
 
 ```reason demo
 let rec (***) = (n, p) => {
