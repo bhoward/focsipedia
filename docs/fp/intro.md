@@ -143,7 +143,14 @@ programming.
 
 Unlike Java, a typical functional programming language such as Scala,
 Haskell, or ReasonML will actively discourage the use of side-effects
-in functions.[^The most common exception is for functions that send
+in functions.[^1] The benefit of restricting the programmer to
+**pure** functions, that always return the same value for a given
+argument, is that it becomes possible to reason about the behavior
+**algebraically**, freely substituting the returned values in place
+of function calls without having to worry about whether some "hidden state"
+might have changed since the last time the function was called.
+
+[^1]: The most common exception is for functions that send
 output to the console, such as the `print_int` function in ReasonML.
 Being able to track execution and easily display results is very
 useful, and printing a line on the console is a fairly benign
@@ -151,12 +158,7 @@ side-effect&mdash;it won't cause the function to return different
 values for the same arguments. However, printing a result can still
 interfere with algebraic reasoning about a program, because interchanging
 such a function call with its value can affect whether and how many times
-the output is printed.] The benefit of restricting the programmer to
-**pure** functions, that always return the same value for a given
-argument, is that it becomes possible to reason about the behavior
-**algebraically**, freely substituting the returned values in place
-of function calls without having to worry about whether some "hidden state"
-might have changed since the last time the function was called.
+the output is printed.
 
 For example, suppose that we have a function that computes the value of
 some polynomial, such as $f(x)=x^2+2x+1$. If we know that another function
@@ -357,9 +359,9 @@ refer to an operator as a function value, just put the operator in parentheses:
 can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
 the usual higher precedence of multiplication over addition).
 For example, if we wanted to define an exponentiation operator on _int_, and
-call it `***`, we could define it as follows:[^4]
+call it `***`, we could define it as follows:[^1]
 
-[^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
+[^1]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
 
 ```reason demo
 let rec (***) = (n, p) => {
