@@ -1,5 +1,5 @@
 ---
-id: languages
+slug: languages
 title: Languages
 author: Brian Howard
 ---

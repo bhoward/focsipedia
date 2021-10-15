@@ -1,5 +1,5 @@
 ---
-id: ordered-trees
+slug: ordered-trees
 title: Ordered Trees
 author: Brian Howard
 ---

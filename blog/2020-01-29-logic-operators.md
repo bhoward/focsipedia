@@ -1,5 +1,5 @@
 ---
-id: logic-operators
+slug: logic-operators
 title: Logic Operators
 author: Brian Howard
 ---

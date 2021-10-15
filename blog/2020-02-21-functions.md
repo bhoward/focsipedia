@@ -1,5 +1,5 @@
 ---
-id: functions
+slug: functions
 title: Functions and Functional Programming
 author: Brian Howard
 ---

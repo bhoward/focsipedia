@@ -1,5 +1,5 @@
 ---
-id: logic-circuits
+slug: logic-circuits
 title: Logic Circuits
 author: Brian Howard
 ---

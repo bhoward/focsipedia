@@ -1,5 +1,5 @@
 ---
-id: circuit-components
+slug: circuit-components
 title: Circuit Components
 author: Brian Howard
 ---

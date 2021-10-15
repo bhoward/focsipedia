@@ -1,5 +1,5 @@
 ---
-id: sequential
+slug: sequential
 title: Sequential Circuits
 author: Brian Howard
 ---

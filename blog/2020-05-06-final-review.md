@@ -1,5 +1,5 @@
 ---
-id: final-review
+slug: final-review
 title: Final Exam Review
 author: Brian Howard
 ---

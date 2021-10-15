@@ -1,5 +1,5 @@
 ---
-id: circuit-simplification
+slug: circuit-simplification
 title: Circuit Simplification
 author: Brian Howard
 ---

@@ -1,5 +1,5 @@
 ---
-id: predicates
+slug: predicates
 title: Predicate Logic and Deduction
 author: Brian Howard
 ---

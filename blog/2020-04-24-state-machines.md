@@ -1,5 +1,5 @@
 ---
-id: state-machines
+slug: state-machines
 title: State Machines
 author: Brian Howard
 ---

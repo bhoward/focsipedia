@@ -29,7 +29,7 @@ module.exports = {
         alt: 'Smart Fox Logo',
         src: 'img/SmartFoxIcon.jpeg',
       },
-      links: [
+      items: [
         {to: 'docs/topics', label: 'Topics', position: 'left'},
         // {to: 'blog', label: 'Blog', position: 'left'},
         {

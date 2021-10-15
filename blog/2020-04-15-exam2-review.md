@@ -1,5 +1,5 @@
 ---
-id: exam2-review
+slug: exam2-review
 title: Exam 2 Review
 author: Brian Howard
 ---
