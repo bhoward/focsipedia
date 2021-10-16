@@ -74,7 +74,9 @@ $n>2$. We might allow a Turing machine to have multiple read/write
 heads that move independently on each tape. We could even allow
 two or three-dimensional tapes. None of this makes any difference 
 as far as computational power goes, since each type of Turing machine
-can simulate any of the other types.[^We can also define 
+can simulate any of the other types.[^1]
+
+[^1]: We can also define 
 **non-deterministic Turing machines** that can have several possible
 actions at each step. Non-deterministic Turing machines cannot be
 used to compute functions, since a function can have only one possible
@@ -84,7 +86,7 @@ a language $L$ is it is _possible_ for the machine to halt
 on input $w$ if and only if $w\in L$. The class of languages 
 accepted by non-deterministic Turing machines is the same as the
 class of languages accepted by deterministic Turing machines.
-So, non-determinism does not add any computational power.]
+So, non-determinism does not add any computational power.
 
 ## Recursively Enumerable Languages
 

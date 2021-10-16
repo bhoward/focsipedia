@@ -82,11 +82,13 @@ accepts $w$ if and only if it is possible for the machine to start
 in its start state, $q_0$, read all of $w$, and finish in the
 accepting state, $q_1$, with an empty stack. Note in particular that
 it is not enough for the machine to finish in an accepting state&mdash;it
-must also empty the stack.[^We could relax this restriction
+must also empty the stack.[^1]
+
+[^1]: We could relax this restriction
 and require only that the machine finish in an accepting state after
 reading the string $w$, without requiring that the stack be empty.
 In fact, using this definition of accepting would not change the
-class of languages that are accepted by pushdown automata.]
+class of languages that are accepted by pushdown automata.
 
 It's not difficult to see that with this definition, the language
 accepted by our pushdown automaton is $\{a^nb^n\;|\; n\in\N\}$.

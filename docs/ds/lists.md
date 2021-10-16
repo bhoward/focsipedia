@@ -54,8 +54,8 @@ Although this is simple, the call to `insertion_sort` is not a tail-recursive ca
 That can cause problems when the list is large, because each recursive call needs to be saved on the function-call stack and we run the danger of overflowing the stack.
 
 Another approach is to traverse the list from left to right, building up a sorted list by inserting each successive element (thus the sorted list is an **accumulator**&mdash;an extra argument that collects the result as the calculation proceeds; this is a common trick when making a function tail-recursive).
-Because the last action of the `aux` function in the recursive case is to call itself, this solution is properly tail-recursive[^Well, it would be if we also modified the `insert` function itself to be tail-recursive; this is left as an exercise.]
-and the ReasonML compiler will be able to produce code that doesn't overflow the stack no matter how many numbers we are sorting.[^In fact, when the compiler sees a tail-recursive call, it can essentially turn the recursive call into a loop back up to the top of the function, without needing to push a new function call on the stack. It is able to do this because it knows there is nothing left to do in the original call, so there is no need to return to where we left off.]
+Because the last action of the `aux` function in the recursive case is to call itself, this solution is properly tail-recursive[^1]
+and the ReasonML compiler will be able to produce code that doesn't overflow the stack no matter how many numbers we are sorting.[^2]
 ```reason edit
 let insertion_sort_left = nums => {
   let rec aux = (sorted, nums) => {
@@ -79,6 +79,10 @@ let insertion_sort_left2 = nums => {
 insertion_sort_left2([3, 1, 4, 1, 5, 9, 2, 6, 5]);
 ```
 Using currying, we can simplify this to `let insertion_sort_left2 = List.fold_left(insert, [])`.
+
+[^1]: Well, it would be if we also modified the `insert` function itself to be tail-recursive; this is left as an exercise.
+
+[^2]: In fact, when the compiler sees a tail-recursive call, it can essentially turn the recursive call into a loop back up to the top of the function, without needing to push a new function call on the stack. It is able to do this because it knows there is nothing left to do in the original call, so there is no need to return to where we left off.
 
 ## Selection Sort
 

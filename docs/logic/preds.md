@@ -44,13 +44,15 @@ make sense to apply the predicate "is mortal" to your living room
 sofa.  This predicate only applies to entities in the category of
 living things, since there is no way something can be mortal unless it
 is alive.  This category is called the domain of discourse for
-the predicate.[^In the language
+the predicate.[^1]
+
+[^1]: In the language
 of set theory, which will be introduced in the next chapter,
 we would say that a domain of discourse is a set, $U$, and
 a predicate is a function from $U$ to the set of truth values.
 The definition should be clear enough without the formal language
 of set theory, and in fact you should think of this definition&mdash;and
-many others&mdash;as motivation for that language.]
+many others&mdash;as motivation for that language.
 
 We are now ready for a formal definition of one-place
 predicates.  A one-place
@@ -162,11 +164,13 @@ something like the statement "$x$ is red," which is not really a
 statement in English at all.  But it becomes a statement when
 the $x$ is replaced by some particular entity, such as "the rose."
 Similarly, $P(x)$ becomes a proposition if some entity $a$ is substituted
-for the $x$, giving $P(a)$.[^There is certainly room for confusion
+for the $x$, giving $P(a)$.[^2]
+
+[^2]: There is certainly room for confusion
 about names here.  In this discussion, $x$ is a variable and $a$ is 
 an entity.  But that's only because I said so.  Any letter could be used
 in either role, and you have to pay attention to the context to
-figure out what is going on.  Usually, $x$, $y$, and $z$ will be variables.]
+figure out what is going on.  Usually, $x$, $y$, and $z$ will be variables.
 
 An **open statement** is an expression that contains one or more entity
 variables, which becomes a proposition when entities are substituted

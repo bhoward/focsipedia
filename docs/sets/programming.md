@@ -46,11 +46,7 @@ Then each subset of $U$ can be represented by a 32-bit binary
 number. We use 32 bits because most computer languages can work
 directly with 32-bit numbers. For example, the programming
 languages Java, C, and C++ have a data type named _int_.
-A value of type _int_ is a 32-bit binary number.[^Actually, in 
-some versions of C and C++, a value of type _int_ is a 16-bit
-number, while in others it is a 64-bit number. A 16-bit
-number can be used to represent a subset of
-the set $\{0,1,2,\dots,15\}$. The principle, of course, is the same.]
+A value of type _int_ is a 32-bit binary number.[^1]
 Before we get a definite correspondence between subsets of
 $U$ and 32-bit numbers, we have to decide which bit in the number
 will correspond to each member of $U$. Following tradition,
@@ -64,6 +60,12 @@ $$1000000000000000000001001110110$$
 corresponds to the subset $\{1,2,4,5,6,9,31\}$. Since the leftmost
 bit of the number is 1, the number 31 is in the set; since the
 next bit is 0, the number 30 is not in the set; and so on.
+
+[^1]: Actually, in 
+some versions of C and C++, a value of type _int_ is a 16-bit
+number, while in others it is a 64-bit number. A 16-bit
+number can be used to represent a subset of
+the set $\{0,1,2,\dots,15\}$. The principle, of course, is the same.
 
 From now on,
 I will write binary numbers with a subscript of 2 to avoid confusion

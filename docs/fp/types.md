@@ -57,10 +57,7 @@ ReasonML does not require that we specify the types of variables most of the
 time, because it can usually infer what types they should have from the context
 and how they are used. Looking at the example above, since 5 is an int, we know
 that `x` must have type `int`. In the second line, the local `x` must also be an
-`int`, since we can add 12 to it.[^ReasonML, unlike many common languages,
-distinguishes between the integer addition operator, written `+`, and the
-floating-point addition operator, which is written `+.`. In part this is done to
-make type inference easier.] The result of the function body will be an `int`, so
+`int`, since we can add 12 to it.[^1] The result of the function body will be an `int`, so
 the type of `f` is `int => int`. Finally, the application of `f` in the third line
 checks out, because it is applied to an integer argument (`x * x`), and its result
 is used in a further integer addition. We could be explicit about the types and
@@ -74,6 +71,11 @@ let z: string = string_of_int(y);
 However, the convention in ReasonML is that type annotations are not generally
 used except as documentation and as a check that the compiler is doing what we
 think it is.
+
+[^1]: ReasonML, unlike many common languages,
+distinguishes between the integer addition operator, written `+`, and the
+floating-point addition operator, which is written `+.`. In part this is done to
+make type inference easier.
 
 ### Currying
 
@@ -108,10 +110,7 @@ let result: float = result1(10);
 ```
 
 This replacement of multiple-parameter functions with a sequence of single-parameter
-functions is called **currying**, named after the logician Haskell B. Curry.[^As
-is often the case when things are named, Curry did not originate this idea. He got it
-from Moses Schönfinkel, who may have picked it up from Gottlob Frege, but "currying"
-is easier to say than "schönfinkeling" or "fregeing"&hellip;.] One advantage of this,
+functions is called **currying**, named after the logician Haskell B. Curry.[^2] One advantage of this,
 other than the simplicity of only needing one kind of function, is that it is often
 useful to create a **partially applied** function, where some of its arguments have
 been supplied to create a new function ready to be given the rest. For example, suppose
@@ -133,6 +132,10 @@ The first two arguments of `format_grade` have been provided with the exam name
 ("Midterm") and the total number of points (100). Now we have a new function,
 bound to `format_midterm`, that just needs to be applied to a student name and
 grade, and then it can produce a string with all four components.
+
+[^2]: As is often the case when things are named, Curry did not originate this idea. He got it
+from Moses Schönfinkel, who may have picked it up from Gottlob Frege, but "currying"
+is easier to say than "schönfinkeling" or "fregeing"&hellip;.
 
 ## Tuples
 
@@ -157,11 +160,7 @@ let x = fst(p);
 let y = snd(p);
 ```
 The standard library does not provide accessor functions for arbitrary
-$n$-tuples.[^Part of the reason for this is simply tradition, but another
-important factor is that ReasonML does not have an easy way to give a type for a
-function that would take an $n$-tuple plus an integer, say from 1 to $n$, and
-return that component of the tuple; since each component may have a different
-type, what would the return type of that accessor be?] Instead, we may retrieve
+$n$-tuples.[^3] Instead, we may retrieve
 the components of a tuple through an extension of the binding operation, `let`:
 ```reason edit
 let demo = (42, "hello", 3.1416); /* construct a tuple */
@@ -174,6 +173,12 @@ filled with a place-holder, the so-called **wildcard** identifier, `_`
 let demo = (42, "hello", 3.1416);
 let (_, greeting, _) = demo;
 ```
+
+[^3]: Part of the reason for this is simply tradition, but another
+important factor is that ReasonML does not have an easy way to give a type for a
+function that would take an $n$-tuple plus an integer, say from 1 to $n$, and
+return that component of the tuple; since each component may have a different
+type, what would the return type of that accessor be?
 
 An $n$-tuple when $n=1$ is just an ordinary value (which may be enclosed in
 parentheses as usual just for grouping purposes). However, the case when
@@ -260,18 +265,19 @@ are inverses to each other, this shows that the two types (or sets) are equivale
 
 Given the importance of types, and potentially complicated type expressions, in
 ReasonML, it should not be a surprise that they can be named and manipulated
-much like ordinary values with variables and functions.[^ReasonML does not go
-quite all the way with making types be first-class values. There is currently
-active work on creating industrial-strength languages with so-called **dependent
-types**, where types are values and values can be used in types. Good examples are
-Agda (https://github.com/agda/agda), Idris (https://www.idris-lang.org/), and Lean
-(https://leanprover.github.io/).] We give a name to a type with the `type` statement:
+much like ordinary values with variables and functions.[^4] We give a name to a type with the `type` statement:
 ```reason edit
 type int_point = (int, int);
 type math_op = float => float => float;
 let p: int_point = (5, 10);
 let plus: math_op = (+.);
 ```
+
+[^4]: ReasonML does not go quite all the way with making types be first-class values. There is currently
+active work on creating industrial-strength languages with so-called **dependent
+types**, where types are values and values can be used in types. Good examples are
+Agda (https://github.com/agda/agda), Idris (https://www.idris-lang.org/), and Lean
+(https://leanprover.github.io/).
 
 If we have a family of types where one or more parts can be substituted with an
 arbitrary type, then we can introduce a **parameterized type alias** by adding
@@ -378,11 +384,12 @@ type shape = Rectangle(float, float) | Circle(float);
 ```
 Algebraically, this is the set $\text{float}\times\text{float} + \text{float}$, where
 the $+$ operation is forming a **disjoint sum** of two sets&mdash;similar to a union, but
-attaching some sort of tag to the element of each set so that there are no duplicates.[^For
-example, we could define $A+B=(\{0\}\times A)\cup(\{1\}\times B)$. Then each element
+attaching some sort of tag to the element of each set so that there are no duplicates.[^5]
+
+[^5]: For example, we could define $A+B=(\{0\}\times A)\cup(\{1\}\times B)$. Then each element
 in the disjoint sum would be a pair whose first component is a tag of 0 if the element
 came from $A$ and 1 if it came from $B$. Any element in common between $A$ and $B$ will
-still be distinguishable by its tag.]
+still be distinguishable by its tag.
 
 We may define a function to compute the area of a shape by doing a case analysis:
 ```reason edit
@@ -683,13 +690,15 @@ of any type. If negation is an implication of $\F$, then the analogue to
 $\lnot A$ in ReasonML would be a function that takes a parameter of type `A`
 and throws an exception&mdash;if it is truly the case that there is no value
 of type `A` (that is, no proof of $A$, which is what we would hope if $\lnot A$
-is true), then this function can never be called.[^This now accounts for all
+is true), then this function can never be called.[^6]
+
+[^6]: This now accounts for all
 of natural deduction except for the double-negation elimination rule, which
 we already observed is difficult to justify from a computational viewpoint.
 It would allow us to go from knowing that $\lnot A$ is not true to somehow
 having a proof that $A$ is true, but there is a long distance from knowing that
 a number is not prime, for example, to being able to show that it is composite by giving
-its factors&mdash;much of modern cryptography relies on this distance!]
+its factors&mdash;much of modern cryptography relies on this distance!
 
 ## Exercises
 

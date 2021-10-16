@@ -102,10 +102,11 @@ accepts $L(r)$ as an exercise.
 
 The algorithm in this proof is commonly known as **Thompson's Construction**, credited
 to Ken Thompson who, along with Dennis Ritchie, also designed and implemented Unix and
-the C programming language.[^Thompson is actually credited with creating B, while
-Ritchie created its successor C.] Several of the utilities that Thompson developed for
+the C programming language.[^1] Several of the utilities that Thompson developed for
 Unix, such as `ed` and `grep`, make use of regular expressions for searching and replacing
 text.
+
+[^1]: Thompson is actually credited with creating B, while Ritchie created its successor C.
 
 ## NFA to Regular Expression
 

@@ -70,13 +70,7 @@ int factorial(int n) {
 }
 ```
 
-Here is an equivalent program in ReasonML:[^We will learn more about ReasonML
-later, but here are two quick observations. A function value is created with
-the syntax `x => {...}`, where `x` is the parameter name that allows us to
-access the function argument in the body `{...}`. We assign this function value
-to the name `factorial` with the `let` statement; by saying `let rec`, we allow
-the right-hand side of the statement to refer to `factorial` even though we are
-just in the process of defining it.]
+Here is an equivalent program in ReasonML:[^1]
 ```reason edit
 let rec factorial = n => {
   if (n == 0) {
@@ -88,6 +82,14 @@ let rec factorial = n => {
 
 print_int(factorial(5));
 ```
+
+[^1]: We will learn more about ReasonML
+later, but here are two quick observations. A function value is created with
+the syntax `x => {...}`, where `x` is the parameter name that allows us to
+access the function argument in the body `{...}`. We assign this function value
+to the name `factorial` with the `let` statement; by saying `let rec`, we allow
+the right-hand side of the statement to refer to `factorial` even though we are
+just in the process of defining it.
 
 In order to compute _factorial_($n$) for $n>0$, this function
 first computes _factorial_($n-1$) by calling itself recursively.
@@ -192,11 +194,7 @@ void Hanoi(int n, int A, int B, int C) {
 }
 ```
 
-Again, here is equivalent code in ReasonML:[^Just about the only difference here
-from the Java, apart from the syntax for defining a function and the use of the
-`printf` function for output, is that ReasonML requires variables to start with
-lower-case letters. Since functions are also stored in variables, this also applies
-to function names.]
+Again, here is equivalent code in ReasonML:[^2]
 ```reason edit
 let rec hanoi = (n, a, b, c) => {
   if (n == 1) {
@@ -210,6 +208,12 @@ let rec hanoi = (n, a, b, c) => {
 
 hanoi(2, 1, 2, 3);
 ```
+
+[^2]: Just about the only difference here
+from the Java, apart from the syntax for defining a function and the use of the
+`printf` function for output, is that ReasonML requires variables to start with
+lower-case letters. Since functions are also stored in variables, this also applies
+to function names.
 
 We can use induction to prove that this subroutine does in
 fact solve the Towers of Hanoi problem.
@@ -567,9 +571,7 @@ actually a very efficient way to compute $x^n$.)
 | $x^n$, for every $n\ge 0$.
 |
 | **Base Case:** When $n=0$, we can check that `power(x, 0)` returns 1, which
-| is $x^0$ for every $x$.[^Don't listen to the people who try to say that $0^0$
-| is undefined; they're thinking of a much broader statement about limiting forms
-| in real analysis, which doesn't concern us here.]
+| is $x^0$ for every $x$.[^3]
 |
 | **Inductive Case:** Suppose that the claim is true for every $k<n$, for some $n>0$.
 | Then we need to show that it is also true for $n$. If $n$ is even, then `power(x, n)`
@@ -577,6 +579,10 @@ actually a very efficient way to compute $x^n$.)
 | this computes $(x^2)^{\frac{n}{2}}=x^n$. If $n$ is odd, then `power(x, n)` is
 | `x * power(x*x, (n-1)/2)`, which similarly we know to compute $x(x^2)^{\frac{n-1}{2}}=x\cdot x^{n-1}=x^n$.
 | Therefore, we have shown that `power(x, n)` correctly computes $x^n$ for all $n\ge 0$.
+
+[^3]: Don't listen to the people who try to say that $0^0$
+is undefined; they're thinking of a much broader statement about limiting forms
+in real analysis, which doesn't concern us here.
 
 4. Write the _power_ function from the previous problem in ReasonML, and
 check that it works on several examples. _Hint:_ The code will be almost

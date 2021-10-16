@@ -85,13 +85,15 @@ on a set is reflexive if every element of the set is related
 to itself. This is true, for example, for the relation $\le$ 
 on the set $\N$, since $n\le n$ for every $n\in\N$. On the other
 hand, it is not true for the relation $<$ on $\N$, since, for
-example, the statement $17<17$ is false.[^Note that to show
+example, the statement $17<17$ is false.[^1]
+
+[^1]: Note that to show
 that the relation ${\mathscr R}$ is _not_ reflexive, you only need to
 find one $a$ such that $a\,{\mathscr R}\,a$ is false. This
 follows from the fact that $\lnot\big(\forall a\in A\,(a \,{\mathscr R}\, a)\big)
 \equiv \exists a\in A\,\big(\lnot(a \,{\mathscr R}\, a)\big)$.
 A similar remark holds for each of the properties of relations
-that are discussed here.]
+that are discussed here.
 
 $\mathscr R$ is called **transitive** if
 $\forall a\in A,\,\forall b\in A,\,\forall c\in A\,

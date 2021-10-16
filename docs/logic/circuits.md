@@ -114,10 +114,12 @@ unnegated version of NOT, drawn as a simple triangle, is known as a
 
 Those three gates are the simplest to implement with transistors. As we saw in the
 exercises in the [Propositional Logic](props.md#exercises) section, all other Boolean operators can be constructed from NAND alone, or NOR alone. For example, an AND gate is
-a NAND followed by a NOT, so it can be built out of three transistors;[^A NOT gate may be thought of as
-a degenerate, single-input version of either NAND or NOR, which requires only a single transistor in NMOS.]
+a NAND followed by a NOT, so it can be built out of three transistors;[^1]
 an OR gate also takes three, using a NOR and a NOT. In the [Circuit Simplification](simplify.md) section,
 we will see another way to construct circuits using only NAND gates.
+
+[^1]: A NOT gate may be thought of as
+a degenerate, single-input version of either NAND or NOR, which requires only a single transistor in NMOS.
 
 ## Building a Circuit from a Proposition
 
@@ -253,16 +255,18 @@ loops are really the only thing that can go wrong when trying
 to describe a circuit with propositional logic. A logic circuit
 that does not contain any feedback loops is called a
 **combinational logic circuit**, because the output is determined
-solely by the combination of values on the inputs.[^By contrast, a
-circuit with a feedback loop is called a **sequential logic circuit**,
-because the behavior of the circuit depends on the exact sequence of
-when input signals change.] Every combinational
+solely by the combination of values on the inputs.[^2] Every combinational
 logic circuit with just one output computes the value of
 some compound proposition. The propositional variables in
 the compound proposition are just names associated with
 the input wires of the circuit. (Of course, if the circuit has
 more than one output, you can simply use a different proposition
 for each output.)
+
+[^2]: By contrast, a
+circuit with a feedback loop is called a **sequential logic circuit**,
+because the behavior of the circuit depends on the exact sequence of
+when input signals change.
 
 The key to understanding why this is true
 is to note that each wire in the circuit&mdash;not just the final
@@ -441,13 +445,14 @@ $(\lnot p\lor q)\land r$.
 This compound proposition is logically equivalent to the one we
 started with, but implementing it in a circuit
 requires only three logic gates, instead of the
-ten required by the original proposition.[^No, I didn't
-count wrong. There are eleven logical operators in the original
+ten required by the original proposition.[^3]
+
+[^3]: No, I didn't count wrong. There are eleven logical operators in the original
 expression, but you can get by with ten gates in the circuit:
 Use a single NOT gate to compute $\lnot p$, and connect
 the output of that gate to two different AND gates.
 Reusing the output of a logic gate is an obvious way to simplify
-circuits that does not correspond to any operation on propositions.]
+circuits that does not correspond to any operation on propositions.
 
 Here are three versions (select the "tabs" in the upper-left) of circuits
 implementing this truth table in CircuitVerse:

@@ -31,19 +31,21 @@ What we do with propositions is combine them with
 applied to one or more propositions to produce a new proposition.
 The truth value of the new proposition is completely determined
 by the operator and by the truth values of the propositions
-to which it is applied.[^It is not always true that the truth value
-of a sentence can be determined from the truth values of its component
-parts. For example, if $p$ is a proposition, then "Sarah Palin believes
-$p$" is also a proposition, so "Sarah Palin believes" is some kind of
-operator. However, it does not count as a _logical_ operator because
-just from knowing whether or not $p$ is true, we get no information at
-all about whether "Sarah Palin believes $p$" is true.]
+to which it is applied.[^1]
 In English, logical operators are represented by words such
 as "and," "or," and "not." For example, the
 proposition "I wanted to leave and I left" is formed from
 two simpler propositions joined by the word "and." Adding
 the word "not" to the proposition "I left" gives
 "I did not leave" (after a bit of necessary grammatical adjustment).
+
+[^1]: It is not always true that the truth value
+of a sentence can be determined from the truth values of its component
+parts. For example, if $p$ is a proposition, then "Sarah Palin believes
+$p$" is also a proposition, so "Sarah Palin believes" is some kind of
+operator. However, it does not count as a _logical_ operator because
+just from knowing whether or not $p$ is true, we get no information at
+all about whether "Sarah Palin believes $p$" is true.
 
 But English is a little too rich for mathematical logic.
 When you read the sentence "I wanted to leave and I left,"
@@ -132,14 +134,16 @@ value of $(p\land q)\land r$ to the value of $p\land (q\land r)$
 for all possible values of $p$, $q$, and $r$. There are
 eight rows in the table because there are exactly eight different
 ways in which truth values can be assigned to $p$, $q$, and
-$r$.[^In general, if there are $n$ variables, then there are $2^n$
-different ways to assign truth values to the variables. This might
-become clear to you if you try to come up with a scheme for
-systematically listing all possible sets of values. If not, you'll
-find a rigorous proof of the fact later in this chapter.] In this
+$r$.[^2] In this
 table, we see that the last two columns, representing the values of
 $(p\land q)\land r$ and $p\land (q\land r)$, are
 identical.
+
+[^2]: In general, if there are $n$ variables, then there are $2^n$
+different ways to assign truth values to the variables. This might
+become clear to you if you try to come up with a scheme for
+systematically listing all possible sets of values. If not, you'll
+find a rigorous proof of the fact later in this chapter.
 
 | $p$   | $q$   | $r$   | $p\land q$ | $q\land r$ | $(p\land q)\land r$ | $p\land (q\land r)$ |
 | :-:   | :-:   | :-:   | :--------: | :--------: | :-----------------: | :-----------------: |
@@ -166,15 +170,17 @@ whether or not two propositions are logically equivalent.
 There are other logical operators besides $\land$, $\lor$, and
 $\lnot$. We will consider the **conditional
 operator**, $\rightarrow$, the **biconditional operator**, $\leftrightarrow$,
-and the **exclusive or operator**, $\oplus$.[^Note that the symbols used in
+and the **exclusive or operator**, $\oplus$.[^3] These operators
+can be completely defined by a truth table that shows their
+values for the four possible combinations
+of truth values of $p$ and $q$.
+
+[^3]: Note that the symbols used in
 this book for the logical operators are not universal. While $\land$, $\lor$,
 and $\rightarrow$ are fairly standard, $\lnot$ is often replaced by $\sim$ and
 $\leftrightarrow$ is sometimes represented by $\equiv$ or $\Leftrightarrow$.
 There is even less standardization of the exclusive or operator, but that
-operator is generally not so important as the others.] These operators
-can be completely defined by a truth table that shows their
-values for the four possible combinations
-of truth values of $p$ and $q$.
+operator is generally not so important as the others.
 
 > For any propositions $p$ and $q$, we define the propositions
 $p\rightarrow q$, $p\leftrightarrow q$, and $p\oplus q$ according to the truth table:
@@ -545,18 +551,7 @@ the following English sentences:
 
 2. Define a logical operator $\downarrow$ so that $p\downarrow q$ is logically
    equivalent to $\lnot(p\lor q)$. (This operator, known as the **Peirce
-   Arrow**,[^Wikipedia helpfully points out that this is not to be confused with
-   the Pierce-Arrow automobile; Google, as I was writing this, repeatedly
-   insisted on correcting Peirce to Pierce&hellip;. Charles Sanders Peirce, pronounced
-   "Purse" (1839&ndash;1914), was an American scientist and philosopher who wrote
-   many influential papers, and many more that would have been influential if they
-   had been published during his lifetime. In addition to the functional completeness
-   result mentioned here, he helped develop and promote modern logical notation and
-   the use of truth tables, and he worked out the foundations of what became
-   relational database theory a century later. Arthur Burks, a 1936 DePauw graduate
-   who went on to help build ENIAC, credited Peirce with having the idea of building
-   an electrical computing machine, based on wiring up switches to perform logical
-   operations, fifty years before such a machine was built!]
+   Arrow**,[^4]
    is usually referred to as "NOR," short for "not or"). Show that each of the
    propositions $\lnot p$, $p\land q$, $p\lor q$, $p\rightarrow q$,
    $p\leftrightarrow q$, and $p\oplus q$ can be rewritten as a logically
@@ -573,18 +568,32 @@ the following English sentences:
    | $\lnot$ are functionally complete, so we can also express $\rightarrow$, $\leftrightarrow$,
    | and $\oplus$ using $\downarrow$.
 
+[^4]: Wikipedia helpfully points out that this is not to be confused with
+the Pierce-Arrow automobile; Google, as I was writing this, repeatedly
+insisted on correcting Peirce to Pierce&hellip;. Charles Sanders Peirce, pronounced
+"Purse" (1839&ndash;1914), was an American scientist and philosopher who wrote
+many influential papers, and many more that would have been influential if they
+had been published during his lifetime. In addition to the functional completeness
+result mentioned here, he helped develop and promote modern logical notation and
+the use of truth tables, and he worked out the foundations of what became
+relational database theory a century later. Arthur Burks, a 1936 DePauw graduate
+who went on to help build ENIAC, credited Peirce with having the idea of building
+an electrical computing machine, based on wiring up switches to perform logical
+operations, fifty years before such a machine was built!
+
 3. Show that the **Sheffer Stroke** operator $\uparrow$, defined so that
    $p\uparrow q$ is logically equivalent to $\lnot(p\land q)$, is also
-   functionally complete.[^Functional completeness is not merely an academic
-   curiosity. The NAND and NOR gates are particularly simple to implement in
-   silicon (each needs essentially one transistor per input), and building an
-   entire circuit out of identical building blocks makes both design and
-   fabrication easier. Indeed, the very first computer built from integrated
-   circuits was the Apollo Guidance Computer, which used about 5600 three-input
-   NOR gates to help Apollo 11 land on the moon.] This operator is also known as
+   functionally complete.[^5] This operator is also known as
    "NAND," short for "not and."
 
    [[spoiler | Answer]]
    | Since $\lnot p\equiv(p\uparrow p)$ and $(p\land q)\equiv(p\uparrow q)\uparrow(p\uparrow q)$,
    | and $\{\lnot,\land\}$ is a functionally complete set, we are done.
 
+[^5]: Functional completeness is not merely an academic
+curiosity. The NAND and NOR gates are particularly simple to implement in
+silicon (each needs essentially one transistor per input), and building an
+entire circuit out of identical building blocks makes both design and
+fabrication easier. Indeed, the very first computer built from integrated
+circuits was the Apollo Guidance Computer, which used about 5600 three-input
+NOR gates to help Apollo 11 land on the moon.

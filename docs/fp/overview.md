@@ -88,9 +88,7 @@ Since functions are just another kind of value, they may themselves be passed as
 
 Since expressions are evaluated according to the substitution model, where we do not have to worry about a variable changing its value between the time is was declared (**bound**) and used, we know several very useful facts about functions:
 * Functions in ReasonML are **pure**: the output only depends on the inputs, so calling a function twice with the same arguments will always produce the same result.
-Furthermore, we know that calling a function will not have any **side-effects**&mdash;that is, it will not cause the bindings of any other variables to change.[^Technically, some ReasonML functions _do_ have a side-effect, if they call input/output functions such as `print_int`.
-That is, you can tell the difference between calling such a function once, twice, or not at all, by looking at the output that is printed to the console.
-We will consider this sort of side-effect to be benign, however, and we will generally use such functions only in very controlled places in a program, or only when tracing or debugging code.]
+Furthermore, we know that calling a function will not have any **side-effects**&mdash;that is, it will not cause the bindings of any other variables to change.[^1]
 If a program uses only pure functions, then the compiler is free to optimize code in various ways: it may rearrange when functions are called; it may combine multiple calls with the same arguments into one, or split a single call into several; and if it detects that the result of a function call is not needed, it may omit the call entirely.
 None of these optimizations are guaranteed to preserve program behavior if a function is not known to be pure, which is the case in most non-functional languages.
 * When an argument is passed to a function, the value (such as `6`) is bound to the parameter name (such as `width`) using the same mechanism as binding local variables in a block.
@@ -102,5 +100,9 @@ print_int({
   width * height
 });
 ```
+
+[^1]: Technically, some ReasonML functions _do_ have a side-effect, if they call input/output functions such as `print_int`.
+That is, you can tell the difference between calling such a function once, twice, or not at all, by looking at the output that is printed to the console.
+We will consider this sort of side-effect to be benign, however, and we will generally use such functions only in very controlled places in a program, or only when tracing or debugging code.
 
 ## Exercises

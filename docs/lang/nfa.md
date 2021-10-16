@@ -128,7 +128,9 @@ does that mean that there really is _no_ DFA that accepts the language, or
 only that we haven't been clever enough to find one?
 
 It turns out that the limitation is in fact in our cleverness, and not in the
-power of DFAs.[^The fault, dear reader, is not in our $\delta^*$, but in ourselves.]
+power of DFAs.[^1]
+
+[^1]: The fault, dear reader, is not in our $\delta^*$, but in ourselves.
 
 > **Theorem: The Subset Construction**  
 Every language that is accepted by an NFA is accepted by a DFA.

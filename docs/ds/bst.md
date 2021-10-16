@@ -73,7 +73,9 @@ In a well-balanced tree, the root will be (close to) the middle element, where t
 Each time we inspect a node, if we do not find the value we are looking for then we can narrow our search to one of the two subtrees.
 The root of the selected subtree should be (close to) the middle element of half of the elements remaining to be searched.
 Since we cut the set of values to be searched (the **search space**) roughly in half after each element we examine, we will only need to look at $O(\log N)$ elements to decide whether our given value is present.
-Because the logarithm function grows so slowly, this means that even for billions of data items we will only have to look at a few dozen of them![^A nice rule of thumb is that every factor of 1000 adds ten to the number of comparisons in binary search, since $\log_2 1000\approx 10$.]
+Because the logarithm function grows so slowly, this means that even for billions of data items we will only have to look at a few dozen of them![^1]
+
+[^1]: A nice rule of thumb is that every factor of 1000 adds ten to the number of comparisons in binary search, since $\log_2 1000\approx 10$.
 
 Binary search is very easy to write by pattern matching on a tree:
 ```reason edit

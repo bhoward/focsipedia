@@ -36,16 +36,18 @@ The symbols $\T$ and $\F$ play a similar role in Boolean algebra
 to the role that constant numbers such as 1 and 3.14159 play 
 in ordinary algebra. Instead of the equals sign, Boolean algebra
 uses logical equivalence, $\equiv$, which has essentially the
-same meaning.[^In ordinary algebra, it's easy to be confused
+same meaning.[^1]
+For example, for propositions $p$, $q$, and $r$, the $\equiv$ operator
+in $p\land(q\land r)\equiv(p\land q)\land r$ means "has the same value as,
+no matter what logical values $p$, $q$, and $r$ have."
+
+[^1]: In ordinary algebra, it's easy to be confused
 by the equals sign, because it has two very different roles.
 In an identity such as the distributive law, it means
 "is always equal to." On the other hand, an equation such as $x^2+3x=4$ is
 a statement that might or might not be true, depending on the value of $x$.
 Boolean algebra has two operators, $\equiv$ and $\leftrightarrow$, that play
-roles similar to the two roles of the equals sign.]
-For example, for propositions $p$, $q$, and $r$, the $\equiv$ operator
-in $p\land(q\land r)\equiv(p\land q)\land r$ means "has the same value as,
-no matter what logical values $p$, $q$, and $r$ have."
+roles similar to the two roles of the equals sign.
 
 Many of the rules of Boolean algebra are fairly obvious, if you think
 a bit about what they mean. Even those that are not obvious can
@@ -54,12 +56,14 @@ list the most important of these laws. You will
 notice that all these laws, except the first, come in pairs: Each 
 law in the pair can be obtained from the other
 by interchanging $\land$ with $\lor$ and $\T$ with $\F$. This cuts down
-on the number of facts you have to remember.[^It is also an
+on the number of facts you have to remember.[^2]
+
+[^2]: It is also an
 example of a more general fact known as **duality**, which asserts
 that given any tautology that uses only
 the operators $\land$, $\lor$, and $\lnot$, another tautology can be
 obtained from it by interchanging $\land$ with $\lor$ and $\T$ with $\F$.
-We won't attempt to prove this here.]
+We won't attempt to prove this here.
 
 
 +-------------------+---------------------------------------------------+
@@ -166,14 +170,16 @@ then the result is also a tautology.
 
 Since logical equivalence is defined in terms of tautology,
 it is also true that when $(Q)$ is substituted for $p$ in a logical equivalence,
-the result is again a logical equivalence.[^I've added parentheses around 
+the result is again a logical equivalence.[^3]
+
+[^3]: I've added parentheses around 
 $Q$ here for technical reasons. Sometimes, the parentheses are necessary
 to make sure that $Q$ is evaluated as a whole, so that its final value is used in place
 of $p$. As an example of what can go wrong, consider $q\land r$. If this is
 substituted literally for $p$ in $\lnot(\lnot p)$, without
 parentheses, the result is $\lnot(\lnot q \land r)$. But this expression
 means $\lnot((\lnot q)\land r)$, which is _not_ equivalent to
-$q\land r$.]
+$q\land r$.
 
 The First Substitution Law lets you do algebra! For example, you can substitute
 $p\rightarrow q$ for $p$ in the law of double negation, $\lnot(\lnot p)\equiv p$.
@@ -331,16 +337,18 @@ says that given any proposition $p$, at
 least one of $p$ or $\lnot p$ must be true. Since $\lnot p$ is true 
 exactly when $p$ is false, this is the same as saying that
 $p$ must be either true or false. There is no middle
-ground.[^In propositional logic, this is easily verified with
+ground.[^4] The Law of Contradiction,
+$p\land\lnot p\equiv\F$, says that it is not possible for 
+_both_ $p$ and $\lnot p$ to be true. Both of these rules are obvious.
+
+[^4]: In propositional logic, this is easily verified with
 a small truth table. But there is a surprising amount of argument about
 whether this law is valid in all situations. In the real world, there often
 seems to be a gray area between truth and falsity. Even in mathematics,
 there are some people who think there should be a third truth value,
 one that means something like "unknown" or "not proven." But the
 mathematicians who think this way tend to be considered a bit odd
-by most other mathematicians.] The Law of Contradiction,
-$p\land\lnot p\equiv\F$, says that it is not possible for 
-_both_ $p$ and $\lnot p$ to be true. Both of these rules are obvious.
+by most other mathematicians.
 
 The Distributive Laws cannot be called obvious, but a few
 examples can show that they are reasonable. Consider the statement, "This 

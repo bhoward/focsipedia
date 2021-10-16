@@ -273,7 +273,9 @@ To perform a depth-first traversal, we will need to keep track of two additional
 The first is a set of **visited** nodes; whenever we first arrive at a node, we add it to this set.
 The other is the **finishing list**; whenever we have finished examining all of a node's neighbors, we will add it to the head of the finishing list.
 When working with a graphical representation, we will color in a node when it is first visited, and then write a number (the **finishing number**) next to the node when it is finished showing its position from the end of the finishing list.
-This information corresponds to performing actions according to _preorder_ (visiting) and _postorder_ (finishing) traversal of a tree.[^There is no analogue to _inorder_, because we don't impose any order on the neighbors of a node, so there is no equivalent of having finished the left child and being about to start the right child.]
+This information corresponds to performing actions according to _preorder_ (visiting) and _postorder_ (finishing) traversal of a tree.[^1]
+
+[^1]: There is no analogue to _inorder_, because we don't impose any order on the neighbors of a node, so there is no equivalent of having finished the left child and being about to start the right child.
 
 Here is the basic algorithm for depth-first traversal starting from a node $n$:
 * Mark $n$ as visited
@@ -288,7 +290,9 @@ By keeping track of a little more information, it can also answer some interesti
 As we are traversing the graph, we will put each edge into one of three categories:
 * **Tree Edge**: an edge that we follow to get to an adjacent unvisited node
 * **Back Edge**: an edge that we do not follow because it leads to a visited, _but not yet finished_, node
-* **Forward Edge**: an edge that we do not follow because it leads to an already finished node[^Some authors distinguish between proper forward edges, where there is a path of tree edges leading from the current node to the already finished node, and **cross edges**, where there is not such a path, but we will not need that distinction.]
+* **Forward Edge**: an edge that we do not follow because it leads to an already finished node[^2]
+
+[^2]: Some authors distinguish between proper forward edges, where there is a path of tree edges leading from the current node to the already finished node, and **cross edges**, where there is not such a path, but we will not need that distinction.
 
 Here then is the augmented algorithm for depth-first traversal from $n$:
 * Mark $n$ as visited

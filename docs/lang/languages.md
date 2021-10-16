@@ -149,10 +149,12 @@ $\Sigma$. We will see later how to formally specify such languages, but one step
 often to describe smaller languages, such as the set of all keywords in the language
 (for Java, it is the 51-element set $\{$`abstract`, `assert`, `boolean`, &hellip;, `while`, `_`$\}$),
 or the set of valid identifiers (in Java, a valid identifier starts with a letter, `$`, or `_`, and
-continues with zero or more letters, digits, `$`, or `_`[^Technically there are a few more classes
+continues with zero or more letters, digits, `$`, or `_`[^1], except it may not be a keyword or reserved word such as `true`, `false`, or `null`).
+
+[^1]: Technically there are a few more classes
 of characters that are allowed in Java identifiers, such as other currency symbols and
 "letter numbers", and the categories of "letters" and "digits" themselves contain thousands of
-choices in Unicode.], except it may not be a keyword or reserved word such as `true`, `false`, or `null`).
+choices in Unicode.
 
 Languages are sets and therefore, as for any sets, it makes sense to talk about
 the union, intersection, and complement of languages. (When taking the complement
@@ -188,8 +190,10 @@ from one string in $S$ (_i.e._, $S^1$ is $S$ itself), and $S^0$ to be the set of
 strings formed from zero strings in $S$ (_i.e._, $S^0 = \{\varepsilon\}$). If we take
 the union $S^0 \cup S^1 \cup S^2 \cup \ldots$, then the resulting set is the set of
 all strings formed by concatenating zero or more strings from $S$, and is
-denoted $S^*$. The set $S^*$ is called the **Kleene closure**[^Kleene is pronounced KLAY-nee; the operation is named after the mathematician Stephen Kleene.] of $S$, and
+denoted $S^*$. The set $S^*$ is called the **Kleene closure**[^2] of $S$, and
 the $^*$ operator is called the **Kleene star** operator.
+
+[^2]: Kleene is pronounced KLAY-nee; the operation is named after the mathematician Stephen Kleene.
 
 ---
 **Example:** Let $S = \{01, ba\}$. Then

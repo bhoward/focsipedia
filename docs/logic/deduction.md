@@ -69,13 +69,7 @@ This fact can be rephrased by saying that $\big((p\rightarrow q)\land
 p\big)\rightarrow q$ is a tautology. More generally, for any compound
 propositions $\mathscr{P}$ and $\mathscr{Q}$, saying "$\mathscr{P}\rightarrow
 \mathscr{Q}$ is a tautology" is the same as saying that "in all cases where
-$\mathscr{P}$ is true, $\mathscr{Q}$ is also true".[^Here, "in all cases" means
-for all combinations of truth values of the propositional variables in
-$\mathscr{P}$ and $\mathscr{Q}$. Saying $\mathscr{P}\rightarrow \mathscr{Q}$ is
-a tautology means it is true in all cases. But by definition of $\rightarrow$,
-it is automatically true in cases where $\mathscr{P}$ is false. In cases where
-$\mathscr{P}$ is true, $\mathscr{P}\rightarrow \mathscr{Q}$ will be true if and
-only if $\mathscr{Q}$ is true.] We will use the notation
+$\mathscr{P}$ is true, $\mathscr{Q}$ is also true".[^1] We will use the notation
 $\mathscr{P}\vdash\mathscr{Q}$ to mean that $\mathscr{P}\rightarrow \mathscr{Q}$
 is a tautology. Think of $\mathscr{P}$ as being the premise of an argument. To
 say $\mathscr{P}\vdash\mathscr{Q}$ is to say that $\mathscr{Q}$ follows
@@ -83,6 +77,13 @@ logically from $\mathscr{P}$. We will use the same notation in both
 propositional logic and predicate logic. (Note that the relation of $\vdash$ to
 $\rightarrow$ is the same as the relation of $\equiv$ to $\leftrightarrow$.)
 
+[^1]: Here, "in all cases" means
+for all combinations of truth values of the propositional variables in
+$\mathscr{P}$ and $\mathscr{Q}$. Saying $\mathscr{P}\rightarrow \mathscr{Q}$ is
+a tautology means it is true in all cases. But by definition of $\rightarrow$,
+it is automatically true in cases where $\mathscr{P}$ is false. In cases where
+$\mathscr{P}$ is true, $\mathscr{P}\rightarrow \mathscr{Q}$ will be true if and
+only if $\mathscr{Q}$ is true.
 
 > Let $\mathscr{P}$ and $\mathscr{Q}$ be any formulas in either
 propositional logic or predicate logic. The notation
@@ -447,14 +448,7 @@ instead $r\lor q$ for any proposition $r$.
 This peculiar behavior of disjunction extends to the elimination rule. Whereas
 the introduction rules appear to be duals of the elimination rules for conjunction,
 the elimination rule for disjunction is significantly more complicated that just
-a dual of the introduction for conjunction.[^Part of this complication is an
-inherent asymmetry in deduction: while our arguments may have multiple premises,
-they may only have one conclusion. A rule that was somehow "dual" to $\land I$
-would need to have two conclusions. There is another formulation of logic, known
-as the "sequent calculus" (see https://en.wikipedia.org/wiki/Sequent_calculus), where
-arguments may have multiple conclusions, and this asymmetry disappears. However,
-natural deduction has a cleaner connection to functional programming, as we will
-see later on.] What we have is essentially a **case analysis**&mdash;to eliminate
+a dual of the introduction for conjunction.[^2] What we have is essentially a **case analysis**&mdash;to eliminate
 an OR, we need to conduct two subproofs (just as in the $\rightarrow I$ rule), one
 for each possible case. Here is the rule:
 
@@ -470,6 +464,15 @@ k: q\Rightarrow\{\\
 \}\\ \hline\therefore
 r, \quad\lor E\ i, j, k
 \end{array} $$
+
+[^2]: Part of this complication is an
+inherent asymmetry in deduction: while our arguments may have multiple premises,
+they may only have one conclusion. A rule that was somehow "dual" to $\land I$
+would need to have two conclusions. There is another formulation of logic, known
+as the "sequent calculus" (see https://en.wikipedia.org/wiki/Sequent_calculus), where
+arguments may have multiple conclusions, and this asymmetry disappears. However,
+natural deduction has a cleaner connection to functional programming, as we will
+see later on.
 
 In words, this says that we have our disjunction, $p\lor q$, labeled $i$, plus two
 nested subproofs, labeled $j$ and $k$ (as always, in an actual proof, these parts
@@ -600,16 +603,7 @@ $$ \begin{array}{l|l}
 If you try to prove the other direction of this equivalence, you will
 have a surprisingly difficult time. In fact, it is possible to show that
 there is _no_ proof of the argument $\lnot q\rightarrow\lnot p\vdash p\rightarrow q$
-using the rules seen so far.[^Logicians have taken this observation and built an
-entire system of logic known as **intuitionistic logic**, on the grounds that there
-is something unusual with the rule of double negation elimination. As computer
-scientists, this should actually make sense: if we think of a proof as showing how
-to compute something, then all of the rest of the deduction rules are reasonable.
-However, the double negation rule says that if we don't have a way of showing that
-something is false, then somehow we get a proof that it is true&mdash;just because
-we run a program and it doesn't print out the wrong answer doesn't mean that it
-will print out the correct answer, because maybe the program will never print out
-an answer at all!] The closest you will be able to get starting from
+using the rules seen so far.[^3] The closest you will be able to get starting from
 the premise $\lnot q\rightarrow\lnot p$ is to conclude $p\rightarrow\lnot\lnot q$:
 
 $$ \begin{array}{l|l}
@@ -623,6 +617,17 @@ $$ \begin{array}{l|l}
 \}\\
 \ell_7: p\rightarrow\lnot\lnot q & \rightarrow I\ \ell_2
 \end{array} $$
+
+[^3]: Logicians have taken this observation and built an
+entire system of logic known as **intuitionistic logic**, on the grounds that there
+is something unusual with the rule of double negation elimination. As computer
+scientists, this should actually make sense: if we think of a proof as showing how
+to compute something, then all of the rest of the deduction rules are reasonable.
+However, the double negation rule says that if we don't have a way of showing that
+something is false, then somehow we get a proof that it is true&mdash;just because
+we run a program and it doesn't print out the wrong answer doesn't mean that it
+will print out the correct answer, because maybe the program will never print out
+an answer at all!
 
 Although you may be tempted to just erase the double negation, in a formal proof you
 need to justify every step, and it turns out that we do not have any way yet to

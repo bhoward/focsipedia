@@ -4,20 +4,23 @@ title: Lambda Calculus
 ---
 
 The section on [computability](../lang/computability) mentioned the **Church-Turing Thesis** that Turing machines
-fully capture our notion of what may be computed.[^The thesis was explicitly named in 1952 by Church's student Stephen Kleene, also known for introducing
-the star operator of regular expressions.] Part of the original justification for this belief is that Alan Turing
+fully capture our notion of what may be computed.[^1] Part of the original justification for this belief is that Alan Turing
 showed in 1936 that his machine model was equivalent in power to another model of computation being developed at around the
 same time by Alonzo Church. This model is now known as the **lambda calculus**, and it forms the core of the theory of
 functional programming.
+
+[^1]: The thesis was explicitly named in 1952 by Church's student Stephen Kleene, also known for introducing
+the star operator of regular expressions.
 
 As already mentioned in the [introductory section](intro/#fn-3) on functional programming, the symbol lambda ($\lambda$) is used to
 indicate an anonymous function defined by an expression. For example, $\lambda x(x + 1)$ is the function that takes any argument $x$ and
 returns that argument plus one; in ReasonML, this would be written `x => { x + 1 }`.
 The fundamental operation in $\lambda$-calculus is known as **beta ($\beta$) reduction**. Given an expression
 that contains a $\lambda$ function applied to an argument, $\beta$ reduction allows the application to be replaced by the body of the function
-with the argument substituted for the variable.[^There is also a notion of **alpha ($\alpha$) equivalence**, which allows us to uniformly rename the bound
-parameter throughout a function, so that $\lambda x(x + 1)$ is the same function as $\lambda y(y + 1)$. This is important for precise theoretical work, but
-we will be able to ignore the issue.]
+with the argument substituted for the variable.[^2]
+
+[^2]: There is also a notion of **alpha ($\alpha$) equivalence**, which allows us to uniformly rename the bound
+parameter throughout a function, so that $\lambda x(x + 1)$ is the same function as $\lambda y(y + 1)$. This is important for precise theoretical work, but we will be able to ignore the issue.
 
 For example, $(\lambda x(x+1))(41)$ may be reduced to the expression $41+1$. To avoid an explosion of parentheses, we will often write a lambda function
 with a dot after the parameter name, meaning that the body of the function extends as far as possible to the right within the surrounding expression.
@@ -90,9 +93,7 @@ The function PRED itself will be defined below.
 ## Booleans and Conditionals
 
 Fundamentally, the role of a Boolean value is to make a distinction: true or false, yes or no, do this or else do that.
-The encoding of a Boolean will therefore take two arguments, $a$ and $b$, and select one of them:[^Interestingly, the encoding
-for FALSE is the same (up to $\alpha$-equivalence) as the encoding of zero&mdash;apparently C made the right choice in equating
-zero and false!]
+The encoding of a Boolean will therefore take two arguments, $a$ and $b$, and select one of them:[^3]
 $$
 \begin{aligned}
 \textrm{TRUE}&\equiv\lambda a.\lambda b.\;a\\
@@ -112,6 +113,8 @@ You should convince yourself that these operations are correct, by evaluating ea
 $\textrm{AND}\;\textrm{FALSE}\;\textrm{FALSE}$, &hellip;.
 Note that IF is trivial, since $\textrm{IF}\;p\;a\;b$ is the same as just applying $p\;a\;b$; essentially, the meaning of a Boolean
 _is_ the conditional, just as the meaning of a natural number _is_ the ability to iterate a particular number of times.
+
+[^3]: Interestingly, the encoding for FALSE is the same (up to $\alpha$-equivalence) as the encoding of zero&mdash;apparently C made the right choice in equating zero and false!
 
 The most basic operation on natural numbers that returns a Boolean is the predicate ISZERO, which takes a number and returns TRUE
 if it is zero and FALSE otherwise. This is easy to implement as the $n$-fold iteration of the constant FALSE function, starting from the initial
@@ -179,7 +182,9 @@ A thunk is an anonymous function that takes no arguments; it is used to delay th
 until we are ready to `get()` its value or `run()` it. This is needed in Java (and in almost all common programming
 languages except Haskell and Scala) because otherwise `ifThenElse` would evaluate both of its arguments before performing
 the method call; in the example, without using thunks, the call to `b1.ifThenElse` would result in a division by zero
-exception, and the call to `b2.ifThenElse` would print `Boo!` as well as the correct answer.[^Side effects!]
+exception, and the call to `b2.ifThenElse` would print `Boo!` as well as the correct answer.[^4]
+
+[^4]: Side effects!
 
 ## Pairs and Lists
 
@@ -207,8 +212,7 @@ The list $[1, 2, 3]$ is encoded as $\textrm{PAIR}\;1\;(\textrm{PAIR}\;2\;(\textr
 Given a list $\ell$, $\textrm{ISNIL}\;\ell$ returns TRUE if the list is empty and FALSE otherwise.
 If $\ell$ is non-empty, then $\textrm{FIRST}\;\ell$ extracts its head and $\textrm{SECOND}\;\ell$ its tail.
 
-We may also use pairs to construct the promised function PRED.[^This version of the predecessor function was discovered by Stephen Kleene,
-reportedly while visiting the dentist.] Consider the function
+We may also use pairs to construct the promised function PRED.[^5] Consider the function
 $F\equiv\lambda p.\;\textrm{PAIR}\;(\textrm{SECOND}\;p)\;(\textrm{SUCC}\;(\textrm{SECOND}\;p))$.
 Then $F\;(\textrm{PAIR}\;m\;n)=\textrm{PAIR}(n, n+1)$. If you iterate $F$ a non-zero number $n$ times and apply it to $\textrm{PAIR}\;0\;0$, then the
 result will be $\textrm{PAIR}\;(n-1)\;n$ (prove this by induction on $n$). Therefore, we may define PRED as:
@@ -218,6 +222,9 @@ $$
 \end{aligned}
 $$
 This has the disadvantage that computing the predecessor of $n$ takes $O(n)$ time, but no one said the Church encodings were efficient.
+
+[^5]: This version of the predecessor function was discovered by Stephen Kleene,
+reportedly while visiting the dentist.
 
 ## Recursion
 
@@ -249,8 +256,7 @@ let fact_template = f => n => {
 
 This template describes how we could define `fact` if we already had the `fact` function: `fact = fact_template(fact)`.
 To break out of the circularity of this definition, what we really need is a way to solve the equation `f = fact_template(f)` for `f`; such a
-solution is known as a **fixed point** of `fact_template`.[^Another way to view this is that each application of `fact_template` takes an imperfect
-approximation to factorial and produces a better approximation. Finding the fixed point is just taking the limit of this series of approximations.]
+solution is known as a **fixed point** of `fact_template`.[^6]
 A remarkable fact about the lambda calculus is that there is a term that will find such a fixed point:
 $$
 \begin{aligned}
@@ -265,6 +271,9 @@ $$
 \end{aligned}
 $$
 That is, $\textrm{FIX}\;g=g(\textrm{FIX}\;g)$, so $f=\textrm{FIX}\;g$ is a solution to the equation $f=g(f)$!
+
+[^6]: Another way to view this is that each application of `fact_template` takes an imperfect
+approximation to factorial and produces a better approximation. Finding the fixed point is just taking the limit of this series of approximations.
 
 Using FIX, we may define the factorial function (and by this point you should be convinced that we may define any pure function that we could have
 written in ReasonML) as follows:

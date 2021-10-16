@@ -24,9 +24,7 @@ Similarly, the question "Who is the (biological) mother of this person?" has
 a single, definite answer for each person. So, the
 relationship "mother of" defines a functional relationship.
 In this case, the two sets in the relationship are the same set,
-namely the set of people.[^I'm avoiding here the question
-of Adam and Eve or of pre-human ape-like ancestors. (Take your 
-pick.)] On the other hand, the relationship "child of"
+namely the set of people.[^1] On the other hand, the relationship "child of"
 is not a functional relationship. The question "Who is the
 child of this person?" does not have a single, definite answer for
 each person. A given person might not have any child at all.
@@ -34,6 +32,10 @@ And a given person might have more than one child. Either of
 these cases&mdash;a person with no child or a person with more than
 one child&mdash;is enough to show that the relationship
 "child of" is not a functional relationship.
+
+[^1]: I'm avoiding here the question
+of Adam and Eve or of pre-human ape-like ancestors. (Take your 
+pick.)
 
 Or consider an ordinary map, such as a map of New York State or
 a street map of Rome. The whole point of the map, if it is
@@ -180,14 +182,15 @@ among the ordered pairs in the graph of $f$. Given $a\in A$, we
 can determine $f(a)$ by finding that ordered pair and looking
 at the second coordinate. In fact, it is convenient to consider
 the function and its graph to be the same thing, and to use
-this as our official mathematical definition.[^This is
-a convenient definition for the mathematical world, but as is often
+this as our official mathematical definition.[^2]
+
+[^2]: This is a convenient definition for the mathematical world, but as is often
 the case in mathematics, it leaves out an awful lot of the real
 world. Functional relationships in the real world are _meaningful_,
 but we model them in mathematics with meaningless sets of ordered
 pairs. We do this for the usual reason: to have something precise
 and rigorous enough that we can make logical deductions and prove
-things about it.]
+things about it.
 
 > Let $A$ and $B$ be sets. A **function** from $A$ to
 $B$ is a subset of $A\times B$ which has the property that

@@ -3,11 +3,13 @@ id: state
 title: State Machines
 ---
 
-In another section[^Not yet written&hellip;.] we learned about Moore machines, a version of finite state automata where there is an output associated with each state.
+In another section[^1] we learned about Moore machines, a version of finite state automata where there is an output associated with each state.
 Using flip-flops, we can build a circuit that implements a Moore machine.
 Here is a block diagram for such a circuit (although the connections are shown as single wires, all but the clock may be several bits wide):
 
 ![Moore Machine](/img/MooreMachine.png)
+
+[^1]: Not yet written&hellip;.
 
 In addition to the feedback within each flip-flop, there is a larger-scale feedback loop of the current state back to provide input for the next step. The box labelled _Comb. Logic_ is a combinational circuit with two functions: compute an output based on the current state, and compute the next-state control signals based on the input and the current state. The box labelled _State_ is one or more flip-flops; when a clock pulse arrives, it takes the control signals from the combinational logic and advances to the next state&mdash;the **state** of the machine is simply the current states of these flip-flops.
 

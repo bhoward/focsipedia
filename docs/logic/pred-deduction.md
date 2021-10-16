@@ -5,11 +5,13 @@ title: Natural Deduction for Predicate Logic
 
 Before seeing the natural deduction rules for handling the quantifiers
 ($\forall$ and $\exists$), we will need to be careful about how we handle
-variables in proofs. We will now have three[^There is also a fourth use, if we
-are maintaining a library of previous proofs and applying them by name, such as
-"Modus Tollens", to justify steps in later proofs.] different uses of
+variables in proofs. We will now have three[^1] different uses of
 identifiers in our proofs, representing different entities that we want to be
 able to refer to by name:
+
+[^1]: There is also a fourth use, if we
+are maintaining a library of previous proofs and applying them by name, such as
+"Modus Tollens", to justify steps in later proofs.
 
 * Propositions ($p$, $q$, &hellip;) and predicates ($P$, $Q$, &hellip;) stand
   for primitive statements that may be true or false, perhaps depending on the
@@ -45,10 +47,12 @@ able to refer to by name:
   does not matter, only the association between its uses and the quantifier that
   is binding it. That is, we will consider $\exists xP(x)$ and $\exists yP(y)$
   to be the same (and we may choose the name of the variable to avoid confusion
-  with other variables as needed).[^The analogy in programming is to note that
-  the index variable for a loop can be anything; although we might usually use
-  _i_, we may consistently switch to using _j_ for a given loop if there is
-  already a variable named _i_ in that part of the program.]
+  with other variables as needed).[^2]
+
+[^2]: The analogy in programming is to note that the index variable for a loop
+can be anything; although we might usually use _i_, we may consistently switch
+to using _j_ for a given loop if there is already a variable named _i_ in that
+part of the program.
 
 Just as we can introduce temporary assumptions into subproofs, that are only
 available within that nested block of the proof, we will also introduce
@@ -209,9 +213,11 @@ $x_0$ is the name of a value in the domain of discourse, and second, that we hav
 the additional fact that $P(x_0)$ is true. Within the subproof, we may use this extra
 knowledge to prove our conclusion $r$. However, since $x_0$ needs to be "fresh" to
 the subproof, the identity of the witnessing entity is not allowed to escape from the
-block[^There is some sort of "witness protection program" analogy to be made here&hellip;.]
+block[^3]
 This meshes with our understanding of the existential&mdash;it tells us that there is
 _some_ $x$ making $P(x)$ true, but it doesn't tell us which entity it is.
+
+[^3]: There is some sort of "witness protection program" analogy to be made here&hellip;.
 
 We may now prove a law about the interaction of the existential and conjunction:
 $\exists x(P(x)\land Q(x))\vdash(\exists xP(x))\land(\exists xQ(x))$.

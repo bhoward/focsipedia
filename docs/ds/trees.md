@@ -148,9 +148,11 @@ In practical use we get around this by adopting conventions of **precedence**, s
 In the sample expression tree, however, the multiplication is at the root, so we have to insert at least one pair of parentheses to get the correct expression: `(1 + 2) * 3`.
 
 The postorder traversal of an expression tree gives the **postfix** form of the expression, which may not be as familiar.
-Back in the Dark Ages[^The 1970's. See https://www.hpmuseum.org/rpn.htm for more details on RPN.] of computing, Hewlett-Packard made a series of powerful calculators that became very popular, particularly with engineers.
+Back in the Dark Ages[^1] of computing, Hewlett-Packard made a series of powerful calculators that became very popular, particularly with engineers.
 At the time, calculators were not able to handle arbitrarily complex infix expressions (many of them didn't even have parentheses&hellip;), and HP's solution was elegant: use postfix instead of infix!
 They referred to this as Reverse Polish Notation (RPN) in honor of the logician Jan Łukasiewicz (1878&ndash;1956), who invented postfix in the 1920's as a way to write logical expressions without parentheses.
+
+[^1]: The 1970's. See https://www.hpmuseum.org/rpn.htm for more details on RPN.
 
 The key to interpreting a postfix expression is to imagine maintaining a **stack** of values as you read from left to right. 
 When you see a number, _push_ that value onto the stack.

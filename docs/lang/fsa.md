@@ -123,10 +123,13 @@ if it starts in state $q$ and consumes the input string $w$". For any string,
 it is easy to see, based on $\delta$, what steps the machine will
 make as those symbols are consumed, and what $\delta^*(q,w)$ will be for any $q$
 and $w$. Note that if no input is consumed, a DFA makes no move, and so
-$\delta^*(q, \varepsilon) = q$ for any state $q$.[^$\delta^*$ can be defined
+$\delta^*(q, \varepsilon) = q$ for any state $q$.[^1]
+
+[^1]: $\delta^*$ can be defined
 formally by saying that $\delta^*(q,\varepsilon)=q$ for every state $q$,
 and $\delta^*(q,ax)=\delta^*(\delta(q,a),x)$ for any state $q$, $a\in\Sigma$
-and $x\in\Sigma^*$. Note that this is a recursive definition.]
+and $x\in\Sigma^*$. Note that this is a recursive definition. You may also recognize
+it as the "left fold" of $\delta$ over the string $w$.
 
 ---
 **Example:**

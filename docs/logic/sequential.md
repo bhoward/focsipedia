@@ -4,7 +4,9 @@ title: Sequential Circuits
 ---
 
 All of the circuits we have considered so far have been acyclic; this was an essential part of the definition of a combinational circuit.
-In general, if a circuit has a cycle, its output behavior might not be well-behaved&mdash;consider the simple example of a NOT gate whose output feeds back to its input, so that if the output went high, it would be forced low after one gate delay, then back high after another delay, _etc_.[^In fact, since a physical device can only be an approximation of a pure logic gate, it is more likely that the output would hover around some intermediate level, neither high nor low.]
+In general, if a circuit has a cycle, its output behavior might not be well-behaved&mdash;consider the simple example of a NOT gate whose output feeds back to its input, so that if the output went high, it would be forced low after one gate delay, then back high after another delay, _etc_.[^1]
+
+[^1]: In fact, since a physical device can only be an approximation of a pure logic gate, it is more likely that the output would hover around some intermediate level, neither high nor low.
 
 In this section, we will explore two ways of adding cycles to circuits in a controlled fashion.
 The first, operating on the level of just a few gates, will give us circuit components with memory.
@@ -125,13 +127,15 @@ Here is another implementation of the D flip-flop with a somewhat easier-to-unde
 
 ![D Main-Secondary Flip-Flop](/img/D-MS.png)
 
-This is known as a **main-secondary** design, because it consists of two latches (in this case, they are $SR$ latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^A nice variation of the main-secondary design uses an $\overline{SR}$ for one layer and an $SR$ latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.]), each of which is enabled for half of the clock cycle.
+This is known as a **main-secondary** design, because it consists of two latches (in this case, they are $SR$ latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^2]), each of which is enabled for half of the clock cycle.
 When the clock is high, the first ("main") latch stores the incoming data signal.
 It is transparent during this time, so if the data is changing then so will its state.
 When the clock goes low (so this is a **trailing-edge triggered** flip-flop), the secondary latch is enabled and it copies whatever was
 stored in the main latch at that instant. Although the secondary is transparent during its half of the clock cycle, its input will not be changing because the main cannot change while it is disabled.
 Therefore, the flip-flop only changes its state at the instant the clock goes from high to low.
 There is still a race condition possible (it can be shown that there is no flip-flop design without a race condition), if the $D$ input changes just as the clock goes low.
+
+[^2]: A nice variation of the main-secondary design uses an $\overline{SR}$ for one layer and an $SR$ latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.
 
 > The first electronic latch was the Eccles-Jordan trigger circuit.
 Patented in 1918, it was built out of two vacuum tubes connected in a feedback loop.

@@ -114,8 +114,9 @@ be parsed in two essentially different ways, and only one of the
 parsings is consistent with the meaning of the string. Of course,
 the grammar for English is also ambiguous. In a famous example,
 it's impossible to tell whether a "pretty girls' camp" is
-meant to describe a pretty camp for girls or a camp for pretty girls.[^A
-related example with many more interpretations is "pretty little girls' school."]
+meant to describe a pretty camp for girls or a camp for pretty girls.[^1]
+
+[^1]: A related example with many more interpretations is "pretty little girls' school."
 
 When dealing with artificial languages such as programming languages,
 it's better to avoid ambiguity.

@@ -135,9 +135,7 @@ For example, "Reeves, Keanu" should be converted to "Keanu Reeves".
 Assuming that names contain only letters,
 this could be done using the search pattern `([A-Za-z]+), ([A-Za-z]+)`
 and the replacement pattern `\2 \1`.  When the match is
-made, the first `([A-Za-z]+)` will match "Reeves",[^Anyone who
-tells you the comma always belongs inside the quotation marks has never
-had to punctuate a sentence like this&hellip;.] 
+made, the first `([A-Za-z]+)` will match "Reeves",[^1] 
 so that in the replacement pattern, `\1` represents the
 substring "Reeves". Similarly, `\2` will represent
 "Keanu".  Note that the parentheses
@@ -148,6 +146,9 @@ as the search pattern to constrain it so that it will only
 match a complete line of text.  By using a "global" search-and-replace,
 you could convert an entire file of names from one format to the other
 in a single operation.
+
+[^1]: Anyone who tells you the comma always belongs inside the quotation marks has never
+had to punctuate a sentence like this&hellip;.
 
 Regular expressions are a powerful and useful technique that
 should be part of any computer scientist's toolbox.  This section
