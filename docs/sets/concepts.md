@@ -2,7 +2,6 @@
 id: concepts
 title: Set Concepts
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

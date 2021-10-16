@@ -3,12 +3,11 @@ slug: state-machines
 title: State Machines
 author: Brian Howard
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Rescheduled from Wednesday, April 22)
 
-Read about <a href={useBaseUrl('docs/logic/state')}>state machines</a>, and look at the exercises in that section.
-Also read about implementing <a href={useBaseUrl('docs/fp/state')}>state machines in Java and ReasonML</a>, and try those exercises.
+Read about [state machines](/docs/logic/state), and look at the exercises in that section.
+Also read about implementing [state machines in Java and ReasonML](/docs/fp/state), and try those exercises.
 
 The [video](https://drive.google.com/file/d/1E5uDztarzOBF0jLTrhv6IN6YsXud-Zad/view) from Monday is also relevant to this
 section.

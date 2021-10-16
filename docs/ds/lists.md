@@ -2,7 +2,6 @@
 id: lists
 title: Sorting Lists
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 We have already seen [how to work with lists in a functional language](../fp/map-reduce).
 The focus here will be on functional approaches to sorting lists; for simplicity we will work with lists of integers, although the techniques extend to any type with a total ordering relation.

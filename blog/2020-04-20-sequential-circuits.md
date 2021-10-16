@@ -3,9 +3,8 @@ slug: sequential
 title: Sequential Circuits
 author: Brian Howard
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Read about <a href={useBaseUrl('docs/logic/sequential')}>sequential circuits</a>, and try the exercises in that section.
+Read about [sequential circuits](/docs/logic/sequential), and try the exercises in that section.
 
 Here is a [video with solutions to Exam 2](https://drive.google.com/file/d/18VMshqhb5ss3FF6q3B3o9_4FRrYvVf-_/view).
 (This is the fixed version)

@@ -2,7 +2,6 @@
 id: programming
 title: Programming with Sets
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 

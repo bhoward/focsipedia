@@ -2,7 +2,6 @@
 id: functions
 title: Functions
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

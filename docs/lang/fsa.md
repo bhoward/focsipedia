@@ -2,7 +2,6 @@
 id: fsa
 title: Finite-State Automata
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 
@@ -170,8 +169,7 @@ captured in a picture called a **transition diagram**.
 Consider again the DFA of the two preceding examples. It
 can be represented pictorially as:
 
-<img src={useBaseUrl('img/fsa1.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa1.png)
 
 <!--
 ```reason hidden
@@ -298,8 +296,7 @@ $L(M) = \{ x \in \{0,1\}^* \ | \ n_1(x) \geq 2\}$.
 **Example:** Find the language accepted by the DFA shown below (and describe it using a
 regular expression!):
 
-<img src={useBaseUrl('img/fsa2.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa2.png)
 
 The start state of $M$ is accepting, which means $\varepsilon \in L(M)$. If $M$ is
 in state $q_0$, a
@@ -313,15 +310,13 @@ _trap_ state: it is a non-accepting state which, once reached by the machine,
 cannot be escaped. It is fairly common to omit such states from transition
 diagrams. For example, one is likely to see the diagram:
 
-<img src={useBaseUrl('img/fsa3.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa3.png)
 
 Note that this cannot be a complete DFA, because a DFA is required to have a
 transition defined for every state-input pair. The diagram is "short for" the
 full diagram:
 
-<img src={useBaseUrl('img/fsa4.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa4.png)
 
 As well as recognizing what language is accepted by a given DFA, we often want to
 do the reverse and come up with a DFA that accepts a given language.
@@ -379,8 +374,7 @@ decide which states should be final states. The only state that corresponds to
 the desired criteria for the language $L$ is $q_1$, so we make $q_1$ a final
 state. The complete machine is shown below.
 
-<img src={useBaseUrl('img/fsa5.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa5.png)
 
 ---
 
@@ -402,8 +396,7 @@ machine is shown below. Notice that because the consumption of a $b$ does not
 affect the only relevant characteristic, $b$'s do not cause changes of 
 state.
 
-<img src={useBaseUrl('img/fsa6.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa6.png)
 
 ---
 
@@ -422,8 +415,7 @@ beginning as far as seeing 3 consecutive $a$'s goes. So this time there will be
 four states, with the "last symbol was not an $a$" state being the start
 state. The complete automaton is shown below.
 
-<img src={useBaseUrl('img/fsa7.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa7.png)
 
 ---
 
@@ -440,14 +432,12 @@ alt="Example DFA" className="centered-figure" />
 
 2. What languages do the following DFAs accept?
 
-<img src={useBaseUrl('img/fsa1ex.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa1ex.png)
 
 [[spoiler | Answer]]
 | Strings of $a$'s and $b$'s with no more than two consecutive $b$'s.
 
-<img src={useBaseUrl('img/fsa2ex.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa2ex.png)
 
 [[spoiler | Answer]]
 | Strings of $a$'s and $b$'s with at least one of each.

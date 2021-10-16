@@ -2,7 +2,6 @@
 id: parsing
 title: Parsing and Parse Trees
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 
@@ -343,8 +342,7 @@ Here are two parse trees that show two derivations of the
 string x+y*z according to the grammar $G_1$, which was given
 at the beginning of this section:
 
-<img src={useBaseUrl('img/fig-5-1.png')}
-alt="Sample parse trees" className="centered-figure" />
+![Sample parse trees](/img/fig-5-1.png)
 
 A parse tree is made up of terminal and non-terminal symbols,
 connected by lines. The start symbol is at the top, or "root," of
@@ -364,8 +362,7 @@ in a row across the bottom, and with the rest of the tree built on
 top of that base. Thus, the two parse trees shown above might
 be drawn as:
 
-<img src={useBaseUrl('img/fig-5-2.png')}
-alt="Sample parse trees, adjusted" className="centered-figure" />
+![Sample parse trees, adjusted](/img/fig-5-2.png)
 
 Given any derivation of a string, it is possible to construct
 a parse tree that shows each of the steps in that derivation.
@@ -435,8 +432,7 @@ grammar $G$.
    c) Give a right derivation for the string $abbcabac$ according to the
 grammar $G$.
 
-<img src={useBaseUrl('img/fig-5-3.png')}
-alt="Exercise parse tree" className="centered-figure" />
+![Exercise parse tree](/img/fig-5-3.png)
 
 6. Show the full sequence of shift and reduce operations
 that are used in the LR(1) parsing of the string $x+(y)*z$ according

@@ -3,7 +3,6 @@ slug: mapreduce
 title: MapReduce
 author: Brian Howard
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 No reading for today. We will talk about the `map` and `reduce` functions on lists, and how they made Google what it is today.
 

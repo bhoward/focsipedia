@@ -2,7 +2,6 @@
 id: types
 title: Types in Functional Programming
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 One of the hallmarks of modern functional programming is a strong and rich
 systems of types. The type of an expression can be thought of as the set of all

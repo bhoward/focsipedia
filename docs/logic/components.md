@@ -2,7 +2,6 @@
 id: components
 title: Common Circuit Components
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Just as a complicated piece of software is never written from scratch entirely
 from the most basic program statements, a complicated hardware design is not
@@ -18,21 +17,18 @@ We have already seen one of these common
 components&mdash;[one of the sample circuits seen earlier](circuits#circuits-as-expression-trees)
 is known as the **half adder**. Here it is again:
 
-<img src={useBaseUrl('img/HalfAdder.png')}
-alt="Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b" className="centered-figure" />
+![Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b](/img/HalfAdder.png)
 
 If $a$ and $b$ represent one-bit binary numbers, then $s$ is their one-bit sum
 and $c$ is the carry into the next bit. For example, when $a$ and $b$ are both
 1, $s$ is 0 and $c$ is 1; in binary, this says $1+1=10$. We may represent this
 block in a circuit diagram with an appropriately named box:
 
-<img src={useBaseUrl('img/HalfAdderSymbol.png')}
-alt="Symbol for a half adder" className="centered-figure" />
+![Symbol for a half adder](/img/HalfAdderSymbol.png)
 
 It is called a half adder because, when you are adding multiple columns of bits, it only does half the work: it adds the two bits for a column, but it doesn't add in the carry from the next smaller column. A **full adder** takes three inputs: $a$ and $b$, plus the incoming carry, $c_\textit{\scriptsize in}$. The outputs are $s$, the sum that stays in the column, plus the outgoing carry to the next column, $c_\textit{\scriptsize out}$. We may build a full adder out of two half adders by first adding $a$ to $b$, then adding $c_\textit{\scriptsize in}$; since the highest total in a full adder is three (11), we will never have a carry out of more than one of the half adders, so the resulting $c_\textit{\scriptsize out}$ is just the OR of the two half adder carries. Here is the circuit with its block symbol and its truth table:
 
-<img src={useBaseUrl('img/FullAdder.png')}
-alt="Circuit diagram for a full adder" className="centered-figure" />
+![Circuit diagram for a full adder](/img/FullAdder.png)
 
 $$ \begin{array}{ccl|rc}
 a & b & c_\textit{\scriptsize in} & c_\textit{\scriptsize out} & s\\ \hline
@@ -53,8 +49,7 @@ incoming carry $c_\textit{\scriptsize in}$ to column 0 (the one's column), and
 the outputs are $s_3s_2s_1s_0$, plus a carry from column 3 (the eight's column),
 $c_\textit{\scriptsize out}$:
 
-<img src={useBaseUrl('img/4BitAdder.png')}
-alt="Circuit diagram for a four-bit adder" className="centered-figure" />
+![Circuit diagram for a four-bit adder](/img/4BitAdder.png)
 
 One of the exercises below explores whether this is a good design.
 Here is a collection of CircuitVerse circuits where you can explore these adders:
@@ -69,8 +64,7 @@ a carry (both are true, $a\land b$). For another example, suppose we have a
 circuit which is supposed to compute one of two functions, either $f$ or $g$,
 depending on a "select" input; the circuit might look like this:
 
-<img src={useBaseUrl('img/ForG.png')}
-alt="Circuit diagram selecting the output of one of two subcircuits" className="centered-figure" />
+![Circuit diagram selecting the output of one of two subcircuits](/img/ForG.png)
 
 When _select_ is 0, the output is computed by $f$; when it is 1, the output is computed by $g$.
 
@@ -83,8 +77,7 @@ lines and their complements, then all four possibilities (of which at most one
 may be true) are combined with OR. Here is the circuit and its common
 symbol:
 
-<img src={useBaseUrl('img/MUX.png')}
-alt="Circuit diagram and symbol for a multiplexer" className="centered-figure" />
+![Circuit diagram and symbol for a multiplexer](/img/MUX.png)
 
 Note the similarity of the multiplexer circuit to the layers of the
 sum-of-products circuit from the [Circuit Simplification](simplify) section. If
@@ -103,8 +96,7 @@ output lines. Alternately, a demultiplexer can be viewed as a decoder with an
 "enable" input, where the selected output line will be 1 only if the enabling
 input signal is 1. Here is the common symbol for a four-line demultiplexer:
 
-<img src={useBaseUrl('img/DEMUX.png')}
-alt="Circuit symbol for a multiplexer" className="centered-figure" />
+![Circuit symbol for a demultiplexer](/img/DEMUX.png)
 
 The implementation of this circuit is left as an exercise.
 
@@ -162,8 +154,7 @@ See Sections 13.5&ndash;7 of Aho & Ullman.
    of 1 bits received is even. A two-input parity bit generator is just the
    exclusive-OR circuit, whose common symbol is:
 
-<img src={useBaseUrl('img/XOR.png')}
-alt="Circuit symbol for exclusive OR" className="centered-figure" />
+![Circuit symbol for exclusive OR](/img/XOR.png)
 
 Give an implementation of a two-input parity bit generator using only NAND
 gates, and then show how to use XOR gates to build an eight-input parity bit

@@ -3,11 +3,10 @@ slug: class-resumes
 title: Class Resumes
 author: Brian Howard
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Classes will resume in an online format on Monday, March 30. Work on your <a href={useBaseUrl('docs/fp/doodle-project')}>DPoodle</a> drawings.
+Classes will resume in an online format on Monday, March 30. Work on your [DPoodle](/docs/fp/doodle-project) drawings.
 
-**Update** Also read about <a href={useBaseUrl('docs/ds/trees')}>trees</a> and watch the [corresponding video](https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view) (and [DyKnow](https://drive.google.com/open?id=1-cMXKmHRLjs_8v-1MfJ89qEFEJQEYBg6)).
+**Update** Also read about [trees](/docs/ds/trees) and watch the [corresponding video](https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view) (and [DyKnow](https://drive.google.com/open?id=1-cMXKmHRLjs_8v-1MfJ89qEFEJQEYBg6)).
 
 Here are the videos and DyKnow slides from the in-class sessions:
 * [Section A video](https://drive.google.com/file/d/1fZmQwPUAvxw4woQoaCSR08lGR2yrEHIm/view) and [DyKnow](https://drive.google.com/open?id=1-bWeUimbXYiWg4LyT87PTLU2Jrif9bqj)

@@ -2,7 +2,6 @@
 id: recursion
 title: Recursion and Induction
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

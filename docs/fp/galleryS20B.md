@@ -2,6 +2,7 @@
 id: galleryS20B
 title: Spring 2020 DPoodle Gallery, Section B
 ---
+
 ## Alecia Hawkins
 ```reason demo
 {

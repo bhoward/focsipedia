@@ -2,7 +2,6 @@
 id: sequential
 title: Sequential Circuits
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 All of the circuits we have considered so far have been acyclic; this was an essential part of the definition of a combinational circuit.
 In general, if a circuit has a cycle, its output behavior might not be well-behaved&mdash;consider the simple example of a NOT gate whose output feeds back to its input, so that if the output went high, it would be forced low after one gate delay, then back high after another delay, _etc_.[^In fact, since a physical device can only be an approximation of a pure logic gate, it is more likely that the output would hover around some intermediate level, neither high nor low.]
@@ -20,8 +19,7 @@ As a result, they can be considerably harder to reason about, and we will need g
 ## Memory Devices
 Although the circuit with one NOT gate feeding back on itself is unstable, a cycle of two NOT gates would be fine:
 
-<img src={useBaseUrl('img/NotLatch.png')}
-alt="Not Latch" className="centered-figure" />
+![Not Latch](/img/NotLatch.png)
 
 Whatever the output is at $x$, the output at $y$ will be the opposite.
 Each one feeds back and reinforces the other, and the circuit is stable.
@@ -30,8 +28,7 @@ Unfortunately, it is not very useful&mdash;there is no way to provide input to _
 By replacing the NOT gates with either NAND or NOR gates, we get a circuit known as a latch.
 Here is the diagram for a so-called $\overline{SR}$ latch:
 
-<img src={useBaseUrl('img/SRLatch.png')}
-alt="SR Latch" className="centered-figure" />
+![SR Latch](/img/SRLatch.png)
 
 When the inputs $\overline{S}$ (set) and $\overline{R}$ (reset) are both 1, the latch behaves just like the circuit with two NOT gates (because $1\uparrow x=\overline{x}$): whatever the output is at $Q$, the opposite value will be at $\overline{Q}$ (hence its customary label&mdash;it is the negation of $Q$).
 
@@ -53,8 +50,7 @@ To make sequential design easier, we frequently want memory devices that will on
 By adding an extra layer of gates to the input, we can make what is known as a **gated D latch**.
 The inputs are $D$ (data) and $E$ (enable):
 
-<img src={useBaseUrl('img/DELatch.png')}
-alt="DE Latch" className="centered-figure" />
+![DE Latch](/img/DELatch.png)
 
 As long as $E$ is 0 (note that this is now an active-high device), the $\overline{S}$ and $\overline{R}$ inputs to the latch will always be 1, regardless of the $D$ input.
 The gated D latch is only enabled when the $E$ input is 1.
@@ -70,22 +66,19 @@ Here is a truth table for the latch, together with its common symbol when used i
 | 1   | 0   | 0   | 1   |
 | 1   | 1   | 1   | 0   |
 
-<img src={useBaseUrl('img/DELatchSymbol.png')}
-alt="DE Latch Symbol" className="centered-figure" />
+![DE Latch Symbol](/img/DELatchSymbol.png)
 
 When dealing with a sequential circuit, it is often helpful to look at a **timing diagram**, which shows the levels at various points of the circuit over time (increasing from left to right).
 Here is a timing diagram for the gated D latch, which shows that the output is transparent to the $D$ input only when $E$ is high:
 
-<img src={useBaseUrl('img/DELatchTiming.png')}
-alt="DE Latch Timing Diagram" className="centered-figure" />
+![DE Latch Timing Diagram](/img/DELatchTiming.png)
 
 Instead of a latch, it is more common to use a device known as a **flip-flop**.
 The distinction from a latch is that a flip-flop will only respond to input for a very brief time; it is what is known as a **clocked** device, since it will only change its state when a clock pulse is received (typically, just as the clock pulse is rising from 0 to 1).
 In _synchronous_ logic design, the entire circuit will use a single clock signal, so that each clock pulse advances the state by one step (and the state has time to propagate through all the gate delays before the next pulse).
 Here is one design for an edge-triggered D flip-flop:
 
-<img src={useBaseUrl('img/DFlipFlop.png')}
-alt="D Flip-Flop" className="centered-figure" />
+![D Flip-Flop](/img/DFlipFlop.png)
 
 Just as the gated D latch modified an $\overline{SR}$ latch by adding a layer of two NAND gates, this flip-flop modifies an $\overline{SR}$ latch by adding a layer of two input latches.
 In each case, the input layer protects the output latch from entering the illegal state (when both $\overline{S}$ and $\overline{R}$ are low).
@@ -105,11 +98,9 @@ Designers avoid this by arranging for the $D$ input to be stable for at least a 
 
 Here is a timing diagram for the D flip-flop, and its common circuit signal (the input marked with a triangle indicates that it is a rising-edge-triggered clock):
 
-<img src={useBaseUrl('img/DFlipFlopTiming.png')}
-alt="D Flip-Flop Timing Diagram" className="centered-figure" />
+![D Flip-Flop Timing Diagram](/img/DFlipFlopTiming.png)
 
-<img src={useBaseUrl('img/DFlipFlopSymbol.png')}
-alt="D Flip-Flop Symbol" className="centered-figure" />
+![D Flip-Flop Symbol](/img/DFlipFlopSymbol.png)
 
 Rather than a truth table, it is useful to give what are known as a **characteristic table** or an **excitation table** for a flip-flop.
 The characteristic table shows how the input ($D$) and current state ($Q$) lead to the next state ($Q'$) after the clock pulse:
@@ -132,14 +123,13 @@ The excitation table presents the same information, but from the viewpoint of "g
 
 Here is another implementation of the D flip-flop with a somewhat easier-to-understand circuit (although it uses more gates):
 
-<img src={useBaseUrl('img/D-MS.png')}
-alt="D Master-Slave Flip-Flop" className="centered-figure" />
+![D Main-Secondary Flip-Flop](/img/D-MS.png)
 
-This is known as a **master-slave** design, because it consists of two latches (in this case, they are $SR$ latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^A nice variation of the master-slave design uses an $\overline{SR}$ for one layer and an $SR$ latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.]), each of which is enabled for half of the clock cycle.
-When the clock is high, the first ("master") latch stores the incoming data signal.
+This is known as a **main-secondary** design, because it consists of two latches (in this case, they are $SR$ latches, made with NOR gates, so the set/reset actions occur when their inputs are high[^A nice variation of the main-secondary design uses an $\overline{SR}$ for one layer and an $SR$ latch for the other, so there is no need to invert the clock between the two halves, but the operation is a little harder to read.]), each of which is enabled for half of the clock cycle.
+When the clock is high, the first ("main") latch stores the incoming data signal.
 It is transparent during this time, so if the data is changing then so will its state.
-When the clock goes low (so this is a **trailing-edge triggered** flip-flop), the slave latch is enabled and it copies whatever was
-stored in the master latch at that instant. Although the slave is transparent during its half of the clock cycle, its input will not be changing because the master cannot change while it is disabled.
+When the clock goes low (so this is a **trailing-edge triggered** flip-flop), the secondary latch is enabled and it copies whatever was
+stored in the main latch at that instant. Although the secondary is transparent during its half of the clock cycle, its input will not be changing because the main cannot change while it is disabled.
 Therefore, the flip-flop only changes its state at the instant the clock goes from high to low.
 There is still a race condition possible (it can be shown that there is no flip-flop design without a race condition), if the $D$ input changes just as the clock goes low.
 

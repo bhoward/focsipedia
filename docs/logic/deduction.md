@@ -2,7 +2,6 @@
 id: deduction
 title: Deduction
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

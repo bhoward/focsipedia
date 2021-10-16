@@ -2,7 +2,6 @@
 id: circuits
 title: Logic Circuits
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 
@@ -62,8 +61,7 @@ gate are on the left, with the output wire on the right. Note that when wires
 cross each other in a diagram such as this, the wires don't actually intersect
 unless there is a black circle at the point where they cross.
 
-<img src={useBaseUrl('img/fig1-3.png')}
-alt="AND, OR, and NOT gates, plus an example logic circuit" className="centered-figure" />
+![AND, OR, and NOT gates, plus an example logic circuit](/img/fig1-3.png)
 
 The logic circuit in the figure has three inputs, labeled
 $A$, $B$, and $C$. The circuit computes the value of the
@@ -91,8 +89,7 @@ slightly simpler---CMOS has the practical advantage of using significantly
 less power, at the cost of doubling the number of transistors, but the basic
 principles are very similar.
 
-<img src={useBaseUrl('img/NMOSgates.png')}
-alt="NMOS implementations of NOT, NOR, and NAND gates" className="centered-figure" />
+![NMOS implementations of NOT, NOR, and NAND gates](/img/NMOSgates.png)
 
 The NOT gate consists of a single transistor in the lower half:
 the **gate** on the left is connected to the input signal, $a$; the **source**
@@ -113,8 +110,7 @@ on the output indicates negation, just like on the NOT gate; the
 unnegated version of NOT, drawn as a simple triangle, is known as a
 **buffer**, because it copies its input to its output unchanged, after a short delay).
 
-<img src={useBaseUrl('img/NandNor.png')}
-alt="The standard symbols for the NAND and NOR gates" className="centered-figure" />
+![The standard symbols for the NAND and NOR gates](/img/NandNor.png)
 
 Those three gates are the simplest to implement with transistors. As we saw in the
 exercises in the [Propositional Logic](props.md#exercises) section, all other Boolean operators can be constructed from NAND alone, or NOR alone. For example, an AND gate is
@@ -161,8 +157,7 @@ with. Eventually, you'll come to a gate whose input comes directly
 from one of the input wires&mdash;$A$ or $B$ in this case&mdash;instead of
 from a subcircuit.
 
-<img src={useBaseUrl('img/fig1-4.png')}
-alt="Stages in the construction of an example logic circuit" className="centered-figure" />
+![Stages in the construction of an example logic circuit](/img/fig1-4.png)
 
 Here is the resulting circuit in CircuitVerse:
 <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/demo2" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
@@ -189,28 +184,23 @@ tree**, which is a variation of the parse trees studied later in the course. For
 example, we may picture the expression $s=(a\lor b)\land\lnot(a\land b)$ as the
 following:
 
-<img src={useBaseUrl('img/exprtree.png')}
-alt="Expression tree for s=(a OR b) AND NOT (a AND b)" className="centered-figure" />
+![Expression tree for s=(a OR b) AND NOT (a AND b)](/img/exprtree.png)
 
 Of course, we are usually interested in circuits that may have multiple outputs, so we may use a forest of expression trees. The next figure shows a forest for the same expression as above, along with the additional output $c$ given by $a\land b$:
 
-<img src={useBaseUrl('img/exprforest.png')}
-alt="Expression forest for s=(a OR b) AND NOT (a AND b) and c=a AND b" className="centered-figure" />
+![Expression forest for s=(a OR b) AND NOT (a AND b) and c=a AND b](/img/exprforest.png)
 
 Upon doing this, we might notice that the subtree for $a\land b$ is duplicated. It would be nice to share common parts of the circuit, thus giving us an expression DAG (**directed acyclic graph**) instead of a tree or forest. One way to do this is shown next:
 
-<img src={useBaseUrl('img/exprdag.png')}
-alt="Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b" className="centered-figure" />
+![Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b](/img/exprdag.png)
 
 We could also share the inputs rather than repeating them, as shown next; this is still a DAG:
 
-<img src={useBaseUrl('img/exprdagshared.png')}
-alt="Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b, with shared inputs" className="centered-figure" />
+![Expression DAG for s=(a OR b) AND NOT (a AND b) and c=a AND b, with shared inputs](/img/exprdagshared.png)
 
 Finally, instead of using the words AND, OR, and NOT, we will use the corresponding circuit symbols; we also draw the DAG "on its side," so that the flow from inputs to outputs is left-to-right. The final result is a circuit diagram such as this:
 
-<img src={useBaseUrl('img/HalfAdder.png')}
-alt="Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b" className="centered-figure" />
+![Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b](/img/HalfAdder.png)
 
 It is important to realize, though, that this is just another presentation of the logical expressions we started with. Any set of Boolean expressions may be drawn this way, and any circuit where all of the information flows from left to right may be read as a set of expressions.
 
@@ -223,8 +213,7 @@ In addition to visualizing the layout of gates in a digital circuit, a circuit d
 | 1 | 0 | 0 | 1 |
 | 1 | 1 | 1 | 0 |
 
-<img src={useBaseUrl('img/HalfAdder11.png')}
-alt="Annotated diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b when a=1 and b=1" className="centered-figure" />
+![Annotated diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b when a=1 and b=1](/img/HalfAdder11.png)
 
 The CircuitVerse simulator can also be used to interactively trace the behavior of a circuit.
 Click on the inputs (A and B) in the circuit to see the effect on the outputs.
@@ -245,8 +234,7 @@ or more intermediate gates&mdash;back to an input of the same gate.
 Here is an example of a circuit with
 a feedback loop:
 
-<img src={useBaseUrl('img/fig1-5.png')}
-alt="Stages in the construction of an example logic circuit" className="centered-figure" />
+![Stages in the construction of an example logic circuit](/img/fig1-5.png)
 
 The feedback loop includes the AND gate and the OR gate on the right. This
 circuit does not compute the value of a compound proposition. This circuit does,
@@ -289,9 +277,7 @@ start from the inputs and move through the circuit, labeling the
 output wire of each gate with the proposition that it represents.
 This figure illustrates the process:
 
-<img src={useBaseUrl('img/fig1-6.png')}
-alt="Finding the proposition whose value is computed by a
-combinational logic circuit." className="centered-figure" />
+![Finding the proposition whose value is computed by a combinational logic circuit](/img/fig1-6.png)
 
 Each wire in the circuit is labeled with the proposition that it represents. The
 numbering of the labels shows one of the orders in which they can be associated
@@ -564,8 +550,7 @@ logic circuit that computes that proposition:
 1. Find the compound proposition computed by each of the
 following circuits:
 
-<img src={useBaseUrl('img/fig-1-label.png')}
-alt="Two circuits for an exercise" className="centered-figure" />
+![Two circuits for an exercise](/img/fig-1-label.png)
 
 [[spoiler | Answer]]
 | The first is $(A\land B)\land\lnot C$, and the second is $\lnot(A\land B)\lor(\lnot B\lor C)$.
@@ -611,8 +596,7 @@ negation of a DNF proposition and apply De Morgan's Laws?)
 1. Use the laws of Boolean algebra to simplify each of the
 following circuits:
 
-<img src={useBaseUrl('img/fig-1-simplify.png')}
-alt="Three circuits for an exercise" className="centered-figure" />
+![Three circuits for an exercise](/img/fig-1-simplify.png)
 
 [[spoiler | Answer]]
 | * $(A\land B)\lor(B\land C)\equiv(A\lor C)\land B$

@@ -2,14 +2,12 @@
 id: state
 title: State Machines
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 In another section[^Not yet written&hellip;.] we learned about Moore machines, a version of finite state automata where there is an output associated with each state.
 Using flip-flops, we can build a circuit that implements a Moore machine.
 Here is a block diagram for such a circuit (although the connections are shown as single wires, all but the clock may be several bits wide):
 
-<img src={useBaseUrl('img/MooreMachine.png')}
-alt="Moore Machine" className="centered-figure" />
+![Moore Machine](/img/MooreMachine.png)
 
 In addition to the feedback within each flip-flop, there is a larger-scale feedback loop of the current state back to provide input for the next step. The box labelled _Comb. Logic_ is a combinational circuit with two functions: compute an output based on the current state, and compute the next-state control signals based on the input and the current state. The box labelled _State_ is one or more flip-flops; when a clock pulse arrives, it takes the control signals from the combinational logic and advances to the next state&mdash;the **state** of the machine is simply the current states of these flip-flops.
 
@@ -27,8 +25,7 @@ The input signals may not be stable until close to the end of the cycle (just be
 Here is an example of this process.
 Consider the following state machine for a mod-3 up/down counter:
 
-<img src={useBaseUrl('img/Mod3CounterMachine.png')}
-alt="Mod-3 Counter Machine" className="centered-figure" />
+![Mod-3 Counter Machine](/img/Mod3CounterMachine.png)
 
 It has one input, which will be read once per clock pulse; call it $a$.
 When $a$ is 0, each clock pulse increments the counter through the states $q_0$, $q_1$, $q_2$, and back to $q_0$.
@@ -58,19 +55,16 @@ For this, we will first fill in a truth table with current state, input, and des
 
 Here is the Karnaugh map for $D_1$:
 
-<img src={useBaseUrl('img/KarnaughMod3D1.png')}
-alt="Mod-3 Counter, D1 Karnaugh Map" className="centered-figure" />
+![Mod-3 Counter, D1 Karnaugh Map](/img/KarnaughMod3D1.png)
 
 And here is the map for $D_0$:
 
-<img src={useBaseUrl('img/KarnaughMod3D0.png')}
-alt="Mod-3 Counter, D0 Karnaugh Map" className="centered-figure" />
+![Mod-3 Counter, D0 Karnaugh Map](/img/KarnaughMod3D0.png)
 
 Therefore, simple DNF expressions for the control signals are $D_1=\overline{Q}_1\overline{Q}_0a+Q_0\overline{a}$ and $D_0=\overline{Q}_1\overline{Q}_0\overline{a}+Q_1a$.
 The full circuit for the counter is therefore:
 
-<img src={useBaseUrl('img/Mod3Counter.png')}
-alt="Mod-3 Counter Circuit" className="centered-figure" />
+![Mod-3 Counter Circuit](/img/Mod3Counter.png)
 
 > With combinational circuits to perform arithmetic and logic operations on data, plus registers to store intermediate results and keep track of program steps, a sequential circuit allows us to model an entire central processing unit.
 By connecting the inputs and outputs to external storage and I/O devices, the CPU forms the core of a general-purpose computer; details are left to the reader.

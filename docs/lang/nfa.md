@@ -2,7 +2,6 @@
 id: nfa
 title: Nondeterministic Finite-State Automata
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 
@@ -107,8 +106,7 @@ accepted by $M$: $L(M) = \{ w \in \Sigma^* \ | \ \partial^*(q_0, w) \cap F \not=
 **Example:** The NFA shown below accepts all strings of $a$'s 
 and $b$'s in which the second-to-last symbol is $a$.
 
-<img src={useBaseUrl('img/fsa8.png')}
-alt="Example NFA" className="centered-figure" />
+![Example NFA](/img/fsa8.png)
 
 ---
 
@@ -248,8 +246,7 @@ the same language.
 **Example:**
 Consider the NFA shown below.
 
-<img src={useBaseUrl('img/fsa9.png')}
-alt="Example NFA" className="centered-figure" />
+![Example NFA](/img/fsa9.png)
 
 We start by looking at $\partial^*(p_0, \varepsilon)$, and then add transitions and
 states as described above.
@@ -276,15 +273,13 @@ the DFA, together with the transition $\delta(q_1,b) = q_3$.
 
 At this point, our partially-constructed DFA looks as shown below:
 
-<img src={useBaseUrl('img/fsa10.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa10.png)
 
 The construction continues as long as there are new states being added, and new
 transitions from those states that have to be computed.
 The final DFA is shown below.
 
-<img src={useBaseUrl('img/fsa11.png')}
-alt="Example DFA" className="centered-figure" />
+![Example DFA](/img/fsa11.png)
 
 ---
 
@@ -296,13 +291,11 @@ alt="Example DFA" className="centered-figure" />
 2. Give a DFA that accepts the language accepted by the 
 following NFA.
 
-<img src={useBaseUrl('img/fsa3ex.png')}
-alt="Example DFA" className="centered-figure" />
+![Example NFA](/img/fsa3ex.png)
 
 3. Give a DFA that accepts the language accepted by the following NFA.
 (Be sure to note that, for example, it is possible to reach both $q_1$ and
 $q_3$ from $q_0$ on consumption of an $a$, because of the 
 $\varepsilon$-transition.)
 
-<img src={useBaseUrl('img/fsa4ex.png')}
-alt="Example DFA" className="centered-figure" />
+![Example NFA](/img/fsa4ex.png)

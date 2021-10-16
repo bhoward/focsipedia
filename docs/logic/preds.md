@@ -2,7 +2,6 @@
 id: preds
 title: Predicates and Quantifiers
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

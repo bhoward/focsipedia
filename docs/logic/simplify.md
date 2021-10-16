@@ -2,7 +2,6 @@
 id: simplify
 title: Circuit Simplification
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 
@@ -31,9 +30,7 @@ at 1 after only two gate delays. However, other combinations of inputs may well
 take the entire three gate delays to correctly determine the value of the
 output.
 
-<img src={useBaseUrl('img/fig1-6.png')}
-alt="Finding the proposition whose value is computed by a
-combinational logic circuit." className="centered-figure" />
+![Finding the proposition whose value is computed by a combinational logic circuit](/img/fig1-6.png)
 
 One approach to reducing the delay of a circuit is to use the [disjunctive normal
 form](./circuits#disjunctive-normal-form), also known as the **sum-of-products**. Since
@@ -41,8 +38,7 @@ an expression in DNF is the OR of a collection of terms which are the AND of
 some number of simple terms, and a simple term is either an input or a negated
 input, the corresponding circuit can be constructed in three layers:
 
-<img src={useBaseUrl('img/DNFlayers.png')}
-alt="Three-layer circuit for disjunctive normal form" className="centered-figure" />
+![Three-layer circuit for disjunctive normal form](/img/DNFlayers.png)
 
 An interesting property of the sum-of-products representation falls out of the
 De Morgan laws. Since $(a\land b)\lor(c\land d)=\lnot(\lnot(a\land
@@ -50,8 +46,7 @@ b)\land\lnot(c\land d))=(a\uparrow b)\uparrow(c\uparrow d)$, the two layers of
 AND and OR gates may be replaced entirely with NAND gates to get an
 equivalent circuit!
 
-<img src={useBaseUrl('img/DNFlayersNand.png')}
-alt="Three-layer circuit for disjunctive normal form using only NAND gates" className="centered-figure" />
+![Three-layer circuit for disjunctive normal form using only NAND gates](/img/DNFlayersNand.png)
 
 Unfortunately, this does not mean that any Boolean expression can be computed by
 a circuit with only three gate delays. One problem comes when we need AND and OR
@@ -148,8 +143,7 @@ second column. That gives the simplified terms $\lnot{p}$ and $q$, so the final
 simplified expression is $\lnot{p}\lor q$. Here is the map with the implicants
 outlined:
 
-<img src={useBaseUrl('img/KarnaughImp.png')}
-alt="Karnaugh map for implication" className="centered-figure" />
+![Karnaugh map for implication](/img/KarnaughImp.png)
 
 A Karnaugh map can also work with three or four input variables, producing
 either a $2\times 4$ or a $4\times 4$ array. The same procedure applies, with
@@ -167,8 +161,7 @@ third is the $2\times 2$ block consisting of the middle two elements of the top
 row and the middle two elements of the bottom row (wrapping vertically); a final
 example is the last two elements of the third row:
 
-<img src={useBaseUrl('img/KarnaughImplicants.png')}
-alt="Examples of Karnaugh Map implicants" className="centered-figure" />
+![Examples of Karnaugh Map implicants](/img/KarnaughImplicants.png)
 
 ## Don't Care Values
 
@@ -222,16 +215,14 @@ also covered by the $p\land s$ implicant) on the bottom row; if it were just the
 1 on the top row, then the term would be $\lnot{p}\land\lnot{q}\land r\land s$,
 which is not as simple. Here are the cells that end up being covered:
 
-<img src={useBaseUrl('img/KarnaughExampleMap.png')}
-alt="Example Karnaugh Map with implicants outlined" className="centered-figure" />
+![Example Karnaugh Map with implicants outlined](/img/KarnaughExampleMap.png)
 
 Therefore, the simplified expression is
 $(\lnot{p}\land\lnot{q}\land\lnot{r}\land\lnot{s})\lor(\lnot{q}\land r\land
 s)\lor(q\land r\land\lnot{s})\lor(p\land s)$. This may be computed by the
 following circuit:
 
-<img src={useBaseUrl('img/KarnaughExampleCircuit.png')}
-alt="Resulting circuit for a Karnaugh Map example" className="centered-figure" />
+![Resulting circuit for a Karnaugh Map example](/img/KarnaughExampleCircuit.png)
 
 In the next section, we will see how to implement this with a total delay of 5, using only two-input AND and OR gates.
 
@@ -312,8 +303,7 @@ a & b & c & x & y & z\\ \hline
    Using only seven elements (for example, light-emitting diodes), we may form a
    reasonable approximation of all the digits 0--9:
    
-   <img src={useBaseUrl('img/SevenSegmentDigits.png')}
-alt="Digits 0 through 9 as shown in a seven-segment display" className="centered-figure" />
+   ![Digits 0 through 9 as shown in a seven-segment display](/img/SevenSegmentDigits.png)
 
    Construct a truth table with four inputs and seven outputs showing how to
    produce these characters from input in BCD (be sure to include a diagram

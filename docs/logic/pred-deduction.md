@@ -2,7 +2,6 @@
 id: pred-deduction
 title: Natural Deduction for Predicate Logic
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 Before seeing the natural deduction rules for handling the quantifiers
 ($\forall$ and $\exists$), we will need to be careful about how we handle

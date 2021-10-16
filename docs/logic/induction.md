@@ -2,7 +2,6 @@
 id: induction
 title: Mathematical Induction
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow & Eck)
 

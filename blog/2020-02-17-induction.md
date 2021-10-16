@@ -3,7 +3,6 @@ slug: induction
 title: Mathematical Induction
 author: Brian Howard
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-Read about <a href={useBaseUrl('docs/logic/induction')}>Mathematical Induction</a>,
-and look at <a href={useBaseUrl('docs/logic/induction#exercises')}>exercises 1, 4, 6, 7, and 8</a> (to discuss in class).
+Read about [Mathematical Induction](/docs/logic/induction),
+and look at [exercises 1, 4, 6, 7, and 8](/docs/logic/induction#exercises) (to discuss in class).

@@ -2,7 +2,6 @@
 id: tm
 title: General Grammars and Turing Machines
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 
@@ -222,8 +221,7 @@ form $(\sigma,\tau,L)$ and $(\sigma,\tau,R)$, where
 $\sigma$ and $\tau$ are symbols in the Turing machine's alphabet.
 For example,
 
-<img src={useBaseUrl('img/turing1.png')}
-alt="Turing Machine transition" className="centered-figure" />
+![Turing Machine transition](/img/turing1.png)
 
 indicates that when the machine is in state $q_0$ and
 reads an $a$, it writes a $b$, moves left, and enters state $h$.
@@ -234,8 +232,7 @@ versa_, until it finds a $c$. It leaves blanks (#'s) unchanged.
 When and if the machine encounters a $c$, it moves to the left
 and halts:
 
-<img src={useBaseUrl('img/turing2.png')}
-alt="Turing Machine example" className="centered-figure" />
+![Turing Machine example](/img/turing2.png)
 
 To simplify the diagrams, I will leave out any transitions that are
 not relevant to the computation that I want the machine to perform.
@@ -257,8 +254,7 @@ keep track of which characters it has already copied. After the
 string has been copied, the machine changes the $c$'s and $d$'s
 back to $a$'s and $b$'s before halting.
 
-<img src={useBaseUrl('img/turing3.png')}
-alt="Turing Machine example" className="centered-figure" />
+![Turing Machine example](/img/turing3.png)
 
 In this machine, state $q_0$ checks whether the next character
 is an $a$, a $b$, or a # (indicating the end of the string).
@@ -326,8 +322,7 @@ For example, let $\Sigma=\{a\}$ and define $f\colon\Sigma^*\to\Sigma^*$
 by $f(a^n)=a^{2n}$, for $n\in\N$. Then $f$ is Turing-computable
 since it is computed by this Turing machine:
 
-<img src={useBaseUrl('img/turing4.png')}
-alt="Turing Machine example" className="centered-figure" />
+![Turing Machine example](/img/turing4.png)
 
 We can also use Turing machines to define "computable languages."
 There are actually two different notions of Turing-computability

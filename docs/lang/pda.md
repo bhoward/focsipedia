@@ -2,7 +2,6 @@
 id: pda
 title: Pushdown Automata
 ---
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 (Content adapted from Critchlow &amp; Eck)
 
@@ -55,8 +54,7 @@ pushed in the order $b_n,\ldots,b_1$, so that
 $b_1$ ends up on the top of the stack.) 
 For example, consider the following transition diagram for a pushdown automaton:
 
-<img src={useBaseUrl('img/fig-5-pa-1.png')}
-alt="Sample PDA" className="centered-figure" />
+![Sample PDA](/img/fig-5-pa-1.png)
 
 This pushdown automaton has start state $q_0$ and one accepting
 state, $q_1$. It can read strings over the alphabet $\Sigma=\{a,b\}$.
@@ -117,8 +115,7 @@ the form $a^kb^k$, as claimed.
 Here are two more examples. These pushdown automata use the capability
 to push or pop more than one symbol at a time:
 
-<img src={useBaseUrl('img/fig-5-pa-1b.png')}
-alt="Sample PDAs" className="centered-figure" />
+![Sample PDAs](/img/fig-5-pa-1b.png)
 
 The automaton on the left accepts the language
 $\{a^nb^m\;|\; n\le m\le 2n\}$. Each time it reads an $a$,
@@ -302,14 +299,12 @@ which accepts the language $\{a^nb^n\;|\; n\in\N\}$,
 is not deterministic. However, it is easy to construct a deterministic
 pushdown automaton for this language:
 
-<img src={useBaseUrl('img/fig-5-pa-2.png')}
-alt="DPDA for a^nb^n" className="centered-figure" />
+![DPDA for a^nb^n](/img/fig-5-pa-2.png)
 
 However, consider the language $\{ww^R\;|\; w\in\{a,b\}^*\}$. Here is
 a pushdown automaton that accepts this language:
 
-<img src={useBaseUrl('img/fig-5-pa-3.png')}
-alt="PDA for ww^R" className="centered-figure" />
+![PDA for ww^R](/img/fig-5-pa-3.png)
 
 In state $q_0$, this machine copies the first part of its input
 string onto the stack. In state $q_1$, it tries to match the remainder of the
@@ -331,8 +326,7 @@ $\{w\;|\; w\in\{a,b\}^* \land n_a(w)=n_b(w)\}$, which consists of strings over t
 alphabet $\{a,b\}$ in which the number of $a$'s is equal to the number
 of $b$'s. This language is accepted by the following pushdown automaton:
 
-<img src={useBaseUrl('img/fig-5-pa-4.png')}
-alt="Example PDA" className="centered-figure" />
+![Example PDA](/img/fig-5-pa-4.png)
 
 In this automaton, a $c$ is first pushed onto the stack,
 and it remains on the bottom of the stack until the computation ends.
@@ -362,8 +356,7 @@ special end-of-string symbol to the language. We use the
 symbol $\$$ for this purpose. The following deterministic
 automaton accepts the language $\{w\$\;|\; w\in \{a,b\}^*\land n_a(w)=n_b(w)\}\,$:
 
-<img src={useBaseUrl('img/fig-5-pa-4b.png')}
-alt="Example DPDA" className="centered-figure" />
+![Example DPDA](/img/fig-5-pa-4b.png)
 
 In this modified automaton, it is only possible for the
 machine to reach the accepting state $q_2$ by reading the end-of-string
@@ -401,20 +394,20 @@ $\{a^nb^n\;|\; n\in\N\}\cup\{a^nc^n\;|\; n\in\N\}$.
 pushdown automata. Explain your answers.
 
    a)
-<img src={useBaseUrl('img/fig-5-pa-ex1.png')}
-alt="Exercise PDA" className="centered-figure" />
+
+![Exercise PDA](/img/fig-5-pa-ex1.png)
 
    b)
-<img src={useBaseUrl('img/fig-5-pa-ex2.png')}
-alt="Exercise PDA" className="centered-figure" />
+
+![Exercise PDA](/img/fig-5-pa-ex2.png)
 
    c)
-<img src={useBaseUrl('img/fig-5-pa-ex3.png')}
-alt="Exercise PDA" className="centered-figure" />
+
+![Exercise PDA](/img/fig-5-pa-ex3.png)
 
    d)
-<img src={useBaseUrl('img/fig-5-pa-ex4.png')}
-alt="Exercise PDA" className="centered-figure" />
+   
+![Exercise PDA](/img/fig-5-pa-ex4.png)
 
 2. Let $B$ be the language over the alphabet $\{\,\texttt{(}\,,\texttt{)}\,\}$ that consists of 
 strings of parentheses that are balanced in the sense that every left parenthesis has
