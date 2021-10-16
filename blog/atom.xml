@@ -14,6 +14,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/final-review"/>
         <updated>2020-05-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions). The Wednesday class session will be a time to go over any questions you have.]]></summary>
+        <content type="html"><![CDATA[<p>There are some exam review materials on Moodle (a practice exam and solutions). The Wednesday class session will be a time to go over any questions you have.</p><p>Here is the <a href="https://drive.google.com/file/d/1FBkeW1uA5d2q6J6kYvxRr2mQBW8QuGbA/view">video</a> (and <a href="https://drive.google.com/open?id=104CLbzZq4Y-o1ymTXO1qcd_cqRcAZKkM">DyKnow</a>) from the section A review session.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -24,6 +25,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/computability"/>
         <updated>2020-05-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about Computability and the Halting Problem. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/computability">Computability</a> and the <a href="/docs/lang/halting">Halting Problem</a>. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.</p><p>If you are interested, there is also related material on the <a href="/docs/fp/lambda">Lambda Calculus</a>, which relates Turing Machines back to functional programming.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -34,6 +36,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/turing-machines"/>
         <updated>2020-05-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about General Grammars and Turing Machines. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/tm">General Grammars and Turing Machines</a>. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.</p><p>Here is the <a href="https://drive.google.com/file/d/1EWTIpqFvAU8WOeCa0lXK68kkleRjJ3Mu/view">video</a> (and <a href="https://drive.google.com/open?id=103Q9gCVdA9XqBQsM7tFk9gLKGpXY440_">DyKnow</a>) from the section A class session.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -44,6 +47,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/parsing"/>
         <updated>2020-04-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about parsing and pushdown automata, and look at the exercises in those sections.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/parsing">parsing</a> and <a href="/docs/lang/pda">pushdown automata</a>, and look at the exercises in those sections.</p><p>Here is the <a href="https://drive.google.com/file/d/1EY-WPnyQYCwMDHBuxRXyqBqB2l7YU_cD/view">video</a> (and <a href="https://drive.google.com/open?id=100AMiwpDtrUqs4S_acUgtHANLv5bP0q7">DyKnow</a>) from the section A class session. </p><p>If you are interested in seeing actual parsing code, look at the section on <a href="/docs/fp/parser-comb">recursive descent and parser combinators</a> (and if you are <em>really</em> interested, take CSC 426, Compilers in the fall<!-- -->…<!-- -->).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -54,6 +58,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/grammars"/>
         <updated>2020-04-27T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about context-free grammars and BNF rules, and look at the exercises in those sections.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/cfg">context-free grammars</a> and <a href="/docs/lang/bnf">BNF rules</a>, and look at the exercises in those sections.</p><p>Here is the <a href="https://drive.google.com/file/d/1a_PLuJ9mhaJb_kkLqpb_7Plz9bKxgg6e/view">video</a> (and <a href="https://drive.google.com/open?id=10-NGj9ApYgrP2t2jT3iuo3RrEZQpaH4k">DyKnow</a>) from the section A class session.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -64,6 +69,9 @@
         <link href="https://bhoward.github.io/focsipedia/blog/state-machines"/>
         <updated>2020-04-24T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[(Rescheduled from Wednesday, April 22)]]></summary>
+        <content type="html"><![CDATA[<p>(Rescheduled from Wednesday, April 22)</p><p>Read about <a href="/docs/logic/state">state machines</a>, and look at the exercises in that section.
+Also read about implementing <a href="/docs/fp/state">state machines in Java and ReasonML</a>, and try those exercises.</p><p>The <a href="https://drive.google.com/file/d/1E5uDztarzOBF0jLTrhv6IN6YsXud-Zad/view">video</a> from Monday is also relevant to this
+section.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -74,6 +82,9 @@
         <link href="https://bhoward.github.io/focsipedia/blog/sequential"/>
         <updated>2020-04-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about sequential circuits, and try the exercises in that section.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/sequential">sequential circuits</a>, and try the exercises in that section.</p><p>Here is a <a href="https://drive.google.com/file/d/18VMshqhb5ss3FF6q3B3o9_4FRrYvVf-_/view">video with solutions to Exam 2</a>.
+(This is the fixed version)</p><p>I recorded a <a href="https://drive.google.com/file/d/1E5uDztarzOBF0jLTrhv6IN6YsXud-Zad/view">video</a> with some demonstrations of
+sequential circuits using the <a href="https://github.com/hneemann/Digital">Digital</a> circuit simulator.</p><p>Here is the <a href="https://drive.google.com/file/d/1OEhiUbJQ948QBe-upTLPSkc0n2HlcaCW/view">video</a> and <a href="https://drive.google.com/open?id=1-zi54il1UKLtClpTImQ6s4yoyZkt52-h">DyKnow</a> from the section A class session.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -84,6 +95,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/exam2"/>
         <updated>2020-04-17T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[The second exam, over the second five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia). You should receive an email with a link to the exam and further instructions.]]></summary>
+        <content type="html"><![CDATA[<p>The second exam, over the second five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia). You should receive an email with a link to the exam and further instructions.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -94,6 +106,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/exam2-review"/>
         <updated>2020-04-15T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions, and a topic list). The Wednesday class session will be a time to go over any questions you have.]]></summary>
+        <content type="html"><![CDATA[<p>There are some exam review materials on Moodle (a practice exam and solutions, and a topic list). The Wednesday class session will be a time to go over any questions you have.</p><p>Watch the review session from <a href="https://drive.google.com/file/d/1hyRl3n4X-UImwmZ4z1c_cOpQ0AUGLKOR/view">Section A</a> (with <a href="https://drive.google.com/open?id=1-wDAQUNFtorMa9LTVvDKp_SipR4qYAfJ">DyKnow</a>) and <a href="https://drive.google.com/file/d/1v9d9-b5KxOp654gXZ9HmCQO_NH82ilVn/view">Section B</a> (with <a href="https://drive.google.com/open?id=1-xtuFt2nOK1U18vWj6YL3My9zjYN2qCH">DyKnow</a>).</p><p>Here is a <a href="https://drive.google.com/file/d/1mgGnYi1asNWEM3JGr1NyGoFGsdiuJl1l/view">video</a> (and <a href="https://drive.google.com/open?id=1-yv_cf65gTPJCQloN8gj57FgK6q_DCv4">DyKnow</a>) where I go over the answers to the short Google Forms-based practice exam.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -104,6 +117,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/nfa"/>
         <updated>2020-04-13T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about nondeterministic finite-state automata and their connection to regular expressions, and try the exercises in those sections.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/nfa">nondeterministic finite-state automata</a> and their <a href="/docs/lang/fsareg">connection to regular expressions</a>, and try the exercises in those sections.</p><p>Watch this accompanying <a href="https://drive.google.com/file/d/1QfJfvfFxYEDZMT0C7xifwmewZLPPO5Pd/view">video</a> (and <a href="https://drive.google.com/open?id=1-uyCi9ebCgwKVSm4fz8e70AoRq3Wikqj">DyKnow</a>).</p><p>I updated <a href="/blog/fsa">last Friday&#x27;s blog entry</a> to include a <a href="https://drive.google.com/file/d/1kI7JeF6LzXlE02I37uekmQhYi4XFvzv4/view">video</a> of the actual toy telephone<!-- -->—<!-- -->apparently the video I posted before didn&#x27;t show the camera view that I thought it was going to!</p><p>Here is the <a href="https://drive.google.com/file/d/1YDZjFcJuUmb37mmzqyvuDamNloRCYB7-/view">video</a> and <a href="https://drive.google.com/open?id=1-vEzByG3HL9bZ9IXeqBro5eOPbN_EI6C">DyKnow</a> from the section A class session.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -113,7 +127,8 @@
         <id>fsa</id>
         <link href="https://bhoward.github.io/focsipedia/blog/fsa"/>
         <updated>2020-04-10T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Read about finite-state automata, and try the exercises in that section.]]></summary>
+        <summary type="html"><![CDATA[Read about finite-state automata and try the exercises in that section.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/fsa">finite-state automata</a> and try the exercises in that section.</p><p>Watch this <a href="https://drive.google.com/file/d/1eQM-pgBE6BQtjOWTpUycLHTflvIopSMy/view">video</a> (and <a href="https://drive.google.com/open?id=1-mvty5DQoMbo7I6MbvfgCuuJa1WhIu_-">DyKnow</a>) of my toy telephone. Here is a <a href="https://drive.google.com/file/d/1kI7JeF6LzXlE02I37uekmQhYi4XFvzv4/view">video</a> of the telephone itself, which was mistakenly not captured when I recorded the session.</p><p>Here is the <a href="https://drive.google.com/file/d/1XGh1fOvJDv5HbNDafolK1kRlrEmr_tDs/view">video</a> and <a href="https://drive.google.com/open?id=1-p5DK4hJ08pUPITG9oYUc8YtQ8Docofi">DyKnow</a> from the section A class session.</p><p>(<strong>Optional</strong>) The paper by E.F. Moore I mention in the first video is:</p><blockquote><p>Moore, Edward F (1956). &quot;Gedanken-experiments on Sequential Machines&quot;. Automata Studies, Annals of Mathematical Studies. Princeton, N.J.: Princeton University Press (34): 129–153.</p></blockquote><p>You can read it on the Internet Archive <a href="https://web.archive.org/web/20120216141113/http://people.mokk.bme.hu/~kornai/termeszetes/moore_1956.pdf">here</a>.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -124,6 +139,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/languages"/>
         <updated>2020-04-08T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about languages and regular expressions (and their applications), and try the exercises in each section.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/lang/languages">languages</a> and <a href="/docs/lang/regexp">regular expressions</a> (and their <a href="/docs/lang/regexpapp">applications</a>), and try the exercises in each section.</p><p>Here is the <a href="https://drive.google.com/file/d/1UNee3KYu5l7ZYtTdrat94wNqHJyqJvgv/view">video</a> (and <a href="https://drive.google.com/open?id=1-m7cvRk09mPa8Q9KbDTxLZ_NHcoHJg6Y">DyKnow</a>) from the class section.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -134,6 +150,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/graph-traversals"/>
         <updated>2020-04-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read more about graphs. Watch the accompanying video plus DyKnow. Try the exercises.]]></summary>
+        <content type="html"><![CDATA[<p>Read more about <a href="/docs/ds/graphs">graphs</a>. Watch the <a href="https://drive.google.com/file/d/1z2v3vjL3RW7KUoP2wfbhVvDBTblaBBSb/view">accompanying video</a> plus <a href="https://drive.google.com/open?id=1-i0QfTx1XF85yOCXxmxkAQ-bPYfLQt9O">DyKnow</a>. Try the <a href="/docs/ds/graphs#exercises">exercises</a>.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -144,6 +161,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/graphs"/>
         <updated>2020-04-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about graphs (not yet finished; sorry).]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/ds/graphs">graphs</a> (not yet finished; sorry).</p><p>Here is the <a href="https://drive.google.com/file/d/1842RFTYSfQJf2OGj8teYyvE16lnDPnTt/view">video</a> (and <a href="https://drive.google.com/open?id=1-f8kbJw8Ii2y-EphGb-zsOsC2GUT6ye7">DyKnow</a>) from the class section.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -154,6 +172,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/ordered-trees"/>
         <updated>2020-04-01T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about binary search trees and heaps, and watch the corresponding video (and DyKnow).]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/ds/bst">binary search trees and heaps</a>, and watch the <a href="https://drive.google.com/file/d/1ROAaRviOeUixoru-TFyfsojOF8LrjCmM/view">corresponding video</a> (and <a href="https://drive.google.com/open?id=1-aR8Tt5o_C9mVed1CJgjfg2iCoR2N_lW">DyKnow</a>).</p><p>Look at these galleries of your DPoodle drawings: <a href="/docs/fp/galleryS20A">Section A</a> and <a href="/docs/fp/galleryS20B">Section B</a></p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -164,6 +183,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/class-resumes"/>
         <updated>2020-03-30T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Classes will resume in an online format on Monday, March 30. Work on your DPoodle drawings.]]></summary>
+        <content type="html"><![CDATA[<p>Classes will resume in an online format on Monday, March 30. Work on your <a href="/docs/fp/doodle-project">DPoodle</a> drawings.</p><p><strong>Update</strong> Also read about <a href="/docs/ds/trees">trees</a> and watch the <a href="https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view">corresponding video</a> (and <a href="https://drive.google.com/open?id=1-cMXKmHRLjs_8v-1MfJ89qEFEJQEYBg6">DyKnow</a>).</p><p>Here are the videos and DyKnow slides from the in-class sessions:</p><ul><li><a href="https://drive.google.com/file/d/1fZmQwPUAvxw4woQoaCSR08lGR2yrEHIm/view">Section A video</a> and <a href="https://drive.google.com/open?id=1-bWeUimbXYiWg4LyT87PTLU2Jrif9bqj">DyKnow</a></li><li><a href="https://drive.google.com/file/d/1oBKn6LdDb1cDz2QqVz0MbR6QiXk8alED/view">Section B video</a> and <a href="https://drive.google.com/open?id=1-fASjvsLaP0lO2r3dbjkMZc8yIsOiQXt">DyKnow</a></li></ul><p>My plan for now is ... <!-- --> </p><ul><li>Lecture videos will be posted on this blog along with each day&#x27;s reading. I hope to be able to do this a day or two in advance.</li><li>Class sessions conducted over Google Meet will be for interaction and questions. If you are unable to join the session, it will be
+recorded and a link will be posted here when the recording is available.</li><li>Exams will still be held more-or-less as scheduled, although I am still working out the details.</li><li>Instead of office hours, I will be happy to answer questions at any time by email or to set up an appointment for a phone call or video chat (Google Meet, Hangout, Skype, or something else that works for you).</li></ul><p><a href="https://drive.google.com/file/d/1aHHNtoY_B1v0JsADDju_Y-bUrNHRmzcC/view">Test video</a> recorded with Google Meet.</p><p>Here are the topics planned for the rest of the semester:</p><ul><li>3/30-4/3 Trees, Traversals, Graphs, Graph Traversals</li><li>4/6-4/10 Languages, Regular Expressions, Finite-State Automata</li><li>4/13-4/17 Exam 2, <em>Friday April 17</em></li><li>4/20-4/24 Sequential Circuits and State Machines</li><li>4/27-5/1 Grammars, Parsing, Pushdown Automata</li><li>5/4-5/6 Turing Machines, Computability, Exam Review</li><li>Saturday 5/9 (Section A) or Monday 5/11 (Section B) Final Exam</li></ul>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -174,6 +195,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/no-class"/>
         <updated>2020-03-13T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[There will be no class today: Friday, March 13, 2020.]]></summary>
+        <content type="html"><![CDATA[<p>There will be no class today: Friday, March 13, 2020.
+Work on your <a href="/docs/fp/doodle">DPoodle</a> drawings (details TBA).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -184,6 +207,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/exam1-return"/>
         <updated>2020-03-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Today we will be going over the first exam.]]></summary>
+        <content type="html"><![CDATA[<p>Today we will be going over the first exam.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -194,6 +218,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/accumulators"/>
         <updated>2020-03-09T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Continue reading about common patterns of writing functional programs: see the Accumulators section.]]></summary>
+        <content type="html"><![CDATA[<p>Continue reading about common patterns of writing functional programs: see the <a href="/docs/fp/map-reduce#accumulators">Accumulators</a> section.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -204,6 +229,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/helpers"/>
         <updated>2020-03-06T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Continue reading about common patterns of writing functional programs: see the Helper Functions section.]]></summary>
+        <content type="html"><![CDATA[<p>Continue reading about common patterns of writing functional programs: see the <a href="/docs/fp/map-reduce#helper-functions">Helper Functions</a> section.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -214,6 +240,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/exam1"/>
         <updated>2020-03-04T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[The first exam, over the first five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia).]]></summary>
+        <content type="html"><![CDATA[<p>The first exam, over the first five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -224,6 +251,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/exam1-review"/>
         <updated>2020-03-02T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[There is a practice exam on Moodle. More details to come.]]></summary>
+        <content type="html"><![CDATA[<p>There is a practice exam on Moodle. More details to come.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -234,6 +262,26 @@
         <link href="https://bhoward.github.io/focsipedia/blog/mapreduce"/>
         <updated>2020-02-28T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[No reading for today. We will talk about the map and reduce functions on lists, and how they made Google what it is today.]]></summary>
+        <content type="html"><![CDATA[<p>No reading for today. We will talk about the <code>map</code> and <code>reduce</code> functions on lists, and how they made Google what it is today.</p><p>For reference, here are the definitions of <code>map</code> and <code>reduce</code> developed in class (this version of <code>reduce</code> is often called <code>foldLeft</code>):</p><pre><code class="language-reason" metastring="edit">let rec map = (f, aList) =&gt; {
+  switch (aList) {
+  | [] =&gt; []
+  | [head, ...tail] =&gt; [f(head), ...map(f, tail)]
+  }
+};
+
+let rec reduce = (g, init, aList) =&gt; {
+  switch (aList) {
+  | [] =&gt; init
+  | [head, ...tail] =&gt; reduce(g, g(init, head), tail)
+  }
+};
+
+map(n =&gt; {2 * n}, [1, 2, 3, 4]);
+reduce((+), 0, [1, 2, 3, 4]);
+reduce((*), 1, [1, 2, 3, 4]);
+reduce((summary, n) =&gt; {summary ++ &quot;,&quot; ++ string_of_int(n)}, &quot;&quot;, [1, 2, 3, 4]);
+reduce((+), 0, map(n =&gt; {2 * n}, [1, 2, 3, 4]));
+</code></pre>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -243,7 +291,8 @@
         <id>types2</id>
         <link href="https://bhoward.github.io/focsipedia/blog/types2"/>
         <updated>2020-02-26T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Finish reading Types in Functional]]></summary>
+        <summary type="html"><![CDATA[Finish reading Types in Functional Programming. Look at Exercises 1, 2, 3, and 5, to discuss in class.]]></summary>
+        <content type="html"><![CDATA[<p>Finish reading <a href="/docs/fp/types">Types in Functional Programming</a>. Look at <a href="/docs/fp/types#exercises">Exercises 1, 2, 3, and 5</a>, to discuss in class.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -253,7 +302,8 @@
         <id>types</id>
         <link href="https://bhoward.github.io/focsipedia/blog/types"/>
         <updated>2020-02-24T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Read about Types in Functional Programming. I am still]]></summary>
+        <summary type="html"><![CDATA[Read about Types in Functional Programming. I am still writing this section, so there are no exercises to look at yet.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/fp/types">Types in Functional Programming</a>. I am still writing this section, so there are no exercises to look at yet.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -263,7 +313,9 @@
         <id>functions</id>
         <link href="https://bhoward.github.io/focsipedia/blog/functions"/>
         <updated>2020-02-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Read about Functions and]]></summary>
+        <summary type="html"><![CDATA[Read about Functions and an Introduction to Functional Programming,]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/sets/functions">Functions</a> and an <a href="/docs/fp/intro">Introduction to Functional Programming</a>,
+and look at <a href="/docs/fp/intro#exercises">exercises 1, 2, and 5</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -274,6 +326,26 @@
         <link href="https://bhoward.github.io/focsipedia/blog/recursion"/>
         <updated>2020-02-19T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about Recursion,]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/recursion">Recursion</a>,
+and look at <a href="/docs/logic/recursion#exercises">exercises 3, 4, 7, 8, and 10</a> (to discuss in class).</p><p>Here is the proof that I started last Friday in class, and didn&#x27;t complete:</p><blockquote><p><strong>Theorem:</strong><br/>
+<!-- -->$\exists x\forall yP(x, y)\vdash\forall y\exists xP(x, y)$</p></blockquote><blockquote><p><strong>Proof:</strong>
+$$ \begin{array}{ll}
+\ell_1: \exists x\forall yP(x, y) &amp; \text{premise}<!-- -->\<!-- -->
+\ell_2: \text{fresh}\ x_0, \forall yP(x_0, y)\Rightarrow<!-- -->{<!-- -->\<!-- -->
+\quad\ell_3: \text{fresh}\ y_0\Rightarrow<!-- -->{<!-- -->\<!-- -->
+\quad\quad\ell_4: P(x_0, y_0) &amp; \forall E\ \ell_2, y_0<!-- -->\<!-- -->
+\quad\quad\ell_5: \exists xP(x, y_0) &amp; \exists I\ \ell_4, x_0<!-- -->\<!-- -->
+\quad<!-- -->}<!-- -->\<!-- -->
+\quad\ell_6: \forall y\exists xP(x, y) &amp; \forall I\ \ell_3<!-- -->\<!-- -->
+<!-- -->}<!-- -->\<!-- -->
+\ell_7: \forall y\exists xP(x, y) &amp; \exists E\ \ell_1, \ell_2
+\end{array} $$</p><p>In words, since we start by assuming an existential, we can suppose ($\ell<em>2$) that $x_0$ is the (fresh) name of an $x$
+that makes $\forall yP(x_0, y)$ true. Now, to prove a universal quantifier, we need to introduce _another</em> fresh variable,
+$y_0$; if we can show $\exists xP(x, y_0)$ without any other conditions on $y_0$, then we can reach our desired conclusion.
+But since we know (within the subproof starting at $\ell_2$) that $P(x_0, y)$ holds for all $y$, we might as well choose
+$y$ to be $y_0$, at $\ell_4$. Now we have some particular $x_0$ and $y_0$ making $P$ true, so we can conclude $\exists xP(x, y_0)$
+at $\ell_5$. This finishes what we needed for the $\forall I$ step at $\ell_6$, and the proof concludes with the application of
+$\exists E$ that we set up at the beginning.</p></blockquote>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -284,6 +356,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/induction"/>
         <updated>2020-02-17T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about Mathematical Induction,]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/induction">Mathematical Induction</a>,
+and look at <a href="/docs/logic/induction#exercises">exercises 1, 4, 6, 7, and 8</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -294,6 +368,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/deduction2"/>
         <updated>2020-02-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about Natural Deduction for Predicate Logic.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/pred-deduction">Natural Deduction for Predicate Logic</a>.</p><p>Do <a href="/docs/logic/deduction#exercises">exercise 4, parts v and vi</a> (<strong>to hand in</strong>).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -304,6 +379,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/deduction"/>
         <updated>2020-02-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read the section on deduction.]]></summary>
+        <content type="html"><![CDATA[<p>Read the section on <a href="/docs/logic/deduction">deduction</a>.
+Do <a href="/docs/logic/deduction#exercises">exercises 2, 4, and 5</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -314,6 +391,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/predicates"/>
         <updated>2020-02-10T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read the section on predicate logic.]]></summary>
+        <content type="html"><![CDATA[<p>Read the section on <a href="/docs/logic/preds">predicate logic</a>.
+Do <a href="/docs/logic/preds/#exercises">exercises 1, 5, and 6</a> (to discuss in class). </p><p>Start reading the section on <a href="/docs/logic/deduction">deduction</a>. Exercises on deduction will be assigned for Wednesday.</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -324,6 +403,10 @@
         <link href="https://bhoward.github.io/focsipedia/blog/sets"/>
         <updated>2020-02-07T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Skim the sections on set concepts and algebra (these two sections]]></summary>
+        <content type="html"><![CDATA[<p>Skim the sections on set <a href="/docs/sets/concepts">concepts</a> and <a href="/docs/sets/algebra">algebra</a> (these two sections
+should be mostly review of material you should have seen before, with emphasis
+on the connection to propositional logic). Read the section on set <a href="/docs/sets/programming">programming</a>.
+Do <a href="/docs/sets/programming#exercises">exercises 1, 4, 10, and 12</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -334,6 +417,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/circuit-components"/>
         <updated>2020-02-05T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about circuit components.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/components">circuit components</a>.
+Do <a href="/docs/logic/components#exercises">exercises 1, 3, and 5</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -344,6 +429,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/circuit-simplification"/>
         <updated>2020-02-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about circuit simplification.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/simplify">circuit simplification</a>.
+Do <a href="/docs/logic/simplify#exercises">exercises 1 and 2</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -354,6 +441,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/logic-circuits"/>
         <updated>2020-01-31T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about logic circuits.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/circuits">logic circuits</a>.
+Do <a href="/docs/logic/circuits#exercises">exercises 2 and 7</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -364,6 +453,8 @@
         <link href="https://bhoward.github.io/focsipedia/blog/logic-operators"/>
         <updated>2020-01-29T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Read about propositional logic: the operators and Boolean algebra.]]></summary>
+        <content type="html"><![CDATA[<p>Read about <a href="/docs/logic/intro">propositional logic</a>: the <a href="/docs/logic/props">operators</a> and <a href="/docs/logic/boolean">Boolean algebra</a>.
+Do exercises 2, 3, 5, 7, 10, and 11 in <a href="/docs/logic/props#exercises">Propositional Logic</a>, and exercises 4, 6, 8, 10, and 13 in <a href="/docs/logic/boolean#exercises">Boolean Algebra</a> (to discuss in class).</p>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
@@ -374,6 +465,7 @@
         <link href="https://bhoward.github.io/focsipedia/blog/first-day"/>
         <updated>2020-01-27T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ...  FoCSipedia!]]></summary>
+        <content type="html"><![CDATA[<p>The first day will just be making introductions and going over the syllabus. There will also be an introduction to ... <!-- --> <a href="https://bhoward.github.io/focsipedia/">FoCSipedia</a>!</p><p>Here is a tentative schedule of events for the semester:</p><ul><li>Wednesday, March 4: Exam 1</li><li>Friday, March 13: No class (SIGCSE conference)</li><li>Friday, March 20: Last day to withdraw with a W</li><li>Monday, March 23<!-- -->–<!-- -->Friday, March 27: Spring Break</li><li>Wednesday, April 15: Exam 2</li><li>Wednesday, May 6: Last day of class</li><li>Friday, May 8: Study day</li><li>Saturday, May 9: Section A (12:30) final exam at 8:30am</li><li>Monday, May 11: Section B (1:40) final exam at 8:30am</li></ul>]]></content>
         <author>
             <name>Brian Howard</name>
         </author>
