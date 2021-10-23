@@ -3,4 +3,8 @@ id: verification
 title: Program Verification
 ---
 
-Coming soon
+Pre- and post-conditions
+
+Invariants (loop, class?)
+
+Hoare Logic?
