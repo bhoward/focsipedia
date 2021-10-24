@@ -83,13 +83,13 @@ $$
 \frac{T_1}{p}\leq T_p\leq\frac{T_1}{p} + T_\infty.
 $$
 
-## Recurrences for loops and recursive functions
+## Recurrences for Loops and Recursive Functions
 
 If we have a program that takes some input and computes a result, we may calculate an estimate of the running time of that program.
 We will proceed by performing a **structural induction** on the program code; we will not be doing this formally, but the idea is that our base cases will be the simple statements, such as performing arithmetic and binding values to variables&mdash;these will be assumed to take constant time.
 The inductive cases will be the compound statements, such as conditionals (`if`), loops (`for` and `while`), and function calls&mdash;the times for these will be calculated from the times of their components.
 
-Here is an example in pseudocode:
+Here is an example in pseudocode that shows most of the cases:
 ```
 function a(n):
   var s = 0                // a1
@@ -148,12 +148,163 @@ That is, the time to do the `while` loop for a given value of $n$ is $O(n)$ for 
 To perform this calculation, we will temporarily replace the $O(n)$ estimate with the exact value $n$; expanding out the recurrence then gives us the result $T_w(n) = O(n + (n-1) + \cdots + 2 + 1)$.
 Since the sum of the numbers from 1 to $n$ is $\frac{1}{2}n(n+1)$, this gives us $T_w(n) = O(n^2)$.
 
-Therefore, the total running time of the program is quadratic in its input.
-
 [^2]: Technically we should also add an $O(1)$ term for the overhead of checking the loop condition and branching back or out of the loop, but since that is dominated by the $O(n)$ term it may be ignored.
 
-## Examples of common cases
+Therefore, the total running time of the program is quadratic in its input.
 
-## Master Theorem?
+## Examples of Recurrence Solution Techniques
+
+### Tabulation
+
+Sometimes it helps to make a table of the first few values of a recurrence, to try to see a pattern.
+If we see a pattern and know a closed-form expression for that pattern, then we can plug it into the recurrence and check whether it works in general.
+
+Consider the recurrence $T(n) = 2T(n - 1) + 1$, with base case $T(0) = 1$. Here is a table of the first few values:
+
+$$
+\begin{array}{r|c|c|c|c|c}
+n & 0 & 1 & 2 & 3 & 4\\ \hline
+T(n) & 1 & 3 & 7 & 15 & 31
+\end{array}
+$$
+
+If you recognize the values as each being one less than a successive power of two, then you can guess the closed-form expression $T(n) = 2^{n+1} - 1$.
+Plugging this in to the recurrence equation, we can first check that it works in the base case: $T(0) = 2^{0+1} - 1 = 2 - 1 = 1$.
+For the general case, we will substitute our expression for each occurrence of $T$ in $T(n) = 2T(n-1) + 1$.
+On the left we get $2^{n+1} - 1$, while on the right we get $2(2^{n-1+1} - 1) + 1$, which simplifies to $2\cdot 2^n - 2 + 1 = 2^{n+1} - 1$, so it checks out.
+
+### Repeated Substitution
+
+If we do not see a pattern in the small values, sometimes we can see it instead when working from the general case downward.
+Again, once we identify a candidate closed-form expression, we can plug it in and check (although by the time we reach that point we will probably already be convinced, because we have already been working with the general recurrence equation).
+
+Consider the recurrence $T(n) = T(n / 2) + 1$, with base case $T(1) = 0$.
+Tabulating the first few values might not help (and here I will assume that we are using integer division by two, which discards any fractional part):
+
+$$
+\begin{array}{r|c|c|c|c|c}
+n & 1 & 2 & 3 & 4 & 5\\ \hline
+T(n) & 0 & 1 & 1 & 2 & 2
+\end{array}
+$$
+
+Instead, let us start with the general term $T(n)$, and expand it out a few times according to the recurrence:
+
+$$
+\begin{array}{rcl}
+T(n) & = & T(n / 2) + 1\\
+& = & \left(T(n / 4) + 1\right) + 1\\
+& = & \left(\left(T(n / 8) + 1\right) + 1\right) + 1\\
+& = & \ldots\\
+& = & T(n / 2^k) + k
+\end{array}
+$$
+
+In the last line, we have recognized a pattern in the previous lines and written an expression for the $k^\textrm{th}$ step of the expansion.
+
+Now, consider what value of $k$ will lead us to the base case.
+The base case is $T(1) = 0$, so we want $n / 2^k = 1$, or $n = 2^k$, which will be true when $k = \log_2 n$.
+Plugging this information back into the expanded form above gives us $T(n) = T(n / 2^k) + k = T(1) + \log_2 n = \log_2 n$.
+Sure enough, this checks out: $T(n) = \log_2 n = log_2(n / 2) + 1 = T(n / 2) + 1$.
 
 ## Exercises
+
+1. Give a simple, tight, big-oh upper-bound for the function $f(N) = (2N\log N + 3N^2 + 7N + 4\log N)^3$.
+[[spoiler | Answer]]
+| The expression in parentheses is $O(N^2)$, so if we cube it the result will be $f(N) = O(N^6)$.
+
+2. What is the big-oh running time of the following program, in terms of the input $n$?
+```
+function f(n):
+  if n = 0:
+    return 0
+  else:
+    return 2 + f(n - 1)
+
+main:
+  var n = input
+  var s = 0
+  while n > 1:
+    for i = 1 to f(n):
+      s := s + i
+    n := n / 2
+  print s
+```
+[[spoiler | Answer]]
+| The function `f(n)` computes $2n$ in time $O(n)$, so the `for` loop in `main` will execute $2n$ times for a total running time of $O(n)$.
+| Therefore, a recurrence for the time taken by the `while` loop is $T_w(n) = O(n) + T_w(n / 2)$.
+| Expanding this out by repeated substitution gives $T_w(n) = O(n + n/2 + n/4 + \cdots + 1)$.
+| The sum $n + n/2 + n/4 + \cdots + 1$ is approximately $2n$, so $T_w(n) = O(n)$, and therefore the entire program is linear in its input.
+
+3. Solve the recurrence $T(n) = T(n - 1) + 2n + 1$, with base case $T(0) = 1$.
+[[spoiler | Answer]]
+| By tabulation, the first few values are
+| $$
+| \begin{array}{r|c|c|c|c|c}
+| n & 0 & 1 & 2 & 3 & 4 \\ \hline
+| T(n) & 1 & 4 & 9 & 16 & 25
+| \end{array}
+| $$
+| so we may guess (and check) the closed-form $T(n) = (n + 1)^2$.
+
+4. Solve the recurrence $T(n) = 2T(n / 2) + O(n)$ to get a tight big-oh upper bound.
+[[spoiler | Answer]]
+| By repeated substitution, we find
+| $$
+| \begin{array}{rcl}
+| T(n) & = & 2T(n/2) + O(n)\\
+| & = & 2\left(2T(n/4) + O(n/2)\right) + O(n)\\
+| & = & 4T(n/4) + O(n + n)\\
+| & = & 4\left(2T(n/8) + O(n/4)\right) + O(2n)\\
+| & = & 8T(n/8) + O(3n)\\
+| & = & \ldots\\
+| & = & 2^kT(n/2^k) + O(kn)
+| \end{array}
+| $$
+| To reach the base case (which we may assume is $T(1) = O(1)$), we need $n = 2^k$, so $k = \log_2 n$.
+| This gives a final expression $T(n) = 2^kT(n/2^k) + O(kn) = O(n) + O(n\log n) = O(n\log n)$.
+
+5. Solve the recurrence $T(n) = 5T(n-1) - 6T(n-2)$, where $T(0) = 0$ and $T(1) = 1$.
+(_Hint:_ The general form for solutions to this kind of recurrence is $T(n) = ap^n + bq^n$, for some constants $a$, $b$, $p$, and $q$. You might be able to see the solution by tabulation, or you can plug the general form in to the recurrence and try to solve for the constants. Another useful fact is that the recurrence will be true for all choices of the coefficients $a$ and $b$; they are only needed to match the base cases.)
+[[spoiler | Answer]]
+| Tabulation gives the following:
+| $$
+| \begin{array}{r|c|c|c|c|c|c}
+| n & 0 & 1 & 2 & 3 & 4 & 5\\ \hline
+| T(n) & 0 & 1 & 5 & 19 & 65 & 211
+| \end{array}
+| $$
+| Each successive value is roughly three times the previous one, so we might start by looking at the powers of 3:
+| $$
+| \begin{array}{r|c|c|c|c|c|c}
+| n & 0 & 1 & 2 & 3 & 4 & 5\\ \hline
+| 3^n & 1 & 3 & 9 & 27 & 81 & 243
+| \end{array}
+| $$
+| Calculating the differences between these powers and $T(n)$ gives the following:
+| $$
+| \begin{array}{r|c|c|c|c|c|c}
+| n & 0 & 1 & 2 & 3 & 4 & 5\\ \hline
+| 3^n - T(n) & 1 & 2 & 4 & 8 & 16 & 32
+| \end{array}
+| $$
+| Those are the powers of two, so we may guess and check that the closed form is $3^n - 2^n$.
+|
+| Alternately, using the hint, we can substitute the general form into the recurrence to get:
+| $$
+| ap^n + bq^n = 5ap^{n-1} + 5bq^{n-1} - 6ap^{n-2} - 6bq^{n-2}
+| $$
+| Since the recurrence equation will be satisfied for all choices of $a$ and $b$, provided we choose the correct $p$ and $q$, we may alternately set $a=1, b=0$ or $a=0, b=1$ to get the following equations:
+| $$
+| p^n = 5p^{n-1} - 6p^{n-2}\textrm{ and }q^n = 5q^{n-1} - 6q^{n-2}
+| $$
+| Dividing by $p^{n-2}$ and $q^{n-2}$ gives $p^2 = 5p - 6$ and $q^2 = 5q - 6$, so $p$ and $q$ are two solutions to the quadratic equation $x^2 - 5x + 6 = 0$.
+| Standard techniques from algebra give us the solutions $p=3$ and $q=2$.
+| Plugging these into the general form and looking at the base cases gives the equations
+| $$
+| a3^0 + b2^0 = 0\textrm{ and }a3^1 + b2^1 = 1
+| $$
+| These simplify to $a + b = 0$ and $3a + 2b = 1$, which have the solution $a=1$ and $b=-1$.
+| Therefore, we again find the closed form $T(n) = 3^n - 2^n$.
+
+
