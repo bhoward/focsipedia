@@ -93,7 +93,8 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
     },
     algolia: {
-      apiKey: '76b101bb2eea87aa1453c1db685f519c',
+      apiKey: '98e3a58877cfcccd391a5303d86a9c61',
+      appId: 'YNUYSORFOS',
       indexName: 'focsipedia',
       algoliaOptions: {
         queryLanguages: ['en'],
