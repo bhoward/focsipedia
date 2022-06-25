@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "docusaurus start",
-    "build": "node --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "node --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus deploy"
+    "start": "NODE_OPTIONS=--openssl-legacy-provider docusaurus start",
+    "build": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus build",
+    "swizzle": "NODE_OPTIONS=--openssl-legacy-provider docusaurus swizzle",
+    "deploy": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.6",
-    "@docusaurus/preset-classic": "^2.0.0-beta.6",
+    "@docusaurus/core": "^2.0.0-beta.21",
+    "@docusaurus/preset-classic": "^2.0.0-beta.21",
     "classnames": "^2.2.6",
     "clipboard": "^2.0.8",
     "codemirror": "^5.58.2",

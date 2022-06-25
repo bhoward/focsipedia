@@ -6,8 +6,8 @@ title: Logic
 (Adapted from Critchlow & Eck)
 
 In a sense, we know a lot more than we realize,
-because everything that we know has consequences---_logical_ 
-consequences---that follow automatically.  If you know that all
+because everything that we know has consequences&mdash;_logical_ 
+consequences&mdash;that follow automatically.  If you know that all
 humans are mortal, and you know that you are human, then in a
 sense you know that you are mortal, whether or not you have ever
 considered or wanted to consider that fact.  This is an example
@@ -20,7 +20,7 @@ of logic to a given set of premises, conclusions that follow
 from those premises can be generated automatically, by a
 computational process which could be carried out by a computer.
 Once you know the premises, or are willing to accept them for
-the sake of argument, you are forced---by logic---to accept
+the sake of argument, you are forced&mdash;by logic&mdash;to accept
 the conclusions.  Still, to say that you "know" those conclusions
 would be misleading.  The problem is that there are too many of
 them (infinitely many), and, in general, most of them are not
