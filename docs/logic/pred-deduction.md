@@ -95,9 +95,9 @@ $$ \begin{array}{l|l}
 \quad\ell_3: Q(x_0)\Rightarrow\{\\
 \quad\quad\ell_4: p\land Q(x_0) & \land I\ \ell_1, \ell_3\\
 \quad\}\\
-\quad\ell_5: Q(x_0)\rightarrow p\land Q(x_0) & \rightarrow I\ \ell_2\\
+\quad\ell_5: Q(x_0)\rightarrow p\land Q(x_0) & \rightarrow I\ \ell_3\\
 \}\\
-\ell_6: \forall x(Q(x)\rightarrow p\land Q(x)) & \forall I\ \ell_1
+\ell_6: \forall x(Q(x)\rightarrow p\land Q(x)) & \forall I\ \ell_2
 \end{array} $$
 
 At step $\ell_5$, we are asserting that $Q(x_0)\rightarrow p\land Q(x_0)$
