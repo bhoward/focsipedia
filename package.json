@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "NODE_OPTIONS=--openssl-legacy-provider docusaurus start",
-    "build": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus build",
+    "build": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus.mjs build",
     "swizzle": "NODE_OPTIONS=--openssl-legacy-provider docusaurus swizzle",
-    "deploy": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus deploy"
+    "deploy": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus.mjs deploy"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-beta.21",
