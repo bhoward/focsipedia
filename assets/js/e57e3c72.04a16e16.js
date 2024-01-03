@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfocsipedia=self.webpackChunkfocsipedia||[]).push([[3676],{5454:function(e){e.exports=JSON.parse('{"permalink":"/focsipedia/blog/page/3","page":3,"postsPerPage":10,"totalPages":4,"totalCount":37,"previousPage":"/focsipedia/blog/page/2","nextPage":"/focsipedia/blog/page/4","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

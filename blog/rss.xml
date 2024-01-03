@@ -8,11 +8,11 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
-        <copyright>Copyright © 2022 Brian T. Howard</copyright>
+        <copyright>Copyright © 2024 Brian T. Howard</copyright>
         <item>
             <title><![CDATA[Final Exam Review]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/final-review</link>
-            <guid>final-review</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/final-review</guid>
             <pubDate>Wed, 06 May 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions). The Wednesday class session will be a time to go over any questions you have.]]></description>
             <content:encoded><![CDATA[<p>There are some exam review materials on Moodle (a practice exam and solutions). The Wednesday class session will be a time to go over any questions you have.</p><p>Here is the <a href="https://drive.google.com/file/d/1FBkeW1uA5d2q6J6kYvxRr2mQBW8QuGbA/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=104CLbzZq4Y-o1ymTXO1qcd_cqRcAZKkM" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the section A review session.</p>]]></content:encoded>
@@ -20,7 +20,7 @@
         <item>
             <title><![CDATA[Computability]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/computability</link>
-            <guid>computability</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/computability</guid>
             <pubDate>Mon, 04 May 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Computability and the Halting Problem. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/computability">Computability</a> and the <a href="/focsipedia/docs/lang/halting">Halting Problem</a>. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.</p><p>If you are interested, there is also related material on the <a href="/focsipedia/docs/fp/lambda">Lambda Calculus</a>, which relates Turing Machines back to functional programming.</p>]]></content:encoded>
@@ -28,7 +28,7 @@
         <item>
             <title><![CDATA[Turing Machines]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/turing-machines</link>
-            <guid>turing-machines</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/turing-machines</guid>
             <pubDate>Fri, 01 May 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about General Grammars and Turing Machines. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/tm">General Grammars and Turing Machines</a>. This is advanced material that will not be tested in this class, but it is worth seeing as the culmination of the language and computation models we have been exploring.</p><p>Here is the <a href="https://drive.google.com/file/d/1EWTIpqFvAU8WOeCa0lXK68kkleRjJ3Mu/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=103Q9gCVdA9XqBQsM7tFk9gLKGpXY440_" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the section A class session.</p>]]></content:encoded>
@@ -36,7 +36,7 @@
         <item>
             <title><![CDATA[Parsing and Pushdown Automata]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/parsing</link>
-            <guid>parsing</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/parsing</guid>
             <pubDate>Wed, 29 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about parsing and pushdown automata, and look at the exercises in those sections.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/parsing">parsing</a> and <a href="/focsipedia/docs/lang/pda">pushdown automata</a>, and look at the exercises in those sections.</p><p>Here is the <a href="https://drive.google.com/file/d/1EY-WPnyQYCwMDHBuxRXyqBqB2l7YU_cD/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=100AMiwpDtrUqs4S_acUgtHANLv5bP0q7" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the section A class session. </p><p>If you are interested in seeing actual parsing code, look at the section on <a href="/focsipedia/docs/fp/parser-comb">recursive descent and parser combinators</a> (and if you are <em>really</em> interested, take CSC 426, Compilers in the fall<!-- -->…<!-- -->).</p>]]></content:encoded>
@@ -44,7 +44,7 @@
         <item>
             <title><![CDATA[Context-Free Grammars]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/grammars</link>
-            <guid>grammars</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/grammars</guid>
             <pubDate>Mon, 27 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about context-free grammars and BNF rules, and look at the exercises in those sections.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/cfg">context-free grammars</a> and <a href="/focsipedia/docs/lang/bnf">BNF rules</a>, and look at the exercises in those sections.</p><p>Here is the <a href="https://drive.google.com/file/d/1a_PLuJ9mhaJb_kkLqpb_7Plz9bKxgg6e/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=10-NGj9ApYgrP2t2jT3iuo3RrEZQpaH4k" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the section A class session.</p>]]></content:encoded>
@@ -52,7 +52,7 @@
         <item>
             <title><![CDATA[State Machines]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/state-machines</link>
-            <guid>state-machines</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/state-machines</guid>
             <pubDate>Fri, 24 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[(Rescheduled from Wednesday, April 22)]]></description>
             <content:encoded><![CDATA[<p>(Rescheduled from Wednesday, April 22)</p><p>Read about <a href="/focsipedia/docs/logic/state">state machines</a>, and look at the exercises in that section.
@@ -62,7 +62,7 @@ section.</p>]]></content:encoded>
         <item>
             <title><![CDATA[Sequential Circuits]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/sequential</link>
-            <guid>sequential</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/sequential</guid>
             <pubDate>Mon, 20 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about sequential circuits, and try the exercises in that section.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/sequential">sequential circuits</a>, and try the exercises in that section.</p><p>Here is a <a href="https://drive.google.com/file/d/18VMshqhb5ss3FF6q3B3o9_4FRrYvVf-_/view" target="_blank" rel="noopener noreferrer">video with solutions to Exam 2</a>.
@@ -72,7 +72,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Exam 2]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam2</link>
-            <guid>exam2</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam2</guid>
             <pubDate>Fri, 17 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The second exam, over the second five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia). You should receive an email with a link to the exam and further instructions.]]></description>
             <content:encoded><![CDATA[<p>The second exam, over the second five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia). You should receive an email with a link to the exam and further instructions.</p>]]></content:encoded>
@@ -80,7 +80,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Exam 2 Review]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam2-review</link>
-            <guid>exam2-review</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam2-review</guid>
             <pubDate>Wed, 15 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[There are some exam review materials on Moodle (a practice exam and solutions, and a topic list). The Wednesday class session will be a time to go over any questions you have.]]></description>
             <content:encoded><![CDATA[<p>There are some exam review materials on Moodle (a practice exam and solutions, and a topic list). The Wednesday class session will be a time to go over any questions you have.</p><p>Watch the review session from <a href="https://drive.google.com/file/d/1hyRl3n4X-UImwmZ4z1c_cOpQ0AUGLKOR/view" target="_blank" rel="noopener noreferrer">Section A</a> (with <a href="https://drive.google.com/open?id=1-wDAQUNFtorMa9LTVvDKp_SipR4qYAfJ" target="_blank" rel="noopener noreferrer">DyKnow</a>) and <a href="https://drive.google.com/file/d/1v9d9-b5KxOp654gXZ9HmCQO_NH82ilVn/view" target="_blank" rel="noopener noreferrer">Section B</a> (with <a href="https://drive.google.com/open?id=1-xtuFt2nOK1U18vWj6YL3My9zjYN2qCH" target="_blank" rel="noopener noreferrer">DyKnow</a>).</p><p>Here is a <a href="https://drive.google.com/file/d/1mgGnYi1asNWEM3JGr1NyGoFGsdiuJl1l/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=1-yv_cf65gTPJCQloN8gj57FgK6q_DCv4" target="_blank" rel="noopener noreferrer">DyKnow</a>) where I go over the answers to the short Google Forms-based practice exam.</p>]]></content:encoded>
@@ -88,7 +88,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Nondeterministic Finite-State Automata]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/nfa</link>
-            <guid>nfa</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/nfa</guid>
             <pubDate>Mon, 13 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about nondeterministic finite-state automata and their connection to regular expressions, and try the exercises in those sections.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/nfa">nondeterministic finite-state automata</a> and their <a href="/focsipedia/docs/lang/fsareg">connection to regular expressions</a>, and try the exercises in those sections.</p><p>Watch this accompanying <a href="https://drive.google.com/file/d/1QfJfvfFxYEDZMT0C7xifwmewZLPPO5Pd/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=1-uyCi9ebCgwKVSm4fz8e70AoRq3Wikqj" target="_blank" rel="noopener noreferrer">DyKnow</a>).</p><p>I updated <a href="/focsipedia/blog/fsa">last Friday's blog entry</a> to include a <a href="https://drive.google.com/file/d/1kI7JeF6LzXlE02I37uekmQhYi4XFvzv4/view" target="_blank" rel="noopener noreferrer">video</a> of the actual toy telephone<!-- -->—<!-- -->apparently the video I posted before didn't show the camera view that I thought it was going to!</p><p>Here is the <a href="https://drive.google.com/file/d/1YDZjFcJuUmb37mmzqyvuDamNloRCYB7-/view" target="_blank" rel="noopener noreferrer">video</a> and <a href="https://drive.google.com/open?id=1-vEzByG3HL9bZ9IXeqBro5eOPbN_EI6C" target="_blank" rel="noopener noreferrer">DyKnow</a> from the section A class session.</p>]]></content:encoded>
@@ -96,7 +96,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Finite-State Automata]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/fsa</link>
-            <guid>fsa</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/fsa</guid>
             <pubDate>Fri, 10 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about finite-state automata and try the exercises in that section.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/fsa">finite-state automata</a> and try the exercises in that section.</p><p>Watch this <a href="https://drive.google.com/file/d/1eQM-pgBE6BQtjOWTpUycLHTflvIopSMy/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=1-mvty5DQoMbo7I6MbvfgCuuJa1WhIu_-" target="_blank" rel="noopener noreferrer">DyKnow</a>) of my toy telephone. Here is a <a href="https://drive.google.com/file/d/1kI7JeF6LzXlE02I37uekmQhYi4XFvzv4/view" target="_blank" rel="noopener noreferrer">video</a> of the telephone itself, which was mistakenly not captured when I recorded the session.</p><p>Here is the <a href="https://drive.google.com/file/d/1XGh1fOvJDv5HbNDafolK1kRlrEmr_tDs/view" target="_blank" rel="noopener noreferrer">video</a> and <a href="https://drive.google.com/open?id=1-p5DK4hJ08pUPITG9oYUc8YtQ8Docofi" target="_blank" rel="noopener noreferrer">DyKnow</a> from the section A class session.</p><p>(<strong>Optional</strong>) The paper by E.F. Moore I mention in the first video is:</p><blockquote><p>Moore, Edward F (1956). "Gedanken-experiments on Sequential Machines". Automata Studies, Annals of Mathematical Studies. Princeton, N.J.: Princeton University Press (34): 129–153.</p></blockquote><p>You can read it on the Internet Archive <a href="https://web.archive.org/web/20120216141113/http://people.mokk.bme.hu/~kornai/termeszetes/moore_1956.pdf" target="_blank" rel="noopener noreferrer">here</a>.</p>]]></content:encoded>
@@ -104,7 +104,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Languages]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/languages</link>
-            <guid>languages</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/languages</guid>
             <pubDate>Wed, 08 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about languages and regular expressions (and their applications), and try the exercises in each section.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/lang/languages">languages</a> and <a href="/focsipedia/docs/lang/regexp">regular expressions</a> (and their <a href="/focsipedia/docs/lang/regexpapp">applications</a>), and try the exercises in each section.</p><p>Here is the <a href="https://drive.google.com/file/d/1UNee3KYu5l7ZYtTdrat94wNqHJyqJvgv/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=1-m7cvRk09mPa8Q9KbDTxLZ_NHcoHJg6Y" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the class section.</p>]]></content:encoded>
@@ -112,7 +112,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Graph Traversals]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/graph-traversals</link>
-            <guid>graph-traversals</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/graph-traversals</guid>
             <pubDate>Mon, 06 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read more about graphs. Watch the accompanying video plus DyKnow. Try the exercises.]]></description>
             <content:encoded><![CDATA[<p>Read more about <a href="/focsipedia/docs/ds/graphs">graphs</a>. Watch the <a href="https://drive.google.com/file/d/1z2v3vjL3RW7KUoP2wfbhVvDBTblaBBSb/view" target="_blank" rel="noopener noreferrer">accompanying video</a> plus <a href="https://drive.google.com/open?id=1-i0QfTx1XF85yOCXxmxkAQ-bPYfLQt9O" target="_blank" rel="noopener noreferrer">DyKnow</a>. Try the <a href="/focsipedia/docs/ds/graphs#exercises">exercises</a>.</p>]]></content:encoded>
@@ -120,7 +120,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Graphs]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/graphs</link>
-            <guid>graphs</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/graphs</guid>
             <pubDate>Fri, 03 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about graphs (not yet finished; sorry).]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/ds/graphs">graphs</a> (not yet finished; sorry).</p><p>Here is the <a href="https://drive.google.com/file/d/1842RFTYSfQJf2OGj8teYyvE16lnDPnTt/view" target="_blank" rel="noopener noreferrer">video</a> (and <a href="https://drive.google.com/open?id=1-f8kbJw8Ii2y-EphGb-zsOsC2GUT6ye7" target="_blank" rel="noopener noreferrer">DyKnow</a>) from the class section.</p>]]></content:encoded>
@@ -128,7 +128,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Ordered Trees]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/ordered-trees</link>
-            <guid>ordered-trees</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/ordered-trees</guid>
             <pubDate>Wed, 01 Apr 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about binary search trees and heaps, and watch the corresponding video (and DyKnow).]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/ds/bst">binary search trees and heaps</a>, and watch the <a href="https://drive.google.com/file/d/1ROAaRviOeUixoru-TFyfsojOF8LrjCmM/view" target="_blank" rel="noopener noreferrer">corresponding video</a> (and <a href="https://drive.google.com/open?id=1-aR8Tt5o_C9mVed1CJgjfg2iCoR2N_lW" target="_blank" rel="noopener noreferrer">DyKnow</a>).</p><p>Look at these galleries of your DPoodle drawings: <a href="/focsipedia/docs/fp/galleryS20A">Section A</a> and <a href="/focsipedia/docs/fp/galleryS20B">Section B</a></p>]]></content:encoded>
@@ -136,7 +136,7 @@ sequential circuits using the <a href="https://github.com/hneemann/Digital" targ
         <item>
             <title><![CDATA[Class Resumes]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/class-resumes</link>
-            <guid>class-resumes</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/class-resumes</guid>
             <pubDate>Mon, 30 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Classes will resume in an online format on Monday, March 30. Work on your DPoodle drawings.]]></description>
             <content:encoded><![CDATA[<p>Classes will resume in an online format on Monday, March 30. Work on your <a href="/focsipedia/docs/fp/doodle-project">DPoodle</a> drawings.</p><p><strong>Update</strong> Also read about <a href="/focsipedia/docs/ds/trees">trees</a> and watch the <a href="https://drive.google.com/file/d/1f8ITxdH2qX0i8Lse-rrnEap6X3vt-njA/view" target="_blank" rel="noopener noreferrer">corresponding video</a> (and <a href="https://drive.google.com/open?id=1-cMXKmHRLjs_8v-1MfJ89qEFEJQEYBg6" target="_blank" rel="noopener noreferrer">DyKnow</a>).</p><p>Here are the videos and DyKnow slides from the in-class sessions:</p><ul><li><a href="https://drive.google.com/file/d/1fZmQwPUAvxw4woQoaCSR08lGR2yrEHIm/view" target="_blank" rel="noopener noreferrer">Section A video</a> and <a href="https://drive.google.com/open?id=1-bWeUimbXYiWg4LyT87PTLU2Jrif9bqj" target="_blank" rel="noopener noreferrer">DyKnow</a></li><li><a href="https://drive.google.com/file/d/1oBKn6LdDb1cDz2QqVz0MbR6QiXk8alED/view" target="_blank" rel="noopener noreferrer">Section B video</a> and <a href="https://drive.google.com/open?id=1-fASjvsLaP0lO2r3dbjkMZc8yIsOiQXt" target="_blank" rel="noopener noreferrer">DyKnow</a></li></ul><p>My plan for now is ... <!-- --> </p><ul><li>Lecture videos will be posted on this blog along with each day's reading. I hope to be able to do this a day or two in advance.</li><li>Class sessions conducted over Google Meet will be for interaction and questions. If you are unable to join the session, it will be
@@ -145,7 +145,7 @@ recorded and a link will be posted here when the recording is available.</li><li
         <item>
             <title><![CDATA[No Class]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/no-class</link>
-            <guid>no-class</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/no-class</guid>
             <pubDate>Fri, 13 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[There will be no class today: Friday, March 13, 2020.]]></description>
             <content:encoded><![CDATA[<p>There will be no class today: Friday, March 13, 2020.
@@ -154,7 +154,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Exam 1 Return]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1-return</link>
-            <guid>exam1-return</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam1-return</guid>
             <pubDate>Wed, 11 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Today we will be going over the first exam.]]></description>
             <content:encoded><![CDATA[<p>Today we will be going over the first exam.</p>]]></content:encoded>
@@ -162,7 +162,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Accumulators]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/accumulators</link>
-            <guid>accumulators</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/accumulators</guid>
             <pubDate>Mon, 09 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Continue reading about common patterns of writing functional programs: see the Accumulators section.]]></description>
             <content:encoded><![CDATA[<p>Continue reading about common patterns of writing functional programs: see the <a href="/focsipedia/docs/fp/map-reduce#accumulators">Accumulators</a> section.</p>]]></content:encoded>
@@ -170,7 +170,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Helper Functions]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/helpers</link>
-            <guid>helpers</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/helpers</guid>
             <pubDate>Fri, 06 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Continue reading about common patterns of writing functional programs: see the Helper Functions section.]]></description>
             <content:encoded><![CDATA[<p>Continue reading about common patterns of writing functional programs: see the <a href="/focsipedia/docs/fp/map-reduce#helper-functions">Helper Functions</a> section.</p>]]></content:encoded>
@@ -178,7 +178,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Exam 1]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1</link>
-            <guid>exam1</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam1</guid>
             <pubDate>Wed, 04 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The first exam, over the first five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia).]]></description>
             <content:encoded><![CDATA[<p>The first exam, over the first five weeks, is today. It will be open-book and -note (includes DyKnow, Moodle, and FoCSipedia).</p>]]></content:encoded>
@@ -186,7 +186,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Exam 1 Review]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/exam1-review</link>
-            <guid>exam1-review</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/exam1-review</guid>
             <pubDate>Mon, 02 Mar 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[There is a practice exam on Moodle. More details to come.]]></description>
             <content:encoded><![CDATA[<p>There is a practice exam on Moodle. More details to come.</p>]]></content:encoded>
@@ -194,7 +194,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[MapReduce]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/mapreduce</link>
-            <guid>mapreduce</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/mapreduce</guid>
             <pubDate>Fri, 28 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[No reading for today. We will talk about the map and reduce functions on lists, and how they made Google what it is today.]]></description>
             <content:encoded><![CDATA[<p>No reading for today. We will talk about the <code>map</code> and <code>reduce</code> functions on lists, and how they made Google what it is today.</p><p>For reference, here are the definitions of <code>map</code> and <code>reduce</code> developed in class (this version of <code>reduce</code> is often called <code>foldLeft</code>):</p><div><div><button type="button" aria-label="Execute code">Execute</button></div></div><div class="playgroundPreview_E_UU"><div></div></div>]]></content:encoded>
@@ -202,7 +202,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Types and Functional Programming, Continued]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/types2</link>
-            <guid>types2</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/types2</guid>
             <pubDate>Wed, 26 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Finish reading Types in Functional Programming. Look at Exercises 1, 2, 3, and 5, to discuss in class.]]></description>
             <content:encoded><![CDATA[<p>Finish reading <a href="/focsipedia/docs/fp/types">Types in Functional Programming</a>. Look at <a href="/focsipedia/docs/fp/types#exercises">Exercises 1, 2, 3, and 5</a>, to discuss in class.</p>]]></content:encoded>
@@ -210,7 +210,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Types and Functional Programming]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/types</link>
-            <guid>types</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/types</guid>
             <pubDate>Mon, 24 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Types in Functional Programming. I am still writing this section, so there are no exercises to look at yet.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/fp/types">Types in Functional Programming</a>. I am still writing this section, so there are no exercises to look at yet.</p>]]></content:encoded>
@@ -218,7 +218,7 @@ Work on your <a href="/focsipedia/docs/fp/doodle">DPoodle</a> drawings (details 
         <item>
             <title><![CDATA[Functions and Functional Programming]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/functions</link>
-            <guid>functions</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/functions</guid>
             <pubDate>Fri, 21 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Functions and an Introduction to Functional Programming,]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/sets/functions">Functions</a> and an <a href="/focsipedia/docs/fp/intro">Introduction to Functional Programming</a>,
@@ -227,7 +227,7 @@ and look at <a href="/focsipedia/docs/fp/intro#exercises">exercises 1, 2, and 5<
         <item>
             <title><![CDATA[Recursion and Induction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/recursion</link>
-            <guid>recursion</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/recursion</guid>
             <pubDate>Wed, 19 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Recursion,]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/recursion">Recursion</a>,
@@ -243,7 +243,7 @@ at <span class="math math-inline"><span class="katex"><span class="katex-mathml"
         <item>
             <title><![CDATA[Mathematical Induction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/induction</link>
-            <guid>induction</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/induction</guid>
             <pubDate>Mon, 17 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Mathematical Induction,]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/induction">Mathematical Induction</a>,
@@ -252,7 +252,7 @@ and look at <a href="/focsipedia/docs/logic/induction#exercises">exercises 1, 4,
         <item>
             <title><![CDATA[Natural Deduction Continued]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/deduction2</link>
-            <guid>deduction2</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/deduction2</guid>
             <pubDate>Fri, 14 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about Natural Deduction for Predicate Logic.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/pred-deduction">Natural Deduction for Predicate Logic</a>.</p><p>Do <a href="/focsipedia/docs/logic/deduction#exercises">exercise 4, parts v and vi</a> (<strong>to hand in</strong>).</p>]]></content:encoded>
@@ -260,7 +260,7 @@ and look at <a href="/focsipedia/docs/logic/induction#exercises">exercises 1, 4,
         <item>
             <title><![CDATA[Natural Deduction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/deduction</link>
-            <guid>deduction</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/deduction</guid>
             <pubDate>Wed, 12 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read the section on deduction.]]></description>
             <content:encoded><![CDATA[<p>Read the section on <a href="/focsipedia/docs/logic/deduction">deduction</a>.
@@ -269,7 +269,7 @@ Do <a href="/focsipedia/docs/logic/deduction#exercises">exercises 2, 4, and 5</a
         <item>
             <title><![CDATA[Predicate Logic and Deduction]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/predicates</link>
-            <guid>predicates</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/predicates</guid>
             <pubDate>Mon, 10 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read the section on predicate logic.]]></description>
             <content:encoded><![CDATA[<p>Read the section on <a href="/focsipedia/docs/logic/preds">predicate logic</a>.
@@ -278,7 +278,7 @@ Do <a href="/focsipedia/docs/logic/preds/#exercises">exercises 1, 5, and 6</a> (
         <item>
             <title><![CDATA[Sets]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/sets</link>
-            <guid>sets</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/sets</guid>
             <pubDate>Fri, 07 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Skim the sections on set concepts and algebra (these two sections]]></description>
             <content:encoded><![CDATA[<p>Skim the sections on set <a href="/focsipedia/docs/sets/concepts">concepts</a> and <a href="/focsipedia/docs/sets/algebra">algebra</a> (these two sections
@@ -289,7 +289,7 @@ Do <a href="/focsipedia/docs/sets/programming#exercises">exercises 1, 4, 10, and
         <item>
             <title><![CDATA[Circuit Components]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/circuit-components</link>
-            <guid>circuit-components</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/circuit-components</guid>
             <pubDate>Wed, 05 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about circuit components.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/components">circuit components</a>.
@@ -298,7 +298,7 @@ Do <a href="/focsipedia/docs/logic/components#exercises">exercises 1, 3, and 5</
         <item>
             <title><![CDATA[Circuit Simplification]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/circuit-simplification</link>
-            <guid>circuit-simplification</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/circuit-simplification</guid>
             <pubDate>Mon, 03 Feb 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about circuit simplification.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/simplify">circuit simplification</a>.
@@ -307,7 +307,7 @@ Do <a href="/focsipedia/docs/logic/simplify#exercises">exercises 1 and 2</a> (to
         <item>
             <title><![CDATA[Logic Circuits]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/logic-circuits</link>
-            <guid>logic-circuits</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/logic-circuits</guid>
             <pubDate>Fri, 31 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about logic circuits.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/circuits">logic circuits</a>.
@@ -316,7 +316,7 @@ Do <a href="/focsipedia/docs/logic/circuits#exercises">exercises 2 and 7</a> (to
         <item>
             <title><![CDATA[Logic Operators]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/logic-operators</link>
-            <guid>logic-operators</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/logic-operators</guid>
             <pubDate>Wed, 29 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[Read about propositional logic: the operators and Boolean algebra.]]></description>
             <content:encoded><![CDATA[<p>Read about <a href="/focsipedia/docs/logic/intro">propositional logic</a>: the <a href="/focsipedia/docs/logic/props">operators</a> and <a href="/focsipedia/docs/logic/boolean">Boolean algebra</a>.
@@ -325,7 +325,7 @@ Do exercises 2, 3, 5, 7, 10, and 11 in <a href="/focsipedia/docs/logic/props#exe
         <item>
             <title><![CDATA[First Day]]></title>
             <link>https://bhoward.github.io/focsipedia/blog/first-day</link>
-            <guid>first-day</guid>
+            <guid>https://bhoward.github.io/focsipedia/blog/first-day</guid>
             <pubDate>Mon, 27 Jan 2020 00:00:00 GMT</pubDate>
             <description><![CDATA[The first day will just be making introductions and going over the syllabus. There will also be an introduction to ...  FoCSipedia!]]></description>
             <content:encoded><![CDATA[<p>The first day will just be making introductions and going over the syllabus. There will also be an introduction to ... <!-- --> <a href="https://bhoward.github.io/focsipedia/" target="_blank" rel="noopener noreferrer">FoCSipedia</a>!</p><p>Here is a tentative schedule of events for the semester:</p><ul><li>Wednesday, March 4: Exam 1</li><li>Friday, March 13: No class (SIGCSE conference)</li><li>Friday, March 20: Last day to withdraw with a W</li><li>Monday, March 23<!-- -->–<!-- -->Friday, March 27: Spring Break</li><li>Wednesday, April 15: Exam 2</li><li>Wednesday, May 6: Last day of class</li><li>Friday, May 8: Study day</li><li>Saturday, May 9: Section A (12:30) final exam at 8:30am</li><li>Monday, May 11: Section B (1:40) final exam at 8:30am</li></ul>]]></content:encoded>
