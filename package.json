@@ -9,10 +9,10 @@
     "deploy": "node --openssl-legacy-provider --max_old_space_size=16000 node_modules/@docusaurus/core/bin/docusaurus.mjs deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.21",
-    "@docusaurus/preset-classic": "^2.0.0-beta.21",
-    "classnames": "^2.2.6",
-    "clipboard": "^2.0.8",
+    "@docusaurus/core": "^2.4.3",
+    "@docusaurus/preset-classic": "^2.4.3",
+    "classnames": "^2.5.1",
+    "clipboard": "^2.0.11",
     "codemirror": "^5.58.2",
     "create-react-context": "0.2.2",
     "prism-react-renderer": "^1.1.1",
