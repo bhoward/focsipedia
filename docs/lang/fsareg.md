@@ -199,7 +199,7 @@ Now, $w\in R_{i,j+1,k}$ if and only if when $M$ starts in state $q_i$ and reads 
 it ends in state $q_k$, with all intermediate states in the computation in the set
 $\{q_0,q_1,\dots,q_j\}$. Consider such a computation. There are two
 cases: Either $q_j$ occurs as an intermediate state in the computation, or it does not.
-If it does _not_}_ occur, then all the intermediate states are in the set
+If it does _not_ occur, then all the intermediate states are in the set
 $\{q_0,q_1,\dots,q_{j-1}\}$, which means that in fact $w\in R_{i,j,k}$.
 If $q_j$ _does_ occur as an intermediate state in the computation, then we can break the
 computation into phases, by dividing it at each point where $q_j$ occurs
