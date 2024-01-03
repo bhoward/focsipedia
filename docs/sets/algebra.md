@@ -244,7 +244,7 @@ complement operation is applied to a formula. For example,
 | | $= A\cap (\overline{B}\cap A)$ | Double Complement |
 | | $= A\cap (A\cap\overline{B})$ | Commutative Law |
 | | $= (A\cap A)\cap \overline{B})$ | Associative Law |
-| | $= A \cap \overline{B}$ | Idempotent Law |\end{align*}
+| | $= A \cap \overline{B}$ | Idempotent Law |
 
 As a final example of the relationship between set theory and logic,
 consider the set-theoretical expression $A\cap (A\cup B)$ and

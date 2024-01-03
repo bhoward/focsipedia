@@ -120,7 +120,7 @@ sets, $A$ and $B$, are equal, you can do so in two steps. First check that
 every element of $A$ is also an element of $B$, and then check that every 
 element of $B$ is also an element of $A$.
 
-If $A\subseteq B$ but $A\not= B$, we say that $A$ is a \nw{proper subset} of $B$.
+If $A\subseteq B$ but $A\not= B$, we say that $A$ is a **proper subset** of $B$.
 We use the notation $A\varsubsetneq B$ to mean that $A$ is a proper subset of $B$.
 That is, $A\varsubsetneq B$ if and only if $A\subseteq B \land A\not= B$. We will sometimes
 use $A\supseteq B$ as an equivalent notation for $B\subseteq A$, and $A\varsupsetneq B$ as
