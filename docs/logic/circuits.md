@@ -503,12 +503,14 @@ such as $7+6+1=14$ and $3+5+0=8$. For binary addition, it's
 even easier, since the only digits are 0 and 1. There are
 only eight rules:
 
-$$ \begin{array}{cc}
+$$
+\begin{array}{cc}
 0+0+0=00 & 1+0+0=01\\
 0+0+1=01 & 1+0+1=10\\
 0+1+0=01 & 1+1+0=10\\
 0+1+1=10 & 1+1+1=11\\
-\end{array} $$
+\end{array}
+$$
 
 Here, I've written each sum using two digits. In a multi-column
 addition, one of these digits is carried over to the next column.
@@ -537,76 +539,94 @@ in the sum.
 1. Using only AND, OR, and NOT gates,
 draw circuits that compute the value of each of the propositions
 $A\rightarrow B$, $A\leftrightarrow B$, and $A\oplus B$.
-[[spoiler | Answer]]
-| The circuits may easily be drawn from the expressions:
-| * $A\rightarrow B\equiv\lnot A\lor B$
-| * $A\leftrightarrow B\equiv(\lnot A\lor B)\land(A\lor\lnot B)$
-| * $A\oplus B\equiv(\lnot A\land B)\lor(A\land\lnot B)$
-|
-| Other solutions are possible.
+<details>
+   <summary>Answer</summary>
 
-1. For each of the following propositions, find a combinational
+The circuits may easily be drawn from the expressions:
+* $A\rightarrow B\equiv\lnot A\lor B$
+* $A\leftrightarrow B\equiv(\lnot A\lor B)\land(A\lor\lnot B)$
+* $A\oplus B\equiv(\lnot A\land B)\lor(A\land\lnot B)$
+
+Other solutions are possible.
+</details>
+
+2. For each of the following propositions, find a combinational
 logic circuit that computes that proposition:
    * $A\land (B\lor \lnot C)$
    * $(p\land q)\land\lnot(p\land\lnot q)$
    * $(p\lor q\lor r)\land (\lnot p\lor \lnot q\lor \lnot r)$
    * $\lnot(A\land (B\lor C)) \lor (B\land \lnot A)$
 
-1. Find the compound proposition computed by each of the
+3. Find the compound proposition computed by each of the
 following circuits:
 
 ![Two circuits for an exercise](/img/fig-1-label.png)
 
-[[spoiler | Answer]]
-| The first is $(A\land B)\land\lnot C$, and the second is $\lnot(A\land B)\lor(\lnot B\lor C)$.
+<details>
+  <summary>Answer</summary>
+
+The first is $(A\land B)\land\lnot C$, and the second is $\lnot(A\land B)\lor(\lnot B\lor C)$.
+</details>
 
 4. This section describes a method for finding the compound
 proposition computed by any combinational logic circuit. This method
 fails if you try to apply it to a circuit that contains a feedback loop.
 What goes wrong? Give an example.
-[[spoiler | Answer]]
-| When there is a loop, it is not possible to give expressions for all the inputs of a gate in
-| the loop until you know an expression for its output. For example, suppose we have a loop
-| where the output of an OR feeds one input of an AND, which in turn feeds back to one of the
-| inputs of the OR. We do not have an expression for both of the inputs to the OR until we have
-| an expression for the output of the AND, which depends on knowing an expression for the output
-| of the OR.
+<details>
+  <summary>Answer</summary>
 
-1. Show that every compound proposition which is not a contradiction
+When there is a loop, it is not possible to give expressions for all the inputs of a gate in
+the loop until you know an expression for its output. For example, suppose we have a loop
+where the output of an OR feeds one input of an AND, which in turn feeds back to one of the
+inputs of the OR. We do not have an expression for both of the inputs to the OR until we have
+an expression for the output of the AND, which depends on knowing an expression for the output
+of the OR.
+</details>
+
+5. Show that every compound proposition which is not a contradiction
 is equivalent to a proposition in disjunctive normal form. (Note: We can
 eliminate the restriction that the compound proposition is not a
 contradiction by agreeing that "$\F$" counts as a proposition in
 disjunctive normal form. $\F$ is logically equivalent to any contradiction.)
-[[spoiler | Answer]]
-| This follows directly from the proof of the DNF theorem, since if a proposition
-| is not a contradiction then at least one of the rows of its truth tables must be true.
+<details>
+  <summary>Answer</summary>
 
-1. A proposition in **conjunctive normal form** (CNF) is a conjunction of
+This follows directly from the proof of the DNF theorem, since if a proposition
+is not a contradiction then at least one of the rows of its truth tables must be true.
+</details>
+
+6. A proposition in **conjunctive normal form** (CNF) is a conjunction of
 disjunctions of simple terms (with the proviso, as in the definition of DNF,
 that a single item also counts as a disjunction). Show that every compound
 proposition which is not a tautology is logically equivalent to a compound
 proposition in conjunctive normal form. (Hint: What happens if you take the
 negation of a DNF proposition and apply De Morgan's Laws?)
-[[spoiler | Answer]]
-| Given a proposition that is not a tautology, its negation will be a propostion
-| that is not a contradiction. As in the previous exercise, the DNF theorem allows
-| us to construct a DNF expression that is equivalent to the negation of the original
-| proposition. Taking the negation of this DNF expression (which will give us a
-| result that is equivalent to the original proposition) and applying De Morgan's
-| laws, will turn the disjunction of some conjunctions of simple terms into the
-| conjunction of some disjunctions of negated simple terms. Finally, a negated simple
-| term is equivalent to a simple term, because if it was already a negated variable
-| then we can use the double-negation law to turn it into a plain variable.
+<details>
+  <summary>Answer</summary>
 
-1. Use the laws of Boolean algebra to simplify each of the
+Given a proposition that is not a tautology, its negation will be a propostion
+that is not a contradiction. As in the previous exercise, the DNF theorem allows
+us to construct a DNF expression that is equivalent to the negation of the original
+proposition. Taking the negation of this DNF expression (which will give us a
+result that is equivalent to the original proposition) and applying De Morgan's
+laws, will turn the disjunction of some conjunctions of simple terms into the
+conjunction of some disjunctions of negated simple terms. Finally, a negated simple
+term is equivalent to a simple term, because if it was already a negated variable
+then we can use the double-negation law to turn it into a plain variable.
+</details>
+
+7. Use the laws of Boolean algebra to simplify each of the
 following circuits:
 
 ![Three circuits for an exercise](/img/fig-1-simplify.png)
 
-[[spoiler | Answer]]
-| * $(A\land B)\lor(B\land C)\equiv(A\lor C)\land B$
-| * $\lnot\lnot A\land B\equiv A\land B$
-| * $((A\land B)\lor (\lnot A\land B))\land C\equiv((A\lor\lnot A)\land B)\land C\equiv(\T\land B)\land C\equiv B\land C$
+<details>
+  <summary>Answer</summary>
+
+* $(A\land B)\lor(B\land C)\equiv(A\lor C)\land B$
+* $\lnot\lnot A\land B\equiv A\land B$
+* $((A\land B)\lor (\lnot A\land B))\land C\equiv((A\lor\lnot A)\land B)\land C\equiv(\T\land B)\land C\equiv B\land C$
+</details>
 
 8. Design circuits to implement the input/output tables
 for addition, as given in [the section above](#binary-arithmetic). Try to
@@ -614,5 +634,8 @@ make your circuits as simple as possible. (The circuits that are
 used in real computers for this purpose are more simplified than
 the ones you will probably come up with, but the general approach
 of using logic to design computer circuits is valid.)
-[[spoiler | Answer]]
-| For one approach, see the full adder circuit in [Common Circuit Components](components#adders).
+<details>
+  <summary>Answer</summary>
+
+For one approach, see the full adder circuit in [Common Circuit Components](components#adders).
+</details>

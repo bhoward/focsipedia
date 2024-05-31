@@ -279,11 +279,13 @@ The conjunction $p\land q$ is true when both $p$ and $q$ are true. Therefore,
 to introduce the conjunction $p\land q$ in a proof we need to first establish
 the premises $p$ and $q$ individually:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\\
 j: q\\ \hline\therefore
 p\land q, \quad\land I\ i,j
-\end{array} $$
+\end{array}
+$$
 
 The $i$ and $j$ labels on the premises are shown here to allow us to refer to
 them in the "justification" attached to the conclusion: $\land I\ i, j$ stands
@@ -291,45 +293,55 @@ for "AND introduction from premises labeled $i$ and $j$." Here is an example of
 how this rule might be used in the proof of
 $\lnot p, p\lor q\vdash\lnot p\land(p\lor q)$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \lnot p & \text{premise}\\
 \ell_2: p\lor q & \text{premise}\\
 \ell_3: \lnot p\land(p\lor q) & \land I\ \ell_1, \ell_2
-\end{array} $$
+\end{array}
+$$
 
 The elimination rules for conjunction allow us to move from the premise $p\land q$
 to either the conclusion $p$ or the conclusion $q$:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\land q\\ \hline\therefore
 p, \quad\land E_1\ i
-\end{array} $$
+\end{array}
+$$
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\land q\\ \hline\therefore
 q, \quad\land E_2\ i
-\end{array} $$
+\end{array}
+$$
 
 Here is a proof that combines the introduction and elimination rules for conjunction
 to prove $p\land q\vdash q\land p$, _i.e._, that AND is commutative:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: q & \land E_2\ \ell_1\\
 \ell_3: p & \land E_1\ \ell_1\\
 \ell_4: q\land p & \land I\ \ell_2, \ell_3
-\end{array} $$
+\end{array}
+$$
 
 Note that we used the second elimination rule in step $\ell_2$ and the first in $\ell_3$,
 to extract respectively the second and the first terms of the conjunction. Here is an
 equivalent proof using the rules in the other order:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: p & \land E_1\ \ell_1\\
 \ell_3: q & \land E_2\ \ell_1\\
 \ell_4: q\land p & \land I\ \ell_3, \ell_2
-\end{array} $$
+\end{array}
+$$
 
 In the justification for step $\ell_4$, we specify that the term from $\ell_3$ 
 ($q$) is used first in the conclusion. Although we have just proved that conjunction
@@ -347,13 +359,15 @@ definition that may use parameters. The notation we will use for this is inspire
 notation for an anonymous function block in languages such as JavaScript, Scala, and
 ReasonML:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p \Rightarrow\{\\
 \quad\ldots\\
 \quad q\\
 \}\\ \hline\therefore
 p\rightarrow q, \quad\rightarrow I\ i
-\end{array} $$
+\end{array}
+$$
 
 The curly braces around the nested proof (which is also indented for clarity) emphasize
 that the temporary assumption that $p$ is true, labeled $i$, is only available within
@@ -366,14 +380,16 @@ _then_ $q$ is also true.
 Here is an example of a proof of the tautology (since a tautology may be viewed as an argument
 with no premises) $p\land q\rightarrow q\land p$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\land q\Rightarrow\{ & \\
 \quad\ell_2: q & \land E_2\ \ell_1\\
 \quad\ell_3: p & \land E_1\ \ell_1\\
 \quad\ell_4: q\land p & \land I\ \ell_2, \ell_3\\
 \}\\
 \ell_5: p\land q\rightarrow q\land p & \rightarrow I\ \ell_1
-\end{array} $$
+\end{array}
+$$
 
 Note that when the justification in step $\ell_5$ refers to $\ell_1$, it means the
 entire subproof. However, the reference to $\ell_1$ in the justifications for $\ell_2$
@@ -389,53 +405,65 @@ that $q$ is true. Just as a function body describes how to takes an argument pas
 its parameter and compute a result, the subproof that establishes $p\rightarrow q$ tells us
 how to take an argument (!) for $p$ and produce the extra steps needed to conclude $q$.
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\rightarrow q\\
 j: p\\ \hline\therefore
 q, \quad\rightarrow E\ i,j
-\end{array} $$
+\end{array}
+$$
 
 Here is a proof of the argument $p\rightarrow q\vdash p\rightarrow p\land q$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\rightarrow q & \text{premise}\\
 \ell_2: p\Rightarrow\{ & \\
 \quad\ell_3: q & \rightarrow E\ \ell_1, \ell_2\\
 \quad\ell_4: p\land q & \land I\ \ell_2, \ell_3\\
 \}\\
 \ell_5: p\rightarrow p\land q & \rightarrow I\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 ### Disjunction
 
 To prove the disjunction $p\lor q$, it is enough to prove either $p$ or $q$
 alone. This leads to two obvious introduction rules:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\\ \hline\therefore
 p\lor q, \quad\lor I_1\ i
-\end{array} $$
+\end{array}
+$$
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: q\\ \hline\therefore
 p\lor q, \quad\lor I_2\ i
-\end{array} $$
+\end{array}
+$$
 
 Here are two distinct proofs of the argument $p\land q\vdash p\lor q$:
 
 Proof 1:
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: p & \land E_1\ \ell_1\\
 \ell_3: p\lor q & \lor I_1\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 Proof 2:
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\land q & \text{premise}\\
 \ell_2: q & \land E_2\ \ell_1\\
 \ell_3: p\lor q & \lor I_2\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 Although they have the same premises and conclusions, these two proofs are
 giving fundamentally different reasons why the conclusion follows from the
@@ -452,7 +480,8 @@ a dual of the introduction for conjunction.[^2] What we have is essentially a **
 an OR, we need to conduct two subproofs (just as in the $\rightarrow I$ rule), one
 for each possible case. Here is the rule:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\lor q\\
 j: p\Rightarrow\{\\
 \quad\ldots\\
@@ -463,7 +492,8 @@ k: q\Rightarrow\{\\
 \quad r\\
 \}\\ \hline\therefore
 r, \quad\lor E\ i, j, k
-\end{array} $$
+\end{array}
+$$
 
 [^2]: Part of this complication is an
 inherent asymmetry in deduction: while our arguments may have multiple premises,
@@ -485,7 +515,8 @@ conclude $r$ regardless of which it is.
 
 Here is a proof that OR is commutative ($p\lor q\vdash q\lor p$):
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\lor q & \text{premise}\\
 \ell_2: p\Rightarrow\{\\
 \quad\ell_3: q\lor p & \lor I_2\ \ell_2\\
@@ -494,7 +525,8 @@ $$ \begin{array}{l|l}
 \quad\ell_5: q\lor p & \lor I_1\ \ell_2\\
 \}\\
 \ell_6: q\lor p & \lor E\ \ell_1, \ell_2, \ell_4
-\end{array} $$
+\end{array}
+$$
 
 ### True and False
 
@@ -504,9 +536,11 @@ the sum of an empty set of numbers: the result is 0, which is the identity for $
 just as $\T$ is the identity for $\land$. Using this analogy, we get one introduction
 rule for $\T$ (with zero premises) and zero elimination rules:
 
-$$ \begin{array}{l} \hline\therefore
+$$
+\begin{array}{l} \hline\therefore
 \T, \quad\T I
-\end{array} $$
+\end{array}
+$$
 
 In words, we may conclude $\T$ at any time with no premises. This is not generally
 useful, but we include it for completeness.
@@ -516,10 +550,12 @@ $\F$ is the identity for $\lor$. It is false unless at least one of those zero t
 is true&hellip;. This suggests that we get zero introduction rules and
 one elimination rule, which just has the premise $\F$ and zero nested subproofs:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \F\\ \hline\therefore
 r, \quad\F E\ i
-\end{array} $$
+\end{array}
+$$
 
 That is, if we have a proof of $\F$, labeled $i$, then we can produce a proof of
 any arbitrary proposition $r$! Logicians like to refer to this as _ex falso quodlibet_,
@@ -533,7 +569,8 @@ secure in the belief that that assumption will never actually be true.
 Here is an example, where we validate the common argument that if we know that either
 $p$ or $q$ is true, and we know that $p$ implies false, then $q$ must actually be true:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\lor q & \text{premise}\\
 \ell_2: p\rightarrow\F & \text{premise}\\
 \ell_3: p\Rightarrow\{\\
@@ -544,7 +581,8 @@ $$ \begin{array}{l|l}
 \quad\ell_7: q & \ell_6\text{ (see below)}\\
 \}\\
 \ell_8: q & \lor E\ \ell_1, \ell_3, \ell_6
-\end{array} $$
+\end{array}
+$$
 
 Note that step $\ell_7$ is justified by simply copying the proposition from $\ell_6$;
 this will be discussed further in the [Miscellaneous](#miscellaneous) section below.
@@ -560,13 +598,15 @@ additional rule for negation that does not fit the pattern of the rest of the ru
 
 Accordingly, here is the introduction rule for negation:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p \Rightarrow\{\\
 \quad\ldots\\
 \quad \F\\
 \}\\ \hline\therefore
 \lnot p, \quad\lnot I\ i
-\end{array} $$
+\end{array}
+$$
 
 In words, if we give a nested subproof that arrives at a contradiction (_i.e._,
 a proof of $\F$) from the assumption that $p$ is true, then $p$ must actually
@@ -574,11 +614,13 @@ be false.
 
 Similarly, here is the elimination rule for negation:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \lnot p\\
 j: p\\ \hline\therefore
 \F, \quad\lnot E\ i,j
-\end{array} $$
+\end{array}
+$$
 
 That is, one way to demonstrate a contradiction is to have proofs ($i$ and $j$)
 of both $\lnot p$ and $p$. Compare these rules to $\rightarrow I$ and $\rightarrow E$,
@@ -588,7 +630,8 @@ $q$ is $\F$.
 Using these, here is a proof of one direction of the equivalence between
 $p\rightarrow q$ and its contrapositive $\lnot q\rightarrow\lnot p$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\rightarrow q & \text{premise}\\
 \ell_2: \lnot q\Rightarrow\{\\
 \quad\ell_3: p\Rightarrow\{\\
@@ -598,7 +641,8 @@ $$ \begin{array}{l|l}
 \quad\ell_6: \lnot p & \lnot I\ \ell_3\\
 \}\\
 \ell_7: \lnot q\rightarrow\lnot p & \rightarrow I\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 If you try to prove the other direction of this equivalence, you will
 have a surprisingly difficult time. In fact, it is possible to show that
@@ -606,7 +650,8 @@ there is _no_ proof of the argument $\lnot q\rightarrow\lnot p\vdash p\rightarro
 using the rules seen so far.[^3] The closest you will be able to get starting from
 the premise $\lnot q\rightarrow\lnot p$ is to conclude $p\rightarrow\lnot\lnot q$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \lnot q\rightarrow\lnot p & \text{premise}\\
 \ell_2: p\Rightarrow\{\\
 \quad\ell_3: \lnot q\Rightarrow\{\\
@@ -616,7 +661,8 @@ $$ \begin{array}{l|l}
 \quad\ell_6: \lnot\lnot q & \lnot I\ \ell_3\\
 \}\\
 \ell_7: p\rightarrow\lnot\lnot q & \rightarrow I\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 [^3]: Logicians have taken this observation and built an
 entire system of logic known as **intuitionistic logic**, on the grounds that there
@@ -635,15 +681,18 @@ prove $\lnot\lnot q\vdash q$! Therefore, the very last rule we will add (apart f
 wrapping up some loose ends in the next section) is the rule of double negation
 elimination:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \lnot\lnot p\\ \hline\therefore
 p, \quad\lnot\lnot E\ i
-\end{array} $$
+\end{array}
+$$
 
 With this additional rule, we may finish the proof of the equivalence of the
 contrapositive:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \lnot q\rightarrow\lnot p & \text{premise}\\
 \ell_2: p\Rightarrow\{\\
 \quad\ell_3: \lnot q\Rightarrow\{\\
@@ -654,7 +703,8 @@ $$ \begin{array}{l|l}
 \quad\ell_7: q & \lnot\lnot E\ \ell_6\\
 \}\\
 \ell_8: p\rightarrow q & \rightarrow I\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 ### Miscellaneous
 
@@ -663,33 +713,39 @@ a proposition from earlier (always remembering that we do not
 have access to propositions from nested proofs from the outside).
 This leads to the trivial rule
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: p\\ \hline\therefore
 p, \quad i
-\end{array} $$
+\end{array}
+$$
 
 The justification for $p$ is simply the label of the previous line
 where $p$ was established.
 
 Here is an example of using this to prove the tautology $p\rightarrow p$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\Rightarrow\{\\
 \quad\ell_2: p & \ell_1\\
 \}\\
 \ell_3: p\rightarrow p & \rightarrow I\ \ell_1
-\end{array} $$
+\end{array}
+$$
 
 As another convenience, once we have proven the validity of some
 argument $p_1,\ldots,p_n\vdash q$, we may reuse that proof in
 future proofs as if it were another deduction rule:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i_1: p_1\\
 \ldots\\
 i_n: p_n\\ \hline\therefore
 q, \quad (p_1,\ldots,p_n\vdash q)\ i_1,\ldots,i_n
-\end{array} $$
+\end{array}
+$$
 
 Instead of citing the argument like that in the justification, it
 is common to give names to useful results (such as the modus tollens
@@ -700,25 +756,29 @@ in the argument.
 As an example, here is a use of the modus tollens law,
 $p\rightarrow q, \lnot q\vdash\lnot p$, to prove an extended version:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\rightarrow q & \text{premise}\\
 \ell_2: q\rightarrow r & \text{premise}\\
 \ell_3: \lnot r & \text{premise}\\
 \ell_4: \lnot q & \text{modus tollens}\ \ell_2, \ell_3\\
 \ell_5: \lnot p & \text{modus tollens}\ \ell_1, \ell_4
-\end{array} $$
+\end{array}
+$$
 
 Given a proof of the law of syllogism,
 $p\rightarrow q, q\rightarrow r\vdash p\rightarrow r$, we could also
 prove the above as follows:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\rightarrow q & \text{premise}\\
 \ell_2: q\rightarrow r & \text{premise}\\
 \ell_3: p\rightarrow r & \text{syllogism}\ \ell_1, \ell_2\\
 \ell_4: \lnot r & \text{premise}\\
 \ell_5: \lnot p & \text{modus tollens}\ \ell_3, \ell_4
-\end{array} $$
+\end{array}
+$$
 
 In programming terms, using an already proven theorem like this is
 analogous to calling an already written function out of a library.
@@ -728,27 +788,32 @@ analogous to calling an already written function out of a library.
 ---
 **Conjunction:**
 
-$$ \begin{array}{ll|ll|l}
+$$
+\begin{array}{ll|ll|l}
 i: p & \qquad & & \qquad & \\
 j: q & & i: p\land q & & i: p\land q\\ \hline
 \therefore p\land q, \quad\land I\ i, j & & \therefore p, \quad\land E_1\ i & & \therefore q, \quad\land E_2\ i
-\end{array} $$
+\end{array}
+$$
 
 ---
 **Implication, Reference:**
 
-$$ \begin{array}{ll|ll|l}
+$$
+\begin{array}{ll|ll|l}
 i: p \Rightarrow\{ & \qquad & & \qquad & \\
 \quad\ldots\\
 \quad q & & i: p\rightarrow q\\
 \} & & j: p & & i: p\\ \hline
 \therefore p\rightarrow q, \quad\rightarrow I\ i & & \therefore q, \quad\rightarrow E\ i,j & & \therefore p, \quad i
-\end{array} $$
+\end{array}
+$$
 
 ---
 **Disjunction:**
 
-$$ \begin{array}{ll|ll|l}
+$$
+\begin{array}{ll|ll|l}
 & \qquad & & \qquad & i: p\lor q\\
 & & & & j: p\Rightarrow\{\\
 & & & & \quad\ldots\\
@@ -759,28 +824,33 @@ $$ \begin{array}{ll|ll|l}
 & & & & \quad r\\
 i: p & & i: q & & \}\\ \hline
 \therefore p\lor q, \quad\lor I_1\ i & & \therefore p\lor q, \quad\lor I_2\ i & & \therefore r, \quad\lor E\ i, j, k
-\end{array} $$
+\end{array}
+$$
 
 ---
 **True, False, Theorem:**
 
-$$ \begin{array}{ll|ll|l}
+$$
+\begin{array}{ll|ll|l}
 & \qquad & & \qquad & i_1: p_1\\
 & & & & \ldots\\
 & & i: \F & & i_n: p_n\\ \hline
 \therefore\T, \quad\T I & & \therefore r, \quad\F E\ i & & \therefore q, \quad (p_1,\ldots,p_n\vdash q)\ i_1,\ldots,i_n
-\end{array} $$
+\end{array}
+$$
 
 ---
 **Negation:**
 
-$$ \begin{array}{ll|ll|l}
+$$
+\begin{array}{ll|ll|l}
 i: p \Rightarrow\{ & \qquad & & \qquad & \\
 \quad\ldots\\
 \quad \F & & i: \lnot p\\
 \} & & j: p & & i: \lnot\lnot p\\ \hline
 \therefore\lnot p, \quad\lnot I\ i & & \therefore\F, \quad\lnot E\ i,j & & \therefore p, \quad\lnot\lnot E\ i
-\end{array} $$
+\end{array}
+$$
 
 ## Invalid Arguments
 
@@ -839,7 +909,8 @@ j
 $$
 
 This is a valid argument, as the following proof shows:
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: f\rightarrow\lnot t & \text{premise}\\
 \ell_2: f & \text{premise}\\
 \ell_3: \lnot t & \rightarrow E\ \ell_1, \ell_2\\
@@ -851,7 +922,8 @@ $$ \begin{array}{l|l}
 \ell_9: m\land\lnot b & \land I\ \ell_8, \ell_5\\
 \ell_{10}: (m\land\lnot b)\rightarrow j & \text{premise}\\
 \ell_{11}: j & \rightarrow E\ \ell_{10}, \ell_9
-\end{array} $$
+\end{array}
+$$
 
 ## Predicate Logic
 
@@ -865,17 +937,21 @@ any given particular entity. This rule can be combined with
 rules of deduction for propositional logic to give the following
 valid arguments
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 \forall x(P(x)\rightarrow Q(x))\\
 P(a)\\ \hline\therefore
 Q(a)
-\end{array} $$
+\end{array}
+$$
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 \forall x(P(x)\rightarrow Q(x))\\
 \lnot Q(a)\\ \hline\therefore
 \lnot P(a)
-\end{array} $$
+\end{array}
+$$
 
 These valid arguments go by the names of _modus ponens_ and
 _modus tollens_ for predicate logic.
@@ -888,11 +964,13 @@ _modus tollens_.
 The most famous logical deduction of them all is an application
 of _modus ponens_ for predicate logic:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 \text{All humans are mortal}\\
 \text{Socrates is human}\\ \hline\therefore
 \text{Socrates is mortal}
-\end{array} $$
+\end{array}
+$$
 
 This has the form of _modus ponens_ with $P(x)$ standing
 for "$x$ is human," $Q(x)$ standing for "$x$ is mortal," and
@@ -906,258 +984,351 @@ on the subject.
 
 1. Verify the validity of _modus tollens_ and the Law of
 Syllogism.
-[[spoiler | Answer]]
-| For _modus tollens_, we need to check that $((p\rightarrow q)\land\lnot q)\rightarrow\lnot p$ is a tautology.
-| One way to do this is with a truth table:
-|
-| | $p$ | $q$ | $(p\rightarrow q$ | $\land$ | $\lnot q)$ | $\rightarrow$ | $\lnot p$ |
-| | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| | false | false | true | true | true | **true** | true |
-| | false | true | true | false | false | **true** | true |
-| | true | false | false | false | true | **true** | false |
-| | true | true | true | false | false | **true** | false |
-|
-| For the Law of Syllogism, we need to check that $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ is a tautology.
-| Rather than building an eight-row truth table, let's do this with the laws of Boolean algebra, using the equivalence $(p\rightarrow q)\equiv(\lnot p\lor q)$:
-|
-| | | | |
-| | -: | :- | :- |
-| | $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ | $\equiv\lnot((\lnot p\lor q)\land(\lnot q\lor r))\lor(\lnot p\lor r)$ | Definition of $\rightarrow$ |
-| | | $\equiv\lnot(\lnot p\lor q)\lor\lnot(\lnot q\lor r)\lor(\lnot p\lor r)$ | De Morgan |
-| | | $\equiv(p\land\lnot q)\lor(q\land\lnot r)\lor\lnot p\lor r$ | De Morgan, Double Negation |
-| | | $\equiv(p\land\lnot q)\lor\lnot p\lor(q\land\lnot r)\lor r$ | Commutative |
-| | | $\equiv((p\lor\lnot p)\land(\lnot q\lor\lnot p))\lor((q\lor r)\land(\lnot r\lor r))$ | Distributive |
-| | | $\equiv(\T\land(\lnot q\lor\lnot p))\lor((q\lor r)\land\T)$ | Excluded Middle |
-| | | $\equiv\lnot q\lor\lnot p\lor q\lor r$ | Identity |
-| | | $\equiv\T\lor\lnot p\lor r$ | Excluded Middle |
-| | | $\equiv\T$ | Annihilation |
+<details>
+  <summary>Answer</summary>
 
-2. Each of the following is a valid rule of deduction.
+  For _modus tollens_, we need to check that $((p\rightarrow q)\land\lnot q)\rightarrow\lnot p$ is a tautology.
+  One way to do this is with a truth table:
+
+  | $p$ | $q$ | $(p\rightarrow q$ | $\land$ | $\lnot q)$ | $\rightarrow$ | $\lnot p$ |
+  | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+  | false | false | true | true | true | **true** | true |
+  | false | true | true | false | false | **true** | true |
+  | true | false | false | false | true | **true** | false |
+  | true | true | true | false | false | **true** | false |
+ 
+  For the Law of Syllogism, we need to check that $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ is a tautology.
+  Rather than building an eight-row truth table, let's do this with the laws of Boolean algebra, using the equivalence $(p\rightarrow q)\equiv(\lnot p\lor q)$:
+
+  | | | |
+  | -: | :- | :- |
+  | $((p\rightarrow q)\land(q\rightarrow r))\rightarrow(p\rightarrow r)$ | $\equiv\lnot((\lnot p\lor q)\land(\lnot q\lor r))\lor(\lnot p\lor r)$ | Definition of $\rightarrow$ |
+  | | $\equiv\lnot(\lnot p\lor q)\lor\lnot(\lnot q\lor r)\lor(\lnot p\lor r)$ | De Morgan |
+  | | $\equiv(p\land\lnot q)\lor(q\land\lnot r)\lor\lnot p\lor r$ | De Morgan, Double Negation |
+  | | $\equiv(p\land\lnot q)\lor\lnot p\lor(q\land\lnot r)\lor r$ | Commutative |
+  | | $\equiv((p\lor\lnot p)\land(\lnot q\lor\lnot p))\lor((q\lor r)\land(\lnot r\lor r))$ | Distributive |
+  | | $\equiv(\T\land(\lnot q\lor\lnot p))\lor((q\lor r)\land\T)$ | Excluded Middle |
+  | | $\equiv\lnot q\lor\lnot p\lor q\lor r$ | Identity |
+  | | $\equiv\T\lor\lnot p\lor r$ | Excluded Middle |
+  | | $\equiv\T$ | Annihilation |
+</details>
+
+1. Each of the following is a valid rule of deduction.
 For each one, give an example of a valid argument in English that
 uses that rule.
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 p\lor q\\
 \lnot p\\ \hline\therefore
 q
-\end{array} $$
-[[spoiler | Answer]]
-| I have soup or a salad with my meal. I do not have soup with my meal. Therefore, I have a salad with my meal.
+\end{array}
+$$
+<details>
+  <summary>Answer</summary>
 
-$$ \begin{array}{l}
+  I have soup or a salad with my meal. I do not have soup with my meal. Therefore, I have a salad with my meal.
+</details>
+
+$$
+\begin{array}{l}
 p\\
 q\\ \hline\therefore
 p\land q
-\end{array} $$
-[[spoiler | Answer]]
-| I have an apple. I have a banana. Therefore, I have an apple and a banana.
+\end{array}
+$$
+<details>
+  <summary>Answer</summary>
 
-$$ \begin{array}{l}
+  I have an apple. I have a banana. Therefore, I have an apple and a banana.
+</details>
+
+$$
+\begin{array}{l}
 p\land q\\ \hline\therefore
 p
-\end{array} $$
-[[spoiler | Answer]]
-| I have an apple and a banana. Therefore, I have an apple.
+\end{array}
+$$
+<details>
+  <summary>Answer</summary>
 
-$$ \begin{array}{l}
+  I have an apple and a banana. Therefore, I have an apple.
+</details>
+
+$$
+\begin{array}{l}
 p\\ \hline\therefore
 p\lor q
-\end{array} $$
-[[spoiler | Answer]]
-| I walked ten miles. Therefore, I walked ten miles or ran ten miles.
+\end{array}
+$$
+<details>
+  <summary>Answer</summary>
+
+  I walked ten miles. Therefore, I walked ten miles or ran ten miles.
+</details>
 
 3. There are two notorious invalid arguments that look
 deceptively like _modus ponens_ and _modus tollens_:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 p\rightarrow q\\
 q\\ \hline\therefore
 p
-\end{array} $$
+\end{array}
+$$
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 p\rightarrow q\\
 \lnot p\\ \hline\therefore
 \lnot q
-\end{array} $$
+\end{array}
+$$
 
 Show that each of these arguments is invalid. Give an English
 example that uses each of these arguments.
-[[spoiler | Answer]]
-| The first argument fails when $p$ is false while $q$ is true.
-| For example, "If I were a millionaire, then I would own a house. I own a house. Therefore, I am a millionaire."
-|
-| The second argument also fails when $p$ is false while $q$ is true.
-| For example, "If the moon is made of blue cheese, then $2+2=4$. The moon is not made of blue cheese. Therefore, $2+2\not=4$."
+<details>
+  <summary>Answer</summary>
+
+  The first argument fails when $p$ is false while $q$ is true.
+  For example, "If I were a millionaire, then I would own a house. I own a house. Therefore, I am a millionaire."
+
+  The second argument also fails when $p$ is false while $q$ is true.
+  For example, "If the moon is made of blue cheese, then $2+2=4$. The moon is not made of blue cheese. Therefore, $2+2\not=4$."
+</details>
 
 4. Decide whether each of the following arguments is valid.
 If it is valid, give a formal proof. If it is invalid, show that
 it is invalid by finding an appropriate assignment of truth values
 to propositional variables.
 
-   1. $$ \begin{array}{l}
+   1. 
+   $$
+   \begin{array}{l}
    p\rightarrow q\\
    q\rightarrow s\\ \hline\therefore
    p
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Invalid. Take $p$ and $q$ false, so that both premises are vacuously true but the conclusion is false.
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Invalid. Take $p$ and $q$ false, so that both premises are vacuously true but the conclusion is false.
+   </details>
 
-   2. $$ \begin{array}{l}
+   2. 
+   $$
+   \begin{array}{l}
    p\land q\\
    q\rightarrow (r\lor s)\\
    \lnot r\\ \hline\therefore
    s
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Valid:
-   | $$ \begin{array}{l|l}
-   | \ell_1: p\land q & \text{premise}\\
-   | \ell_2: q & \land E_2\ \ell_1\\
-   | \ell_3: q\rightarrow(r\lor s) & \text{premise}\\
-   | \ell_4: r\lor s & \rightarrow E\ \ell_3,\ell_2\\
-   | \ell_5: r\Rightarrow\{\\
-   | \quad\ell_6: \lnot r & \text{premise}\\
-   | \quad\ell_7: \F & \lnot E\ \ell_6,\ell_5\\
-   | \quad\ell_8: s & \F E\ \ell_7\\
-   | \}\\
-   | \ell_9: s\Rightarrow\{\\
-   | \quad\ell_{10}: s & \ell_9\\
-   | \}\\
-   | \ell_{11}: s & \lor E\ \ell_4,\ell_5,\ell_9
-   | \end{array} $$
-   
-   3. $$ \begin{array}{l}
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Valid:
+     $$
+     \begin{array}{l|l}
+     \ell_1: p\land q & \text{premise}\\
+     \ell_2: q & \land E_2\ \ell_1\\
+     \ell_3: q\rightarrow(r\lor s) & \text{premise}\\
+     \ell_4: r\lor s & \rightarrow E\ \ell_3,\ell_2\\
+     \ell_5: r\Rightarrow\{\\
+     \quad\ell_6: \lnot r & \text{premise}\\
+     \quad\ell_7: \F & \lnot E\ \ell_6,\ell_5\\
+     \quad\ell_8: s & \F E\ \ell_7\\
+     \}\\
+     \ell_9: s\Rightarrow\{\\
+     \quad\ell_{10}: s & \ell_9\\
+     \}\\
+     \ell_{11}: s & \lor E\ \ell_4,\ell_5,\ell_9
+     \end{array}
+     $$
+   </details>
+
+   3. 
+   $$
+   \begin{array}{l}
    p\lor q\\
    q\rightarrow (r\land s)\\
    \lnot p\\ \hline\therefore
    s
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Valid:
-   | $$ \begin{array}{l|l}
-   | \ell_1: p\lor q & \text{premise}\\
-   | \ell_2: p\Rightarrow\{\\
-   | \quad\ell_3: \lnot p & \text{premise}\\
-   | \quad\ell_4: \F & \lnot E\ \ell_3,\ell_2\\
-   | \quad\ell_5: s & \F E\ \ell_4\\
-   | \}\\
-   | \ell_6: q\Rightarrow\{\\
-   | \quad\ell_7: q\rightarrow(r\land s) & \text{premise}\\
-   | \quad\ell_8: r\land s & \rightarrow E\ \ell_7,\ell_6\\
-   | \quad\ell_9: s & \land E_2\ \ell_8\\
-   | \}\\
-   | \ell_{10}: s & \lor E\ \ell_1,\ell_2,\ell_6
-   | \end{array} $$
-   
-   4. $$ \begin{array}{l}
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Valid:
+     $$
+     \begin{array}{l|l}
+     \ell_1: p\lor q & \text{premise}\\
+     \ell_2: p\Rightarrow\{\\
+     \quad\ell_3: \lnot p & \text{premise}\\
+     \quad\ell_4: \F & \lnot E\ \ell_3,\ell_2\\
+     \quad\ell_5: s & \F E\ \ell_4\\
+     \}\\
+     \ell_6: q\Rightarrow\{\\
+     \quad\ell_7: q\rightarrow(r\land s) & \text{premise}\\
+     \quad\ell_8: r\land s & \rightarrow E\ \ell_7,\ell_6\\
+     \quad\ell_9: s & \land E_2\ \ell_8\\
+     \}\\
+     \ell_{10}: s & \lor E\ \ell_1,\ell_2,\ell_6
+     \end{array}
+     $$
+   </details>
+
+   4. 
+   $$
+   \begin{array}{l}
    (\lnot p)\rightarrow t\\
    q\rightarrow s\\
    r\rightarrow q\\
    \lnot(q\lor t)\\ \hline\therefore
    p
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Valid:
-   | $$ \begin{array}{l|l}
-   | \ell_1: \lnot p\Rightarrow\{\\
-   | \quad\ell_2: (\lnot p)\rightarrow t & \text{premise}\\
-   | \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
-   | \quad\ell_4: q\lor t & \lor I_2\ \ell_3\\
-   | \quad\ell_5: \lnot(q\lor t) & \text{premise}\\
-   | \quad\ell_6: \F & \lnot E\ \ell_5,\ell_4\\
-   | \}\\
-   | \ell_7: \lnot\lnot p & \lnot I\ \ell_1\\
-   | \ell_8: p & \lnot\lnot E\ \ell_7
-   | \end{array} $$
-   
-   5. $$ \begin{array}{l}
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Valid:
+     $$
+     \begin{array}{l|l}
+     \ell_1: \lnot p\Rightarrow\{\\
+     \quad\ell_2: (\lnot p)\rightarrow t & \text{premise}\\
+     \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
+     \quad\ell_4: q\lor t & \lor I_2\ \ell_3\\
+     \quad\ell_5: \lnot(q\lor t) & \text{premise}\\
+     \quad\ell_6: \F & \lnot E\ \ell_5,\ell_4\\
+     \}\\
+     \ell_7: \lnot\lnot p & \lnot I\ \ell_1\\
+     \ell_8: p & \lnot\lnot E\ \ell_7
+     \end{array}
+     $$
+   </details>
+
+   5. 
+   $$
+   \begin{array}{l}
    p\\
    s\rightarrow r\\
    q\lor r\\
    q\rightarrow\lnot p\\ \hline\therefore
    \lnot s
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Invalid. Take $p$, $r$, and $s$ all true, while $q$ is false. All of the premises are true, but the conclusion is false.
-   
-   6. $$ \begin{array}{l}
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Invalid. Take $p$, $r$, and $s$ all true, while $q$ is false. All of the premises are true, but the conclusion is false.
+   </details>
+
+   6. 
+   $$
+   \begin{array}{l}
    q\rightarrow t\\
    p\rightarrow(t\rightarrow s)\\
    p\\ \hline\therefore
    q\rightarrow s
-   \end{array} $$
-   [[spoiler | Answer]]
-   | Valid:
-   | $$ \begin{array}{l|l}
-   | \ell_1: q\Rightarrow\{\\
-   | \quad\ell_2: q\rightarrow t & \text{premise}\\
-   | \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
-   | \quad\ell_4: p\rightarrow(t\rightarrow s) & \text{premise}\\
-   | \quad\ell_5: p & \text{premise}\\
-   | \quad\ell_6: t\rightarrow s & \rightarrow E\ \ell_4,\ell_5\\
-   | \quad\ell_7: s & \rightarrow E\ \ell_6,\ell_3\\
-   | \}\\
-   | \ell_8: q\rightarrow s & \rightarrow I\ \ell_1
-   | \end{array} $$
+   \end{array}
+   $$
+   <details>
+     <summary>Answer</summary>
+    
+     Valid:
+     $$
+     \begin{array}{l|l}
+     \ell_1: q\Rightarrow\{\\
+     \quad\ell_2: q\rightarrow t & \text{premise}\\
+     \quad\ell_3: t & \rightarrow E\ \ell_2,\ell_1\\
+     \quad\ell_4: p\rightarrow(t\rightarrow s) & \text{premise}\\
+     \quad\ell_5: p & \text{premise}\\
+     \quad\ell_6: t\rightarrow s & \rightarrow E\ \ell_4,\ell_5\\
+     \quad\ell_7: s & \rightarrow E\ \ell_6,\ell_3\\
+     \}\\
+     \ell_8: q\rightarrow s & \rightarrow I\ \ell_1
+     \end{array}
+     $$
+   </details>
 
-5. For each of the following English arguments, express the
+1. For each of the following English arguments, express the
 argument in terms of propositional logic and determine whether the
 argument is valid or invalid.
 
    * If it is Sunday, it rains or snows. Today, it is Sunday
 and it's not raining. Therefore, it must be snowing.
-[[spoiler | Answer]]
-| Let $p$ be "it is Sunday", $r$ be "it is raining", and $s$ be "it is snowing."
-| The argument is then
-| $$ \begin{array}{l}
-| p\rightarrow(r\lor s)\\
-| p\land\lnot r\\ \hline\therefore
-| s
-| \end{array} $$
-| This argument is valid:
-| $$ \begin{array}{l|l}
-| \ell_1: p\rightarrow(r\lor s) & \text{premise}\\
-| \ell_2: p\land\lnot r & \text{premise}\\
-| \ell_3: p & \land E_1\ \ell_2\\
-| \ell_4: r\lor s & \rightarrow E\ \ell_1,\ell_3\\
-| \ell_5: \lnot r & \land E_2\ \ell_2\\
-| \ell_6: s & \text{disjunctive syllogism}
-| \end{array} $$
-| The Law of Disjunctive Syllogism cited on line 6 was seen as the first argument in Exercise 2.
-| It is a common enough argument (used for example in Exercise 4(ii)) that I decided to introduce it as a shortcut here.
+<details>
+  <summary>Answer</summary>
+ 
+  Let $p$ be "it is Sunday", $r$ be "it is raining", and $s$ be "it is snowing."
+  The argument is then
+  $$
+  \begin{array}{l}
+  p\rightarrow(r\lor s)\\
+  p\land\lnot r\\ \hline\therefore
+  s
+  \end{array}
+  $$
+  This argument is valid:
+  $$
+  \begin{array}{l|l}
+  \ell_1: p\rightarrow(r\lor s) & \text{premise}\\
+  \ell_2: p\land\lnot r & \text{premise}\\
+  \ell_3: p & \land E_1\ \ell_2\\
+  \ell_4: r\lor s & \rightarrow E\ \ell_1,\ell_3\\
+  \ell_5: \lnot r & \land E_2\ \ell_2\\
+  \ell_6: s & \text{disjunctive syllogism}
+  \end{array}
+  $$
+  The Law of Disjunctive Syllogism cited on line 6 was seen as the first argument in Exercise 2.
+  It is a common enough argument (used for example in Exercise 4(ii)) that I decided to introduce it as a shortcut here.
+</details>
 
    * If there are anchovies on the pizza, Jack won't eat it.
 If Jack doesn't eat pizza, he gets angry. Jack is angry.
 Therefore, there were anchovies on the pizza.
-[[spoiler | Answer]]
-| Let $a$ be "There are anchovies on the pizza", $b$ be "Jack doesn't eat the pizza", and $c$ be "Jack is angry."
-| The argument is then
-| $$ \begin{array}{l}
-| a\rightarrow b\\
-| b\rightarrow c\\
-| c\\ \hline\therefore
-| a
-| \end{array} $$
-| This argument is invalid. Maybe Jack never eats pizza and is angry all the time (that is, $b$ and $c$ are true, making all the premises true with no obligation for $a$ to be true).
+<details>
+  <summary>Answer</summary>
+ 
+  Let $a$ be "There are anchovies on the pizza", $b$ be "Jack doesn't eat the pizza", and $c$ be "Jack is angry."
+  The argument is then
+  $$
+  \begin{array}{l}
+  a\rightarrow b\\
+  b\rightarrow c\\
+  c\\ \hline\therefore
+  a
+  \end{array}
+  $$
+  This argument is invalid. Maybe Jack never eats pizza and is angry all the time (that is, $b$ and $c$ are true, making all the premises true with no obligation for $a$ to be true).
+</details>
 
    * At 8:00, Jane studies in the library or works at home.
 It's 8:00 and Jane is not studying in the library. So she must
 be working at home.
-[[spoiler | Answer]]
-| Let $e$ be "it is 8:00", $s$ be "Jane studies in the library", and $w$ be "Jane works at home."
-| The argument is then
-| $$ \begin{array}{l}
-| e\rightarrow(s\lor w)\\
-| e\land\lnot s\\ \hline\therefore
-| w
-| \end{array} $$
-| This argument is valid:
-| $$ \begin{array}{l|l}
-| \ell_1: e\rightarrow(s\lor w) & \text{premise}\\
-| \ell_2: e\land\lnot s & \text{premise}\\
-| \ell_3: e & \land E_1\ \ell_2\\
-| \ell_4: s\lor w & \rightarrow E\ \ell_1,\ell_3\\
-| \ell_5: \lnot s & \land E_2\ \ell_2\\
-| \ell_6: w & \text{disjunctive syllogism}
-| \end{array} $$
+<details>
+  <summary>Answer</summary>
+ 
+  Let $e$ be "it is 8:00", $s$ be "Jane studies in the library", and $w$ be "Jane works at home."
+  The argument is then
+  $$
+  \begin{array}{l}
+  e\rightarrow(s\lor w)\\
+  e\land\lnot s\\ \hline\therefore
+  w
+  \end{array}
+  $$
+  This argument is valid:
+  $$
+  \begin{array}{l|l}
+  \ell_1: e\rightarrow(s\lor w) & \text{premise}\\
+  \ell_2: e\land\lnot s & \text{premise}\\
+  \ell_3: e & \land E_1\ \ell_2\\
+  \ell_4: s\lor w & \rightarrow E\ \ell_1,\ell_3\\
+  \ell_5: \lnot s & \land E_2\ \ell_2\\
+  \ell_6: w & \text{disjunctive syllogism}
+  \end{array}
+  $$
+</details>

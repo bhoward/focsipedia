@@ -437,14 +437,22 @@ state. The complete automaton is shown below.
 
 ![Example DFA](/img/fsa1ex.png)
 
-[[spoiler | Answer]]
-| Strings of $a$'s and $b$'s with no more than two consecutive $b$'s.
+<details>
+  <summary>Answer</summary>
+
+Strings of $a$'s and $b$'s with no more than two consecutive $b$'s.
+</details>
 
 ![Example DFA](/img/fsa2ex.png)
 
-[[spoiler | Answer]]
-| Strings of $a$'s and $b$'s with at least one of each.
+<details>
+  <summary>Answer</summary>
+
+Strings of $a$'s and $b$'s with at least one of each.
+</details>
 
 3. Let $\Sigma=\{0,1\}$. Give a DFA that accepts the language 
-$$ L = \{ x \in \Sigma^* \ | \ x \textrm{ is the binary representation of an integer
-divisible by 3}\}.$$ 
+$$
+L = \{ x \in \Sigma^* \ | \ x \textrm{ is the binary representation of an integer
+divisible by 3}\}.
+$$

@@ -73,13 +73,15 @@ we need to show that $P(x)$ is true
 regardless of which entity is substituted for $x$. This is what a subproof with
 a fresh variable gives us:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \text{fresh}\ x_0\Rightarrow\{\\
 \quad\ldots\\
 \quad P(x_0)\\
 \}\\ \hline\therefore
 \forall xP(x), \quad\forall I\ i
-\end{array} $$
+\end{array}
+$$
 
 The nested proof is a demonstration that $P(x_0)$ is true with no external
 assumptions on which entity $x_0$ refers to. The only way we can do this is if
@@ -89,7 +91,8 @@ is, $\forall xP(x)$.
 Here is an example, proving the validity of the argument
 $p\vdash\forall x(Q(x)\rightarrow p\land Q(x))$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p & \text{premise}\\
 \ell_2: \text{fresh}\ x_0\Rightarrow\{\\
 \quad\ell_3: Q(x_0)\Rightarrow\{\\
@@ -98,7 +101,8 @@ $$ \begin{array}{l|l}
 \quad\ell_5: Q(x_0)\rightarrow p\land Q(x_0) & \rightarrow I\ \ell_3\\
 \}\\
 \ell_6: \forall x(Q(x)\rightarrow p\land Q(x)) & \forall I\ \ell_2
-\end{array} $$
+\end{array}
+$$
 
 At step $\ell_5$, we are asserting that $Q(x_0)\rightarrow p\land Q(x_0)$
 is true for _some_ entity $x_0$, but since we were able to conclude this with
@@ -111,28 +115,33 @@ The corresponding elimination rule for the universal quantifier is simple:
 from the premise $\forall xP(x)$ we may conclude that the predicate $P$ holds
 for _any_ entity $a$ in the domain of discourse:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \forall xP(x)\\ \hline\therefore
 P(a), \quad\forall E\ i, a
-\end{array} $$
+\end{array}
+$$
 
 For example, we can use this to prove the following quantified version of
 modus ponens: $\forall x(P(x)\rightarrow Q(x)), P(a)\vdash Q(a)$. That is, if
 $P(x)$ implies $Q(x)$ for each $x$, then knowing that $P(a)$ holds for some $a$
 lets us conclude that also $Q(a)$ holds. Here is the proof:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \forall x(P(x)\rightarrow Q(x)) & \text{premise}\\
 \ell_2: P(a)\rightarrow Q(a) & \forall E\ \ell_1, a\\
 \ell_3: P(a) & \text{premise}\\
 \ell_4: Q(a) & \rightarrow E\ \ell_2, \ell_3
-\end{array} $$
+\end{array}
+$$
 
 Here is a longer example showing a quantified version of the law of syllogism,
 $\forall x(P(x)\rightarrow Q(x)), \forall x(Q(x)\rightarrow R(x))\vdash\forall
 x(P(x)\rightarrow R(x))$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \text{fresh}\ x_0\Rightarrow\{\\
 \quad\ell_2: P(x_0)\Rightarrow\{\\
 \quad\quad\ell_3: \forall x(P(x)\rightarrow Q(x)) & \text{premise}\\
@@ -145,7 +154,8 @@ $$ \begin{array}{l|l}
 \quad\ell_9: P(x_0)\rightarrow R(x_0) & \rightarrow I\ \ell_2\\
 \}\\
 \ell_{10}: \forall x(P(x)\rightarrow R(x)) & \forall I\ \ell_1
-\end{array} $$
+\end{array}
+$$
 
 ## Existential Quantification
 
@@ -153,10 +163,12 @@ Extending the analogy between the conjunction/disjunction operators and the
 universal/existential quantifiers, we find that the rule for introducing an
 existential is the dual of the universal elimination rule:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: P(a)\\ \hline\therefore
 \exists xP(x), \quad\exists I\ i, a
-\end{array} $$
+\end{array}
+$$
 
 That is, to show that there exists some $x$ making $P(x)$ true it is enough
 to show a specific $a$ in the domain of discourse such that $P(a)$ holds.
@@ -165,17 +177,20 @@ For example, we may prove the validity of the argument $\forall
 xP(x)\vdash\exists xP(x)$, as long as we are able to name some element $a$ of
 the domain of discourse:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \forall xP(x) & \text{premise}\\
 \ell_2: P(a) & \forall E\ \ell_1, a\\
 \ell_3: \exists xP(x) & \exists I\ \ell_2, a
-\end{array} $$
+\end{array}
+$$
 
 For a different sort of example, suppose we are proving statements of
 arithmetic, and we have some means of deriving various equations and inequations
 about integers. Then we might see the following in a proof:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: 6\cdot 7=42 & \text{arithmetic}\\
 \ell_2: 7>1 & \text{arithmetic}\\
 \ell_3: 7>1 \land 6\cdot 7=42 & \land I\ \ell_2, \ell_1\\
@@ -183,7 +198,8 @@ $$ \begin{array}{l|l}
 \ell_5: 6>1 & \text{arithmetic}\\
 \ell_6: 6>1 \land \exists n(n>1 \land 6\cdot n=42) & \land I\ \ell_5, \ell_4\\
 \ell_7: \exists m(m>1 \land \exists n(n>1 \land m\cdot n=42)) & \exists I\ \ell_6, 6
-\end{array} $$
+\end{array}
+$$
 
 The conclusion on the last line shows that the number 42 is composite. There are other
 proofs of this fact (for example, starting from $3\cdot 14=42$); to show that 42 is
@@ -199,14 +215,16 @@ idea of conducting a subproof with extra assumptions, including a fresh variable
 to stand for whatever entity it is that "witnesses" the truth of the existential,
 captures what we need here:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 i: \exists xP(x)\\
 j: \text{fresh}\ x_0, P(x_0)\Rightarrow\{\\
 \quad\ldots\\
 \quad r\\
 \}\\ \hline\therefore
 r, \quad\exists E\ i, j
-\end{array} $$
+\end{array}
+$$
 
 In the nested proof, we assume _two_ additional pieces of information: first, that
 $x_0$ is the name of a value in the domain of discourse, and second, that we have
@@ -222,7 +240,8 @@ _some_ $x$ making $P(x)$ true, but it doesn't tell us which entity it is.
 We may now prove a law about the interaction of the existential and conjunction:
 $\exists x(P(x)\land Q(x))\vdash(\exists xP(x))\land(\exists xQ(x))$.
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: \exists x(P(x)\land Q(x)) & \text{premise}\\
 \ell_2: \text{fresh}\ x_0, P(x_0)\land Q(x_0)\Rightarrow\{\\
 \quad\ell_3: P(x_0) & \land E_1\ \ell_2\\
@@ -232,12 +251,14 @@ $$ \begin{array}{l|l}
 \quad\ell_7: (\exists xP(x))\land(\exists xQ(x)) & \land I\ \ell_4, \ell_6\\
 \}\\
 \ell_8: (\exists xP(x))\land(\exists xQ(x)) & \exists E\ \ell_1, \ell_2
-\end{array} $$
+\end{array}
+$$
 
 It is instructive to see where the proof attempt fails if we try to go the other
 direction and show $(\exists xP(x))\land(\exists xQ(x))\vdash\exists x(P(x)\land Q(x))$:
 
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: (\exists xP(x))\land(\exists xQ(x)) & \text{premise}\\
 \ell_2: \exists xP(x) & \land E_1\ \ell_1\\
 \ell_3: \text{fresh}\ x_0, P(x_0)\Rightarrow\{\\
@@ -245,7 +266,8 @@ $$ \begin{array}{l|l}
 \quad\ell_5: \text{fresh}\ x_1, Q(x_1)\Rightarrow\{\\
 \quad\quad\ell_6: P(x_0)\land Q(x_1) & \land I\ \ell_3, \ell_5\\
 \quad\quad\ldots?
-\end{array} $$
+\end{array}
+$$
 
 The problem comes in step $\ell_5$, where we must introduce a _different_
 variable, $x_1$, as the witness for $\exists xQ(x)$, because of the requirement
@@ -261,34 +283,46 @@ and there are even numbers, but there are no numbers that are both odd and even.
 1. Prove a similar result to the one just above, showing the interaction of
 the existential and the universal quantifiers:
 
-$$\exists x\forall y P(x, y)\vdash\forall y\exists x P(x, y)$$
-[[spoiler | Answer]]
-| $$ \begin{array}{l|l}
-| \ell_1: \text{fresh}\ y_0\Rightarrow\{\\
-| \quad\ell_2: \exists x\forall y P(x, y) & \text{premise}\\
-| \quad\ell_3: \text{fresh}\ x_0, \forall y P(x_0, y)\Rightarrow\{\\
-| \quad\quad\ell_4: P(x_0, y_0) & \forall E\ \ell_3,y_0\\
-| \quad\quad\ell_5: \exists x P(x, y_0) & \exists I\ \ell_4,x_0\\
-| \quad\}\\
-| \quad\ell_6: \exists x P(x, y_0) & \exists E\ \ell_2,\ell_3\\
-| \}\\
-| \ell_7: \forall y\exists x P(x, y) & \forall I\ \ell_1
-| \end{array} $$
+$$
+\exists x\forall y P(x, y)\vdash\forall y\exists x P(x, y)
+$$
+<details>
+  <summary>Answer</summary>
+
+  $$
+  \begin{array}{l|l}
+  \ell_1: \text{fresh}\ y_0\Rightarrow\{\\
+  \quad\ell_2: \exists x\forall y P(x, y) & \text{premise}\\
+  \quad\ell_3: \text{fresh}\ x_0, \forall y P(x_0, y)\Rightarrow\{\\
+  \quad\quad\ell_4: P(x_0, y_0) & \forall E\ \ell_3,y_0\\
+  \quad\quad\ell_5: \exists x P(x, y_0) & \exists I\ \ell_4,x_0\\
+  \quad\}\\
+  \quad\ell_6: \exists x P(x, y_0) & \exists E\ \ell_2,\ell_3\\
+  \}\\
+  \ell_7: \forall y\exists x P(x, y) & \forall I\ \ell_1
+  \end{array}
+  $$
+</details>
 
 2. Discuss why the opposite direction of the previous problem is not a valid argument:
 
-$$\forall y\exists xP(x, y)\vdash\exists x\forall yP(x, y)$$
-[[spoiler | Answer]]
-| The premise claims that for any $y$ you can find an $x$ making $P(x, y)$ true, but it might
-| be a different $x$ for each $y$. That is, the _existential witness_ for $x$ should be
-| expressed as a function of $y$: given input $y$, the output of the function is an appropriate
-| witness (a value of $x$ such that $P(x, y)$ for that particular choice of $y$).
-|
-| However, the conclusion of the argument asserts that there is a single $x$ that makes $P(x, y)$
-| true for _all_ values of $y$. That's a much stronger statement, saying that we can choose the
-| witness $x$ independent of knowing $y$.
-|
-| For a simple example, let $P(x, y)$ be $x=2y$. The premise claims $\forall y\exists x(x=2y)$,
-| and it is easy to see that the function giving the witness is just $f(y)=2y$. However, the
-| conclusion of this invalid argument would claim that $\exists x\forall y(x=2y)$, but there is
-| no way that we can choose a single $x$ that is simultaneously equal to all of the even numbers!
+$$
+\forall y\exists xP(x, y)\vdash\exists x\forall yP(x, y)
+$$
+<details>
+  <summary>Answer</summary>
+ 
+  The premise claims that for any $y$ you can find an $x$ making $P(x, y)$ true, but it might
+  be a different $x$ for each $y$. That is, the _existential witness_ for $x$ should be
+  expressed as a function of $y$: given input $y$, the output of the function is an appropriate
+  witness (a value of $x$ such that $P(x, y)$ for that particular choice of $y$).
+
+  However, the conclusion of the argument asserts that there is a single $x$ that makes $P(x, y)$
+  true for _all_ values of $y$. That's a much stronger statement, saying that we can choose the
+  witness $x$ independent of knowing $y$.
+
+  For a simple example, let $P(x, y)$ be $x=2y$. The premise claims $\forall y\exists x(x=2y)$,
+  and it is easy to see that the function giving the witness is just $f(y)=2y$. However, the
+  conclusion of this invalid argument would claim that $\exists x\forall y(x=2y)$, but there is
+  no way that we can choose a single $x$ that is simultaneously equal to all of the even numbers!
+</details>

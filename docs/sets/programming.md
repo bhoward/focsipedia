@@ -163,7 +163,7 @@ The operators $\,|\,$, $\&$, and $\sim$
 are called **bitwise logical operators**
 because of the way they operate on the individual bits of the numbers
 to which they are applied. The languages descended from C have one more bitwise logical
-operator: $a\,^\wedge\,b$ takes the exclusive-OR at each
+operator: $a\;\hat{}\;b$ takes the exclusive-OR at each
 corresponding bit position of $a$ and $b$. Recall that the
 exclusive-OR, also written $p\oplus q$, is the variation
 of OR that is true when either $p$ or $q$ is true, but not both.
@@ -325,26 +325,27 @@ shifted $k$ bits to the left, with bits of 0 pushed in from the right
 (effectively multiplying by $2^k$). Since $64=2^6$ and $16=2^4$, the above mask
 may be produced by $1\,\texttt{<<}\,6\;|\;1\,\texttt{<<}\,4$.
 
-Using a mask $m$, the following simple operations are possible on a binary number $x$:
+Using a mask $\verb|m|$, the following simple operations are possible on a binary number $\verb|x|$:
 
-* $x\,|\,m$ turns on (sets to 1) all of the selected bits of $x$,
-leaving the rest unchanged;
-* $x\,\&\,\sim m$ turns off all of the selected bits of $x$;
-* $x\,\&\,m$ turns off all of the _non_-selected bits of $x$;
-* $x\,^\wedge\,m$ "toggles" (flips between 0 and 1) all of the selected bits of $x$;
-* $\sim x$ toggles all of the bits of $x$.
+* $\verb-x | m-$ turns on (sets to 1) all of the selected bits of $\verb|x|$, leaving the rest unchanged;
+* $\verb|x & ~m|$ turns off all of the selected bits of $\verb|x|$;
+* $\verb|x & m|$ turns off all of the _non_-selected bits of $\verb|x|$;
+* $\verb|x ^ m|$ "toggles" (flips between 0 and 1) all of the selected bits of $\verb|x|$;
+* $\verb|~x|$ toggles all of the bits of $\verb|x|$.
 
 The following table shows samples of these operations:
 
-$$ \begin{array}{rl}
-x:                         & 01101011_2\\
-m:                         & 01010000_2\\ \hline
-x\,|\,m:                   & 01111011_2\\
-x\,\&\,\sim m: & 00101011_2\\
-x\,\&\,m:                  & 01000000_2\\
-x\,^\wedge\,m:              & 00111011_2\\
-\sim x:        & 10010100_2
-\end{array} $$
+$$
+\begin{array}{rl}
+\verb|x|:         & 01101011_2\\
+\verb|m|:         & 01010000_2\\ \hline
+\verb-x | m-:     & 01111011_2\\
+\verb|x & ~m|:    & 00101011_2\\
+\verb|x & m|:     & 01000000_2\\
+\verb|x ^ m|:     & 00111011_2\\
+\verb|~x|:        & 10010100_2
+\end{array}
+$$
 
 ## Binary numbers in ReasonML
 
@@ -359,7 +360,7 @@ Here is a table of the corresponding number syntax and operations:
 | x $\mid$ y | x lor y |
 | x ^ y | x lxor y |
 | ~ x | lnot(x) |
-| x << n | x lsl n |
+| x &lt;&lt; n | x lsl n |
 | x >> n | x lsr n |
 
 There is no simple way to print out a number in binary in ReasonML, but you can use
@@ -376,63 +377,119 @@ Evaluate the code by pressing the button or hitting Ctrl-Enter.
 1. Suppose that the numbers $x$ and $y$ represent the
 sets $A$ and $B$. Show that the set $A\smallsetminus B$ is 
 represented by $x \,\&\, (\sim y)$.
-[[spoiler | Answer]]
-| For each bit in the output, the result will be 1 if the corresponding
-| bit in $x$ was 1 while the bit in $y$ was 0. That is, the element
-| represented by that bit must be in $A$ and not in $B$, which is
-| exactly the condition needed for an element to be in $A\smallsetminus B$.
+<details>
+  <summary>Answer</summary>
+
+  For each bit in the output, the result will be 1 if the corresponding
+  bit in $x$ was 1 while the bit in $y$ was 0. That is, the element
+  represented by that bit must be in $A$ and not in $B$, which is
+  exactly the condition needed for an element to be in $A\smallsetminus B$.
+</details>
 
 2. Write each of the following binary numbers in hexadecimal:
 
    * 10110110$_2$
-   [[spoiler | Answer]]
-   | 0xB6 
+   <details>
+     <summary>Answer</summary>
+
+     0xB6
+   </details>
+ 
    * 10$_2$
-   [[spoiler | Answer]]
-   | 0x2
+   <details>
+     <summary>Answer</summary>
+    
+     0x2
+   </details>
+
    * 111100001111$_2$
-   [[spoiler | Answer]]
-   | 0xF0F
+   <details>
+     <summary>Answer</summary>
+    
+     0xF0F
+   </details>
+
    * 101001$_2$
-   [[spoiler | Answer]]
-   | 0x29
+   <details>
+     <summary>Answer</summary>
+
+     0x29
+   </details>
 
 3. Write each of the following hexadecimal numbers in binary:
 
    * 0x123
-   [[spoiler | Answer]]
-   | 100100011$_2$
+   <details>
+     <summary>Answer</summary>
+    
+     100100011$_2$
+   </details>
+
    * 0xFADE
-   [[spoiler | Answer]]
-   | 1111101011011110$_2$
+   <details>
+     <summary>Answer</summary>
+     
+     1111101011011110$_2$
+   </details>
+
    * 0x137F
-   [[spoiler | Answer]]
-   | 1001101111111$_2$
+   <details>
+     <summary>Answer</summary>
+    
+     1001101111111$_2$
+   </details>
+
    * 0xFF11
-   [[spoiler | Answer]]
-   | 1111111100010001$_2$
+   <details>
+     <summary>Answer</summary>
+   
+     1111111100010001$_2$
+   </details>
 
 4. Give the value of each of the following expressions
 as a hexadecimal number:
 
    * 0x73 $|$ 0x56A
-   [[spoiler | Answer]]
-   | 0x57B
+   <details>
+     <summary>Answer</summary>
+    
+     0x57B
+   </details>
+
    * $\sim$ 0x3FF0A2FF
-   [[spoiler | Answer]]
-   | 0xC00F5D00
+   <details>
+     <summary>Answer</summary>
+    
+     0xC00F5D00
+   </details>
+
    * (0x44 $|$ 0x95) $\&$ 0xE7
-   [[spoiler | Answer]]
-   | 0xC5
+   <details>
+     <summary>Answer</summary>
+    
+     0xC5
+   </details>
+
    * 0x5C35A7 $\&$ 0xFF00
-   [[spoiler | Answer]]
-   | 0x3500
+   <details>
+     <summary>Answer</summary>
+    
+     0x3500
+   </details>
+
    * 0x5C35A7 $\&$ $\sim$ 0xFF00
-   [[spoiler | Answer]]
-   | 0x5C00A7
+   <details>
+     <summary>Answer</summary>
+    
+     0x5C00A7
+   </details>
+
    * $\sim$(0x1234 $\&$ 0x4321) 
-   [[spoiler | Answer]]
-   | 0xFFFFFDDF
+   <details>
+     <summary>Answer</summary>
+    
+     0xFFFFFDDF
+   </details>
 
 5. Find a calculator (or a calculator program on a computer)
 that can work with hexadecimal numbers. Write a short report
@@ -443,21 +500,28 @@ do the previous problem.
 6. This question assumes that you know how to add binary numbers.
 Suppose $x$ and $y$ are binary numbers. Under what circumstances
 will the binary numbers $x+y$ and $x\,|\,y$ be the same?
-[[spoiler | Answer]]
-| They will be the same if there is no carry from any column to the next.
-| This will be true if there is no bit position where both $x$ and $y$ are
-| 1. Another way of saying this is that $x\,\%\,y=0$.
+<details>
+  <summary>Answer</summary>
+
+  They will be the same if there is no carry from any column to the next.
+  This will be true if there is no bit position where both $x$ and $y$
+  are 1. Another way of saying this is that $x\,\%\,y=0$.
+</details>
 
 7. In addition to hexadecimal numbers, the programming languages
 Java, C, and C++ support **octal numbers**. Look up
 and report on octal numbers in Java, C, or C++. Explain what octal
 numbers are, how they are written, and how they are used.
-[[spoiler | Answer]]
-| Octal numbers are in base 8, so each digit of octal (0 through 7)
-| corresponds to three bits of binary. Octal literals are written with
-| a leading zero in many C-like languages, which is why `010 - 1` is 7
-| instead of 9 (which can be an obscure source of bugs for people who
-| are not aware of this convention).
+<details>
+  <summary>Answer</summary>
+ 
+  Octal numbers are in base 8, so each digit of octal (0 through 7)
+  corresponds to three bits of binary. Octal literals are written with
+  a leading zero in many C-like languages, which is why `010 - 1` is 7
+  instead of 9 (which can be an obscure source of bugs for people who
+  are not aware of this convention).
+</details>
+
 
 8. In the UNIX (or Linux) operating system, every file has an associated
 set of permissions, which determine who can use the file and how
@@ -484,13 +548,16 @@ be considered to represent boolean values. Do the expressions
 $x\,\&\,y$ and $x\,\&\&\,y$ always represent the same boolean value,
 for any integers $x$ and $y$? Do the expressions $x\,|\,y$ and $x\,|\,|\,y$
 always represent the same boolean values? Explain your answers.
-[[spoiler | Answer]]
-| No, they are not always the same. For example, `1 & 2` is 0 (_false_),
-| while `1 && 2` is 1 (_true_).
-| However, the only way to get 0 (_false_) from either bitwise OR (`|`) or
-| logical OR (`||`) is if both operands are 0, so the expressions $x\,|\,y$
-| and $x\,|\,|\,y$ will always represent the same boolean values (although
-| their integer values may well differ).
+<details>
+  <summary>Answer</summary>
+ 
+  No, they are not always the same. For example, `1 & 2` is 0 (_false_),
+  while `1 && 2` is 1 (_true_).
+  However, the only way to get 0 (_false_) from either bitwise OR (`|`) or
+  logical OR (`||`) is if both operands are 0, so the expressions $x\,|\,y$
+  and $x\,|\,|\,y$ will always represent the same boolean values (although
+  their integer values may well differ).
+</details>
 
 9. Suppose that you, as a programmer, want to write a subroutine
 that will open a window on the computer's screen. The window can have
@@ -502,14 +569,17 @@ a set of options. How would you use your subroutine to open
 a window that has a close box and both scroll bars and no other options?
 Inside your subroutine, how would you determine which options have been
 specified for the window?
-[[spoiler | Answer]]
-| Assign each option a different power of two; for example `CLOSE = 1`,
-| `ZOOM = 2`, `RESIZE = 4`, `MINIMIZE = 8`, `VSB = 16`, and `HSB = 32`.
-| A particular combination of options may be passed as the bitwise OR
-| of these constants: `CLOSE | VSB | HSB`. In the subroutine, masking
-| that parameter with each option will give a zero/non-zero value depending
-| on whether the option was specified. For example, you should draw a close
-| box if `options & CLOSE` is true (non-zero).
+<details>
+  <summary>Answer</summary>
+ 
+  Assign each option a different power of two; for example `CLOSE = 1`,
+  `ZOOM = 2`, `RESIZE = 4`, `MINIMIZE = 8`, `VSB = 16`, and `HSB = 32`.
+  A particular combination of options may be passed as the bitwise OR
+  of these constants: `CLOSE | VSB | HSB`. In the subroutine, masking
+  that parameter with each option will give a zero/non-zero value depending
+  on whether the option was specified. For example, you should draw a close
+  box if `options & CLOSE` is true (non-zero).
+</details>
 
 9. Consider the following sequence of operations on two integer variables,
 $x$ and $y$ (again, this should work the same in all C-like languages):
@@ -519,11 +589,14 @@ y = y ^ x;
 x = x ^ y;
 ```
    What is the net effect of this sequence on the values stored in $x$ and $y$?
-[[spoiler | Answer]]
-| It swaps the values in $x$ and $y$. After the second assignment, $x$ is
-| `x ^ y` and $y$ is `y ^ (x ^ y)`, which equals the original $x$. The third
-| assignment then stores `(x ^ y) ^ x` (in terms of the original $x$ and $y$)
-| into $x$, which equals the original $y$.
+<details>
+  <summary>Answer</summary>
+ 
+  It swaps the values in $x$ and $y$. After the second assignment, $x$ is
+  `x ^ y` and $y$ is `y ^ (x ^ y)`, which equals the original $x$. The third
+  assignment then stores `(x ^ y) ^ x` (in terms of the original $x$ and $y$)
+  into $x$, which equals the original $y$.
+</details>
 
 12. Bitwise operations are also useful when working with character data.
 In the ASCII character encoding (which is also the first 128 characters of Unicode),
@@ -532,23 +605,38 @@ the digits '0' through '9' have codes 48 through 57; the uppercase latin alphabe
 codes 97 through 122.
 
    * Convert the endpoints of each of these code ranges to binary.
-   [[spoiler | Answer]]
-   | '0' is 0110000 and '9' is 0111001. In hexadecimal, these are 0x30 and 0x39.
-   |
-   | 'A' is 1000001 and 'Z' is 1011010. In hexadecimal, these are 0x41 and 0x5A.
-   |
-   | 'a' is 1100001 and 'z' is 1111010. In hexadecimal, these are 0x61 and 0x7A.
+   <details>
+     <summary>Answer</summary>
+    
+     '0' is 0110000 and '9' is 0111001. In hexadecimal, these are 0x30 and 0x39.
+   
+     'A' is 1000001 and 'Z' is 1011010. In hexadecimal, these are 0x41 and 0x5A.
+   
+     'a' is 1100001 and 'z' is 1111010. In hexadecimal, these are 0x61 and 0x7A.
+   </details>
+
    * Give an expression using only integer constants and bitwise operations that will convert the character code $c$ for an ASCII digit into its corresponding integer value. Do not worry about what it will do to non-digits.
-   [[spoiler | Answer]]
-   | We just need to select the lowest four bits: `c & 0xF`
+   <details>
+     <summary>Answer</summary>
+    
+     We just need to select the lowest four bits: `c & 0xF`
+   </details>
+
    * Give a similar expression that will convert an integer $n$ in the range 0 to 9 into the corresponding ASCII digit code. Do not worry about error cases.
-   [[spoiler | Answer]]
-   | Given a number 0 through 9, we just need to set the 16's and 32's bits to 1: `n | 0x30` (we can also do `n + 48`, or `n + '0'`).
+   <details>
+     <summary>Answer</summary>
+    
+     Given a number 0 through 9, we just need to set the 16's and 32's bits to 1: `n | 0x30` (we can also do `n + 48`, or `n + '0'`).
+   </details>
+
    * Give expressions that will take a letter whose ASCII code is $c$ and 
       1. convert it to uppercase,
       2. convert it to lowercase, and
       3. toggle it between upper- and lowercase. Do not worry about error cases.
-   [[spoiler | Answer]]
-   | Converting to upper-case corresponds to turning off (resetting) the 32's bit: `c & ~0x20`, or `c & 0x5F` (since we only care about the bottom seven bits for ASCII).
-   | Converting to lower-case corresponds to turning on (setting) that bit: `c | 0x20`.
-   | Toggling the case corresponds to toggling that bit: `c ^ 0x20`.
+   <details>
+     <summary>Answer</summary>
+    
+     Converting to upper-case corresponds to turning off (resetting) the 32's bit: `c & ~0x20`, or `c & 0x5F` (since we only care about the bottom seven bits for ASCII).
+     Converting to lower-case corresponds to turning on (setting) that bit: `c | 0x20`.
+     Toggling the case corresponds to toggling that bit: `c ^ 0x20`.
+   </details>

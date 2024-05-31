@@ -355,8 +355,8 @@ Although this pushdown automaton is not deterministic, we can
 modify it easily to get a deterministic pushdown automaton that
 accepts a closely related language. We just have to add a
 special end-of-string symbol to the language. We use the
-symbol $\$$ for this purpose. The following deterministic
-automaton accepts the language $\{w\$\;|\; w\in \{a,b\}^*\land n_a(w)=n_b(w)\}\,$:
+symbol \$ for this purpose. The following deterministic
+automaton accepts the language $\{w$\$ $\;|\; w\in \{a,b\}^*\land n_a(w)=n_b(w)\}$:
 
 ![Example DPDA](/img/fig-5-pa-4b.png)
 
@@ -366,12 +366,12 @@ symbol at a time when the number of $a$'s that have been consumed is equal
 to the number of $b$'s. Taking our cue from this example, we define 
 what it means for a language to be deterministic context-free as follows:
 
-> Let $L$ be a language over an alphabet $\Sigma$, and let $\$$ be
+> Let $L$ be a language over an alphabet $\Sigma$, and let \$ be
 a symbol that is not in $\Sigma$. We say that $L$ is a **deterministic
 context-free language**
 if there is a deterministic pushdown automaton
-that accepts the language $L\$$ (which is equal to 
-$\{w\$\;|\; w\in L\}$).
+that accepts the language $L$\$ (which is equal to 
+$\{w$\$ $\;|\; w\in L\}$).
 
 There are context-free languages that are not deterministic context-free.
 An example, given without proof, is the language of even-length palindromes
@@ -421,8 +421,8 @@ in which it will _fail_ to accept a given string of parentheses.
 3. Suppose that $L$ is a language over an alphabet $\Sigma$.
 Suppose that there is a deterministic pushdown automaton that accepts $L$.
 Show that $L$ is deterministic context-free. That is, show how to construct
-a deterministic pushdown automaton that accepts the language $L\$$.
-(Assume that the symbol $\$$ is not in $\Sigma$.)
+a deterministic pushdown automaton that accepts the language $L$\$.
+(Assume that the symbol \$ is not in $\Sigma$.)
 
 4. Find a deterministic pushdown automaton that accepts the language $\{wcw^R\;|\; w\in\{a,b\}^*\}$.
 

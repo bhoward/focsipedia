@@ -14,25 +14,17 @@
   --ifm-color-primary-lighter: #ec6745;
   --ifm-color-primary-lightest: #ef8569;
   --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #e84a21;
+  --ifm-color-primary-dark: #d83e16;
+  --ifm-color-primary-darker: #cc3b15;
+  --ifm-color-primary-darkest: #a83011;
+  --ifm-color-primary-light: #ea5e39;
+  --ifm-color-primary-lighter: #ec6745;
+  --ifm-color-primary-lightest: #ef8569;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
-
-.centered-figure {
-  display: block;
-  max-width: 80%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.CodeMirror {
-  height: auto !important;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap');

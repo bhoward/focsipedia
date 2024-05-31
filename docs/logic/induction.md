@@ -100,7 +100,8 @@ $P(k) \rightarrow P(k+1)$. So we assume $P(k)$, that is, we assume that $2^{2k}-
 divisible by 3. This means that $2^{2k} -1 = 3m$ for some integer $m$.
 We want to prove $P(k+1)$, that is, that $2^{2(k+1)}-1$ is also divisible by 3:
 >
-$$ \begin{array}{rll}
+$$
+\begin{array}{rll}
    2^{2(k+1)}-1 &= 2^{2k+2}-1 &\\
                        &= 2^{2k}\cdot2^2 - 1 &\text{properties of exponents}\\
                        &= 4\cdot 2^{2k} -1 \\
@@ -108,7 +109,8 @@ $$ \begin{array}{rll}
                        &= 4(2^{2k} -1) + 3 &\text{algebra} \\
                        &= 4(3m) + 3 & \text{the inductive hypothesis}\\
                        &= 3(4m+1) & \text{algebra}
-\end{array} $$
+\end{array}
+$$
 >
 and from the last line we see that $2^{2k+1}$ is in fact divisible by 3. (The
 third step&mdash;subtracting and adding 4&mdash;was done to enable us to use our inductive
@@ -160,20 +162,24 @@ symbol $\sum$. (This symbol is the Greek letter sigma, which is
 equivalent to the Latin letter S and stands for "sum.") Thus, we
 have
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
    \displaystyle\sum_{i=1}^5 i^2 = 1^2+2^2+3^2+4^2+5^2\\
    \displaystyle\sum_{k=3}^7 a_k = a_3+a_4+a_5+a_6+a_7\\
    \displaystyle\sum_{n=0}^N \frac{1}{n+1} = \frac{1}{0+1}+\frac{1}{1+1}+\frac{1}{2+1}+\cdots+\frac{1}{N+1}\\
-\end{array} $$
+\end{array}
+$$
 
 This notation for a sum, using the $\sum$ operator, is called
 **summation notation**. A similar notation for products uses the
 symbol $\prod$. (This is the Greek letter pi, which is equivalent
 to the Latin letter P and stands for "product.") For example,
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
    \displaystyle\prod_{k=2}^5 (3k+2) = (3\cdot 2+2)(3\cdot 3+2)(3\cdot 4+2)(3\cdot 5+2)\\
    \displaystyle\prod_{i=1}^n \frac{1}{i} = \frac{1}{1}\cdot \frac{1}{2}\cdots \frac{1}{n}
-\end{array} $$
+\end{array}
+$$
 
 Induction can be used to prove many formulas that use these notations.
 Here are two examples:
@@ -194,14 +200,16 @@ $P(1)$ is true.
 We want to show that $P(k+1)$ is true. $P(k+1)$ is the statement
 $\displaystyle \sum_{i=1}^{k+1}\,i=\frac{(k+1)(k+2)}{2}$. But
 >
-$$ \begin{array}{rll}
+$$
+\begin{array}{rll}
    \sum_{i=1}^{k+1}\,i &= \left(\sum_{i=1}^k\,i\right)+(k+1) &\\
                        &= \frac{k(k+1)}{2}+(k+1) &\text{(inductive hypothesis)}\\
                        &= \frac{k(k+1)}{2}+\frac{2(k+1)}{2}\\
                        &= \frac{k(k+1)+2(k+1)}{2}\\
                        &= \frac{(k+2)(k+1)}{2}\\
                        &= \frac{(k+1)(k+2)}{2}
-\end{array} $$
+\end{array}
+$$
 >
 which is what we wanted to show. This computation completes the induction.
 
@@ -221,13 +229,15 @@ true. We want to show that $P(k+1)$ is true. $P(k+1)$ is the
 statement $\displaystyle \sum_{i=1}^{k+1}\,i2^{i-1}=((k+1)-1)\cdot2^{k+1}+1$.
 But, we can compute that
 >
-$$ \begin{array}{rll}
+$$
+\begin{array}{rll}
    \sum_{i=1}^{k+1}\,i2^{i-1} &= \left(\sum_{i=1}^k\,i2^{i-1}\right)+(k+1)2^{(k+1)-1}\\
                               &= \left((k-1)\cdot2^k+1\right)+(k+1)2^k &\text{(inductive hypothesis)}\\
                               &= \big((k-1)+(k+1)\big)2^k+1\\
                               &= (k\cdot2)\cdot2^k+1\\
                               &= k2^{k+1}+1
-\end{array} $$
+\end{array}
+$$
 >
 which is what we wanted to show. This completes the induction.
 
@@ -301,25 +311,28 @@ and this completes the induction.
 
 1. Use induction to prove that $n^3 + 3n^2 + 2n$ is divisible by 3
 for all natural numbers $n$.
-[[spoiler | Answer]]
-| The base case, when $n=0$, is the claim that $0^3 + 3\cdot0^2 + 2\cdot0$ is divisible by 3.
-| Evaluating the expression gives 0, which is $3\cdot0$, so the claim is true.
-|
-| For the inductive case, suppose that $n^3 + 3n^2 + 2n$ is divisible by 3
-| for some $n\ge 0$; that is, there is some $k$ such that $n^3 + 3n^2 + 2n = 3k$.
-| Using that induction hypothesis, we need to show that
-| $(n+1)^3 + 3(n+1)^2 + 2(n+1)$ is also divisible by 3. Expanding this
-| expression gives $n^3 + 3n^2 + 3n + 1 + 3n^2 + 6n + 3 + 2n + 2$.
-| With the induction hypothesis, this can be rewritten as
-| $3k + 3n^2 + 3n + 1 + 6n + 3 + 2$, or $3k + 3n^2 + 9n + 6$. This may be factored as
-| $3(k + n^2 + 3n +2)$, showing that it too is divisible by 3.
-|
-| Thus we have shown that it is true for $n=0$, and if it holds for any $n$ then it also
-| holds for $n+1$; by mathematical induction, therefore, it holds for all natural numbers.
+<details>
+  <summary>Answer</summary>
+
+  The base case, when $n=0$, is the claim that $0^3 + 3\cdot0^2 + 2\cdot0$ is divisible by 3.
+  Evaluating the expression gives 0, which is $3\cdot0$, so the claim is true.
+
+  For the inductive case, suppose that $n^3 + 3n^2 + 2n$ is divisible by 3
+  for some $n\ge 0$; that is, there is some $k$ such that $n^3 + 3n^2 + 2n = 3k$.
+  Using that induction hypothesis, we need to show that
+  $(n+1)^3 + 3(n+1)^2 + 2(n+1)$ is also divisible by 3. Expanding this
+  expression gives $n^3 + 3n^2 + 3n + 1 + 3n^2 + 6n + 3 + 2n + 2$.
+  With the induction hypothesis, this can be rewritten as
+  $3k + 3n^2 + 3n + 1 + 6n + 3 + 2$, or $3k + 3n^2 + 9n + 6$. This may be factored as
+  $3(k + n^2 + 3n +2)$, showing that it too is divisible by 3.
+
+  Thus we have shown that it is true for $n=0$, and if it holds for any $n$ then it also
+  holds for $n+1$; by mathematical induction, therefore, it holds for all natural numbers.
+</details>
 
 2. Use induction to prove that
 $$
-  \sum_{i=0}^{n}r^i=\frac{1-r^{n+1}}{1-r}
+  \sum_{i=0}^{n}r^i=(1-r^{n+1})/(1-r)
 $$
 for any natural number $n$ and for any real number $r$ such that $r\not=1$.
 
@@ -336,19 +349,22 @@ $$
 $$
 In addition to proving this by induction, show that it follows
 as a corollary of Exercise 2.
-[[spoiler | Answer]]
-| Base case ($n=0$): $\sum_{i=0}^0 2^i=2^0=1=2^{0+1}-1$.
-|
-| Inductive case: suppose true for some $n\ge 0$. Then
-| $\sum_{i=0}^{n+1}2^i=2^{n+1}+\sum_{i=0}^n 2^i=2^{n+1}+2^{n+1}-1$, by the
-| induction hypothesis. Now, $2^{n+1}+2^{n+1}=2\cdot 2^{n+1}=2^{n+2}$, so
-| our summation equals $2^{(n+1)+1}-1$, showing that the formula also holds for $n+1$.
-| Therefore it holds for all natural numbers $n$.
-|
-| We may also use Exercise 2, taking $r=2$. The formula for the sum is then
-| $$
-|   \sum_{i=0}^n 2^i=\frac{1-2^{n+1}}{1-2}=\frac{1-2^{n+1}}{-1}=2^{n+1}-1
-| $$
+<details>
+  <summary>Answer</summary>
+
+  Base case ($n=0$): $\sum_{i=0}^0 2^i=2^0=1=2^{0+1}-1$.
+
+  Inductive case: suppose true for some $n\ge 0$. Then
+  $\sum_{i=0}^{n+1}2^i=2^{n+1}+\sum_{i=0}^n 2^i=2^{n+1}+2^{n+1}-1$, by the
+  induction hypothesis. Now, $2^{n+1}+2^{n+1}=2\cdot 2^{n+1}=2^{n+2}$, so
+  our summation equals $2^{(n+1)+1}-1$, showing that the formula also holds for $n+1$.
+  Therefore it holds for all natural numbers $n$.
+
+  We may also use Exercise 2, taking $r=2$. The formula for the sum is then
+  $$
+    \sum_{i=0}^n 2^i=\frac{1-2^{n+1}}{1-2}=\frac{1-2^{n+1}}{-1}=2^{n+1}-1
+  $$
+</details>
 
 5. Use induction to prove that for any positive integer $n$,
 $$

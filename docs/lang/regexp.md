@@ -103,7 +103,7 @@ or more $b$'s".
 Since $L(a) = \{a\}$, $L(aa) = L(a)L(a) = \{aa\}$. Similarly, $L(aaa) = \{aaa\}$
 and $L(bb) = \{bb\}$. Now $L(a\,|\, aa\,|\, aaa) = L(a) \cup L(aa) \cup L(aaa) = \{a, aa,
 aaa\}$, and $L((bb)^*) = (L((bb)))^* = (L(bb))^*$ (the last equality is from
-clause 7 of the efinition), and $(L(bb))^* = \{bb\}^* = \{\varepsilon, bb,
+clause 7 of Definition \ref{lgbre}), and $(L(bb))^* = \{bb\}^* = \{\varepsilon, bb,
 bbbb, \ldots\}$. So $L(r)$ is the set of strings formed by
 concatenating $a$ or $aa$ or $aaa$ with zero or more pairs of $b$'s.
 

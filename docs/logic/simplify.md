@@ -91,13 +91,15 @@ $$
 
 This is just a compact rearrangement of the truth table:
 
-$$ \begin{array}{cc|c}
+$$
+\begin{array}{cc|c}
 p & q & x\\ \hline
 0 & 0 & x_{00}\\
 0 & 1 & x_{01}\\
 1 & 0 & x_{10}\\
 1 & 1 & x_{11}
-\end{array} $$
+\end{array}
+$$
 
 However, note that the adjacent cell condition is true: horizontally adjacent
 cells only differ on $q$, while vertically adjacent cells only differ on $p$.
@@ -122,21 +124,25 @@ are covered by at least one implicant.
 
 Here is the example again. First the truth table for $p\rightarrow q$:
 
-$$ \begin{array}{cc|c}
+$$
+\begin{array}{cc|c}
 p & q & x\\ \hline
 0 & 0 & 1\\
 0 & 1 & 1\\
 1 & 0 & 0\\
 1 & 1 & 1
-\end{array} $$
+\end{array}
+$$
 
 As a Karnaugh map, this is:
 
-$$ \begin{array}{r|cc}
+$$
+\begin{array}{r|cc}
 & \lnot{q} & q\\ \hline
 \lnot{p} & 1 & 1\\
 p & 0 & 1
-\end{array} $$
+\end{array}
+$$
 
 The best way to cover this map with implicants is to take the first row and the
 second column. That gives the simplified terms $\lnot{p}$ and $q$, so the final
@@ -148,13 +154,13 @@ outlined:
 A Karnaugh map can also work with three or four input variables, producing
 either a $2\times 4$ or a $4\times 4$ array. The same procedure applies, with
 three complications:
-\begin{enumerate}
-\item To satisfy the adjacent cell condition, successive rows or columns must
+
+1. To satisfy the adjacent cell condition, successive rows or columns must
 change only one variable at a time: for example, the rows might be labelled in
 order $\lnot{p}\land\lnot{q}$, $\lnot{p}\land q$, $p\land q$, and $p\lnot{q}$;
-\item Implicants may be 1, 2, or 4 rows tall by 1, 2, or 4 columns wide; and
-\item Implicants may "wrap around" from one side of the map to the other.
-\end{enumerate}
+2. Implicants may be 1, 2, or 4 rows tall by 1, 2, or 4 columns wide; and
+3. Implicants may "wrap around" from one side of the map to the other.
+
 For example, on a $4\times 4$ map, one possible implicant is the middle two
 rows; another is the leftmost and rightmost columns (wrapping horizontally); a
 third is the $2\times 2$ block consisting of the middle two elements of the top
@@ -177,7 +183,8 @@ For example, suppose we have the following truth table for a four-variable
 Boolean expression (this represents the inputs that are binary numbers less than
 ten and divisible by three):
 
-$$ \begin{array}{cccc|c}
+$$
+\begin{array}{cccc|c}
 p & q & r & s & x\\ \hline
 0 & 0 & 0 & 0 & 1\\
 0 & 0 & 0 & 1 & 0\\
@@ -195,17 +202,20 @@ p & q & r & s & x\\ \hline
 1 & 1 & 0 & 1 & X\\
 1 & 1 & 1 & 0 & X\\
 1 & 1 & 1 & 1 & X
-\end{array} $$
+\end{array}
+$$
 
 As a Karnaugh map, this is:
 
-$$ \begin{array}{r|cccc}
+$$
+\begin{array}{r|cccc}
 & \lnot{r}\land\lnot{s} & \lnot{r}\land s & r\land s & r\land\lnot{s}\\ \hline
 \lnot{p}\land\lnot{q} & 1 & 0 & 1 & 0\\
 \lnot{p}\land q & 0 & 0 & 0 & 1\\
 p\land q & X & X & X & X\\
 p\land\lnot{q} & 0 & 1 & X & X
-\end{array} $$
+\end{array}
+$$
 
 The 1's, plus some of the X's, may be covered by four implicants:
 $\lnot{p}\land\lnot{q}\land\lnot{r}\land\lnot{s}$, $\lnot{q}\land r\land s$,
@@ -244,29 +254,43 @@ entries. The next section will also discuss approaches to this kind of problem.
 1. For each of the following Boolean expressions, compute the total delay of the
    direct translation of the expression into a circuit.
    * $\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})$
-   [[spoiler | Answer]]
-   | The longest path has four gate delays.
+   <details>
+     <summary>Answer</summary>
+     
+     The longest path has four gate delays.
+   </details>
+
    * $(\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})$
-   [[spoiler | Answer]]
-   | The longest path has five gate delays.
+   <details>
+     <summary>Answer</summary>
+     
+     The longest path has five gate delays.
+   </details>
+
    * $(((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))$
-   [[spoiler | Answer]]
-   | The longest path has four gate delays.
+   <details>
+     <summary>Answer</summary>
+     
+     The longest path has four gate delays.
+   </details>
 
 2. For each of the expressions in the previous problem, use a Karnaugh map to
    find an equivalent sum-of-products expression, and draw the resulting
    circuit.
-   [[spoiler | Answer]]
-   | The expression $\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})$ is a tautology,
-   | so an equivalent sum-of-products expression is $\T$.
-   |
-   | The expression $(\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})$
-   | is true everywhere except $p\land q\land\lnot r$, so an equivalent sum-of-products expression is
-   | $\lnot p\lor\lnot q\lor r$.
-   |
-   | The expression $(((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))$
-   | is true when at least three of the inputs are true, so an equivalend sum-of-products expression is
-   | $(p\land q\land r)\lor(p\land q\land s)\lor(p\land r\land s)\lor(q\land r\land s)$.
+   <details>
+     <summary>Answer</summary>
+    
+     The expression $\lnot{(\lnot{p}\lor q)}\lor(\lnot{\lnot{q}}\lor\lnot{p})$ is a tautology,
+     so an equivalent sum-of-products expression is $\T$.
+   
+     The expression $(\lnot(\lnot{r}\land p)\lor\lnot{q})\land(\lnot(\lnot{r}\land q)\lor\lnot{p})$
+     is true everywhere except $p\land q\land\lnot r$, so an equivalent sum-of-products expression is
+     $\lnot p\lor\lnot q\lor r$.
+    
+     The expression $(((p\lor q)\land(q\lor r))\land(r\lor s))\land(((p\lor r)\land(q\lor s))\land(p\lor s))$
+     is true when at least three of the inputs are true, so an equivalend sum-of-products expression is
+     $(p\land q\land r)\lor(p\land q\land s)\lor(p\land r\land s)\lor(q\land r\land s)$.
+   </details>
 
 3. Suppose we want to build a counter that cycles through the numbers 0, 1, 2,
    3, 4, and back to 0. One element of this counter will be a circuit that takes
@@ -274,7 +298,8 @@ entries. The next section will also discuss approaches to this kind of problem.
    the truth table for this function, with three inputs ($a$, $b$, and $c$) and
    three outputs ($x$, $y$, and $z$):
 
-$$ \begin{array}{ccc|ccc}
+$$
+\begin{array}{ccc|ccc}
 a & b & c & x & y & z\\ \hline
 0 & 0 & 0 & 0 & 0 & 1\\
 0 & 0 & 1 & 0 & 1 & 0\\
@@ -284,17 +309,21 @@ a & b & c & x & y & z\\ \hline
 1 & 0 & 1 & X & X & X\\
 1 & 1 & 0 & X & X & X\\
 1 & 1 & 1 & X & X & X\\
-\end{array} $$
+\end{array}
+$$
 
    Since the counter should never reach numbers 5, 6, or 7, we do not care about
    the output when $abc$ is 101, 110, or 111. Use Karnaugh maps to find a simple
    circuit for this function.
 
-[[spoiler | Answer]]
-| The only case where we need $x$ to be true is when $b\land c$ is true. Similarly,
-| $z$ must be true when $\lnot a\land\lnot c$ is true. Finally, $y$ is true when
-| $b\oplus c$ is true, or $(\lnot b\land c)\lor(b\land\lnot c)$:
-| <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/5-counter" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+<details>
+  <summary>Answer</summary>
+ 
+  The only case where we need $x$ to be true is when $b\land c$ is true. Similarly,
+  $z$ must be true when $\lnot a\land\lnot c$ is true. Finally, $y$ is true when
+  $b\oplus c$ is true, or $(\lnot b\land c)\lor(b\land\lnot c)$:
+  <iframe width="600px" height="400px" src="https://circuitverse.org/simulator/embed/5-counter" id="projectPreview" scrolling="no" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+</details>
 
 4. In **binary-coded decimal** (BCD), four bits are used to represent the
    numbers 0 (0000) through 9 (1001); the other six bit patterns (1010 through
@@ -310,8 +339,11 @@ a & b & c & x & y & z\\ \hline
    indicating which output column corresponds to which display element). Use
    Karnaugh maps to design a relatively simple circuit that implements a
    seven-segment decoder.
-[[spoiler | Answer]]
-| See a [solution at CircuitVerse](https://circuitverse.org/users/30869/projects/sevensegdemo)
+<details>
+  <summary>Answer</summary>
+ 
+  See a [solution at CircuitVerse](https://circuitverse.org/users/30869/projects/sevensegdemo)
+</details>
 
 5. An exercise in the [Circuits](./circuits#exercises) section examines
    conjunctive normal form (CNF), the dual of DNF. Explore what kind of circuits

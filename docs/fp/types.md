@@ -623,7 +623,8 @@ a table explaining the analogy:
 
 The most complicated comparison here is viewing the switch statement as doing $\lor$
 elimination. Consider a proof such as
-$$ \begin{array}{l|l}
+$$
+\begin{array}{l|l}
 \ell_1: p\lor q & \text{premise}\\
 \ell_2: p\Rightarrow\{\\
 \quad\ell_3: q\lor p & \lor I_2\ \ell_2\\
@@ -632,7 +633,8 @@ $$ \begin{array}{l|l}
 \quad\ell_5: q\lor p & \lor I_1\ \ell_2\\
 \}\\
 \ell_6: q\lor p & \lor E\ \ell_1, \ell_2, \ell_4
-\end{array} $$
+\end{array}
+$$
 Here is an analogous ReasonML function:
 ```reason edit
 type disj('a, 'b) = Left('a) | Right('b);

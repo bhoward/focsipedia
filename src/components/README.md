@@ -1,1 +1,0 @@
-Editor and Live components adapted from (react-live)[https://github.com/FormidableLabs/react-live]. This is a hack job, until I learn React better.

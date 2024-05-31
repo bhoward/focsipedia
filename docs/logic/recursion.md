@@ -39,16 +39,20 @@ A simple example of a recursive subroutine is a function that
 computes $n!$ for a non-negative integer $n$. $n!$, which is read "$n$ factorial,"
 is defined as follows:
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 0! = 1\\
 n! = \prod_{i=1}^n\,i\text{\qquad for $n>0$}
-\end{array} $$
+\end{array}
+$$
 
 For example, $5!=1\cdot2\cdot3\cdot4\cdot5=120$. Note that for $n>1$,
 
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
 n! = \prod_{i=1}^n\,i = \left(\prod_{i=1}^{n-1}\,i\right)\cdot n = \big((n-1)!\big)\cdot n
-\end{array} $$
+\end{array}
+$$
 
 It is also true that $n!=\big((n-1)!\big)\cdot n$ when $n=1$. This observation
 makes it possible to write a recursive function to compute $n!$.
@@ -454,21 +458,25 @@ can define $0!=1$ and $n!=n\cdot(n-1)!$ for $n>0$. Other sequences of
 numbers can also be defined recursively. For example, the famous
 **Fibonacci sequence** is the sequence of numbers $f_0$, $f_1$, $f_2$, &hellip;,
 defined recursively by
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
     f_0 = 0\\
     f_1 = 1\\
     f_n = f_{n-1}+f_{n-2} \qquad \text{for $n>1$}
-\end{array} $$
+\end{array}
+$$
 
 Using this definition, we compute that
-$$ \begin{array}{l}
+$$
+\begin{array}{l}
     f_2 = f_1 + f_0 = 0 + 1 = 1\\
     f_3 = f_2 + f_1 = 1 + 1 = 2\\
     f_4 = f_3 + f_2 = 2 + 1 = 3\\
     f_5 = f_4 + f_3 = 3 + 2 = 5\\
     f_6 = f_5 + f_4 = 5 + 3 = 8\\
     f_7 = f_6 + f_5 = 8 + 5 = 13
-\end{array} $$
+\end{array}
+$$
 
 and so on. Based on this definition, we can use induction to
 prove facts about the Fibonacci sequence. We can prove,
@@ -491,7 +499,8 @@ Now suppose that $k$ is an arbitrary integer with $k>7$.
 Suppose that we already know that $f_n>1.5^{n-1}$ for
 $n=k-1$ and for $n=k-2$. We want to show that the inequality
 then holds for $n=k$ as well. But
-$$ \begin{array}{rll}
+$$
+\begin{array}{rll}
    f_k &= f_{k-1}+f_{k-2}\\
        &> 1.5^{(k-1)-1}+1.5^{(k-2)-1} & \text{(by the induction hypothesis)}\\
        &= 1.5^{k-2}+1.5^{k-3}\\
@@ -499,7 +508,8 @@ $$ \begin{array}{rll}
        &= (2.5)\cdot(1.5^{k-3})\\
        &> (1.5^2)\cdot(1.5^{k-3}) & \text{(since $1.5^2=2.25$)}\\
        &= 1.5^{k-1}
-\end{array} $$
+\end{array}
+$$
 > This string of equalities and inequalities shows that $f_k>1.5^{k-1}$.
 This completes the induction and proves the theorem.
 
@@ -510,22 +520,25 @@ This completes the induction and proves the theorem.
 not just solve the Towers of Hanoi problem. It solves the
 problem using the minimum possible number of moves. Use induction
 to prove this fact.
-[[spoiler | Answer]]
-| The base case is when $n=1$, where it moves a single disk in one move.
-|
-| In the inductive case, suppose that `Hanoi(n, A, B, C)` moves $n$ disks
-| from A to B in the minimum possible number of moves for some $n>0$. Then
-| to move $n+1$ disks from A to B, we must at least move the top $n$ disks
-| to another pile before we can move the largest disk from A to B; the call
-| `Hanoi(n, A, C, B)` will get this done in the minimum number of moves by
-| the induction hypothesis. After moving the largest disk, we then need to
-| move the other $n$ disks from C to B, which can be done in the minimum
-| number of moves by the call `Hanoi(n, C, B, A)`. This description is
-| precisely what happens when we call `Hanoi(n+1, A, B, C)`, so it
-| moves $n+1$ disks in the shortest way possible.
-|
-| By induction, then, `Hanoi(n, A, B, C)` uses the minimum number of moves
-| for every $n>0$.
+<details>
+  <summary>Answer</summary>
+
+  The base case is when $n=1$, where it moves a single disk in one move.
+
+  In the inductive case, suppose that `Hanoi(n, A, B, C)` moves $n$ disks
+  from A to B in the minimum possible number of moves for some $n>0$. Then
+  to move $n+1$ disks from A to B, we must at least move the top $n$ disks
+  to another pile before we can move the largest disk from A to B; the call
+  `Hanoi(n, A, C, B)` will get this done in the minimum number of moves by
+  the induction hypothesis. After moving the largest disk, we then need to
+  move the other $n$ disks from C to B, which can be done in the minimum
+  number of moves by the call `Hanoi(n, C, B, A)`. This description is
+  precisely what happens when we call `Hanoi(n+1, A, B, C)`, so it
+  moves $n+1$ disks in the shortest way possible.
+
+  By induction, then, `Hanoi(n, A, B, C)` uses the minimum number of moves
+  for every $n>0$.
+</details>
 
 1. Use induction to prove that the _Hanoi_ subroutine
 uses $2^n-1$ moves to solve the Towers of Hanoi problem for $n$ disks.
@@ -535,12 +548,15 @@ were set the task of solving the problem for 64 disks. They can
 move just one disk each day. On the day the problem is solved, 
 the world will end. However, we shouldn't worry too much,
 since $2^{64}-1$ days is a very long time&mdash;about 50 million billion years.)
-[[spoiler | Answer]]
-| For the base case, we need to check that `Hanoi(1, A, B, C)` takes $2^1-1=1$ move.
-|
-| For the inductive case, suppose that `Hanoi(n, A, B, C)` takes $2^n-1$ moves for
-| some $n>0$. Then `Hanoi(n+1, A, B, C)` takes $(2^n-1)+1+(2^n-1)=2\cdot2^n-1=2^{n+1}-1$
-| moves, which completes the induction.
+<details>
+  <summary>Answer</summary>
+ 
+  For the base case, we need to check that `Hanoi(1, A, B, C)` takes $2^1-1=1$ move.
+
+  For the inductive case, suppose that `Hanoi(n, A, B, C)` takes $2^n-1$ moves for
+  some $n>0$. Then `Hanoi(n+1, A, B, C)` takes $(2^n-1)+1+(2^n-1)=2\cdot2^n-1=2^{n+1}-1$
+  moves, which completes the induction.
+</details>
 
 3. Consider the following recursive function:
 ```java
@@ -566,19 +582,22 @@ arbitrarily large integers.) Note that the test
 "`if (n % 2 == 0)`" tests whether $n$ is evenly divisible by 2.
 That is, the test is true if $n$ is an even number. (This function is
 actually a very efficient way to compute $x^n$.)
-[[spoiler | Answer]]
-| We will prove by strong induction on $n$ that `power(x, n)` correctly computes
-| $x^n$, for every $n\ge 0$.
-|
-| **Base Case:** When $n=0$, we can check that `power(x, 0)` returns 1, which
-| is $x^0$ for every $x$.[^3]
-|
-| **Inductive Case:** Suppose that the claim is true for every $k<n$, for some $n>0$.
-| Then we need to show that it is also true for $n$. If $n$ is even, then `power(x, n)`
-| is `power(x*x, n/2)`; since $\frac{n}{2}<n$, we know by the induction hypothesis that
-| this computes $(x^2)^{\frac{n}{2}}=x^n$. If $n$ is odd, then `power(x, n)` is
-| `x * power(x*x, (n-1)/2)`, which similarly we know to compute $x(x^2)^{\frac{n-1}{2}}=x\cdot x^{n-1}=x^n$.
-| Therefore, we have shown that `power(x, n)` correctly computes $x^n$ for all $n\ge 0$.
+<details>
+  <summary>Answer</summary>
+
+  We will prove by strong induction on $n$ that `power(x, n)` correctly computes
+  $x^n$, for every $n\ge 0$.
+
+  **Base Case:** When $n=0$, we can check that `power(x, 0)` returns 1, which
+  is $x^0$ for every $x$.[^3]
+
+  **Inductive Case:** Suppose that the claim is true for every $k<n$, for some $n>0$.
+  Then we need to show that it is also true for $n$. If $n$ is even, then `power(x, n)`
+  is `power(x*x, n/2)`; since $\frac{n}{2}<n$, we know by the induction hypothesis that
+  this computes $(x^2)^{\frac{n}{2}}=x^n$. If $n$ is odd, then `power(x, n)` is
+  `x * power(x*x, (n-1)/2)`, which similarly we know to compute $x(x^2)^{\frac{n-1}{2}}=x\cdot x^{n-1}=x^n$.
+  Therefore, we have shown that `power(x, n)` correctly computes $x^n$ for all $n\ge 0$.
+</details>
 
 [^3]: Don't listen to the people who try to say that $0^0$
 is undefined; they're thinking of a much broader statement about limiting forms
@@ -601,18 +620,21 @@ print_int(power(3, 5)); print_newline();
 print_int(power(10, 4)); print_newline();
 /* try other examples here */
 ```
-[[spoiler | Answer]]
-| ```reason
-| let rec power = (x, n) => {
-|   if (n == 0) {
-|     1
-|   } else if (n mod 2 == 0) {
-|     power(x * x, n / 2)
-|   } else {
-|     x * power(x * x, (n - 1) / 2)
-|   }
-| }
-| ```
+<details>
+  <summary>Answer</summary>
+ 
+  ```reason
+  let rec power = (x, n) => {
+    if (n == 0) {
+      1
+    } else if (n mod 2 == 0) {
+      power(x * x, n / 2)
+    } else {
+      x * power(x * x, (n - 1) / 2)
+    }
+  }
+  ```
+</details>
 
 5. A **leaf node** in a binary tree is a node in which 
 both the left and the right subtrees are empty. Prove that
@@ -636,19 +658,22 @@ int LeafCount( BinaryTreeNode root ) {
    return count;
 }
 ```
-[[spoiler | Answer]]
-| We will prove this by structural induction on the formation of a
-| tree $t$. For the base cases, if $t$ is empty (`null`), then
-| `LeafCount(t)` returns 0, while if $t$ is a single node (with both
-| children empty), then `LeafCount(t)` returns 1; these are both correct.
-|
-| For the inductive case, we know that $t$ is a node with at least one
-| non-empty child (or else we would be in one of the base cases). We will
-| assume that `LeafCount(t.left)` and `LeafCount(t.right)` are both correct,
-| and we just have to show that `LeafCount(t)` also correctly counts the
-| number of leaves. But in this case the root node of $t$ cannot be a leaf,
-| so the number of leaves equals the sum of the number of leaves in the
-| children. This is exactly what `LeafCount(t)` computes, so we are done.
+<details>
+  <summary>Answer</summary>
+ 
+  We will prove this by structural induction on the formation of a
+  tree $t$. For the base cases, if $t$ is empty (`null`), then
+  `LeafCount(t)` returns 0, while if $t$ is a single node (with both
+  children empty), then `LeafCount(t)` returns 1; these are both correct.
+
+  For the inductive case, we know that $t$ is a node with at least one
+  non-empty child (or else we would be in one of the base cases). We will
+  assume that `LeafCount(t.left)` and `LeafCount(t.right)` are both correct,
+  and we just have to show that `LeafCount(t)` also correctly counts the
+  number of leaves. But in this case the root node of $t$ cannot be a leaf,
+  so the number of leaves equals the sum of the number of leaves in the
+  children. This is exactly what `LeafCount(t)` computes, so we are done.
+</details>
 
 6. Complete this ReasonML version of the _LeafCount_ function
 from the previous problem. Note that we may use patterns such
@@ -665,16 +690,19 @@ let rec leafCount = t => {
   }
 }
 ```
-[[spoiler | Answer]]
-| ```reason
-| let rec leafCount = t => {
-|   switch (t) {
-|   | Empty => 0
-|   | Node(Empty, _, Empty) => 1
-|   | Node(left, _, right) => leafCount(left) + leafCount(right)
-|   }
-| }
-|```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let rec leafCount = t => {
+    switch (t) {
+    | Empty => 0
+    | Node(Empty, _, Empty) => 1
+    | Node(left, _, right) => leafCount(left) + leafCount(right)
+    }
+  }
+ ```
+</details>
 
 7. A **binary search tree** satisfies the
 following property: If _node_ is a pointer to any
@@ -701,13 +729,16 @@ void SortPrint(BinaryTreeNode root) {
    }
 }
 ```
-[[spoiler | Answer]]
-| Here is a sketch of a proof by structural induction. The base case,
-| when the tree is empty, is easy. If we suppose that `SortPrint(root.left)`
-| prints all of the integers in the left subtree (which are less than `root.item`)
-| in order, and that `SortPrint(root.right)` prints all of the integers in the
-| right subtree (which are greater than or equal to `root.item`) in order, then
-| `SortPrint(root)` must print all of the numbers in order.
+<details>
+  <summary>Answer</summary>
+ 
+  Here is a sketch of a proof by structural induction. The base case,
+  when the tree is empty, is easy. If we suppose that `SortPrint(root.left)`
+  prints all of the integers in the left subtree (which are less than `root.item`)
+  in order, and that `SortPrint(root.right)` prints all of the integers in the
+  right subtree (which are greater than or equal to `root.item`) in order, then
+  `SortPrint(root)` must print all of the numbers in order.
+</details>
 
 8. Complete this ReasonML version of the _SortPrint_ function from
 the previous problem.
@@ -720,34 +751,44 @@ let rec sortPrint = root => {
   }
 }
 ```
-[[spoiler | Answer]]
-| ```reason
-| let rec sortPrint = root => {
-|   switch (root) {
-|   | Empty => ()
-|       /* There is nothing to print */
-|   | Node(left, item, right) =>
-|       sortPrint(left);
-|       print_int(item);
-|       sortPrint(right)
-|   }
-| }
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let rec sortPrint = root => {
+    switch (root) {
+    | Empty => ()
+        /* There is nothing to print */
+    | Node(left, item, right) =>
+        sortPrint(left);
+        print_int(item);
+        sortPrint(right)
+    }
+  }
+  ```
+</details>
 
 9. Prove that the Fibonacci sequence, $f_0$, $f_1$, $f_2$, &hellip;,
 satisfies $f_n<2^n$ for all natural numbers $n$.
-[[spoiler | Answer]]
-| Because the recursive case of the Fibonacci depends on the two previous values,
-| we will use two base cases: $f_0=0<2^0$ and $f_1=1<2^1$. For the inductive case,
-| suppose that $f_{n-1}<2^{n-1}$ and $f_n<2^n$ for some $n\ge 1$; then
-| $f_{n+1}=f_n+f_{n-1}$, which is less than $2^n+2^{n-1}$ by the induction hypothesis.
-| That sum is in turn less than $2^{n+1}$, so we may conclude that the claim is true
-| for all natural numbers $n$.
+<details>
+  <summary>Answer</summary>
+ 
+  Because the recursive case of the Fibonacci depends on the two previous values,
+  we will use two base cases: $f_0=0<2^0$ and $f_1=1<2^1$. For the inductive case,
+  suppose that $f_{n-1}<2^{n-1}$ and $f_n<2^n$ for some $n\ge 1$; then
+  $f_{n+1}=f_n+f_{n-1}$, which is less than $2^n+2^{n-1}$ by the induction hypothesis.
+  That sum is in turn less than $2^{n+1}$, so we may conclude that the claim is true
+  for all natural numbers $n$.
+</details>
 
 9. Suppose that $a_1$, $a_2$, $a_3$, &hellip;, is a sequence of
 numbers which is defined recursively by $a_1=1$ and
 $a_n=2a_{n-1}+2^{n-1}$ for $n>1$. Prove that
 $a_n=n2^{n-1}$ for every positive integer $n$.
-[[spoiler | Answer]]
-| The base case is when $n=1$: $a_1=1=1\cdot 2^{1-1}$. For the induction case,
-| suppose that $a_n=n2^{n-1}$ for some $n\ge 1$. Then $a_{n+1}=2a_n+2^n=2n2^{n-1}+2^n=n2^n+2^n=(n+1)2^{(n+1)-1}$,
-| which shows that it also holds for $n+1$. Therefore it holds for all $n\ge 1$.
+<details>
+  <summary>Answer</summary>
+ 
+  The base case is when $n=1$: $a_1=1=1\cdot 2^{1-1}$. For the induction case,
+  suppose that $a_n=n2^{n-1}$ for some $n\ge 1$. Then $a_{n+1}=2a_n+2^n=2n2^{n-1}+2^n=n2^n+2^n=(n+1)2^{(n+1)-1}$,
+  which shows that it also holds for $n+1$. Therefore it holds for all $n\ge 1$.
+</details>

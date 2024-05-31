@@ -1,137 +1,171 @@
-const math = require('remark-math');
-const katex = [require('rehype-katex'), {
+// @ts-check
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
+
+import {themes as prismThemes} from 'prism-react-renderer';
+
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
+import remarkCustomBlocks from 'remark-custom-blocks';
+import remarkGridTables from 'remark-grid-tables';
+
+const katexOptions = {
   macros: {
     "\\T": "\\mathbb{T}",
     "\\F": "\\mathbb{F}",
   },
-}];
-const customBlocks = [require('remark-custom-blocks'), {
+};
+
+const customBlocksOptions = {
   spoiler: {
     classes: 'spoiler-block',
     title: 'optional',
     details: true,
   },
-}];
-const gridTables = require('remark-grid-tables');
+};
 
-module.exports = {
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: 'FoCSipedia',
   tagline: 'Foundations of Computation',
-  url: 'https://bhoward.github.io/',
-  baseUrl: '/focsipedia/',
   favicon: 'img/favicon.ico',
+
+  // Set the production url of your site here
+  url: 'https://bhoward.github.io/',
+  // Set the /<baseUrl>/ pathname under which your site is served
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/focsipedia/',
+
+  // GitHub pages deployment config.
+  // If you aren't using GitHub pages, you don't need these.
   organizationName: 'bhoward', // Usually your GitHub org/user name.
   projectName: 'focsipedia', // Usually your repo name.
-  themeConfig: {
-    navbar: {
-      title: 'FoCSipedia',
-      logo: {
-        alt: 'Smart Fox Logo',
-        src: 'img/SmartFoxIcon.jpeg',
-      },
-      items: [
-        {to: 'docs/topics', label: 'Topics', position: 'left'},
-        // {to: 'blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/bhoward/focsipedia',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
-    },
-    footer: { // TODO
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Policies',
-              to: 'docs/policies',
-            },
-            {
-              label: 'Style Guide',
-              to: 'docs/styleGuide',
-            },
-            {
-              label: 'Attribution',
-              to: 'docs/attribution',
-            },
-          ],
-        },
-        {
-          title: 'Social',
-          items: [
-            // {
-            //   label: 'Blog',
-            //   to: 'blog',
-            // },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/bhoward/focsipedia',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/BrnHwrd',
-            },
-          ],
-        },
-        // {
-        //   title: 'Blog Feed',
-        //   items: [
-        //     {
-        //       label: 'RSS',
-        //       to: 'blog/rss.xml',
-        //     },
-        //     {
-        //       label: 'Atom',
-        //       to: 'blog/atom.xml',
-        //     },
-        //   ],
-        // },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
-    },
-    algolia: {
-      apiKey: '98e3a58877cfcccd391a5303d86a9c61',
-      appId: 'YNUYSORFOS',
-      indexName: 'focsipedia',
-      algoliaOptions: {
-        queryLanguages: ['en'],
-        ignorePlurals: true,
-      }, // Optional, if provided by Algolia
-    },
+
+  onBrokenLinks: 'warn', // was 'throw'
+  onBrokenMarkdownLinks: 'warn',
+
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
   },
+
   presets: [
     [
-      '@docusaurus/preset-classic',
-      {
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: './sidebars.js',
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/bhoward/focsipedia/edit/master/',
-          remarkPlugins: [math, customBlocks, gridTables],
-          rehypePlugins: [katex],
+            'https://github.com/bhoward/focsipedia/tree/master/',
+          remarkPlugins: [remarkMath, remarkGridTables, [remarkCustomBlocks, customBlocksOptions]],
+          rehypePlugins: [[rehypeKatex, katexOptions]],
         },
         blog: {
-          feedOptions: {
-            type: 'all',
-            copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard`,
+          showReadingTime: true,
+          // Please change this to your repo.
+          // Remove this to remove the "edit this page" links.
+          editUrl:
+            'https://github.com/bhoward/focsipedia/tree/master/',
+            remarkPlugins: [remarkMath, remarkGridTables, [remarkCustomBlocks, customBlocksOptions]],
+            rehypePlugins: [[rehypeKatex, katexOptions]],
           },
-          remarkPlugins: [math, customBlocks, gridTables],
-          rehypePlugins: [katex],
-        },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: './src/css/custom.css',
         },
-      },
+      }),
     ],
   ],
-  scripts: [
-    '/focsipedia/toplevel.js',
-    '/focsipedia/resetLocalPrelude.js',
-  ],
   stylesheets: [
-    'https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css',
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css',
+      type: 'text/css',
+      integrity: 'sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn', // from srihash.org
+      crossorigin: 'anonymous',
+    },
   ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // TODO Replace with your project's social card
+      image: 'img/focsipedia-social-card.jpg',
+      navbar: {
+        title: 'FoCSipedia',
+        logo: {
+          alt: 'Smart Fox Logo',
+          src: 'img/SmartFoxIcon.jpeg',
+        },
+        items: [
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          // },
+          {to: '/docs/topics', label: 'Topics', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            href: 'https://github.com/bhoward/focsipedia/',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Policies',
+                to: '/docs/policies',
+              },
+              {
+                label: 'Attribution',
+                to: '/docs/attribution',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: '/blog',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/bhoward/focsipedia/',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Brian T. Howard. Built with Docusaurus.`,
+      },
+      algolia: {
+        apiKey: '98e3a58877cfcccd391a5303d86a9c61',
+        appId: 'YNUYSORFOS',
+        indexName: 'focsipedia',
+        searchPagePath: false,
+        searchParameters: {
+          queryLanguages: ['en'],
+          ignorePlurals: true,
+        }, // Optional, if provided by Algolia
+      },
+      prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+      },
+    }),
 };
+
+export default config;

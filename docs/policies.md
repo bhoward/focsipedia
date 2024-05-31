@@ -10,11 +10,11 @@ title: Course Information and Policies
 <dd>CSC 233, Foundations of Computation</dd>
 
 <dt>Time and Location</dt>
-<dd><p>All times Eastern, which is UTC -4 through October 31, and then UTC -5. Class meeting times will be treated as "discussion sections": we will work through problems and I will answer questions from the reading. If you can't make either of the scheduled times (regardless of which section you are in), I will be posting recordings, and I will be happy to go over similar material during office hours.</p>
+<dd>All times Eastern, which is UTC -4 through October 31, and then UTC -5. Class meeting times will be treated as "discussion sections": we will work through problems and I will answer questions from the reading. If you can't make either of the scheduled times (regardless of which section you are in), I will be posting recordings, and I will be happy to go over similar material during office hours.</dd>
 <ul>
 <li>(Fall 2020 Section A) MWF 2:50-3:50 pm</li>
 <li>(Fall 2020 Section B) MWF 11:40 am-12:40 pm</li>
-</ul></dd>
+</ul>
 
 <dt>Professor</dt>
 <dd>Brian Howard (<a href="mailto:bhoward@depauw.edu">bhoward@depauw.edu</a>)</dd>
