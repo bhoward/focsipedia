@@ -37,23 +37,14 @@ At each state, the output is the corresponding number in binary: 00, 01, and 10.
 We will use two D flip-flops, and the obvious encoding of states to bit patterns (which also happens to be the mapping from state to output, so we can just use the current state, 00, 01, or 10, to drive the output directly).All that remains is to design the combinational circuit that computes the $D_1$ and $D_0$ flip-flop control signals based on the input and current state.
 For this, we will first fill in a truth table with current state, input, and desired next state values, then use the excitation table for the flip-flops to decide an appropriate signal (for type-D flip-flops, this is particularly easy, since the required $D$ input is just the next state $Q'$):
 
-+---------------+----------------+-----------------+---------------+
-| current       | input          | next            | control       |
-+-------+-------+----------------+--------+--------+-------+-------+
-| $Q_1$ | $Q_2$ | $a$            | $Q_1'$ | $Q_0'$ | $D_1$ | $D_0$ |
-+=======+=======+================+========+========+=======+=======+
-| 0     | 0     | 0              | 0      | 1      | 0     | 1     |
-+-------+-------+----------------+--------+--------+-------+-------+
-| 0     | 0     | 1              | 1      | 0      | 1     | 0     |
-+-------+-------+----------------+--------+--------+-------+-------+
-| 0     | 1     | 0              | 1      | 0      | 1     | 0     |
-+-------+-------+----------------+--------+--------+-------+-------+
-| 0     | 1     | 1              | 0      | 0      | 0     | 0     |
-+-------+-------+----------------+--------+--------+-------+-------+
-| 1     | 0     | 0              | 0      | 0      | 0     | 0     |
-+-------+-------+----------------+--------+--------+-------+-------+
-| 1     | 0     | 1              | 0      | 1      | 0     | 1     |
-+-------+-------+----------------+--------+--------+-------+-------+
+| $Q_1$ | $Q_2$ | $a$ | $Q_1'$ | $Q_0'$ | $D_1$ | $D_0$ |
+| :---: | :---: | :-: | :----: | :----: | :---: | :---: |
+| 0     | 0     | 0   | 0      | 1      | 0     | 1     |
+| 0     | 0     | 1   | 1      | 0      | 1     | 0     |
+| 0     | 1     | 0   | 1      | 0      | 1     | 0     |
+| 0     | 1     | 1   | 0      | 0      | 0     | 0     |
+| 1     | 0     | 0   | 0      | 0      | 0     | 0     |
+| 1     | 0     | 1   | 0      | 1      | 0     | 1     |
 
 Here is the Karnaugh map for $D_1$:
 

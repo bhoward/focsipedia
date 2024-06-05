@@ -164,39 +164,17 @@ they are assumed to be subsets of some universal set, $U$.
 For the most part, these laws correspond directly to [laws
 of Boolean Algebra for propositional logic](../logic/boolean#laws).
 
-+--------------------+-----------------------------------------------------+
 | Name               | Law                                                 |
-+====================+=====================================================+
+| -----------------: | :-------------------------------------------------: |
 | Double complement  | $\overline{\overline{A}}=A$                         |
-+--------------------+-----------------------------------------------------+
-| Miscellaneous laws | $A\cup\overline{A}=U$                               |
-+                    +-----------------------------------------------------+
-|                    | $A\cap\overline{A}=\emptyset$                       |
-+                    +-----------------------------------------------------+
-|                    | $\emptyset\cap A=\emptyset$                         |
-|                    +-----------------------------------------------------+
-|                    | $\emptyset\cup A=A$                                 |
-+--------------------+-----------------------------------------------------+
-| Idempotent laws    | $A\cap A= A$                                        |
-|                    +-----------------------------------------------------+
-|                    | $A\cup A= A$                                        |
-+--------------------+-----------------------------------------------------+
-| Commutative laws   | $A\cap B = B\cap A$                                 |
-|                    +-----------------------------------------------------+
-|                    | $A\cup B=B\cup A$                                   |
-+--------------------+-----------------------------------------------------+
-| Associative laws   | $A\cap (B\cap C) = (A\cap B)\cap C$                 |
-|                    +-----------------------------------------------------+
-|                    | $A\cup (B\cup C) = (A\cup B)\cup C$                 |
-+--------------------+-----------------------------------------------------+
-| Distributive laws  | $A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$          |
-|                    +-----------------------------------------------------+
-|                    | $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$         |
-+--------------------+-----------------------------------------------------+
-| De Morgan's laws   | $\overline{A\cap B} = \overline{A}\cup\overline{B}$ |
-|                    +-----------------------------------------------------+
-|                    | $\overline{A\cup B} = \overline{A}\cap\overline{B}$ |
-+--------------------+-----------------------------------------------------+
+| Complement laws    | $A\cup\overline{A}=U$ <br /> $A\cap\overline{A}=\emptyset$ |
+| Identity laws      | $U\cap A=A$ <br /> $\emptyset\cup A=A$              |
+| Annihilator laws   | $\emptyset\cap A=\emptyset$ <br /> $U\cup A=U$      |
+| Idempotent laws    | $A\cap A= A$ <br /> $A\cup A= A$                    |
+| Commutative laws   | $A\cap B = B\cap A$ <br /> $A\cup B=B\cup A$        |
+| Associative laws   | $A\cap (B\cap C) = (A\cap B)\cap C$ <br /> $A\cup (B\cup C) = (A\cup B)\cup C$ |
+| Distributive laws  | $A\cap(B\cup C) = (A\cap B)\cup (A\cap C)$ <br /> $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$ |
+| De Morgan's laws   | $\overline{A\cap B} = \overline{A}\cup\overline{B}$ <br /> $\overline{A\cup B} = \overline{A}\cap\overline{B}$ |
 
 ## Precedence
 

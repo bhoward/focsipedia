@@ -8,21 +8,11 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-import remarkCustomBlocks from 'remark-custom-blocks';
-import remarkGridTables from 'remark-grid-tables';
 
 const katexOptions = {
   macros: {
     "\\T": "\\mathbb{T}",
     "\\F": "\\mathbb{F}",
-  },
-};
-
-const customBlocksOptions = {
-  spoiler: {
-    classes: 'spoiler-block',
-    title: 'optional',
-    details: true,
   },
 };
 
@@ -65,7 +55,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
-          remarkPlugins: [remarkMath, remarkGridTables, [remarkCustomBlocks, customBlocksOptions]],
+          remarkPlugins: [remarkMath],
           rehypePlugins: [[rehypeKatex, katexOptions]],
         },
         blog: {
@@ -74,7 +64,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
-            remarkPlugins: [remarkMath, remarkGridTables, [remarkCustomBlocks, customBlocksOptions]],
+            remarkPlugins: [remarkMath],
             rehypePlugins: [[rehypeKatex, katexOptions]],
           },
         theme: {

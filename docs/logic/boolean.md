@@ -65,41 +65,18 @@ the operators $\land$, $\lor$, and $\lnot$, another tautology can be
 obtained from it by interchanging $\land$ with $\lor$ and $\T$ with $\F$.
 We won't attempt to prove this here.
 
-
-+-------------------+---------------------------------------------------+
 | Name              | Law                                               |
-+===================+===================================================+
+| ----------------: | :-----------------------------------------------: |
 | Double negation   | $\lnot(\lnot p)\equiv p$                          |
-+-------------------+---------------------------------------------------+
 | Excluded middle   | $p\lor\lnot p\equiv\T$                            |
-+-------------------+---------------------------------------------------+
 | Contradiction     | $p\land\lnot p\equiv\F$                           |
-+-------------------+---------------------------------------------------+
-| Identity laws     | $\T\land p\equiv p$                               |
-|                   +---------------------------------------------------+
-|                   | $\F\lor p \equiv p$                               |
-+-------------------+---------------------------------------------------+
-| Idempotent laws   | $p\land p\equiv p$                                |
-|                   +---------------------------------------------------+
-|                   | $p\lor p\equiv p$                                 |
-+-------------------+---------------------------------------------------+
-| Commutative laws  | $p\land q\equiv q\land p$                         |
-|                   +---------------------------------------------------+
-|                   | $p\lor q\equiv q\lor p$                           |
-+-------------------+---------------------------------------------------+
-| Associative laws  | $(p\land q)\land r\equiv p\land(q\land r)$        |
-|                   +---------------------------------------------------+
-|                   | $(p\lor q)\lor r\equiv p\lor(q\lor r)$            |
-+-------------------+---------------------------------------------------+
-| Distributive laws | $p\land(q\lor r)\equiv (p\land q)\lor (p\land r)$ |
-|                   +---------------------------------------------------+
-|                   | $p\lor(q\land r)\equiv (p\lor q)\land (p\lor r)$  |
-+-------------------+---------------------------------------------------+
-| De Morgan's laws  | $\lnot(p\land q)\equiv (\lnot p)\lor(\lnot q)$    |
-|                   +---------------------------------------------------+
-|                   | $\lnot(p\lor q)\equiv (\lnot p)\land(\lnot q)$    |
-+-------------------+---------------------------------------------------+
-
+| Identity laws     | $\T\land p\equiv p$ <br /> $\F\lor p \equiv p$    |
+| Annihiliator laws | $\F\land p\equiv \F$ <br /> $\T\lor p \equiv \T$  |
+| Idempotent laws   | $p\land p\equiv p$ <br /> $p\lor p\equiv p$       |
+| Commutative laws  | $p\land q\equiv q\land p$ <br /> $p\lor q\equiv q\lor p$ |
+| Associative laws  | $(p\land q)\land r\equiv p\land(q\land r)$ <br /> $(p\lor q)\lor r\equiv p\lor(q\lor r)$ |
+| Distributive laws | $p\land(q\lor r)\equiv (p\land q)\lor (p\land r)$ <br /> $p\lor(q\land r)\equiv (p\lor q)\land (p\lor r)$ |
+| De Morgan's laws  | $\lnot(p\land q)\equiv (\lnot p)\lor(\lnot q)$ <br /> $\lnot(p\lor q)\equiv (\lnot p)\land(\lnot q)$ |
 
 Just as an example, let's verify the first rule in the table,
 the Law of Double Negation. 

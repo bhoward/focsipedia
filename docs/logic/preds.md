@@ -344,15 +344,10 @@ the order of the variables when two quantifiers of the same type
 (both $\exists$ or $\forall$) occur together. $P$ can be any one-place predicate,
 and $Q$ can be any two-place predicate.
 
-+-------------+----------------------------------------------------------------+
-| De Morgan   | $\lnot\,(\forall x P(x)) \equiv \exists x(\lnot P(x))$         |
-|             +----------------------------------------------------------------+
-|             | $\lnot\,(\exists x P(x)) \equiv \forall x(\lnot P(x))$         |
-+-------------+----------------------------------------------------------------+
-| Interchange | $\forall x \forall y Q(x,y) \equiv \forall y \forall x Q(x,y)$ |
-|             +----------------------------------------------------------------+
-|             | $\exists x \exists y Q(x,y) \equiv \exists y \exists x Q(x,y)$ |
-+-------------+----------------------------------------------------------------+
+| Name | Law |
+| ---: | :-: |
+| De Morgan   | $\lnot\,(\forall x P(x)) \equiv \exists x(\lnot P(x))$ <br /> $\lnot\,(\exists x P(x)) \equiv \forall x(\lnot P(x))$ |
+| Interchange | $\forall x \forall y Q(x,y) \equiv \forall y \forall x Q(x,y)$ <br /> $\exists x \exists y Q(x,y) \equiv \exists y \exists x Q(x,y)$ |
 
 To define logical equivalence in predicate logic more formally,
 we need to talk about formulas that contain predicate variables,
