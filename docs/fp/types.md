@@ -711,65 +711,74 @@ its factors&mdash;much of modern cryptography relies on this distance!
    `xor(true, true)` is `false`. Use pattern matching for one, and `if`
    expressions for the other (but do not use the built-in logical operators such
    as `||`).
-   [[spoiler | Answer]]
-   | ```reason
-   | let or = (x, y) => {
-   |   switch (x, y) {
-   |   | (true, _) => true
-   |   | (_, true) => true
-   |   | (_, _) => false
-   |   } 
-   | };
-   |
-   | let xor = (x, y) => {
-   |   if (x) {
-   |     if (y) {
-   |       false
-   |     } else {
-   |       true
-   |     }
-   |   } else {
-   |     y
-   |   }
-   | };
-   |```
+   <details>
+    <summary>Answer</summary>
+
+    ```reason
+     let or = (x, y) => {
+       switch (x, y) {
+       | (true, _) => true
+       | (_, true) => true
+       | (_, _) => false
+       } 
+     };
+   
+     let xor = (x, y) => {
+       if (x) {
+         if (y) {
+           false
+         } else {
+           true
+         }
+       } else {
+         y
+       }
+     };
+    ```
+   </details>
 
 2. Add a `Triangle` variant to the `shape` type above, to represent a right triangle. The constructor should
    take two floats: the base and the height. Extend the `area` function to
    handle triangles, and then define a `perimeter` function for shapes.
-   [[spoiler | Answer]]
-   | ```reason
-   | type shape = Rectangle(float, float) | Circle(float) | Triangle(float, float);
-   | let area = sh => {
-   |   switch (sh) {
-   |   | Rectangle(width, height) => width *. height
-   |   | Circle(radius) => 3.141592653589 *. radius *. radius
-   |   | Triangle(base, height) => base *. height /. 2.
-   |   }
-   | };
-   |
-   | let perimeter = sh => {
-   |   switch (sh) {
-   |   | Rectangle(width, height) => 2. *. (width +. height)
-   |   | Circle(radius) => 2. *. 3.141592653589 *. radius
-   |   | Triangle(base, height) => base +. height +. sqrt(base *. base +. height *. height)
-   |   }
-   | };
-   | ```
+   <details>
+    <summary>Answer</summary>
+
+     ```reason
+     type shape = Rectangle(float, float) | Circle(float) | Triangle(float, float);
+     let area = sh => {
+       switch (sh) {
+       | Rectangle(width, height) => width *. height
+       | Circle(radius) => 3.141592653589 *. radius *. radius
+       | Triangle(base, height) => base *. height /. 2.
+       }
+     };
+   
+     let perimeter = sh => {
+       switch (sh) {
+       | Rectangle(width, height) => 2. *. (width +. height)
+       | Circle(radius) => 2. *. 3.141592653589 *. radius
+       | Triangle(base, height) => base +. height +. sqrt(base *. base +. height *. height)
+       }
+     };
+     ```
+   </details>
 
 3. Define a function that takes a `myTree('a, 'b)` value and counts the number
    of leaves. That is, the function call
    `numLeaves(TreeNode(Leaf(27), "+", TreeNode(Leaf(3), "*", Leaf(5))))`
    should return 3. _Hint:_ Define it using a pattern match.
-   [[spoiler | Answer]]
-   | ```reason
-   | let rec numLeaves = t => {
-   |   switch (t) {
-   |   | Leaf(_) => 1
-   |   | TreeNode(left, _, right) => numLeaves(left) + numLeaves(right)
-   |   }
-   | };
-   | ```
+   <details>
+    <summary>Answer</summary>
+
+     ```reason
+     let rec numLeaves = t => {
+       switch (t) {
+       | Leaf(_) => 1
+       | TreeNode(left, _, right) => numLeaves(left) + numLeaves(right)
+       }
+     };
+     ```
+   </details>
 
 4. Based on the `curry` and `uncurry` functions, give a natural deduction proof
    of the arguments $(p\land q)\rightarrow r\vdash p\rightarrow(q\rightarrow r)$
@@ -779,27 +788,33 @@ its factors&mdash;much of modern cryptography relies on this distance!
    corresponds to function application. What operation on functions corresponds
    to the Law of Syllogism ($p\rightarrow q,q\rightarrow r\vdash p\rightarrow
    r$)?
-   [[spoiler | Answer]]
-   | An operation that takes functions $f:p\rightarrow q$ and $g:q\rightarrow r$
-   | is the composition $\textit{compose}(g, f):p\rightarrow r$.
+   <details>
+     <summary>Answer</summary>
+
+     An operation that takes functions $f:p\rightarrow q$ and $g:q\rightarrow r$
+     is the composition $\textit{compose}(g, f):p\rightarrow r$.
+   </details>
 
 6. Prove the logical equivalence $(p\lor q)\rightarrow r\equiv(p\rightarrow
    r)\land(q\rightarrow r)$. Give the analogous ReasonML functions that show the
    1-1 correspondence between the types `disj('a, 'b) => 'c` and
    `('a => 'c, 'b => 'c)`.
-   [[spoiler | Answer]]
-   | ```reason
-   | let forward = f => {
-   |   (a => f(Left(a)), b => f(Right(b)))
-   | };
-   |
-   | let reverse = p => {
-   |   let (a_to_c, b_to_c) = p;
-   |   a_or_b => {
-   |     switch (a_or_b) {
-   |     | Left(a) => a_to_c(a)
-   |     | Right(b) => b_to_c(b)
-   |     }
-   |   }
-   | };
-   | ```
+   <details>
+     <summary>Answer</summary>
+
+     ```reason
+     let forward = f => {
+       (a => f(Left(a)), b => f(Right(b)))
+     };
+   
+     let reverse = p => {
+       let (a_to_c, b_to_c) = p;
+       a_or_b => {
+         switch (a_or_b) {
+         | Left(a) => a_to_c(a)
+         | Right(b) => b_to_c(b)
+         }
+       }
+     };
+     ```
+   </details>

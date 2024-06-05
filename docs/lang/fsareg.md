@@ -199,9 +199,9 @@ Now, $w\in R_{i,j+1,k}$ if and only if when $M$ starts in state $q_i$ and reads 
 it ends in state $q_k$, with all intermediate states in the computation in the set
 $\{q_0,q_1,\dots,q_j\}$. Consider such a computation. There are two
 cases: Either $q_j$ occurs as an intermediate state in the computation, or it does not.
-If it does \textbf{not} occur, then all the intermediate states are in the set
+If it does _not_ occur, then all the intermediate states are in the set
 $\{q_0,q_1,\dots,q_{j-1}\}$, which means that in fact $w\in R_{i,j,k}$.
-If $q_j$ \textbf{does} occur as an intermediate state in the computation, then we can break the
+If $q_j$ _does_ occur as an intermediate state in the computation, then we can break the
 computation into phases, by dividing it at each point where $q_j$ occurs
 as an intermediate state. This breaks $w$ into a concatenation $w=xy_1y_2\cdots y_rz$.
 The string $x$ is consumed in the first phase of the computation, during which $M$
@@ -319,28 +319,40 @@ machine that accepts $L(r)$ into a machine that accepts $L(r^*)$.
 that accepts $L((ab | a)^*(bb))$.
 
 4. Prove that the reverse of a regular language is regular.
-[[spoiler | Answer]]
-| Given a DFA for the language, construct an NFA by reversing all of the edges.
-| The original start state should become the only final state, and there should be
-| a new start state with $\varepsilon$-transitions to each of the original final states.
-| If there is an accepting path from this new start state to the final state, then it
-| must correspond to the reverse of an accepting path in the original machine.
-| Therefore, the new NFA will accept exactly the reverse of the given regular langauge.
+<details>
+  <summary>Answer</summary>
+
+  Given a DFA for the language, construct an NFA by reversing all of the edges.
+  The original start state should become the only final state, and there should be
+  a new start state with $\varepsilon$-transitions to each of the original final states.
+  If there is an accepting path from this new start state to the final state, then it
+  must correspond to the reverse of an accepting path in the original machine.
+  Therefore, the new NFA will accept exactly the reverse of the given regular langauge.
+</details>
 
 5. Show that for any DFA or NFA, there is an NFA with exactly one final
 state that accepts the same language.
-[[spoiler | Answer]]
-| Define the NFA by adding one new state. This state should be the only final state, and
-| all of the original final states should instead have $\varepsilon$-transitions to the new state.
+<details>
+  <summary>Answer</summary>
+
+  Define the NFA by adding one new state. This state should be the only final state, and
+  all of the original final states should instead have $\varepsilon$-transitions to the new state.
+</details>
 
 6. Suppose we change the model of NFAs to allow NFAs to have multiple
 start states. Show that for any "NFA" with multiple start states, there is an
 NFA with exactly one start state that accepts the same language.
-[[spoiler | Answer]]
-| Given such an extended NFA, define an ordinary NFA by adding a new state. This state should be the
-| only start state, and it should have $\varepsilon$-transitions to each of the original start states.
+<details>
+  <summary>Answer</summary>
+
+  Given such an extended NFA, define an ordinary NFA by adding a new state. This state should be the
+  only start state, and it should have $\varepsilon$-transitions to each of the original start states.
+</details>
 
 7. Show that the closure of regular languages under both union and complement
 is enough to show that they are also closed under intersection.
-[[spoiler | Answer]]
-| This is just an application of DeMorgan's laws: $L_1\cap L_2 = \overline{\overline{L_1}\cup\overline{L_2}}$.
+<details>
+  <summary>Answer</summary>
+
+  This is just an application of DeMorgan's laws: $L_1\cap L_2 = \overline{\overline{L_1}\cup\overline{L_2}}$.
+</details>

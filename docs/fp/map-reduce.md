@@ -186,48 +186,59 @@ In the ReasonML version, we may think of the index variable (`i`) and the accumu
 1. Use a combination of `map` and `reduce` to define a function that will compute the length of a vector, given as a list of floats.
 The length of the vector $[x_1, x_2, \ldots, x_n]$ is $\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}$.
 The square root function in ReasonML is `sqrt`. For example, `length([3.0, 4.0, 12.0])` should be `13.0`.
-[[spoiler | Answer]]
-| ```reason
-| let length = vec => {
-|   sqrt(reduce((x, y) => { x +. y }, 0.0, map(x => { x *. x }, vec)))
-| };
-| ```
+<details>
+  <summary>Answer</summary>
 
+  ```reason
+  let length = vec => {
+    sqrt(reduce((x, y) => { x +. y }, 0.0, map(x => { x *. x }, vec)))
+  };
+  ```
+</details>
 
 2. Define a version of `reduce` that folds up the result _from the right_.
 That is, `reduceRight(g, init, xs)` should compute `g(x1, g(x2, ...g(xn, init)...))`.
-[[spoiler | Answer]]
-| ```reason
-| let rec reduceRight = (g, init, xs) => {
-|   switch (xs) {
-|   | [] => init
-|   | [head, ...tail] => g(head, reduceRight(g, init, tail))
-|   }
-| };
-| ```
-| Note that this function is not tail-recursive, while the left-to-right `reduce` is. See if you can write a tail-recursive version (_Hint: use `reverse`_).
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let rec reduceRight = (g, init, xs) => {
+    switch (xs) {
+    | [] => init
+    | [head, ...tail] => g(head, reduceRight(g, init, tail))
+    }
+  };
+  ```
+  Note that this function is not tail-recursive, while the left-to-right `reduce` is. See if you can write a tail-recursive version (_Hint: use `reverse`_).
+</details>
 
 3. Given the function `cons` such that `cons(head, tail)` is `[head, ...tail]`, what is the result of `reduceRight(cons, [], xs)`? What is the result of `reduce(snoc, [], xs)`, where `snoc(tail, head)` is the same as `cons(head, tail)`?
-[[spoiler | Answer]]
-| `reduceRight(cons, [], xs)` is just `xs`, while `reduce(snoc, [], xs)` is `reverse(xs)`.
+<details>
+  <summary>Answer</summary>
+
+  `reduceRight(cons, [], xs)` is just `xs`, while `reduce(snoc, [], xs)` is `reverse(xs)`.
+</details>
 
 4. The ReasonML standard library provides the `append` operation in the `List` module, and also through the operator `@`: for lists `a` and `b`, `a @ b` is the same as `List.append(a, b)`. However, for historical reasons, the implementation of `List.append` is not tail recursive. See if you can cause a stack overflow by calling it with large enough lists, and then try the same lists with the `append` function defined above.
-[[spoiler | Answer]]
-| Here is one approach. The function `gen(n)` produces the list `[1, 2, ..., n]`, while `List.length` simply counts the number of elements in a list. Both of these are tail-recursive.
-| ```reason
-| let gen = n => {
-|   let rec aux = (n, xs) => {
-|     if (n == 0) {
-|       xs
-|     } else {
-|       aux(n - 1, [n, ...xs])
-|     }
-|   };
-|   aux(n, [])
-| };
-| 
-| /* this should return 1000001 */
-| List.length(append(gen(1000000), [0]));
-| /* this should overflow */
-| List.length(gen(1000000) @ [0]);
-| ```
+<details>
+  <summary>Answer</summary>
+
+  Here is one approach. The function `gen(n)` produces the list `[1, 2, ..., n]`, while `List.length` simply counts the number of elements in a list. Both of these are tail-recursive.
+  ```reason
+  let gen = n => {
+    let rec aux = (n, xs) => {
+      if (n == 0) {
+        xs
+      } else {
+        aux(n - 1, [n, ...xs])
+      }
+    };
+    aux(n, [])
+  };
+  
+  /* this should return 1000001 */
+  List.length(append(gen(1000000), [0]));
+  /* this should overflow */
+  List.length(gen(1000000) @ [0]);
+  ```
+</details>

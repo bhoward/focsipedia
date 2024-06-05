@@ -271,7 +271,6 @@ DFA, and a transition $\delta(q_1,a) = q_2$.
    * $\delta(q_1,b)$ will be $\partial^*(p_0,b)$ unioned with $\partial^*(p_1,b)$, which
 gives $\{p_0, p_1\} \cup \{p_2\}$, which again gives us a new state $q_3$ to add to
 the DFA, together with the transition $\delta(q_1,b) = q_3$.
-\end{itemize}
 
 At this point, our partially-constructed DFA looks as shown below:
 
@@ -287,8 +286,11 @@ The final DFA is shown below.
 
 ## Exercises
 1. What language does the NFA in the above example accept?
-[[spoiler | Answer]]
-| Strings of $a$'s and $b$'s where the third-from-last character is $b$.
+<details>
+  <summary>Answer</summary>
+
+  Strings of $a$'s and $b$'s where the third-from-last character is $b$.
+</details>
 
 2. Give a DFA that accepts the language accepted by the 
 following NFA.

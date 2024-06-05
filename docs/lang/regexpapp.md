@@ -162,47 +162,88 @@ in the tools and programming languages that you use.
 you want to match a string that contains a backslash
 character.  How do you suppose you would represent the backslash in
 the regular expression?
-[[spoiler | Answer]]
-| Escape it with a backslash: `\\`.
+<details>
+  <summary>Answer</summary>
+
+  Escape it with a backslash: `\\`.
+</details>
 
 2. Using the notation introduced in this section,
 write a regular expression that could be used to match
 each of the following:
 
    * Any sequence of letters (upper- or lowercase) that includes the letter Z (in uppercase).
-   [[spoiler | Answer]]
-   | `[A-Za-z]*Z[A-Za-z]*`
+   <details>
+    <summary>Answer</summary>
+
+     `[A-Za-z]*Z[A-Za-z]*`
+   </details>
+
    * Any ten-digit telephone number written in the form `(xxx)xxx-xxxx`.
-   [[spoiler | Answer]]
-   | `\([0-9][0-9][0-9]\)[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]`
+   <details>
+    <summary>Answer</summary>
+
+     `\([0-9][0-9][0-9]\)[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]`
+   </details>
+
    * Any ten-digit telephone number _either_ in the form `(xxx)xxx-xxxx` or `xxx-xxx-xxxx`.
-   [[spoiler | Answer]]
-   | `(\([0-9][0-9][0-9]\)|[0-9][0-9][0-9]-)[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]`
+   <details>
+    <summary>Answer</summary>
+
+     `(\([0-9][0-9][0-9]\)|[0-9][0-9][0-9]-)[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]`
+   </details>
+
    * A non-negative real number with an optional decimal part.  The expression should match numbers such as 17, 183.9999, 182., 0, 0.001, and 21333.2.
-   [[spoiler | Answer]]
-   | `[0-9]+(.[0-9]*)`
+   <details>
+    <summary>Answer</summary>
+
+     `[0-9]+(.[0-9]*)`
+   </details>
+
    * A complete line of  text that contains only letters.
-   [[spoiler | Answer]]
-   | `^[A-Za-z]*$`
+   <details>
+    <summary>Answer</summary>
+
+     `^[A-Za-z]*$`
+   </details>
+
    * A C++ style one-line comment consisting of `//` and all the following characters up to the end-of-line.
-   [[spoiler | Answer]]
-   | `//.*$`
+   <details>
+    <summary>Answer</summary>
+
+     `//.*$`
+   </details>
 
 3. Give a search pattern and a replace pattern that could
 be used to perform the following conversions:
 
    * Convert a string that is enclosed in a pair of double quotes to the same string with the double quotes replaced by single quotes.
-   [[spoiler | Answer]]
-   | Replace `"(.*)"` with `'\1'`.
+   <details>
+    <summary>Answer</summary>
+
+     Replace `"(.*)"` with `'\1'`.
+   </details>
+
    * Convert ten-digit telephone numbers in the format `xxx-xxx-xxxx` to the format `(xxx)xxx-xxxx`.
-   [[spoiler | Answer]]
-   | Replace `([0-9][0-9][0-9])-([0-9][0-9][0-9]-[0-9][0-9][0-9][0-9])` with `\(\1\)\2`.
+   <details>
+    <summary>Answer</summary>
+
+     Replace `([0-9][0-9][0-9])-([0-9][0-9][0-9]-[0-9][0-9][0-9][0-9])` with `\(\1\)\2`.
+   </details>
+
    * Convert C++ one-line comments, consisting of characters between `//` and end-of-line, to C style comments enclosed between `/*` and `*/`.
-   [[spoiler | Answer]]
-   | Replace `//(.*)$` with `/\*\1/\*`.
+   <details>
+    <summary>Answer</summary>
+
+     Replace `//(.*)$` with `/\*\1/\*`.
+   </details>
+
    * Convert any number of consecutive spaces and tabs to a single space.
-   [[spoiler | Answer]]
-   | Replace `[ \t]+` with ` `.
+   <details>
+    <summary>Answer</summary>
+
+     Replace `[ \t]+` with ` `.
+   </details>
 
 4. In some implementations of "regular expressions," the
 notations `\1`, `\2`, and so on can occur
@@ -218,5 +259,8 @@ see that $L$ is _not_ a regular language, so allowing the
 use of `\1` in a "regular expression" means that it's
 not really a regular expression at all!  This notation can add
 a real increase in expressive power to the patterns that contain it.)
-[[spoiler | Answer]]
-| `(a*)b\1`
+<details>
+  <summary>Answer</summary>
+
+  `(a*)b\1`
+</details>
