@@ -253,38 +253,47 @@ draw(showTree(t, string_of_int));
 ```
 List the values according to the preorder, inorder, postorder, and level order traversals.
 
-[[spoiler | Answer]]
-| Preorder: 1, 2, 3, 5, 7, 4, 6, 9, 8
-|
-| Inorder: 5, 3, 7, 2, 4, 1, 9, 6, 8
-|
-| Postorder: 5, 7, 3, 4, 2, 9, 8, 6, 1
-|
-| Level order: 1, 2, 6, 3, 4, 9, 8, 5, 7
+<details>
+  <summary>Answer</summary>
+
+  Preorder: 1, 2, 3, 5, 7, 4, 6, 9, 8
+
+  Inorder: 5, 3, 7, 2, 4, 1, 9, 6, 8
+
+  Postorder: 5, 7, 3, 4, 2, 9, 8, 6, 1
+
+  Level order: 1, 2, 6, 3, 4, 9, 8, 5, 7
+</details>
 
 2. Show the result of removing the minimum item from the tree in Exercise 1, treating it as a binary heap (you may use either the skew merge function described above or the complete binary tree implementation described in class).
 
-[[spoiler | Answer]]
-| Using the skew merge:
-| ```reason hidden
-| switch (removeMin(t)) {
-| | None => ()
-| | Some((min, rest)) => {
-|     Printf.printf("Minimum value is %d\n", min);
-|     draw(showTree(rest, string_of_int));
-|   }
-| }
-| ```
-|
-| Using the complete tree implementation:
-| ```reason hidden
-| print_string("Minimum value is 1\n");
-| let t2 = TreeNode(TreeNode(TreeNode(leaf(7), 5, EmptyTree), 3, leaf(4)), 2, TreeNode(leaf(9), 6, leaf(8)));
-| draw(showTree(t2, string_of_int));
-| ```
+<details>
+  <summary>Answer</summary>
+
+  Using the skew merge:
+  ```reason hidden
+  switch (removeMin(t)) {
+  | None => ()
+  | Some((min, rest)) => {
+      Printf.printf("Minimum value is %d\n", min);
+      draw(showTree(rest, string_of_int));
+    }
+  }
+  ```
+
+  Using the complete tree implementation:
+  ```reason hidden
+  print_string("Minimum value is 1\n");
+  let t2 = TreeNode(TreeNode(TreeNode(leaf(7), 5, EmptyTree), 3, leaf(4)), 2, TreeNode(leaf(9), 6, leaf(8)));
+  draw(showTree(t2, string_of_int));
+  ```
+</details>
 
 3. Suppose you tried to use the tree from Exercise 1 as a binary search tree. For which values would the `search` function return `true`?
 
-[[spoiler | Answer]]
-| Searching for 1, 6, and 8 would be successful.
-| Searching for any of the other numbers would result in the search looking at the wrong subtree at some point.
+<details>
+  <summary>Answer</summary>
+
+  Searching for 1, 6, and 8 would be successful.
+  Searching for any of the other numbers would result in the search looking at the wrong subtree at some point.
+</details>

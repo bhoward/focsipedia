@@ -290,139 +290,160 @@ It is possible to show that, with a better way to choose the pivot, the quadrati
 ## Exercises
 
 1. Explain what will happen to the running time of each of the above sorting algorithms if the input is already sorted.
-[[spoiler | Answer]]
-| `insertion_sort` will run in $O(N)$ time, because each insertion will put its new element at the head of the result.
-| `insertion_sort_left` will run in $O(N^2)$ time, because each insertion will have to put its new element all the way at the end of the result.
-| Selection sort does not depend on the order of the input, because it has to examine the entire list to find the smallest on each pass.
-| Merge sort will always run in $O(N\log N)$ time, because the best case for a merge operation is when everything in one list is smaller than everything in the other, and that only cuts the time by a factor of 2.
-| Quicksort with the pivot taken as the head of the list exhibits its worst-case behavior, $O(N^2)$, as shown above.
+<details>
+  <summary>Answer</summary>
+
+  `insertion_sort` will run in $O(N)$ time, because each insertion will put its new element at the head of the result.
+  `insertion_sort_left` will run in $O(N^2)$ time, because each insertion will have to put its new element all the way at the end of the result.
+  Selection sort does not depend on the order of the input, because it has to examine the entire list to find the smallest on each pass.
+  Merge sort will always run in $O(N\log N)$ time, because the best case for a merge operation is when everything in one list is smaller than everything in the other, and that only cuts the time by a factor of 2.
+  Quicksort with the pivot taken as the head of the list exhibits its worst-case behavior, $O(N^2)$, as shown above.
+</details>
 
 2. Give an example of an input list that will cause the simple recursive version of `insertion_sort` to exhibit its worst-case running time. That is, every insertion should need to traverse the entire list to find the correct insertion point.
-[[spoiler | Answer]]
-| Any list sorted in reverse order will do.
+<details>
+  <summary>Answer</summary>
+
+  Any list sorted in reverse order will do.
+</details>
 
 3. Rewrite the `select_left` function as an application of `List.fold_left` to an appropriate reduction function. When `select_left(nums)` is called on a non-empty list `nums`, the initial value passed into the reduction should be the pair `(head, [])`, representing the initial guess that the head of `nums` is the smallest number, with an empty list of other numbers examined so far.
-[[spoiler | Answer]]
-| ```reason
-| let select_left2 = nums => {
-|   let aux = ((small, rest), n) => {
-|     if (n < small) {
-|       (n, [small, ...rest])
-|     } else {
-|       (small, [n, ...rest])
-|     }
-|   };
-|   switch (nums) {
-|   | [head, ...tail] => List.fold_left(aux, (head, []), tail)
-|   }
-| };
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let select_left2 = nums => {
+    let aux = ((small, rest), n) => {
+      if (n < small) {
+        (n, [small, ...rest])
+      } else {
+        (small, [n, ...rest])
+      }
+    };
+    switch (nums) {
+    | [head, ...tail] => List.fold_left(aux, (head, []), tail)
+    }
+  };
+  ```
+</details>
 
 4. Find a way to write the selection sort algorithm using only tail-recursive functions. *Hint: Instead of selecting the smallest element, modify `select_left` to separate out the largest element, then write a sorting function that accumulates the sorted list from back to front.*
-[[spoiler | Answer]]
-| ```reason
-| /* Precondition: nums is non-empty */
-| let select_max_left = nums => {
-|   let rec aux = (nums, accum) => {
-|     switch (nums) {
-|     | [] => accum
-|     | [head, ...tail] => {
-|         let (large, rest) = accum;
-|         if (head > large) {
-|           aux(tail, (head, [large, ...rest]))
-|         } else {
-|           aux(tail, (large, [head, ...rest]))
-|         }
-|       }
-|     }
-|   };
-|   
-|   switch (nums) {
-|   | [head, ...tail] => aux(tail, (head, []))
-|   }
-| };
-| 
-| let ssort = nums => {
-|   let rec aux = (nums, sorted) => {
-|   	switch (nums) {
-|     | [] => sorted
-|     | _ => {
-|       	let (large, rest) = select_max_left(nums);
-| 				aux(rest, [large, ...sorted])
-| 		  }
-|   	}
-| 	};
-|   aux(nums, [])
-| };
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  /* Precondition: nums is non-empty */
+  let select_max_left = nums => {
+    let rec aux = (nums, accum) => {
+      switch (nums) {
+      | [] => accum
+      | [head, ...tail] => {
+          let (large, rest) = accum;
+          if (head > large) {
+            aux(tail, (head, [large, ...rest]))
+          } else {
+            aux(tail, (large, [head, ...rest]))
+          }
+        }
+      }
+    };
+    
+    switch (nums) {
+    | [head, ...tail] => aux(tail, (head, []))
+    }
+  };
+  
+  let ssort = nums => {
+    let rec aux = (nums, sorted) => {
+    	switch (nums) {
+      | [] => sorted
+      | _ => {
+        	let (large, rest) = select_max_left(nums);
+  				aux(rest, [large, ...sorted])
+  		  }
+    	}
+  	};
+    aux(nums, [])
+  };
+  ```
+</details>
 
 5. Find a way to implement the `insert` function using only tail-recursive functions.
 *Hint: First write a tail-recursive function `reverse_append(a, b)` that appends the reverse of list `a` to the front of list `b`, then
 use a helper function to insert a number into a sorted list by collecting the front half of the list (the elements less than the number)
 in an accumulator; when the correct position is found for the number, use `reverse_append` to move the accumulated elements back onto the front of the result.*
-[[spoiler | Answer]]
-| ```reason
-| let rec reverse_append = (a, b) => {
-|   switch (a) {
-|   | [] => b
-|   | [head, ...tail] => reverse_append(tail, [head, ...b])
-|   }
-| };
-|
-| /* Precondition: nums is sorted in non-decreasing order */
-| let insert_TR = (nums, n) => {
-|   let rec aux = (sorted, acc) => {
-|   	switch (sorted) {
-|     | [] => reverse_append([n, ...acc], [])
-|     | [head, ...tail] => if (n <= head) {
-|         reverse_append(acc, [n, ...sorted])
-|       } else {
-|         aux(tail, [head, ...acc])
-|       }
-|     }
-|   };
-|   aux(nums, [])
-| };
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let rec reverse_append = (a, b) => {
+    switch (a) {
+    | [] => b
+    | [head, ...tail] => reverse_append(tail, [head, ...b])
+    }
+  };
+
+  /* Precondition: nums is sorted in non-decreasing order */
+  let insert_TR = (nums, n) => {
+    let rec aux = (sorted, acc) => {
+    	switch (sorted) {
+      | [] => reverse_append([n, ...acc], [])
+      | [head, ...tail] => if (n <= head) {
+          reverse_append(acc, [n, ...sorted])
+        } else {
+          aux(tail, [head, ...acc])
+        }
+      }
+    };
+    aux(nums, [])
+  };
+  ```
+</details>
 
 1. Implement the merge sort `split` function by first computing the size of the list, then passing half that size to a function that takes a number, n, and a list and returns a pair with the first n elements of the list as the first component, and the rest of the list as the other component.
-[[spoiler | Answer]]
-| ```reason
-| let split = nums => {
-|   let rec size = nums => {
-|     switch (nums) {
-|     | [] => 0
-|     | [_, ...tail] => 1 + size(tail)
-|     }
-|   };
-|   let rec aux = (n, nums) => {
-|     switch (n, nums) {
-|     | (0, _) => ([], nums)
-|     | (_, []) => ([], [])
-|     | (_, [head, ...tail]) => {
-|         let (left, right) = aux(n - 1, tail);
-|         ([head, ...left], right)
-|       }
-|     }
-|   };
-|   let n = size(nums) / 2;
-|   aux(n, nums)
-| };
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let split = nums => {
+    let rec size = nums => {
+      switch (nums) {
+      | [] => 0
+      | [_, ...tail] => 1 + size(tail)
+      }
+    };
+    let rec aux = (n, nums) => {
+      switch (n, nums) {
+      | (0, _) => ([], nums)
+      | (_, []) => ([], [])
+      | (_, [head, ...tail]) => {
+          let (left, right) = aux(n - 1, tail);
+          ([head, ...left], right)
+        }
+      }
+    };
+    let n = size(nums) / 2;
+    aux(n, nums)
+  };
+  ```
+</details>
 
 7. The `partition` implementation for Quicksort shown above makes two passes over the list, once for each call to `List.filter`. Write a version of `partition` that does the job in just one pass, accumulating a pair of the two parts as it traverses the list.
-[[spoiler | Answer]]
-| ```reason
-| let partition = (pivot, nums) => {
-|   List.fold_left(
-|     ((first, second), n) =>
-|       if (n < pivot) {
-|         ([n, ...first], second)
-|       } else {
-|         (first, [n, ...second])
-|       },
-|     ([], []),
-|     nums
-|   )
-| };
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason
+  let partition = (pivot, nums) => {
+    List.fold_left(
+      ((first, second), n) =>
+        if (n < pivot) {
+          ([n, ...first], second)
+        } else {
+          (first, [n, ...second])
+        },
+      ([], []),
+      nums
+    )
+  };
+  ```
+</details>

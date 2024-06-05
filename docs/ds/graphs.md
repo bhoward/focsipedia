@@ -697,21 +697,27 @@ let ex1 = (["A", "B", "C", "D"], [("A", "B"), ("B", "A"), ("A", "C"), ("C", "A")
 draw(renderLayout(layoutGrid(ex1, 2, 40.), s => s, defaultStyleNode, defaultStyleEdge));
 ```
 
-[[spoiler | Answer]]
-| ```reason hidden
-| print_string("Pairs\n");
-| showPairs(ex1, s => s);
-| print_string("Adjacency List:\n");
-| showAdjList(adjlist_of_pairs(ex1), s => s);
-| print_string("Adjacency Matrix:\n");
-| showAdjMatrix(adjmatrix_of_pairs(ex1), s => s);
-| ```
+<details>
+  <summary>Answer</summary>
+
+  ```reason hidden
+  print_string("Pairs\n");
+  showPairs(ex1, s => s);
+  print_string("Adjacency List:\n");
+  showAdjList(adjlist_of_pairs(ex1), s => s);
+  print_string("Adjacency Matrix:\n");
+  showAdjMatrix(adjmatrix_of_pairs(ex1), s => s);
+  ```
+</details>
 
 2. Consider the adjacency matrix representation of a graph. What can you say about the matrix if the graph is undirected? What if the graph has loops on all of the nodes?
 
-[[spoiler | Answer]]
-| An undirected graph will have a _symmetric_ adjacency matrix: the entry in row $i$, column $j$ is the same as the entry in row $j$, column $i$ (symmetric about the diagonal).
-| A graph with all of the self-loops will have 1's along the diagonal (and a simple graph, with no loops, will have 0's on the diagonal).
+<details>
+  <summary>Answer</summary>
+
+  An undirected graph will have a _symmetric_ adjacency matrix: the entry in row $i$, column $j$ is the same as the entry in row $j$, column $i$ (symmetric about the diagonal).
+  A graph with all of the self-loops will have 1's along the diagonal (and a simple graph, with no loops, will have 0's on the diagonal).
+</details>
 
 3. (Based on a problem from Aho &amp; Ullman) Consider the following directed graph:
 ```reason hidden
@@ -721,72 +727,80 @@ draw(renderLayout(layoutCircle(ex3, 40.), s => s, defaultStyleNode, defaultStyle
 
    * Give two different depth-first traversal trees starting at node $a$. For each, also label the graph to show the forward and back edges, and the finishing number.
 
-[[spoiler | Answer]]
-| Using depth-first traversal (others are possible):
-| ```reason hidden
-| let finishedNode = n => img => fill(Color("white"),
-|   img +++ translate(12., 6., withFont(0.4, Serif, Regular, Normal, fill(color("black"), text(string_of_int(n))))));
-| let ns1 = node => switch (node) {
-| | "a" => finishedNode(6)
-| | "b" => finishedNode(5)
-| | "c" => finishedNode(4)
-| | "d" => finishedNode(3)
-| | "e" => finishedNode(2)
-| | "f" => finishedNode(1)
-| | _ => defaultStyleNode(node)
-| };
-| let es1 = (n1, n2) => switch (n1, n2) {
-| | ("a", "b") | ("b", "c") | ("c", "d") | ("d", "e") | ("e", "f") => treeEdge
-| | ("f", "a") | ("e", "b") => backEdge
-| | ("b", "f") | ("a", "d") => forwardEdge
-| | _ => defaultStyleEdge(n1, n2)
-| };
-| draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns1, es1));
-| let ns2 = node => switch (node) {
-| | "a" => finishedNode(6)
-| | "b" => finishedNode(3)
-| | "c" => finishedNode(1)
-| | "d" => finishedNode(5)
-| | "e" => finishedNode(4)
-| | "f" => finishedNode(2)
-| | _ => defaultStyleNode(node)
-| };
-| let es2 = (n1, n2) => switch (n1, n2) {
-| | ("a", "d") | ("d", "e") | ("e", "b") | ("b", "c") | ("b", "f") => treeEdge
-| | ("c", "d") | ("f", "a") => backEdge
-| | ("e", "f") | ("a", "b") => forwardEdge
-| | _ => defaultStyleEdge(n1, n2)
-| };
-| draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns2, es2));
-| ```
+<details>
+  <summary>Answer</summary>
+
+  Using depth-first traversal (others are possible):
+  ```reason hidden
+  let finishedNode = n => img => fill(Color("white"),
+    img +++ translate(12., 6., withFont(0.4, Serif, Regular, Normal, fill(color("black"), text(string_of_int(n))))));
+  let ns1 = node => switch (node) {
+  | "a" => finishedNode(6)
+  | "b" => finishedNode(5)
+  | "c" => finishedNode(4)
+  | "d" => finishedNode(3)
+  | "e" => finishedNode(2)
+  | "f" => finishedNode(1)
+  | _ => defaultStyleNode(node)
+  };
+  let es1 = (n1, n2) => switch (n1, n2) {
+  | ("a", "b") | ("b", "c") | ("c", "d") | ("d", "e") | ("e", "f") => treeEdge
+  | ("f", "a") | ("e", "b") => backEdge
+  | ("b", "f") | ("a", "d") => forwardEdge
+  | _ => defaultStyleEdge(n1, n2)
+  };
+  draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns1, es1));
+  let ns2 = node => switch (node) {
+  | "a" => finishedNode(6)
+  | "b" => finishedNode(3)
+  | "c" => finishedNode(1)
+  | "d" => finishedNode(5)
+  | "e" => finishedNode(4)
+  | "f" => finishedNode(2)
+  | _ => defaultStyleNode(node)
+  };
+  let es2 = (n1, n2) => switch (n1, n2) {
+  | ("a", "d") | ("d", "e") | ("e", "b") | ("b", "c") | ("b", "f") => treeEdge
+  | ("c", "d") | ("f", "a") => backEdge
+  | ("e", "f") | ("a", "b") => forwardEdge
+  | _ => defaultStyleEdge(n1, n2)
+  };
+  draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns2, es2));
+  ```
+</details>
 
    * Find the distance (length of the shortest path) from $a$ to each of the other nodes.
 
-[[spoiler | Answer]]
-| Using breadth-first traversal:
-| ```reason hidden
-| let ns3 = node => switch (node) {
-| | "a" => finishedNode(0)
-| | "b" => finishedNode(1)
-| | "c" => finishedNode(2)
-| | "d" => finishedNode(1)
-| | "e" => finishedNode(2)
-| | "f" => finishedNode(2)
-| | _ => defaultStyleNode(node)
-| };
-| let es3 = (n1, n2) => switch (n1, n2) {
-| | ("a", "b") | ("a", "d") | ("b", "c") | ("b", "f") | ("d", "e") => treeEdge
-| | _ => defaultStyleEdge(n1, n2)
-| };
-| draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns3, es3));
-| ```
+<details>
+  <summary>Answer</summary>
 
+  Using breadth-first traversal:
+  ```reason hidden
+  let ns3 = node => switch (node) {
+  | "a" => finishedNode(0)
+  | "b" => finishedNode(1)
+  | "c" => finishedNode(2)
+  | "d" => finishedNode(1)
+  | "e" => finishedNode(2)
+  | "f" => finishedNode(2)
+  | _ => defaultStyleNode(node)
+  };
+  let es3 = (n1, n2) => switch (n1, n2) {
+  | ("a", "b") | ("a", "d") | ("b", "c") | ("b", "f") | ("d", "e") => treeEdge
+  | _ => defaultStyleEdge(n1, n2)
+  };
+  draw(renderLayout(layoutCircle(ex3, 40.), s => s, ns3, es3));
+  ```
+</details>
 
 4. What would go wrong in Dijkstra's algorithm if we allowed edges with a negative cost? Give an example where it fails to find the shortest path.
 
-[[spoiler | Answer]]
-| With negative cost edges the greedy approach to building the shortest-path tree is not guaranteed to find the shortest paths.
-| Suppose there is an edge from $A$ to $B$ with cost 2, and an edge from $A$ to $C$ with cost 3: Dijkstra's algorithm will say that the shortest path from $A$ to $B$ has cost 2, without even looking at node $C$.
-| However, if there is an edge from $C$ to $B$ with cost $-2$, then the better route would be to go $A\rightarrow C\rightarrow B$, with total cost 1.
-|
-| Even worse, if there were a cycle in the graph with a total negative cost (such as $A$ to $B$ with cost 1, but $B$ to $A$ with cost $-2$), then any path touching that cycle could be extended to follow the cycle any number of times, leading to an arbitrarily low (large negative) cost! For such a graph, the notion of "shortest path" is undefined.
+<details>
+  <summary>Answer</summary>
+
+  With negative cost edges the greedy approach to building the shortest-path tree is not guaranteed to find the shortest paths.
+  Suppose there is an edge from $A$ to $B$ with cost 2, and an edge from $A$ to $C$ with cost 3: Dijkstra's algorithm will say that the shortest path from $A$ to $B$ has cost 2, without even looking at node $C$.
+  However, if there is an edge from $C$ to $B$ with cost $-2$, then the better route would be to go $A\rightarrow C\rightarrow B$, with total cost 1.
+ 
+  Even worse, if there were a cycle in the graph with a total negative cost (such as $A$ to $B$ with cost 1, but $B$ to $A$ with cost $-2$), then any path touching that cycle could be extended to follow the cycle any number of times, leading to an arbitrarily low (large negative) cost! For such a graph, the notion of "shortest path" is undefined.
+</details>
