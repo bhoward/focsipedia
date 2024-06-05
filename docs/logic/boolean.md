@@ -392,52 +392,70 @@ De Morgan's Laws.
 3. Construct truth tables to demonstrate that $\lnot(p\rightarrow q)$ is **not**
 logically equivalent to any of the following.
    * $(\lnot p) \rightarrow (\lnot q)$
-   [[spoiler | Answer]]
-   | | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $(\lnot p) \rightarrow (\lnot q)$ |
-   | | :-: | :-: | :-: | :-: |
-   | | $\F$ | $\F$ | $\F$ | $\T$ |
-   | | $\F$ | $\T$ | $\F$ | $\F$ |
-   | | $\T$ | $\F$ | $\T$ | $\T$ |
-   | | $\T$ | $\T$ | $\F$ | $\T$ |
+   <details>
+    <summary>Answer</summary>
+
+     | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $(\lnot p) \rightarrow (\lnot q)$ |
+     | :-: | :-: | :-: | :-: |
+     | $\F$ | $\F$ | $\F$ | $\T$ |
+     | $\F$ | $\T$ | $\F$ | $\F$ |
+     | $\T$ | $\F$ | $\T$ | $\T$ |
+     | $\T$ | $\T$ | $\F$ | $\T$ |
+   </details>
 
    * $(\lnot p) \rightarrow q$
-   [[spoiler | Answer]]
-   | | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $(\lnot p) \rightarrow q$ |
-   | | :-: | :-: | :-: | :-: |
-   | | $\F$ | $\F$ | $\F$ | $\F$ |
-   | | $\F$ | $\T$ | $\F$ | $\T$ |
-   | | $\T$ | $\F$ | $\T$ | $\T$ |
-   | | $\T$ | $\T$ | $\F$ | $\T$ |
+   <details>
+    <summary>Answer</summary>
+
+     | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $(\lnot p) \rightarrow q$ |
+     | :-: | :-: | :-: | :-: |
+     | $\F$ | $\F$ | $\F$ | $\F$ |
+     | $\F$ | $\T$ | $\F$ | $\T$ |
+     | $\T$ | $\F$ | $\T$ | $\T$ |
+     | $\T$ | $\T$ | $\F$ | $\T$ |
+   </details>
 
    * $p \rightarrow (\lnot q)$
-   [[spoiler | Answer]]
-   | | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $p \rightarrow (\lnot q)$ |
-   | | :-: | :-: | :-: | :-: |
-   | | $\F$ | $\F$ | $\F$ | $\T$ |
-   | | $\F$ | $\T$ | $\F$ | $\T$ |
-   | | $\T$ | $\F$ | $\T$ | $\T$ |
-   | | $\T$ | $\T$ | $\F$ | $\F$ |
+   <details>
+    <summary>Answer</summary>
+
+     | $p$ | $q$ | $\lnot(p\rightarrow q)$ | $p \rightarrow (\lnot q)$ |
+     | :-: | :-: | :-: | :-: |
+     | $\F$ | $\F$ | $\F$ | $\T$ |
+     | $\F$ | $\T$ | $\F$ | $\T$ |
+     | $\T$ | $\F$ | $\T$ | $\T$ |
+     | $\T$ | $\T$ | $\F$ | $\F$ |
+   </details>
 
    * Refer back to this section for a formula that **is** logically equivalent to
 $\lnot(p\rightarrow q)$.
-[[spoiler | Answer]]
-| Just before the exercises it was shown that $\lnot(p\rightarrow q)$ is equivalent to $p\land\lnot q$.
+<details>
+  <summary>Answer</summary>
+
+  Just before the exercises it was shown that $\lnot(p\rightarrow q)$ is equivalent to $p\land\lnot q$.
+</details>
 
 4. Is $\lnot(p\leftrightarrow q)$ 
 logically equivalent to $(\lnot p) \leftrightarrow (\lnot q)$?
-[[spoiler | Answer]]
-| No, since $(\lnot p) \leftrightarrow (\lnot q)$ is equivalent to $p\leftrightarrow q$ (either check
-| the truth tables, or expand out both exressions using the definition of $\leftrightarrow$ and then use
-| the fact that an implication is equivalent to its contrapositive). Instead, $\lnot(p\leftrightarrow q)$
-| is equivalent to $p\oplus q$ (again, check the truth tables or expand the definitions).
+<details>
+  <summary>Answer</summary>
+
+  No, since $(\lnot p) \leftrightarrow (\lnot q)$ is equivalent to $p\leftrightarrow q$ (either check
+  the truth tables, or expand out both exressions using the definition of $\leftrightarrow$ and then use
+  the fact that an implication is equivalent to its contrapositive). Instead, $\lnot(p\leftrightarrow q)$
+  is equivalent to $p\oplus q$ (again, check the truth tables or expand the definitions).
+</details>
 
 1. In the algebra of numbers, there is a distributive
 law of multiplication over addition: $x(y+z)=xy+xz$.
 What would a distributive law of addition over multiplication
 look like? Is it a valid law in the algebra of numbers?
-[[spoiler | Answer]]
-| If addition distributed over multiplication, then we would have $x+yz=(x+y)(x+z)$, but this is not true
-| (for example, take $x=1$, $y=2$, and $z=3$; then $x+yz=7$, but $(x+y)(x+z)=12$).
+<details>
+  <summary>Answer</summary>
+
+  If addition distributed over multiplication, then we would have $x+yz=(x+y)(x+z)$, but this is not true
+  (for example, take $x=1$, $y=2$, and $z=3$; then $x+yz=7$, but $(x+y)(x+z)=12$).
+</details>
 
 6. The distributive laws given in the [table](#laws) are sometimes
 called the _left_ distributive laws. The **right distributive laws**
@@ -447,9 +465,12 @@ the right distributive laws are also valid laws of Boolean algebra.
 (Note: In practice, both the left and the right distributive laws
 are referred to simply as the distributive laws, and both can be used
 freely in proofs.)
-[[spoiler | Answer]]
-| The commutative laws are enough to show that these are also true, since the
-| left and right arguments may be swapped on each of the operations.
+<details>
+  <summary>Answer</summary>
+
+  The commutative laws are enough to show that these are also true, since the
+  left and right arguments may be swapped on each of the operations.
+</details>
 
 7. Show that $p\land(q\lor r\lor s)\equiv (p\land q)\lor(p\land r)\lor(p\land s)$
 for any propositions $p$, $q$, $r$, and $s$. In words, 
@@ -464,14 +485,17 @@ of terms.
 8. There are two additional basic laws of logic, involving the
 two expression $p\land\F$ and $p\lor\T$. What are the missing laws?
 Show that your answers are, in fact, laws.
-[[spoiler | Answer]]
-| The laws are $p\land\F\equiv\F$ and $p\lor\T\equiv\T$. These are sometimes
-| called the "annihilation" or "annulment" laws, and they are akin to the
-| property $x\cdot 0=0$ in ordinary algebra.
-|
-| If you think of $\F$ as being the disjunction of zero terms, and $\T$ as the
-| conjunction of zero terms (just as $0$ is the sum of zero numbers), then these
-| laws extend the previous exercise to the case of distributing over zero terms.
+<details>
+  <summary>Answer</summary>
+
+  The laws are $p\land\F\equiv\F$ and $p\lor\T\equiv\T$. These are sometimes
+  called the "annihilation" or "annulment" laws, and they are akin to the
+  property $x\cdot 0=0$ in ordinary algebra.
+
+  If you think of $\F$ as being the disjunction of zero terms, and $\T$ as the
+  conjunction of zero terms (just as $0$ is the sum of zero numbers), then these
+  laws extend the previous exercise to the case of distributing over zero terms.
+</details>
 
 9. For each of the following pairs of propositions, show that
 the two propositions are logically equivalent by finding a chain of
@@ -488,59 +512,100 @@ State which definition or law of logic justifies each equivalence in the chain.
 simpler proposition that is logically equivalent. Try to find a proposition
 that is as simple as possible.
    * $(p\land q)\lor\lnot q$
-   [[spoiler | Answer]]
-   | $p\lor\lnot q$, or $q\rightarrow p$
+   <details>
+    <summary>Answer</summary>
+
+     $p\lor\lnot q$, or $q\rightarrow p$
+   </details>
 
    * $\lnot(p\lor q)\land p$
-   [[spoiler | Answer]]
-   | $\F$
+   <details>
+    <summary>Answer</summary>
+
+     $\F$
+   </details>
 
    * $p\rightarrow\lnot p$
-   [[spoiler | Answer]]
-   | $\lnot p$
+   <details>
+    <summary>Answer</summary>
+
+     $\lnot p$
+   </details>
 
    * $\lnot p\land(p\lor q)$
-   [[spoiler | Answer]]
-   | $\lnot p\land q$
+   <details>
+    <summary>Answer</summary>
+
+     $\lnot p\land q$
+   </details>
 
    * $(q\land p)\rightarrow q$
-   [[spoiler | Answer]]
-   | $\T$
+   <details>
+    <summary>Answer</summary>
+
+     $\T$
+   </details>
 
    * $(p\rightarrow q)\land(\lnot p\rightarrow q)$
-   [[spoiler | Answer]]
-   | $q$
+   <details>
+    <summary>Answer</summary>
+
+     $q$
+   </details>
 
 1. Express the negation of each of the following sentences in
 natural English:
    * It is sunny and cold.
-   [[spoiler | Answer]]
-   | It is not sunny, or it is not cold.
+   <details>
+    <summary>Answer</summary>
+
+     It is not sunny, or it is not cold.
+   </details>
 
    * I will have cake or I will have pie.
-   [[spoiler | Answer]]
-   | I will not have cake and I will not have pie.
+   <details>
+    <summary>Answer</summary>
+
+     I will not have cake and I will not have pie.
+   </details>
 
    * If today is Tuesday, this is Belgium.
-   [[spoiler | Answer]]
-   | Today is Tuesday and this is not Belgium.
+   <details>
+    <summary>Answer</summary>
+
+     Today is Tuesday and this is not Belgium.
+   </details>
 
    * If you pass the final exam, you pass the course.
-   [[spoiler | Answer]]
-   | You pass the final exam but you do not pass the course.
+   <details>
+    <summary>Answer</summary>
+
+     You pass the final exam but you do not pass the course.
+   </details>
 
 1. Apply one of the laws of logic to each of the
 following sentences, and rewrite it as an equivalent sentence.
 State which law you are applying.
    * I will have coffee and cake or pie.
-   [[spoiler | Answer]]
-   | I will have coffee and cake, or I will have coffee and pie (Distributive).
+   <details>
+    <summary>Answer</summary>
+
+     I will have coffee and cake, or I will have coffee and pie (Distributive).
+   </details>
+
    * He has neither talent nor ambition.
-   [[spoiler | Answer]]
-   | He does not have talent and he does not have ambition (DeMorgan).
+   <details>
+    <summary>Answer</summary>
+
+     He does not have talent and he does not have ambition (DeMorgan).
+   </details>
+
    * You can have spam, or you can have spam.
-   [[spoiler | Answer]]
-   | You can have spam (Idempotence).
+   <details>
+    <summary>Answer</summary>
+
+     You can have spam (Idempotence).
+   </details>
 
 1. Use Boolean algebra to show that the implication operator ($\rightarrow$) is
 functionally complete, provided the constant $\F$ is also available (this is not
@@ -548,10 +613,13 @@ unreasonable in an electronic circuit, where $\F$ is represented by the ground
 voltage). That is, show how to define $p\land q$, $p\lor q$, and $\lnot p$ by
 giving equivalent expressions using only $\rightarrow$ and $\F$ in addition to
 the input variables $p$ and $q$.
-[[spoiler | Answer]]
-| Since $\lnot p\equiv(p\rightarrow\F)$ (check the truth table, or expand
-| $p\rightarrow\F$ into $\lnot p\lor\F$ and use the identity law), we may use
-| the fact that $(\lnot p)\rightarrow q\equiv(\lnot\lnot p)\lor q\equiv p\lor q$
-| to conclude that both $\lnot$ and $\lor$ are expressible with only $\rightarrow$
-| and $\F$. We already know that these two together are functionally complete, therefore
-| we may convert any boolean expression into one using only $\rightarrow$ and $\F$.
+<details>
+  <summary>Answer</summary>
+
+  Since $\lnot p\equiv(p\rightarrow\F)$ (check the truth table, or expand
+  $p\rightarrow\F$ into $\lnot p\lor\F$ and use the identity law), we may use
+  the fact that $(\lnot p)\rightarrow q\equiv(\lnot\lnot p)\lor q\equiv p\lor q$
+  to conclude that both $\lnot$ and $\lor$ are expressible with only $\rightarrow$
+  and $\F$. We already know that these two together are functionally complete, therefore
+  we may convert any boolean expression into one using only $\rightarrow$ and $\F$.
+</details>

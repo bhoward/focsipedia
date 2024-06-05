@@ -378,99 +378,139 @@ is called the "evaluation function" since it captures the idea
 of evaluating a function at an element of its domain.
 
 
-
 ## Exercises
 
 1. Let $A=\{1,2,3,4\}$ and let $B=\{a,b,c\}$.
 Find the sets $A\times B$ and $B\times A$.
-[[spoiler | Answer]]
-| $A\times B=\{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c),(3,a),(3,b),(3,c),(4,a),(4,b),(4,c)\}$
-|
-| $B\times A=\{(a,1),(a,2),(a,3),(a,4),(b,1),(b,2),(b,3),(b,4),(c,1),(c,2),(c,3),(c,4)\}$
+<details>
+  <summary>Answer</summary>
+
+  $A\times B=\{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c),(3,a),(3,b),(3,c),(4,a),(4,b),(4,c)\}$
+
+  $B\times A=\{(a,1),(a,2),(a,3),(a,4),(b,1),(b,2),(b,3),(b,4),(c,1),(c,2),(c,3),(c,4)\}$
+</details>
 
 2. Let $A$ be the set $\{a,b,c,d\}$. Let $f$ be the
 function from $A$ to $A$ given by the set of ordered pairs
 $\{(a,b),(b,b),(c,a),(d,c)\}$, and let $g$ be the function
 given by the set of ordered pairs $\{(a,b),(b,c),(c,d),(d,d)\}$.
 Find the set of ordered pairs for the composition $g\circ f$.
-[[spoiler | Answer]]
-| $g(f(a)) = g(b) = c$, $g(f(b)) = g(b) = c$, $g(f(c)) = g(a) = b$, and $g(f(d)) = g(c) = d$, so the
-| ordered pairs are $\{(a,c), (b,c), (c,b), (d,d)\}$.
+<details>
+  <summary>Answer</summary>
+
+  $g(f(a)) = g(b) = c$, $g(f(b)) = g(b) = c$, $g(f(c)) = g(a) = b$, and $g(f(d)) = g(c) = d$, so the
+  ordered pairs are $\{(a,c), (b,c), (c,b), (d,d)\}$.
+</details>
 
 3. Let $A=\{a,b,c\}$ and let $B=\{0,1\}$. Find all
 possible functions from $A$ to $B$. Give each function as
 a set of ordered pairs. (Hint: Every such function corresponds
 to one of the subsets of $A$.)
-[[spoiler | Answer]]
-| Given a subset $S\subseteq A$, the **characteristic function** of $S$ is the
-| function $\chi_S$ from $A$ to $\{0,1\}$ defined by $(\chi_S(x)=1)\equiv(x\in A)$.
-| Conversely, given a function $f$ from $A$ to $B=\{0,1\}$, we may find a subset of
-| $A$ whose characteristic function is $f$ by taking the set of elements of $A$ that
-| are mapped to 1 by $f$ (this is known as the **inverse image**, $f^{-1}(1)$).
-| Here are the subsets along with their corresponding characteristic functions:
-|
-| | $S$ | $\chi_S$ |
-| | :-: | :-: |
-| | $\{\}$ | $\{(a,0), (b,0), (c,0)\}$ |
-| | $\{c\}$ | $\{(a,0), (b,0), (c,1)\}$ |
-| | $\{b\}$ | $\{(a,0), (b,1), (c,0)\}$ |
-| | $\{b,c\}$ | $\{(a,0), (b,1), (c,1)\}$ |
-| | $\{a\}$ | $\{(a,1), (b,0), (c,0)\}$ |
-| | $\{a,c\}$ | $\{(a,1), (b,0), (c,1)\}$ |
-| | $\{a,b\}$ | $\{(a,1), (b,1), (c,0)\}$ |
-| | $\{a,b,c\}$ | $\{(a,1), (b,1), (c,1)\}$ |
+<details>
+  <summary>Answer</summary>
+
+  Given a subset $S\subseteq A$, the **characteristic function** of $S$ is the
+  function $\chi_S$ from $A$ to $\{0,1\}$ defined by $(\chi_S(x)=1)\equiv(x\in A)$.
+  Conversely, given a function $f$ from $A$ to $B=\{0,1\}$, we may find a subset of
+  $A$ whose characteristic function is $f$ by taking the set of elements of $A$ that
+  are mapped to 1 by $f$ (this is known as the **inverse image**, $f^{-1}(1)$).
+  Here are the subsets along with their corresponding characteristic functions:
+
+  | $S$ | $\chi_S$ |
+  | :-: | :-: |
+  | $\{\}$ | $\{(a,0), (b,0), (c,0)\}$ |
+  | $\{c\}$ | $\{(a,0), (b,0), (c,1)\}$ |
+  | $\{b\}$ | $\{(a,0), (b,1), (c,0)\}$ |
+  | $\{b,c\}$ | $\{(a,0), (b,1), (c,1)\}$ |
+  | $\{a\}$ | $\{(a,1), (b,0), (c,0)\}$ |
+  | $\{a,c\}$ | $\{(a,1), (b,0), (c,1)\}$ |
+  | $\{a,b\}$ | $\{(a,1), (b,1), (c,0)\}$ |
+  | $\{a,b,c\}$ | $\{(a,1), (b,1), (c,1)\}$ |
+</details>
 
 4. Consider the functions from $\Z$ to $\Z$ which are
 defined by the following formulas. Decide whether each
 function is onto and whether it is one-to-one; prove your answers. 
    * $f(n)=2n$
-   [[spoiler | Answer]]
-   | $f$ is one-to-one, because if $f(x)=f(y)$, then $2x=2y$, hence $x=y$.
-   | $f$ is not onto, because the image of $f$ is only the even integers.
+   <details>
+     <summary>Answer</summary>
+
+     $f$ is one-to-one, because if $f(x)=f(y)$, then $2x=2y$, hence $x=y$.
+     $f$ is not onto, because the image of $f$ is only the even integers.
+   </details>
+
    * $g(n)=n+1$
-   [[spoiler | Answer]]
-   | $g$ is both one-to-one and onto; given any $x\in\Z$, there is exactly one
-   | $n\in\Z$ (namely, $x-1$) such that $g(n) = x$.
+   <details>
+     <summary>Answer</summary>
+
+     $g$ is both one-to-one and onto; given any $x\in\Z$, there is exactly one
+     $n\in\Z$ (namely, $x-1$) such that $g(n) = x$.
+   </details>
+
    * $h(n)=n^2+n+1$
-   [[spoiler | Answer]]
-   | $h$ is neither one-to-one nor onto. In particular, $h(-1)=h(0)=1$, and there is
-   | no $n\in\Z$ such that $h(n)=0$.
+   <details>
+     <summary>Answer</summary>
+
+     $h$ is neither one-to-one nor onto. In particular, $h(-1)=h(0)=1$, and there is
+     no $n\in\Z$ such that $h(n)=0$.
+   </details>
+
    * $s(n)=n/2$, if $n$ is even, and $s(n)=(n+1)/2$, if $n$ is odd
-   [[spoiler | Answer]]
-   | $s$ is onto, because given any $x\in\Z$ we may see that $s(2x)=x$.
-   | $s$ is not one-to-one, because $s(1)=s(2)=1$.
+   <details>
+     <summary>Answer</summary>
+
+     $s$ is onto, because given any $x\in\Z$ we may see that $s(2x)=x$.
+     $s$ is not one-to-one, because $s(1)=s(2)=1$.
+   </details>
 
 5. Prove that composition of functions is an associative
 operation. That is, prove that for functions
 $f\colon A\to B$, $g\colon B\to C$, and $h\colon C\to D$,
 the compositions $(h\circ g)\circ f$ and $h\circ(g\circ f)$
 are equal.
-[[spoiler | Answer]]
-| It is enough to observe that, for any $x\in A$, the compositions $((h\circ g)\circ f)(x)$
-| and $(h\circ(g\circ f))(x)$ both evaluate to $h(g(f(x)))$.
+<details>
+  <summary>Answer</summary>
+
+  It is enough to observe that, for any $x\in A$, the compositions $((h\circ g)\circ f)(x)$
+  and $(h\circ(g\circ f))(x)$ both evaluate to $h(g(f(x)))$.
+</details>
 
 6. Suppose that $f\colon A\to B$ and $g\colon B\to C$ are
 functions and that $g\circ f$ is one-to-one. 
    * Prove that $f$ is one-to-one. (Hint: use a proof by contradiction.)
-   [[spoiler | Answer]]
-   | Suppose we had distinct elements $x$ and $y$ in $A$ such that $f(x)=f(y)$.
-   | Then we would also have that $g(f(x))=g(f(y))$, so $g\circ f$ would agree
-   | on $x$ and $y$. But $g\circ f$ is one-to-one, so that is a contradiction.
-   | Therefore, there must not be such elements in $A$, hence $f$ is one-to-one.
+   <details>
+     <summary>Answer</summary>
+
+     Suppose we had distinct elements $x$ and $y$ in $A$ such that $f(x)=f(y)$.
+     Then we would also have that $g(f(x))=g(f(y))$, so $g\circ f$ would agree
+     on $x$ and $y$. But $g\circ f$ is one-to-one, so that is a contradiction.
+     Therefore, there must not be such elements in $A$, hence $f$ is one-to-one.
+   </details>
+
    * Find a specific example that shows that $g$ is not necessarily one-to-one.
-   [[spoiler | Answer]]
-   | Consider functions on the integers ($\Z$), and let $f(n)=2n$ and $g(n)=n/2$ if $n$ is even, $g(n)=0$ if $n$ is odd.
-   | Then $g\circ f$ is the identity function, which is one-to-one, but $g$ is clearly not one-to-one.
+   <details>
+     <summary>Answer</summary>
+
+     Consider functions on the integers ($\Z$), and let $f(n)=2n$ and $g(n)=n/2$ if $n$ is even, $g(n)=0$ if $n$ is odd.
+     Then $g\circ f$ is the identity function, which is one-to-one, but $g$ is clearly not one-to-one.
+   </details>
 
 7. Suppose that $f\colon A\to B$ and $g\colon B\to C$,
 and suppose that the composition $g\circ f$ is an onto
 function. 
    * Prove that $g$ is an onto function. 
-   [[spoiler | Answer]]
-   | Given any $x\in C$, the fact that $g\circ f$ is onto means that we can find a $y\in A$ such that $g(f(y))=x$.
-   | But that means that we have an element of $B$, namely $f(y)$, which $g$ maps onto $x$. Since we can do this
-   | for any element of $C$, the function $g$ is onto.
+   <details>
+     <summary>Answer</summary>
+
+     Given any $x\in C$, the fact that $g\circ f$ is onto means that we can find a $y\in A$ such that $g(f(y))=x$.
+     But that means that we have an element of $B$, namely $f(y)$, which $g$ maps onto $x$. Since we can do this
+     for any element of $C$, the function $g$ is onto.
+   </details>
+
    * Find a specific example that shows that $f$ is not necessarily onto.
-   [[spoiler | Answer]]
-   | Consider functions on the integers ($\Z$), and let $f(n)=2n$ and $g(n)=n/2$ if $n$ is even, $g(n)=0$ if $n$ is odd.
-   | Then $g\circ f$ is the identity function, which is onto, but $f$ is clearly not onto.
+   <details>
+     <summary>Answer</summary>
+
+     Consider functions on the integers ($\Z$), and let $f(n)=2n$ and $g(n)=n/2$ if $n$ is even, $g(n)=0$ if $n$ is odd.
+     Then $g\circ f$ is the identity function, which is onto, but $f$ is clearly not onto.
+   </details>

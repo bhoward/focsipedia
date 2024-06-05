@@ -248,113 +248,145 @@ of relations.
 
 1. Using the library database given above,
 what is the result of each of the following SQL commands?
-   * ```sql
-   SELECT Name, Address
-   FROM Members
-   WHERE Name = "Smith, John"
-   ```
-   [[spoiler | Answer]]
-   | | **Name** | **Address** |
-   | | :- | :- |
-   | | Smith, John | 107 Main St |
-   | | Smith, John | 2390 River St |
-    
-   * ```sql
-   DELETE FROM Books
-   WHERE Author = "Isaac Asimov"
-   ```
-   [[spoiler | Answer]]
-   | The Books table becomes:
-   |
-   | | **BookID** | **Title** | **Author** |
-   | | :- | :- | :- |
-   | | 221 | The Sound and the Fury | William Faulkner |
-   | | 38 | Summer Lightning | P.G. Wodehouse |
-   | | 437 | Pride and Prejudice | Jane Austen |
-   | | 598 | Left Hand of Darkness | Ursula LeGuin |
-   | | 720 | Mirror Dance | Lois McMaster Bujold |
+   * &nbsp;
+     ```sql
+     SELECT Name, Address
+     FROM Members
+     WHERE Name = "Smith, John"
+     ```
+   <details>
+     <summary>Answer</summary>
 
-   * ```sql
-   UPDATE Loans
-   SET DueDate = "November 20, 2010"
-   WHERE BookID = 221
-   ```
-   [[spoiler | Answer]]
-   | The Loans table becomes:
-   |
-   | | **MemberID** | **BookID** | **DueDate** |
-   | | :- | :- | :- |
-   | | 378 | 221 | October 8, 2010 |
-   | | 2889 | 182 | November 1, 2010 |
-   | | 4277 | 221 | November 20, 2010 |
-   | | 1782 | 38 | October 30, 2010 |
-
-   * ```sql
-   SELECT Title
-   FROM Books, Loans
-   WHERE Books.BookID = Loans.BookID
-   ```
-   [[spoiler | Answer]]
-   | The result is a table listing all of the books currently on loan:
-   |
-   | | **Title** |
-   | | :- |
-   | | The Sound and the Fury |
-   | | I, Robot |
-   | | The Sound and the Fury |
-   | | Summer Lightning |
+     | **Name** | **Address** |
+     | :- | :- |
+     | Smith, John | 107 Main St |
+     | Smith, John | 2390 River St |
+   </details>
     
-   * ```sql
-   DELETE FROM Loans
-   WHERE MemberID IN (SELECT MemberID
-              FROM Members
-              WHERE Name = "Lee, Joseph")
-   ```
-   [[spoiler | Answer]]
-   | The Loans table becomes:
-   |
-   | | **MemberID** | **BookID** | **DueDate** |
-   | | :- | :- | :- |
-   | | 2889 | 182 | November 1, 2010 |
-   | | 4277 | 221 | November 1, 2010 |
-   | | 1782 | 38 | October 30, 2010 |
+   * &nbsp;
+     ```sql
+     DELETE FROM Books
+     WHERE Author = "Isaac Asimov"
+     ```
+   <details>
+     <summary>Answer</summary>
+
+     The Books table becomes:
+   
+     | **BookID** | **Title** | **Author** |
+     | :- | :- | :- |
+     | 221 | The Sound and the Fury | William Faulkner |
+     | 38 | Summer Lightning | P.G. Wodehouse |
+     | 437 | Pride and Prejudice | Jane Austen |
+     | 598 | Left Hand of Darkness | Ursula LeGuin |
+     | 720 | Mirror Dance | Lois McMaster Bujold |
+   </details>
+
+   * &nbsp;
+     ```sql
+     UPDATE Loans
+     SET DueDate = "November 20, 2010"
+     WHERE BookID = 221
+     ```
+   <details>
+     <summary>Answer</summary>
+
+     The Loans table becomes:
+
+     | **MemberID** | **BookID** | **DueDate** |
+     | :- | :- | :- |
+     | 378 | 221 | October 8, 2010 |
+     | 2889 | 182 | November 1, 2010 |
+     | 4277 | 221 | November 20, 2010 |
+     | 1782 | 38 | October 30, 2010 |
+   </details>
+
+   * &nbsp;
+     ```sql
+     SELECT Title
+     FROM Books, Loans
+     WHERE Books.BookID = Loans.BookID
+     ```
+   <details>
+     <summary>Answer</summary>
+
+     The result is a table listing all of the books currently on loan:
+   
+     | **Title** |
+     | :- |
+     | The Sound and the Fury |
+     | I, Robot |
+     | The Sound and the Fury |
+     | Summer Lightning |
+   </details>
+    
+   * &nbsp;
+     ```sql
+     DELETE FROM Loans
+     WHERE MemberID IN (SELECT MemberID
+                        FROM Members
+                        WHERE Name = "Lee, Joseph")
+     ```
+   <details>
+     <summary>Answer</summary>
+
+     The Loans table becomes:
+   
+     | **MemberID** | **BookID** | **DueDate** |
+     | :- | :- | :- |
+     | 2889 | 182 | November 1, 2010 |
+     | 4277 | 221 | November 1, 2010 |
+     | 1782 | 38 | October 30, 2010 |
+   </details>
 
 2. Using the library database given above,
 write an SQL command to do each of the following database
 manipulations:
    * Find the BookID of every book that is due on November 1, 2010.
-   [[spoiler | Answer]]
-   | ```sql
-   | SELECT BookID
-   | FROM Loans
-   | WHERE DueDate = "November 1, 2010"
-   | ```
+   <details>
+     <summary>Answer</summary>
+
+     ```sql
+     SELECT BookID
+     FROM Loans
+     WHERE DueDate = "November 1, 2010"
+     ```
+   </details>
 
    * Change the DueDate of the book with BookID 221 to November 15, 2010.
-   [[spoiler | Answer]]
-   | ```sql
-   | UPDATE Loans
-   | SET DueDate = "November 15, 2010"
-   | WHERE BookID = 221
-   | ```
+   <details>
+     <summary>Answer</summary>
+
+     ```sql
+     UPDATE Loans
+     SET DueDate = "November 15, 2010"
+     WHERE BookID = 221
+     ```
+   </details>
 
    * Change the DueDate of the book with title "Summer Lightning" to November 14, 2010. Use a nested SELECT.
-   [[spoiler | Answer]]
-   | ```sql
-   | UPDATE Loans
-   | SET DueDate = "November 14, 2010"
-   | WHERE BookID IN (SELECT BookID
-   |                  FROM Books
-   |                  WHERE Title = "Summer Lightning")
-   | ```
+   <details>
+     <summary>Answer</summary>
+
+     ```sql
+     UPDATE Loans
+     SET DueDate = "November 14, 2010"
+     WHERE BookID IN (SELECT BookID
+                      FROM Books
+                      WHERE Title = "Summer Lightning")
+     ```
+   </details>
 
    * Find the name of every member who has a book out on loan. Use joined tables in the FROM clause of a SELECT command.
-   [[spoiler | Answer]]
-   | ```sql
-   | SELECT Name
-   | FROM Members, Loans
-   | WHERE Members.MemberID = Loans.MemberID
-   | ```
+   <details>
+     <summary>Answer</summary>
+
+     ```sql
+     SELECT Name
+     FROM Members, Loans
+     WHERE Members.MemberID = Loans.MemberID
+     ```
+   </details>
 
 3. Suppose that a college wants to use a database to store
 information about its students, the courses that are offered in
