@@ -8,12 +8,17 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
+import remarkCodeImport from 'remark-code-import';
 
 const katexOptions = {
   macros: {
     "\\T": "\\mathbb{T}",
     "\\F": "\\mathbb{F}",
   },
+};
+
+const codeImportOptions = {
+  removeRedundantIndentations: true,
 };
 
 /** @type {import('@docusaurus/types').Config} */
@@ -55,7 +60,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkMath, [remarkCodeImport, codeImportOptions]],
           rehypePlugins: [[rehypeKatex, katexOptions]],
         },
         blog: {
@@ -64,7 +69,7 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
-            remarkPlugins: [remarkMath],
+            remarkPlugins: [remarkMath, [remarkCodeImport, codeImportOptions]],
             rehypePlugins: [[rehypeKatex, katexOptions]],
           },
         theme: {

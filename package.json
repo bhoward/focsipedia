@@ -26,7 +26,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.4.0",
-    "@docusaurus/types": "^3.4.0"
+    "@docusaurus/types": "^3.4.0",
+    "remark-code-import": "^1.2.0"
   },
   "browserslist": {
     "production": [
