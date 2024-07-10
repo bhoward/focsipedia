@@ -320,6 +320,16 @@ print_int(sum(i => { i * i * i }, 3, 5));
 print_newline();
 ```
 
+This is just a test of Mermaid:
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 Note that we define the function _sum_ in ReasonML by binding
 a function value to the name _sum_, just as we can bind other
 types of values to identifiers. The keyword "rec" after the "let"
