@@ -324,6 +324,10 @@ This is just a test of Mermaid:
 
 ```mermaid
 graph TD;
+    A(($$a$$));
+    B((b));
+    C((c));
+    D(($$\bullet$$));
     A-->B;
     A-->C;
     B-->D;

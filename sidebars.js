@@ -22,6 +22,7 @@ const sidebars = {
       'attribution',
       'policies',
       'topics',
+      '236topics',
       'overview',
     ],
     Logic: [
