@@ -20,7 +20,7 @@ Note that it does not precisely follow the order in the book's table of contents
 ## Week 2:
 ### [Functional Sorting](ds/lists.md)
 
-### [Running Time and Recurrences](ds/recurrence.md); [Program Verification](ds/verification.md)
+### [Program Verification](ds/verification.md)
 
 ### [MapReduce](fp/map-reduce.md)
 
@@ -30,26 +30,54 @@ Note that it does not precisely follow the order in the book's table of contents
 
 ### [Binary Search Trees and Heaps](ds/bst.md)
 
+### Balanced Binary Search Trees
+
 ### [Graphs, Representations, Traversals](ds/graphs.md)
 
 ## Week 4:
+### Topological Sort and Connected Components
+
+### Shortest Paths; Minimum Spanning Trees
+
+### Transitive Closure
 
 ## Week 5:
 ### Exam 1
 
 ## Week 6:
+### [Running Time and Recurrences](ds/recurrence.md)
+
+### Algorithm Strategies: Decrease-and-Conquer
+
+### Divide-and-Conquer
 
 ## Week 7:
+### Greedy Algorithms
 
+### Dynamic Programming
+
+### String Search
 
 ## Week 8:
+### Hashtables and Bloom Filters
+
+### Bucket, Counting, and Radix Sort
+
+### Backtracking and A* Search
 
 ## Week 9:
+### Tractability
+
+### NP Completeness
+
+### Amortized Analysis
 
 ## Week 10:
 ### Exam 2
 
 ## Week 11:
+### Knuth-Morris-Pratt
+
 ### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
 ### [State Machines](logic/state.md), and their implementations in [Java and ReasonML](fp/state.md)
@@ -67,3 +95,6 @@ Note that it does not precisely follow the order in the book's table of contents
 ### [Lambda Calculus](fp/lambda.md)
 
 ## Week 14:
+### Recursive Functions
+
+### Church-Turing Thesis
