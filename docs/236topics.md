@@ -42,29 +42,28 @@ Note that it does not precisely follow the order in the book's table of contents
 ## Week 7:
 
 
-## Week 8: Lists and Sorting
+## Week 8:
 
-## Week 9: Trees and Graphs
+## Week 9:
 
-## Week 10: Machine Models
-### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
-
-### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](lang/fsareg.md)
-
-## Week 11:
+## Week 10:
 ### Exam 2
 
-## Week 12:
-### [Sequential Circuits](logic/sequential.md)
+## Week 11:
+### [Languages](lang/languages.md), [Regular Expressions](lang/regexp.md), and [Applications](lang/regexpapp.md); [Finite-State Automata](lang/fsa.md)
 
 ### [State Machines](logic/state.md), and their implementations in [Java and ReasonML](fp/state.md)
 
-## Week 13:
+## Week 12:
+### [Non-deterministic Automata](lang/nfa.md), [Equivalence with Regular Expressions](lang/fsareg.md)
+
 ### [Grammars](lang/cfg.md) and [Backus-Naur Form](lang/bnf.md)
 
 ### [Parsing](lang/parsing.md), [Pushdown Automata](lang/pda.md), [Recursive Descent](fp/parser-comb.md)
 
-## Week 14:
+## Week 13:
 ### [General Grammars, Turing Machines](lang/tm.md), [Computability](lang/computability.md), [Halting Problem](lang/halting.md)
 
 ### [Lambda Calculus](fp/lambda.md)
+
+## Week 14:
