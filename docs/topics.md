@@ -1,6 +1,6 @@
 ---
 id: topics
-title: Topics
+title: CSC 233 Topics
 ---
 
 This page gives the order of topics as they are covered in the DePauw course CSC 233, Foundations of Computation.

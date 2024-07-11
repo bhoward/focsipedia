@@ -9,6 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import remarkCodeImport from 'remark-code-import';
+import rehypeGraphviz from '@beoe/rehype-graphviz';
 
 const katexOptions = {
   macros: {
@@ -61,7 +62,7 @@ const config = {
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
           remarkPlugins: [remarkMath, [remarkCodeImport, codeImportOptions]],
-          rehypePlugins: [[rehypeKatex, katexOptions]],
+          rehypePlugins: [[rehypeKatex, katexOptions], rehypeGraphviz],
         },
         blog: {
           showReadingTime: true,
@@ -70,7 +71,7 @@ const config = {
           editUrl:
             'https://github.com/bhoward/focsipedia/tree/master/',
             remarkPlugins: [remarkMath, [remarkCodeImport, codeImportOptions]],
-            rehypePlugins: [[rehypeKatex, katexOptions]],
+            rehypePlugins: [[rehypeKatex, katexOptions], rehypeGraphviz],
           },
         theme: {
           customCss: './src/css/custom.css',
