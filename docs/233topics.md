@@ -1,5 +1,5 @@
 ---
-id: topics
+id: 233topics
 title: CSC 233 Topics
 ---
 

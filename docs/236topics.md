@@ -7,7 +7,7 @@ This page gives the order of topics as they are covered in the DePauw course CSC
 Note that it does not precisely follow the order in the book's table of contents, because some of the dependencies among sections cut across the chapter topics.
 
 ## Week 1: Introduction
-### [Overview of Foundations](overview.md) and [Functional Programming](fp/overview.md)
+### [Overview of Algorithmic Foundations](algoverview.md) and [Functional Programming](fp/overview.md)
 
 ### [Introduction to Functional Programming](fp/intro.md)
 

@@ -21,8 +21,9 @@ const sidebars = {
     'Course Info': [
       'attribution',
       'policies',
-      'topics',
       '236topics',
+      'algoverview',
+      '233topics',
       'overview',
     ],
     Logic: [
