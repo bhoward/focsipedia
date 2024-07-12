@@ -6,12 +6,6 @@ title: CSC 236 Topics
 This page gives the order of topics as they are covered in the DePauw course CSC 236, Algorithmic Foundations of Computation.
 Note that it does not precisely follow the order in the book's table of contents, because some of the dependencies among sections cut across the chapter topics.
 
-Testing:
-
-```dot
-digraph G { Hello -> World }
-```
-
 ## Week 1: Introduction
 ### [Overview of Foundations](overview.md) and [Functional Programming](fp/overview.md)
 
