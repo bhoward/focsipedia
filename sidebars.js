@@ -23,8 +23,6 @@ const sidebars = {
       'policies',
       '236topics',
       'algoverview',
-      '233topics',
-      'overview',
     ],
     Logic: [
       'logic/intro',

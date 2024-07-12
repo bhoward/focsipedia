@@ -5,6 +5,10 @@ title: Course Information and Policies
 
 ## What, Where, When, Who, ...
 
+:::warning
+This information is from the Fall 2020 offering of CSC 233! Information for the current semester is available on [Moodle](https://moodle.depauw.edu/).
+:::
+
 <dl>
 <dt>Title</dt>
 <dd>CSC 233, Foundations of Computation</dd>
