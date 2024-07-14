@@ -4,7 +4,7 @@ title: Overview of Functional Programming
 ---
 
 There is a more extensive [introduction to FP](intro) later, but this section provides an early introduction to some of the concepts and tools that we will be using throughout the course.
-The language we will be using is called [ReasonML](../reason), and there is an interpreter for it that can be embedded in any page of FoCSipedia.
+The language we will be using is called [Scala](../scala), and there is an interpreter for it that can be embedded in any page of FoCSipedia.
 When you see a block of code like this:
 ```reason edit
 let answer = 6 * 7;
