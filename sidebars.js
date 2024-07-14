@@ -83,6 +83,7 @@ const sidebars = {
     Features: [
       'reason',
       'ocaml',
+      'scala',
       'styleGuide',
     ],
   },

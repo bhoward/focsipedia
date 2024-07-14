@@ -148,7 +148,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} <a href="https://github.com/bhoward">Brian T. Howard</a>. Built with Docusaurus. <a href="https://purl.org/focsipedia">FoCSipedia</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt=""></a>`,
       },
       algolia: {
-        apiKey: '98e3a58877cfcccd391a5303d86a9c61',
+        apiKey: '98e3a58877cfcccd391a5303d86a9c61', // ggignore
         appId: 'YNUYSORFOS',
         indexName: 'focsipedia',
         searchPagePath: false,

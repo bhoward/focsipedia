@@ -1,0 +1,69 @@
+---
+id: scala
+title: Scala
+---
+
+# Scala
+
+[Scala](https://www.scala-lang.org/) is a multi-paradigm programming language that
+supports Java-style object-oriented programming plus a strongly-typed functional style
+influenced by Haskell and Standard ML.
+It was developed by Martin Odersky at the École Polytechnique Fédérale de Lausanne (EPFL),
+in Switzerland, starting in 2001.
+Odersky worked on the design and compiler for Generic Java in the late 1990's, which became
+the official javac compiler when generic types were made available in Java 5 (finally
+released in 2004).
+The design of Scala arose from Odersky's frustration with the slow pace of Java language
+evolution, and the difficulty of merging advanced language features while maintaining strict
+backward compatibility.
+
+Scala compiles to the same JVM bytecode as Java, and objects created in one language are
+easily used in the other; this means that Java's extensive library ecosystem is available to
+Scala, and applications may be written with a combination of the two languages.
+While Java programs are not syntactically legal Scala code, it is generally simple to
+convert Java to Scala, and experience programming in one can often be transferred to the
+other.
+
+In recent years, partly due to the influence of Scala, functional features such as
+anonymous functions ("lambdas") and immutable records with pattern-matching have been added
+to Java.
+Nevertheless, Scala provides a cleaner setting in which to learn about functional
+programming, and has continued to serve as a testbed for advanced ideas in language design.
+In addition to the Java Virtual Machine target, there are now also compilers from Scala to
+JavaScript, for running in a browser, and to native machine code for increased efficiency.
+
+---
+
+Here is an editor where you can type in ReasonML code and execute it (click the button
+or type Ctrl-Enter):
+
+```reason edit
+let x = 6;
+let y = x * 7;
+let rec fact = (x) =>
+  if (x <= 1) {
+    1
+  } else {
+    x * fact(x - 1)
+  };
+fact(5);
+```
+
+If for some reason you want to reset the interpreter before executing the code (so that
+it will forget previous bindings), press the Shift key plus Ctrl-Enter.
+
+There are several other places online where you can run ReasonML code, although they
+will not always match the setup here (particularly the available libraries):
+
+* The main Reason site, https://reasonml.github.io/en/, has an online environment where
+you can [Try](https://reasonml.github.io/en/try) it and see the corresponding OCaml and
+JavaScript code.
+
+* There is a notebook-like REPL at https://sketch.sh/.
+
+* [repl.it](https://repl.it/) now supports ReasonML as one of its languages.
+
+You can also [install Reason](https://reasonml.github.io/docs/en/installation) on your
+own computer and run it locally (or develop your own web site with React!). If you do this,
+I recommend using the free [Visual Studio Code](https://code.visualstudio.com/) editor
+along with a plugin for Reason; this will give the complete IDE experience.
