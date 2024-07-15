@@ -32,25 +32,19 @@ programming, and has continued to serve as a testbed for advanced ideas in langu
 In addition to the Java Virtual Machine target, there are now also compilers from Scala to
 JavaScript, for running in a browser, and to native machine code for increased efficiency.
 
----
+Here is an example of Scala code, which defines a few constants and the factorial function:
 
-Here is an editor where you can type in ReasonML code and execute it (click the button
-or type Ctrl-Enter):
-
-```reason edit
-let x = 6;
-let y = x * 7;
-let rec fact = (x) =>
-  if (x <= 1) {
-    1
-  } else {
-    x * fact(x - 1)
-  };
-fact(5);
+```scala
+val x = 6
+val y = x * 7
+def fact(n: Int): BigInt =
+  if n <= 1
+  then 1
+  else n * fact(n - 1)
+val z = fact(5)
 ```
 
-If for some reason you want to reset the interpreter before executing the code (so that
-it will forget previous bindings), press the Shift key plus Ctrl-Enter.
+---
 
 There are several other places online where you can run ReasonML code, although they
 will not always match the setup here (particularly the available libraries):
