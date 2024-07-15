@@ -34,14 +34,14 @@ JavaScript, for running in a browser, and to native machine code for increased e
 
 Here is an example of Scala code, which defines a few constants and the factorial function:
 
-```scala
+```scala mdoc
 val x = 6
 val y = x * 7
 def fact(n: Int): BigInt =
-  if n <= 1
+  if (n <= 1)
   then 1
   else n * fact(n - 1)
-val z = fact(5)
+fact(6)
 ```
 
 ---
