@@ -53,18 +53,15 @@ which will allow us to see the results from Scala code without having to switch 
 
 ---
 
-There are several other places online where you can run ReasonML code, although they
-will not always match the setup here (particularly the available libraries):
+There are several places online where you can run Scala code, although they
+will not always match the setup used here (particularly the available libraries):
 
-* The main Reason site, https://reasonml.github.io/en/, has an online environment where
-you can [Try](https://reasonml.github.io/en/try) it and see the corresponding OCaml and
-JavaScript code.
+* The main Scala site, https://scala-lang.org/, has an online [Playground](https://scastie.scala-lang.org).
 
-* There is a notebook-like REPL at https://sketch.sh/.
+* There is a Scala kernel for Jupyter notebooks, which you can try online: https://almond.sh/.
 
-* [repl.it](https://repl.it/) now supports ReasonML as one of its languages.
+* [Replit](https://replit.com/) supports Scala as one of its languages.
 
-You can also [install Reason](https://reasonml.github.io/docs/en/installation) on your
-own computer and run it locally (or develop your own web site with React!). If you do this,
-I recommend using the free [Visual Studio Code](https://code.visualstudio.com/) editor
-along with a plugin for Reason; this will give the complete IDE experience.
+You can also [install Scala](https://scala-lang.org/download) on your own computer and run it locally.
+If you do this, I recommend using the free [Visual Studio Code](https://code.visualstudio.com/) editor along with the [Metals](https://scalameta.org/metals/docs/editors/vscode/) plugin.
+Alternately, you can use [IntelliJ IDEA](https://www.jetbrains.com/idea/) with their [Scala plugin](https://www.jetbrains.com/help/idea/get-started-with-scala.html).
