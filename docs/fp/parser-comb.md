@@ -22,8 +22,8 @@ is common for each recursive descent parsing function to return a data structure
 the input that was parsed.
 
 Here is code for a recursive descent parser in Java, corresponding to the following
-grammar (expressed here in [Backus-Naur form](../lang/bnf); it is very similar
-to the example $G_2$ discussed in the [parsing](../lang/parsing) section):
+grammar (expressed here in [Backus-Naur form](../lang/bnf.md); it is very similar
+to the example $G_2$ discussed in the [parsing](../lang/parsing.md) section):
 $$
 \begin{aligned}
 \langle\textit{Expr}\rangle\ &::=\ \langle\textit{Term}\rangle\ [\ (\ +\ |\ -\ )\ \langle\textit{Term}\rangle\ ]\ldots\\

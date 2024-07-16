@@ -348,7 +348,7 @@ the usual higher precedence of multiplication over addition).
 For example, if we wanted to define an exponentiation operator on _int_, and
 call it `***`, we could define it as follows:[^4]
 
-[^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion) section.]
+[^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion.md) section.]
 
 ```reason demo
 let rec (***) = (n, p) => {

@@ -75,7 +75,7 @@ For this, we will need to estimate two related quantities:
 
 * The **work** done by an algorithm is the total number of operations to be performed. It is frequently denoted $T_1$, because it is the time required if you only have one processor available. This is the usual **sequential** running time.
 
-* The **span** of an algorithm is the length of the longest "chain of dependencies" in the calculation&mdash;that is, it counts the number of steps where the result of each is needed before the next can be performed. It is frequently denoted $T_\infty$, because it is also the time required in the ideal case of achieving perfect parallelism across an unlimited number of processors. We have already seen an example of the span when we considered the [delay of a combinational circuit](../logic/simplify).
+* The **span** of an algorithm is the length of the longest "chain of dependencies" in the calculation&mdash;that is, it counts the number of steps where the result of each is needed before the next can be performed. It is frequently denoted $T_\infty$, because it is also the time required in the ideal case of achieving perfect parallelism across an unlimited number of processors. We have already seen an example of the span when we considered the [delay of a combinational circuit](../logic/simplify.md).
 
 A result known as **Brent's Theorem** now allows us to compute bounds on $T_p$, the time to run the algorithm on $p\geq 1$ processors:
 

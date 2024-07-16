@@ -33,7 +33,7 @@ output.
 ![Finding the proposition whose value is computed by a combinational logic circuit](/img/fig1-6.png)
 
 One approach to reducing the delay of a circuit is to use the [disjunctive normal
-form](./circuits#disjunctive-normal-form), also known as the **sum-of-products**. Since
+form](./circuits.md#disjunctive-normal-form), also known as the **sum-of-products**. Since
 an expression in DNF is the OR of a collection of terms which are the AND of
 some number of simple terms, and a simple term is either an input or a negated
 input, the corresponding circuit can be constructed in three layers:
@@ -345,7 +345,7 @@ $$
   See a [solution at CircuitVerse](https://circuitverse.org/users/30869/projects/sevensegdemo)
 </details>
 
-5. An exercise in the [Circuits](./circuits#exercises) section examines
+5. An exercise in the [Circuits](./circuits.md#exercises) section examines
    conjunctive normal form (CNF), the dual of DNF. Explore what kind of circuits
    result from CNF, and how to extract a simplified CNF expression from a
    Karnaugh map _(Hint: look at blocks of 0's.)_.

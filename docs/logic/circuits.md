@@ -127,7 +127,7 @@ Given any compound proposition made from the operators
 $\land$, $\lor$, and $\lnot$, it is possible to build a logic
 circuit that computes the value of that proposition. The
 proposition itself is a blueprint for the circuit. As noted
-in the [Propositional Logic](props#functional-completeness-of-and-or-not)
+in the [Propositional Logic](props.md#functional-completeness-of-and-or-not)
 section, every logical operator that we have 
 encountered can be expressed in terms of $\land$, $\lor$, and $\lnot$,
 so in fact every compound proposition that we know how to write
@@ -637,5 +637,5 @@ of using logic to design computer circuits is valid.)
 <details>
   <summary>Answer</summary>
 
-For one approach, see the full adder circuit in [Common Circuit Components](components#adders).
+For one approach, see the full adder circuit in [Common Circuit Components](components.md#adders).
 </details>

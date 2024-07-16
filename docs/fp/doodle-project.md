@@ -3,7 +3,7 @@ id: doodle-project
 title: DPoodle Graphics Drawing Project
 ---
 
-For Monday, March 30, create a drawing using the [DPoodle](doodle) graphics library. You should feel free to be as creative as you like, the only requirement is that the drawing use recursion in an essential way.
+For Monday, March 30, create a drawing using the [DPoodle](doodle.md) graphics library. You should feel free to be as creative as you like, the only requirement is that the drawing use recursion in an essential way.
 
 Here is an editor where you can enter your code. *Be sure to copy and paste it somewhere else* because this editor will be cleared when the page reloads. I suggest keeping a copy in a text editor such as WordPad or TextEdit. When you are done, upload it to Moodle: [Section A](https://moodle.depauw.edu/mod/assign/view.php?id=243021) or [Section B](https://moodle.depauw.edu/mod/assign/view.php?id=243023).
 

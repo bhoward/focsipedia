@@ -3,8 +3,8 @@ id: overview
 title: Overview of Functional Programming
 ---
 
-There is a more extensive [introduction to FP](intro) later, but this section provides an early introduction to some of the concepts and tools that we will be using throughout the course.
-The language we will be using is called [Scala](../scala), and there is an interpreter for it that can be embedded in any page of FoCSipedia.
+There is a more extensive [introduction to FP](intro.md) later, but this section provides an early introduction to some of the concepts and tools that we will be using throughout the course.
+The language we will be using is called [Scala](../scala.md), and there is an interpreter for it that can be embedded in any page of FoCSipedia.
 When you see a block of code like this:
 ```reason edit
 let answer = 6 * 7;
@@ -82,7 +82,7 @@ print_int(area(6, 7));
 ```
 It is very common for the body to be a block expression, so we will always enclose it in curly braces for consistency.
 In the second line of this example, after assigning the function value to `area`, we are able to use `area` as the name of a function just like the built-in functions (such as `print_int`).
-Note that when ReasonML reports the bindings that result from this code, it says that `area` has the **type** `(int, int) => int`&mdash;we will talk more about [types](types) later, but for now you can just think of it as giving a picture of a typical use of the function: when applied to two `int` arguments, it returns an `int` result.
+Note that when ReasonML reports the bindings that result from this code, it says that `area` has the **type** `(int, int) => int`&mdash;we will talk more about [types](types.md) later, but for now you can just think of it as giving a picture of a typical use of the function: when applied to two `int` arguments, it returns an `int` result.
 
 Since functions are just another kind of value, they may themselves be passed as arguments to functions, or returned as results; we will explore these **higher-order** functions later.
 

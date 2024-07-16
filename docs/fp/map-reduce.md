@@ -82,7 +82,7 @@ Note that the `aux` function here could have just been an application of `reduce
 ## Accumulators
 
 Helper functions are frequently seen in combination with another technique known as an **accumulator**.
-Since a pure functional program is not allowed to modify the values of variables as a computation proceeds, if we want to build up a result over a succession of function calls we can do so by passing along an extra variable containing the result so far. For example, here is another version of the `sum` function from the [introduction](intro):
+Since a pure functional program is not allowed to modify the values of variables as a computation proceeds, if we want to build up a result over a succession of function calls we can do so by passing along an extra variable containing the result so far. For example, here is another version of the `sum` function from the [introduction](intro.md):
 ```reason edit
 let sum = (f, a, b) => {
   let rec aux = (i, accum) => {

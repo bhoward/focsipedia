@@ -3,7 +3,7 @@ id: lambda
 title: Lambda Calculus
 ---
 
-The section on [computability](../lang/computability) mentioned the **Church-Turing Thesis** that Turing machines
+The section on [computability](../lang/computability.md) mentioned the **Church-Turing Thesis** that Turing machines
 fully capture our notion of what may be computed.[^1] Part of the original justification for this belief is that Alan Turing
 showed in 1936 that his machine model was equivalent in power to another model of computation being developed at around the
 same time by Alonzo Church. This model is now known as the **lambda calculus**, and it forms the core of the theory of
@@ -12,7 +12,7 @@ functional programming.
 [^1]: The thesis was explicitly named in 1952 by Church's student Stephen Kleene, also known for introducing
 the star operator of regular expressions.
 
-As already mentioned in the [introductory section](intro/#user-content-fn-3) on functional programming, the symbol lambda ($\lambda$) is used to
+As already mentioned in the [introductory section](intro.md#user-content-fn-3) on functional programming, the symbol lambda ($\lambda$) is used to
 indicate an anonymous function defined by an expression. For example, $\lambda x(x + 1)$ is the function that takes any argument $x$ and
 returns that argument plus one; in ReasonML, this would be written `x => { x + 1 }`.
 The fundamental operation in $\lambda$-calculus is known as **beta ($\beta$) reduction**. Given an expression

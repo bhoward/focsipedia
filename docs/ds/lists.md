@@ -3,7 +3,7 @@ id: lists
 title: Sorting Lists
 ---
 
-We have already seen [how to work with lists in a functional language](../fp/map-reduce).
+We have already seen [how to work with lists in a functional language](../fp/map-reduce.md).
 The focus here will be on functional approaches to sorting lists; for simplicity we will work with lists of integers, although the techniques extend to any type with a total ordering relation.
 
 ## Insertion Sort
@@ -69,7 +69,7 @@ let insertion_sort_left = nums => {
 
 insertion_sort_left([3, 1, 4, 1, 5, 9, 2, 6, 5]);
 ```
-Note that the helper function here (`aux`) is essentially the same as the `reduce` function we saw in the [MapReduce](../fp/map-reduce) section.
+Note that the helper function here (`aux`) is essentially the same as the `reduce` function we saw in the [MapReduce](../fp/map-reduce.md) section.
 The ReasonML standard library provides the `reduce` function under the name `List.fold_left`, so we can also define insertion sort as:
 ```reason edit
 let insertion_sort_left2 = nums => {
@@ -197,7 +197,7 @@ let rec merge = (nums1, nums2) => {
 merge([2, 3, 5, 7], [1, 2, 4, 8]);
 ```
 In words, if either list is empty, then the result is the other list. Otherwise, look at the heads of each list; the resulting merged list will start with the smaller of the two heads, followed by a merge of the tail following the smaller head with the entire other list.
-(As a challenge, see if you can write a tail-recursive version of `merge`; as a hint, you might want to make use of the `reverse` function discussed in the section on [accumulators](../fp/map-reduce#accumulators)).
+(As a challenge, see if you can write a tail-recursive version of `merge`; as a hint, you might want to make use of the `reverse` function discussed in the section on [accumulators](../fp/map-reduce.md#accumulators)).
 
 The first part of the merge sort algorithm is to split the input list into two halves (provided there is more than one element), then recursively sort the halves to prepare for merging.
 One way to split a list into halves is to calculate the size of the list, then count off the first half of them into one list and the rest into another (an exercise below asks you to implement this).

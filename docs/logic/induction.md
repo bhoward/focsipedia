@@ -127,7 +127,7 @@ $n$ that satisfy $n\ge M$. Just start the induction with a base
 case of $n=M$ instead of with a base case of $n=0$. I leave the
 proof of this extension of the principle of induction as an exercise.
 We can use the extended principle of induction to prove a result
-that was first mentioned in the section on [truth tables](props#truth-tables). 
+that was first mentioned in the section on [truth tables](props.md#truth-tables). 
 
 > **Theorem:**
 Suppose that a compound proposition contains exactly $n$ propositional

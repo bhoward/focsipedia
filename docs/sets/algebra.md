@@ -162,7 +162,7 @@ Here are some of the laws of Boolean Algebra for sets. $A$, $B$, and $C$ are
 sets. For the laws that involve the complement operator, 
 they are assumed to be subsets of some universal set, $U$.
 For the most part, these laws correspond directly to [laws
-of Boolean Algebra for propositional logic](../logic/boolean#laws).
+of Boolean Algebra for propositional logic](../logic/boolean.md#laws).
 
 | Name               | Law                                                 |
 | -----------------: | :-------------------------------------------------: |

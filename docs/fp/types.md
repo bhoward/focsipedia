@@ -141,7 +141,7 @@ is easier to say than "schönfinkeling" or "fregeing"&hellip;.
 
 Perhaps the most basic form of data structure is the **tuple**. We have already
 seen this in the context of
-[sets and cartesian products](../sets/functions#pairs): an $n$-tuple is simply
+[sets and cartesian products](../sets/functions.md#pairs): an $n$-tuple is simply
 an ordered listing of $n$ values, traditionally shown in parentheses separated
 by commas. The ReasonML syntax for a tuple type is likewise an ordered listing
 of each value's type, in parentheses and separated by commas. For example, the

@@ -5,7 +5,7 @@ title: Recursion and Induction
 
 (Content adapted from Critchlow & Eck)
 
-In computer programming, there is a technique called [**recursion**](./recursion)
+In computer programming, there is a technique called [**recursion**](./recursion.md)
 that is closely related to induction. In a computer program, a
 **subroutine** is a named sequence of instructions for performing
 a certain task. When that task needs to be performed in a program,

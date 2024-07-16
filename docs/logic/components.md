@@ -14,7 +14,7 @@ existing libraries of subcircuits.
 ## Adders
 
 We have already seen one of these common
-components&mdash;[one of the sample circuits seen earlier](circuits#circuits-as-expression-trees)
+components&mdash;[one of the sample circuits seen earlier](circuits.md#circuits-as-expression-trees)
 is known as the **half adder**. Here it is again:
 
 ![Circuit diagram for s=(a OR b) AND NOT (a AND b) and c=a AND b](/img/HalfAdder.png)
@@ -82,7 +82,7 @@ symbol:
 ![Circuit diagram and symbol for a multiplexer](/img/MUX.png)
 
 Note the similarity of the multiplexer circuit to the layers of the
-sum-of-products circuit from the [Circuit Simplification](simplify) section. If
+sum-of-products circuit from the [Circuit Simplification](simplify.md) section. If
 we view the input lines $a_{ij}$ as the enabling inputs, then a multiplexer
 gives a direct way of implementing a truth table: hard-wire the input lines to 0
 or 1 according to the corresponding entries in the truth table, then use the
