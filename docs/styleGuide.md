@@ -175,14 +175,14 @@ HTML-style (allows scaling): <img src="https://bhoward.github.io/focsipedia/img/
 
 ## Code
 
-```javascript
+```js
 var s = 'JavaScript syntax highlighting';
 alert(s);
 ```
 
-```python
-s = "Python syntax highlighting"
-print s
+```java
+String s = "Java syntax highlighting";
+System.out.println(s);
 ```
 
 ```
@@ -190,40 +190,155 @@ No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
+<pre>
+Use a &lt;pre&gt; tag if you want tags to be <b>rendered</b>.
+</pre>
+
 ```js
 function highlightMe() {
-  console.log('This line can be highlighted!');
+  // highlight-next-line
+  console.log('This line is highlighted!');
+
+  // highlight-start
+  for (let i = 0; i < 10; i++) {
+    console.log('This range of lines is highlighted');
+  }
+  // highlight-end
 }
 ```
 
-```reason demo
-/* This is a demo of ReasonML running in your browser */
-let a = 6
-let b = a * 7
+```js showLineNumbers
+function demo() {
+  console.log('Optionally showing line numbers');
+}
 ```
 
-```reason edit
-/* This block is editable, and can be run by pressing the button
- * or hitting Ctrl-Enter! */
-let c = b == 42
+```scala
+/* This is a sample of Scala code */
+val a = 6
+val b = a * 7
 ```
 
-```reason hidden
-/* This block will only show its results, if any */
-let f = x => if (x == 42) {
-  "That's the answer!"
-} else {
-  "Try again"
-};
-
-print_string("Defined function f")
+```scala mdoc
+/* This is the same sample, but executed by mdoc */
+val a = 6
+val b = a * 7
 ```
 
-```reason fix
-/* This block is also editable, but it will not automatically run
- * when the page is loaded. */
-let d = /* TODO: try f(b) */
+```scala mdoc:silent
+/* With the silent modifier, the code is executed but output is not shown */
+val c = "Hello"
 ```
+
+```scala mdoc:invisible
+/* With the invisible modifier, the code is executed but nothing is shown */
+val d = " World"
+```
+
+```scala mdoc
+/* Results from previous blocks on the page are available */
+println(c + d)
+```
+
+---
+Source for the above code blocks (surrounded with _four_ backticks):
+
+````
+```js
+var s = 'JavaScript syntax highlighting';
+alert(s);
+```
+
+```java
+String s = "Java syntax highlighting";
+System.out.println(s);
+```
+
+```
+No language indicated, so no syntax highlighting.
+But let's throw in a <b>tag</b>.
+```
+
+<pre>
+Use a &lt;pre&gt; tag if you want tags to be <b>rendered</b>.
+</pre>
+
+```js
+function highlightMe() {
+  // highlight-next-line
+  console.log('This line is highlighted!');
+
+  // highlight-start
+  for (let i = 0; i < 10; i++) {
+    console.log('This range of lines is highlighted');
+  }
+  // highlight-end
+}
+```
+
+```js showLineNumbers
+function demo() {
+  console.log('Optionally showing line numbers');
+}
+```
+
+```scala
+/* This is a sample of Scala code */
+val a = 6
+val b = a * 7
+```
+
+```scala mdoc
+/* This is the same sample, but executed by mdoc */
+val a = 6
+val b = a * 7
+```
+
+```scala mdoc:silent
+/* With the silent modifier, the code is executed but output is not shown */
+val c = "Hello"
+```
+
+```scala mdoc:invisible
+/* With the invisible modifier, the code is executed but nothing is shown */
+val d = " World"
+```
+
+```scala mdoc
+/* Results from previous blocks on the page are available */
+println(c + d)
+```
+````
+---
+
+## Math
+
+Write inline math equations by wrapping LaTeX equations between $:
+
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+
+For equation block or display mode, use line breaks and $$:
+
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
+
+```
+Write inline math equations by wrapping LaTeX equations between $:
+
+Let $f\colon[a,b]\to\R$ be Riemann integrable. Let $F\colon[a,b]\to\R$ be
+$F(x)=\int_{a}^{x} f(t)\,dt$. Then $F$ is continuous, and at all $x$ such that
+$f$ is continuous at $x$, $F$ is differentiable at $x$ with $F'(x)=f(x)$.
+
+For equation block or display mode, use line breaks and $$:
+
+$$
+I = \int_0^{2\pi} \sin(x)\,dx
+$$
+```
+
 ---
 
 ## Diagrams
@@ -247,6 +362,28 @@ Graphviz:
 ```dot
 digraph G { Hello -> World }
 ```
+
+````
+Mermaid:
+
+```mermaid
+graph TD;
+    A(($$a$$));
+    B((b));
+    C((c));
+    D(($$\bullet$$));
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
+Graphviz:
+
+```dot
+digraph G { Hello -> World }
+```
+````
 
 ---
 
