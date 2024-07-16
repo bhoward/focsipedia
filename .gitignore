@@ -22,3 +22,5 @@ yarn-error.log*
 target/
 .bsp/
 .metals/
+.bloop/
+metals.sbt
