@@ -343,7 +343,7 @@ $$
 
 ## Diagrams
 
-Mermaid:
+[Mermaid](https://mermaid.js.org/intro/):
 
 ```mermaid
 graph TD;
@@ -357,14 +357,14 @@ graph TD;
     C-->D;
 ```
 
-Graphviz:
+[Graphviz](https://www.graphviz.org/doc/info/lang.html):
 
 ```dot
 digraph G { Hello -> World }
 ```
 
 ````
-Mermaid:
+[Mermaid](https://mermaid.js.org/intro/):
 
 ```mermaid
 graph TD;
@@ -378,7 +378,7 @@ graph TD;
     C-->D;
 ```
 
-Graphviz:
+[Graphviz](https://www.graphviz.org/doc/info/lang.html):
 
 ```dot
 digraph G { Hello -> World }
