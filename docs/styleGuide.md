@@ -347,14 +347,29 @@ $$
 
 ```mermaid
 graph TD;
-    A(($$a$$));
-    B((b));
-    C((c));
-    D(($$\bullet$$));
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+  A(($$a$$));
+  B((b));
+  C((c));
+  D(($$\bullet$$));
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  s0 : 0
+  s1 : 1
+  s2 : 2
+  [*] --> s0
+  s0 --> s0: 0
+  s0 --> s1: 1
+  s1 --> s2: 0
+  s1 --> s0: 1
+  s2 --> s1: 0
+  s2 --> s2: 1
 ```
 
 [Graphviz](https://www.graphviz.org/doc/info/lang.html):
@@ -368,14 +383,29 @@ digraph G { Hello -> World }
 
 ```mermaid
 graph TD;
-    A(($$a$$));
-    B((b));
-    C((c));
-    D(($$\bullet$$));
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+  A(($$a$$));
+  B((b));
+  C((c));
+  D(($$\bullet$$));
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+
+```mermaid
+stateDiagram-v2
+  direction LR
+  s0 : 0
+  s1 : 1
+  s2 : 2
+  [*] --> s0
+  s0 --> s0: 0
+  s0 --> s1: 1
+  s1 --> s2: 0
+  s1 --> s0: 1
+  s2 --> s1: 0
+  s2 --> s2: 1
 ```
 
 [Graphviz](https://www.graphviz.org/doc/info/lang.html):
