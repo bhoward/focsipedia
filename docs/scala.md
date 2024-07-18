@@ -34,11 +34,23 @@ JavaScript, for running in a browser, and to native machine code for increased e
 
 Here is an example of Scala code, which defines a few constants and the factorial function:
 
+```scala
+val x = 6
+val y = x * 7
+def fact(n: Int): BigInt =
+  if n <= 1
+  then 1
+  else n * fact(n - 1)
+fact(6)
+```
+
+Sometimes we will interleave the code with comments showing the output:
+
 ```scala mdoc
 val x = 6
 val y = x * 7
 def fact(n: Int): BigInt =
-  if (n <= 1)
+  if n <= 1
   then 1
   else n * fact(n - 1)
 fact(6)
@@ -63,3 +75,20 @@ will not always match the setup used here (particularly the available libraries)
 You can also [install Scala](https://scala-lang.org/download) on your own computer and run it locally.
 If you do this, I recommend using the free [Visual Studio Code](https://code.visualstudio.com/) editor along with the [Metals](https://scalameta.org/metals/docs/editors/vscode/) plugin.
 Alternately, you can use [IntelliJ IDEA](https://www.jetbrains.com/idea/) with their [Scala plugin](https://www.jetbrains.com/help/idea/get-started-with-scala.html).
+
+We are using version 3 of Scala here. You will still find a considerable amount of information about Scala 2 online.
+For our purposes, there is relatively little difference, except that Scala 3 permits a Python-like syntax where blocks are determined by indentation instead of braces.
+Here is the same code as above, written in Scala 2 style:
+
+```scala
+val x = 6
+val y = x * 7
+def fact(n: Int): BigInt = {
+  if (n <= 1) {
+    1
+  } else {
+    n * fact(n - 1)
+  }
+}
+fact(6)
+```
