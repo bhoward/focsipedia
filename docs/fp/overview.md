@@ -9,7 +9,7 @@ Here is an example of Scala code:
 ```scala mdoc
 val answer = 6 * 7
 ```
-The mdoc tool used in creating FoCSipedia automatically runs Scala code and inserts the results in comments.
+The [mdoc](https://scalameta.org/mdoc/) tool used in creating FoCSipedia automatically runs Scala code and inserts the results in comments.
 
 ## Expressions and the Substitution Model
 
@@ -87,8 +87,8 @@ val result = {
 }
 ```
 
-Predict the result bound to the outer `x` in this code:
-```scala mdoc
+Predict the result bound to the outer `x` in this code (this is actually a case where we need the braces to embed the blocks within a larger expression):
+```scala
 val x = {
   val x = 3
   x + x
@@ -98,40 +98,61 @@ val x = {
 }
 ```
 
-## Pure Functions and Arguments
+<details>
+    <summary>Answer</summary>
+
+```scala mdoc
+val x = {
+  val x = 3
+  x + x
+} * {
+  val x = 4
+  x + x
+}
+```
+</details>
+
+## Pure Functions and Parameters
 
 So far, we have only talked about expressions and variables.
 The heart of functional programming, of course, is the **function**.
-In ReasonML, functions are just another type of value, along with integers, strings, _etc._
-We write the function value that takes arguments `a`, `b`, `c` and returns the expression `e` using the syntax `(a, b, c) => e`.
-This value is what is known as an **anonymous function**; to give it a name, we bind it to a variable, just like any other value:
-```reason edit
-let area = (width, height) => { width * height };
-print_int(area(6, 7));
+In Scala, functions are just another type of value, along with integers, strings, _etc._
+We write the function value that takes **parameters** `a`, `b`, `c` and returns the expression `e` using the syntax `(a, b, c) => e`.
+This value is what is known as an **anonymous function**; to give it a name, we may bind it to a variable, just like any other value:
+```scala mdoc
+val area = (width: Int, height: Int) => width * height
+println(area(6, 7))
 ```
-It is very common for the body to be a block expression, so we will always enclose it in curly braces for consistency.
-In the second line of this example, after assigning the function value to `area`, we are able to use `area` as the name of a function just like the built-in functions (such as `print_int`).
-Note that when ReasonML reports the bindings that result from this code, it says that `area` has the **type** `(int, int) => int`&mdash;we will talk more about [types](types.md) later, but for now you can just think of it as giving a picture of a typical use of the function: when applied to two `int` arguments, it returns an `int` result.
+Note that each parameter specifies both an **identifier** and a **type**.
+We will have more to say about [types](types.md) later, but for now observe that common types such as `Int`, `Double`, and `String` are available (just like in Java, except the first letter is capitalized).
 
-Since functions are just another kind of value, they may themselves be passed as arguments to functions, or returned as results; we will explore these **higher-order** functions later.
+In the second line of this example, after assigning the function value to `area`, we are able to use `area` as the name of a function just like the built-in functions (such as `println`).
+
+When Scala reports the bindings that result from this code, it says that `area` has the type `Function2[Int, Int, Int]`&mdash;this reflects the fact that a function value is actually an object of a class implementing a particular **trait** (which is analogous to a Java interface).
+This function type may also be written `(Int, Int) => Int`, which you can think of as giving a picture of a typical use of the function: when applied to two `Int` arguments, it returns an `Int` result.
+
+Because functions are just another kind of value, they may themselves be passed as arguments to functions, or returned as results; we will explore these **higher-order** functions later.
 
 Since expressions are evaluated according to the substitution model, where we do not have to worry about a variable changing its value between the time is was declared (**bound**) and used, we know several very useful facts about functions:
-* Functions in ReasonML are **pure**: the output only depends on the inputs, so calling a function twice with the same arguments will always produce the same result.
+* Functions in Scala are **pure**: the output only depends on the inputs, so calling a function twice with the same arguments will always produce the same result.
 Furthermore, we know that calling a function will not have any **side-effects**&mdash;that is, it will not cause the bindings of any other variables to change.[^2]
 If a program uses only pure functions, then the compiler is free to optimize code in various ways: it may rearrange when functions are called; it may combine multiple calls with the same arguments into one, or split a single call into several; and if it detects that the result of a function call is not needed, it may omit the call entirely.
 None of these optimizations are guaranteed to preserve program behavior if a function is not known to be pure, which is the case in most non-functional languages.
 * When an argument is passed to a function, the value (such as `6`) is bound to the parameter name (such as `width`) using the same mechanism as binding local variables in a block.
 Therefore, the function call in the example above could be rewritten as
-```reason edit
-print_int({
-  let width = 6;
-  let height = 7;
+```scala mdoc
+println({
+  val width = 6
+  val height = 7
   width * height
-});
+})
 ```
 
-[^2]: Technically, some ReasonML functions _do_ have a side-effect, if they call input/output functions such as `print_int`.
+[^2]: Technically, some Scala functions _may_ have a side-effect, if they call input/output functions such as `println`.
 That is, you can tell the difference between calling such a function once, twice, or not at all, by looking at the output that is printed to the console.
 We will consider this sort of side-effect to be benign, however, and we will generally use such functions only in very controlled places in a program, or only when tracing or debugging code.
+Of course, this also assumes that we are avoiding the use of reassignment to a variable declared with `var` instead of `val`.
 
 ## Exercises
+
+TBD

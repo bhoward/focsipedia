@@ -81,8 +81,6 @@ const sidebars = {
       'lang/halting',
     ],
     Features: [
-      'reason',
-      'ocaml',
       'scala',
       'styleGuide',
     ],
