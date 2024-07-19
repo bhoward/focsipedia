@@ -150,7 +150,7 @@ of function calls without having to worry about whether some "hidden state"
 might have changed since the last time the function was called.
 
 [^1]: The most common exception is for functions that send
-output to the console, such as the `print_int` function in ReasonML.
+output to the console, such as the `println` function in Scala.
 Being able to track execution and easily display results is very
 useful, and printing a line on the console is a fairly benign
 side-effect&mdash;it won't cause the function to return different
@@ -171,56 +171,54 @@ efficient version.
 
 One of the most common ways that a functional language will encourage
 pure functions is to do away with, or at least severely restrict, the
-ability to update the value assigned to a variable. In ReasonML, there
-is no assignment statement. When a value is bound to a variable with a
-`let` statement, that variable will then remain bound to that value for
+ability to update the value assigned to a variable. In Scala, the assignment
+statement may only be used on variables that have been explicitly declared with
+`var` (meaning that they are truly "variable"). When a value is bound to a variable with a
+`val` statement, that variable will then remain bound to that value for
 as long as the variable exists. A variable will cease to exist when the
 block (such as a function body) containing it is finished:
-```reason demo
+```scala mdoc
 {
-  let x = 42;
-  print_int(x); print_newline(); /* prints 42 */
-}
-/* x no longer exists here */
+  val x = 42
+  println(x)
+} /* x no longer exists here */
 ```
 A variable may be temporarily **shadowed** by another variable with the same
 name. This may look like an assignment of a changed value to a variable,
-but each use of the `let` statement will create a new named location in
+but each use of the `val` statement will create a new named location in
 memory; if the shadowing variable goes away, the original one will become
 visible again with its correct value:
-```reason demo
-let x = 42;
-print_int(x); print_newline(); /* prints 42 */
+```scala mdoc
+val x = 42
+println(x) /* prints 42 */
 {
-  let x = 17; /* shadows earlier definition of x */
-  print_int(x); print_newline(); /* prints 17 */
+  val x = 17 /* shadows earlier definition of x */
+  println(x) /* prints 17 */
 }
-print_int(x); print_newline(); /* prints 42 again */
+println(x) /* prints 42 again */
 ```
 
 Again, this behavior permits algebraic reasoning about the program. The above
 code is equivalent to
-```reason demo
-let x = 42;
-print_int(x); print_newline();
+```scala mdoc:reset
+val x = 42
+println(x)
 {
-  let y = 17;
-  print_int(y); print_newline();
+  val y = 17
+  println(y)
 }
-print_int(x); print_newline();
+println(x)
 ```
 where we have uniformly renamed the inner variable _x_ as _y_ to make it clear
 that they are distinct variables. It is also equivalent to
-```reason demo
-print_int(42); print_newline();
-print_int(17); print_newline();
-print_int(42); print_newline();
+```scala mdoc
+println(42)
+println(17)
+println(42)
 ```
-where we have replaced each use of our identifiers with its value. The output is
-slightly different in this case, because we no longer have the top-level
-binding of 42 to _x_ that would have been available if we wrote additional lines
-at the bottom of the program, but it is equivalent if we just look at the printed
-results.
+where we have replaced each use of our identifiers with its value.
+The only difference here is that the identifier _x_ no longer has the value 42
+bound to it, so it will not be available later in the program.
 
 ## First-Class Functions
 
@@ -245,12 +243,12 @@ $\textit{sumten}\colon \textit{int}^{\textit{int}}\to\textit{int}$.
 
 [^2]: For our purposes we may ignore the distinction between _int_ and _Integer_ in Java.
 
-My idea is that $\textit{sumten}(f)$ would compute
+The idea here might be that $\textit{sumten}(f)$ would compute
 $f(1)+f(2)+\cdots+f(10)$.  A more useful function would
 be able to compute $f(a)+f(a+1)+\cdots+f(b)$ for any integers
 $a$ and $b$.  This just means that $a$ and $b$ should be
 parameters to the function.  The signature for the improved
-function would look like
+function might look like
 ```java
 int sum( Function<Integer, Integer> f, int a, int b )
 ```
@@ -271,8 +269,8 @@ we can call our function as `sum(x::m, a, b)`. However, a more
 general technique is to use an **anonymous function**, also known
 as a **lambda**.[^3]
 
-[^3]: The mathematician Alonzo Church introduced in
-the 1930's the use of the Greek letter lambda ($\lambda$) to indicate an
+[^3]: In the 1930's, the mathematician Alonzo Church introduced
+the use of the Greek letter lambda ($\lambda$) to indicate an
 otherwise unnamed function defined by a formula. That is, instead
 of writing "the function $f$ where $f(x) = \textit{some formula}$",
 he wrote "$\lambda x(\textit{some formula})$". When the first
@@ -296,89 +294,99 @@ which is 216.
 Many languages now support a similar syntax for creating anonymous
 function values, and offer some facility for working with functions
 as (mostly) first-class objects. For example, the same function
-is expressed in ReasonML as `i => { i * i * i }`. Since one of the hallmarks of
+is expressed in Scala as `i => i * i * i`. Since one of the hallmarks of
 the functional languages is their ability to work with function
 values, you can imagine that they tend to provide the most
 thorough integration of functions with other kinds of values.
 
 Here are complete demos of the _sum_ example, first in Java and
-then in ReasonML:
+then in Scala:
 
 ```java file=<rootDir>/code/java/SumDemo.java
 ```
 
-```reason edit
-let rec sum = (f, a, b) => {
-  if (a > b) {
+```scala mdoc
+def sum(f: Int => Int, a: Int, b: Int): Int =
+  if a > b then
     0
-  } else {
+  else
     f(a) + sum(f, a+1, b)
-  }
-};
 
-print_int(sum(i => { i * i * i }, 3, 5));
-print_newline();
+println(sum(i => i * i * i, 3, 5))
 ```
 
-Note that we define the function _sum_ in ReasonML by binding
-a function value to the name _sum_, just as we can bind other
-types of values to identifiers. The keyword "rec" after the "let"
-indicates that the right-hand side expression is allowed to make
-use of the name that is currently being defined, so that we can
-make our function recursive. Without the "rec", any use of _sum_
-in the right-hand expression would refer to an older binding to
-that name.
+Note that we define a **named function** in Scala with the `def`
+statement, rather than just binding an anonymous function value
+to the name _sum_. The reason that we want a named function here
+is that we need to be able to call the function _sum_ recursively
+within its own definition; if we just said `val sum = ... => ... sum(f, a+1, b) ...`
+then the use of _sum_ on the right-hand side would be referring to some older
+binding to that name.
+Scala also requires that function signatures in a `def` statement declare
+the types of their parameters as well as the return type, just as in Java.
+We will talk more about recursive functions later.
 
-As a simpler function definition in ReasonML, not needing the "rec"
-keyword, here is our _cube_ function again:
-```reason demo
-let cube = n => { n * n * n };
+As a simpler function definition in Scala, not needing the `def` statement,
+here is our _cube_ function again:
+```scala mdoc
+val cube = (n: Int) => n * n * n;
 ```
 This is just binding the anonymous function we have been using above
-to the name _cube_. Note that the function `n => { n * n * n }` is
-exactly the same as the function `i => { i * i * i }`, because the name
+to the name _cube_. We do need to supply a type for the parameter _n_, because
+Scala doesn't have enough context to figure out that it is an `Int`, but otherwise
+this is exactly the same as the function `i => i * i * i`, since the name
 of the parameter does not matter outside the function.
 
-An interesting fact about ReasonML is that the operators are also functions,
-bound to names made out of operator symbols instead of letters and digits. To
-refer to an operator as a function value, just put the operator in parentheses:
-`(+)`, `(*)`, `(==)`, &hellip;. Therefore, an expression such as `a + b * c`
-can also be written as `(+)(a, (*)(b, c))` (note that this takes into account
-the usual higher precedence of multiplication over addition).
-For example, if we wanted to define an exponentiation operator on _int_, and
+An interesting fact about Scala is that the operators, such as `+`, `*`, and `==`,
+are actually methods of their left-hand operand. That is, `x + y` is equivalent to
+`x.+(y)`, and a compound expression such as `a + b * c` becomes `a.+(b.*(c))` (note
+that this takes into account the usual higher precedence of multiplication over addition).
+
+A **method** is a special kind of function in object-oriented programming
+where the **receiver** of the method call&mdash;that is, the object before the dot&mdash;
+is used to select which implementation of the method to use. A method call such as
+`a.m(b, c)` turns into a call to the function `f(a, b, c)`, where _f_ is the implementation
+of method _m_ suitable for object _a_. The receiver _a_ is passed in as an extra argument
+to _f_ and is typically accessed through a special identifer such as _this_ or _self_.
+
+In Scala, it is possible to define new methods (including operators) on existing types,
+such as `Int`, through **extension methods**.
+For example, if we wanted to define an exponentiation operator on `Int`, and
 call it `***`, we could define it as follows:[^4]
 
 [^4]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion.md) section.]
 
-```reason demo
-let rec (***) = (n, p) => {
-  if (p == 0) {
-    1
-  } else if (p mod 2 == 0) {
-    (n * n) *** (p / 2)
-  } else {
-    n * (n *** (p - 1))
-  }
-};
+```scala mdoc
+extension (n: Int)
+  def ***(p: Int): Int =
+    if p == 0 then
+      1
+    else if p % 2 == 0 then
+      (n * n) *** (p / 2)
+    else
+      n * (n *** (p - 1))
+println(2 *** 3)
 ```
+(The first line identifies this method as a new implementation to be used when the
+receiver of the `***(p)` method is an `Int`; the receiver is given the explicit name _n_.)
 
 It is even possible in functional languages for a function to return
 another function as its value.  For example,
-```reason demo
-let monomial = (a, n) => {
-  x => { a * x *** n }
-};
+```scala mdoc
+val monomial = (a: Int, n: Int) => {
+  (x: Int) => { a * x *** n }
+}
 ```
 Here, `x *** n` is our exponentiation operator from above, which computes $x^n$, so for any
 integers $a$ and $n$, the value of $\textit{monomial}(a,n)$ is 
 a function that computes $ax^n$.  Thus,
-```reason edit
-let f = monomial(2, 3);
+```scala mdoc
+val f = monomial(2, 3)
 ```
 would define $f$ to be the function that satisfies $f(x)=2x^3$. This is
 now ready to be handed to our _sum_ function:
-```reason edit
-print_int( sum( f, 3, 6 ) );
+```scala mdoc
+println( sum( f, 3, 6 ) );
 ```
 would compute $2*3^3+2*4^3+2*5^3+2*6^3$.  In fact, _monomial_
 can be used to create an unlimited number of new functions
@@ -480,7 +488,7 @@ corresponds to the construction of this data type?  Why?
 </details>
 
 4. Let _cube_, _sum_ and _monomial_
-be the ReasonML functions described in this section.  What is the
+be the Scala functions described in this section.  What is the
 value of each of the following?
    * _sum_(_cube_, 2, 4)
    <details>
@@ -517,27 +525,27 @@ value of each of the following?
      $(2\cdot1^3 + 2\cdot2^3)^3 = (2 + 16)^3 = 18^3 = 5832$
    </details>
 
-5. Write a ReasonML function named _compose_
+5. Write a Scala function named _compose_
 that computes the composition of two functions.  That
 is, $\textit{compose}(f, g)$ is $f\circ g$, where
-$f$ and $g$ are functions of one parameter.  Recall that
+$f$ and $g$ are each functions of type `Int => Int`.  Recall that
 $f\circ g$ is the function defined by $(f\circ g)(x)=f(g(x))$.
 <details>
   <summary>Answer</summary>
 
-  `let compose = (f, g) => { x => { f(g(x)) } }`
+  `val compose = (f: Int => Int, g: Int => Int) => (x: Int) => f(g(x))`
 </details>
 
-6. Consider the following ReasonML function:
-```reason edit
-let exercise = (a, b) => {
-  let m = (x, y) => { x - y };
-  let s = n => { n * n };
-  let c = m(a, b);
-  let d = m(a, c);
-  let e = c + d;
+6. Consider the following Scala function:
+```scala
+val exercise = (a: Int, b: Int) => {
+  val m = (x: Int, y: Int) => x - y
+  val s = (n: Int) => n * n
+  val c = m(a, b)
+  val d = m(a, c)
+  val e = c + d
   s(d) - s(e)
-};
+}
 ```
    * What is the value of `exercise(4, 5)`?
    <details>
