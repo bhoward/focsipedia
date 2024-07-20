@@ -12,7 +12,7 @@ functional programming.
 [^1]: The thesis was explicitly named in 1952 by Church's student Stephen Kleene, also known for introducing
 the star operator of regular expressions.
 
-As already mentioned in the [introductory section](intro.md#user-content-fn-3) on functional programming, the symbol lambda ($\lambda$) is used to
+As already mentioned in the [introductory section](intro.md#anonymous-functions) on functional programming, the symbol lambda ($\lambda$) is used to
 indicate an anonymous function defined by an expression. For example, $\lambda x(x + 1)$ is the function that takes any argument $x$ and
 returns that argument plus one; in ReasonML, this would be written `x => { x + 1 }`.
 The fundamental operation in $\lambda$-calculus is known as **beta ($\beta$) reduction**. Given an expression

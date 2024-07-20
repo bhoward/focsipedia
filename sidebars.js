@@ -48,7 +48,6 @@ const sidebars = {
       'sets/database',
     ],
     'Functional Programming': [
-      'fp/overview',
       'fp/intro',
       'fp/types',
       'fp/map-reduce',
@@ -83,6 +82,13 @@ const sidebars = {
     Features: [
       'scala',
       'styleGuide',
+    ],
+    'Orphaned Topics': [
+        'reason',
+        'ocaml',
+        '233topics',
+        'overview',
+        'fp/overview',
     ],
   },
 };
