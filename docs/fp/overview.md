@@ -3,6 +3,8 @@ id: overview
 title: Overview of Functional Programming
 ---
 
+TODO combine with fp/intro, and pull some of the material into optional sections (e.g., OO topics); more emphasis on composition, and higher-order functions
+
 There is a more extensive [introduction to FP](intro.md) later, but this section provides an early introduction to some of the concepts and tools that we will be using throughout the course.
 The language we will be using is called [Scala](../scala.md).
 Here is an example of Scala code:
