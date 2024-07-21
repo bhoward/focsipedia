@@ -53,60 +53,47 @@ The statement "`return n * n * n`" says that $n\times n\times n$ is the
 value that is computed, or "returned," by the function.
 (The $*$ stands for multiplication.)
 
-Java has many data types in addition to _int_.
-There is a boolean data type named _boolean_.
-The values of type _boolean_ are _true_ and _false_.
-Mathematically, _boolean_ is a name for the set
-$\{\textit{true},\,\textit{false}\}$.
-The type _double_ consists of real numbers, which can
-include a decimal point.
-Of course, on a computer, it's not possible to represent the entire infinite
-set of real numbers, so _double_ represents some subset of the mathematical set
-of real numbers.
-There is also a data type whose values are
-strings of characters, such as "Hello world" or "xyz152QQZ".
-The name for this data type in Java is _String_.
-All these types, and many others, can be used in functions.
-For example, in Java, $m\,\%\,n$ is the remainder when the integer $m$ is
-divided by the integer $n$.
-We can define a function to test whether an integer is even as follows:
-```java
-boolean even(int k) {
-    if ( k % 2 == 1 )
-      return false;
-    else
-      return true;
-}
-```
-You don't need to worry about all the details here, but you should
-understand that the signature, `boolean even(int k)`,
-says that _even_ is a function from the set _int_ to the set _boolean_.
-That is, $\textit{even}\colon\textit{int}\to\textit{boolean}$.
-Given an integer $N$, $\textit{even}(N)$ has the value _true_
-if $N$ is an even integer, and it has the value _false_
-if $N$ is an odd integer.
+In these notes we will be using the programming language [Scala](../scala.md).
+You may think of Scala as an enhanced relative of Java, which adds excellent
+support for **functional programming**, similar to how C++ and Java added support
+for **object-oriented programming** to the family of C-like languages.
+Scala is a hybrid language, which allows programmers to express solutions in
+both the object-oriented and functional styles; one of our goals in this course
+is to see how these approaches can complement each other, rather than being in
+opposition.
 
-A function can have more than one parameter.
-For example, we might define a function with signature
-`int index(String str, String sub)`.
-If $s$ and $t$ are strings, then $\textit{index}(s,t)$ would be the
-_int_ that is the value of the function at the ordered pair $(s,t)$.
-We see that the domain of _index_ is the cross product
-$\textit{String}\times\textit{String}$, and we can write
-$\textit{index}\colon \textit{String}\times\textit{String}\to\textit{int}$
-or, equivalently,
-$\textit{index}\in\textit{int}^{\textit{String}\times\textit{String}}$.
+The _cube_ method above may be written in Scala as follows:
+```scala mdoc
+def cube(n: Int): Int = n * n * n
+```
+There are some cosmetic differences from Java:
+* Types are written `_: T` instead of `T _`
+* Method definitions begin with the keyword `def`
+* Basic types such as `int` are written with an initial capital letter: `Int`
+* Since the body of this function just returns the result of an expression, we
+just write that expression after the `=`, similar to the way a function might
+be defined mathematically: $f(x) = e$.
+
+Beyond those minor differences, however, there will be much that is familiar about Scala.
+
+Here is another example of Scala code, which uses the keyword `val` instead of `def` to
+introduce a variable declaration:
+```scala mdoc
+val answer = 6 * 7
+```
+The [mdoc](https://scalameta.org/mdoc/) tool used in creating FoCSipedia automatically runs Scala code and inserts the results in comments.
+The result in this case is that the value 42 has been **bound** to the name _answer_.
 
 ## Partial and Impure Functions
 
-Not every Java function is actually a function in the mathematical sense.
+Not every Java or Scala function is actually a function in the mathematical sense.
 In mathematics, a function must associate a single value in
 its range to each value in its domain.
-There are two things
-that can go wrong:  The value of the function might not be defined
-for every element of the domain, and the function might associate
-several different values to the same element of the domain.
-Both of these things can happen with Java functions.
+There are two things here that can go wrong:
+* The value of the function might not be defined for every element of the domain, and
+* The function might associate several different values to the same element of the domain.
+
+Both of these things can happen with functions in typical computer languages.
 
 In computer programming, it is very common for a "function" to be
 undefined for some values of its parameter.
@@ -184,26 +171,20 @@ correctness of their program, and it also enables the computer to choose
 any equivalent expression for evaluation, ideally choosing the most
 efficient version.
 
-The language we will be using is called [Scala](../scala.md).
-Here is an example of Scala code:
-```scala mdoc
-val answer = 6 * 7
-```
-The [mdoc](https://scalameta.org/mdoc/) tool used in creating FoCSipedia automatically runs Scala code and inserts the results in comments.
-
-One of the most common ways that a functional language such as Scala will encourage
+One of the simplest ways that a functional language such as Scala will encourage
 pure functions is to do away with, or at least severely restrict, the
 ability to update the value assigned to a variable.
 It is important to distinguish
-between **initializing** a variable with a value, as in the example above which
+between **initializing** a variable with a value, as in `val answer = 6 * 7`, which
 binds the value 42 to _answer_, and **assigning** a different value to an existing
 variable (for example, by trying to execute `answer = 43`).
 In Scala, the assignment
 statement may only be used on variables that have been explicitly declared with
-`var` (meaning that they are truly "variable").
+`var` (meaning that they are truly "variable") instead of `val`.
 When a value is bound to a
 variable with a `val` statement, that variable will then remain bound to that
 value for as long as the variable exists.
+(This is similar to declaring the variable `final` in Java, or `const` in C++.)
 A variable will cease to exist when the
 block (such as a function body) containing it is finished:
 ```scala mdoc
@@ -358,7 +339,7 @@ val x = {
 
 ## Function Values
 
-So far, we have only talked about expressions and variables.
+So far, we have only talked about expressions, variables, and (briefly) methods.
 The heart of functional programming, of course, is the **function**.
 In Scala, functions are just another type of value, along with integers, strings, _etc._
 We write the function value that takes **parameters** `a`, `b`, `c` and returns the expression `e` using the syntax `(a, b, c) => e`.
@@ -369,10 +350,8 @@ println(area(6, 7))
 ```
 Note that each parameter specifies both an **identifier** and a **type**;
 there are some contexts where Scala is able to **infer** the type of a parameter and it may be omitted, but we will generally include it for clarity.
-We will have more to say about [types](types.md) later, but for now observe that common types such as `Int`, `Double`, and `String` are available
-(just like in Java, except the first letter is capitalized).
 
-In the second line of this example, after assigning the function value to `area`, we are able to use `area` as the name of a function just like the built-in functions (such as `println`).
+In the second line of this example, after assigning the function value to `area`, we are able to use `area` as the name of a function just like a built-in function (such as `println`).
 
 When Scala reports the bindings that result from this code, it says that `area` has the type `Function2[Int, Int, Int]`&mdash;
 this reflects the fact that a function value in Scala is actually an object of a class implementing a particular **trait** (which is analogous to a Java interface).
@@ -456,21 +435,13 @@ argument in Java.
 If we want to pass the method _m_ of an object
 _x_, where the signature of _m_ is `int m( int i )`, then
 we can call our function as `sum(x::m, a, b)`.
-However, a more general technique is to use an **anonymous function**, also known
-as a **lambda**.[^4]
-
-[^4]: In the 1930's, the mathematician Alonzo Church introduced
-the use of the Greek letter lambda ($\lambda$) to indicate an
-otherwise unnamed function defined by a formula. That is, instead
-of writing "the function $f$ where $f(x) = \textit{some formula}$",
-he wrote "$\lambda x(\textit{some formula})$". When the first
-functional programming language, LISP (invented in the late 1950's),
-needed a way to create function values, John McCarthy adopted Church's
-use of lambda, and the name has stuck.
+However, a more general technique is to use an **anonymous function**.
 
 ## Anonymous functions
 
-In Java, an expression such as `i -> { return i * i * i; }`
+The anonymous function values in Java and Scala are sometimes called
+**lambda**[^4] expressions.
+In Java, a lambda expression such as `i -> { return i * i * i; }`
 creates a function object that takes an _int_ (this will be
 determined from the context) and returns another _int_.
 This particular function cubes its input.
@@ -480,6 +451,15 @@ sum(i -> { return i * i * i; }, 3, 5)
 ```
 the result will be $3^3 + 4^3 + 5^3$,
 which is 216.
+
+[^4]: In the 1930's, the mathematician Alonzo Church introduced
+the use of the Greek letter lambda ($\lambda$) to indicate an
+otherwise unnamed function defined by a formula. That is, instead
+of writing "the function $f$ where $f(x) = \textit{some formula}$",
+he wrote "$\lambda x(\textit{some formula})$". When the first
+functional programming language, LISP (invented in the late 1950's),
+needed a way to create function values, John McCarthy adopted Church's
+use of lambda, and the name has stuck.
 
 Many languages now support a similar syntax for creating anonymous
 function values, and offer some facility for working with functions
@@ -506,13 +486,16 @@ def sum(f: Int => Int, a: Int, b: Int): Int = {
 println(sum(i => i * i * i, 3, 5))
 ```
 
-Note that we define a **named function** in Scala with the `def`
-statement, rather than just binding an anonymous function value
-to the name _sum_. The reason that we want a named function here
-is that we need to be able to call the function _sum_ recursively
-within its own definition; if we just said `val sum = ... => ... sum(f, a+1, b) ...`
+Note that we are defining a **named function** (_sum_) here, along
+with the anonymous function value being passed as the first argument
+to _sum_.
+This allows us to use the _sum_ function on the right-hand side, within
+the definition of _sum_ itself; since an anonymous function does not have
+a name (until it gets bound to a variable), this sort of **recursive** call
+is not possible.
+If we just said `val sum = (...) => ... sum(f, a+1, b) ...`
 then the use of _sum_ on the right-hand side would be referring to some older
-binding to that name.
+(shadowed) binding to that name.
 Scala also requires that function signatures in a `def` statement declare
 the types of their parameters as well as the return type, just as in Java.
 We will talk more about recursive functions later.
@@ -523,70 +506,49 @@ here is our _cube_ function again:
 val cube = (n: Int) => n * n * n;
 ```
 This is just binding the anonymous function we have been using above
-to the name _cube_. We do need to supply a type for the parameter _n_, because
+to the name _cube_.
+We do need to supply a type for the parameter _n_, because
 Scala doesn't have enough context to figure out that it is an `Int`, but otherwise
 this is exactly the same as the function `i => i * i * i`, since the name
 of the parameter does not matter outside the function.
 
-An interesting fact about Scala is that the operators, such as `+`, `*`, and `==`,
-are actually methods of their left-hand operand. That is, `x + y` is equivalent to
-`x.+(y)`, and a compound expression such as `a + b * c` becomes `a.+(b.*(c))` (note
-that this takes into account the usual higher precedence of multiplication over addition).
+:::tip Additional Reading
+There is an optional section about defining [class methods](../methods.md)
+and operators.
+:::
 
-A **method** is a special kind of function in object-oriented programming
-where the **receiver** of the method call&mdash;that is, the object before the dot&mdash;
-is used to select which implementation of the method to use. A method call such as
-`a.m(b, c)` turns into a call to the function `f(a, b, c)`, where _f_ is the implementation
-of method _m_ suitable for object _a_. The receiver _a_ is passed in as an extra argument
-to _f_ and is typically accessed through a special identifer such as _this_ or _self_.
-
-In Scala, it is possible to define new methods (including operators) on existing types,
-such as `Int`, through **extension methods**.
-For example, if we wanted to define an exponentiation operator on `Int`, and
-call it `***`, we could define it as follows:[^5]
-
-[^5]: The code here is based on the solution to an exercise in the [Recursion](../logic/recursion.md) section.]
-
-```scala mdoc
-extension (n: Int)
-  def ***(p: Int): Int = {
-    if p == 0 then
-      1
-    else if p % 2 == 0 then
-      (n * n) *** (p / 2)
-    else
-      n * (n *** (p - 1))
-  }
-println(2 *** 3)
-```
-(The first line identifies this method as a new implementation to be used when the
-receiver of the `***(p)` method is an `Int`; the receiver is given the explicit name _n_.)
+## Higher-Order Functions
 
 It is even possible in functional languages for a function to return
 another function as its value.  For example,
 ```scala mdoc
 val monomial = (a: Int, n: Int) => {
-  (x: Int) => { a * x *** n }
+  (x: Int) => a * math.pow(x, n).toInt
 }
 ```
-Here, `x *** n` is our exponentiation operator from above, which computes $x^n$, so for any
-integers $a$ and $n$, the value of $\textit{monomial}(a,n)$ is 
-a function that computes $ax^n$.  Thus,
+Here, `math.pow(x, n)` is a library function that returns $x^n$ (and the `.toInt`
+converts the result from a `Double` back to an `Int`), so for any
+integers _a_ and _n_, the value of `monomial(a,n)` is 
+a _function value_ that, when given _x_, computes $ax^n$.  Thus,
 ```scala mdoc
 val f = monomial(2, 3)
 ```
-would define $f$ to be the function that satisfies $f(x)=2x^3$. This is
+would define $f$ to be the function on integers that satisfies $f(x)=2x^3$. This is
 now ready to be handed to our _sum_ function:
 ```scala mdoc
-println( sum( f, 3, 6 ) );
+println(sum(f, 3, 6))
 ```
-would compute $2*3^3+2*4^3+2*5^3+2*6^3$.  In fact, _monomial_
-can be used to create an unlimited number of new functions
-from scratch.  It is even possible to write _monomial_(2, 3)(5)
-to indicate the result of applying the function _monomial_(2, 3)
-to the value 5.  The value represented by _monomial_(2, 3)(5)
-is $2*5^3$, or 250.  This is real functional programming and
-might give you some idea of its power.
+This computes $2*3^3+2*4^3+2*5^3+2*6^3$.
+In fact, _monomial_ can be used to create an unlimited number of new functions
+from scratch.
+It is even possible to write `monomial(2, 3)(5)`
+to indicate the result of applying the function value `monomial(2, 3)`
+to the value 5. 
+The value returned by `monomial(2, 3)(5)` is $2*5^3$, or 250.
+This is real functional programming and might give you some idea of its power:
+solutions to problems may be **composed** out of pure functions that solve
+individual parts, and the substitution model allows us to reason about the
+correctness of each part independently.
 
 ## Exercises
 

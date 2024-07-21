@@ -1,3 +1,0 @@
-tighten up fp/intro.md -- put named functions (def) earlier, and combine the various intros to anonymous functions;
-pull some of the material into optional sections (e.g., OO topics);
-more emphasis on composition, and higher-order functions

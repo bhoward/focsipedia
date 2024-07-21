@@ -83,12 +83,13 @@ const sidebars = {
       'scala',
       'styleGuide',
     ],
-    'Orphaned Topics': [
+    'Supplementary Topics': [
         'reason',
         'ocaml',
         '233topics',
         'overview',
         'fp/overview',
+        'methods',
     ],
   },
 };
