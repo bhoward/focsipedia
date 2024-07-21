@@ -90,6 +90,7 @@ const sidebars = {
         'overview',
         'fp/overview',
         'methods',
+        'curry',
     ],
   },
 };
