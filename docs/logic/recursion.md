@@ -74,26 +74,15 @@ int factorial(int n) {
 }
 ```
 
-Here is an equivalent program in ReasonML:[^1]
-```reason edit
-let rec factorial = n => {
-  if (n == 0) {
-    1
-  } else {
-    factorial(n - 1) * n
-  }
-};
+Here is an equivalent program in Scala:
+```scala mdoc
+def factorial(n: Int): BigInt = {
+  if n == 0 then 1
+  else factorial(n - 1) * n
+}
 
-print_int(factorial(5));
+factorial(5)
 ```
-
-[^1]: We will learn more about ReasonML
-later, but here are two quick observations. A function value is created with
-the syntax `x => {...}`, where `x` is the parameter name that allows us to
-access the function argument in the body `{...}`. We assign this function value
-to the name `factorial` with the `let` statement; by saying `let rec`, we allow
-the right-hand side of the statement to refer to `factorial` even though we are
-just in the process of defining it.
 
 In order to compute _factorial_($n$) for $n>0$, this function
 first computes _factorial_($n-1$) by calling itself recursively.
@@ -106,19 +95,17 @@ continuing forever, in an infinite chain of recursive calls.
 Now, as it happens, recursion is not the best way to compute $n!$.
 It can be computed more efficiently using a loop. Furthermore,
 except for small values of $n$, the value of $n!$ is outside the
-range of numbers that can be represented as 32-bit _ints_.
+range of numbers that can be represented as 32-bit _ints_ (this is why
+the Scala version above declares that it returns a `BigInt`).
 However, ignoring these problems, the _factorial_ function
 provides a nice first example of the interplay between recursion and
 induction. We can use induction to prove that _factorial_($n$)
-does indeed compute $n!$ for $n\ge 0$. (In the proof, we pretend that
-the data type _int_ is not limited to 32 bits. In reality,
-the function only gives the correct answer when the answer can be
-represented as a 32-bit binary number.)
+does indeed compute $n!$ for $n\ge 0$.
 
 > **Theorem:**
-Assume that the data type _int_ can represent arbitrarily large
-integers. Under this assumption, the _factorial_ function
-defined above correctly computes $n!$ for any natural number $n$.
+The _factorial_ function defined above correctly computes $n!$ for any
+natural number $n$. (If we are using the Java version, we need to add
+the assumption that $n!$ fits within a 32-bit integer.)
 
 > **Proof:** 
 Let $P(n)$ be the statement "_factorial_($n$) correctly computes $n!$."
@@ -199,25 +186,18 @@ void Hanoi(int n, int A, int B, int C) {
 ```
 
 Again, here is equivalent code in ReasonML:[^2]
-```reason edit
-let rec hanoi = (n, a, b, c) => {
-  if (n == 1) {
-    Printf.printf("Move disk %d from pile %d to pile %d\n", n, a, b);
-  } else {
-    hanoi(n - 1, a, c, b);
-    Printf.printf("Move disk %d from pile %d to pile %d\n", n, a, b);
-    hanoi(n - 1, c, b, a);
-  }
-};
+```scala mdoc
+def hanoi(n: Int, a: Int, b: Int, c: Int): Unit = {
+  if n == 1 then
+    printf("Move disk %d from pile %d to pile %d\n", n, a, b)
+  else
+    hanoi(n - 1, a, c, b)
+    printf("Move disk %d from pile %d to pile %d\n", n, a, b)
+    hanoi(n - 1, c, b, a)
+}
 
-hanoi(2, 1, 2, 3);
+hanoi(2, 1, 2, 3)
 ```
-
-[^2]: Just about the only difference here
-from the Java, apart from the syntax for defining a function and the use of the
-`printf` function for output, is that ReasonML requires variables to start with
-lower-case letters. Since functions are also stored in variables, this also applies
-to function names.
 
 We can use induction to prove that this subroutine does in
 fact solve the Towers of Hanoi problem.
@@ -265,7 +245,7 @@ $k+1$ disks has been correctly solved.
 Recursion is often used with linked data structures, which are
 data structures that are constructed by linking several objects
 of the same type together with pointers. (If you don't already
-know about objects and pointers, you will not be able to follow
+know about objects and pointers, you might not be able to follow
 the rest of this section.) For an example, we'll look at
 the data structure known as a **binary tree**.
 A binary tree consists of nodes linked together in a tree-like
@@ -293,11 +273,12 @@ and _root.right_ can be _null_ if the corresponding
 subtree is empty. Similarly, _root.item_ is a name
 for the integer in the root node.
 
-Here is the corresponding definition of a binary tree in ReasonML:
-```reason demo
-type tree =
-  | Empty
-  | Node(tree, int, tree)
+Here is the corresponding definition of a binary tree in Scala:
+```scala mdoc
+enum Tree:
+  case Empty
+  case Node(left: Tree, item: Int, right: Tree)
+import Tree.*
 ```
 Instead of _null_, we use an explicit constructor value for empty
 trees, `Empty`. To construct a tree node from subtrees `left` and
@@ -332,21 +313,20 @@ int TreeSum(BinaryTreeNode root) {
 }
 ```
 
-Here is the corresponding function in ReasonML. We are using the
-**pattern matching** switch statement to decide whether we have an
+Here is the corresponding function in Scala. We are using the
+**pattern matching** match expression to decide whether we have an
 empty tree or not, and to extract the _left_, _item_, and _right_
 fields if the tree is not empty:
-```reason edit
-let rec treeSum = root => {
-  switch (root) {
-  | Empty => 0
-  | Node(left, item, right) =>
+```scala mdoc
+def treeSum(root: Tree): Int = {
+  root match
+    case Empty => 0
+    case Node(left, item, right) =>
       treeSum(left) + item + treeSum(right)
-  }
-};
+}
 
-let example = Node(Node(Empty, 1, Empty), 2, Node(Empty, 3, Empty));
-print_int(treeSum(example));
+val example = Node(Node(Empty, 1, Empty), 2, Node(Empty, 3, Empty))
+treeSum(example)
 ```
 
 We can use the second ("strong") form of the principle of mathematical induction
@@ -589,7 +569,7 @@ actually a very efficient way to compute $x^n$.)
   $x^n$, for every $n\ge 0$.
 
   **Base Case:** When $n=0$, we can check that `power(x, 0)` returns 1, which
-  is $x^0$ for every $x$.[^3]
+  is $x^0$ for every $x$.[^1]
 
   **Inductive Case:** Suppose that the claim is true for every $k<n$, for some $n>0$.
   Then we need to show that it is also true for $n$. If $n$ is even, then `power(x, n)`
@@ -599,39 +579,31 @@ actually a very efficient way to compute $x^n$.)
   Therefore, we have shown that `power(x, n)` correctly computes $x^n$ for all $n\ge 0$.
 </details>
 
-[^3]: Don't listen to the people who try to say that $0^0$
+[^1]: Don't listen to the people who try to say that $0^0$
 is undefined; they're thinking of a much broader statement about limiting forms
 in real analysis, which doesn't concern us here.
 
-4. Write the _power_ function from the previous problem in ReasonML, and
+4. Write the _power_ function from the previous problem in Scala, and
 check that it works on several examples. _Hint:_ The code will be almost
 the same as the Java, except for the different function syntax and not
-using the temporary variable _answer_ (see examples above). The remainder
-operator is named _mod_ instead of %, so the test for $n$ being even will
-be `if (n mod 2 == 0)`.
+using the temporary variable _answer_ (see examples above).
 
-```reason fix
-let rec power = (x, n) => {
+```scala
+def power(x: BigInt, n: Int): BigInt = {
   /* TODO */
-};
-
-print_int(power(2, 6)); print_newline();
-print_int(power(3, 5)); print_newline();
-print_int(power(10, 4)); print_newline();
-/* try other examples here */
+}
 ```
 <details>
   <summary>Answer</summary>
  
-  ```reason
-  let rec power = (x, n) => {
-    if (n == 0) {
+  ```scala
+  def power(x: BigInt, n: Int): BigInt = {
+    if n == 0 then
       1
-    } else if (n mod 2 == 0) {
+    else if n % 2 == 0 then
       power(x * x, n / 2)
-    } else {
+    else
       x * power(x * x, (n - 1) / 2)
-    }
   }
   ```
 </details>
@@ -675,33 +647,33 @@ int LeafCount( BinaryTreeNode root ) {
   children. This is exactly what `LeafCount(t)` computes, so we are done.
 </details>
 
-6. Complete this ReasonML version of the _LeafCount_ function
+6. Complete this Scala version of the _LeafCount_ function
 from the previous problem. Note that we may use patterns such
 as `Node(Empty, _, Empty)` in the switch statement to match
 nodes where the subtrees are both `Empty` (and the `_` indicates
 that we don't care what the value of the _item_ field is).
 
-```reason fix
-let rec leafCount = t => {
-  switch (t) {
-  | Empty => /* TODO */
-  | Node(Empty, _, Empty) => /* TODO */
-  | Node(left, _, right) => /* TODO */
+```scala
+def leafCount(t: Tree): Int = {
+  t match
+    case Empty => /* TODO */
+    case Node(Empty, _, Empty) => /* TODO */
+    case Node(left, _, right) => /* TODO */
   }
 }
 ```
 <details>
   <summary>Answer</summary>
 
-  ```reason
-  let rec leafCount = t => {
-    switch (t) {
-    | Empty => 0
-    | Node(Empty, _, Empty) => 1
-    | Node(left, _, right) => leafCount(left) + leafCount(right)
+  ```scala
+  def leafCount(t: Tree): Int = {
+    t match
+      case Empty => 0
+      case Node(Empty, _, Empty) => 1
+      case Node(left, _, right) => leafCount(left) + leafCount(right)
     }
   }
- ```
+  ```
 </details>
 
 7. A **binary search tree** satisfies the
@@ -711,7 +683,7 @@ of _node_ are less than _node.item_ and
 all the integers in the right subtree of _node_ are
 greater than or equal to _node.item_. Prove that the
 following recursive subroutine prints all the integers in
-a binary sort tree in non-decreasing order:
+a binary search tree in non-decreasing order:
 ```java
 /**
  * Prints the integers in the tree with the given root node
@@ -740,13 +712,13 @@ void SortPrint(BinaryTreeNode root) {
   `SortPrint(root)` must print all of the numbers in order.
 </details>
 
-8. Complete this ReasonML version of the _SortPrint_ function from
+8. Complete this Scala version of the _SortPrint_ function from
 the previous problem.
-```reason fix
-let rec sortPrint = root => {
-  switch (root) {
-  | Empty => /* There is nothing to print */
-  | Node(left, item, right) =>
+```scala
+def sortPrint(root: Tree): Unit = {
+  root match
+    case Empty => () /* There is nothing to print */
+    case Node(left, item, right) =>
       /* TODO */
   }
 }
@@ -754,16 +726,14 @@ let rec sortPrint = root => {
 <details>
   <summary>Answer</summary>
 
-  ```reason
-  let rec sortPrint = root => {
-    switch (root) {
-    | Empty => ()
-        /* There is nothing to print */
-    | Node(left, item, right) =>
-        sortPrint(left);
-        print_int(item);
+  ```scala
+  def sortPrint(root: Tree): Unit = {
+    root match
+      case Empty => () /* There is nothing to print */
+      case Node(left, item, right) =>
+        sortPrint(left)
+        println(item)
         sortPrint(right)
-    }
   }
   ```
 </details>
