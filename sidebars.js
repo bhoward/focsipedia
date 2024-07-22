@@ -90,7 +90,8 @@ const sidebars = {
         'overview',
         'fp/overview',
         'methods',
-        'curry',
+        'fp/curry',
+        'fp/natded',
     ],
   },
 };

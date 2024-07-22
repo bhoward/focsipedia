@@ -276,39 +276,37 @@ of components, each with the same set of types, across all values of the type. H
 most interesting data will come in several forms, and our programs will need to make
 appropriate decisions based on the form of each piece of data.
 
-TODO stopped here
-
 ### Enumerations
 
 The simplest case of having several **variants** of a data type is an **enumeration**.
-An enumerated type is specified as a list of constant constructors, separated by vertical
-bars:
-```reason edit
-type suit = Club | Diamond | Heart | Spade;
-type rank = Ace | Two | Three | Four | Five | Six | Seven
-          | Eight | Nine | Ten | Jack | Queen | King;
+An enumerated type is specified as a list of constant cases:
+```scala mdoc
+enum Suit:
+  case Club
+  case Diamond
+  case Heart
+  case Spade
+import Suit.*
 ```
-Unlike the case with tuples or simple tuple-like constructors, we can not just
-expect to match an enumerated value with a `let` binding. Instead, we need a construct
-that gives us a selection among _several_ bindings, one for each variant. In ReasonML,
-as in many programming languages, this construct is the `switch` expression (sometimes
-called a match or case statement):
-```reason edit
-let suit1 = Club;
-switch (suit1) {
-| Club => "It's a club"
-| Diamond => "It's a diamond"
-| Heart => "It's a heart"
-| Spade => "It's a spade"
-};
-```
-Try changing the value bound to `suit1` and check the output. Each of the lines starting
-with a vertical bar is one **case**, and the expression to the right of the double arrow
-is the code to evaluate when that case matches the value in the switch.
+The `import Suit.*` statement allows us to use `Club` instead of `Suit.Club`, and so on.
 
-ReasonML will guarantee that the only possible values of an expression of an enumerated
-type are those in the list, and it will also check whether all of the cases are covered
-in a switch. Try removing one of the cases above and see what happens.
+Unlike tuples or simple tuple-like constructors, we cannot just
+expect to match an enumerated value with a `val` binding.
+Instead, we need a construct
+that gives us a selection among _several_ bindings, one for each variant.
+In Scala this construct is the `match` expression, which is similar to the `switch`
+statement in many languages:
+```scala mdoc
+val suit1 = Club
+suit1 match
+  case Club => "It's a club"
+  case Diamond => "It's a diamond"
+  case Heart => "It's a heart"
+  case Spade => "It's a spade"
+```
+Scala will guarantee that the only possible values of an expression of an enumerated
+type are the listed cases, and it will also check whether all of the cases are covered
+in a match.
 
 ### Algebraic Data Types
 
@@ -322,129 +320,133 @@ from propositional logic!
 For example, suppose we want a type that describes some shapes. A shape will be either
 a rectangle, with a given width and height, or a circle, with a given radius. The
 variant type may be defined as
-```reason edit
-type shape = Rectangle(float, float) | Circle(float);
+```scala mdoc
+enum Shape:
+  case Rectangle(width: Double, height: Double)
+  case Circle(radius: Double)
+import Shape.*
 ```
-Algebraically, this is the set $\text{float}\times\text{float} + \text{float}$, where
-the $+$ operation is forming a **disjoint sum** of two sets&mdash;similar to a union, but
-attaching some sort of tag to the element of each set so that there are no duplicates.[^5]
 
-[^5]: For example, we could define $A+B=(\{0\}\times A)\cup(\{1\}\times B)$. Then each element
+Algebraically, this is the set $\text{double}\times\text{double} + \text{double}$, where
+the $+$ operation is forming a **disjoint sum** of two sets&mdash;similar to a union, but
+attaching some sort of tag to the element of each set so that there are no duplicates.[^3]
+
+[^3]: For example, we could define $A+B=(\{0\}\times A)\cup(\{1\}\times B)$. Then each element
 in the disjoint sum would be a pair whose first component is a tag of 0 if the element
 came from $A$ and 1 if it came from $B$. Any element in common between $A$ and $B$ will
 still be distinguishable by its tag.
 
 We may define a function to compute the area of a shape by doing a case analysis:
-```reason edit
-let area = sh => {
-  switch (sh) {
-  | Rectangle(width, height) => width *. height
-  | Circle(radius) => 3.141592653589 *. radius *. radius
-  }
-};
-area(Rectangle(5.0, 10.0));
-area(Circle(10.0));
+```scala mdoc
+def area(shape: Shape): Double = {
+  shape match
+    case Rectangle(width, height) => width * height
+    case Circle(radius) => math.Pi * radius * radius
+}
+area(Rectangle(5.0, 10.0))
+area(Circle(10.0))
 ```
 
 If you are familiar with interfaces and subclasses in an object-oriented language such
-as Java, it is instructive to compare this with a typical object-oriented approach:
-```java
-interface Shape {
-  double area();
-}
+as Java, it is instructive to compare this with a typical object-oriented approach (which
+is also supported in Scala):
+```scala mdoc:reset
+trait Shape:
+  def area: Double
 
-class Rectangle implements Shape {
-  private double width, height;
+class Rectangle(val width: Double, val height: Double) extends Shape:
+  def area: Double = width * height
 
-  public Rectangle(double width, double height) {
-    this.width = width;
-    this.height = height;
-  }
+class Circle(val radius: Double) extends Shape:
+  def area: Double = math.Pi * radius * radius
 
-  public double area() {
-    return width * height;
-  }
-}
-
-class Circle implements Shape {
-  private double radius;
-
-  public Circle(double radius) {
-    this.radius = radius;
-  }
-
-  public double area() {
-    return 3.141592653589 * radius * radius;
-  }
-}
+Rectangle(5.0, 10.0).area
+Circle(10.0).area
 ```
-In Java, each class implementing `Shape` is one variant, and the interface
+Each class implementing `Shape` is one variant, and the trait (interface)
 requires it to provide an `area` method with the correct signature. When we
-execute code such as `sh.area()`, where `sh` is a variable of type `Shape`,
+execute code such as `sh.area`, where `sh` is a variable of type `Shape`,
 the underlying Java virtual machine code essentially does a case analysis
 of the object currently in `sh` to determine which `area` method to run.
 
 One difference between the functional and object-oriented approaches is that
 the functional version makes it easy to add new operations (such as a
-`perimeter` function), but to change the list of variants (for example, to
-add triangular shapes) is hard because we have to add a case to all of the
+`perimeter` function), but it is harder to change the list of variants (for example, to
+add triangular shapes) because we have to add a case to all of the
 existing operations. Conversely, the object-oriented version makes it easy to
 add new variants (just define another class implementing `Shape`), but if we
 want to add a new operation to the interface (such as `perimeter`) we need
 to implement that method in all of the existing subclasses. This tradeoff
-has led to considerable work on hybrid object-functional languages, such as
+is part of the reason for the existence of hybrid object-functional languages such as
 Scala.
 
 ### Pattern Matching
 
-The pattern matching case analysis in a switch statement can be very powerful,
+The pattern-matching case analysis in a match expression can be very powerful,
 since patterns may contain other patterns. We may match on not only variants,
 constructors, and tuples, but also on individual primitive values (such as
 integers or strings). As long as the patterns cover all of the cases, they
 are allowed to overlap (that is, more than one pattern might match a given
 value); if so, then the first matching case is selected. At any point in a
 pattern we may use the special **wildcard** pattern, underscore (`_`), which
-will match any value (but not bind it to anything). Switch statements will
+will match any value (but not bind it to anything). Match expressions will
 often have a final case matching the wildcard pattern as a "default" case.
 
-For example, here are some functions using the playing card enumerations
-from above. First we will define a variant for a playing card, which is either
-an ordinary card with a rank and a suit, or a joker:
-```reason edit
-type card = Card(rank, suit) | Joker;
-let card1 = Card(Two, Club);
-let card2 = Card(Jack, Spade);
-let card3 = Card(Ace, Heart);
-let card4 = Joker;
+For example, here are some functions on playing cards.
+First we will define the variants for the suit and rank, as well as a variant
+for a playing card, which is either an ordinary card with a rank and a suit, or a joker:
+```scala mdoc
+enum Suit:
+  case Club
+  case Diamond
+  case Heart
+  case Spade
+import Suit.*
+
+enum Rank:
+  case Number(value: Int)
+  case Jack
+  case Queen
+  case King
+  case Ace
+import Rank.*
+
+enum Card:
+  case Ordinary(rank: Rank, suit: Suit)
+  case Joker
+import Card.*
+
+val card1 = Ordinary(Number(2), Club)
+val card2 = Ordinary(Jack, Spade)
+val card3 = Ordinary(Ace, Heart)
+val card4 = Joker;
 ```
 Here is a function that determines whether a card is a face card:
-```reason edit
-let isFace = c => {
-  switch (c) {
-  | Card(Jack, _) => true
-  | Card(Queen, _) => true
-  | Card(King, _) => true
-  | _ => false
-  }
-};
-isFace(card2);
-isFace(card3);
+```scala mdoc
+def isFace(c: Card): Boolean = {
+  c match
+    case Ordinary(Jack, _) => true
+    case Ordinary(Queen, _) => true
+    case Ordinary(King, _) => true
+    case _ => false
+}
+isFace(card2)
+isFace(card3)
 ```
 Here is a function that tells us if a card is "wild", if we are playing a friendly
 game where jokers and black twos are wild:
-```reason edit
-let isWild = c => {
-  switch (c) {
-  | Card(Two, Club) => true
-  | Card(Two, Spade) => true
-  | Joker => true
-  | _ => false
-  }
-};
-isWild(card1);
-isWild(card2);
-isWild(card3);
-isWild(card4);
+```scala mdoc
+def isWild(c: Card): Boolean = {
+  c match
+    case Ordinary(Number(2), Club) => true
+    case Ordinary(Number(2), Spade) => true
+    case Joker => true
+    case _ => false
+}
+isWild(card1)
+isWild(card2)
+isWild(card3)
+isWild(card4)
 ```
 Finally, here is a function that will take two cards plus a string, either
 "high" or "low". It will return the card with the higher rank; if they have the
@@ -452,202 +454,108 @@ same rank, it will just return the first card. If the string argument is "high",
 then aces will rank higher than kings, otherwise they will rank lower than twos
 (this is somewhat artificial, but I want to show an example with a string
 pattern). Jokers are always the highest. The code takes advantage of the
-ordering automatically defined on an enumeration, where earlier variants are
+`.ordinal` property automatically defined on an enumeration, where earlier variants are
 less than (`<`) later ones:
-```reason edit
-let higher = (c1, c2, rule) => {
-  switch ((c1, c2, rule)) {
-  /* First handle the Jokers */
-  | (Joker, _, _) => c1
-  | (_, Joker, _) => c2
-  /* Handle all of the Ace cases now */
-  | (Card(Ace, _), _, "high") => c1
-  | (_, Card(Ace, _), "high") => c2 
-  | (_, Card(Ace, _), "low") => c1
-  | (Card(Ace, _), _, "low") => c2
-  /* Handle the remaining cases by comparison */
-  | (Card(rank1, _), Card(rank2, _), _) =>
-      if (rank1 >= rank2) {
-        c1
-      } else {
-        c2
-      }
-  }
+```scala mdoc
+def higher(c1: Card, c2: Card, rule: String): Card = {
+  (c1, c2, rule) match
+    /* First handle the Jokers */
+    case (Joker, _, _) => c1
+    case (_, Joker, _) => c2
+    /* Handle all of the Ace cases now */
+    case (Ordinary(Ace, _), _, "high") => c1
+    case (_, Ordinary(Ace, _), "high") => c2 
+    case (_, Ordinary(Ace, _), "low") => c1
+    case (Ordinary(Ace, _), _, "low") => c2
+    /* Handle the number card cases */
+    case (Ordinary(Number(n1), _), Ordinary(Number(n2), _), _) =>
+      if n1 >= n1 then c1 else c2
+    case (Ordinary(Number(_), _), Ordinary(_, _), _) => c2
+    case (Ordinary(_, _), Ordinary(Number(_), _), _) => c1
+    /* Handle the face cards by comparison */
+    case (Ordinary(rank1, _), Ordinary(rank2, _), _) =>
+      if (rank1.ordinal >= rank2.ordinal) then c1 else c2
 }
-higher(card1, card2, "high"); /* should be the Jack */
-higher(card1, card3, "high"); /* should be the Ace */
-higher(card1, card3, "low"); /* should be the Two */
-higher(card3, card4, "high"); /* should be the Joker */
+higher(card1, card2, "high") /* should be the Jack */
+higher(card1, card3, "high") /* should be the Ace */
+higher(card1, card3, "low") /* should be the Two */
+higher(card3, card4, "high") /* should be the Joker */
 ```
 
 ### Recursive Types
 
-When we define a type with the `type` statement, the right-hand-side is allowed to
+When we define a type with the `enum` statement, the cases are allowed to
 refer to the new type when assigning the types of components. When specifying such
 a **recursive type** there generally needs to be a variant that does not refer to
 the new type, to serve as a base case (otherwise it is difficult to get off the
 ground when building values of the type). Here are two characteristic examples
 that we will be exploring more later:
-```reason edit
-type myList = Empty | ListNode(int, myList);
-type myTree('a, 'b) = Leaf('a) | TreeNode(myTree('a, 'b), 'b, myTree('a, 'b));
+```scala mdoc
+enum MyList:
+  case Empty
+  case Node(head: Int, tail: MyList)
+enum MyTree[A, B]:
+  case Leaf(value: A)
+  case Node(left: MyTree[A, B], value: B, right: MyTree[A, B])
 ```
 
-The type `myList` represents linked lists of integers. Each value is either
+The type `MyList` represents linked lists of integers. Each value is either
 an empty list or a list node containing an integer and a value for the rest of
 the list. For example, the list `[1, 2, 3]` would be represented by the following
 value:
-```reason edit
-let list123 = ListNode(1, ListNode(2, ListNode(3, Empty)));
+```scala mdoc
+val list123 = MyList.Node(1, MyList.Node(2, MyList.Node(3, MyList.Empty)))
 ```
 The natural way to write a function over such a list is by pattern matching, with
 the additional wrinkle that we may recursively use the function to process the
-rest of the list (since it is a smaller list, we can use structural induction to
+rest of the list (since it is a smaller list, we can use
+[structural induction](../logic/recursion.md#structural-induction) to
 prove properties of such a function). Here is a function to add up the numbers
 in a list:
-```reason edit
-let rec sumList = nums => {
-  switch (nums) {
-  | Empty => 0
-  | ListNode(n, rest) => n + sumList(rest)
-  }
-};
+```scala mdoc
+def sumList(nums: MyList): Int = {
+  import MyList.*
+
+  nums match
+    case Empty => 0
+    case Node(n, rest) => n + sumList(rest)
+}
 sumList(list123);
 ```
 
-ReasonML has a list type built in to the language, with a large number of supporting functions in the standard library.
-The type `list('a)` is a list of elements of type `'a`;
-the empty list is written `[]`, and the list node with value `x` at the head of the list and `rest` for the tail is written `[x, ...rest]`.
-The `...` is called the **spread** operator in JavaScript, and ReasonML has adopted it for its list notation;
-the idea is that, if you write `[1, ...[2, 3, 4]]` to mean the list with `1` as the head and `[2, 3, 4]` as the tail, then you can visualize the entire list by "spreading out" the tail in place after the 1: `[1, 2, 3, 4]`.
+Scala has a list type built in to the language, with a large number of supporting functions in the standard library.
+The type `List[A]` is a list of elements of type `A`;
+the empty list is written `Nil`, and the list node with value `x` at the head of the list and `rest` for the tail is written `x :: rest`.
+The `::` is called the **cons** operator, and you can either write a list as `1 :: 2 :: 3 :: Nil`, or you can use the constructor form `List(1, 2, 3)`.
 
-The type `myTree('a, 'b)` is a parameterized type. It represents binary trees that
-are either leaves containing a value of type `'a`, or tree nodes that contain two
-subtrees and a value of type `'b`. For example, here is a tree with integers in the
+The type `MyTree[A, B]` is a parameterized type. It represents binary trees that
+are either leaves containing a value of type `A`, or tree nodes that contain two
+subtrees and a value of type `B`. For example, here is a tree with integers in the
 leaves and string labels on the interior nodes; it is meant to represent the
 arithmetic expression `1 + 2 * 3`:
-```reason edit
-let tree123 = TreeNode(Leaf(1), "+", TreeNode(Leaf(2), "*", Leaf(3)));
+```scala mdoc
+val tree123 = MyTree.Node(MyTree.Leaf(1), "+", MyTree.Node(MyTree.Leaf(2), "*", MyTree.Leaf(3)))
 ```
 Here is a function defined by pattern matching over trees that evaluates such an
 expression:
-```reason edit
-let rec eval = t => {
-  switch (t) {
-  | Leaf(n) => n
-  | TreeNode(left, "+", right) => eval(left) + eval(right)
-  | TreeNode(left, "*", right) => eval(left) * eval(right)
-  }
-};
-eval(tree123);
+```scala mdoc
+def eval(t: MyTree[Int, String]): Int = {
+  import MyTree.*
+
+  t match
+    case Leaf(n) => n
+    case Node(left, "+", right) => eval(left) + eval(right)
+    case Node(left, "*", right) => eval(left) * eval(right)
+}
+eval(tree123)
 ```
-Note that we get a warning that the pattern match is not exhaustive, because we
+We get a warning (not shown by mdoc) that the pattern match is not exhaustive, because we
 don't provide cases for all of the possible operator strings. We will look at
 better solutions for this eventually.
 
-## Connection to Natural Deduction
-
-Finally, here is the "big reveal" about natural deduction. The proofs that we
-constructed were really just programs in a close relative of ReasonML! Here is
-a table explaining the analogy:
-
-| Functional Programming | Natural Deduction |
-| :- | :- |
-| function type `A => B` | implication $A\rightarrow B$ |
-| function value `(x: A) => { ... body of type B ... }` | $\rightarrow$ Introduction |
-| application `f(a)` | $\rightarrow$ Elimination, from $f: A\rightarrow B$ and $a: A$ |
-| tuple type `(A, B)` | conjunction $A\land B$ |
-| tuple value `(a, b)` | $\land$ Introduction from $a: A$ and $b: B$ |
-| projections `fst`, `snd` | $\land$ Elimination 1 and 2 |
-| variant type `Left(A)` &#124; `Right(B)` | disjunction $A\lor B$ |
-| constructors `Left`, `Right` | $\lor$ Introduction 1 and 2 |
-| switch statement | $\lor$ Elimination |
-| `unit` type | $\T$ |
-
-The most complicated comparison here is viewing the switch statement as doing $\lor$
-elimination. Consider a proof such as
-$$
-\begin{array}{l|l}
-\ell_1: p\lor q & \text{premise}\\
-\ell_2: p\Rightarrow\{\\
-\quad\ell_3: q\lor p & \lor I_2\ \ell_2\\
-\}\\
-\ell_4: q\Rightarrow\{\\
-\quad\ell_5: q\lor p & \lor I_1\ \ell_2\\
-\}\\
-\ell_6: q\lor p & \lor E\ \ell_1, \ell_2, \ell_4
-\end{array}
-$$
-Here is an analogous ReasonML function:
-```reason edit
-type disj('a, 'b) = Left('a) | Right('b);
-let orCommutative: disj('a, 'b) => disj('b, 'a) = (l1: disj('a, 'b)) => {
-  let l6: disj('b, 'a) = switch (l1) {
-  | Left(l2: 'a) => {
-      let l3: disj('b, 'a) = Right(l2);
-      l3
-    }
-  | Right(l4: 'b) => {
-      let l5: disj('b, 'a) = Left(l4);
-      l5
-    }
-  };
-  l6
-};
-orCommutative(Left(42));
-orCommutative(Right("hello"));
-```
-More idiomatically, taking advantage of type inference and not using so many
-`let` statements to label each "line" of the proof, we can write this as:
-```reason edit
-let orCommutative = a_or_b => {
-  switch (a_or_b) {
-  | Left(a) => Right(a)
-  | Right(b) => Left(b)
-  }
-};
-orCommutative(Left(42));
-orCommutative(Right("hello"));
-```
-
-One of the very powerful aspects of this analogy between typed functional
-programming and logical proofs is that, for those parts of a program that
-are just doing the "administrative" work of shuffling around pieces of
-data structures in a generic way, there is just one straightforward way to
-put the pieces together that will satisfy the type-checker. Writing this
-kind of program is akin to proving an equivalence in logic, and there is
-a strong hope that this sort of code could be generated automatically, or
-at least with significant machine assistance, leaving programmers to work
-on the more interesting parts of the problem.
-
-Missing from this analogy is how to treat negation and contradiction ($\F$).
-The simplest approach in ReasonML is probably to treat negation $\lnot A$ as
-equivalent to the implication $A\rightarrow\F$. We do not have a type that
-corresponds to $\F$, because there are not supposed to be any values of that
-type (since they would correspond to proofs of a contradiction!). However,
-we can extend our analogy so that reaching a contradiction is like throwing
-an exception to abort the program. In ReasonML, the expression `raise Exit`
-may be used where _any_ type of value is expected, and if it is evaluated then
-the program will abort (unless we have an exception handler in place&hellip;).
-This corresponds to _ex falso quodlibet_, the $\F$ elimination rule: if we
-reach a contradiction, we can get a proof of any proposition, _i.e._, a result
-of any type. If negation is an implication of $\F$, then the analogue to
-$\lnot A$ in ReasonML would be a function that takes a parameter of type `A`
-and throws an exception&mdash;if it is truly the case that there is no value
-of type `A` (that is, no proof of $A$, which is what we would hope if $\lnot A$
-is true), then this function can never be called.[^6]
-
-[^6]: This now accounts for all
-of natural deduction except for the double-negation elimination rule, which
-we already observed is difficult to justify from a computational viewpoint.
-It would allow us to go from knowing that $\lnot A$ is not true to somehow
-having a proof that $A$ is true, but there is a long distance from knowing that
-a number is not prime, for example, to being able to show that it is composite by giving
-its factors&mdash;much of modern cryptography relies on this distance!
-
 ## Exercises
 
-1. Write ReasonML functions that compute the inclusive and exclusive OR
+1. Write Scala functions that compute the inclusive and exclusive OR
    operations. That is, write Boolean functions `or(x, y)` and `xor(x, y)` that
    will return `true` if one of `x` or `y` is `true`; in the inclusive case,
    `or(true, true)` is also `true`, while for the exclusive case,
@@ -657,107 +565,65 @@ its factors&mdash;much of modern cryptography relies on this distance!
    <details>
     <summary>Answer</summary>
 
-    ```reason
-     let or = (x, y) => {
-       switch (x, y) {
-       | (true, _) => true
-       | (_, true) => true
-       | (_, _) => false
-       } 
-     };
+    ```scala mdoc
+     def or(x: Boolean, y: Boolean): Boolean = {
+       (x, y) match
+         case (true, _) => true
+         case (_, true) => true
+         case (_, _) => false
+     } 
    
-     let xor = (x, y) => {
-       if (x) {
-         if (y) {
-           false
-         } else {
-           true
-         }
-       } else {
-         y
-       }
-     };
+     def xor(x: Boolean, y: Boolean): Boolean = {
+       if x then
+         if y then false else true
+       else y
+     }
     ```
    </details>
 
-2. Add a `Triangle` variant to the `shape` type above, to represent a right triangle. The constructor should
-   take two floats: the base and the height. Extend the `area` function to
+2. Add a `Triangle` variant to the `Shape` type above, to represent a right triangle. The constructor should
+   take two doubles: the base and the height. Extend the `area` function to
    handle triangles, and then define a `perimeter` function for shapes.
    <details>
     <summary>Answer</summary>
 
-     ```reason
-     type shape = Rectangle(float, float) | Circle(float) | Triangle(float, float);
-     let area = sh => {
-       switch (sh) {
-       | Rectangle(width, height) => width *. height
-       | Circle(radius) => 3.141592653589 *. radius *. radius
-       | Triangle(base, height) => base *. height /. 2.
-       }
-     };
-   
-     let perimeter = sh => {
-       switch (sh) {
-       | Rectangle(width, height) => 2. *. (width +. height)
-       | Circle(radius) => 2. *. 3.141592653589 *. radius
-       | Triangle(base, height) => base +. height +. sqrt(base *. base +. height *. height)
-       }
-     };
+     ```scala mdoc
+     enum Shape:
+       case Rectangle(width: Double, height: Double)
+       case Circle(radius: Double)
+       case Triangle(base: Double, height: Double)
+     import Shape.*
+
+     def area(shape: Shape): Double = {
+       shape match
+         case Rectangle(width, height) => width * height
+         case Circle(radius) => math.Pi * radius * radius
+         case Triangle(base, height) => base * height / 2
+     }
+
+     def perimeter(shape: Shape): Double = {
+       shape match
+         case Rectangle(width, height) => 2 * (width + height)
+         case Circle(radius) => 2 * math.Pi * radius
+         case Triangle(base, height) => base + height + math.hypot(base, height)
+     }
      ```
    </details>
 
-3. Define a function that takes a `myTree('a, 'b)` value and counts the number
+3. Define a function that takes a `MyTree[Int, String]` value and counts the number
    of leaves. That is, the function call
-   `numLeaves(TreeNode(Leaf(27), "+", TreeNode(Leaf(3), "*", Leaf(5))))`
+   `numLeaves(MyTree.Node(MyTree.Leaf(27), "+", MyTree.Node(MyTree.Leaf(3), "*", MyTree.Leaf(5))))`
    should return 3. _Hint:_ Define it using a pattern match.
    <details>
     <summary>Answer</summary>
 
-     ```reason
-     let rec numLeaves = t => {
-       switch (t) {
-       | Leaf(_) => 1
-       | TreeNode(left, _, right) => numLeaves(left) + numLeaves(right)
-       }
-     };
-     ```
-   </details>
+     ```scala mdoc
+     def numLeaves(t: MyTree[Int, String]): Int = {
+       import MyTree.*
 
-4. Based on the `curry` and `uncurry` functions, give a natural deduction proof
-   of the arguments $(p\land q)\rightarrow r\vdash p\rightarrow(q\rightarrow r)$
-   and its converse $p\rightarrow(q\rightarrow r)\vdash(p\land q)\rightarrow r$.
-
-5. We have observed that modus ponens, the $\rightarrow$ elimination rule,
-   corresponds to function application. What operation on functions corresponds
-   to the Law of Syllogism ($p\rightarrow q,q\rightarrow r\vdash p\rightarrow
-   r$)?
-   <details>
-     <summary>Answer</summary>
-
-     An operation that takes functions $f:p\rightarrow q$ and $g:q\rightarrow r$
-     is the composition $\textit{compose}(g, f):p\rightarrow r$.
-   </details>
-
-6. Prove the logical equivalence $(p\lor q)\rightarrow r\equiv(p\rightarrow
-   r)\land(q\rightarrow r)$. Give the analogous ReasonML functions that show the
-   1-1 correspondence between the types `disj('a, 'b) => 'c` and
-   `('a => 'c, 'b => 'c)`.
-   <details>
-     <summary>Answer</summary>
-
-     ```reason
-     let forward = f => {
-       (a => f(Left(a)), b => f(Right(b)))
-     };
-   
-     let reverse = p => {
-       let (a_to_c, b_to_c) = p;
-       a_or_b => {
-         switch (a_or_b) {
-         | Left(a) => a_to_c(a)
-         | Right(b) => b_to_c(b)
-         }
-       }
-     };
+       t match
+         case Leaf(_) => 1
+         case Node(left, _, right) => numLeaves(left) + numLeaves(right)
+     }
      ```
    </details>
