@@ -565,7 +565,7 @@ better solutions for this eventually.
    <details>
     <summary>Answer</summary>
 
-    ```scala mdoc
+    ```scala
      def or(x: Boolean, y: Boolean): Boolean = {
        (x, y) match
          case (true, _) => true
@@ -587,7 +587,7 @@ better solutions for this eventually.
    <details>
     <summary>Answer</summary>
 
-     ```scala mdoc
+     ```scala
      enum Shape:
        case Rectangle(width: Double, height: Double)
        case Circle(radius: Double)
@@ -614,16 +614,17 @@ better solutions for this eventually.
    of leaves. That is, the function call
    `numLeaves(MyTree.Node(MyTree.Leaf(27), "+", MyTree.Node(MyTree.Leaf(3), "*", MyTree.Leaf(5))))`
    should return 3. _Hint:_ Define it using a pattern match.
-   <details>
-    <summary>Answer</summary>
 
-     ```scala mdoc
-     def numLeaves(t: MyTree[Int, String]): Int = {
-       import MyTree.*
+    <details>
+      <summary>Answer</summary>
 
-       t match
-         case Leaf(_) => 1
-         case Node(left, _, right) => numLeaves(left) + numLeaves(right)
-     }
-     ```
-   </details>
+    ```scala
+    def numLeaves(t: MyTree[Int, String]): Int = {
+      import MyTree.*
+
+      t match
+        case Leaf(_) => 1
+        case Node(left, _, right) => numLeaves(left) + numLeaves(right)
+    }
+    ```
+    </details>
