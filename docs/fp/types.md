@@ -188,38 +188,95 @@ A tuple is a rather generic way of packaging up data. When you are building a la
 program, it would not be very meaningful to see a value like `("Brian", 93)` out of
 context. Just as programmers are encouraged to use symbolic names for constants (for
 example, `LINE_WIDTH` instead of 80), we can attach names to particular uses of tuples
-to make them more readable and maintainable. If we create a type alias where the
-right-hand-side prefixes the tuple with a **constructor** name (which needs to start
-with a capital letter in ReasonML), then it will introduce a new type of tuples that
-need to be labeled with that constructor:
-```reason edit
-type grade_entry = Entry(string, int);
-let entry = Entry("Brian", 93);
+to make them more readable and maintainable.
+
+The object-oriented solution to this is to create an **object** (or **class** of objects)
+with named **fields**.
+In Java, this might look as follows:
+```java
+public class Entry {
+  private final String name;
+  private final int grade;
+
+  public Entry(String name, int grade) {
+    this.name = name;
+    this.grade = grade;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getGrade() {
+    return grade;
+  }
+}
 ```
-If we want to extract the components of this new type, we use a corresponding
-named pattern in the `let` binding:
-```reason edit
-let Entry(name, grade) = entry;
+We can then use it as follows:
+```java
+Entry entry = new Entry("Brian", 93);
+System.out.println(entry.getName() + "'s grade is " + entry.getGrade());
 ```
-Here is another version of the `format_grade` example, using the above `grade_entry`
-type plus another that describes a particular grading item (with a title and maximum
-number of points). Even though both are essentially a pair of a string and an integer,
-we can now tell them apart:
-```reason edit
-type grade_entry = Entry(string, int);
-type grading_item = Item(string, int);
-let format_grade = (item, entry) => {
-  let Item(title, max) = item;
-  let Entry(name, grade) = entry;
-  name ++ ", " ++ title ++ ": " ++ string_of_int(grade) ++ "/" ++ string_of_int(max)
-};
-format_grade(Item("Midterm", 100), Entry("Brian", 93));
+
+In Java 16 (released in March 2021), the concept of a **record** was added to Java
+specifically for this purpose: classes of objects with immutable named fields.
+The above class can be replaced by this:
+```java
+public record Entry(String name, int grade) {}
 ```
+It is used the same way, except the automatically-created getters are `name()`
+and `grade()` instead of `getName()` and `getGrade()`.
+In Java 21 (released in September 2023), the `switch/case` statement was extended
+to allow matching values on **record patterns**:
+```java
+switch (entry) {
+  case Entry(var name, var grade):
+    System.out.println(name + "'s grade is " + grade);
+}
+```
+
+While it is nice that Java is finally getting support for this feature (and it is still
+in the process of being incorporated into other parts of the language, such as variable
+initialization and assignment), it has been
+an integral part of most functional languages since the earliest days (the design of
+Standard ML had it in 1983, modeled on an earlier language called HOPE).
+In Scala, these records are called **case classes**, and this is what the above example
+looks like:
+```scala mdoc
+case class Entry(name: String, grade: Int)
+
+val entry = Entry("Brian", 93)
+entry match
+  case Entry(name, grade) => println(name + "'s grade is " + grade)
+```
+
+Suppose we have a gradebook data structure, containing a bunch of these
+`Entry` records bundled with a "grading item" (representing a single assignment
+or exam, with a title and maximum number of points).
+Now we could write a function `formatGrade` that takes an `Item` and an `Entry`
+and generates a string describing one line of the gradebook:
+```scala mdoc
+case class Item(title: String, max: Int)
+
+def formatGrade(item: Item, entry: Entry): String = {
+  val Item(title, max) = item
+  val Entry(name, grade) = entry
+  name + ", " + title + ": " + grade + "/" + max
+}
+
+formatGrade(Item("Midterm", 100), Entry("Brian", 93))
+```
+The advantage here is that, even though both a grading item and a gradebook entry
+are described by a pair of a `String` and an `Int`, we can easily keep them
+separate in the code because of the class names and associated field names.
+Naming is good!
 
 So far we have seen types where all of the data have the same form: the same number
 of components, each with the same set of types, across all values of the type. However,
 most interesting data will come in several forms, and our programs will need to make
 appropriate decisions based on the form of each piece of data.
+
+TODO stopped here
 
 ### Enumerations
 
