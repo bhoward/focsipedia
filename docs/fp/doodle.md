@@ -14,10 +14,10 @@ def logoBackground(n: Int): Picture[Unit] = {
   if n == 0 then Picture.empty
   else
     val r = 20 * math.sqrt(4 * n)
-    logoBackground(n - 1) `on` Picture.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5))
+    logoBackground(n - 1) `on` Picture.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5)).noStroke
 }
 
-val logo = text("Doodle").font(Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))) `on` logoBackground(30)
+val logo = text("Doodle").font(Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))) `on` logoBackground(50)
 RenderFile(logo, "logo.png")
 ```
 
