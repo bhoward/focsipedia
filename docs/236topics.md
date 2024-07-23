@@ -13,7 +13,7 @@ Note that it does not precisely follow the order in the book's table of contents
 
 ### [Induction](logic/induction.md) and [Recursion](logic/recursion.md)
 
-### [Algebraic Data Types](fp/types.md) and Pattern Matching
+### [Algebraic Data Types and Pattern Matching](fp/types.md)
 
 ### [Functional Graphics](fp/doodle.md)
 
