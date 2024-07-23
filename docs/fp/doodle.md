@@ -1,20 +1,24 @@
 ---
 id: doodle
-title: DPoodle Graphics
+title: Doodle Graphics
 ---
 
-```reason hidden
-let rec logoBackground = n => {
-  if (n == 0) {
-    empty
-  } else {
-    let r = 10.0 *. sqrt(float_of_int(4 * n));
-    logoBackground(n - 1) +++
-      solid(hsl(float_of_int(12 * n), 1.0, 0.5), ellipse(2. *. r, r))
-  }
-};
-let logo = withFont(2., Mono, Bold, Normal, stroke(color("none"), fill(color("black"), text("DPoodle")))) +++ logoBackground(50);
-draw(logo)
+```scala mdoc:passthrough
+import doodle.core.*
+import doodle.core.font.*
+import doodle.syntax.all.*
+import doodle.java2d.*
+import edu.depauw.bhoward.RenderFile
+
+def logoBackground(n: Int): Picture[Unit] = {
+  if n == 0 then Picture.empty
+  else
+    val r = 20 * math.sqrt(4 * n)
+    logoBackground(n - 1) `on` Picture.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5))
+}
+
+val logo = text("Doodle").font(Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))) `on` logoBackground(30)
+RenderFile(logo, "logo.png")
 ```
 
 ## Section 1. Introduction

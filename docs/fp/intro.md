@@ -473,7 +473,7 @@ thorough integration of functions with other kinds of values.
 Here are complete demos of the _sum_ example, first in Java and
 then in Scala:
 
-```java file=<rootDir>/code/java/SumDemo.java
+```java file=<rootDir>/code/src/main/java/SumDemo.java
 ```
 
 ```scala mdoc
