@@ -5,25 +5,27 @@ title: Doodle Graphics
 
 ```scala mdoc:passthrough
 import doodle.core.*
-import doodle.core.font.*
-import doodle.syntax.all.*
+import doodle.image.*
+import doodle.image.syntax.core.*
 import doodle.java2d.*
+import doodle.core.font.*
 import edu.depauw.bhoward.RenderFile
 
-def logoBackground(n: Int): Picture[Unit] = {
-  if n == 0 then Picture.empty
+def logoBackground(n: Int): Image = {
+  if n == 0 then Image.empty
   else
     val r = 20 * math.sqrt(4 * n)
-    logoBackground(n - 1) `on` Picture.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5)).noStroke
+    logoBackground(n - 1) `on` Image.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5)).noStroke
 }
 
-val logo = text("Doodle").font(Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))) `on` logoBackground(50)
+val f = Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))
+val logo = Image.text("Doodle!").font(f) `on` logoBackground(50)
 RenderFile(logo, "logo.png")
 ```
 
 ## Section 1. Introduction
 DPoodle is a graphics library written in ReasonML at DePauw University during Spring 2020.
-DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.com/).
+DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.org/).
 
 ## Section 2. `image` type
 The basic type of a drawing in DPoodle is `image`. Seven built-in functions used to construct geometric shapes are ellipse, circle, rectangle, square, triangle, polygon, and regularPolygon. The size arguments for all of these functions are of type `float`, plus the `regularPolygon` function also takes the number of sides as an `int`. Every image in DPoodle has a *bounding box*, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about the built-in functions to create geometric shape images in DPoodle are in the following table:
