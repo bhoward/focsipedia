@@ -24,35 +24,56 @@ RenderFile(logo, "logo.png")
 ```
 
 ## Section 1. Introduction
-DPoodle is a graphics library written in ReasonML at DePauw University during Spring 2020.
-DPoodle is based on the Doodle graphics library from [Creative Scala](https://creativescala.org/).
+We will be using the [Doodle](https://www.creativescala.org/doodle/) graphics library, which accompanies the
+book [Creative Scala](https://www.creativescala.org/creative-scala/) by Dave Gurnell and Noel Welsh.
 
-## Section 2. `image` type
-The basic type of a drawing in DPoodle is `image`. Seven built-in functions used to construct geometric shapes are ellipse, circle, rectangle, square, triangle, polygon, and regularPolygon. The size arguments for all of these functions are of type `float`, plus the `regularPolygon` function also takes the number of sides as an `int`. Every image in DPoodle has a *bounding box*, which is a minimal rectangle that can cover the image. The center of the bounding box by default is at (0, 0). The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge. Detail about the built-in functions to create geometric shape images in DPoodle are in the following table:
+One way to work with the library is to make your own fork of the GitHub repository
+https://github.com/bhoward/creative-scala-template.
+You can either clone it to your local machine and run the SBT console there, or create a GitHub codespace and
+run it on the web.
+Instructions for both approaches are in the README file within the repository.
+
+The remainder of this page is a reference to the Doodle library, plus some examples.
+Substantial parts of this were co-written by [Sang Truong](https://cs.stanford.edu/~sttruong/) (DePauw 2021).
+
+## Section 2. `Image` type
+The basic type of a drawing in Doodle is `Image`.
+Some built-in functions used to construct geometric shapes are `circle`, `rectangle`, `square`, `triangle`, `regularPolygon`, and `star`.
+The size arguments for all of these functions are of type `Double`, plus the `regularPolygon` and `star` functions also takes the number of vertices as an `Int`.
+Every image in Doodle has a **bounding box**, which is a minimal rectangle that can cover the image.
+The center of the bounding box by default is at (0, 0).
+The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge.
+Details about the built-in functions to create geometric shapes in Doodle are in the following table:
 
 | Function | Argument(s) | Bounding box size |
 | :-: | :-: | :-: |
-| `ellipse(w, h)` | Horizontal axis (w) and Vertical axis (h) | $w\times h$ |
-| `circle(r)` | Radius (r)  | $2r\times 2r$ |
-| `rectangle(w, h)`  | Width (w) and Height (h) | $w\times h$ |
-| `square(w)`  | Side length (w)  | $w\times w$ |
-| `triangle(w, h)`| Base (w) and Height (h)| $w\times h$ |
-| `polygon(points)` | List of vertex points | Smallest rectangle containing all points |
-| `regularPolygon(n, s, a)`| Number of sides (n), Distance from center to vertex (s), and Initial angle (a)| $2s\times 2s$ (roughly) |
+| `Image.circle(d)` | Diameter (d)  | $d\times d$ |
+| `Image.rectangle(w, h)`  | Width (w) and Height (h) | $w\times h$ |
+| `Image.square(w)`  | Side length (w)  | $w\times w$ |
+| `Image.triangle(w, h)`| Base (w) and Height (h)| $w\times h$ |
+| `Image.regularPolygon(n, r)`| Number of sides (n), Distance from center to vertex (r) | $2s\times 2s$ (roughly) |
+| `Image.star(n, r1, r2)` | Number of sides (n), Outer radius (r1), Inner radius (r2) | $2r_1\times 2r_1$ (roughly) |
 
-Function `draw(image)` is used to visualize the `image`:
-```reason edit
-draw(ellipse(20.0, 15.0))
-draw(square(15.0))
-draw(triangle(15.0, 20.0))
-draw(polygon([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
-draw(regularPolygon(6, 15., 90.))
+Method `.draw()` is used to display the `Image`:
+```scala
+val image = Image.circle(100) `beside`
+  Image.rectangle(100, 50) `beside`
+  Image.triangle(50, 100) `beside`
+  Image.regularPolygon(6, 50) `beside`
+  Image.star(7, 50, 20)
+image.draw()
+```
+```scala mdoc:passthrough
+val image = Image.circle(100) `beside`
+  Image.rectangle(100, 50) `beside`
+  Image.triangle(50, 100) `beside`
+  Image.regularPolygon(6, 50) `beside`
+  Image.star(7, 50, 20)
+RenderFile(image, "shapes.png")
 ```
 
-An `empty` value is use to create an empty image whose bounding box is (0., 0., 0., 0.); it is often useful as a default image when there is nothing to draw, and it is an identity element for the image combination operations described below. The `polyline` function is closely related to `polygon`. A polyline is a non-closed polygon:
-```reason edit
-draw(polyline([(-10.0, 10.0), (0.0, -10.0), (10.0, -10.0), (15.0, 0.0)]))
-```
+The value `Image.empty` is used to create an empty image whose bounding box is (0., 0., 0., 0.);
+it is often useful as a default image when there is nothing to draw, and it is an identity element for the image combination operations described below.
 
 We can also construct a shape by specifying a colection of points and the connections between these points (using straight line or curve).
 These shapes can be:
