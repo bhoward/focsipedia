@@ -6,6 +6,7 @@ title: Doodle Graphics
 ```scala mdoc:passthrough
 import doodle.core.*
 import doodle.image.*
+import doodle.image.syntax.all.*
 import doodle.image.syntax.core.*
 import doodle.java2d.*
 import doodle.core.font.*
@@ -18,12 +19,12 @@ def logoBackground(n: Int): Image = {
     logoBackground(n - 1) `on` Image.circle(r).scale(2, 1).fillColor(Color.hsl(12.degrees * n, 1, 0.5)).noStroke
 }
 
-val f = Font(FontFamily.monospaced, FontStyle.normal, FontWeight.bold, FontSize.points(60))
+val f = Font.defaultSansSerif.bold.size(60)
 val logo = Image.text("Doodle!").font(f) `on` logoBackground(50)
 RenderFile(logo, "logo.png")
 ```
 
-## Section 1. Introduction
+## Introduction
 We will be using the [Doodle](https://www.creativescala.org/doodle/) graphics library, which accompanies the
 book [Creative Scala](https://www.creativescala.org/creative-scala/) by Dave Gurnell and Noel Welsh.
 
@@ -36,10 +37,12 @@ Instructions for both approaches are in the README file within the repository.
 The remainder of this page is a reference to the Doodle library, plus some examples.
 Substantial parts of this were co-written by [Sang Truong](https://cs.stanford.edu/~sttruong/) (DePauw 2021).
 
-## Section 2. `Image` type
+## The `Image` type
 The basic type of a drawing in Doodle is `Image`.
-Some built-in functions used to construct geometric shapes are `circle`, `rectangle`, `square`, `triangle`, `regularPolygon`, and `star`.
-The size arguments for all of these functions are of type `Double`, plus the `regularPolygon` and `star` functions also takes the number of vertices as an `Int`.
+Some built-in functions used to construct geometric shapes are `circle`, `rectangle`, `triangle`, `regularPolygon`, `star`, and `rightArrow`.
+There are also some special cases and variations: `square`, `roundedRectangle`, `equilateralTriangle`, `arc`, `pie`, and `line`.
+The size arguments for all of these functions are of type `Double`, plus the `regularPolygon` and `star` functions also take the number of vertices as an `Int`.
+The `arc` and `pie` functions also takes an argument of type `Angle` (see below).
 Every image in Doodle has a **bounding box**, which is a minimal rectangle that can cover the image.
 The center of the bounding box by default is at (0, 0).
 The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge.
@@ -47,33 +50,57 @@ Details about the built-in functions to create geometric shapes in Doodle are in
 
 | Function | Argument(s) | Bounding box size |
 | :-: | :-: | :-: |
-| `Image.circle(d)` | Diameter (d)  | $d\times d$ |
 | `Image.rectangle(w, h)`  | Width (w) and Height (h) | $w\times h$ |
-| `Image.square(w)`  | Side length (w)  | $w\times w$ |
 | `Image.triangle(w, h)`| Base (w) and Height (h)| $w\times h$ |
-| `Image.regularPolygon(n, r)`| Number of sides (n), Distance from center to vertex (r) | $2s\times 2s$ (roughly) |
+| `Image.circle(d)` | Diameter (d)  | $d\times d$ |
+| `Image.regularPolygon(n, r)`| Number of sides (n), Distance from center to vertex (r) | $2r\times 2r$ (roughly) |
 | `Image.star(n, r1, r2)` | Number of sides (n), Outer radius (r1), Inner radius (r2) | $2r_1\times 2r_1$ (roughly) |
+| `Image.rightArrow(w, h)` | Width (w) and Height (h) | $w\times h$ |
+| `Image.square(w)`  | Side length (w)  | $w\times w$ |
+| `Image.roundedRectangle(w, h, r)` | Width (w), Height (h), and Corner radius (r) | $w\times h$ |
+| `Image.equilateralTriangle(w)` | Side length (w) | $w\times h\frac{\sqrt{3}}{2}$ |
+| `Image.arc(d, theta)` | Diameter (d) and Angle extent (theta) | varies |
+| `Image.pie(d, theta)` | Diameter (d) and Angle extent (theta) | varies |
+| `Image.line(x, y)` | Horizontal (x) and Vertical (y) | $x\times y$ |
 
 Method `.draw()` is used to display the `Image`:
 ```scala
-val image = Image.circle(100) `beside`
-  Image.rectangle(100, 50) `beside`
+val row1 = Image.rectangle(100, 50) `beside`
   Image.triangle(50, 100) `beside`
+  Image.circle(100) `beside`
   Image.regularPolygon(6, 50) `beside`
-  Image.star(7, 50, 20)
+  Image.star(7, 50, 20) `beside`
+  Image.rightArrow(100, 50)
+val row2 = Image.square(100) `beside`
+  Image.roundedRectangle(100, 50, 10) `beside`
+  Image.equilateralTriangle(100) `beside`
+  Image.arc(100, 60.degrees) `beside`
+  Image.pie(100, 60.degrees) `beside`
+  Image.line(100, 50)
+val image = row1 `above` row2
 image.draw()
 ```
 ```scala mdoc:passthrough
-val image = Image.circle(100) `beside`
-  Image.rectangle(100, 50) `beside`
+val row1 = Image.rectangle(100, 50) `beside`
   Image.triangle(50, 100) `beside`
+  Image.circle(100) `beside`
   Image.regularPolygon(6, 50) `beside`
-  Image.star(7, 50, 20)
+  Image.star(7, 50, 20) `beside`
+  Image.rightArrow(100, 50)
+val row2 = Image.square(100) `beside`
+  Image.roundedRectangle(100, 50, 10) `beside`
+  Image.equilateralTriangle(100) `beside`
+  Image.arc(100, 60.degrees) `beside`
+  Image.pie(100, 60.degrees) `beside`
+  Image.line(100, 50)
+val image = row1 `above` row2
 RenderFile(image, "shapes.png")
 ```
 
-The value `Image.empty` is used to create an empty image whose bounding box is (0., 0., 0., 0.);
+The value `Image.empty` is used to create an empty image with a zero-size bounding box;
 it is often useful as a default image when there is nothing to draw, and it is an identity element for the image combination operations described below.
+
+### Paths
 
 We can also construct a shape by specifying a colection of points and the connections between these points (using straight line or curve).
 These shapes can be:
@@ -184,7 +211,7 @@ let d = setBounds(-28., 28., -8., 8., text("Sample"));
 draw(showBounds(d));
 ```
 
-## Section 3. Position and Manipulation
+## Position and Manipulation
 We can combine two images and control their relative positions using the following functions: 
 
 | Function | Return | Alternative operation |
@@ -224,7 +251,7 @@ draw(showBounds(a) +++ showBounds(c))
 
 Every image has a bounding box and a reference point. At the begining when the image is created, the reference point of the image is at the center. Translating an image (via the `translate`, `translateP`, or `focus` functions) translates the whole image but leaves the reference point behind. Think of the reference point as a spot on a table, and the image starts off as a piece of paper centered over that spot. Translating amounts to shifting the paper so that a different point is over the spot. Putting two images together with ||| or --- is like pushing two tables next to each other, lining up their spots horizontally or vertically. The papers come along for the ride and overlap as the tables are shifted. When you're done, you imagine a new combined table with a new spot underneath the overlapped (and now merged) papers.
 
-## Section 4. Format
+## Styles
 The `image` type can be formatted using the following functions: 
 
 | Functions | Arguments | Effect |
@@ -307,7 +334,7 @@ let d = withFont(2., Serif, Bold, Italic, setBounds(-30., 30., -20., 20., Text("
 draw(d);
 ```
 
-## Section 5. Some Demonstrations
+## Some Demonstrations
 Here is an arrow using `openPath`. This also shows examples of using `focus` and `showBounds`.
 ```reason edit
 let arrow = len => {
