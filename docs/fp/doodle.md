@@ -100,6 +100,10 @@ RenderFile(image, "shapes.png")
 The value `Image.empty` is used to create an empty image with a zero-size bounding box;
 it is often useful as a default image when there is nothing to draw, and it is an identity element for the image combination operations described below.
 
+### Text
+
+
+
 ### Paths
 
 We can also construct a shape by specifying a colection of points and the connections between these points (using straight line or curve).
