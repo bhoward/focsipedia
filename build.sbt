@@ -2,7 +2,7 @@ lazy val main = project
   .in(file("code"))
   .settings(
     scalaVersion := "3.4.2",
-    libraryDependencies += "org.creativescala" %% "doodle" % "0.22.0"
+    libraryDependencies += "org.creativescala" %% "doodle" % "0.23.0"
   )
 
 lazy val docs = project
