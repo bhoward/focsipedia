@@ -120,7 +120,8 @@ Putting this all together, you might choose a 24-point monospaced italic font wi
 ```scala mdoc:silent
 val textImage =
   Image.text("Hello World!").font(Font.defaultSerif.size(36).bold) `above`
-  Image.text("Lorem ipsum").font(Font(FontFamily.monospaced, FontStyle.italic, FontWeight.normal, FontSize.points(24)))
+  Image.text("Lorem ipsum").font(
+    Font(FontFamily.monospaced, FontStyle.italic, FontWeight.normal, FontSize.points(24)))
 ```
 ```scala mdoc:passthrough
 RenderFile(textImage, "text.png")
@@ -128,52 +129,68 @@ RenderFile(textImage, "text.png")
 
 ### Paths
 
-We can also construct a shape by specifying a colection of points and the connections between these points (using straight line or curve).
-These shapes can be:
+We can make more general shapes out of sequences of instructions of the following forms:
+* Move to a given point;
+* Draw a line from the current point to a given point;
+* Draw a curve (with certain properties) from the current point to a given point.
 
-* Open-path: using `openPath(pathElements)` function.
-* Close-path: using `closedPath(pathElements)` function. 
+We refer to such a sequence as a **path**.
+A path may be either **open** or **closed**; a closed path will include a line from the ending point back to the beginning if one is not specified.
+We create a path in Doodle with the function `Image.path(p)`, where `p` is a value describing the sequence of instructions.
 
-These two functions take a list of `pathElement` values as input. A `pathElement` may be created by the following functions: 
-* `moveXY(x, y)`: move to point (x, y), without drawing a line.
-* `moveP(p)`: move to point p.
-* `lineXY(x, y)`: draw a line from the current point to point (x, y).
-* `lineP(p)`: draw a line from the current point to point p. 
-* `curveXY(c1x, c1y, c2x, c2y, px, py)`: draw a curve from the current point to point (px, py). The points (c1x, c1y) and (c2x, c2y) are called **control points**; the intuition is that the curve will start out headed toward the first control point, and then approach its destination as if coming from the second control point.
-* `curveP(c1, c2, p)`: draw a curve from the current point to point p, with control points c1 and c2. 
+One way to construct such a value is to start with either `OpenPath.empty` or `ClosedPath.empty`, and then apply a chain of methods:
+* `moveTo(point)`, `moveTo(x, y)`, or `moveTo(r, theta)`: move to the given point (details below);
+* `lineTo(point)`, `lineTo(x, y)`, or `lineTo(r, theta)`: draw a line to the given point;
+* `curveTo(cp1, cp2, point)`, `curveTo(cp1x, cp1y, cp2x, cp2y, px, py)`, or `curveTo(r1, t1, r2, t2, r, theta)`: draw a Bézier curve to the given point; 
+`cp1` is the first **control point**, which determines the starting direction of the curve from the initial point, while `cp2` is the second control point,
+which determines the direction heading into the destination, `point`.
 
-Here is an example to help you visualize the control points:
-```reason edit
-let p1 = (-20., 0.);
-let p2 = (20., 0.);
-let c1 = (0., -20.);
-let c2 = (20., -20.);
-let curve = openPath([moveP(p1), curveP(c1, c2, p2)]);
-let boundary = openPath([moveP(p1), lineP(c1), moveP(c2), lineP(p2)]);
-let label = s => { setBounds(-4., 4., -3., 3., text(s)) };
-let labels = stroke(color("none"), fill(color("black"), withFont(0.4, Sans, Regular, Normal,
-  translateP(p1, focus(MR, label("p1")))
-  +++ translateP(p2, focus(ML, label("p2")))
-  +++ translateP(c1, focus(ML, label("c1")))
-  +++ translateP(c2, focus(ML, label("c2"))))));
-draw(curve +++ dashed(boundary) +++ labels);
+In each of these methods, the points may be specified as a `Point` object, such as `Point(10, 20)` (this is 10 units right, and 20 units up, from the origin),
+or as separate `x` and `y` arguments of type `Double`, or as polar coordinates `r` and `theta`, where `r` is a `Double` and `theta` is an `Angle`
+(measured counter-clockwise from the positive `x` axis).
+An `Angle` value may be constructed by giving a `Double` followed by either `.degrees`, `.radians`, or `.turns`&mdash;the values `360.degrees`, `2 * math.Pi.radians`,
+and `1.turns` all represent one complete turn around a circle.
+
+Here is an example of using a closed path to draw an AND gate, on top of input and output wires drawn with `openPath`:
+```scala mdoc:silent
+val andGate = Image.path(ClosedPath.empty
+  .moveTo(-15, -30)
+  .lineTo(0, -30)
+  .curveTo(Point(15, -30), Point(30, -15), Point(30, 0))
+  .curveTo(Point(30, 15), Point(15, 30), Point(0, 30))
+  .lineTo(-15, 30))
+val andWires = Image.path(OpenPath.empty
+  .moveTo(-15, -15).lineTo(-45, -15)
+  .moveTo(-15, 15).lineTo(-45, 15)
+  .moveTo(30, 0).lineTo(60, 0))
+val andImage = andGate `on` andWires
+```
+```scala mdoc:passthrough
+RenderFile(andImage, "andGate.png")
 ```
 
-In the following example, we draw an AND gate using the `closedPath` function, on top of input and output wires drawn with `openPath`: 
-```reason edit
-let andGate = ClosedPath([
-  MoveTo((-5., -10.)),
-  LineTo((0., -10.)),
-  CurveTo((5., -10.), (10., -5.), (10., 0.)),
-  CurveTo((10., 5.), (5., 10.), (0., 10.)),
-  LineTo((-5., 10.))
-]) +++ OpenPath([
-  MoveTo((-5., -5.)), LineTo((-15., -5.)),
-  MoveTo((-5., 5.)), LineTo((-15., 5.)),
-  MoveTo((10., 0.)), LineTo((20., 0.))
-]);
-draw(andGate);
+Here is an example to help you visualize the Bézier control points:
+```scala mdoc:silent
+val p1 = Point(-60, 0)
+val p2 = Point(60, 0)
+val cp1 = Point(0, -60)
+val cp2 = Point(60, -60)
+val curve = Image.path(OpenPath.empty
+  .moveTo(p1).curveTo(cp1, cp2, p2))
+val boundary = Image.path(OpenPath.empty
+  .moveTo(p1).lineTo(cp1)
+  .moveTo(cp2).lineTo(p2)).strokeDash(List(4, 4))
+val labels = Image.text("p1").originAt(Landmark.bottomCenter).at(p1) `on`
+  Image.text("p2").originAt(Landmark.bottomCenter).at(p2) `on`
+  Image.text("cp1").originAt(Landmark.topCenter).at(cp1) `on`
+  Image.text("cp2").originAt(Landmark.topCenter).at(cp2)
+val bezierImage = curve `on` boundary `on` labels
 ```
+```scala mdoc:passthrough
+RenderFile(bezierImage, "bezier.png")
+```
+
+TODO remember to do interpolatingSpline
 
 Here are corresponding definitions of OR and NOT gates. Note how the NOT gate is built from other primitive geometric shapes:
 ```reason edit
