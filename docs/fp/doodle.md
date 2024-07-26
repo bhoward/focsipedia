@@ -102,7 +102,29 @@ it is often useful as a default image when there is nothing to draw, and it is a
 
 ### Text
 
+Another kind of primitive image is text.
+By default, `Image.text(s)` gives you the string `s` rendered in a plain 12-point sans-serif font.
+You can change the font with the `font` method, which takes an object of type `Font`.
+There are two predefined `Font` values: `Font.defaultSansSerif` and `Font.defaultSerif`.
+They may be modified with methods `bold`, `italic`, and `size(p)`, where `p` is an integer point size.
 
+You can also create a `Font` object by specifying four values: `FontFamily`, `FontStyle`, `FontWeight`, and `FontSize`.
+In addition to `FontFamily.serif` and `FontFamily.sansSerif`, there are `FontFamily.monospaced` and `FontFamily.named(s)`,
+where `s` is a string giving the name of a font on the machine where Scala is running; this will typically include such
+standards as `"Helvetica"` and `"Times"`, but this is not guaranteed.
+The `FontStyle` can be `FontStyle.normal` or `FontStyle.italic`; the `FontWeight` can be `FontWeight.normal` or `FontWeight.bold`.
+For the `FontSize`, you specify the point size `p` with the value `FontSize.points(p)`.
+Putting this all together, you might choose a 24-point monospaced italic font with
+`Font(FontFamily.monospaced, FontStyle.italic, FontWeight.normal, FontSize.points(24))`.
+
+```scala mdoc:silent
+val textImage =
+  Image.text("Hello World!").font(Font.defaultSerif.size(36).bold) `above`
+  Image.text("Lorem ipsum").font(Font(FontFamily.monospaced, FontStyle.italic, FontWeight.normal, FontSize.points(24)))
+```
+```scala mdoc:passthrough
+RenderFile(textImage, "text.png")
+```
 
 ### Paths
 
