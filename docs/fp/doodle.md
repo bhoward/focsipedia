@@ -141,7 +141,7 @@ We create a path in Doodle with the function `Image.path(p)`, where `p` is a val
 One way to construct such a value is to start with either `OpenPath.empty` or `ClosedPath.empty`, and then apply a chain of methods:
 * `moveTo(point)`, `moveTo(x, y)`, or `moveTo(r, theta)`: move to the given point (details below);
 * `lineTo(point)`, `lineTo(x, y)`, or `lineTo(r, theta)`: draw a line to the given point;
-* `curveTo(cp1, cp2, point)`, `curveTo(cp1x, cp1y, cp2x, cp2y, px, py)`, or `curveTo(r1, t1, r2, t2, r, theta)`: draw a Bézier curve to the given point; 
+* `curveTo(cp1, cp2, point)`, `curveTo(cp1x, cp1y, cp2x, cp2y, px, py)`, or `curveTo(r1, t1, r2, t2, r, theta)`: draw a [Bézier curve](https://en.wikipedia.org/wiki/B%C3%A9zier_curve) to the given point; 
 `cp1` is the first **control point**, which determines the starting direction of the curve from the initial point, while `cp2` is the second control point,
 which determines the direction heading into the destination, `point`.
 
@@ -169,22 +169,24 @@ val andImage = andGate `on` andWires
 RenderFile(andImage, "andGate.png")
 ```
 
-Here is an example to help you visualize the Bézier control points:
+Here is an example to help you visualize the Bézier control points.
+Note how the distance to the control point affects how quickly the curve diverges from that direction:
 ```scala mdoc:silent
-val p1 = Point(-60, 0)
-val p2 = Point(60, 0)
-val cp1 = Point(0, -60)
-val cp2 = Point(60, -60)
-val curve = Image.path(OpenPath.empty
-  .moveTo(p1).curveTo(cp1, cp2, p2))
-val boundary = Image.path(OpenPath.empty
-  .moveTo(p1).lineTo(cp1)
-  .moveTo(cp2).lineTo(p2)).strokeDash(List(4, 4))
-val labels = Image.text("p1").originAt(Landmark.bottomCenter).at(p1) `on`
-  Image.text("p2").originAt(Landmark.bottomCenter).at(p2) `on`
-  Image.text("cp1").originAt(Landmark.topCenter).at(cp1) `on`
-  Image.text("cp2").originAt(Landmark.topCenter).at(cp2)
-val bezierImage = curve `on` boundary `on` labels
+def cpDiagram(p1: Point, p2: Point, cp1: Point, cp2: Point): Image = {
+  val curve = Image.path(OpenPath.empty
+    .moveTo(p1).curveTo(cp1, cp2, p2))
+  val boundary = Image.path(OpenPath.empty
+    .moveTo(p1).lineTo(cp1)
+    .moveTo(cp2).lineTo(p2)).strokeDash(List(4, 4))
+  val labels = Image.text("p1").originAt(Landmark.bottomCenter).at(p1) `on`
+    Image.text("p2").originAt(Landmark.bottomCenter).at(p2) `on`
+    Image.text("cp1").originAt(Landmark.topCenter).at(cp1) `on`
+    Image.text("cp2").originAt(Landmark.topCenter).at(cp2)
+  curve `on` boundary `on` labels
+}
+val bezierImage1 = cpDiagram(Point(-60, 0), Point(60, 0), Point(0, -60), Point(60, -30))
+val bezierImage2 = cpDiagram(Point(-60, 0), Point(60, 0), Point(0, -60), Point(60, -90))
+val bezierImage = bezierImage1 `beside` Image.empty.size(20, 0) `beside` bezierImage2
 ```
 ```scala mdoc:passthrough
 RenderFile(bezierImage, "bezier.png")
