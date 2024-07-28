@@ -37,14 +37,35 @@ Instructions for both approaches are in the README file within the repository.
 The remainder of this page is a reference to the Doodle library, plus some examples.
 Substantial parts of this were co-written by [Sang Truong](https://cs.stanford.edu/~sttruong/) (DePauw 2021).
 
+## Basic Types
+
+When working with graphics, we will need some basic types beyond `Int`, `Double`, and `String`.
+Although we could use `Double` to describe **angles**, it will be helpful to have a separate `Angle` type, which
+may be thought of as a `Double` together with a "unit" (_e.g._, degrees or radians).
+The Doodle library defines methods `degrees`, `radians`, and `spins` as extensions on the `Double` type, so
+that the values `360.degrees`, `2 * math.Pi.radians`, and `1.turns` all represent one complete turn around a circle.
+
+**Points** in two dimensions can be specified by two coordinates, `x` and `y`, where we adopt the convention that
+`x` increases from left to right, while `y` increases from bottom to top
+(the location of the origin will be discussed later).
+Again, these could just be given by two `Double` values, but Doodle introduces a `Point` type with two constructors:
+* `Point(x, y)` creates a Cartesian point from `Double` values `x` and `y`, while
+* `Point(r, theta)` creates a point in polar coordinates, where `r` is a `Double` giving the distance from the origin,
+and `theta` is an `Angle` giving the counter-clockwise angle from the `x`-axis.
+
+For example, `Point(100, 0.degrees)` is the same as `Point(100, 0)`, while `Point(100, math.Pi.radians / 2)` and
+`Point(100, 0.25.turns)` are both the same as `Point(0, 100)`.
+
 ## The `Image` type
-The basic type of a drawing in Doodle is `Image`.
+The fundamental type of a drawing in Doodle is `Image`.[^1]
 Some built-in functions used to construct geometric shapes are `circle`, `rectangle`, `triangle`, `regularPolygon`, `star`, and `rightArrow`.
 There are also some special cases and variations: `square`, `roundedRectangle`, `equilateralTriangle`, `arc`, `pie`, and `line`.
 The size arguments for all of these functions are of type `Double`, plus the `regularPolygon` and `star` functions also take the number of vertices as an `Int`.
-The `arc` and `pie` functions also takes an argument of type `Angle` (see below).
+The `arc` and `pie` functions also take an argument of type `Angle`, as discussed above.
 Every image in Doodle has a **bounding box**, which is a minimal rectangle that can cover the image.
-The center of the bounding box by default is at (0, 0).
+The center of the bounding box by default is at (0, 0), the **origin** for that image (exceptions include
+the equilateral triangle, whose origin is the center of the triangle, and the arc and pie shapes, whose origin is
+the center of the circle).
 The built-in triangle function creates an isoceles triangle with the base on the bottom edge of the bounding box and the vertex in the middle of the top edge.
 Details about the built-in functions to create geometric shapes in Doodle are in the following table:
 
@@ -62,6 +83,11 @@ Details about the built-in functions to create geometric shapes in Doodle are in
 | `Image.arc(d, theta)` | Diameter (d) and Angle extent (theta) | varies |
 | `Image.pie(d, theta)` | Diameter (d) and Angle extent (theta) | varies |
 | `Image.line(x, y)` | Horizontal (x) and Vertical (y) | $x\times y$ |
+
+[^1]: The Doodle library also has a type called `Picture` which parallels many of the features of `Image`, but which
+has some more advanced capabilities.
+We will not be discussing this further; see the
+[Doodle documentation](https://www.creativescala.org/doodle/) for details.
 
 Method `.draw()` is used to display the `Image`:
 ```scala
@@ -145,29 +171,21 @@ One way to construct such a value is to start with either `OpenPath.empty` or `C
 `cp1` is the first **control point**, which determines the starting direction of the curve from the initial point, while `cp2` is the second control point,
 which determines the direction heading into the destination, `point`.
 
-In each of these methods, the points may be specified as a `Point` object, such as `Point(10, 20)` (this is 10 units right, and 20 units up, from the origin),
-or as separate `x` and `y` arguments of type `Double`, or as polar coordinates `r` and `theta`, where `r` is a `Double` and `theta` is an `Angle`
-(measured counter-clockwise from the positive `x` axis).
-An `Angle` value may be constructed by giving a `Double` followed by either `.degrees`, `.radians`, or `.turns`&mdash;the values `360.degrees`, `2 * math.Pi.radians`,
-and `1.turns` all represent one complete turn around a circle.
+As a convenience, each of these methods allows the points to be specified as a `Point` object
+or as separate Cartesian coordinates `x` and `y`, or as polar coordinates `r` and `theta`.
 
-Here is an example of using a closed path to draw an AND gate, on top of input and output wires drawn with `openPath`:
-```scala mdoc:silent
-val andGate = Image.path(ClosedPath.empty
-  .moveTo(-15, -30)
-  .lineTo(0, -30)
-  .curveTo(Point(15, -30), Point(30, -15), Point(30, 0))
-  .curveTo(Point(30, 15), Point(15, 30), Point(0, 30))
-  .lineTo(-15, 30))
-val andWires = Image.path(OpenPath.empty
-  .moveTo(-15, -15).lineTo(-45, -15)
-  .moveTo(-15, 15).lineTo(-45, 15)
-  .moveTo(30, 0).lineTo(60, 0))
-val andImage = andGate `on` andWires
+For some purposes, it is more convenient to construct a path value from a list of `PathElement` objects.
+For example, instead of
+```scala
+OpenPath.empty.moveTo(100, 0).lineTo(100, 45.degrees)
 ```
-```scala mdoc:passthrough
-RenderFile(andImage, "andGate.png")
+you can do the following:
+```scala
+val elements = List(PathElement.moveTo(100, 0), PathElement.lineTo(100, 45.degrees))
+OpenPath(elements)
 ```
+The advantage of this form is that all of our usual operations on lists are available
+to work with the sequence of instructions before turning them into a path.
 
 Here is an example to help you visualize the Bézier control points.
 Note how the distance to the control point affects how quickly the curve diverges from that direction:
@@ -192,80 +210,89 @@ val bezierImage = bezierImage1 `beside` Image.empty.size(20, 0) `beside` bezierI
 RenderFile(bezierImage, "bezier.png")
 ```
 
-TODO remember to do interpolatingSpline
-
-Here are corresponding definitions of OR and NOT gates. Note how the NOT gate is built from other primitive geometric shapes:
-```reason edit
-let orGate = ClosedPath([
-  MoveTo((-5., -10.)),
-  LineTo((0., -10.)),
-  CurveTo((5., -10.), (8., -5.), (10., 0.)),
-  CurveTo((8., 5.), (5., 10.), (0., 10.)),
-  LineTo((-5., 10.)),
-  CurveTo((0., 5.), (0., -5.), (-5., -10.))
-]) +++ OpenPath([
-  MoveTo((0., -5.)), LineTo((-15., -5.)),
-  MoveTo((0., 5.)), LineTo((-15., 5.)),
-  MoveTo((10., 0.)), LineTo((20., 0.))
-]);
-draw(orGate);
-
-let notGate = translate(4., 0., (rotate(90., triangle(20., 14.)) ||| circle(2.)))
-  +++ OpenPath([
-  MoveTo((-5., 0.)), LineTo((-15., 0.)),
-  MoveTo((13., 0.)), LineTo((20., 0.))
-]);
-draw(notGate);
+Here is an example of using a closed path to draw an AND gate, on top of input and output wires drawn with `openPath`:
+```scala mdoc:silent
+val andGate = Image.path(ClosedPath.empty
+  .moveTo(-15, -30)
+  .lineTo(0, -30)
+  .curveTo(Point(15, -30), Point(30, -15), Point(30, 0))
+  .curveTo(Point(30, 15), Point(15, 30), Point(0, 30))
+  .lineTo(-15, 30))
+val andWires = Image.path(OpenPath.empty
+  .moveTo(-15, -15).lineTo(-45, -15)
+  .moveTo(-15, 15).lineTo(-45, 15)
+  .moveTo(30, 0).lineTo(60, 0))
+val andImage = andGate `on` andWires
+```
+```scala mdoc:passthrough
+RenderFile(andImage, "andGate.png")
 ```
 
-Information about the bounding box (bbox) of an `image` can be retrieved by following functions, which take an `image` as input. The first 4 functions return a `float` and the rest return a `point`, which is equivalent to a pair of floats.
+The origin for a path is the starting point $(0, 0)$, and the bounding box is just large enough to contain all
+of the points of the path.
 
-| Function | Return |
-| :-: | :-: |
-|`left(image)`| Minimum x-coordinate of corresponding bbox |
-|`right(image)`| Maximum x-coordinate of corresponding bbox |
-|`top(image)`| Minium y-coordinate of corresponding bbox |
-|`bottom(image)`| Maximum y-coordinate of corresponding bbox |
-|`topLeft(image)`| Top left point of corresponding bbox |
-|`topRight(image)`| Top right point of corresponding bbox |
-|`bottomLeft(image)`| Bottom left point of corresponding bbox |
-|`bottomRight(image)`| Bottom right point of corresponding bbox |
-
-Here are some examples: 
-```reason edit
-let a = rectangle(15., 20.)
-left(a)
-right(a)
-top(a)
-bottom(a)
-topLeft(a)
-topRight(a)
-bottomLeft(a)
-bottomRight(a)
+A final way to construct a path image is to fit a **spline** curve to a list of points:
+```scala mdoc:silent
+val points = for (x <- 0 to 360) yield Point(x, x.degrees.sin * 100)
+val sineImage = Image.interpolatingSpline(points)
 ```
-
-We can also visuallize the bounding box and its center using the `showBounds` function, which takes an image as input: 
-```reason edit
-let a = circle(30.)
-draw(showBounds(a))
-```
-
-Elements in an image can also be text. The function `text(string)` is used to create a text image. This function return an image with 0 by 0 bounding box (this is a limitation of the way fonts are handled&mdash;the DPoodle library is not able to calculate an accurate bounding box on its own). Since the `draw(image)` function only renders the area inside of the bounding box, we often need to reset the size of the bounding box for text: `setBounds(left, right, top, bottom, text(string))`. You may have to play around with `showBounds` a bit to choose the correct values for the bounds. Here is an example: 
-```reason edit
-let d = setBounds(-28., 28., -8., 8., text("Sample"));
-draw(showBounds(d));
+```scala mdoc:passthrough
+RenderFile(sineImage, "sineWave.png")
 ```
 
 ## Position and Manipulation
-We can combine two images and control their relative positions using the following functions: 
 
-| Function | Return | Alternative operation |
-| :-: | :-: | :-: |
-| `beside(a, b)` | Image a is on the left of image b. The centers of a and b are aligned | <code>a &#124;&#124;&#124; b</code> |
-| `above (a, b)` | Image a is vertically above image b. The centers of a and b are aligned | `a --- b` |
-| `on(a, b)` | Image a on top of image b. The centers of a and b are superimposed | `a +++ b` |
+Of course, the real interest of a graphics library is not just in the basic shapes, but
+in how to combine them into larger images.
+Since an `Image` is a type of value that we can construct and manipulate, we may use the full
+machinery of the Scala language to develop functions that build complex images **compositionally**,
+allowing us to use the substitution model to understand what the finished `Image` will be in terms
+of its component parts.
 
-The operator symbols should remind you of how a and b are arranged; imagine either drawing a line between them (`|` or `-`) or centering one on the other (`+`).
+Two images may be combined with three primary operations:
+* Overlaying: `image1.on(image2)` lines up the origin of `image1` over the origin of `image2`;
+* Horizontal joining: `image1.beside(image2)` lines up the right edge of the bounding box of `image1`
+with the left edge of that of `image2`; and
+* Vertical joining: `image1.above(image2)` lines up the bottom edge of the bounding box of `image1`
+with the top edge of that of `image2`.
+
+For `image1.beside(image2)`, the images are shifted up or down so that their origins are on a horizontal line,
+while for `image1.above(image2)` the origins will line up vertically.
+In all cases, a new bounding box will be computed that contains both images, and its origin will be in the center.
+
+As a convenience, Scala permits a method call such as `a.on(b)` to be written in **operator form**
+as ``a `on` b``; we will generally use this form.
+Doodle also provides two additional methods, `under` and `below`, which are just `on` and `above` with the arguments
+swapped: ``a `under` b`` is the same as ``b `on` a``, and ``a `below` b`` is the same as ``b `above` a``.
+
+To help visualize the role of origin and bounding box, the `Image` type provides the method `debug`,
+which draws a visible bounding box and puts a small circle on the origin.
+Here is an example of putting a circle beside an equilateral triangle, with `debug` used to show the
+individual shapes and then the result:
+```scala mdoc:silent
+val circle = Image.circle(100)
+val triangle = Image.equilateralTriangle(100)
+val result = circle `beside` triangle
+val space = Image.empty.size(20, 20)
+val inputs = circle.debug `above` space `above` triangle.debug
+val debugDemo = inputs `beside` space `beside` result.debug
+```
+```scala mdoc:passthrough
+RenderFile(debugDemo, "debugDemo.png")
+```
+
+We may modify the bounding box with the methods `size` and `margin`:
+* `image.size(width, height)` replaces the current box with one having the given dimensions, centered on the origin;
+* `image.margin(top, right, bottom, left)` expands the bounding box by the given amounts in each direction
+(a negative amount will shrink the box on that side);
+* `image.margin(w, h)` is equivalent to `image.margin(h, w, h, w)`, so it expands by `w` both left and right, and
+by `h` both top and bottom; and
+* `image.margin(s)` is equivalent to `image.margin(s, s, s, s)`, adding an extra space `s` on all sides.
+
+In the example above, we used `Image.empty.size(20, 20)` to create an empty image of size 20 by 20, to use as a spacer.
+We would have gotten the same result with `Image.empty.margin(10)`.
+
+TODO now do originAt, and landmarks
 
 We can also scale, rotate, and translate the image: 
 
@@ -295,6 +322,12 @@ draw(showBounds(a) +++ showBounds(c))
 ```
 
 Every image has a bounding box and a reference point. At the begining when the image is created, the reference point of the image is at the center. Translating an image (via the `translate`, `translateP`, or `focus` functions) translates the whole image but leaves the reference point behind. Think of the reference point as a spot on a table, and the image starts off as a piece of paper centered over that spot. Translating amounts to shifting the paper so that a different point is over the spot. Putting two images together with ||| or --- is like pushing two tables next to each other, lining up their spots horizontally or vertically. The papers come along for the ride and overlap as the tables are shifted. When you're done, you imagine a new combined table with a new spot underneath the overlapped (and now merged) papers.
+
+We can also visuallize the bounding box and its center using the `showBounds` function, which takes an image as input: 
+```reason edit
+let a = circle(30.)
+draw(showBounds(a))
+```
 
 ## Styles
 The `image` type can be formatted using the following functions: 
