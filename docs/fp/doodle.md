@@ -265,6 +265,8 @@ as ``a `on` b``; we will generally use this form.
 Doodle also provides two additional methods, `under` and `below`, which are just `on` and `above` with the arguments
 swapped: ``a `under` b`` is the same as ``b `on` a``, and ``a `below` b`` is the same as ``b `above` a``.
 
+### Bounding Box and Origin
+
 To help visualize the role of origin and bounding box, the `Image` type provides the method `debug`,
 which draws a visible bounding box and puts a small circle on the origin.
 Here is an example of putting a circle beside an equilateral triangle, with `debug` used to show the
@@ -292,41 +294,121 @@ by `h` both top and bottom; and
 In the example above, we used `Image.empty.size(20, 20)` to create an empty image of size 20 by 20, to use as a spacer.
 We would have gotten the same result with `Image.empty.margin(10)`.
 
-TODO now do originAt, and landmarks
+To change the position of the origin, use the `originAt` method.
+Its argument specifies the new position relative to the current coordinate system of the image.
+As with the `PathElement` methods, the position may be specified as a `Point`, two `Double` (Cartesian) coordinates,
+or a `Double` and an `Angle` (polar form).
+If the origin is moved to a point outside the bounding box, Doodle will calculate a new bounding box just large
+enough to contain the old one plus the origin point; the origin will always be within the bounding box.
 
-We can also scale, rotate, and translate the image: 
+The position of the new origin may also be specified as a `Landmark`:
+* `Landmark.topLeft`, `Landmark.topRight`, `Landmark.bottomLeft`, and `Landmark.bottomRight` are the four corners
+of the bounding box
+* `Landmark.origin` is the current origin point, and `Landmark.point(x, y)` is the same as `Point(x, y)`
+* `Landmark.centerLeft` and `Landmark.centerRight` are on the horizontal line through the origin, at either the
+left or the right edge of the bounding box (note that, despite the name, these points are not necessarily in the
+middle of those edges; they will be at the same $y$ coordinate as the origin)
+* `Landmark.topCenter` and `Landmark.bottomCenter` are similarly on the vertical line through the origin, at either
+the top or bottom edge of the bounding box
+* More generally, `Landmark.percent(px, py)` will be located at the given percentage of the way from the origin to
+the respective sides. For example, `Landmark.percent(50, -100)` will be a point halfway between the origin and the right edge, located along the bottom edge of the bounding box.
 
-| Function | Arguments | Effect |
-| :-: | :-: | :-: |
-| `rotate(a, img)` | Angle a (degrees) and image img | Rotate img by angle a clockwise. |
-| `translate(dx, dy, img)` | Changes in x- and y-coordinates dx and dy, image img | Translate the points of img from (x, y) to (x + dx, y + dy). |
-| `translateP(p, img)` | Point p and image img | Translate the origin of img to point p. |
-| `scalexy(sx, sy, img)` | Horizontal and vertical scale factors sx and sy, image img | Scale image horizontally by sx and vertically by sy. |
-| `scale(s, img)` | Scale factor s and image img | Scale img in both directions by factor s.| 
-| `setBounds(l, r, t, b, img)` | Min x, max x , min y, max y of the new bounding box respectively, and the image img | Create a new image that looks just like img, except its bounding box has the specified coordinates. The origin is unchanged.|
-
-For example: 
-```reason edit
-let a = circle(10.);
-draw(translate(0., 10., a) ||| a);
-draw(scale(5., a));
+Here is a demonstration of using landmarks to line up red, green, and blue triangles at their corners,
+on top of the point halfway between the center and the bottom edge of a yellow triangle:
+```scala mdoc:silent
+val redTriangle = Image.equilateralTriangle(100).fillColor(Color.red)
+val greenTriangle = Image.equilateralTriangle(100).fillColor(Color.green)
+val blueTriangle = Image.equilateralTriangle(100).fillColor(Color.blue)
+val yellowTriangle = Image.equilateralTriangle(100).fillColor(Color.yellow)
+val landmarkDemo = redTriangle.originAt(Landmark.topCenter) `on`
+  greenTriangle.originAt(Landmark.bottomLeft) `on`
+  blueTriangle.originAt(Landmark.bottomRight) `on`
+  yellowTriangle.originAt(Landmark.percent(0, -50))
+```
+```scala mdoc:passthrough
+RenderFile(landmarkDemo, "landmarkDemo.png")
 ```
 
-`Focus(position, img)` is a special case of the `translate(dx, dy, img)` function. It produce a new image based on image img with the origin at the specified point on its bounding box. `position` is a type that has the nine following cases: TL (top left), TC (top center), TR (top right), ML (middle left), MC (middle center), MR (middle right), BL (bottom left), BC (bottom center), BR (bottom right).
+### Transformation
 
-``` reason edit
-let a = circle(10.)
-let b = focus(TL, a)
-let c = fill(color("aqua"), b)
-draw(showBounds(a) +++ showBounds(c))
+We can scale, rotate, and translate images:
+* `image.rotate(angle)` rotates counter-clockwise around the origin by the given `Angle`
+* `image.scale(sx, sy)` scales the image by a factor of `sx` horizontally and `sy` vertically
+* `image.at(point)`, `image.at(x, y)`, `image.at(r, theta)`, and `image.at(landmark)` shift the image
+by the given amount relative to the origin; in fact, these are just the opposite of the `originAt` methods
+(`image.at(x, y)` is the same as `image.originAt(-x, -y)`, _etc._)
+* `image.transform(xform)` applies a general `Transform` object (see below).
+
+As we have seen, in a compositional style it is nice to have types of values that we can manipulate to
+describe the various operations.
+A `Transform` object represents an arbitrary two-dimensional **affine transformation**.
+One way to define such a transformation is to specify a $3\times 3$ matrix, where the bottom row is 0, 0, 1:
+$$
+  \begin{bmatrix}
+  s_x & r_x & t_x\\
+  r_y & s_y & t_y\\
+  0   & 0   & 1
+  \end{bmatrix}
+$$
+Given a point $(x, y)$, the effect of the transformation may be calculated by multiplying the matrix by the
+vector $\langle x, y, 1\rangle$:
+$$
+  \begin{bmatrix}
+    x'\\
+    y'\\
+    1
+  \end{bmatrix} =
+  \begin{bmatrix}
+  s_x & r_x & t_x\\
+  r_y & s_y & t_y\\
+  0   & 0   & 1
+  \end{bmatrix} \cdot
+  \begin{bmatrix}
+    x\\
+    y\\
+    1
+  \end{bmatrix}
+$$
+This is equivalent to the following computations:
+$$
+  \begin{matrix}
+  x' = s_x x + r_x y + t_x\\
+  y' = r_y x + s_y y + t_y
+  \end{matrix}
+$$
+The coefficients $s_x$ and $s_y$ are referred to as the **scale** factors, $r_x$ and $r_y$ are the **shear**
+factors, and $t_x$ and $t_y$ are the **translate** factors.
+The `Transform` object provides various methods to construct and manipulate these values:
+* `Transform.identity` gives the identity matrix:
+   $ \begin{bmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{bmatrix} $
+* `Transform.scale(sx, sy)` gives $ \begin{bmatrix} sx & 0 & 0\\ 0 & sy & 0\\ 0 & 0 & 1 \end{bmatrix} $
+* `Transform.translate(tx, ty)` gives $ \begin{bmatrix} 1 & 0 & tx\\ 0 & 1 & ty\\ 0 & 0 & 1 \end{bmatrix} $
+* `Transform.rotate(a)` gives $ \begin{bmatrix} \cos a & -\sin a & 0\\ \sin a & \cos a & 0\\ 0 & 0 & 1 \end{bmatrix} $
+* `Transform(Array(sx, rx, tx, ry, sy, ty, 0, 0, 1))` creates an arbitrary `Transform` with the given coefficients
+* `xform1.andThen(xform2)` combines the given transforms (by taking the matrix product `xform2` times `xform1`)
+
+Although Doodle does not directly define a shearing transformation, you can construct one from an array.
+For example, a horizontal shear by a factor of 0.5 is given by
+`Transform(Array(1, 0.5, 0, 0, 1, 0, 0, 0, 1))`.
+Here is a demonstration of some transforms applied to a triangle:
+```scala mdoc:silent
+val tri = Image.triangle(100, 50)
+val tri2 = tri.strokeColor(Color.lightGray)
+val scaleXform = Transform.scale(0.5, -1)
+val translateXform = Transform.translate(25, 25)
+val rotateXform = Transform.rotate(30.degrees)
+val shearXform = Transform(Array(1, 0.5, 0, 0, 1, 0, 0, 0, 1))
+val combo1Xform = scaleXform.andThen(translateXform)
+val combo2Xform = translateXform.andThen(scaleXform)
+val transformDemo = tri.transform(scaleXform).on(tri2) `beside`
+  tri.transform(translateXform).on(tri2) `beside`
+  tri.transform(rotateXform).on(tri2) `beside`
+  tri.transform(shearXform).on(tri2) `beside`
+  tri.transform(combo1Xform).on(tri2) `beside`
+  tri.transform(combo2Xform).on(tri2)
 ```
-
-Every image has a bounding box and a reference point. At the begining when the image is created, the reference point of the image is at the center. Translating an image (via the `translate`, `translateP`, or `focus` functions) translates the whole image but leaves the reference point behind. Think of the reference point as a spot on a table, and the image starts off as a piece of paper centered over that spot. Translating amounts to shifting the paper so that a different point is over the spot. Putting two images together with ||| or --- is like pushing two tables next to each other, lining up their spots horizontally or vertically. The papers come along for the ride and overlap as the tables are shifted. When you're done, you imagine a new combined table with a new spot underneath the overlapped (and now merged) papers.
-
-We can also visuallize the bounding box and its center using the `showBounds` function, which takes an image as input: 
-```reason edit
-let a = circle(30.)
-draw(showBounds(a))
+```scala mdoc:passthrough
+RenderFile(transformDemo, "transformDemo.png")
 ```
 
 ## Styles
