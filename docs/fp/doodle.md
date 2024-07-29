@@ -433,7 +433,20 @@ the join off with a short line segment
 spaces for a dashed line
 * `image.noStroke` leaves the image unstroked
 
-**TODO** put a demo here
+```scala mdoc:silent
+val wedge = Image.path(OpenPath.empty.lineTo(50, 100).curveTo(50, 0, 75, 0, 100, 0))
+val demoA = wedge.strokeWidth(8)
+val demoB = wedge.strokeWidth(8).strokeCap(Cap.round).strokeJoin(Join.round)
+val demoC = wedge.strokeWidth(8).strokeCap(Cap.square).strokeJoin(Join.bevel)
+val demoD = wedge.strokeWidth(2).strokeDash(List(5, 2, 1, 2))
+val strokeDemo = demoA.debug `beside`
+  space `beside` demoB.debug `beside`
+  space `beside` demoC.debug `beside`
+  space `beside` demoD.debug
+```
+```scala mdoc:passthrough
+RenderFile(strokeDemo, "strokeDemo")
+```
 
 The methods to change the fill style include:
 * `image.fillColor(c)`, where `c` is a `Color`
@@ -460,7 +473,7 @@ For example, here are two ways to use `hsl` to construct 4-color palettes,
 one with pure colors and the other monochrome:
 ```scala mdoc:silent
 def showPalette(c0: Color, c1: Color, c2: Color, c3: Color): Image = {
-  val sq = Image.square(100)
+  val sq = Image.square(100).noStroke
   sq.fillColor(c0) `beside`
     sq.fillColor(c1) `beside`
     sq.fillColor(c2) `beside`
@@ -474,9 +487,9 @@ val palette1 = showPalette(
 )
 val palette2 = showPalette(
   Color.hsl(0.turns, 0, 0),
-  Color.hsl(0.turns, 0, 1.0/3),
-  Color.hsl(0.turns, 0, 2.0/3),
-  Color.hsl(0.turns, 0, 1)
+  Color.hsl(0.turns, 0, 0.25),
+  Color.hsl(0.turns, 0, 0.5),
+  Color.hsl(0.turns, 0, 0.75)
 )
 val paletteDemo = palette1 `above` palette2
 ```
@@ -484,6 +497,31 @@ val paletteDemo = palette1 `above` palette2
 RenderFile(paletteDemo, "paletteDemo.png")
 ```
 
+In addition to the red, green, and blue components, each color value carries a fourth component, a `Double` value
+in the range 0 to 1 known as **alpha**.
+Such values may be constructed with the methods `Color.rgba(r, g, b, a)` and `Color.hsla(r, g, b, a)`, where the
+fourth argument, `a`, is the alpha value.
+The alpha value determines how transparent a color is when it is drawn on top of something else.
+If alpha is 1.0 (the default if not specified), then the color is completely opaque&mdash;nothing
+shows through from below.
+If alpha is 0.0, then the color is completely transparent&mdash;the underlying image is unchanged.
+For values of alpha in between, the alphas of the top and underlying layers are used to proportionally blend
+the colors according to the OVER [compositing rule](https://en.wikipedia.org/wiki/Alpha_compositing).
+Here is an example:
+```scala mdoc:silent
+val front = Image.circle(100)
+val back = Image.square(100).fillColor(Color.red)
+val alphaDemo = back `under`
+  front.fillColor(Color.rgba(0, 0, 255, 0.25)).at(-50, 50) `under`
+  front.fillColor(Color.rgba(0, 0, 255, 0.5)).at(50, 50) `under`
+  front.fillColor(Color.rgba(0, 0, 255, 0.75)).at(-50, -50) `under`
+  front.fillColor(Color.rgba(0, 0, 255, 1)).at(50, -50)
+```
+```scala mdoc:passthrough
+RenderFile(alphaDemo, "alphaDemo.png")
+```
+
+**TODO** Named colors, Color methods, Gradient
 
 Here are the known named colors:
 
