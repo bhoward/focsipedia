@@ -1,8 +1,8 @@
 # Dependencies
 /node_modules
 
-# Production -- commit /build to serve through GitHub Pages
-# /build
+# Production
+/build
 
 # Generated files
 .docusaurus
