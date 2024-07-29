@@ -445,7 +445,7 @@ val strokeDemo = demoA.debug `beside`
   space `beside` demoD.debug
 ```
 ```scala mdoc:passthrough
-RenderFile(strokeDemo, "strokeDemo")
+RenderFile(strokeDemo, "strokeDemo.png")
 ```
 
 The methods to change the fill style include:
