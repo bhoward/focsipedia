@@ -579,40 +579,51 @@ RenderFile(gradientDemo, "gradientDemo.png")
 ```
 
 ## Some Demonstrations
-Here is an arrow using `openPath`. This also shows examples of using `focus` and `showBounds`.
-```reason edit
-let arrow = len => {
-  strokeWidth(2., focus(ML, openPath([
-    moveXY(0., 0.),
-    lineXY(len, 0.),
-    lineXY(len -. 5., 5.),
-    moveXY(len, 0.),
-    lineXY(len -. 5., -5.)])))
-};
+Here is an arrow using `OpenPath`, and a function to display a clock face for a given time:
+```scala mdoc:silent
+def arrow(len: Double): Image = {
+  Image.path(
+    OpenPath.empty
+      .lineTo(0, len)
+      .lineTo(10, len - 10)
+      .moveTo(0, len)
+      .lineTo(-10, len - 10)
+  ).strokeCap(Cap.round).strokeJoin(Join.round).strokeWidth(3)
+}
 
-draw(arrow(40.))
+def clock(time: Double): Image = {
+  val hourHand = arrow(80).rotate(-(time / 12).turns)
+  val minuteHand = arrow(100).rotate(-time.turns)
+  val face = Image.circle(220).fillColor(Color.white)
+  hourHand `on` minuteHand `on` face
+}
 
-draw(showBounds(arrow(40.)))
-
-draw(arrow(40.) +++ rotate(-90., arrow(50.)) +++ fill(color("white"), circle(60.)))
+val arrowDemo = arrow(100).debug `beside`
+  space `beside` clock(4.75) `beside`
+  space `beside` clock(12.0)
+```
+```scala mdoc:passthrough
+RenderFile(arrowDemo, "arrowDemo.png")
 ```
 
 Using the arrow, here is a function to visualize a linked list:
-```reason edit
-let listNode = n => {
-  let valueField = solid(color("black"), text(string_of_int(n))) +++ square(20.);
-  let nextField = arrow(20.) +++ square(20.);
-  fill(color("white"), valueField ||| nextField)
-};
+```scala mdoc:silent
+def listNode(n: Int): Image = {
+  val f = Font.defaultSansSerif.size(24)
+  val field = Image.square(50).fillColor(Color.white).strokeWidth(2)
+  val valueField = Image.text(n.toString).font(f) `on` field
+  val nextField = arrow(50).rotate(-90.degrees) `on` field
+  valueField `beside` nextField
+}
 
-let rec showList = nums => {
-  switch (nums) {
-  | [] => solid(color("black"), circle(5.))
-  | [head, ...tail] => listNode(head) ||| showList(tail)
-  }
-};
+def showList(nums: List[Int]): Image = {
+  nums match
+    case Nil => Image.circle(10).fillColor(Color.black)
+    case head :: tail => listNode(head) `beside` showList(tail)
+}
 
-draw(showList([1, 2, 3]));
-draw(showList([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+val listDemo = showList(List(1, 2, 3, 4, 5, 6))
 ```
-The second list is smaller because the `draw` function will adjust the scale so that the entire bounding box is displayed on screen.
+```scala mdoc:passthrough
+RenderFile(listDemo, "listDemo.png")
+```
