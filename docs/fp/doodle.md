@@ -627,3 +627,23 @@ val listDemo = showList(List(1, 2, 3, 4, 5, 6))
 ```scala mdoc:passthrough
 RenderFile(listDemo, "listDemo.png")
 ```
+
+Finally, here is a function to draw a **fractal** known as the
+[Sierpiński Triangle](https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle),
+given a recursion depth `n` and desired `width`:
+```scala mdoc:silent
+def sierpinski(n: Int, width: Double): Image = {
+  if n == 0
+  then
+    Image.equilateralTriangle(width)
+      .fillColor(Color.black).size(width, width * math.sqrt(3) / 2)
+  else
+    val recurse = sierpinski(n - 1, width / 2)
+    recurse `above` (recurse `beside` recurse)
+}
+
+val fractalDemo = sierpinski(4, 300) `beside` space `beside` sierpinski(6, 300)
+```
+```scala mdoc:passthrough
+RenderFile(fractalDemo, "fractalDemo.png")
+```
