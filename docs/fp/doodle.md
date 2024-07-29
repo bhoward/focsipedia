@@ -453,6 +453,8 @@ The methods to change the fill style include:
 * `image.fillGradient(g)`, where `g` is a `Gradient` (see below)
 * `image.noFill` leaves the image unfilled
 
+### Colors
+
 It is surprisingly complicated to specify colors in full generality.
 The model used by Doodle is the common
 [24-bit RGB](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_color_formats#24-bit_RGB) palette,
@@ -521,58 +523,59 @@ val alphaDemo = back `under`
 RenderFile(alphaDemo, "alphaDemo.png")
 ```
 
-**TODO** Named colors, Color methods, Gradient
+Instead of choosing a color based on its components, Doodle also provides a large number of named `Color`
+constants such as `Color.blue`, `Color.cyan`, and `Color.lightGoldenrodYellow`.
+The list is based on the [CSS named colors](https://drafts.csswg.org/css-color/#named-colors), although
+camelCase capitalization has been added to match Java and Scala identifier conventions.
 
-Here are the known named colors:
+Given a `Color`, there are a variety of methods available to inspect its components and create related colors.
+Here are a few of the most useful:
+* `c.spin(angle)` creates a new `Color` with hue rotated by the given `Angle`
+* `c.saturateBy(fraction)` creates a new `Color` with saturation multiplied by `1 + fraction`; the type of
+`fraction` is a `Normalized` number, which is like a `Double` but restricted to the range 0 to 1; to
+specify a fraction of 50%, use `0.5.normalized`; the resulting saturation will likewise be clamped within 0 to 1
+* `c.desaturateBy(fraction)` creates a new `Color` with saturation multiplied by `1 - fraction`
+* `c.lightenBy(fraction)` creates a new `Color` with lightness multiplied by `1 + fraction`
+* `c.darkenBy(fraction)` creates a new `Color` with lightness multiplied by `1 - fraction`
+* `c.fadeInBy(fraction)` creates a new `Color` with alpha multiplied by `1 + fraction`
+* `c.fadeOutBy(fraction)` creates a new `Color` with alpha multiplied by `1 - fraction`
 
-| | | | |
-| :- | :- | :- | :- |
-| transparent | aliceBlue | antiqueWhite | aqua |
-| aquamarine | azure | beige | bisque |
-| black | blanchedAlmond | blue | blueViolet |
-| brown | burlyWood | cadetBlue | chartreuse |
-| chocolate | coral | cornflowerBlue | cornSilk |
-| cyan | darkBlue | darkCyan | darkGoldenrod |
-| darkGray | darkGrey | darkGreen | darkKhaki |
-| darkMagenta | darkOliveGreen | darkOrange | darkOrchid |
-| darkRed | darkSalmon | darkSeaGreen | darkSlateBlue |
-| darkSlateGray | darkSlateGrey | darkTurquoise | darkViolet |
-| deepPink | deepSkyBlue | dimGray | dimGrey |
-| dodgerBlue | fireBrick | floralWhite | forestGreen |
-| fuchsia | gainsboro | ghostWhite | gold |
-| goldenrod | gray | grey | green |
-| greenYellow | honeydew | hotpink | indianRed |
-| indigo | ivory | khaki | lavender |
-| lavenderBlush | lawngreen | lemonChiffon | lightBlue |
-| lightCoral | lightCyan | lightGoldenrodYellow | lightGray |
-| lightGrey | lightGreen | lightPink | lightSalmon |
-| lightSeaGreen | lightSkyBlue | lightSlateGray | lightSlateGrey |
-| lightSteelBlue | lightYellow | lime | limeGreen |
-| linen | magenta | maroon | mediumAquamarine |
-| mediumBlue | mediumOrchid | mediumPurple | mediumSeaGreen |
-| mediumSlateBlue | mediumSpringGreen | mediumTurquoise | mediumVioletRed |
-| midnightBlue | mintCream | mistyRose | moccasin |
-| navajoWhite | navy | oldLace | olive |
-| oliveDrab | orange | orangeRed | orchid |
-| paleGoldenrod | paleGreen | paleTurquoise | paleVioletRed |
-| papayaWhip | peachPuff | peru | pink |
-| plum | powderBlue | purple | rebeccaPurple |
-| red | rosyBrown | royalBlue | saddleBrown |
-| salmon | sandyBrown | seaGreen | seaShell |
-| sienna | silver | skyBlue | slateBlue |
-| slateGray | slateGrey | snow | springGreen |
-| steelBlue | tan | teal | thistle |
-| tomato | turquoise | violet | wheat |
-| white | whiteSmoke | yellow | yellowGreen |
+### Gradients
 
-Here are some examples: 
-```reason edit
-let a = fill(color("blue"), ellipse(60., 80.));
-let b = strokeWidth(3., rectangle(50., 50.));
-let c = circle(15.);
-let d = setBounds(-24., 24., -8., 8., text("Hello"));
-draw(rotate(45., scale(5., d))
-      +++ stroke(color("red"), (a ||| b) --- c));
+Fill style can be specified as a **gradient** instead of a single `Color`.
+A gradient interpolates between two or more colors; it may be **linear**, where the colors change smoothly
+between parallel lines, or it may be **radial**, where the colors change smoothly between nested circles.
+
+The Doodle library provides three convenience methods for constructing common cases `Gradient` objects,
+plus two more general methods to handle arbitrary cases:
+* `Gradient.dichromaticVertical(c1, c2, d)` takes two `Color` values, `c1` and `c2`, plus a `Double` distance `d`,
+and yields a `Gradient` that changes from `c1` on the line $y=0$ to the color `c2` on the line $y=d$; outside that
+range, the gradient repeats in a cycle
+* `Gradient.dichromaticHorizontal(c1, c2, d)` is similar, except `c1` is on the line $x=0$ and `c2` is on the line $x=d$
+* `Gradient.dichromaticRadial(c1, c2, r)` yields a radial `Gradient` where `c1` is the color at the origin and
+`c2` is the color on the circle at distance `r` from the origin; outside that circle, the cycle repeats
+* `Gradient.linear(p1, p2, stops, cycle)` interpolates along the line passing through the `Point` values `p1` and `p2`;
+the argument `stops` is a `List[(Color, Double)]` that specifies the colors at two or more key points (given as fractions
+between 0 and 1) along the way; `cycle` may be `Gradient.CycleMethod.noCycle`, `Gradient.CycleMethod.reflect`, or
+`Gradient.CycleMethod.repeat`
+* `Gradient.radial(p1, p2, r, stops, cycle)` creates a radial gradient with center `p1`, radius `r`, and arguments
+`stops` and `cycle` as above; it also takes a "focus" point `p2`, which specifies the point inside the circle where
+the gradient starts (note that this does not have to be the same as the center)
+
+```scala mdoc:silent
+val g1 = Gradient.dichromaticHorizontal(Color.red, Color.blue, 50)
+val g2 = Gradient.dichromaticRadial(Color.red, Color.blue, 50)
+val g3 = Gradient.linear(Point(-25, -25), Point(25, 25),
+  List((Color.red, 0.2), (Color.blue, 0.8)), Gradient.CycleMethod.reflect)
+val g4 = Gradient.radial(Point(0, 0), Point(25, 0), 50,
+  List((Color.red, 0.2), (Color.blue, 0.8)), Gradient.CycleMethod.noCycle)
+val gradientDemo = Image.square(100).fillGradient(g1) `beside` space `beside`
+  Image.square(100).fillGradient(g2) `beside` space `beside`
+  Image.square(100).fillGradient(g3) `beside` space `beside`
+  Image.square(100).fillGradient(g4)
+```
+```scala mdoc:passthrough
+RenderFile(gradientDemo, "gradientDemo.png")
 ```
 
 ## Some Demonstrations
